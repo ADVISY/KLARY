@@ -2,13 +2,25 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Klary — Plateforme interne",
-  description:
-    "Espace de formation et de certification interne réservé aux agents Klary Sàrl.",
-  robots: "noindex, nofollow",
-  icons: {
-    icon: "/favicon.ico",
+  metadataBase: new URL("https://klary.ch"),
+  title: {
+    default: "Klary — Courtage en assurance",
+    template: "%s · Klary",
   },
+  description:
+    "Cabinet de courtage indépendant en Suisse. Assurance santé, prévoyance, LPP, hypothèque — comparaison neutre, économies réelles.",
+  keywords: [
+    "courtage assurance suisse",
+    "assurance maladie",
+    "3e pilier",
+    "LAMal",
+    "LCA",
+    "hypothèque",
+    "prévoyance",
+    "Vaud",
+    "Le Mont-sur-Lausanne",
+  ],
+  authors: [{ name: "Klary Sàrl" }],
 };
 
 export default function RootLayout({
@@ -18,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
