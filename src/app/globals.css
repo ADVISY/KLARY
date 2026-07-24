@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --klary-navy: #1A1660;
+  --klary-orange: #F0651F;
+  --klary-cream: #FAF5EF;
+  --klary-ink: #1F1B4B;
+  --klary-grey: #6E6A8E;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--klary-ink);
+  background: var(--klary-cream);
+}
