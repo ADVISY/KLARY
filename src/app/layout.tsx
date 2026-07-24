@@ -3,8 +3,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Klary — Plateforme interne",
-  description: "Formation et certification interne des agents Klary Sàrl.",
+  description:
+    "Espace de formation et de certification interne réservé aux agents Klary Sàrl.",
   robots: "noindex, nofollow",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
