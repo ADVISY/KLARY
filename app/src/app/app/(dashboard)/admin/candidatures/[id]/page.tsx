@@ -354,34 +354,30 @@ export default async function CandidatureDetailPage({
                 </span>
               </div>
               {onboarding.comptable_notified_at ? (
-                <div className="text-xs text-green-700">
+                <div className="text-xs text-green-700 mb-3">
                   📧 Comptable notifié le{" "}
                   {new Date(
                     onboarding.comptable_notified_at
                   ).toLocaleString("fr-CH")}
                 </div>
               ) : (
-                <div className="text-xs text-yellow-700">
+                <div className="text-xs text-yellow-700 mb-3">
                   ⏳ Notification comptable en cours
                 </div>
               )}
-              {onboarding.form_data && (
-                <details className="mt-4">
-                  <summary className="text-sm font-semibold text-klary-navy cursor-pointer">
-                    Voir les données transmises
-                  </summary>
-                  <pre className="mt-3 p-3 bg-klary-cream rounded-lg text-xs overflow-x-auto text-klary-ink">
-{JSON.stringify(onboarding.form_data, null, 2)}
-                  </pre>
-                </details>
+
+              {Array.isArray(onboarding.uploaded_docs) && (
+                <div className="text-xs text-klary-grey mb-3">
+                  {onboarding.uploaded_docs.length} document(s) téléversé(s).
+                </div>
               )}
-              {Array.isArray(onboarding.uploaded_docs) &&
-                onboarding.uploaded_docs.length > 0 && (
-                  <div className="mt-3 text-xs text-klary-grey">
-                    {onboarding.uploaded_docs.length} document(s) téléversé(s)
-                    — accessibles via l'email envoyé au comptable (liens 1h).
-                  </div>
-                )}
+
+              <Link
+                href={`/admin/onboarding/${onboarding.id}`}
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-klary-navy text-white font-semibold rounded-lg hover:bg-klary-navy/90 transition text-sm"
+              >
+                Voir le dossier complet →
+              </Link>
             </div>
           ) : (
             <div>
@@ -390,15 +386,25 @@ export default async function CandidatureDetailPage({
                 <span>En attente de soumission du candidat</span>
               </div>
               <div className="text-xs text-klary-grey">
-                Lien envoyé au candidat :{" "}
-                <code className="text-klary-orange">
-                  /onboarding/{onboarding.form_token?.slice(0, 8)}…
-                </code>
-              </div>
-              <div className="text-xs text-klary-grey mt-1">
                 Créé le{" "}
                 {new Date(onboarding.created_at).toLocaleString("fr-CH")}
               </div>
+              <details className="mt-3">
+                <summary className="text-xs text-klary-grey cursor-pointer hover:text-klary-orange">
+                  Voir le lien privé envoyé au candidat
+                </summary>
+                <div className="mt-2 p-2 bg-klary-cream rounded font-mono text-xs text-klary-orange break-all">
+                  {process.env.NEXT_PUBLIC_APP_URL ||
+                    "https://app.klary.ch"}
+                  /onboarding/{onboarding.form_token}
+                </div>
+              </details>
+              <Link
+                href={`/admin/onboarding/${onboarding.id}`}
+                className="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-klary-orange hover:underline"
+              >
+                Voir la fiche onboarding →
+              </Link>
             </div>
           )}
         </div>
