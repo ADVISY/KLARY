@@ -90,7 +90,7 @@ export function CertificatKlary({
           backgroundRepeat: "repeat",
           backgroundSize: "38mm 38mm",
           backgroundPosition: "center",
-          opacity: 0.028,
+          opacity: 0.018,
           pointerEvents: "none",
           zIndex: 0,
         }}
@@ -106,7 +106,7 @@ export function CertificatKlary({
           height: "160%",
           transform: "rotate(-28deg)",
           transformOrigin: "center",
-          opacity: 0.05,
+          opacity: 0.032,
           pointerEvents: "none",
           zIndex: 0,
           display: "flex",
@@ -141,7 +141,7 @@ export function CertificatKlary({
         style={{
           position: "absolute",
           inset: 0,
-          opacity: 0.035,
+          opacity: 0.02,
           pointerEvents: "none",
           zIndex: 0,
           backgroundImage: `
