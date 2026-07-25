@@ -119,8 +119,41 @@ export function OnboardingForm({
         </Field>
       </Section>
 
-      {/* ─── ADRESSE ─── */}
-      <Section title="Adresse actuelle" step={2}>
+      {/* ─── PARENTS (état civil complet) ─── */}
+      <Section title="Filiation (état civil complet)" step={2}>
+        <Field label="Prénom du père">
+          <input
+            type="text"
+            name="father_first_name"
+            className="input"
+          />
+        </Field>
+        <Field label="Nom du père">
+          <input
+            type="text"
+            name="father_last_name"
+            className="input"
+          />
+        </Field>
+        <Field label="Prénom de la mère">
+          <input
+            type="text"
+            name="mother_first_name"
+            className="input"
+          />
+        </Field>
+        <Field label="Nom de jeune fille de la mère">
+          <input
+            type="text"
+            name="mother_last_name"
+            placeholder="Nom de naissance"
+            className="input"
+          />
+        </Field>
+      </Section>
+
+      {/* ─── ADRESSE EN SUISSE ─── */}
+      <Section title="Adresse actuelle en Suisse" step={3}>
         <Field label="Rue + numéro" required>
           <input
             type="text"
@@ -187,8 +220,38 @@ export function OnboardingForm({
         </Field>
       </Section>
 
+      {/* ─── ADRESSE À L'ÉTRANGER (optionnel) ─── */}
+      <Section
+        title="Adresse à l'étranger (optionnel — pour employés étrangers)"
+        step={4}
+      >
+        <Field label="Rue + numéro">
+          <input
+            type="text"
+            name="foreign_street"
+            placeholder="Adresse dans le pays d'origine ou familiale"
+            className="input"
+          />
+        </Field>
+        <Field label="Ville / région">
+          <input
+            type="text"
+            name="foreign_city"
+            className="input"
+          />
+        </Field>
+        <Field label="Pays">
+          <input
+            type="text"
+            name="foreign_country"
+            placeholder="France, Portugal, Maroc, Italie…"
+            className="input"
+          />
+        </Field>
+      </Section>
+
       {/* ─── BANQUE ─── */}
-      <Section title="Coordonnées bancaires (virement salaire)" step={3}>
+      <Section title="Coordonnées bancaires (virement salaire)" step={5}>
         <Field label="IBAN" required>
           <input
             type="text"
@@ -219,7 +282,7 @@ export function OnboardingForm({
       </Section>
 
       {/* ─── FISCALITÉ ─── */}
-      <Section title="Fiscalité" step={4}>
+      <Section title="Fiscalité" step={6}>
         <Field label="Confession (impact impôt ecclésiastique)">
           <select name="religion" className="input">
             <option value="">— Sans confession —</option>
@@ -248,7 +311,7 @@ export function OnboardingForm({
       </Section>
 
       {/* ─── PRÉVOYANCE ─── */}
-      <Section title="Prévoyance (2ᵉ pilier)" step={5}>
+      <Section title="Prévoyance (2ᵉ pilier)" step={7}>
         <Field label="Caisse LPP précédente (nom)">
           <input
             type="text"
@@ -276,7 +339,7 @@ export function OnboardingForm({
       </Section>
 
       {/* ─── CONTACT URGENCE ─── */}
-      <Section title="Contact d'urgence" step={6}>
+      <Section title="Contact d'urgence" step={8}>
         <Field label="Nom complet" required>
           <input
             type="text"
@@ -308,7 +371,7 @@ export function OnboardingForm({
       {/* ─── DOCUMENTS ─── */}
       <Section
         title="Documents à téléverser (PDF, JPG, PNG — max 5 Mo chacun)"
-        step={7}
+        step={9}
       >
         <FileField
           label="Carte d'identité / passeport"

@@ -522,13 +522,36 @@ export const templates = {
       </div>
 
       <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
-        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Adresse</div>
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Filiation</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          ${row("Père", [formData.father_first_name, formData.father_last_name].filter(Boolean).join(" "))}
+          ${row("Mère (nom de jeune fille)", [formData.mother_first_name, formData.mother_last_name].filter(Boolean).join(" "))}
+        </table>
+      </div>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Adresse actuelle en Suisse</div>
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
           ${row("Rue + numéro", formData.postal_street)}
           ${row("NPA + ville", [formData.postal_zip, formData.postal_city].filter(Boolean).join(" "))}
           ${row("Canton", formData.postal_canton)}
         </table>
       </div>
+
+      ${
+        formData.foreign_street || formData.foreign_city || formData.foreign_country
+          ? `
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Adresse à l'étranger</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          ${row("Rue + numéro", formData.foreign_street)}
+          ${row("Ville / région", formData.foreign_city)}
+          ${row("Pays", formData.foreign_country)}
+        </table>
+      </div>
+      `
+          : ""
+      }
 
       <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
         <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Banque (virement salaire)</div>
