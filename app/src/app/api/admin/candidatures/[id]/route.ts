@@ -162,9 +162,25 @@ export async function POST(
             });
 
           if (insertErr) {
-            console.error("interview_slots insert:", insertErr);
-          } else {
-            await sendEmail({
+            // Table manquante ou RLS bloque. On log DÉTAILLÉ et on tente
+            // quand même l'email pour que l'admin sache que le candidat a
+            // reçu quelque chose, avec un flag pour le debug.
+            console.error(
+              "[interview_1] INSERT interview_slots ÉCHEC — table interview_slots peut-être absente ou RLS bloquée.",
+              {
+                code: insertErr.code,
+                message: insertErr.message,
+                details: insertErr.details,
+                hint: insertErr.hint,
+              }
+            );
+            console.error(
+              "[interview_1] Fix: passer la migration 20260725170000_interview_slots.sql dans Supabase."
+            );
+            // On envoie quand même l'email avec les créneaux — sans lien
+            // fonctionnel de sélection (le lien renverra 404 tant que la
+            // table n'existe pas, mais le candidat voit les 3 dates).
+            const sendResult = await sendEmail({
               to: candidateBefore.email,
               subject: "Votre entretien Klary — choisissez votre créneau",
               html: templates.interviewInvitation({
@@ -175,6 +191,23 @@ export async function POST(
                 selectionUrl,
               }),
             });
+            console.log(
+              "[interview_1] Email invitation envoyé (malgré échec DB):",
+              sendResult
+            );
+          } else {
+            const sendResult = await sendEmail({
+              to: candidateBefore.email,
+              subject: "Votre entretien Klary — choisissez votre créneau",
+              html: templates.interviewInvitation({
+                firstName: candidateBefore.first_name,
+                positionApplied:
+                  candidateBefore.position_applied || undefined,
+                slotLabels: slots.map((s) => formatSlot(s.start)),
+                selectionUrl,
+              }),
+            });
+            console.log("[interview_1] Email invitation envoyé:", sendResult);
           }
         } else if (newStatus === "hired") {
           await sendEmail({
