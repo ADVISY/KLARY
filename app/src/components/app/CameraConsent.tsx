@@ -18,23 +18,56 @@ export function CameraConsent({ onGranted, onCancel }: CameraConsentProps) {
   const requestCamera = async () => {
     setStep("requesting");
     setErrorMsg(null);
+
+    // Vérif support API (mobile ancien, HTTP au lieu de HTTPS…)
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setStep("denied");
+      setErrorMsg(
+        "Votre navigateur ne supporte pas l'accès caméra. Utilisez Chrome, Safari ou Firefox à jour, et assurez-vous d'être en HTTPS."
+      );
+      return;
+    }
+
     try {
+      // Contraintes SOUPLES : ideal au lieu de exact, laisse le navigateur
+      // choisir la meilleure résolution supportée par la webcam.
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: 640, height: 480 },
+        video: {
+          width: { ideal: 640 },
+          height: { ideal: 480 },
+          facingMode: "user", // front cam sur mobile
+        },
         audio: false,
       });
       streamRef.current = stream;
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
+        // Safari a besoin d'un play() explicite
+        try {
+          await videoRef.current.play();
+        } catch {}
       }
       setStep("granted");
-    } catch (err) {
+    } catch (err: any) {
       setStep("denied");
-      setErrorMsg(
-        err instanceof Error
-          ? err.message
-          : "Impossible d'accéder à la caméra."
-      );
+      // Message utilisateur explicite selon le type d'erreur
+      const name = err?.name || "";
+      let msg = err?.message || "Impossible d'accéder à la caméra.";
+      if (name === "NotAllowedError" || name === "PermissionDeniedError") {
+        msg =
+          "Vous avez refusé l'accès à la caméra. Autorisez-le dans les paramètres du navigateur puis réessayez.";
+      } else if (name === "NotFoundError" || name === "DevicesNotFoundError") {
+        msg =
+          "Aucune caméra détectée sur cet appareil. Branchez une webcam ou utilisez un ordinateur/smartphone équipé.";
+      } else if (name === "NotReadableError" || name === "TrackStartError") {
+        msg =
+          "La caméra est déjà utilisée par une autre application (Zoom, Teams, Meet…). Fermez-les et réessayez.";
+      } else if (name === "OverconstrainedError") {
+        msg =
+          "Votre caméra ne supporte pas la résolution demandée. Réessayez, on va assouplir les contraintes.";
+      }
+      console.error("[CameraConsent] getUserMedia error:", name, err);
+      setErrorMsg(msg);
     }
   };
 

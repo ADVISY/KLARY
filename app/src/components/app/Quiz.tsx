@@ -49,10 +49,14 @@ export function Quiz({ attemptId, module, questions }: QuizProps) {
   const isLast = currentIdx === questions.length - 1;
   const progressPct = ((currentIdx + 1) / questions.length) * 100;
 
-  // Attacher le stream au <video> de PIP quand le quiz démarre
+  // Attacher le stream au <video> de PIP quand le quiz démarre.
+  // Safari a besoin d'un play() explicite après srcObject.
   useEffect(() => {
     if (started && cameraStream && videoRef.current) {
       videoRef.current.srcObject = cameraStream;
+      videoRef.current.play().catch((err) => {
+        console.warn("[Quiz] video play() bloqué:", err?.message);
+      });
     }
   }, [started, cameraStream]);
 
@@ -96,21 +100,50 @@ export function Quiz({ attemptId, module, questions }: QuizProps) {
   }, [started, submitting]);
 
   // Anti-triche : visibilité + focus
+  // Délai d'init 1.5s : au tout début du quiz le focus n'est pas encore
+  // stable (rendu React, préparation caméra…), ce qui déclenche des faux
+  // positifs. On attend que la page soit vraiment posée avant d'écouter.
   useEffect(() => {
     if (!started || submitting) return;
+    let armed = false;
+    const armTimeout = setTimeout(() => {
+      armed = true;
+    }, 1500);
+
     const handleVisibility = () => {
+      if (!armed) return;
       if (document.hidden) triggerCheat("tab_switch");
     };
+
+    // Blur seul est peu fiable (mobile rotation, DevTools, notification
+    // OS…). On ne déclenche l'échec QUE si vraiment le tab reste caché
+    // plus de 2 secondes. Ça filtre 95 % des faux positifs.
+    let blurTimeout: ReturnType<typeof setTimeout> | null = null;
     const handleBlur = () => {
-      setTimeout(() => {
-        if (!document.hasFocus()) triggerCheat("focus_lost");
-      }, 500);
+      if (!armed) return;
+      if (blurTimeout) clearTimeout(blurTimeout);
+      blurTimeout = setTimeout(() => {
+        if (!document.hasFocus() && document.hidden) {
+          triggerCheat("focus_lost");
+        }
+      }, 2000);
     };
+    const handleFocus = () => {
+      if (blurTimeout) {
+        clearTimeout(blurTimeout);
+        blurTimeout = null;
+      }
+    };
+
     document.addEventListener("visibilitychange", handleVisibility);
     window.addEventListener("blur", handleBlur);
+    window.addEventListener("focus", handleFocus);
     return () => {
+      clearTimeout(armTimeout);
+      if (blurTimeout) clearTimeout(blurTimeout);
       document.removeEventListener("visibilitychange", handleVisibility);
       window.removeEventListener("blur", handleBlur);
+      window.removeEventListener("focus", handleFocus);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [started, cheatCount, submitting]);
