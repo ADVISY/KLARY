@@ -32,29 +32,27 @@ if (ASSISTANTS_EMAILS.length === 0) {
 }
 
 /**
- * Emails des comptables Klary destinataires des dossiers d'onboarding
- * candidat → employé (identité + adresse + banque + prévoyance + docs).
+ * Emails des comptables/finance Klary destinataires des dossiers
+ * d'onboarding candidat → employé (identité + adresse + banque +
+ * prévoyance + docs).
  * Configurable via `RESEND_COMPTABLE_EMAILS` (séparés par des virgules).
- * Fallback : admin@klary.ch.
+ * Défaut : finance@klary.ch.
  */
 export const COMPTABLE_EMAILS: string[] = (
-  process.env.RESEND_COMPTABLE_EMAILS || ""
+  process.env.RESEND_COMPTABLE_EMAILS || "finance@klary.ch"
 )
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
-if (COMPTABLE_EMAILS.length === 0) {
-  COMPTABLE_EMAILS.push(ADMIN_EMAIL);
-}
 
 /**
- * Emails "office" (back-office / secrétariat) mis en copie sur les
+ * Emails "office" (back-office / secrétariat) mis en CC sur les
  * notifications importantes (onboarding, ...).
  * Configurable via `RESEND_OFFICE_EMAILS` (séparés par des virgules).
- * Peut être vide (aucun office en CC).
+ * Défaut : office@klary.ch.
  */
 export const OFFICE_EMAILS: string[] = (
-  process.env.RESEND_OFFICE_EMAILS || ""
+  process.env.RESEND_OFFICE_EMAILS || "office@klary.ch"
 )
   .split(",")
   .map((s) => s.trim())
