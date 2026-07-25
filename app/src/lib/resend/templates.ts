@@ -400,10 +400,12 @@ export const templates = {
     firstName,
     positionApplied,
     portalUrl,
+    onboardingUrl,
   }: {
     firstName: string;
     positionApplied?: string;
     portalUrl: string;
+    onboardingUrl?: string;
   }) {
     return wrapEmail(
       "Bienvenue chez Klary — votre parcours démarre",
@@ -439,6 +441,18 @@ export const templates = {
         </div>
       </div>
 
+      ${onboardingUrl ? `
+      <div style="padding:20px 24px; background:#F0651F; border-radius:12px; margin:24px 0; color:#fff;">
+        <div style="font-size:11px; color:rgba(255,255,255,0.85); font-weight:700; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:6px;">📝 Action requise sous 48h</div>
+        <div style="font-size:17px; font-weight:700; margin-bottom:6px;">Compléter votre dossier d'onboarding</div>
+        <div style="font-size:13px; line-height:1.5; color:rgba(255,255,255,0.9); margin-bottom:14px;">
+          Pour préparer votre contrat de travail et votre premier salaire, nous avons besoin de quelques informations administratives (identité, adresse, banque, N° AVS, prévoyance passée) et de 4-5 documents à téléverser.
+        </div>
+        <a href="${onboardingUrl}" style="display:inline-block; padding:12px 22px; background:#fff; color:#F0651F; text-decoration:none; font-weight:700; border-radius:8px; font-size:14px;">
+          Ouvrir mon dossier d'onboarding →
+        </a>
+      </div>` : ""}
+
       <p style="color:#1F1B4B; margin:24px 0 12px; font-size:15px; line-height:1.6;">
         Dès que ces 4 étapes seront validées, vous recevrez un second email d'activation avec vos accès complets (portefeuille leads, agenda CRM, email <strong>@klary.ch</strong>).
       </p>
@@ -450,6 +464,138 @@ export const templates = {
       </p>
       `,
       { label: "Accéder à mon espace formation", url: portalUrl }
+    );
+  },
+
+  /**
+   * Récap dossier onboarding reçu — destinataire : comptable.
+   * Contient toutes les infos remplies par le candidat + liens signés
+   * vers les documents uploadés (valables 1h à la génération).
+   */
+  onboardingReceivedByComptable({
+    firstName,
+    lastName,
+    email,
+    positionApplied,
+    formData,
+    docsInfo,
+    dashboardUrl,
+  }: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    positionApplied?: string;
+    formData: Record<string, any>;
+    docsInfo: { key: string; label: string; url: string | null; filename?: string }[];
+    dashboardUrl: string;
+  }) {
+    const row = (label: string, value?: string | null) =>
+      value
+        ? `<tr><td style="padding:6px 0; color:#6E6A8E; font-size:12px; width:180px;">${label}</td><td style="padding:6px 0; color:#1F1B4B; font-size:14px; font-weight:600;">${value}</td></tr>`
+        : "";
+
+    const docLine = (d: { label: string; url: string | null; filename?: string }) =>
+      d.url
+        ? `<li style="margin:6px 0;"><a href="${d.url}" style="color:#F0651F; font-weight:600;">${d.label}</a>${d.filename ? ` <span style="color:#6E6A8E; font-size:12px;">— ${d.filename}</span>` : ""}</li>`
+        : `<li style="margin:6px 0; color:#A5A2C0;">${d.label} — <em>non transmis</em></li>`;
+
+    return wrapEmail(
+      "Dossier d'onboarding reçu — à traiter",
+      `
+      <h2 style="color:#1A1660; margin:0 0 8px; font-size:22px;">📁 Nouveau dossier d'onboarding</h2>
+      <p style="color:#6E6A8E; margin:0 0 24px; font-size:14px;">
+        <strong>${firstName} ${lastName}</strong>${positionApplied ? ` (${positionApplied})` : ""} vient de compléter son dossier d'onboarding. Merci de préparer contrat + paie.
+      </p>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Identité</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          ${row("Nom complet", `${firstName} ${lastName}`)}
+          ${row("Email personnel", email)}
+          ${row("Date de naissance", formData.date_of_birth)}
+          ${row("Nationalité", formData.nationality)}
+          ${row("État civil", formData.marital_status)}
+          ${row("N° AVS", formData.avs_number)}
+          ${row("Enfants à charge", formData.children_count ? String(formData.children_count) : "—")}
+          ${row("Permis de séjour", formData.residence_permit)}
+        </table>
+      </div>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Adresse</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          ${row("Rue + numéro", formData.postal_street)}
+          ${row("NPA + ville", [formData.postal_zip, formData.postal_city].filter(Boolean).join(" "))}
+          ${row("Canton", formData.postal_canton)}
+        </table>
+      </div>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Banque (virement salaire)</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          ${row("IBAN", formData.bank_iban)}
+          ${row("Nom banque", formData.bank_name)}
+          ${row("Titulaire compte", formData.bank_holder)}
+        </table>
+      </div>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Fiscalité</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          ${row("Confession", formData.religion)}
+          ${row("Conjoint travaille ?", formData.spouse_working)}
+          ${row("Salaire brut annuel conjoint", formData.spouse_income)}
+        </table>
+      </div>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Prévoyance (2e pilier)</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          ${row("Caisse LPP précédente", formData.prev_lpp_fund)}
+          ${row("N° affiliation sortie", formData.prev_lpp_id)}
+          ${row("Compte de libre passage", formData.libre_passage)}
+        </table>
+      </div>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Contact d'urgence</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          ${row("Nom", formData.emergency_name)}
+          ${row("Lien", formData.emergency_relation)}
+          ${row("Téléphone", formData.emergency_phone)}
+        </table>
+      </div>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">📎 Documents transmis (liens 1h)</div>
+        <ul style="margin:0; padding-left:20px; font-size:13px; color:#1F1B4B;">
+          ${docsInfo.map(docLine).join("\n")}
+        </ul>
+      </div>
+      `,
+      { label: "Voir la fiche candidature complète", url: dashboardUrl }
+    );
+  },
+
+  /**
+   * Confirmation candidat — dossier onboarding bien reçu
+   */
+  onboardingConfirmation({ firstName }: { firstName: string }) {
+    return wrapEmail(
+      "Votre dossier d'onboarding est bien reçu — Klary",
+      `
+      <h2 style="color:#1A1660; margin:0 0 12px; font-size:22px;">Merci ${firstName},</h2>
+      <p style="color:#1F1B4B; margin:0 0 16px; font-size:15px; line-height:1.6;">
+        Votre dossier d'onboarding a bien été reçu. Notre comptable prépare votre contrat de travail et vos accès administratifs.
+      </p>
+      <p style="color:#1F1B4B; margin:0 0 16px; font-size:15px; line-height:1.6;">
+        Vous recevrez sous <strong>48 à 72 heures ouvrées</strong> votre contrat pour signature électronique. En parallèle, votre parcours de formation démarre — connectez-vous à <a href="https://app.klary.ch" style="color:#F0651F;">app.klary.ch</a> pour accéder aux modules.
+      </p>
+      <p style="color:#6E6A8E; margin:24px 0 0; font-size:13px; line-height:1.6;">
+        À très vite,<br>
+        <strong style="color:#1A1660;">L'équipe Klary</strong>
+      </p>
+      `
     );
   },
 

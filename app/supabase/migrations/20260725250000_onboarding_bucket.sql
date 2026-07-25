@@ -1,0 +1,8 @@
+-- ═════════════════════════════════════════════════════════
+-- Bucket Storage privé pour les documents d'onboarding
+-- ═════════════════════════════════════════════════════════
+-- Cette migration documente le bucket. Il doit être créé
+-- manuellement dans Supabase Dashboard :
+--   Storage → New bucket → nom "onboarding-docs" → PRIVATE
+-- Les policies ne sont pas nécessaires : l'API backend
+-- utilise service_role pour lire/écrire.

@@ -32,6 +32,22 @@ if (ASSISTANTS_EMAILS.length === 0) {
 }
 
 /**
+ * Emails des comptables Klary destinataires des dossiers d'onboarding
+ * candidat → employé (identité + adresse + banque + prévoyance + docs).
+ * Configurable via `RESEND_COMPTABLE_EMAILS` (séparés par des virgules).
+ * Fallback : admin@klary.ch.
+ */
+export const COMPTABLE_EMAILS: string[] = (
+  process.env.RESEND_COMPTABLE_EMAILS || ""
+)
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+if (COMPTABLE_EMAILS.length === 0) {
+  COMPTABLE_EMAILS.push(ADMIN_EMAIL);
+}
+
+/**
  * Wrapper safe : ne fait rien si Resend n'est pas configuré.
  * (Utile en dev local sans clé API — évite de casser les endpoints.)
  */

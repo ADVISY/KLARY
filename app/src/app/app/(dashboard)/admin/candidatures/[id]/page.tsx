@@ -104,6 +104,17 @@ export default async function CandidatureDetailPage({
     .limit(1)
     .maybeSingle();
 
+  // Dossier d'onboarding (s'il existe)
+  const { data: onboarding } = await supabase
+    .from("onboarding_forms")
+    .select(
+      "id, form_token, created_at, submitted_at, comptable_notified_at, form_data, uploaded_docs"
+    )
+    .eq("candidate_id", params.id)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
   // Client service_role pour signed URLs storage
   const cookieStore = cookies();
   const serviceClient = createServerClient(
@@ -322,6 +333,72 @@ export default async function CandidatureDetailPage({
                   /entretien/{interview.selection_token?.slice(0, 8)}…
                 </code>
               </p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ─── Bloc dossier onboarding ─── */}
+      {onboarding && (
+        <div className="bg-white rounded-2xl border border-klary-light-grey p-8 mb-6">
+          <h2 className="font-bold text-klary-navy mb-4 flex items-center gap-2">
+            📁 Dossier d'onboarding
+          </h2>
+          {onboarding.submitted_at ? (
+            <div>
+              <div className="flex items-center gap-2 text-green-700 font-semibold mb-3">
+                <span className="text-xl">✓</span>
+                <span>
+                  Soumis le{" "}
+                  {new Date(onboarding.submitted_at).toLocaleString("fr-CH")}
+                </span>
+              </div>
+              {onboarding.comptable_notified_at ? (
+                <div className="text-xs text-green-700">
+                  📧 Comptable notifié le{" "}
+                  {new Date(
+                    onboarding.comptable_notified_at
+                  ).toLocaleString("fr-CH")}
+                </div>
+              ) : (
+                <div className="text-xs text-yellow-700">
+                  ⏳ Notification comptable en cours
+                </div>
+              )}
+              {onboarding.form_data && (
+                <details className="mt-4">
+                  <summary className="text-sm font-semibold text-klary-navy cursor-pointer">
+                    Voir les données transmises
+                  </summary>
+                  <pre className="mt-3 p-3 bg-klary-cream rounded-lg text-xs overflow-x-auto text-klary-ink">
+{JSON.stringify(onboarding.form_data, null, 2)}
+                  </pre>
+                </details>
+              )}
+              {Array.isArray(onboarding.uploaded_docs) &&
+                onboarding.uploaded_docs.length > 0 && (
+                  <div className="mt-3 text-xs text-klary-grey">
+                    {onboarding.uploaded_docs.length} document(s) téléversé(s)
+                    — accessibles via l'email envoyé au comptable (liens 1h).
+                  </div>
+                )}
+            </div>
+          ) : (
+            <div>
+              <div className="flex items-center gap-2 text-yellow-700 font-semibold mb-2">
+                <span>⏳</span>
+                <span>En attente de soumission du candidat</span>
+              </div>
+              <div className="text-xs text-klary-grey">
+                Lien envoyé au candidat :{" "}
+                <code className="text-klary-orange">
+                  /onboarding/{onboarding.form_token?.slice(0, 8)}…
+                </code>
+              </div>
+              <div className="text-xs text-klary-grey mt-1">
+                Créé le{" "}
+                {new Date(onboarding.created_at).toLocaleString("fr-CH")}
+              </div>
             </div>
           )}
         </div>

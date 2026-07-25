@@ -210,6 +210,27 @@ export async function POST(
             console.log("[interview_1] Email invitation envoyé:", sendResult);
           }
         } else if (newStatus === "hired") {
+          // Créer un token d'onboarding + insertion en base
+          const onboardingToken = randomUUID();
+          const { error: onbErr } = await supabase
+            .from("onboarding_forms")
+            .insert({
+              candidate_id: params.id,
+              form_token: onboardingToken,
+              created_by: user.id,
+            });
+
+          const onboardingUrl = onbErr
+            ? undefined
+            : `${appUrl}/onboarding/${onboardingToken}`;
+
+          if (onbErr) {
+            console.error(
+              "[hired] onboarding_forms insert échec (envoi email quand même sans lien onboarding):",
+              onbErr
+            );
+          }
+
           await sendEmail({
             to: candidateBefore.email,
             subject: "Bienvenue chez Klary — votre parcours démarre",
@@ -217,6 +238,7 @@ export async function POST(
               firstName: candidateBefore.first_name,
               positionApplied: candidateBefore.position_applied || undefined,
               portalUrl: `${appUrl}/formation`,
+              onboardingUrl,
             }),
           });
         } else if (newStatus === "active") {
