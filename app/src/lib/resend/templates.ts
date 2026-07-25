@@ -1,7 +1,16 @@
 /**
  * Templates HTML pour les emails Klary — charte navy + orange + cream.
  * Tous stateless, sans dépendance.
+ *
+ * Le logo est référencé en absolu vers /public — la plupart des clients
+ * mail affichent les images externes après consentement utilisateur.
+ * Le texte "KLARY" en fallback (alt) reste lisible si les images sont
+ * bloquées.
  */
+
+const APP_BASE_URL =
+  process.env.NEXT_PUBLIC_APP_URL || "https://app.klary.ch";
+const LOGO_URL = `${APP_BASE_URL}/klary-logo-color.png`;
 
 const wrapEmail = (title: string, body: string, cta?: { label: string; url: string }) => `
 <!DOCTYPE html>
@@ -17,9 +26,9 @@ const wrapEmail = (title: string, body: string, cta?: { label: string; url: stri
       <td align="center">
         <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="max-width:600px; background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(26,22,96,0.08);">
           <tr>
-            <td style="background:#1A1660; padding:24px 40px;">
-              <div style="color:#fff; font-size:22px; font-weight:700; letter-spacing:-0.02em;">KLARY</div>
-              <div style="color:rgba(255,255,255,0.6); font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; margin-top:2px;">Courtage en assurance</div>
+            <td style="background:#ffffff; padding:28px 40px; border-bottom:1px solid #F0EBE4;">
+              <img src="${LOGO_URL}" alt="Klary" width="140" height="47" style="display:block; height:38px; width:auto; border:0; outline:none; text-decoration:none;" />
+              <div style="color:#6E6A8E; font-size:10px; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; margin-top:8px;">Courtage en assurance · Suisse</div>
             </td>
           </tr>
           <tr>
@@ -35,12 +44,25 @@ const wrapEmail = (title: string, body: string, cta?: { label: string; url: stri
             </td>
           </tr>
           <tr>
-            <td style="background:#FAF5EF; padding:24px 40px; border-top:1px solid #DDD9E8; font-size:12px; color:#6E6A8E; text-align:center;">
-              Klary Sàrl · Route de Lausanne 31 · 1052 Le Mont-sur-Lausanne<br>
-              <a href="https://klary.ch" style="color:#F0651F; text-decoration:none;">klary.ch</a>
+            <td style="background:#1A1660; padding:20px 40px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td style="vertical-align:middle;">
+                    <div style="color:#ffffff; font-size:13px; font-weight:700; letter-spacing:-0.01em;">Klary Sàrl</div>
+                    <div style="color:rgba(255,255,255,0.65); font-size:11px; margin-top:2px;">Route de Lausanne 31 · 1052 Le Mont-sur-Lausanne</div>
+                  </td>
+                  <td style="text-align:right; vertical-align:middle;">
+                    <a href="https://klary.ch" style="color:#F0651F; text-decoration:none; font-size:12px; font-weight:600;">klary.ch →</a>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
         </table>
+        <div style="max-width:600px; font-size:10px; color:#A5A2C0; text-align:center; margin-top:16px; line-height:1.5;">
+          Email transactionnel automatique. Ne pas répondre.<br>
+          Pour toute question : <a href="mailto:contact@klary.ch" style="color:#A5A2C0; text-decoration:underline;">contact@klary.ch</a>
+        </div>
       </td>
     </tr>
   </table>
