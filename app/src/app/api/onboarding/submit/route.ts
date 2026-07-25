@@ -36,7 +36,8 @@ const ACCEPTED_TYPES = [
 ];
 
 const DOC_KEYS = [
-  { key: "id_document", label: "Carte d'identité / passeport" },
+  { key: "id_document", label: "Carte d'identité (recto/verso)" },
+  { key: "passport", label: "Passeport" },
   { key: "avs_card", label: "Carte AVS" },
   { key: "rib", label: "RIB / relevé bancaire" },
   { key: "permis_sejour", label: "Permis de séjour" },

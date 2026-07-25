@@ -374,10 +374,11 @@ export function OnboardingForm({
         step={9}
       >
         <FileField
-          label="Carte d'identité / passeport"
+          label="Carte d'identité (recto + verso)"
           name="doc_id_document"
           required
         />
+        <FileField label="Passeport (optionnel)" name="doc_passport" />
         <FileField label="Carte AVS" name="doc_avs_card" required />
         <FileField label="RIB / relevé bancaire" name="doc_rib" required />
         <FileField
