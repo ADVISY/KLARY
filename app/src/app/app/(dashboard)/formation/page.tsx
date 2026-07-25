@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export const metadata = {
@@ -99,15 +100,12 @@ export default async function FormationPage() {
                 </div>
               )}
 
-              <button
-                disabled
-                className="w-full py-2.5 bg-klary-orange text-white font-semibold rounded-lg opacity-60 cursor-not-allowed"
+              <Link
+                href={`/formation/${module.key}`}
+                className="block w-full py-2.5 bg-klary-orange text-white font-semibold rounded-lg text-center hover:bg-klary-orange/90 transition"
               >
                 {isPassed ? "Repasser (optionnel)" : "Commencer l'évaluation"}
-              </button>
-              <p className="text-[10px] text-center text-klary-grey mt-2 italic">
-                Bientôt disponible — module en construction
-              </p>
+              </Link>
             </div>
           );
         })}
