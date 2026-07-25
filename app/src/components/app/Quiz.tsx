@@ -43,7 +43,9 @@ export function Quiz({ attemptId, module, questions }: QuizProps) {
   const [submitting, setSubmitting] = useState(false);
 
   const startedAt = useRef<number>(Date.now());
-  const videoRef = useRef<HTMLVideoElement>(null);
+  // Type explicit HTMLVideoElement | null → MutableRefObject (writable current)
+  // — nécessaire pour l'affectation dans le callback ref inline
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const currentQuestion = questions[currentIdx];
   const isLast = currentIdx === questions.length - 1;
