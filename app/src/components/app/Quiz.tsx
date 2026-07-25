@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { CameraConsent } from "./CameraConsent";
 
 type Question = {
   id: string;
@@ -28,22 +29,58 @@ interface QuizProps {
 
 export function Quiz({ attemptId, module, questions }: QuizProps) {
   const router = useRouter();
+
+  // Étapes : caméra → quiz
+  const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
+  const [started, setStarted] = useState(false);
+
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [secondsLeft, setSecondsLeft] = useState(module.duration_min * 60);
   const [cheatCount, setCheatCount] = useState(0);
-  const [cheatWarning, setCheatWarning] = useState(false);
+  const [cheatWarning, setCheatWarning] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
-  const startedAt = useRef(Date.now());
+
+  const startedAt = useRef<number>(Date.now());
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const currentQuestion = questions[currentIdx];
   const isLast = currentIdx === questions.length - 1;
   const progressPct = ((currentIdx + 1) / questions.length) * 100;
 
+  // Attacher le stream au <video> de PIP quand le quiz démarre
+  useEffect(() => {
+    if (started && cameraStream && videoRef.current) {
+      videoRef.current.srcObject = cameraStream;
+    }
+  }, [started, cameraStream]);
+
+  // Cleanup : couper le stream si on quitte
+  useEffect(() => {
+    return () => {
+      cameraStream?.getTracks().forEach((t) => t.stop());
+    };
+  }, [cameraStream]);
+
+  // Détection perte du stream vidéo (caméra débranchée / coupée)
+  useEffect(() => {
+    if (!started || !cameraStream || submitting) return;
+    const tracks = cameraStream.getVideoTracks();
+    const track = tracks[0];
+    if (!track) return;
+
+    const handleEnded = () => {
+      triggerCheat("camera_stopped");
+    };
+    track.addEventListener("ended", handleEnded);
+    return () => track.removeEventListener("ended", handleEnded);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [started, cameraStream, submitting]);
+
   // Timer
   useEffect(() => {
-    if (submitting) return;
+    if (!started || submitting) return;
     const interval = setInterval(() => {
       setSecondsLeft((s) => {
         if (s <= 1) {
@@ -56,16 +93,17 @@ export function Quiz({ attemptId, module, questions }: QuizProps) {
     }, 1000);
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [submitting]);
+  }, [started, submitting]);
 
   // Anti-triche : visibilité + focus
   useEffect(() => {
+    if (!started || submitting) return;
     const handleVisibility = () => {
-      if (document.hidden) triggerCheat();
+      if (document.hidden) triggerCheat("tab_switch");
     };
     const handleBlur = () => {
       setTimeout(() => {
-        if (!document.hasFocus()) triggerCheat();
+        if (!document.hasFocus()) triggerCheat("focus_lost");
       }, 500);
     };
     document.addEventListener("visibilitychange", handleVisibility);
@@ -75,20 +113,34 @@ export function Quiz({ attemptId, module, questions }: QuizProps) {
       window.removeEventListener("blur", handleBlur);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cheatCount, submitting]);
+  }, [started, cheatCount, submitting]);
 
-  const triggerCheat = () => {
-    if (submitting) return;
+  const triggerCheat = (reason: string) => {
+    if (submitting || !started) return;
     setCheatCount((c) => {
       const newCount = c + 1;
       if (newCount === 1) {
-        setCheatWarning(true);
-        setTimeout(() => setCheatWarning(false), 8000);
+        setCheatWarning(
+          reason === "camera_stopped"
+            ? "⚠ Votre caméra a été désactivée. Le prochain écart entraînera l'échec automatique."
+            : "⚠ Vous avez quitté la page. Un nouvel écart entraînera l'échec automatique."
+        );
+        setTimeout(() => setCheatWarning(null), 10000);
       } else if (newCount >= 2) {
         handleSubmit(true, "cheat");
       }
       return newCount;
     });
+  };
+
+  const handleCameraGranted = (stream: MediaStream) => {
+    setCameraStream(stream);
+    setStarted(true);
+    startedAt.current = Date.now();
+  };
+
+  const handleCancelCamera = () => {
+    router.push(`/formation/${module.key}`);
   };
 
   const handleNext = () => {
@@ -111,6 +163,10 @@ export function Quiz({ attemptId, module, questions }: QuizProps) {
   ) => {
     if (submitting) return;
     setSubmitting(true);
+
+    // Couper la caméra immédiatement
+    cameraStream?.getTracks().forEach((t) => t.stop());
+
     const timeUsedSec = Math.round((Date.now() - startedAt.current) / 1000);
 
     try {
@@ -126,11 +182,7 @@ export function Quiz({ attemptId, module, questions }: QuizProps) {
           abort_reason: reason,
         }),
       });
-
-      if (!res.ok) {
-        throw new Error("Échec de l'envoi");
-      }
-
+      if (!res.ok) throw new Error("Échec de l'envoi");
       router.push(`/formation/${module.key}/resultat/${attemptId}`);
     } catch (err) {
       alert(
@@ -140,13 +192,23 @@ export function Quiz({ attemptId, module, questions }: QuizProps) {
     }
   };
 
+  // Écran consentement caméra (avant démarrage du quiz)
+  if (!started) {
+    return (
+      <CameraConsent
+        onGranted={handleCameraGranted}
+        onCancel={handleCancelCamera}
+      />
+    );
+  }
+
   const mm = Math.floor(secondsLeft / 60);
   const ss = secondsLeft % 60;
 
   return (
     <div className="min-h-screen bg-klary-cream">
       {/* Barre du haut : progress + timer */}
-      <div className="sticky top-0 z-10 bg-white border-b border-klary-light-grey shadow-sm">
+      <div className="sticky top-0 z-20 bg-white border-b border-klary-light-grey shadow-sm">
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center gap-6">
           <div className="flex-1">
             <div className="text-xs font-semibold uppercase tracking-wider text-klary-grey mb-1.5">
@@ -221,11 +283,34 @@ export function Quiz({ attemptId, module, questions }: QuizProps) {
 
         {/* Avertissement anti-triche */}
         {cheatWarning && (
-          <div className="mt-4 p-4 bg-red-50 border-2 border-red-300 rounded-xl text-red-800">
-            <strong>⚠ Avertissement :</strong> vous avez quitté la page. Un
-            nouvel écart entraînera l'échec automatique de l'évaluation.
+          <div className="mt-4 p-4 bg-red-50 border-2 border-red-300 rounded-xl text-red-800 font-semibold">
+            {cheatWarning}
           </div>
         )}
+
+        {/* Indicateur cheat count discret */}
+        {cheatCount > 0 && (
+          <div className="mt-3 text-xs text-red-600 text-center">
+            Avertissements : {cheatCount} / 2
+          </div>
+        )}
+      </div>
+
+      {/* Caméra en Picture-in-Picture (bas droite) */}
+      <div className="fixed bottom-4 right-4 z-30 shadow-xl">
+        <div className="relative bg-black rounded-xl overflow-hidden border-2 border-klary-navy w-40 md:w-48 aspect-video">
+          <video
+            ref={videoRef}
+            autoPlay
+            playsInline
+            muted
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute top-1 right-1 flex items-center gap-1 px-1.5 py-0.5 rounded bg-red-600 text-white text-[10px] font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            LIVE
+          </div>
+        </div>
       </div>
     </div>
   );

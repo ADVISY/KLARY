@@ -9,7 +9,6 @@ type NavItem = {
   href: string;
   label: string;
   icon: React.ReactNode;
-  adminOnly?: boolean;
 };
 
 const NAV_ITEMS: NavItem[] = [
@@ -51,13 +50,31 @@ const NAV_ITEMS: NavItem[] = [
       </svg>
     ),
   },
+  {
+    href: "/mon-profil",
+    label: "Mon profil",
+    icon: (
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+        />
+      </svg>
+    ),
+  },
 ];
 
 const ADMIN_ITEMS: NavItem[] = [
   {
     href: "/admin/candidatures",
     label: "Candidatures",
-    adminOnly: true,
     icon: (
       <svg
         className="w-5 h-5"
@@ -77,7 +94,6 @@ const ADMIN_ITEMS: NavItem[] = [
   {
     href: "/admin/contacts",
     label: "Messages contact",
-    adminOnly: true,
     icon: (
       <svg
         className="w-5 h-5"
@@ -97,7 +113,6 @@ const ADMIN_ITEMS: NavItem[] = [
   {
     href: "/admin/agents",
     label: "Agents",
-    adminOnly: true,
     icon: (
       <svg
         className="w-5 h-5"
@@ -118,10 +133,17 @@ const ADMIN_ITEMS: NavItem[] = [
 
 interface SidebarProps {
   userEmail: string;
+  userName: string;
   role: string;
+  profileCompleted: boolean;
 }
 
-export function Sidebar({ userEmail, role }: SidebarProps) {
+export function Sidebar({
+  userEmail,
+  userName,
+  role,
+  profileCompleted,
+}: SidebarProps) {
   const pathname = usePathname();
   const isAdmin = role === "admin" || role === "manager";
   const displayItems = [...NAV_ITEMS, ...(isAdmin ? ADMIN_ITEMS : [])];
@@ -145,10 +167,28 @@ export function Sidebar({ userEmail, role }: SidebarProps) {
         </div>
       </div>
 
+      {/* Warning profil incomplet */}
+      {!profileCompleted && (
+        <div className="p-4 bg-klary-orange/20 border-b border-klary-orange/40">
+          <Link
+            href="/mon-profil"
+            className="block text-xs text-orange-100 hover:text-white transition-colors"
+          >
+            <div className="flex items-center gap-2 font-semibold mb-1">
+              <span>⚠</span> Profil incomplet
+            </div>
+            <div className="text-[11px] text-orange-100/80 leading-snug">
+              Complétez votre profil pour recevoir vos attestations.
+            </div>
+          </Link>
+        </div>
+      )}
+
       {/* Nav items */}
       <nav className="flex-1 p-4 space-y-1">
         {displayItems.map((item) => {
-          const active = pathname === item.href || pathname.startsWith(item.href + "/");
+          const active =
+            pathname === item.href || pathname.startsWith(item.href + "/");
           return (
             <Link
               key={item.href}
@@ -173,6 +213,9 @@ export function Sidebar({ userEmail, role }: SidebarProps) {
           Connecté
         </div>
         <div className="text-sm font-medium truncate text-white">
+          {userName}
+        </div>
+        <div className="text-[11px] text-white/60 truncate mt-0.5">
           {userEmail}
         </div>
         <div className="text-[10px] text-klary-orange uppercase tracking-widest mt-0.5 font-semibold">
