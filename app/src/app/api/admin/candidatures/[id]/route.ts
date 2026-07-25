@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { z } from "zod";
+import { sendEmail, ADMIN_EMAIL } from "@/lib/resend/client";
+import { templates } from "@/lib/resend/templates";
+import {
+  generateInterviewSlots,
+  formatSlot,
+} from "@/lib/interview/generate-slots";
+import { randomUUID } from "crypto";
 
 const updateSchema = z.object({
   status: z.enum([
@@ -11,6 +18,7 @@ const updateSchema = z.object({
     "test_ok",
     "offered",
     "hired",
+    "active",
     "rejected",
     "archived",
   ]),
@@ -19,7 +27,12 @@ const updateSchema = z.object({
 
 /**
  * POST /api/admin/candidatures/[id]
- * Accepte formulaire HTML (form-data) OU JSON.
+ *
+ * Met à jour statut/notes + dispatche l'email approprié à chaque transition :
+ *   rejected     → email refus
+ *   interview_1  → génère 3 créneaux + email invitation
+ *   hired        → email bienvenue + processus complet
+ *   active       → email activation accès complets
  */
 export async function POST(
   request: NextRequest,
@@ -45,6 +58,20 @@ export async function POST(
       return NextResponse.json({ error: "Accès refusé" }, { status: 403 });
     }
 
+    // Récupérer la candidature AVANT update (pour connaître l'ancien statut)
+    const { data: candidateBefore, error: fetchErr } = await supabase
+      .from("candidates")
+      .select("*")
+      .eq("id", params.id)
+      .single();
+
+    if (fetchErr || !candidateBefore) {
+      return NextResponse.json(
+        { error: "Candidature introuvable" },
+        { status: 404 }
+      );
+    }
+
     let payload: Record<string, any>;
     const contentType = request.headers.get("content-type") || "";
     if (contentType.includes("application/json")) {
@@ -65,10 +92,14 @@ export async function POST(
       );
     }
 
+    const previousStatus = candidateBefore.status;
+    const newStatus = parsed.data.status;
+    const statusChanged = previousStatus !== newStatus;
+
     const { error } = await supabase
       .from("candidates")
       .update({
-        status: parsed.data.status,
+        status: newStatus,
         internal_notes: parsed.data.internal_notes || null,
       })
       .eq("id", params.id);
@@ -81,13 +112,91 @@ export async function POST(
       );
     }
 
-    // Log dans candidate_events (optionnel)
-    await supabase.from("candidate_events").insert({
-      candidate_id: params.id,
-      event_type: "status_or_notes_updated",
-      actor_agent_id: user.id,
-      details: parsed.data,
-    }).select().maybeSingle();
+    // Log dans candidate_events
+    await supabase
+      .from("candidate_events")
+      .insert({
+        candidate_id: params.id,
+        event_type: "status_or_notes_updated",
+        actor_agent_id: user.id,
+        details: { from: previousStatus, to: newStatus },
+      })
+      .select()
+      .maybeSingle();
+
+    // ─── Dispatch email selon transition ───
+    if (statusChanged) {
+      const appUrl =
+        process.env.NEXT_PUBLIC_APP_URL || "https://app.klary.ch";
+      const dashboardUrl = `${appUrl}/admin/candidatures/${params.id}`;
+
+      try {
+        if (newStatus === "rejected") {
+          await sendEmail({
+            to: candidateBefore.email,
+            subject: "Votre candidature — Klary",
+            html: templates.candidatureRejection({
+              firstName: candidateBefore.first_name,
+              positionApplied: candidateBefore.position_applied || undefined,
+            }),
+          });
+        } else if (newStatus === "interview_1") {
+          // Générer 3 créneaux et envoyer invitation
+          const slots = generateInterviewSlots();
+          const token = randomUUID();
+          const selectionUrl = `${appUrl}/entretien/${token}`;
+
+          const { error: insertErr } = await supabase
+            .from("interview_slots")
+            .insert({
+              candidate_id: params.id,
+              proposed_slots: slots,
+              selection_token: token,
+              created_by: user.id,
+            });
+
+          if (insertErr) {
+            console.error("interview_slots insert:", insertErr);
+          } else {
+            await sendEmail({
+              to: candidateBefore.email,
+              subject: "Votre entretien Klary — choisissez votre créneau",
+              html: templates.interviewInvitation({
+                firstName: candidateBefore.first_name,
+                positionApplied:
+                  candidateBefore.position_applied || undefined,
+                slotLabels: slots.map((s) => formatSlot(s.start)),
+                selectionUrl,
+              }),
+            });
+          }
+        } else if (newStatus === "hired") {
+          await sendEmail({
+            to: candidateBefore.email,
+            subject: "Bienvenue chez Klary — votre parcours démarre",
+            html: templates.candidatureHired({
+              firstName: candidateBefore.first_name,
+              positionApplied: candidateBefore.position_applied || undefined,
+              portalUrl: `${appUrl}/formation`,
+            }),
+          });
+        } else if (newStatus === "active") {
+          await sendEmail({
+            to: candidateBefore.email,
+            subject: "Vous êtes activé·e — bienvenue en production",
+            html: templates.candidatureActivated({
+              firstName: candidateBefore.first_name,
+              portalUrl: `${appUrl}/formation`,
+              managerName: "Sacha Bacconnier",
+              klaryEmail: `${candidateBefore.first_name.toLowerCase()}.${candidateBefore.last_name.toLowerCase()}@klary.ch`,
+            }),
+          });
+        }
+      } catch (mailErr) {
+        // On ne bloque pas le flow admin si l'email échoue — on log seulement
+        console.error("Email transition candidature échoué:", mailErr);
+      }
+    }
 
     // Rediriger vers la page détail
     return NextResponse.redirect(

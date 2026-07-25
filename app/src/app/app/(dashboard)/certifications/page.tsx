@@ -109,6 +109,14 @@ export default async function CertificationsPage() {
                       Valide
                     </span>
                   )}
+                  {!cert.revoked && (
+                    <a
+                      href={`/certifications/${cert.id}/apercu`}
+                      className="text-xs font-semibold text-klary-orange hover:underline"
+                    >
+                      Voir le certificat →
+                    </a>
+                  )}
                 </div>
               </div>
             );

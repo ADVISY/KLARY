@@ -13,6 +13,7 @@ const PUBLIC_APP_ROUTES = [
   "/app/login",
   "/app/auth/check-email",
   "/app/auth/error",
+  "/app/entretien", // page publique candidat pour choisir son créneau (auth par token)
 ];
 
 export async function middleware(request: NextRequest) {
