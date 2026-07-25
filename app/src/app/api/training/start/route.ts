@@ -45,10 +45,35 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // ─── Cooldown post-échec ───
-    // Si l'utilisateur a une tentative échouée récente (< cooldown), on bloque.
+    // ─── Nettoyage : marquer comme abandonnées les tentatives ouvertes
+    //     depuis plus de 3h (l'utilisateur a fermé le navigateur)
+    const staleAgo = new Date(Date.now() - 3 * 3600 * 1000);
+    await supabase
+      .from("training_attempts")
+      .update({
+        finished_at: new Date().toISOString(),
+        aborted: true,
+        abort_reason: "session_expired",
+        passed: false,
+      })
+      .eq("user_id", user.id)
+      .eq("module_key", moduleKey)
+      .is("finished_at", null)
+      .lt("started_at", staleAgo.toISOString());
+
+    // ─── Vérif rôle : admin/manager bypass le cooldown ───
+    const { data: roleRow } = await supabase
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", user.id)
+      .eq("active", true)
+      .in("role", ["admin", "manager"])
+      .maybeSingle();
+    const isPrivileged = !!roleRow;
+
+    // ─── Cooldown post-échec (sauf admin/manager) ───
     const cooldownHours = (module as any).retry_cooldown_hours ?? 24;
-    if (cooldownHours > 0) {
+    if (!isPrivileged && cooldownHours > 0) {
       const cooldownAgo = new Date(Date.now() - cooldownHours * 3600 * 1000);
       const { data: recentFail } = await supabase
         .from("training_attempts")
@@ -73,6 +98,7 @@ export async function POST(request: NextRequest) {
           {
             error: `Nouvelle tentative disponible dans ${hoursLeft}h. Prenez le temps de revoir la correction détaillée de votre dernière tentative avant de recommencer.`,
             nextAllowedAt: nextAllowedAt.toISOString(),
+            cooldown: true,
           },
           { status: 429 }
         );
