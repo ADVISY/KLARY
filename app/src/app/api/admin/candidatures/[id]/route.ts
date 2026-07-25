@@ -112,17 +112,23 @@ export async function POST(
       );
     }
 
-    // Log dans candidate_events
-    await supabase
-      .from("candidate_events")
-      .insert({
-        candidate_id: params.id,
-        event_type: "status_or_notes_updated",
-        actor_agent_id: user.id,
-        details: { from: previousStatus, to: newStatus },
-      })
-      .select()
-      .maybeSingle();
+    // Log dans candidate_events — wrappé pour ne PAS bloquer le flow
+    // si la table n'existe pas encore ou si RLS bloque.
+    try {
+      const { error: eventErr } = await supabase
+        .from("candidate_events")
+        .insert({
+          candidate_id: params.id,
+          event_type: "status_or_notes_updated",
+          actor_agent_id: user.id,
+          details: { from: previousStatus, to: newStatus },
+        });
+      if (eventErr) {
+        console.error("candidate_events insert (non-bloquant):", eventErr);
+      }
+    } catch (e) {
+      console.error("candidate_events insert threw (non-bloquant):", e);
+    }
 
     // ─── Dispatch email selon transition ───
     if (statusChanged) {

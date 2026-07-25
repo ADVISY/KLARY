@@ -18,8 +18,9 @@ const STATUS_LABELS: Record<string, { label: string; color: string }> = {
     color: "bg-indigo-100 text-indigo-800",
   },
   test_ok: { label: "Test OK", color: "bg-teal-100 text-teal-800" },
-  offered: { label: "Offre faite", color: "bg-yellow-100 text-yellow-800" },
+  offered: { label: "Offre envoyée", color: "bg-yellow-100 text-yellow-800" },
   hired: { label: "Embauché", color: "bg-green-100 text-green-800" },
+  active: { label: "Actif en production", color: "bg-emerald-100 text-emerald-800" },
   rejected: { label: "Refusé", color: "bg-red-100 text-red-800" },
   archived: { label: "Archivé", color: "bg-gray-100 text-gray-600" },
 };

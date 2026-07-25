@@ -1,6 +1,6 @@
 import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
-import { createServerClient, type CookieOptions } from "@supabase/ssr";
+import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -8,17 +8,56 @@ export const metadata = {
   title: "Détail candidature",
 };
 
-const STATUS_OPTIONS = [
-  "new",
-  "reviewed",
-  "interview_1",
-  "interview_2",
-  "test_ok",
-  "offered",
-  "hired",
-  "rejected",
-  "archived",
+// Statuts en français avec description contextuelle
+const STATUS_OPTIONS: {
+  value: string;
+  label: string;
+  description: string;
+}[] = [
+  { value: "new", label: "Nouveau", description: "Candidature reçue, à examiner" },
+  { value: "reviewed", label: "Examinée", description: "Profil étudié — aucun email envoyé" },
+  {
+    value: "interview_1",
+    label: "Entretien 1 — envoyer invitation",
+    description: "📧 Génère 3 créneaux et envoie invitation au candidat",
+  },
+  {
+    value: "interview_2",
+    label: "Entretien 2 (2ᵉ tour)",
+    description: "2ᵉ entretien planifié manuellement",
+  },
+  { value: "test_ok", label: "Test réussi", description: "Évaluation technique validée" },
+  { value: "offered", label: "Offre envoyée", description: "Proposition d'embauche transmise" },
+  {
+    value: "hired",
+    label: "Embauché — envoyer bienvenue",
+    description: "📧 Envoie email bienvenue + parcours 4 étapes",
+  },
+  {
+    value: "active",
+    label: "Actif — envoyer activation",
+    description: "📧 Envoie email accès complets activés (portefeuille, CRM, email)",
+  },
+  {
+    value: "rejected",
+    label: "Refusé — envoyer refus",
+    description: "📧 Envoie email de refus poli au candidat",
+  },
+  { value: "archived", label: "Archivé", description: "Dossier fermé" },
 ];
+
+// Labels documents additionnels (mapping vers un nom lisible)
+const DOC_LABELS: Record<string, string> = {
+  diplomes: "Diplômes / attestations",
+  casier: "Extrait de casier judiciaire",
+  poursuites: "Extrait de l'office des poursuites",
+};
+
+function formatFileSize(bytes: number): string {
+  if (bytes < 1024) return `${bytes} o`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} Ko`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} Mo`;
+}
 
 export default async function CandidatureDetailPage({
   params,
@@ -37,7 +76,8 @@ export default async function CandidatureDetailPage({
     .eq("user_id", user.id)
     .eq("active", true)
     .maybeSingle();
-  if (role?.role !== "admin" && role?.role !== "manager") redirect("/formation");
+  if (role?.role !== "admin" && role?.role !== "manager")
+    redirect("/formation");
 
   const { data: candidate } = await supabase
     .from("candidates")
@@ -47,28 +87,74 @@ export default async function CandidatureDetailPage({
 
   if (!candidate) notFound();
 
-  // Signed URL pour download CV (côté serveur avec service_role si nécessaire)
-  let signedUrl: string | null = null;
+  // Historique événements
+  const { data: events } = await supabase
+    .from("candidate_events")
+    .select("event_type, details, created_at")
+    .eq("candidate_id", params.id)
+    .order("created_at", { ascending: false })
+    .limit(10);
+
+  // Créneaux d'entretien (s'il en existe)
+  const { data: interview } = await supabase
+    .from("interview_slots")
+    .select("*")
+    .eq("candidate_id", params.id)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  // Client service_role pour signed URLs storage
+  const cookieStore = cookies();
+  const serviceClient = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      cookies: {
+        getAll: () => cookieStore.getAll(),
+        setAll: () => {},
+      },
+    }
+  );
+
+  // Signed URL CV
+  let cvSignedUrl: string | null = null;
   if (candidate.cv_storage_path) {
-    const cookieStore = cookies();
-    const serviceClient = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!,
-      {
-        cookies: {
-          getAll: () => cookieStore.getAll(),
-          setAll: () => {},
-        },
-      }
-    );
     const { data: sig } = await serviceClient.storage
       .from("cvs")
       .createSignedUrl(candidate.cv_storage_path, 3600);
-    signedUrl = sig?.signedUrl || null;
+    cvSignedUrl = sig?.signedUrl || null;
   }
 
+  // Signed URLs pour documents additionnels
+  type AdditionalDoc = {
+    key: string;
+    filename: string;
+    storage_path: string;
+    size_bytes: number;
+    signedUrl?: string | null;
+  };
+  const additionalDocs: AdditionalDoc[] = Array.isArray(
+    candidate.additional_documents
+  )
+    ? candidate.additional_documents
+    : [];
+
+  for (const doc of additionalDocs) {
+    const { data: sig } = await serviceClient.storage
+      .from("cvs")
+      .createSignedUrl(doc.storage_path, 3600);
+    doc.signedUrl = sig?.signedUrl || null;
+  }
+
+  const proposedSlots = (interview?.proposed_slots as any[]) || [];
+  const selectedSlot =
+    interview?.selected_slot_index != null
+      ? proposedSlots[interview.selected_slot_index as number]
+      : null;
+
   return (
-    <div className="max-w-3xl mx-auto p-6 md:p-10">
+    <div className="max-w-4xl mx-auto p-6 md:p-10">
       <div className="mb-6">
         <Link
           href="/admin/candidatures"
@@ -78,6 +164,7 @@ export default async function CandidatureDetailPage({
         </Link>
       </div>
 
+      {/* ─── Bloc identité + informations ─── */}
       <div className="bg-white rounded-2xl border border-klary-light-grey p-8 mb-6">
         <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
           Candidature
@@ -93,17 +180,16 @@ export default async function CandidatureDetailPage({
             label="Poste visé"
             value={candidate.position_applied || "—"}
           />
+          <InfoRow label="Source" value={candidate.source || "—"} />
           <InfoRow
-            label="Source"
-            value={candidate.source || "—"}
-          />
-          <InfoRow
-            label="Reçu le"
+            label="Reçue le"
             value={new Date(candidate.created_at).toLocaleString("fr-CH")}
           />
           <InfoRow
             label="Suppression prévue"
-            value={new Date(candidate.scheduled_delete_at).toLocaleDateString("fr-CH")}
+            value={new Date(candidate.scheduled_delete_at).toLocaleDateString(
+              "fr-CH"
+            )}
           />
         </div>
 
@@ -118,38 +204,131 @@ export default async function CandidatureDetailPage({
           </div>
         )}
 
-        {signedUrl && (
-          <div className="mb-4">
-            <a
-              href={signedUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 bg-klary-navy text-white font-semibold rounded-xl hover:bg-klary-navy/90 transition"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-              Télécharger le CV (PDF)
-            </a>
-            <p className="text-xs text-klary-grey mt-2 italic">
-              Lien valable 1 heure.
-            </p>
+        {candidate.why_klary && (
+          <div className="mb-6">
+            <div className="text-xs font-bold uppercase tracking-widest text-klary-grey mb-2">
+              Pourquoi Klary
+            </div>
+            <div className="p-4 bg-klary-cream rounded-xl text-sm text-klary-ink whitespace-pre-wrap">
+              {candidate.why_klary}
+            </div>
           </div>
         )}
       </div>
 
-      {/* Statut + Notes internes (form) */}
-      <div className="bg-white rounded-2xl border border-klary-light-grey p-6">
+      {/* ─── Bloc documents ─── */}
+      <div className="bg-white rounded-2xl border border-klary-light-grey p-8 mb-6">
+        <h2 className="font-bold text-klary-navy mb-4 flex items-center gap-2">
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
+          </svg>
+          Documents transmis
+        </h2>
+
+        <div className="space-y-3">
+          {/* CV */}
+          <DocumentRow
+            label="CV"
+            description="Curriculum vitae principal"
+            filename={candidate.cv_storage_path?.split("/").pop() || "cv.pdf"}
+            signedUrl={cvSignedUrl}
+            highlight
+          />
+
+          {/* Documents additionnels */}
+          {additionalDocs.length > 0 &&
+            additionalDocs.map((doc) => (
+              <DocumentRow
+                key={doc.storage_path}
+                label={DOC_LABELS[doc.key] || doc.key}
+                description={`${formatFileSize(doc.size_bytes)}`}
+                filename={doc.filename}
+                signedUrl={doc.signedUrl || null}
+              />
+            ))}
+
+          {additionalDocs.length === 0 && (
+            <p className="text-xs text-klary-grey italic pt-2">
+              Aucun document additionnel transmis (diplômes / casier / poursuites).
+            </p>
+          )}
+        </div>
+
+        <p className="text-xs text-klary-grey mt-4 italic">
+          Les liens de téléchargement sont valables 1 heure. Rechargez la page
+          pour régénérer les liens.
+        </p>
+      </div>
+
+      {/* ─── Bloc entretien (si créneaux existent) ─── */}
+      {interview && (
+        <div className="bg-white rounded-2xl border border-klary-light-grey p-8 mb-6">
+          <h2 className="font-bold text-klary-navy mb-4 flex items-center gap-2">
+            📅 Entretien
+          </h2>
+          {selectedSlot ? (
+            <div className="p-4 bg-green-50 border-l-4 border-green-500 rounded-lg">
+              <div className="text-[10px] uppercase tracking-widest text-green-700 font-bold mb-1">
+                Créneau confirmé par le candidat
+              </div>
+              <div className="text-lg font-bold text-klary-navy">
+                {new Date(selectedSlot.start).toLocaleString("fr-CH", {
+                  weekday: "long",
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  timeZone: "Europe/Zurich",
+                })}
+              </div>
+              <div className="text-xs text-klary-grey mt-1">
+                Durée : {selectedSlot.duration_min} min
+              </div>
+            </div>
+          ) : (
+            <div>
+              <p className="text-sm text-klary-grey mb-3">
+                Créneaux proposés au candidat — en attente de sa sélection :
+              </p>
+              <ul className="space-y-2 text-sm">
+                {proposedSlots.map((slot: any, i: number) => (
+                  <li key={i} className="p-3 bg-klary-cream rounded-lg">
+                    <span className="font-semibold">Option {i + 1} :</span>{" "}
+                    {new Date(slot.start).toLocaleString("fr-CH", {
+                      weekday: "long",
+                      day: "numeric",
+                      month: "long",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      timeZone: "Europe/Zurich",
+                    })}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-klary-grey mt-3 italic">
+                Lien envoyé au candidat :{" "}
+                <code className="text-klary-orange">
+                  /entretien/{interview.selection_token?.slice(0, 8)}…
+                </code>
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ─── Bloc statut + notes internes ─── */}
+      <div className="bg-white rounded-2xl border border-klary-light-grey p-8 mb-6">
         <h2 className="font-bold text-klary-navy mb-4">Suivi interne</h2>
         <form
           action={`/api/admin/candidatures/${candidate.id}`}
@@ -158,7 +337,7 @@ export default async function CandidatureDetailPage({
         >
           <div>
             <label className="block text-sm font-semibold text-klary-ink mb-1.5">
-              Statut
+              Statut de la candidature
             </label>
             <select
               name="status"
@@ -166,31 +345,82 @@ export default async function CandidatureDetailPage({
               className="w-full px-4 py-2.5 border border-klary-light-grey rounded-lg focus:outline-none focus:border-klary-orange bg-white"
             >
               {STATUS_OPTIONS.map((s) => (
-                <option key={s} value={s}>
-                  {s}
+                <option key={s.value} value={s.value}>
+                  {s.label}
                 </option>
               ))}
             </select>
+            <p className="text-xs text-klary-grey mt-1.5 italic">
+              💡{" "}
+              {
+                STATUS_OPTIONS.find((s) => s.value === candidate.status)
+                  ?.description
+              }
+            </p>
           </div>
           <div>
             <label className="block text-sm font-semibold text-klary-ink mb-1.5">
-              Notes internes
+              Notes internes (privées, non visibles par le candidat)
             </label>
             <textarea
               name="internal_notes"
               rows={4}
               defaultValue={candidate.internal_notes || ""}
               className="w-full px-4 py-2.5 border border-klary-light-grey rounded-lg focus:outline-none focus:border-klary-orange"
+              placeholder="Impressions entretien, points forts, points d'attention…"
             />
           </div>
           <button
             type="submit"
             className="w-full py-3 bg-klary-orange text-white font-semibold rounded-xl hover:bg-klary-orange/90 transition"
           >
-            Enregistrer
+            Enregistrer et déclencher les notifications
           </button>
         </form>
       </div>
+
+      {/* ─── Historique événements ─── */}
+      {events && events.length > 0 && (
+        <div className="bg-white rounded-2xl border border-klary-light-grey p-6">
+          <h2 className="font-bold text-klary-navy mb-4">Historique</h2>
+          <ul className="space-y-2">
+            {events.map((e: any, i: number) => (
+              <li
+                key={i}
+                className="text-xs text-klary-grey flex items-start gap-3 pb-2 border-b border-klary-light-grey last:border-0 last:pb-0"
+              >
+                <span className="font-mono text-klary-navy/60 shrink-0">
+                  {new Date(e.created_at).toLocaleString("fr-CH", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </span>
+                <span>
+                  {e.event_type === "status_or_notes_updated" && e.details ? (
+                    <>
+                      Statut :{" "}
+                      <strong className="text-klary-navy">
+                        {STATUS_OPTIONS.find(
+                          (s) => s.value === e.details.from
+                        )?.label || e.details.from}
+                      </strong>
+                      {" → "}
+                      <strong className="text-klary-orange">
+                        {STATUS_OPTIONS.find((s) => s.value === e.details.to)
+                          ?.label || e.details.to}
+                      </strong>
+                    </>
+                  ) : (
+                    e.event_type
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
@@ -204,6 +434,64 @@ function InfoRow({ label, value }: { label: string; value: string }) {
       <div className="text-sm font-semibold text-klary-navy break-all">
         {value}
       </div>
+    </div>
+  );
+}
+
+function DocumentRow({
+  label,
+  description,
+  filename,
+  signedUrl,
+  highlight = false,
+}: {
+  label: string;
+  description: string;
+  filename: string;
+  signedUrl: string | null;
+  highlight?: boolean;
+}) {
+  return (
+    <div
+      className={`flex items-center justify-between gap-4 p-4 rounded-xl border ${
+        highlight
+          ? "border-klary-orange/30 bg-klary-orange/5"
+          : "border-klary-light-grey bg-white"
+      }`}
+    >
+      <div className="min-w-0 flex-1">
+        <div className="font-semibold text-klary-navy">{label}</div>
+        <div className="text-xs text-klary-grey mt-0.5 truncate">
+          {filename} · {description}
+        </div>
+      </div>
+      {signedUrl ? (
+        <div className="flex items-center gap-2 shrink-0">
+          <a
+            href={signedUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-2 text-xs font-semibold text-klary-navy border border-klary-navy/20 rounded-lg hover:bg-klary-navy/5 transition"
+          >
+            Voir
+          </a>
+          <a
+            href={signedUrl}
+            download={filename}
+            className={`px-3 py-2 text-xs font-semibold text-white rounded-lg transition ${
+              highlight
+                ? "bg-klary-orange hover:bg-klary-orange/90"
+                : "bg-klary-navy hover:bg-klary-navy/90"
+            }`}
+          >
+            Télécharger
+          </a>
+        </div>
+      ) : (
+        <span className="text-xs text-red-600 shrink-0">
+          Lien indisponible
+        </span>
+      )}
     </div>
   );
 }
