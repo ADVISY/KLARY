@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     // Vérifier que le module existe et est actif
     const { data: module, error: modErr } = await supabase
       .from("training_modules")
-      .select("key, title, duration_min, passing_score")
+      .select("key, title, duration_min, passing_score, retry_cooldown_hours")
       .eq("key", moduleKey)
       .eq("active", true)
       .single();
@@ -43,6 +43,40 @@ export async function POST(request: NextRequest) {
         { error: "Module introuvable ou inactif" },
         { status: 404 }
       );
+    }
+
+    // ─── Cooldown post-échec ───
+    // Si l'utilisateur a une tentative échouée récente (< cooldown), on bloque.
+    const cooldownHours = (module as any).retry_cooldown_hours ?? 24;
+    if (cooldownHours > 0) {
+      const cooldownAgo = new Date(Date.now() - cooldownHours * 3600 * 1000);
+      const { data: recentFail } = await supabase
+        .from("training_attempts")
+        .select("finished_at")
+        .eq("user_id", user.id)
+        .eq("module_key", moduleKey)
+        .eq("passed", false)
+        .not("finished_at", "is", null)
+        .gte("finished_at", cooldownAgo.toISOString())
+        .order("finished_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      if (recentFail?.finished_at) {
+        const nextAllowedAt = new Date(
+          new Date(recentFail.finished_at).getTime() + cooldownHours * 3600 * 1000
+        );
+        const hoursLeft = Math.ceil(
+          (nextAllowedAt.getTime() - Date.now()) / (3600 * 1000)
+        );
+        return NextResponse.json(
+          {
+            error: `Nouvelle tentative disponible dans ${hoursLeft}h. Prenez le temps de revoir la correction détaillée de votre dernière tentative avant de recommencer.`,
+            nextAllowedAt: nextAllowedAt.toISOString(),
+          },
+          { status: 429 }
+        );
+      }
     }
 
     // Récupérer les questions actives — SANS le champ `correct` côté client

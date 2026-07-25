@@ -44,7 +44,9 @@ export default async function ResultPage({
   const { data: questions } = questionIds.length
     ? await supabase
         .from("training_questions")
-        .select("id, external_id, category, question, options, correct, explanation")
+        .select(
+          "id, external_id, category, question, options, correct, explanation, why_wrong, consequence"
+        )
         .in("id", questionIds)
     : { data: [] };
 
@@ -140,35 +142,103 @@ export default async function ResultPage({
         </div>
       )}
 
+      {/* Résumé erreurs — vue synthétique par catégorie */}
+      {questions && questions.length > 0 && !attempt.aborted && (() => {
+        const wrongByCategory: Record<string, number> = {};
+        const totalByCategory: Record<string, number> = {};
+        for (const q of questions as any[]) {
+          const cat = q.category || "Autre";
+          totalByCategory[cat] = (totalByCategory[cat] || 0) + 1;
+          if (rawAnswers[q.id] !== q.correct) {
+            wrongByCategory[cat] = (wrongByCategory[cat] || 0) + 1;
+          }
+        }
+        const wrongCount = Object.values(wrongByCategory).reduce((a, b) => a + b, 0);
+        if (wrongCount === 0) return null;
+        return (
+          <div className="bg-white rounded-2xl border-2 border-red-200 p-6 mb-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-red-100 text-red-700 flex items-center justify-center font-bold">
+                {wrongCount}
+              </div>
+              <div>
+                <div className="font-bold text-klary-navy">
+                  Point(s) à revoir en priorité
+                </div>
+                <div className="text-xs text-klary-grey">
+                  Chaque erreur est expliquée en détail ci-dessous.
+                </div>
+              </div>
+            </div>
+            <div className="space-y-2">
+              {Object.entries(wrongByCategory)
+                .sort((a, b) => b[1] - a[1])
+                .map(([cat, nb]) => (
+                  <div
+                    key={cat}
+                    className="flex items-center justify-between text-sm py-2 border-b border-klary-light-grey last:border-0"
+                  >
+                    <span className="text-klary-navy font-medium">{cat}</span>
+                    <span className="text-red-700 font-semibold">
+                      {nb} / {totalByCategory[cat]} erreur{nb > 1 ? "s" : ""}
+                    </span>
+                  </div>
+                ))}
+            </div>
+          </div>
+        );
+      })()}
+
       {/* Correction détaillée */}
       {questions && questions.length > 0 && !attempt.aborted && (
-        <details className="bg-white rounded-2xl border border-klary-light-grey p-6">
+        <details className="bg-white rounded-2xl border border-klary-light-grey p-6" open={!passed}>
           <summary className="font-bold text-klary-navy cursor-pointer">
-            Voir la correction détaillée ({questions.length} questions)
+            Correction détaillée & prise de conscience ({questions.length} questions)
           </summary>
-          <div className="mt-6 space-y-5">
+          <div className="mt-6 space-y-6">
             {questions.map((q: any, idx: number) => {
               const userAns = rawAnswers[q.id];
               const isCorrect = userAns === q.correct;
+              const userWhyWrong =
+                !isCorrect && Array.isArray(q.why_wrong) && userAns != null
+                  ? q.why_wrong[userAns]
+                  : null;
               return (
                 <div
                   key={q.id}
-                  className="pb-5 border-b border-klary-light-grey last:border-b-0 last:pb-0"
+                  className={`p-5 rounded-xl border-2 ${
+                    isCorrect
+                      ? "border-green-200 bg-green-50/40"
+                      : "border-red-200 bg-red-50/40"
+                  }`}
                 >
-                  <div className="text-xs uppercase tracking-widest text-klary-grey mb-1 font-bold">
-                    Question {idx + 1} · {q.category}
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="text-xs uppercase tracking-widest text-klary-grey font-bold">
+                      Q{idx + 1} · {q.category}
+                    </div>
+                    <span
+                      className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+                        isCorrect
+                          ? "bg-green-600 text-white"
+                          : "bg-red-600 text-white"
+                      }`}
+                    >
+                      {isCorrect ? "CORRECT" : "ERREUR"}
+                    </span>
                   </div>
-                  <div className="font-semibold text-klary-navy mb-2">
+
+                  <div className="font-semibold text-klary-navy mb-3 leading-relaxed">
                     {q.question}
                   </div>
-                  <div className="text-sm space-y-1 mb-3">
+
+                  <div className="text-sm space-y-1.5 mb-3">
                     <div>
                       Votre réponse :{" "}
                       <span
                         className={
                           isCorrect
                             ? "text-green-700 font-semibold"
-                            : "text-red-700 font-semibold"
+                            : "text-red-700 font-semibold line-through"
                         }
                       >
                         {userAns !== null && userAns !== undefined
@@ -185,9 +255,34 @@ export default async function ResultPage({
                       </div>
                     )}
                   </div>
+
+                  {/* Pourquoi votre réponse était fausse */}
+                  {userWhyWrong && (
+                    <div className="p-3 bg-red-100/60 border-l-4 border-red-500 rounded-lg text-sm text-red-900 mb-2">
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-red-700 mb-1">
+                        Pourquoi votre réponse était fausse
+                      </div>
+                      {userWhyWrong}
+                    </div>
+                  )}
+
+                  {/* Explication de la bonne réponse */}
                   {q.explanation && (
-                    <div className="p-3 bg-klary-cream rounded-lg text-sm text-klary-ink border-l-4 border-klary-orange">
-                      💡 {q.explanation}
+                    <div className="p-3 bg-klary-cream border-l-4 border-klary-orange rounded-lg text-sm text-klary-ink mb-2">
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-klary-orange mb-1">
+                        💡 Explication
+                      </div>
+                      {q.explanation}
+                    </div>
+                  )}
+
+                  {/* Conséquence réelle */}
+                  {q.consequence && (
+                    <div className="p-3 bg-klary-navy/5 border-l-4 border-klary-navy rounded-lg text-sm text-klary-navy">
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-klary-navy mb-1">
+                        ⚠ Conséquence en situation réelle
+                      </div>
+                      {q.consequence}
                     </div>
                   )}
                 </div>
