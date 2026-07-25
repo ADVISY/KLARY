@@ -28,8 +28,10 @@ export type CertificatKlaryProps = {
   city?: string;
   signatoryName?: string;
   signatoryTitle?: string;
-  /** Chemin logo Klary (par défaut /klary-logo.png depuis /public) */
+  /** Chemin logo Klary (par défaut /klary-logo-color.svg — vrai logo officiel couleurs) */
   logoSrc?: string;
+  /** Chemin logo pour le watermark de fond (par défaut icône K seule) */
+  watermarkSrc?: string;
 };
 
 export function CertificatKlary({
@@ -45,7 +47,8 @@ export function CertificatKlary({
   city = "Le Mont-sur-Lausanne",
   signatoryName = "Sacha Bacconnier",
   signatoryTitle = "Responsable d'agence — Klary Sàrl",
-  logoSrc = "/klary-logo.png",
+  logoSrc = "/klary-logo-color.svg",
+  watermarkSrc = "/klary-icon.svg",
 }: CertificatKlaryProps) {
   const issuedDate = new Date(issuedAt).toLocaleDateString("fr-CH", {
     day: "numeric",
@@ -70,27 +73,83 @@ export function CertificatKlary({
         boxShadow: "0 8px 40px rgba(26, 22, 96, 0.15)",
       }}
     >
-      {/* ── Watermark logo Klary GRAND en fond, opacité très faible ── */}
+      {/* ═══════════════════════════════════════════════════════════
+          FOND SÉCURISÉ — 3 couches superposées :
+          1) Pattern K répété sur toute la surface (opacité ultra-faible)
+          2) Filigrane diagonal "KLARY · CERTIFIÉ" répété
+          3) Grille de sécurité (fines lignes croisées navy/orange)
+          ═══════════════════════════════════════════════════════════ */}
+
+      {/* Couche 1 : icône K répétée en tile */}
       <div
         aria-hidden
         style={{
           position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%) rotate(-8deg)",
-          width: "180mm",
-          opacity: 0.045,
+          inset: 0,
+          backgroundImage: `url(${watermarkSrc})`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "38mm 38mm",
+          backgroundPosition: "center",
+          opacity: 0.028,
           pointerEvents: "none",
           zIndex: 0,
         }}
+      />
+
+      {/* Couche 2 : filigrane texte diagonal "KLARY · CERTIFIÉ" */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: "-30%",
+          width: "160%",
+          height: "160%",
+          transform: "rotate(-28deg)",
+          transformOrigin: "center",
+          opacity: 0.05,
+          pointerEvents: "none",
+          zIndex: 0,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-around",
+          overflow: "hidden",
+        }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={logoSrc}
-          alt=""
-          style={{ width: "100%", height: "auto", display: "block" }}
-        />
+        {Array.from({ length: 14 }).map((_, i) => (
+          <div
+            key={i}
+            style={{
+              fontSize: "18pt",
+              fontWeight: 700,
+              color: i % 2 === 0 ? "#1A1660" : "#F0651F",
+              letterSpacing: "0.4em",
+              whiteSpace: "nowrap",
+              textTransform: "uppercase",
+              fontFamily:
+                "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            }}
+          >
+            KLARY · CERTIFIÉ · KLARY · CERTIFIÉ · KLARY · CERTIFIÉ · KLARY ·
+            CERTIFIÉ · KLARY · CERTIFIÉ · KLARY · CERTIFIÉ · KLARY · CERTIFIÉ
+          </div>
+        ))}
       </div>
+
+      {/* Couche 3 : grille de sécurité en diamant fin (papier certificat) */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0.035,
+          pointerEvents: "none",
+          zIndex: 0,
+          backgroundImage: `
+            repeating-linear-gradient(45deg, #1A1660 0 1px, transparent 1px 6mm),
+            repeating-linear-gradient(-45deg, #F0651F 0 1px, transparent 1px 6mm)
+          `,
+        }}
+      />
 
       {/* ── Cadre décoratif : liseré orange fin en haut + bas ── */}
       <div
