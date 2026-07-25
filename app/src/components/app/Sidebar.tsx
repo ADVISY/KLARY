@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
@@ -153,13 +152,14 @@ export function Sidebar({
       {/* Logo header */}
       <div className="p-6 border-b border-white/10">
         <Link href="/formation" className="inline-block">
-          <Image
-            src="/klary-logo-white.png"
+          {/* Le SVG blanc rend sur fond navy — orange conservé pour l'accent K.
+              On utilise <img> plutôt que next/image car les SVG vectoriels
+              n'ont pas besoin d'optimisation Next.js. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/klary-logo-white.svg"
             alt="Klary"
-            width={140}
-            height={47}
-            priority
-            className="h-9 w-auto"
+            style={{ height: "36px", width: "auto", display: "block" }}
           />
         </Link>
         <div className="text-[10px] font-semibold tracking-widest uppercase text-white/50 mt-2">
