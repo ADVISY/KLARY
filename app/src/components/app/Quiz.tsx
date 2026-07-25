@@ -49,15 +49,52 @@ export function Quiz({ attemptId, module, questions }: QuizProps) {
   const isLast = currentIdx === questions.length - 1;
   const progressPct = ((currentIdx + 1) / questions.length) * 100;
 
-  // Attacher le stream au <video> de PIP quand le quiz démarre.
-  // Safari a besoin d'un play() explicite après srcObject.
+  // Attacher le stream au <video> PIP + retry robuste.
+  // Certains navigateurs (Chrome/Safari) ratent l'attachement si le
+  // srcObject est assigné trop tôt ou si play() est bloqué.
   useEffect(() => {
-    if (started && cameraStream && videoRef.current) {
-      videoRef.current.srcObject = cameraStream;
-      videoRef.current.play().catch((err) => {
-        console.warn("[Quiz] video play() bloqué:", err?.message);
+    if (!started || !cameraStream) return;
+
+    const tryAttach = (attempt = 0) => {
+      const video = videoRef.current;
+      if (!video) {
+        if (attempt < 5) setTimeout(() => tryAttach(attempt + 1), 100);
+        return;
+      }
+
+      // Log diagnostic — visible dans DevTools Console
+      const tracks = cameraStream.getVideoTracks();
+      console.log("[Quiz] Attach stream PIP", {
+        attempt,
+        videoEl: !!video,
+        streamActive: cameraStream.active,
+        tracks: tracks.length,
+        trackState: tracks[0]?.readyState,
+        trackEnabled: tracks[0]?.enabled,
       });
-    }
+
+      if (!cameraStream.active || tracks[0]?.readyState !== "live") {
+        console.error("[Quiz] Stream inactif — la caméra a été coupée avant l'attachement.");
+        return;
+      }
+
+      video.srcObject = cameraStream;
+      video.muted = true;
+      video.playsInline = true;
+
+      video
+        .play()
+        .then(() => console.log("[Quiz] video.play() OK"))
+        .catch((err) => {
+          console.warn("[Quiz] video.play() bloqué:", err?.name, err?.message);
+          // Retry après un délai — Safari peut demander un 2ᵉ tour
+          if (attempt < 3) {
+            setTimeout(() => tryAttach(attempt + 1), 300);
+          }
+        });
+    };
+
+    tryAttach();
   }, [started, cameraStream]);
 
   // Cleanup : couper le stream si on quitte
@@ -333,7 +370,17 @@ export function Quiz({ attemptId, module, questions }: QuizProps) {
       <div className="fixed bottom-4 right-4 z-30 shadow-xl">
         <div className="relative bg-black rounded-xl overflow-hidden border-2 border-klary-navy w-40 md:w-48 aspect-video">
           <video
-            ref={videoRef}
+            ref={(el) => {
+              // Callback ref : attache le stream DÈS que l'élément monte,
+              // sans dépendre du timing du useEffect
+              videoRef.current = el;
+              if (el && cameraStream && el.srcObject !== cameraStream) {
+                el.srcObject = cameraStream;
+                el.muted = true;
+                el.playsInline = true;
+                el.play().catch(() => {});
+              }
+            }}
             autoPlay
             playsInline
             muted
