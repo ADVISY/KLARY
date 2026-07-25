@@ -41,14 +41,31 @@ const DOC_KEYS = [
   { key: "avs_card", label: "Carte AVS" },
   { key: "rib", label: "RIB / relevé bancaire" },
   { key: "permis_sejour", label: "Permis de séjour" },
+  { key: "photo_badge", label: "Photo identité (badge & trombinoscope)" },
+  { key: "casier_judiciaire", label: "Extrait de casier judiciaire" },
+  { key: "poursuites", label: "Extrait de l'office des poursuites" },
   { key: "lpp_exit", label: "Certificat de sortie LPP" },
 ] as const;
+
+/**
+ * Vérifie qu'une date de validité (YYYY-MM-DD) est postérieure à aujourd'hui.
+ * Utilisé pour bloquer la soumission si un document est expiré.
+ */
+function isDateValid(iso: string | null | undefined): boolean {
+  if (!iso) return true; // pas de date → on ne bloque pas
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return false;
+  return d.getTime() >= Date.now();
+}
 
 const schema = z.object({
   token: z.string().uuid(),
   // Identité
   date_of_birth: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Date invalide"),
+  gender: z.enum(["M", "F", "autre"]),
   nationality: z.string().min(1).max(100),
+  birth_city: z.string().min(1).max(150),
+  birth_country: z.string().min(1).max(100),
   marital_status: z.enum([
     "celibataire",
     "marie",
@@ -59,6 +76,10 @@ const schema = z.object({
   avs_number: z.string().min(1).max(20),
   children_count: z.string().optional().or(z.literal("")),
   residence_permit: z.string().max(100).optional().or(z.literal("")),
+  // Dates de validité documents (vérifiées > aujourd'hui)
+  id_valid_until: z.string().optional().or(z.literal("")),
+  passport_valid_until: z.string().optional().or(z.literal("")),
+  permis_valid_until: z.string().optional().or(z.literal("")),
   // Parents (optionnels — pour dossier RH complet)
   father_first_name: z.string().max(100).optional().or(z.literal("")),
   father_last_name: z.string().max(100).optional().or(z.literal("")),
@@ -99,11 +120,17 @@ export async function POST(request: NextRequest) {
     const parsed = schema.safeParse({
       token: formData.get("token"),
       date_of_birth: formData.get("date_of_birth"),
+      gender: formData.get("gender"),
       nationality: formData.get("nationality"),
+      birth_city: formData.get("birth_city"),
+      birth_country: formData.get("birth_country"),
       marital_status: formData.get("marital_status"),
       avs_number: formData.get("avs_number"),
       children_count: formData.get("children_count") || "",
       residence_permit: formData.get("residence_permit") || "",
+      id_valid_until: formData.get("id_valid_until") || "",
+      passport_valid_until: formData.get("passport_valid_until") || "",
+      permis_valid_until: formData.get("permis_valid_until") || "",
       father_first_name: formData.get("father_first_name") || "",
       father_last_name: formData.get("father_last_name") || "",
       mother_first_name: formData.get("mother_first_name") || "",
@@ -135,6 +162,36 @@ export async function POST(request: NextRequest) {
         { error: "Données invalides", details: parsed.error.flatten() },
         { status: 400 }
       );
+    }
+
+    // ─── Validation : documents non expirés ───
+    const expiryChecks: { field: string; label: string; date: string }[] = [
+      {
+        field: "id_valid_until",
+        label: "Carte d'identité",
+        date: parsed.data.id_valid_until || "",
+      },
+      {
+        field: "passport_valid_until",
+        label: "Passeport",
+        date: parsed.data.passport_valid_until || "",
+      },
+      {
+        field: "permis_valid_until",
+        label: "Permis de séjour",
+        date: parsed.data.permis_valid_until || "",
+      },
+    ];
+    for (const c of expiryChecks) {
+      if (c.date && !isDateValid(c.date)) {
+        return NextResponse.json(
+          {
+            error: `Le document « ${c.label} » est expiré (${c.date}). Merci de fournir un document en cours de validité avant de soumettre votre dossier.`,
+            expiredField: c.field,
+          },
+          { status: 400 }
+        );
+      }
     }
 
     // Client service_role (bypass RLS)

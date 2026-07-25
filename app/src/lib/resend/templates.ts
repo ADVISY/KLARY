@@ -513,11 +513,16 @@ export const templates = {
           ${row("Nom complet", `${firstName} ${lastName}`)}
           ${row("Email personnel", email)}
           ${row("Date de naissance", formData.date_of_birth)}
+          ${row("Genre", formData.gender === "M" ? "Masculin" : formData.gender === "F" ? "Féminin" : formData.gender)}
           ${row("Nationalité", formData.nationality)}
+          ${row("Lieu de naissance", [formData.birth_city, formData.birth_country].filter(Boolean).join(", "))}
           ${row("État civil", formData.marital_status)}
           ${row("N° AVS", formData.avs_number)}
           ${row("Enfants à charge", formData.children_count ? String(formData.children_count) : "—")}
           ${row("Permis de séjour", formData.residence_permit)}
+          ${row("Carte identité — valable jusqu'au", formData.id_valid_until)}
+          ${row("Passeport — valable jusqu'au", formData.passport_valid_until)}
+          ${row("Permis de séjour — valable jusqu'au", formData.permis_valid_until)}
         </table>
       </div>
 

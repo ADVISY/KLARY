@@ -68,12 +68,38 @@ export function OnboardingForm({
             className="input"
           />
         </Field>
+        <Field label="Genre" required>
+          <select name="gender" required className="input">
+            <option value="">— Sélectionnez —</option>
+            <option value="M">Masculin</option>
+            <option value="F">Féminin</option>
+            <option value="autre">Autre / ne souhaite pas préciser</option>
+          </select>
+        </Field>
         <Field label="Nationalité" required>
           <input
             type="text"
             name="nationality"
             required
             placeholder="Suisse, Française, Portugaise…"
+            className="input"
+          />
+        </Field>
+        <Field label="Ville de naissance" required>
+          <input
+            type="text"
+            name="birth_city"
+            required
+            placeholder="Lausanne, Casablanca, Porto…"
+            className="input"
+          />
+        </Field>
+        <Field label="Pays de naissance" required>
+          <input
+            type="text"
+            name="birth_country"
+            required
+            placeholder="Suisse, Maroc, Portugal…"
             className="input"
           />
         </Field>
@@ -373,17 +399,51 @@ export function OnboardingForm({
         title="Documents à téléverser (PDF, JPG, PNG — max 5 Mo chacun)"
         step={9}
       >
+        <div className="md:col-span-2 p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded text-xs text-yellow-900">
+          ⚠ Tous les documents doivent être <strong>en cours de validité</strong>.
+          Les documents expirés seront refusés automatiquement. Prévoyez la
+          date d'expiration à côté de chaque document.
+        </div>
+
         <FileField
           label="Carte d'identité (recto + verso)"
           name="doc_id_document"
           required
         />
+        <Field label="Carte d'identité — valable jusqu'au">
+          <input type="date" name="id_valid_until" className="input" />
+        </Field>
+
         <FileField label="Passeport (optionnel)" name="doc_passport" />
+        <Field label="Passeport — valable jusqu'au">
+          <input type="date" name="passport_valid_until" className="input" />
+        </Field>
+
         <FileField label="Carte AVS" name="doc_avs_card" required />
         <FileField label="RIB / relevé bancaire" name="doc_rib" required />
+
         <FileField
           label="Permis de séjour (si étranger)"
           name="doc_permis_sejour"
+        />
+        <Field label="Permis de séjour — valable jusqu'au">
+          <input type="date" name="permis_valid_until" className="input" />
+        </Field>
+
+        <FileField
+          label="Photo d'identité (badge & trombinoscope Klary)"
+          name="doc_photo_badge"
+          required
+        />
+        <FileField
+          label="Extrait de casier judiciaire (obligatoire agent FINMA)"
+          name="doc_casier_judiciaire"
+          required
+        />
+        <FileField
+          label="Extrait de l'office des poursuites (obligatoire agent FINMA)"
+          name="doc_poursuites"
+          required
         />
         <FileField
           label="Certificat de sortie LPP (précédent employeur)"
