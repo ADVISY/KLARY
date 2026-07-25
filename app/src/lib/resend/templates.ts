@@ -255,10 +255,13 @@ export const templates = {
       <div style="padding:16px 20px; background:#FAF5EF; border-left:4px solid #1A1660; border-radius:8px; margin:20px 0;">
         <div style="font-size:11px; color:#6E6A8E; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">📍 Lieu du rendez-vous</div>
         <div style="font-size:14px; color:#1F1B4B; line-height:1.5;">
-          <strong>Bureau Klary</strong><br>
-          Route de Lausanne 31<br>
-          1052 Le Mont-sur-Lausanne<br>
-          <a href="https://maps.google.com/?q=Route+de+Lausanne+31,+1052+Le+Mont-sur-Lausanne" style="color:#F0651F; font-size:12px;">Itinéraire Google Maps →</a>
+          <strong>Bureau Klary — Bâtiment Regus</strong><br>
+          Route de Crassier 7<br>
+          1262 Eysins<br>
+          <span style="display:inline-block; margin-top:6px; padding:4px 8px; background:#fff; border:1px dashed #F0651F; border-radius:4px; font-size:12px; color:#1A1660;">
+            ℹ Présentez-vous à l'accueil Regus et demandez <strong>Klary</strong>
+          </span><br>
+          <a href="https://maps.google.com/?q=Route+de+Crassier+7,+1262+Eysins" style="color:#F0651F; font-size:12px; margin-top:6px; display:inline-block;">Itinéraire Google Maps →</a>
         </div>
       </div>
 
@@ -295,10 +298,13 @@ export const templates = {
       <div style="padding:20px; background:#FAF5EF; border-left:4px solid #1A1660; border-radius:8px; margin:20px 0;">
         <div style="font-size:11px; color:#6E6A8E; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">📍 Lieu — rendez-vous en présentiel</div>
         <div style="font-size:15px; color:#1F1B4B; line-height:1.6;">
-          <strong>Bureau Klary Sàrl</strong><br>
-          Route de Lausanne 31<br>
-          1052 Le Mont-sur-Lausanne<br>
-          <a href="https://maps.google.com/?q=Route+de+Lausanne+31,+1052+Le+Mont-sur-Lausanne" style="color:#F0651F; font-size:13px;">Itinéraire Google Maps →</a>
+          <strong>Klary Sàrl — Bâtiment Regus</strong><br>
+          Route de Crassier 7<br>
+          1262 Eysins<br>
+          <div style="margin-top:10px; padding:10px 12px; background:#fff; border:1px dashed #F0651F; border-radius:6px; font-size:13px; color:#1A1660;">
+            ℹ <strong>À votre arrivée :</strong> présentez-vous à l'accueil Regus au rez-de-chaussée et demandez <strong>Klary</strong>. Sacha Bacconnier viendra vous accueillir.
+          </div>
+          <a href="https://maps.google.com/?q=Route+de+Crassier+7,+1262+Eysins" style="color:#F0651F; font-size:13px; margin-top:8px; display:inline-block;">Itinéraire Google Maps →</a>
         </div>
       </div>
 
@@ -312,7 +318,7 @@ export const templates = {
       </div>
 
       <p style="color:#1F1B4B; margin:16px 0; font-size:15px; line-height:1.6;">
-        Merci de vous présenter <strong>5 minutes avant l'heure</strong>. Sacha Bacconnier vous accueillera.
+        Merci de vous présenter <strong>5 minutes avant l'heure</strong> à l'accueil du bâtiment Regus.
       </p>
       <p style="color:#1F1B4B; margin:0 0 16px; font-size:15px; line-height:1.6;">
         Si un empêchement survient, prévenez-nous dès que possible à <a href="mailto:rh@klary.ch" style="color:#F0651F;">rh@klary.ch</a>.
@@ -355,7 +361,7 @@ export const templates = {
         <tr><td style="padding:8px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Créneau choisi</td></tr>
         <tr><td style="padding:0 0 12px; color:#1F1B4B; font-size:16px;"><strong>${slotLabel}</strong></td></tr>
         <tr><td style="padding:8px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Lieu</td></tr>
-        <tr><td style="padding:0 0 12px; color:#1F1B4B; font-size:14px;">Bureau Klary — Route de Lausanne 31, 1052 Le Mont-sur-Lausanne</td></tr>
+        <tr><td style="padding:0 0 12px; color:#1F1B4B; font-size:14px;">Bâtiment Regus, Route de Crassier 7, 1262 Eysins</td></tr>
       </table>
       <p style="color:#6E6A8E; font-size:13px; margin-top:20px;">
         📎 Une invitation calendrier <code>.ics</code> est jointe — importez-la dans votre agenda. Le candidat a reçu la même invitation.

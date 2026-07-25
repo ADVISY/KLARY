@@ -11,14 +11,17 @@
 
 export const KLARY_OFFICE = {
   name: "Klary Sàrl — Bureau",
-  street: "Route de Lausanne 31",
-  city: "1052 Le Mont-sur-Lausanne",
+  building: "Bâtiment Regus",
+  street: "Route de Crassier 7",
+  city: "1262 Eysins",
   country: "Suisse",
+  accessInstruction:
+    "Présentez-vous à l'accueil Regus au rez-de-chaussée et demandez Klary.",
   mapsUrl:
-    "https://maps.google.com/?q=Route+de+Lausanne+31,+1052+Le+Mont-sur-Lausanne",
+    "https://maps.google.com/?q=Route+de+Crassier+7,+1262+Eysins",
 };
 
-export const KLARY_OFFICE_FULL_ADDRESS = `${KLARY_OFFICE.street}, ${KLARY_OFFICE.city}, ${KLARY_OFFICE.country}`;
+export const KLARY_OFFICE_FULL_ADDRESS = `${KLARY_OFFICE.building}, ${KLARY_OFFICE.street}, ${KLARY_OFFICE.city}, ${KLARY_OFFICE.country}`;
 
 type IcsParams = {
   uid: string;                    // ID unique (ex: token candidat)
@@ -65,6 +68,8 @@ export function generateInterviewIcs(params: IcsParams): string {
     "",
     "Adresse du bureau :",
     KLARY_OFFICE_FULL_ADDRESS,
+    "",
+    `⚠ ACCÈS : ${KLARY_OFFICE.accessInstruction}`,
     "",
     `Itinéraire Google Maps : ${KLARY_OFFICE.mapsUrl}`,
     "",

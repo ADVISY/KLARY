@@ -106,14 +106,18 @@ export default async function EntretienPage({
                   📍 Lieu du rendez-vous
                 </div>
                 <div className="text-klary-ink leading-relaxed">
-                  <strong>Bureau Klary Sàrl</strong><br />
-                  Route de Lausanne 31, 1052 Le Mont-sur-Lausanne
+                  <strong>Klary Sàrl — Bâtiment Regus</strong>
                   <br />
+                  Route de Crassier 7, 1262 Eysins
+                  <div className="mt-2 p-2.5 bg-white border border-dashed border-klary-orange rounded text-xs text-klary-navy">
+                    ℹ <strong>À votre arrivée :</strong> présentez-vous à
+                    l'accueil Regus et demandez <strong>Klary</strong>.
+                  </div>
                   <a
-                    href="https://maps.google.com/?q=Route+de+Lausanne+31,+1052+Le+Mont-sur-Lausanne"
+                    href="https://maps.google.com/?q=Route+de+Crassier+7,+1262+Eysins"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-klary-orange font-semibold hover:underline text-xs mt-1 inline-block"
+                    className="text-klary-orange font-semibold hover:underline text-xs mt-2 inline-block"
                   >
                     Itinéraire Google Maps →
                   </a>
