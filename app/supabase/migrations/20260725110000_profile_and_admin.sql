@@ -37,7 +37,8 @@ CREATE TRIGGER trg_check_profile_completion
   FOR EACH ROW EXECUTE FUNCTION check_profile_completion();
 
 -- Policy : agent peut mettre à jour son propre profil
-CREATE POLICY IF NOT EXISTS user_update_own_profile ON user_roles
+DROP POLICY IF EXISTS user_update_own_profile ON user_roles;
+CREATE POLICY user_update_own_profile ON user_roles
   FOR UPDATE USING (auth.uid() = user_id);
 
 -- ─── Storage bucket CV : instructions ───
