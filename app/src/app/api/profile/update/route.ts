@@ -45,15 +45,16 @@ export async function POST(request: NextRequest) {
       postal_country: d.postal_country,
     };
 
-    // Upsert : si la ligne n'existe pas encore, on la crée
-    const { data: existing } = await supabase
+    // Upsert : si la ligne n'existe pas encore, on la crée.
+    // On récupère toutes les lignes actives (le user peut avoir 2 rôles :
+    // agent + admin par ex.) et on met à jour la première trouvée.
+    const { data: existingRows } = await supabase
       .from("user_roles")
       .select("id")
       .eq("user_id", user.id)
-      .eq("active", true)
-      .maybeSingle();
+      .eq("active", true);
 
-    if (existing) {
+    if (existingRows && existingRows.length > 0) {
       const { error } = await supabase
         .from("user_roles")
         .update(updateData)

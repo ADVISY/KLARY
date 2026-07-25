@@ -15,13 +15,23 @@ export default async function DashboardLayout({
 
   if (!user) redirect("/login");
 
-  // Récupérer profil + rôle
-  const { data: profile } = await supabase
+  // Récupérer profil + rôle — on prend TOUTES les lignes actives et on
+  // sélectionne le rôle le plus élevé pour éviter le cas 2 lignes (admin+agent)
+  // qui fait échouer silencieusement maybeSingle().
+  const { data: profileRows } = await supabase
     .from("user_roles")
     .select("role, first_name, last_name, profile_completed")
     .eq("user_id", user.id)
-    .eq("active", true)
-    .maybeSingle();
+    .eq("active", true);
+
+  const ROLE_PRIORITY: Record<string, number> = {
+    admin: 3,
+    manager: 2,
+    agent: 1,
+  };
+  const profile = (profileRows ?? []).sort(
+    (a, b) => (ROLE_PRIORITY[b.role] ?? 0) - (ROLE_PRIORITY[a.role] ?? 0)
+  )[0];
 
   const role = profile?.role || "agent";
   const displayName =
