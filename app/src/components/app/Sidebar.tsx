@@ -150,19 +150,18 @@ export function Sidebar({
   return (
     <aside className="w-64 bg-klary-navy text-white flex flex-col shrink-0 h-screen sticky top-0">
       {/* Logo header */}
-      <div className="p-6 border-b border-white/10">
+      <div className="px-6 pt-7 pb-5 border-b border-white/10">
         <Link href="/formation" className="inline-block">
-          {/* Le SVG blanc rend sur fond navy — orange conservé pour l'accent K.
-              On utilise <img> plutôt que next/image car les SVG vectoriels
-              n'ont pas besoin d'optimisation Next.js. */}
+          {/* SVG blanc + accent orange sur fond navy. Version vectorielle
+              pour rendu net à toute taille. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/klary-logo-white.svg"
             alt="Klary"
-            style={{ height: "36px", width: "auto", display: "block" }}
+            style={{ height: "52px", width: "auto", display: "block" }}
           />
         </Link>
-        <div className="text-[10px] font-semibold tracking-widest uppercase text-white/50 mt-2">
+        <div className="text-[10px] font-semibold tracking-widest uppercase text-white/50 mt-3">
           Plateforme interne
         </div>
       </div>
