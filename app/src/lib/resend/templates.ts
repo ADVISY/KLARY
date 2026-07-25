@@ -559,11 +559,111 @@ export const templates = {
       }
 
       <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Contact</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          ${row("Téléphone mobile", formData.phone_mobile)}
+          ${row("Téléphone fixe", formData.phone_landline)}
+          ${row("Email personnel", formData.personal_email)}
+          ${row("Lieu d'origine (Suisse)", formData.place_of_origin)}
+        </table>
+      </div>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Permis de conduire</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          ${row("Possède le permis", formData.driving_license)}
+          ${row("Types", formData.driving_license_types)}
+        </table>
+      </div>
+
+      ${
+        formData.unemployment_status === "oui"
+          ? `
+      <div style="padding:16px 20px; background:#fff7ed; border:1px solid #fed7aa; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">⚠ Chômage</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          ${row("Actuellement au chômage", "Oui")}
+          ${row("Caisse de chômage", formData.unemployment_fund_name)}
+          ${row("Adresse caisse", formData.unemployment_fund_address)}
+        </table>
+      </div>`
+          : ""
+      }
+
+      ${
+        formData.spouse_first_name || formData.spouse_last_name
+          ? `
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Conjoint / partenaire</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          ${row("Date de mariage/PACS", formData.marriage_date)}
+          ${row("Nom complet", [formData.spouse_first_name, formData.spouse_last_name].filter(Boolean).join(" "))}
+          ${row("Date de naissance", formData.spouse_dob)}
+          ${row("Nationalité", formData.spouse_nationality)}
+          ${row("Permis", formData.spouse_permit)}
+          ${row("Situation professionnelle", formData.spouse_situation)}
+          ${row("Depuis", formData.spouse_situation_since)}
+          ${row("Taux d'activité", formData.spouse_activity_rate)}
+          ${row("Lieu / pays d'activité", formData.spouse_activity_location)}
+          ${row("Alloc familiales CH", formData.spouse_alloc_ch)}
+          ${row("Alloc familiales étranger", formData.spouse_alloc_foreign)}
+        </table>
+      </div>`
+          : ""
+      }
+
+      ${(() => {
+        let children: any[] = [];
+        try {
+          children = JSON.parse(formData.children_json || "[]");
+        } catch {
+          children = [];
+        }
+        if (!children.length) return "";
+        return `
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Enfants à charge (${children.length})</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+          <thead>
+            <tr style="border-bottom:1px solid #DDD9E8;">
+              <th style="text-align:left; padding:6px 4px; font-size:11px; color:#6E6A8E;">Nom</th>
+              <th style="text-align:left; padding:6px 4px; font-size:11px; color:#6E6A8E;">Prénom</th>
+              <th style="text-align:left; padding:6px 4px; font-size:11px; color:#6E6A8E;">Date naissance</th>
+              <th style="text-align:left; padding:6px 4px; font-size:11px; color:#6E6A8E;">Parenté</th>
+              <th style="text-align:left; padding:6px 4px; font-size:11px; color:#6E6A8E;">Domicile</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${children
+              .map(
+                (c: any) => `
+              <tr style="border-bottom:1px solid #F0EBE4;">
+                <td style="padding:6px 4px; font-size:13px; color:#1F1B4B;">${c.last_name || "—"}</td>
+                <td style="padding:6px 4px; font-size:13px; color:#1F1B4B;">${c.first_name || "—"}</td>
+                <td style="padding:6px 4px; font-size:13px; color:#1F1B4B;">${c.dob || "—"}</td>
+                <td style="padding:6px 4px; font-size:13px; color:#1F1B4B;">${c.relation || "—"}</td>
+                <td style="padding:6px 4px; font-size:12px; color:#6E6A8E;">${c.address || "—"}</td>
+              </tr>`
+              )
+              .join("")}
+          </tbody>
+        </table>
+        <div style="margin-top:10px; font-size:12px; color:#6E6A8E;">
+          Demande alloc familiales : <strong>${formData.requests_family_allowances || "—"}</strong>
+          &nbsp;·&nbsp; 2ᵉ activité lucrative : <strong>${formData.secondary_activity || "—"}</strong>
+          ${formData.secondary_activity_rate ? ` (${formData.secondary_activity_rate}%)` : ""}
+        </div>
+      </div>`;
+      })()}
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
         <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Banque (virement salaire)</div>
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
           ${row("IBAN", formData.bank_iban)}
           ${row("Nom banque", formData.bank_name)}
           ${row("Titulaire compte", formData.bank_holder)}
+          ${row("Localité banque", formData.bank_locality)}
+          ${row("Bulletins salaire par email", formData.authorize_email_payslip === "on" ? "Autorisé" : "Refusé")}
         </table>
       </div>
 

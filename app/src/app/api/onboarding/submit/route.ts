@@ -41,9 +41,12 @@ const DOC_KEYS = [
   { key: "avs_card", label: "Carte AVS" },
   { key: "rib", label: "RIB / relevé bancaire" },
   { key: "permis_sejour", label: "Permis de séjour" },
+  { key: "permis_conduire", label: "Permis de conduire" },
   { key: "photo_badge", label: "Photo identité (badge & trombinoscope)" },
   { key: "casier_judiciaire", label: "Extrait de casier judiciaire" },
   { key: "poursuites", label: "Extrait de l'office des poursuites" },
+  { key: "acte_mariage", label: "Acte de mariage (si marié·e)" },
+  { key: "jugement_divorce", label: "Jugement de divorce (si divorcé·e)" },
   { key: "lpp_exit", label: "Certificat de sortie LPP" },
 ] as const;
 
@@ -106,6 +109,45 @@ const schema = z.object({
   prev_lpp_fund: z.string().max(200).optional().or(z.literal("")),
   prev_lpp_id: z.string().max(100).optional().or(z.literal("")),
   libre_passage: z.string().max(200).optional().or(z.literal("")),
+  // Contact perso (téléphone du candidat)
+  phone_mobile: z.string().min(1).max(50),
+  phone_landline: z.string().max(50).optional().or(z.literal("")),
+  personal_email: z.string().email().max(200).optional().or(z.literal("")),
+  place_of_origin: z.string().max(200).optional().or(z.literal("")),
+  // Permis de conduire
+  driving_license: z.enum(["oui", "non"]),
+  driving_license_types: z.string().max(200).optional().or(z.literal("")),
+  // Chômage
+  unemployment_status: z.enum(["non", "oui"]),
+  unemployment_fund_name: z.string().max(200).optional().or(z.literal("")),
+  unemployment_fund_address: z.string().max(300).optional().or(z.literal("")),
+  // Conjoint (si marié / pacs / concubinage)
+  marriage_date: z.string().optional().or(z.literal("")),
+  spouse_first_name: z.string().max(100).optional().or(z.literal("")),
+  spouse_last_name: z.string().max(100).optional().or(z.literal("")),
+  spouse_dob: z.string().optional().or(z.literal("")),
+  spouse_nationality: z.string().max(100).optional().or(z.literal("")),
+  spouse_permit: z.string().max(50).optional().or(z.literal("")),
+  spouse_situation: z
+    .enum(["salarie", "indemnites", "independant", "sans_activite", "sans_objet"])
+    .optional(),
+  spouse_situation_since: z.string().optional().or(z.literal("")),
+  spouse_activity_rate: z.string().max(10).optional().or(z.literal("")),
+  spouse_activity_location: z.string().max(200).optional().or(z.literal("")),
+  spouse_alloc_ch: z.enum(["oui", "non", "sans_objet"]).optional(),
+  spouse_alloc_foreign: z.enum(["oui", "non", "sans_objet"]).optional(),
+  // Enfants (tableau structuré, JSON string envoyé par le client)
+  children_json: z.string().optional().or(z.literal("")),
+  // Allocations + activités
+  requests_family_allowances: z.enum(["oui", "non"]).optional(),
+  secondary_activity: z.enum(["oui", "non"]).optional(),
+  secondary_activity_rate: z.string().max(10).optional().or(z.literal("")),
+  // Bulletin de salaire par email
+  authorize_email_payslip: z.union([
+    z.literal("on"),
+    z.literal(""),
+    z.boolean(),
+  ]).optional(),
   // Contact urgence
   emergency_name: z.string().min(1).max(200),
   emergency_relation: z.string().min(1).max(100),
@@ -151,6 +193,35 @@ export async function POST(request: NextRequest) {
       prev_lpp_fund: formData.get("prev_lpp_fund") || "",
       prev_lpp_id: formData.get("prev_lpp_id") || "",
       libre_passage: formData.get("libre_passage") || "",
+      phone_mobile: formData.get("phone_mobile"),
+      phone_landline: formData.get("phone_landline") || "",
+      personal_email: formData.get("personal_email") || "",
+      place_of_origin: formData.get("place_of_origin") || "",
+      driving_license: formData.get("driving_license") || "non",
+      driving_license_types: formData.get("driving_license_types") || "",
+      unemployment_status: formData.get("unemployment_status") || "non",
+      unemployment_fund_name: formData.get("unemployment_fund_name") || "",
+      unemployment_fund_address:
+        formData.get("unemployment_fund_address") || "",
+      marriage_date: formData.get("marriage_date") || "",
+      spouse_first_name: formData.get("spouse_first_name") || "",
+      spouse_last_name: formData.get("spouse_last_name") || "",
+      spouse_dob: formData.get("spouse_dob") || "",
+      spouse_nationality: formData.get("spouse_nationality") || "",
+      spouse_permit: formData.get("spouse_permit") || "",
+      spouse_situation: formData.get("spouse_situation") || undefined,
+      spouse_situation_since: formData.get("spouse_situation_since") || "",
+      spouse_activity_rate: formData.get("spouse_activity_rate") || "",
+      spouse_activity_location:
+        formData.get("spouse_activity_location") || "",
+      spouse_alloc_ch: formData.get("spouse_alloc_ch") || undefined,
+      spouse_alloc_foreign: formData.get("spouse_alloc_foreign") || undefined,
+      children_json: formData.get("children_json") || "",
+      requests_family_allowances:
+        formData.get("requests_family_allowances") || undefined,
+      secondary_activity: formData.get("secondary_activity") || undefined,
+      secondary_activity_rate: formData.get("secondary_activity_rate") || "",
+      authorize_email_payslip: formData.get("authorize_email_payslip") || "",
       emergency_name: formData.get("emergency_name"),
       emergency_relation: formData.get("emergency_relation"),
       emergency_phone: formData.get("emergency_phone"),
