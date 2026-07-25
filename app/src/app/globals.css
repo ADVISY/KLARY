@@ -24,3 +24,30 @@ body {
   color: var(--klary-ink);
   background: var(--klary-cream);
 }
+
+/* ─── Impression du certificat en A4 propre ─── */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .certificat-klary {
+    box-shadow: none !important;
+    margin: 0 !important;
+    page-break-inside: avoid;
+  }
+
+  /* Forcer les couleurs de fond et images à l'impression */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
