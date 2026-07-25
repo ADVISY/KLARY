@@ -93,17 +93,38 @@ export default async function EntretienPage({
               <h1 className="text-2xl md:text-3xl font-bold text-klary-navy mb-2">
                 Bonjour {candidate?.first_name} 👋
               </h1>
-              <p className="text-klary-grey mb-6 leading-relaxed">
+              <p className="text-klary-grey mb-4 leading-relaxed">
                 Choisissez le créneau qui vous convient pour votre entretien
                 {candidate?.position_applied && (
                   <> pour le poste <strong>{candidate.position_applied}</strong></>
                 )}
-                . Durée : 30 minutes, en visio Google Meet.
+                . Durée : 30 minutes, en présentiel à notre bureau.
               </p>
+
+              <div className="p-4 bg-klary-cream border-l-4 border-klary-navy rounded-lg mb-6 text-sm">
+                <div className="text-[10px] uppercase tracking-widest text-klary-navy font-bold mb-1">
+                  📍 Lieu du rendez-vous
+                </div>
+                <div className="text-klary-ink leading-relaxed">
+                  <strong>Bureau Klary Sàrl</strong><br />
+                  Route de Lausanne 31, 1052 Le Mont-sur-Lausanne
+                  <br />
+                  <a
+                    href="https://maps.google.com/?q=Route+de+Lausanne+31,+1052+Le+Mont-sur-Lausanne"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-klary-orange font-semibold hover:underline text-xs mt-1 inline-block"
+                  >
+                    Itinéraire Google Maps →
+                  </a>
+                </div>
+              </div>
 
               <SlotSelector token={params.token} slots={slots} />
 
               <p className="mt-6 text-xs text-klary-grey">
+                Après validation, vous recevrez un email récapitulatif avec une
+                invitation calendrier <code>.ics</code> à importer dans votre agenda.
                 Aucune de ces dates ne convient ? Écrivez-nous à{" "}
                 <a
                   href="mailto:rh@klary.ch"

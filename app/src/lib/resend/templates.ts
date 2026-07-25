@@ -252,8 +252,18 @@ export const templates = {
         ${slotsHtml}
       </table>
 
+      <div style="padding:16px 20px; background:#FAF5EF; border-left:4px solid #1A1660; border-radius:8px; margin:20px 0;">
+        <div style="font-size:11px; color:#6E6A8E; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">📍 Lieu du rendez-vous</div>
+        <div style="font-size:14px; color:#1F1B4B; line-height:1.5;">
+          <strong>Bureau Klary</strong><br>
+          Route de Lausanne 31<br>
+          1052 Le Mont-sur-Lausanne<br>
+          <a href="https://maps.google.com/?q=Route+de+Lausanne+31,+1052+Le+Mont-sur-Lausanne" style="color:#F0651F; font-size:12px;">Itinéraire Google Maps →</a>
+        </div>
+      </div>
+
       <p style="color:#6E6A8E; margin:16px 0 24px; font-size:13px; line-height:1.6;">
-        L'entretien se tiendra en visio (Google Meet) — le lien de connexion vous sera envoyé après confirmation. Si aucun de ces créneaux ne vous convient, contactez-nous directement à <a href="mailto:rh@klary.ch" style="color:#F0651F;">rh@klary.ch</a>.
+        L'entretien se tiendra en présentiel à notre bureau. Après confirmation de votre créneau, vous recevrez un email récapitulatif avec une invitation calendrier à importer directement dans votre agenda. Si aucun de ces créneaux ne vous convient, contactez-nous à <a href="mailto:rh@klary.ch" style="color:#F0651F;">rh@klary.ch</a>.
       </p>
       `,
       { label: "Choisir mon créneau", url: selectionUrl }
@@ -278,17 +288,37 @@ export const templates = {
         Votre entretien est confirmé au créneau suivant :
       </p>
       <div style="padding:20px; background:#FAF5EF; border-left:4px solid #F0651F; border-radius:8px; margin:20px 0;">
-        <div style="font-size:11px; color:#6E6A8E; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">Date & heure</div>
+        <div style="font-size:11px; color:#6E6A8E; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">📅 Date & heure</div>
         <div style="font-size:18px; color:#1A1660; font-weight:700;">${slotLabel}</div>
       </div>
-      <p style="color:#1F1B4B; margin:0 0 16px; font-size:15px; line-height:1.6;">
-        Vous recevrez le lien Google Meet 24h avant le rendez-vous à cette même adresse. Merci de tester votre caméra et micro en amont.
+
+      <div style="padding:20px; background:#FAF5EF; border-left:4px solid #1A1660; border-radius:8px; margin:20px 0;">
+        <div style="font-size:11px; color:#6E6A8E; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">📍 Lieu — rendez-vous en présentiel</div>
+        <div style="font-size:15px; color:#1F1B4B; line-height:1.6;">
+          <strong>Bureau Klary Sàrl</strong><br>
+          Route de Lausanne 31<br>
+          1052 Le Mont-sur-Lausanne<br>
+          <a href="https://maps.google.com/?q=Route+de+Lausanne+31,+1052+Le+Mont-sur-Lausanne" style="color:#F0651F; font-size:13px;">Itinéraire Google Maps →</a>
+        </div>
+      </div>
+
+      <div style="padding:14px 18px; background:#fff; border:1px dashed #F0651F; border-radius:8px; margin:20px 0;">
+        <div style="font-size:13px; color:#1F1B4B; line-height:1.5;">
+          <strong>📎 Invitation calendrier en pièce jointe</strong><br>
+          <span style="color:#6E6A8E; font-size:12px;">
+            Cliquez sur le fichier <code>entretien-klary.ics</code> pour l'ajouter automatiquement à votre agenda (Google, Outlook, Apple). L'événement inclut l'adresse cliquable et un rappel automatique 24h + 1h avant.
+          </span>
+        </div>
+      </div>
+
+      <p style="color:#1F1B4B; margin:16px 0; font-size:15px; line-height:1.6;">
+        Merci de vous présenter <strong>5 minutes avant l'heure</strong>. Sacha Bacconnier vous accueillera.
       </p>
       <p style="color:#1F1B4B; margin:0 0 16px; font-size:15px; line-height:1.6;">
         Si un empêchement survient, prévenez-nous dès que possible à <a href="mailto:rh@klary.ch" style="color:#F0651F;">rh@klary.ch</a>.
       </p>
       <p style="color:#6E6A8E; margin:24px 0 0; font-size:13px; line-height:1.6;">
-        À très bientôt,<br>
+        À très bientôt au bureau,<br>
         <strong style="color:#1A1660;">L'équipe Klary</strong>
       </p>
       `
@@ -324,9 +354,11 @@ export const templates = {
         <tr><td style="padding:0 0 12px; color:#1F1B4B; font-size:16px;"><strong>${firstName} ${lastName}</strong> — <a href="mailto:${email}" style="color:#F0651F;">${email}</a>${positionApplied ? `<br><span style="color:#6E6A8E; font-size:13px;">Poste : ${positionApplied}</span>` : ""}</td></tr>
         <tr><td style="padding:8px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Créneau choisi</td></tr>
         <tr><td style="padding:0 0 12px; color:#1F1B4B; font-size:16px;"><strong>${slotLabel}</strong></td></tr>
+        <tr><td style="padding:8px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Lieu</td></tr>
+        <tr><td style="padding:0 0 12px; color:#1F1B4B; font-size:14px;">Bureau Klary — Route de Lausanne 31, 1052 Le Mont-sur-Lausanne</td></tr>
       </table>
       <p style="color:#6E6A8E; font-size:13px; margin-top:20px;">
-        Pensez à envoyer le lien Google Meet 24h avant.
+        📎 Une invitation calendrier <code>.ics</code> est jointe — importez-la dans votre agenda. Le candidat a reçu la même invitation.
       </p>
       `,
       { label: "Voir la candidature", url: dashboardUrl }

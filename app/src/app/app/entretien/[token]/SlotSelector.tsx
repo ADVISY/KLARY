@@ -79,7 +79,7 @@ export function SlotSelector({
                   {formatSlot(slot.start)}
                 </div>
                 <div className="text-xs text-klary-grey mt-1">
-                  Durée : {slot.duration_min} min · Google Meet
+                  Durée : {slot.duration_min} min · Présentiel au bureau
                 </div>
               </div>
               <div

@@ -5,6 +5,7 @@ import { z } from "zod";
 import { sendEmail, ADMIN_EMAIL } from "@/lib/resend/client";
 import { templates } from "@/lib/resend/templates";
 import { formatSlot } from "@/lib/interview/generate-slots";
+import { generateInterviewIcs } from "@/lib/interview/ics";
 
 const schema = z.object({
   token: z.string().uuid(),
@@ -114,7 +115,22 @@ export async function POST(request: NextRequest) {
         process.env.NEXT_PUBLIC_APP_URL || "https://app.klary.ch";
       const dashboardUrl = `${appUrl}/admin/candidatures/${interview.candidate_id}`;
 
-      // Confirmation candidat
+      // Générer le fichier .ics — invitation calendrier avec adresse bureau
+      const icsContent = generateInterviewIcs({
+        uid: interview.id,
+        startISO: chosenSlot.start,
+        durationMin: chosenSlot.duration_min || 30,
+        candidateName: `${candidate.first_name} ${candidate.last_name}`,
+        candidateEmail: candidate.email,
+        organizerEmail: ADMIN_EMAIL,
+        organizerName: "Klary Sàrl",
+      });
+      const icsAttachment = {
+        filename: "entretien-klary.ics",
+        content: Buffer.from(icsContent, "utf-8"),
+      };
+
+      // Confirmation candidat (avec .ics)
       sendEmail({
         to: candidate.email,
         subject: "Votre entretien Klary est confirmé",
@@ -122,11 +138,12 @@ export async function POST(request: NextRequest) {
           firstName: candidate.first_name,
           slotLabel,
         }),
+        attachments: [icsAttachment],
       }).catch((err) =>
         console.error("Failed interview confirmation:", err)
       );
 
-      // Notif admin
+      // Notif admin (avec .ics)
       sendEmail({
         to: ADMIN_EMAIL,
         subject: `[Entretien] Créneau confirmé — ${candidate.first_name} ${candidate.last_name}`,
@@ -138,6 +155,7 @@ export async function POST(request: NextRequest) {
           slotLabel,
           dashboardUrl,
         }),
+        attachments: [icsAttachment],
       }).catch((err) => console.error("Failed interview notif admin:", err));
     }
 
