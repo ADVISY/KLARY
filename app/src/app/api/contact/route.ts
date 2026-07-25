@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { z } from "zod";
+import { sendEmail, ADMIN_EMAIL } from "@/lib/resend/client";
+import { templates } from "@/lib/resend/templates";
 
 const contactSchema = z.object({
   first_name: z.string().min(1).max(100),
@@ -20,6 +22,16 @@ const contactSchema = z.object({
   consent: z.union([z.literal("on"), z.literal("true"), z.boolean()]),
 });
 
+const SUBJECT_LABELS: Record<string, string> = {
+  demande_information: "Demande d'information",
+  demande_devis: "Demande de devis / comparatif",
+  assurance_maladie: "Assurance maladie (LAMal / LCA)",
+  prevoyance: "Prévoyance / 3e pilier",
+  lpp_libre_passage: "LPP libre passage",
+  hypotheque: "Hypothèque",
+  autre: "Autre",
+};
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -33,25 +45,27 @@ export async function POST(request: NextRequest) {
     }
 
     const data = parsed.data;
-
     const supabase = createSupabaseServerClient();
 
-    // Date de suppression auto : +24 mois
     const scheduledDeleteAt = new Date();
     scheduledDeleteAt.setMonth(scheduledDeleteAt.getMonth() + 24);
 
-    const { error } = await supabase.from("contact_messages").insert({
-      first_name: data.first_name,
-      last_name: data.last_name,
-      email: data.email,
-      phone: data.phone || null,
-      subject: data.subject,
-      message: data.message,
-      status: "new",
-      consent_given_at: new Date().toISOString(),
-      scheduled_delete_at: scheduledDeleteAt.toISOString(),
-      user_agent: request.headers.get("user-agent") || null,
-    });
+    const { error, data: inserted } = await supabase
+      .from("contact_messages")
+      .insert({
+        first_name: data.first_name,
+        last_name: data.last_name,
+        email: data.email,
+        phone: data.phone || null,
+        subject: data.subject,
+        message: data.message,
+        status: "new",
+        consent_given_at: new Date().toISOString(),
+        scheduled_delete_at: scheduledDeleteAt.toISOString(),
+        user_agent: request.headers.get("user-agent") || null,
+      })
+      .select()
+      .single();
 
     if (error) {
       console.error("Supabase insert error:", error);
@@ -61,15 +75,37 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO : notifier Sacha via Resend Edge Function ou email direct
-    // TODO : rate-limit par IP hash
+    // ─── Notifications email (Resend) ───
+    const subjectLabel = SUBJECT_LABELS[data.subject] || data.subject;
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://app.klary.ch";
+    const dashboardUrl = `${appUrl}/admin/contacts`;
+
+    // Notification admin
+    sendEmail({
+      to: ADMIN_EMAIL,
+      subject: `[Contact] ${subjectLabel} — ${data.first_name} ${data.last_name}`,
+      replyTo: data.email,
+      html: templates.contactAdminNotif({
+        firstName: data.first_name,
+        lastName: data.last_name,
+        email: data.email,
+        phone: data.phone || undefined,
+        subject: subjectLabel,
+        message: data.message,
+        dashboardUrl,
+      }),
+    }).catch((err) => console.error("Failed admin notif:", err));
+
+    // Accusé de réception au visiteur
+    sendEmail({
+      to: data.email,
+      subject: "Votre message a bien été reçu — Klary",
+      html: templates.contactConfirmation({ firstName: data.first_name }),
+    }).catch((err) => console.error("Failed contact confirmation:", err));
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
     console.error("Contact POST error:", error);
-    return NextResponse.json(
-      { error: "Erreur serveur" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
   }
 }

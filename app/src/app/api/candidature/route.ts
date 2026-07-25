@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { z } from "zod";
+import { sendEmail, ADMIN_EMAIL } from "@/lib/resend/client";
+import { templates } from "@/lib/resend/templates";
 
 const candidateSchema = z.object({
   first_name: z.string().min(1).max(100),
@@ -100,19 +102,23 @@ export async function POST(request: NextRequest) {
     const scheduledDeleteAt = new Date();
     scheduledDeleteAt.setMonth(scheduledDeleteAt.getMonth() + 12);
 
-    const { error: insertError } = await supabase.from("candidates").insert({
-      first_name: data.first_name,
-      last_name: data.last_name,
-      email: data.email,
-      phone: data.phone || null,
-      position_applied: data.position_applied,
-      cover_letter: data.cover_letter || null,
-      cv_storage_path: storagePath,
-      status: "new",
-      source: "site_klary",
-      consent_given_at: new Date().toISOString(),
-      scheduled_delete_at: scheduledDeleteAt.toISOString(),
-    });
+    const { error: insertError, data: inserted } = await supabase
+      .from("candidates")
+      .insert({
+        first_name: data.first_name,
+        last_name: data.last_name,
+        email: data.email,
+        phone: data.phone || null,
+        position_applied: data.position_applied,
+        cover_letter: data.cover_letter || null,
+        cv_storage_path: storagePath,
+        status: "new",
+        source: "site_klary",
+        consent_given_at: new Date().toISOString(),
+        scheduled_delete_at: scheduledDeleteAt.toISOString(),
+      })
+      .select()
+      .single();
 
     if (insertError) {
       console.error("Candidate insert error:", insertError);
@@ -124,7 +130,34 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO : notifier Sacha par email (Resend)
+    // ─── Notifications email (Resend) ───
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://app.klary.ch";
+    const dashboardUrl = `${appUrl}/admin/candidatures/${inserted?.id}`;
+
+    // Notification admin
+    sendEmail({
+      to: ADMIN_EMAIL,
+      subject: `[Candidature] ${data.position_applied} — ${data.first_name} ${data.last_name}`,
+      replyTo: data.email,
+      html: templates.candidatureAdminNotif({
+        firstName: data.first_name,
+        lastName: data.last_name,
+        email: data.email,
+        phone: data.phone || undefined,
+        positionApplied: data.position_applied,
+        dashboardUrl,
+      }),
+    }).catch((err) => console.error("Failed admin notif:", err));
+
+    // Accusé de réception au candidat
+    sendEmail({
+      to: data.email,
+      subject: "Votre candidature a bien été reçue — Klary",
+      html: templates.candidatureConfirmation({
+        firstName: data.first_name,
+        positionApplied: data.position_applied,
+      }),
+    }).catch((err) => console.error("Failed candidate confirmation:", err));
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
