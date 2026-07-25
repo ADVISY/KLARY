@@ -22,6 +22,19 @@ const contactSchema = z.object({
   consent: z.union([z.literal("on"), z.literal("true"), z.boolean()]),
 });
 
+// CORS : autoriser klary.ch (site Vite)
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin":
+    process.env.CORS_ALLOW_ORIGIN || "https://klary.ch",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Max-Age": "86400",
+};
+
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 204, headers: CORS_HEADERS });
+}
+
 const SUBJECT_LABELS: Record<string, string> = {
   demande_information: "Demande d'information",
   demande_devis: "Demande de devis / comparatif",
@@ -40,7 +53,7 @@ export async function POST(request: NextRequest) {
     if (!parsed.success) {
       return NextResponse.json(
         { error: "Données invalides", details: parsed.error.flatten() },
-        { status: 400 }
+        { status: 400, headers: CORS_HEADERS }
       );
     }
 
@@ -71,7 +84,7 @@ export async function POST(request: NextRequest) {
       console.error("Supabase insert error:", error);
       return NextResponse.json(
         { error: "Erreur d'enregistrement, veuillez réessayer." },
-        { status: 500 }
+        { status: 500, headers: CORS_HEADERS }
       );
     }
 
@@ -103,7 +116,7 @@ export async function POST(request: NextRequest) {
       html: templates.contactConfirmation({ firstName: data.first_name }),
     }).catch((err) => console.error("Failed contact confirmation:", err));
 
-    return NextResponse.json({ success: true }, { status: 200 });
+    return NextResponse.json({ success: true }, { status: 200, headers: CORS_HEADERS });
   } catch (error) {
     console.error("Contact POST error:", error);
     return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });

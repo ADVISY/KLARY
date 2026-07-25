@@ -120,62 +120,49 @@ const Recrutement = () => {
     const subject = `Candidature — ${form.poste} — ${form.firstName} ${form.lastName}`;
 
     try {
-      if (WEB3FORMS_ACCESS_KEY) {
-        // Submit avec pièces jointes via Web3Forms multipart
-        const formData = new FormData();
-        formData.append("access_key", WEB3FORMS_ACCESS_KEY);
-        formData.append("subject", subject);
-        formData.append("from_name", `${form.firstName} ${form.lastName}`.trim() || "Candidat klary.ch");
-        formData.append("email", form.email);
-        formData.append("replyto", form.email);
-        formData.append("to", RECIPIENT_EMAIL);
-        formData.append("poste", form.poste);
-        formData.append("nom", form.lastName);
-        formData.append("prenom", form.firstName);
-        formData.append("telephone", form.phone);
-        formData.append("motivations", form.why_klary);
-        formData.append("message", form.message);
+      // ─── Envoi vers Klary Admin (Next.js API → Supabase Storage + DB + Resend) ───
+      const KLARY_API_URL =
+        (import.meta.env.VITE_KLARY_API_URL as string) ||
+        "https://app.klary.ch/api/candidature";
 
-        // Attach files
-        DOCUMENTS.forEach((doc) => {
-          const file = files[doc.key];
-          if (file) {
-            formData.append(`document_${doc.key}`, file, file.name);
-          }
-        });
+      const formData = new FormData();
+      formData.append("first_name", form.firstName);
+      formData.append("last_name", form.lastName);
+      formData.append("email", form.email);
+      formData.append("phone", form.phone);
+      formData.append("position_applied", form.poste);
+      formData.append("why_klary", form.why_klary);
+      formData.append("cover_letter", form.message);
+      formData.append("consent", "true");
 
-        const res = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          body: formData,
-        });
-        const data = await res.json();
-        if (!res.ok || !data.success) {
-          throw new Error(data.message || "Erreur d'envoi");
-        }
-        setSuccess(true);
-      } else {
-        // Fallback mailto — ne peut pas attacher de fichiers, on instruit le candidat
-        const docsList = DOCUMENTS.filter((d) => files[d.key])
-          .map((d) => `- ${d.label} : ${files[d.key]?.name}`)
-          .join("\n");
-        const body = encodeURIComponent(
-          `Bonjour,\n\n` +
-            `Candidature pour : ${form.poste}\n\n` +
-            `Prénom : ${form.firstName}\n` +
-            `Nom : ${form.lastName}\n` +
-            `Email : ${form.email}\n` +
-            `Téléphone : ${form.phone}\n\n` +
-            `Motivations :\n${form.why_klary}\n\n` +
-            `Message :\n${form.message || "(aucun)"}\n\n` +
-            `─────────────────────\n` +
-            `⚠️ DOCUMENTS À JOINDRE MANUELLEMENT :\n` +
-            (docsList ||
-              "- CV\n- Diplômes & certifications\n- Extrait casier judiciaire\n- Extrait poursuites") +
-            `\n\n— Envoyé via klary.ch/recrutement`
-        );
-        window.location.href = `mailto:${RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
-        setSuccess(true);
+      // CV (obligatoire)
+      const cvFile = files.cv;
+      if (cvFile) {
+        formData.append("cv", cvFile, cvFile.name);
       }
+
+      // Documents additionnels
+      const additionalKeys: Array<"diplomes" | "casier" | "poursuites"> = [
+        "diplomes",
+        "casier",
+        "poursuites",
+      ];
+      additionalKeys.forEach((key) => {
+        const file = files[key];
+        if (file) {
+          formData.append(`document_${key}`, file, file.name);
+        }
+      });
+
+      const res = await fetch(KLARY_API_URL, {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data?.error || "Erreur d'envoi");
+      }
+      setSuccess(true);
     } catch (err: any) {
       setError(err?.message || "Une erreur s'est produite. Vous pouvez nous appeler directement.");
     } finally {
