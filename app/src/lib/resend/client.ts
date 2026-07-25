@@ -15,6 +15,23 @@ export const ADMIN_EMAIL =
   process.env.RESEND_ADMIN_EMAIL || "admin@klary.ch";
 
 /**
+ * Liste des emails des assistant(e)s Klary destinataires des tâches
+ * d'onboarding technique (création email Infomaniak, Google Agenda,
+ * Google Sheet, accès LYTA).
+ * Configurable via `RESEND_ASSISTANTS_EMAILS` (séparés par des virgules).
+ * Fallback : admin@klary.ch.
+ */
+export const ASSISTANTS_EMAILS: string[] = (
+  process.env.RESEND_ASSISTANTS_EMAILS || ""
+)
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+if (ASSISTANTS_EMAILS.length === 0) {
+  ASSISTANTS_EMAILS.push(ADMIN_EMAIL);
+}
+
+/**
  * Wrapper safe : ne fait rien si Resend n'est pas configuré.
  * (Utile en dev local sans clé API — évite de casser les endpoints.)
  */

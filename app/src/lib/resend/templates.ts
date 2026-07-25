@@ -454,6 +454,86 @@ export const templates = {
   },
 
   /**
+   * Onboarding technique — assistant(e)s notifié(e)s quand un agent
+   * vient de réussir sa 1ère certification Klary.
+   * Objectif : agent opérationnel dans la journée.
+   */
+  agentCertifiedSetupTasks({
+    firstName,
+    lastName,
+    userLoginEmail,
+    proposedKlaryEmail,
+    moduleTitle,
+    certNumber,
+    dashboardUrl,
+  }: {
+    firstName: string;
+    lastName: string;
+    userLoginEmail: string;
+    proposedKlaryEmail: string;
+    moduleTitle: string;
+    certNumber: string;
+    dashboardUrl: string;
+  }) {
+    return wrapEmail(
+      "Nouvel agent certifié — onboarding technique",
+      `
+      <h2 style="color:#1A1660; margin:0 0 12px; font-size:22px;">🎓 Nouvel agent certifié Klary</h2>
+      <p style="color:#6E6A8E; margin:0 0 24px; font-size:14px;">
+        L'agent ci-dessous vient de valider sa <strong>première certification</strong>. Merci de créer ses accès techniques dans la journée pour qu'il soit opérationnel.
+      </p>
+
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom:24px;">
+        <tr><td style="padding:8px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Agent</td></tr>
+        <tr><td style="padding:0 0 12px; color:#1F1B4B; font-size:16px;"><strong>${firstName} ${lastName}</strong><br><span style="color:#6E6A8E; font-size:13px;">Login app.klary.ch : ${userLoginEmail}</span></td></tr>
+        <tr><td style="padding:8px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Module validé</td></tr>
+        <tr><td style="padding:0 0 12px; color:#1F1B4B; font-size:15px;"><strong>${moduleTitle}</strong> — certificat n° <code style="color:#F0651F;">${certNumber}</code></td></tr>
+        <tr><td style="padding:8px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Email pro Klary proposé</td></tr>
+        <tr><td style="padding:0 0 12px; color:#F0651F; font-size:16px;"><strong>${proposedKlaryEmail}</strong></td></tr>
+      </table>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-left:4px solid #F0651F; border-radius:8px; margin:20px 0;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">✅ Checklist à effectuer aujourd'hui</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="font-size:14px; color:#1F1B4B;">
+          <tr>
+            <td style="padding:8px 0; vertical-align:top; width:24px;">☐</td>
+            <td style="padding:8px 0;"><strong>Créer l'adresse email pro sur Infomaniak</strong> : <code style="color:#F0651F;">${proposedKlaryEmail}</code><br><span style="color:#6E6A8E; font-size:12px;">Panneau Infomaniak → mail.infomaniak.com → nouvel utilisateur klary.ch. Pas de compte Gmail.</span></td>
+          </tr>
+          <tr>
+            <td style="padding:8px 0; vertical-align:top;">☐</td>
+            <td style="padding:8px 0;"><strong>Créer Google Agenda avec l'email Klary</strong><br><span style="color:#6E6A8E; font-size:12px;">Compte Google connecté avec <code>${proposedKlaryEmail}</code> (sans activer Gmail). Partager l'agenda à Sacha + assistantes.</span></td>
+          </tr>
+          <tr>
+            <td style="padding:8px 0; vertical-align:top;">☐</td>
+            <td style="padding:8px 0;"><strong>Créer Google Sheet de suivi avec l'email Klary</strong><br><span style="color:#6E6A8E; font-size:12px;">Sheet de suivi individuel copié depuis le template Klary. Partagé à Sacha + assistantes.</span></td>
+          </tr>
+          <tr>
+            <td style="padding:8px 0; vertical-align:top;">☐</td>
+            <td style="padding:8px 0;"><strong>Créer l'accès LYTA (CRM)</strong><br><span style="color:#6E6A8E; font-size:12px;">Compte LYTA avec l'email Klary. Rôle : agent. Portefeuille de leads à attribuer par le responsable.</span></td>
+          </tr>
+          <tr>
+            <td style="padding:8px 0; vertical-align:top;">☐</td>
+            <td style="padding:8px 0;"><strong>Transmettre les identifiants à l'agent</strong><br><span style="color:#6E6A8E; font-size:12px;">Email de bienvenue avec les logins créés — de préférence en présence de l'agent pour la 1re connexion.</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <div style="padding:12px 16px; background:#fff; border:1px dashed #1A1660; border-radius:6px; margin:16px 0; font-size:13px; color:#1A1660;">
+        ℹ <strong>Rappels importants :</strong><br>
+        • Toutes les connexions (Google Agenda, Google Sheet, LYTA) se font avec <strong>l'email pro Klary</strong>, pas avec un email perso.<br>
+        • <strong>Aucune boîte Gmail activée</strong> — l'email pro est uniquement sur Infomaniak. Google Workspace de l'agent = identité + Agenda + Sheet uniquement.<br>
+        • Une fois la checklist terminée, marquez la candidature en statut <strong>« Actif »</strong> dans le backoffice pour déclencher l'email d'activation à l'agent.
+      </div>
+
+      <p style="color:#6E6A8E; margin:24px 0 0; font-size:13px; line-height:1.6;">
+        Un souci technique ? <a href="mailto:it@klary.ch" style="color:#F0651F;">it@klary.ch</a>
+      </p>
+      `,
+      { label: "Voir la fiche agent dans le backoffice", url: dashboardUrl }
+    );
+  },
+
+  /**
    * Activation complète — accès portefeuille + CRM + email Klary
    */
   candidatureActivated({

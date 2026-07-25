@@ -5,6 +5,25 @@ import {
   calculateScore,
   addMonths,
 } from "@/lib/training/scoring";
+import {
+  sendEmail,
+  ASSISTANTS_EMAILS,
+} from "@/lib/resend/client";
+import { templates } from "@/lib/resend/templates";
+
+/**
+ * Normalise "Habib Agharbi" → "habib.agharbi@klary.ch"
+ * (ASCII, minuscules, retire accents)
+ */
+function proposeKlaryEmail(firstName: string, lastName: string): string {
+  const slug = (s: string) =>
+    s
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "") // retire les accents combinants
+      .replace(/[^a-z]/g, "");
+  return `${slug(firstName)}.${slug(lastName)}@klary.ch`;
+}
 
 /**
  * POST /api/training/submit
@@ -126,6 +145,63 @@ export async function POST(request: NextRequest) {
         .single();
 
       certification = certData;
+
+      // ─── Trigger onboarding assistantes SUR LA 1ère CERTIF ───
+      // Compter les certifs existantes de l'agent (avant celle-ci)
+      const { count: existingCertsCount } = await supabase
+        .from("training_certifications")
+        .select("*", { count: "exact", head: true })
+        .eq("user_id", user.id)
+        .neq("id", certData?.id ?? "00000000-0000-0000-0000-000000000000");
+
+      const isFirstCert = (existingCertsCount ?? 0) === 0;
+
+      if (isFirstCert && certData) {
+        // Récupérer profil agent (nom, prénom)
+        const { data: profile } = await supabase
+          .from("user_roles")
+          .select("first_name, last_name")
+          .eq("user_id", user.id)
+          .eq("active", true)
+          .maybeSingle();
+
+        const firstName = profile?.first_name || "";
+        const lastName = profile?.last_name || "";
+        const proposedEmail = proposeKlaryEmail(
+          firstName || "prenom",
+          lastName || "nom"
+        );
+        const appUrl =
+          process.env.NEXT_PUBLIC_APP_URL || "https://app.klary.ch";
+        const dashboardUrl = `${appUrl}/admin/evaluations/${attemptId}`;
+
+        // Envoi fire-and-forget aux assistantes — ne bloque pas le résultat
+        sendEmail({
+          to: ASSISTANTS_EMAILS,
+          subject: `[Onboarding] ${firstName} ${lastName} certifié — accès à créer aujourd'hui`,
+          html: templates.agentCertifiedSetupTasks({
+            firstName,
+            lastName,
+            userLoginEmail: user.email || "",
+            proposedKlaryEmail: proposedEmail,
+            moduleTitle: moduleData?.title || attempt.module_key,
+            certNumber,
+            dashboardUrl,
+          }),
+        })
+          .then(() =>
+            console.log(
+              "[training/submit] Email onboarding assistantes envoyé pour",
+              user.email
+            )
+          )
+          .catch((err) =>
+            console.error(
+              "[training/submit] Échec envoi email onboarding:",
+              err
+            )
+          );
+      }
     }
 
     return NextResponse.json({
