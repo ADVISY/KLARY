@@ -94,11 +94,13 @@ export function OnboardingForm({
   candidateFirstName,
   candidateLastName,
   positionApplied,
+  previewMode = false,
 }: {
   token: string;
   candidateFirstName: string;
   candidateLastName: string;
   positionApplied: string;
+  previewMode?: boolean;
 }) {
   const router = useRouter();
   const [step, setStep] = useState(0);
@@ -170,6 +172,17 @@ export function OnboardingForm({
     e.preventDefault();
     setError(null);
     setSubmitting(true);
+
+    // Mode aperçu : on simule l'envoi, aucune requête API réelle
+    if (previewMode) {
+      await new Promise((r) => setTimeout(r, 800));
+      alert(
+        "✓ Formulaire complété avec succès !\n\n(Mode aperçu — aucune donnée n'a été enregistrée ni envoyée.)"
+      );
+      setSubmitting(false);
+      return;
+    }
+
     try {
       const fd = new FormData(e.currentTarget);
       fd.append("token", token);
