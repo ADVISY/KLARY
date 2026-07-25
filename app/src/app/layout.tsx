@@ -21,6 +21,13 @@ export const metadata: Metadata = {
     "Le Mont-sur-Lausanne",
   ],
   authors: [{ name: "Klary Sàrl" }],
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/favicon-180.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({

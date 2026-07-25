@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const metadata = {
   title: "Vérifiez votre email",
   robots: "noindex, nofollow",
@@ -13,10 +15,15 @@ export default function CheckEmailPage({
   return (
     <main className="min-h-screen flex items-center justify-center px-6 py-12 bg-klary-cream">
       <div className="w-full max-w-md text-center">
-        <div className="flex flex-col items-center gap-1 mb-8">
-          <span className="text-3xl font-bold tracking-tight text-klary-navy">
-            KLARY
-          </span>
+        <div className="flex flex-col items-center gap-2 mb-8">
+          <Image
+            src="/klary-logo.png"
+            alt="Klary"
+            width={140}
+            height={47}
+            priority
+            className="h-10 w-auto"
+          />
           <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-klary-grey">
             Plateforme interne
           </span>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
@@ -129,10 +130,17 @@ export function Sidebar({ userEmail, role }: SidebarProps) {
     <aside className="w-64 bg-klary-navy text-white flex flex-col shrink-0 h-screen sticky top-0">
       {/* Logo header */}
       <div className="p-6 border-b border-white/10">
-        <div className="text-2xl font-bold tracking-tight text-white">
-          KLARY
-        </div>
-        <div className="text-[10px] font-semibold tracking-widest uppercase text-white/50 mt-1">
+        <Link href="/formation" className="inline-block">
+          <Image
+            src="/klary-logo-white.png"
+            alt="Klary"
+            width={140}
+            height={47}
+            priority
+            className="h-9 w-auto"
+          />
+        </Link>
+        <div className="text-[10px] font-semibold tracking-widest uppercase text-white/50 mt-2">
           Plateforme interne
         </div>
       </div>
