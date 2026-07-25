@@ -34,27 +34,62 @@ export async function POST(request: NextRequest) {
     }
 
     const d = parsed.data;
-    const { error } = await supabase
-      .from("user_roles")
-      .update({
-        first_name: d.first_name,
-        last_name: d.last_name,
-        date_of_birth: d.date_of_birth,
-        phone: d.phone || null,
-        postal_street: d.postal_street,
-        postal_zip: d.postal_zip,
-        postal_city: d.postal_city,
-        postal_country: d.postal_country,
-      })
-      .eq("user_id", user.id)
-      .eq("active", true);
+    const updateData = {
+      first_name: d.first_name,
+      last_name: d.last_name,
+      date_of_birth: d.date_of_birth,
+      phone: d.phone || null,
+      postal_street: d.postal_street,
+      postal_zip: d.postal_zip,
+      postal_city: d.postal_city,
+      postal_country: d.postal_country,
+    };
 
-    if (error) {
-      console.error("Profile update error:", error);
-      return NextResponse.json(
-        { error: "Erreur d'enregistrement" },
-        { status: 500 }
-      );
+    // Upsert : si la ligne n'existe pas encore, on la crée
+    const { data: existing } = await supabase
+      .from("user_roles")
+      .select("id")
+      .eq("user_id", user.id)
+      .eq("active", true)
+      .maybeSingle();
+
+    if (existing) {
+      const { error } = await supabase
+        .from("user_roles")
+        .update(updateData)
+        .eq("user_id", user.id)
+        .eq("active", true);
+
+      if (error) {
+        console.error("Profile UPDATE error:", error);
+        return NextResponse.json(
+          {
+            error: "Erreur d'enregistrement",
+            details: error.message,
+            code: error.code,
+          },
+          { status: 500 }
+        );
+      }
+    } else {
+      const { error } = await supabase.from("user_roles").insert({
+        user_id: user.id,
+        role: "agent",
+        active: true,
+        ...updateData,
+      });
+
+      if (error) {
+        console.error("Profile INSERT error:", error);
+        return NextResponse.json(
+          {
+            error: "Erreur d'enregistrement (création)",
+            details: error.message,
+            code: error.code,
+          },
+          { status: 500 }
+        );
+      }
     }
 
     return NextResponse.json({ success: true });
