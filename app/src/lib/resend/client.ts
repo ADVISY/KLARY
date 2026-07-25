@@ -48,11 +48,26 @@ if (COMPTABLE_EMAILS.length === 0) {
 }
 
 /**
+ * Emails "office" (back-office / secrétariat) mis en copie sur les
+ * notifications importantes (onboarding, ...).
+ * Configurable via `RESEND_OFFICE_EMAILS` (séparés par des virgules).
+ * Peut être vide (aucun office en CC).
+ */
+export const OFFICE_EMAILS: string[] = (
+  process.env.RESEND_OFFICE_EMAILS || ""
+)
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+/**
  * Wrapper safe : ne fait rien si Resend n'est pas configuré.
  * (Utile en dev local sans clé API — évite de casser les endpoints.)
  */
 export async function sendEmail(params: {
   to: string | string[];
+  cc?: string | string[];
+  bcc?: string | string[];
   subject: string;
   html: string;
   text?: string;
@@ -67,6 +82,8 @@ export async function sendEmail(params: {
   const result = await resend.emails.send({
     from: FROM_EMAIL,
     to: params.to,
+    cc: params.cc,
+    bcc: params.bcc,
     subject: params.subject,
     html: params.html,
     text: params.text,

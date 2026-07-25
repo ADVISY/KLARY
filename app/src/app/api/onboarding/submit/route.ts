@@ -6,6 +6,7 @@ import {
   sendEmail,
   COMPTABLE_EMAILS,
   ADMIN_EMAIL,
+  OFFICE_EMAILS,
 } from "@/lib/resend/client";
 import { templates } from "@/lib/resend/templates";
 
@@ -290,9 +291,17 @@ export async function POST(request: NextRequest) {
       process.env.NEXT_PUBLIC_APP_URL || "https://app.klary.ch";
     const dashboardUrl = `${appUrl}/admin/candidatures/${onbForm.candidate_id}`;
 
-    // ─── Email comptable ───
+    // ─── Email comptable (destinataire principal) + admin + office en CC ───
+    // Admin + office reçoivent le récap complet AVEC les liens signés vers
+    // les documents, dans le même message que le comptable — pas de mail
+    // séparé, tout le monde a la même vision d'un coup.
+    const ccList = [ADMIN_EMAIL, ...OFFICE_EMAILS].filter(
+      (e) => !COMPTABLE_EMAILS.includes(e)
+    );
+
     sendEmail({
       to: COMPTABLE_EMAILS,
+      cc: ccList.length > 0 ? ccList : undefined,
       subject: `[Onboarding] Dossier reçu — ${candidate.first_name} ${candidate.last_name}`,
       html: templates.onboardingReceivedByComptable({
         firstName: candidate.first_name,
@@ -315,17 +324,6 @@ export async function POST(request: NextRequest) {
       .catch((err) =>
         console.error("[onboarding/submit] Failed comptable email:", err)
       );
-
-    // ─── Notif admin (léger) ───
-    sendEmail({
-      to: ADMIN_EMAIL,
-      subject: `[Onboarding] ${candidate.first_name} ${candidate.last_name} a soumis son dossier`,
-      html: `
-        <p>Le candidat <strong>${candidate.first_name} ${candidate.last_name}</strong>
-        a soumis son dossier d'onboarding. Le comptable a été notifié en parallèle.</p>
-        <p><a href="${dashboardUrl}">Voir la candidature dans le backoffice</a></p>
-      `,
-    }).catch((err) => console.error("Failed admin notif onboarding:", err));
 
     // ─── Confirmation candidat ───
     sendEmail({
