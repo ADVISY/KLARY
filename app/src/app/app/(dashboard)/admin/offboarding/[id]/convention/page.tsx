@@ -1,7 +1,8 @@
 import { redirect, notFound } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { ConventionSortie } from "@/components/ConventionSortie";
-import { PrintClientButton } from "../../../certifications/[certId]/apercu/PrintClientButton";
+import { PrintButton } from "./PrintButton";
+
 
 export const metadata = {
   title: "Convention de sortie — à imprimer",
@@ -57,7 +58,7 @@ export default async function ConventionPage({
           >
             Retour
           </a>
-          <PrintClientButton />
+          <PrintButton />
         </div>
       </div>
 
