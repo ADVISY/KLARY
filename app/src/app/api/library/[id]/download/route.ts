@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
+import { createClient } from "@supabase/supabase-js";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 /**
@@ -57,12 +56,9 @@ export async function GET(
       return NextResponse.json({ error: "Document introuvable" }, { status: 404 });
     }
 
-    const cookieStore = cookies();
-    const service = createServerClient(supaUrl, serviceKey, {
-      cookies: {
-        getAll: () => cookieStore.getAll(),
-        setAll: () => {},
-      },
+    // Client service_role pur (sans cookies) — bypass RLS/session pour signed URL
+    const service = createClient(supaUrl, serviceKey, {
+      auth: { persistSession: false, autoRefreshToken: false },
     });
 
     const { data: sig, error: sigErr } = await service.storage
