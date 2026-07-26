@@ -655,20 +655,21 @@ function DocumentRow({
             href={signedUrl}
             target="_blank"
             rel="noopener noreferrer"
+            title="Ouvrir dans un nouvel onglet"
             className="px-3 py-2 text-xs font-semibold text-klary-navy border border-klary-navy/20 rounded-lg hover:bg-klary-navy/5 transition"
           >
-            Voir
+            👁 Voir
           </a>
           <a
-            href={signedUrl}
-            download={filename}
+            href={`${signedUrl}&download=${encodeURIComponent(filename)}`}
+            title="Télécharger sur votre appareil"
             className={`px-3 py-2 text-xs font-semibold text-white rounded-lg transition ${
               highlight
                 ? "bg-klary-orange hover:bg-klary-orange/90"
                 : "bg-klary-navy hover:bg-klary-navy/90"
             }`}
           >
-            Télécharger
+            ⬇ Télécharger
           </a>
         </div>
       ) : (

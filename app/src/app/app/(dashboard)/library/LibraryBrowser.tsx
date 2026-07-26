@@ -93,6 +93,23 @@ export function LibraryBrowser({
     }
   };
 
+  const preview = async (docId: string) => {
+    setDownloading(docId);
+    try {
+      const res = await fetch(`/api/library/${docId}/download?preview=1`);
+      const data = await res.json();
+      if (data?.url) {
+        window.open(data.url, "_blank", "noopener,noreferrer");
+      } else {
+        alert("Impossible d'afficher ce document.");
+      }
+    } catch {
+      alert("Erreur réseau.");
+    } finally {
+      setDownloading(null);
+    }
+  };
+
   return (
     <>
       {/* Search + Filter bar */}
@@ -194,18 +211,29 @@ export function LibraryBrowser({
                   </div>
                 )}
 
-                <div className="flex items-center justify-between pt-3 border-t border-klary-light-grey">
+                <div className="flex items-center justify-between pt-3 border-t border-klary-light-grey gap-2">
                   <div className="text-xs text-klary-grey truncate flex-1 min-w-0">
                     {d.filename}
                     {d.size_bytes ? ` · ${formatSize(d.size_bytes)}` : ""}
                   </div>
-                  <button
-                    onClick={() => download(d.id)}
-                    disabled={downloading === d.id}
-                    className="ml-3 px-3 py-1.5 bg-klary-orange text-white text-xs font-semibold rounded-lg hover:bg-klary-orange/90 disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
-                  >
-                    {downloading === d.id ? "…" : "Télécharger"}
-                  </button>
+                  <div className="flex gap-2 shrink-0">
+                    <button
+                      onClick={() => preview(d.id)}
+                      disabled={downloading === d.id}
+                      title="Ouvrir dans un nouvel onglet"
+                      className="px-3 py-1.5 bg-white border border-klary-navy text-klary-navy text-xs font-semibold rounded-lg hover:bg-klary-navy hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {downloading === d.id ? "…" : "👁 Aperçu"}
+                    </button>
+                    <button
+                      onClick={() => download(d.id)}
+                      disabled={downloading === d.id}
+                      title="Télécharger sur votre appareil"
+                      className="px-3 py-1.5 bg-klary-orange text-white text-xs font-semibold rounded-lg hover:bg-klary-orange/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {downloading === d.id ? "…" : "⬇"}
+                    </button>
+                  </div>
                 </div>
               </div>
             );

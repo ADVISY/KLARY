@@ -6,12 +6,15 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 /**
  * GET /api/library/[id]/download
  * Retourne une signed URL 1h vers le document + incrémente le compteur.
+ *   - Défaut : Content-Disposition attachment (déclenche téléchargement)
+ *   - ?preview=1 : Content-Disposition inline (rendu direct dans navigateur)
  * Réservé aux utilisateurs authentifiés.
  */
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  const preview = req.nextUrl.searchParams.get("preview") === "1";
   const supabase = createSupabaseServerClient();
   const {
     data: { user },
@@ -44,7 +47,11 @@ export async function GET(
 
   const { data: sig } = await service.storage
     .from("library")
-    .createSignedUrl(doc.storage_path, 3600, { download: doc.filename });
+    .createSignedUrl(
+      doc.storage_path,
+      3600,
+      preview ? undefined : { download: doc.filename }
+    );
 
   if (!sig?.signedUrl) {
     return NextResponse.json(
@@ -53,12 +60,14 @@ export async function GET(
     );
   }
 
-  // Incrémenter le compteur (best-effort)
-  service
-    .from("library_documents")
-    .update({ download_count: (doc.download_count || 0) + 1 })
-    .eq("id", doc.id)
-    .then(() => {});
+  // Incrémenter le compteur (best-effort) — uniquement pour téléchargement réel
+  if (!preview) {
+    service
+      .from("library_documents")
+      .update({ download_count: (doc.download_count || 0) + 1 })
+      .eq("id", doc.id)
+      .then(() => {});
+  }
 
   return NextResponse.json({ url: sig.signedUrl });
 }

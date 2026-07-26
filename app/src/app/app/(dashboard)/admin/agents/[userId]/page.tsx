@@ -175,12 +175,21 @@ export default async function AgentDetailPage({
           />
         </div>
 
-        <div className="mt-6">
-          <JobTitleEditor
-            userId={params.userId}
-            currentJobTitle={profile.job_title || null}
-          />
-        </div>
+        {profile.role === "agent" && (
+          <div className="mt-6">
+            <JobTitleEditor
+              userId={params.userId}
+              currentJobTitle={profile.job_title || null}
+            />
+          </div>
+        )}
+        {(profile.role === "admin" || profile.role === "manager") && (
+          <div className="mt-6 p-3 bg-blue-50 border-l-4 border-blue-400 rounded text-xs text-blue-900">
+            💼 En tant qu'<strong>{profile.role}</strong>, cet utilisateur voit
+            l'intégralité de la bibliothèque — pas besoin d'assigner un poste
+            (conseiller / téléphoniste).
+          </div>
+        )}
       </div>
 
       {/* Actions rapides */}
