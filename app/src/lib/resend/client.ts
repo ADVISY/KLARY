@@ -62,6 +62,52 @@ export const OFFICE_EMAILS: string[] = (
  * Wrapper safe : ne fait rien si Resend n'est pas configuré.
  * (Utile en dev local sans clé API — évite de casser les endpoints.)
  */
+/**
+ * Journalise un email dans email_events (best-effort, ne bloque jamais l'envoi).
+ * Utilise service_role pour bypasser RLS.
+ */
+async function logEmailEvent(entry: {
+  candidate_id?: string | null;
+  user_id?: string | null;
+  event_type: string;
+  recipient: string | string[];
+  cc?: string | string[];
+  subject: string;
+  resend_id?: string | null;
+  status: "sent" | "failed" | "skipped";
+  error?: string | null;
+}) {
+  try {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!url || !key) return;
+    const asString = (v?: string | string[] | null) =>
+      Array.isArray(v) ? v.join(", ") : v || null;
+    await fetch(`${url}/rest/v1/email_events`, {
+      method: "POST",
+      headers: {
+        apikey: key,
+        Authorization: `Bearer ${key}`,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify({
+        candidate_id: entry.candidate_id || null,
+        user_id: entry.user_id || null,
+        event_type: entry.event_type,
+        recipient: asString(entry.recipient),
+        cc: asString(entry.cc),
+        subject: entry.subject,
+        resend_id: entry.resend_id || null,
+        status: entry.status,
+        error: entry.error || null,
+      }),
+    });
+  } catch (e) {
+    console.error("[email_events] log échec (non bloquant):", e);
+  }
+}
+
 export async function sendEmail(params: {
   to: string | string[];
   cc?: string | string[];
@@ -71,9 +117,25 @@ export async function sendEmail(params: {
   text?: string;
   replyTo?: string;
   attachments?: { filename: string; content: string | Buffer }[];
+  // ─── Contexte pour journalisation email_events ───
+  candidateId?: string | null;
+  userId?: string | null;
+  eventType?: string; // ex: 'refus', 'invitation_entretien', 'onboarding_confirm', ...
 }) {
   if (!resend) {
     console.warn("[Resend] RESEND_API_KEY manquant — email non envoyé");
+    if (params.eventType) {
+      await logEmailEvent({
+        candidate_id: params.candidateId,
+        user_id: params.userId,
+        event_type: params.eventType,
+        recipient: params.to,
+        cc: params.cc,
+        subject: params.subject,
+        status: "skipped",
+        error: "RESEND_API_KEY manquant",
+      });
+    }
     return { ok: false, skipped: true };
   }
 
@@ -91,7 +153,32 @@ export async function sendEmail(params: {
 
   if (result.error) {
     console.error("[Resend] Erreur envoi:", result.error);
+    if (params.eventType) {
+      await logEmailEvent({
+        candidate_id: params.candidateId,
+        user_id: params.userId,
+        event_type: params.eventType,
+        recipient: params.to,
+        cc: params.cc,
+        subject: params.subject,
+        status: "failed",
+        error: result.error.message,
+      });
+    }
     return { ok: false, error: result.error.message };
+  }
+
+  if (params.eventType) {
+    await logEmailEvent({
+      candidate_id: params.candidateId,
+      user_id: params.userId,
+      event_type: params.eventType,
+      recipient: params.to,
+      cc: params.cc,
+      subject: params.subject,
+      resend_id: result.data?.id,
+      status: "sent",
+    });
   }
 
   return { ok: true, id: result.data?.id };

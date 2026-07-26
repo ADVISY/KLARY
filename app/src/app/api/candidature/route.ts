@@ -235,6 +235,8 @@ export async function POST(request: NextRequest) {
       to: ADMIN_EMAIL,
       subject: `[Candidature] ${data.position_applied} — ${data.first_name} ${data.last_name}`,
       replyTo: data.email,
+      candidateId: inserted?.id,
+      eventType: "candidature_admin_notif",
       html: templates.candidatureAdminNotif({
         firstName: data.first_name,
         lastName: data.last_name,
@@ -248,6 +250,8 @@ export async function POST(request: NextRequest) {
     sendEmail({
       to: data.email,
       subject: "Votre candidature a bien été reçue — Klary",
+      candidateId: inserted?.id,
+      eventType: "candidature_confirmation",
       html: templates.candidatureConfirmation({
         firstName: data.first_name,
         positionApplied: data.position_applied,

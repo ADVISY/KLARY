@@ -56,6 +56,21 @@ const DOC_LABELS: Record<string, string> = {
   poursuites: "Extrait de l'office des poursuites",
 };
 
+// Labels lisibles pour les email_events
+const EMAIL_EVENT_LABELS: Record<string, string> = {
+  candidature_confirmation: "Accusé de réception candidature",
+  candidature_admin_notif: "Notif admin (nouvelle candidature)",
+  candidature_refus: "Refus poli",
+  invitation_entretien: "Invitation entretien + 3 créneaux",
+  entretien_confirmation_candidat: "Confirmation créneau candidat",
+  entretien_notif_admin: "Notif admin (créneau confirmé)",
+  candidature_bienvenue: "Bienvenue + lien onboarding",
+  candidature_activation: "Activation accès complets",
+  onboarding_recu_comptable: "Onboarding reçu → comptable + CC",
+  onboarding_confirmation_candidat: "Confirmation onboarding candidat",
+  agent_1re_certif_assistantes: "1ère certif → assistantes",
+};
+
 function formatFileSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} o`;
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} Ko`;
@@ -97,6 +112,13 @@ export default async function CandidatureDetailPage({
     .eq("candidate_id", params.id)
     .order("created_at", { ascending: false })
     .limit(10);
+
+  // Historique emails envoyés
+  const { data: emails } = await supabase
+    .from("email_events")
+    .select("event_type, recipient, cc, subject, status, error, sent_at")
+    .eq("candidate_id", params.id)
+    .order("sent_at", { ascending: false });
 
   // Créneaux d'entretien (s'il en existe)
   const { data: interview } = await supabase
@@ -464,6 +486,82 @@ export default async function CandidatureDetailPage({
           </button>
         </form>
       </div>
+
+      {/* ─── Historique EMAILS envoyés ─── */}
+      {emails && emails.length > 0 && (
+        <div className="bg-white rounded-2xl border border-klary-light-grey p-6 mb-6">
+          <h2 className="font-bold text-klary-navy mb-4 flex items-center gap-2">
+            📧 Emails envoyés ({emails.length})
+          </h2>
+          <ul className="space-y-2">
+            {emails.map((e: any, i: number) => {
+              const label =
+                EMAIL_EVENT_LABELS[e.event_type] || e.event_type;
+              const isFailed = e.status === "failed";
+              return (
+                <li
+                  key={i}
+                  className={`p-3 rounded-xl border ${
+                    isFailed
+                      ? "border-red-300 bg-red-50/40"
+                      : "border-klary-light-grey bg-white"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span
+                          className={`text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded ${
+                            isFailed
+                              ? "bg-red-100 text-red-800"
+                              : "bg-klary-orange/10 text-klary-orange"
+                          }`}
+                        >
+                          {label}
+                        </span>
+                        <span className="text-[11px] font-mono text-klary-grey">
+                          {new Date(e.sent_at).toLocaleString("fr-CH", {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "2-digit",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </span>
+                        {isFailed && (
+                          <span className="text-[10px] uppercase font-bold text-red-700">
+                            ⚠ Échec
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-sm font-semibold text-klary-navy mt-1">
+                        {e.subject}
+                      </div>
+                      <div className="text-xs text-klary-grey mt-0.5">
+                        <strong>À :</strong> {e.recipient}
+                        {e.cc && (
+                          <>
+                            <br />
+                            <strong>Cc :</strong> {e.cc}
+                          </>
+                        )}
+                        {e.error && (
+                          <>
+                            <br />
+                            <span className="text-red-700">
+                              Erreur : {e.error}
+                            </span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
 
       {/* ─── Historique événements ─── */}
       {events && events.length > 0 && (

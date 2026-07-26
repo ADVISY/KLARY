@@ -448,6 +448,8 @@ export async function POST(request: NextRequest) {
       to: COMPTABLE_EMAILS,
       cc: ccList.length > 0 ? ccList : undefined,
       subject: `[Onboarding] Dossier reçu — ${candidate.first_name} ${candidate.last_name}`,
+      candidateId: onbForm.candidate_id,
+      eventType: "onboarding_recu_comptable",
       html: templates.onboardingReceivedByComptable({
         firstName: candidate.first_name,
         lastName: candidate.last_name,
@@ -474,6 +476,8 @@ export async function POST(request: NextRequest) {
     sendEmail({
       to: candidate.email,
       subject: "Votre dossier d'onboarding est bien reçu — Klary",
+      candidateId: onbForm.candidate_id,
+      eventType: "onboarding_confirmation_candidat",
       html: templates.onboardingConfirmation({
         firstName: candidate.first_name,
       }),

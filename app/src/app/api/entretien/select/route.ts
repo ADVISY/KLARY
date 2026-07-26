@@ -134,6 +134,8 @@ export async function POST(request: NextRequest) {
       sendEmail({
         to: candidate.email,
         subject: "Votre entretien Klary est confirmé",
+        candidateId: interview.candidate_id,
+        eventType: "entretien_confirmation_candidat",
         html: templates.interviewConfirmation({
           firstName: candidate.first_name,
           slotLabel,
@@ -147,6 +149,8 @@ export async function POST(request: NextRequest) {
       sendEmail({
         to: ADMIN_EMAIL,
         subject: `[Entretien] Créneau confirmé — ${candidate.first_name} ${candidate.last_name}`,
+        candidateId: interview.candidate_id,
+        eventType: "entretien_notif_admin",
         html: templates.interviewNotifAdmin({
           firstName: candidate.first_name,
           lastName: candidate.last_name,

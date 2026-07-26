@@ -179,6 +179,8 @@ export async function POST(request: NextRequest) {
         sendEmail({
           to: ASSISTANTS_EMAILS,
           subject: `[Onboarding] ${firstName} ${lastName} certifié — accès à créer aujourd'hui`,
+          userId: user.id,
+          eventType: "agent_1re_certif_assistantes",
           html: templates.agentCertifiedSetupTasks({
             firstName,
             lastName,

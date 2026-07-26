@@ -141,6 +141,8 @@ export async function POST(
           await sendEmail({
             to: candidateBefore.email,
             subject: "Votre candidature — Klary",
+            candidateId: params.id,
+            eventType: "candidature_refus",
             html: templates.candidatureRejection({
               firstName: candidateBefore.first_name,
               positionApplied: candidateBefore.position_applied || undefined,
@@ -183,6 +185,8 @@ export async function POST(
             const sendResult = await sendEmail({
               to: candidateBefore.email,
               subject: "Votre entretien Klary — choisissez votre créneau",
+              candidateId: params.id,
+              eventType: "invitation_entretien",
               html: templates.interviewInvitation({
                 firstName: candidateBefore.first_name,
                 positionApplied:
@@ -199,6 +203,8 @@ export async function POST(
             const sendResult = await sendEmail({
               to: candidateBefore.email,
               subject: "Votre entretien Klary — choisissez votre créneau",
+              candidateId: params.id,
+              eventType: "invitation_entretien",
               html: templates.interviewInvitation({
                 firstName: candidateBefore.first_name,
                 positionApplied:
@@ -234,6 +240,8 @@ export async function POST(
           await sendEmail({
             to: candidateBefore.email,
             subject: "Bienvenue chez Klary — votre parcours démarre",
+            candidateId: params.id,
+            eventType: "candidature_bienvenue",
             html: templates.candidatureHired({
               firstName: candidateBefore.first_name,
               positionApplied: candidateBefore.position_applied || undefined,
@@ -245,6 +253,8 @@ export async function POST(
           await sendEmail({
             to: candidateBefore.email,
             subject: "Vous êtes activé·e — bienvenue en production",
+            candidateId: params.id,
+            eventType: "candidature_activation",
             html: templates.candidatureActivated({
               firstName: candidateBefore.first_name,
               portalUrl: `${appUrl}/formation`,
