@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { InitiateOffboardingModal } from "./InitiateOffboardingModal";
 
@@ -238,12 +239,20 @@ export default async function AdminAgentsPage() {
                       )}
                     </td>
                     <td className="px-5 py-3 text-right">
-                      {r.active && viewerRole?.role === "admin" && (
-                        <InitiateOffboardingModal
-                          agentId={r.user_id}
-                          agentName={fullName}
-                        />
-                      )}
+                      <div className="flex flex-col items-end gap-1.5">
+                        <Link
+                          href={`/admin/agents/${r.user_id}`}
+                          className="text-xs font-semibold text-klary-orange hover:underline"
+                        >
+                          Fiche complète →
+                        </Link>
+                        {r.active && viewerRole?.role === "admin" && (
+                          <InitiateOffboardingModal
+                            agentId={r.user_id}
+                            agentName={fullName}
+                          />
+                        )}
+                      </div>
                     </td>
                   </tr>
                 );
