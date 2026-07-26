@@ -9,11 +9,17 @@ type Doc = {
   description: string | null;
   category: string;
   tags: string[] | null;
+  target_roles: string[] | null;
   filename: string;
   size_bytes: number | null;
   is_active: boolean;
   download_count: number | null;
   created_at: string;
+};
+
+const JOB_TITLE_LABELS: Record<string, string> = {
+  conseiller: "Conseiller",
+  telephoniste: "Téléphoniste",
 };
 
 type Category = { key: string; label: string };
@@ -198,6 +204,35 @@ export function AdminLibraryPanel({
                 className="input"
               />
             </div>
+
+            <div className="md:col-span-2">
+              <label className="block text-xs font-semibold text-klary-ink mb-1.5">
+                Postes concernés
+              </label>
+              <div className="flex flex-wrap gap-3">
+                <label className="flex items-center gap-2 px-3 py-2 border border-klary-light-grey rounded-lg cursor-pointer hover:border-klary-orange text-sm">
+                  <input
+                    type="checkbox"
+                    name="target_roles"
+                    value="conseiller"
+                    className="accent-klary-orange"
+                  />
+                  Conseiller
+                </label>
+                <label className="flex items-center gap-2 px-3 py-2 border border-klary-light-grey rounded-lg cursor-pointer hover:border-klary-orange text-sm">
+                  <input
+                    type="checkbox"
+                    name="target_roles"
+                    value="telephoniste"
+                    className="accent-klary-orange"
+                  />
+                  Téléphoniste
+                </label>
+              </div>
+              <div className="text-[11px] text-klary-grey mt-1">
+                Si aucun poste coché : document visible par TOUS les agents. Sinon : visible uniquement pour les postes cochés.
+              </div>
+            </div>
           </div>
 
           {uploadError && (
@@ -269,6 +304,22 @@ export function AdminLibraryPanel({
                         ))}
                       </div>
                     )}
+                    <div className="flex gap-1 mt-1">
+                      {d.target_roles && d.target_roles.length > 0 ? (
+                        d.target_roles.map((r) => (
+                          <span
+                            key={r}
+                            className="text-[10px] px-1.5 py-0.5 rounded bg-klary-orange/10 text-klary-orange font-semibold"
+                          >
+                            👤 {JOB_TITLE_LABELS[r] || r}
+                          </span>
+                        ))
+                      ) : (
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 font-semibold">
+                          👥 Tous les postes
+                        </span>
+                      )}
+                    </div>
                   </td>
                   <td className="px-5 py-3 text-klary-ink text-xs">
                     {categoryLabel(d.category)}

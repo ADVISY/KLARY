@@ -5,6 +5,12 @@ import { cookies } from "next/headers";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { AgentDocumentsSection } from "./AgentDocumentsSection";
 import { InitiateOffboardingModal } from "../InitiateOffboardingModal";
+import { JobTitleEditor } from "./JobTitleEditor";
+
+const JOB_TITLE_LABELS: Record<string, string> = {
+  conseiller: "Conseiller",
+  telephoniste: "Téléphoniste",
+};
 
 export const metadata = {
   title: "Fiche agent — Admin",
@@ -145,12 +151,16 @@ export default async function AgentDetailPage({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-6 text-sm">
+          <InfoBlock
+            label="Poste occupé"
+            value={
+              profile.job_title
+                ? JOB_TITLE_LABELS[profile.job_title] || profile.job_title
+                : null
+            }
+          />
           <InfoBlock label="Date de naissance" value={profile.date_of_birth} />
           <InfoBlock label="Téléphone" value={profile.phone} />
-          <InfoBlock
-            label="Profil complet"
-            value={profile.profile_completed ? "✓ Oui" : "⏳ Non"}
-          />
           <InfoBlock label="Rue" value={profile.postal_street} />
           <InfoBlock
             label="NPA + ville"
@@ -159,7 +169,17 @@ export default async function AgentDetailPage({
               null
             }
           />
-          <InfoBlock label="Pays" value={profile.postal_country} />
+          <InfoBlock
+            label="Profil complet"
+            value={profile.profile_completed ? "✓ Oui" : "⏳ Non"}
+          />
+        </div>
+
+        <div className="mt-6">
+          <JobTitleEditor
+            userId={params.userId}
+            currentJobTitle={profile.job_title || null}
+          />
         </div>
       </div>
 

@@ -40,6 +40,11 @@ export async function POST(request: NextRequest) {
     const description = String(fd.get("description") || "").trim();
     const category = String(fd.get("category") || "").trim();
     const tagsRaw = String(fd.get("tags") || "").trim();
+    const targetRolesRaw = fd.getAll("target_roles").map((r) => String(r));
+    // Filtre uniquement les valeurs valides
+    const targetRoles = targetRolesRaw.filter((r) =>
+      ["conseiller", "telephoniste"].includes(r)
+    );
 
     if (!file || file.size === 0) {
       return NextResponse.json({ error: "Fichier manquant" }, { status: 400 });
@@ -108,6 +113,7 @@ export async function POST(request: NextRequest) {
         description: description || null,
         category,
         tags,
+        target_roles: targetRoles,
         storage_path: path,
         filename: file.name,
         size_bytes: file.size,
