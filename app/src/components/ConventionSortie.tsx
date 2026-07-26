@@ -183,40 +183,64 @@ export function ConventionSortie({
       {/* Article 3 — Compte de caution */}
       <Section
         number={3}
-        title="Compte de caution et rétention des commissions (Annexe III art. 2-3)"
+        title="Compte de caution — blocage des commissions à venir (Annexe III)"
       >
-        Conformément à l'Annexe III du contrat agent :
-        <div
-          style={{
-            marginTop: "2mm",
-            padding: "3mm 4mm",
-            background: isAggravated ? "#fff5f5" : "#f0f9ff",
-            borderLeft: `3px solid ${isAggravated ? "#dc2626" : "#0284c7"}`,
-            borderRadius: "1.5mm",
-          }}
-        >
-          {isAggravated ? (
-            <>
-              <strong>
-                Cas aggravé — {reasonLabel.toLowerCase()} :
-              </strong>{" "}
-              Klary conserve <strong>l'intégralité des commissions dues</strong>{" "}
-              et les comptabilise dans le compte de caution pendant{" "}
-              <strong>TROIS (3) ANS</strong> à compter de la fin du contrat.
-              Le solde éventuel n'est reversé qu'à l'issue de cette période,
-              sous réserve des annulations et dommages-intérêts.
-            </>
-          ) : (
-            <>
-              <strong>Cas standard :</strong> Klary retient jusqu'à{" "}
-              <strong>20 % de l'indemnité annuelle nette</strong> à titre de
-              dépôt de garantie contre les annulations. Ce dépôt est conservé
-              pendant <strong>TROIS (3) ANS</strong> à compter de la fin du
-              contrat. Le solde éventuel est reversé à l'agent à l'issue de
-              cette période, déduction faite des annulations subies.
-            </>
-          )}
-        </div>
+        <p style={{ margin: 0 }}>
+          Par <strong>sécurité financière de l'entreprise</strong> et en
+          garantie du bon suivi des contrats conclus par l'agent auprès de ses
+          clients, Klary conserve dans le <strong>COMPTE DE CAUTION</strong> :
+        </p>
+        <ul style={{ margin: "1.5mm 0 1.5mm 6mm", padding: 0 }}>
+          <li>
+            L'intégralité des commissions dues à l'agent au moment de la fin
+            des rapports contractuels
+          </li>
+          <li>
+            L'intégralité des <strong>commissions récurrentes à venir</strong>{" "}
+            sur les contrats déjà signés par l'agent avec ses clients
+          </li>
+        </ul>
+
+        <p style={{ margin: "1.5mm 0" }}>
+          L'agent <strong>récupère ses commissions PROGRESSIVEMENT</strong>, à
+          mesure que les contrats qu'il a conclus avec ses clients atteignent
+          leur échéance de responsabilité contractuelle (typiquement{" "}
+          <strong>3 ans</strong> en assurance suisse).
+        </p>
+
+        <p style={{ margin: "1.5mm 0" }}>
+          Si un contrat est résilié ou annulé avant échéance, Klary utilise le
+          compte de caution pour rembourser les commissions perçues et non
+          acquises, conformément à l'art. 418p CO et à l'Annexe III du contrat
+          agent.
+        </p>
+
+        <p style={{ margin: "1.5mm 0" }}>
+          À l'issue de la période de responsabilité (<strong>3 ans à compter
+          de la fin du contrat d'agence</strong>), le <strong>solde éventuel</strong>{" "}
+          du compte de caution est reversé à l'agent, déduction faite des
+          annulations et remboursements survenus dans l'intervalle.
+        </p>
+
+        {isAggravated && (
+          <div
+            style={{
+              marginTop: "2mm",
+              padding: "3mm 4mm",
+              background: "#fff5f5",
+              borderLeft: "3px solid #dc2626",
+              borderRadius: "1.5mm",
+              fontSize: "9.5pt",
+            }}
+          >
+            <strong>Spécificité — {reasonLabel.toLowerCase()} :</strong> en cas
+            de faute grave, abandon de poste ou résiliation anticipée sans
+            respect des délais contractuels, le solde du compte de caution
+            peut être <strong>retenu en totalité</strong> et affecté au
+            règlement des dommages-intérêts dus à Klary (art. 337c CO +
+            Annexe III art. 3).
+          </div>
+        )}
       </Section>
 
       {/* Article 4 — Renonciation indemnité clientèle */}
