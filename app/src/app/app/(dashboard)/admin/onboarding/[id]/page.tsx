@@ -8,6 +8,9 @@ export const metadata = {
   title: "Dossier d'onboarding — Admin",
 };
 
+// Force le re-render à chaque requête pour régénérer les signed URLs 1h
+export const dynamic = "force-dynamic";
+
 const DOC_LABELS: Record<string, string> = {
   id_document: "Carte d'identité",
   passport: "Passeport",

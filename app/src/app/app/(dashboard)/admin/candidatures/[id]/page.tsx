@@ -8,6 +8,9 @@ export const metadata = {
   title: "Détail candidature",
 };
 
+// Force le re-render à chaque requête pour régénérer les signed URLs 1h
+export const dynamic = "force-dynamic";
+
 // Statuts en français avec description contextuelle
 const STATUS_OPTIONS: {
   value: string;

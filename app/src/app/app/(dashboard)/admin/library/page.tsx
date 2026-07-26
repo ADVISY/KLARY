@@ -1,20 +1,19 @@
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminLibraryPanel } from "./AdminLibraryPanel";
+import { CATEGORIES as FULL_CATEGORIES } from "../../library/categories";
 
 export const metadata = {
   title: "Bibliothèque — Admin",
 };
 
-export const CATEGORIES = [
-  { key: "fiche_produit", label: "Fiches produits" },
-  { key: "script_appel", label: "Scripts d'appel" },
-  { key: "pv_conseil", label: "PV de conseil" },
-  { key: "argumentaire", label: "Argumentaires" },
-  { key: "reference_finma", label: "Références FINMA" },
-  { key: "procedure_klary", label: "Procédures Klary" },
-  { key: "autre", label: "Autre" },
-];
+export const dynamic = "force-dynamic";
+
+// Admin n'a besoin que de {key, label} pour le dropdown de catégorie
+const CATEGORIES = FULL_CATEGORIES.map((c) => ({
+  key: c.key,
+  label: c.label,
+}));
 
 export default async function AdminLibraryPage() {
   const supabase = createSupabaseServerClient();
