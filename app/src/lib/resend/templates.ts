@@ -706,6 +706,304 @@ export const templates = {
   },
 
   /**
+   * Offboarding — Notification agent partant (SANS pièce jointe)
+   * L'agent est informé du départ et des conséquences.
+   * La convention lui sera remise en main propre / courrier, PAS en email.
+   */
+  offboardingAgentNotice({
+    firstName,
+    lastName,
+    reason,
+    lastWorkingDay,
+  }: {
+    firstName: string;
+    lastName: string;
+    reason: string;
+    lastWorkingDay: string;
+  }) {
+    const REASON_LABELS: Record<string, string> = {
+      demission: "démission",
+      mutuel_accord: "rupture d'un commun accord",
+      rupture_essai: "rupture de la période d'essai",
+      fin_cdd: "fin de contrat à durée déterminée",
+      retraite: "départ à la retraite",
+      licenciement: "licenciement",
+      faute_grave: "licenciement pour faute grave",
+      abandon_poste: "abandon de poste",
+    };
+    const reasonLabel = REASON_LABELS[reason] || reason;
+
+    return wrapEmail(
+      "Fin de collaboration Klary — procédure de sortie",
+      `
+      <h2 style="color:#1A1660; margin:0 0 12px; font-size:22px;">
+        ${firstName} ${lastName},
+      </h2>
+      <p style="color:#1F1B4B; margin:0 0 16px; font-size:15px; line-height:1.6;">
+        Nous vous notifions la fin de votre collaboration avec Klary Sàrl pour motif de <strong>${reasonLabel}</strong>, avec effet au <strong>${lastWorkingDay}</strong>.
+      </p>
+
+      <div style="padding:16px 20px; background:#fff5f5; border-left:4px solid #dc2626; border-radius:8px; margin:20px 0;">
+        <div style="font-size:11px; color:#dc2626; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">🔒 Accès techniques révoqués</div>
+        <div style="font-size:14px; color:#1F1B4B; line-height:1.5;">
+          Avec effet immédiat, les accès suivants sont désactivés :
+          <ul style="margin:8px 0 0; padding-left:20px;">
+            <li>Email professionnel @klary.ch (Infomaniak)</li>
+            <li>Plateforme Klary (app.klary.ch)</li>
+            <li>CRM LYTA</li>
+            <li>Google Workspace (Agenda, Sheet, Drive)</li>
+            <li>Badges d'accès bâtiment Regus (Eysins)</li>
+            <li>Accès individuels compagnies partenaires</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-left:4px solid #F0651F; border-radius:8px; margin:20px 0;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">📄 Convention de sortie à signer</div>
+        <div style="font-size:14px; color:#1F1B4B; line-height:1.5;">
+          Une <strong>convention de sortie</strong> vous sera remise par Sacha Bacconnier <strong>en main propre</strong> lors de votre dernier jour, ou envoyée <strong>par courrier recommandé</strong> à l'adresse figurant dans votre dossier.
+          <br><br>
+          Elle formalise les obligations post-emploi (interdiction de débauchage art. 14, interdiction de concurrence art. 15, compte de caution 3 ans, confidentialité permanente art. 13) déjà prévues à votre contrat de travail.
+        </div>
+      </div>
+
+      <div style="padding:16px 20px; background:#fef3c7; border:2px solid #f59e0b; border-radius:8px; margin:20px 0;">
+        <div style="font-size:13px; color:#78350f; font-weight:700; margin-bottom:8px;">
+          ⚠ IMPORTANT — Sans signature de la convention, aucun document de sortie ne sera émis
+        </div>
+        <div style="font-size:13px; color:#78350f; line-height:1.6;">
+          La signature de la convention <strong>débloque uniquement</strong> l'émission des documents administratifs suivants :
+          <ul style="margin:8px 0 0; padding-left:20px;">
+            <li><strong>Certificat de travail</strong> qualifiant (art. 330a CO)</li>
+            <li><strong>Attestation d'employeur pour l'assurance chômage</strong> (indispensable pour votre inscription à la caisse chômage)</li>
+            <li>Décompte de salaire final + solde de tout compte</li>
+            <li>Certificat de salaire annuel LAWID (début année suivante)</li>
+            <li>Attestation de sortie LPP (via votre caisse LPP)</li>
+          </ul>
+          <br>
+          <strong>Sans convention signée</strong> :
+          <ul style="margin:8px 0 0; padding-left:20px;">
+            <li>Aucune attestation ne sera transmise à la caisse chômage</li>
+            <li>La procédure de sortie reste bloquée indéfiniment</li>
+            <li>Vous serez privé·e de vos droits au chômage pendant plusieurs mois</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="color:#1F1B4B; margin:16px 0; font-size:14px; line-height:1.6;">
+        <strong>Restitution matériel</strong> : d'ici votre dernier jour, merci de restituer ordinateur, badges, clés, téléphone pro et tout matériel Klary. Effacez également toute donnée client détenue en local.
+      </p>
+
+      <p style="color:#6E6A8E; margin:24px 0 0; font-size:13px; line-height:1.6;">
+        Pour toute question, contactez la direction : <a href="mailto:admin@klary.ch" style="color:#F0651F;">admin@klary.ch</a>.<br><br>
+        <strong style="color:#1A1660;">Sacha Bacconnier</strong><br>
+        Responsable d'agence — Klary Sàrl
+      </p>
+      `
+    );
+  },
+
+  /**
+   * Offboarding — email URGENT à office@ pour révoquer les accès
+   * Envoyé À L'INSTANT de l'initiation (avant même signature convention)
+   */
+  offboardingOfficeUrgent({
+    firstName,
+    lastName,
+    reason,
+    lastWorkingDay,
+    dashboardUrl,
+  }: {
+    firstName: string;
+    lastName: string;
+    reason: string;
+    lastWorkingDay: string;
+    dashboardUrl: string;
+  }) {
+    return wrapEmail(
+      "⚠ Offboarding urgent — révocation d'accès",
+      `
+      <div style="padding:14px 18px; background:#dc2626; color:#fff; border-radius:10px; margin-bottom:20px; text-align:center;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.2em; margin-bottom:6px;">🚨 ACTION URGENTE — DANS L'HEURE</div>
+        <div style="font-size:16px; font-weight:700;">Révoquer les accès de ${firstName} ${lastName}</div>
+      </div>
+
+      <p style="color:#1F1B4B; margin:0 0 16px; font-size:14px; line-height:1.6;">
+        <strong>${firstName} ${lastName}</strong> quitte Klary pour motif de <em>${reason}</em>, dernier jour effectif : <strong>${lastWorkingDay}</strong>.
+      </p>
+      <p style="color:#1F1B4B; margin:0 0 16px; font-size:14px; line-height:1.6;">
+        Merci de procéder <strong>immédiatement</strong> à la révocation des accès et à la récupération du matériel.
+      </p>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Accès à révoquer</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="font-size:14px; color:#1F1B4B;">
+          <tr><td style="padding:6px 0; vertical-align:top; width:24px;">☐</td><td style="padding:6px 0;">Email professionnel Infomaniak <strong>prenom.nom@klary.ch</strong></td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;">Compte plateforme <strong>app.klary.ch</strong> (désactivation user_roles déjà faite auto)</td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;">CRM <strong>LYTA</strong> (désactivation compte + retrait portefeuille)</td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;">Google Workspace (Agenda partagés, Sheet, Drive)</td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;">Badges bâtiment <strong>Regus (Route de Crassier 7, Eysins)</strong> — désactiver</td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;">Accès compagnies individuels : GM, Helsana, Swica, Assura, CSS, Sympany, Sanitas, Visana, autres</td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;">Notifier FINMA (radiation registre intermédiaires — 10 jours ouvrés max)</td></tr>
+        </table>
+      </div>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">Matériel à récupérer</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="font-size:14px; color:#1F1B4B;">
+          <tr><td style="padding:6px 0; vertical-align:top; width:24px;">☐</td><td style="padding:6px 0;">Ordinateur portable + chargeur + accessoires</td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;">Badge d'accès Regus</td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;">Clés éventuelles</td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;">Téléphone pro (si fourni)</td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;">Cartes de visite non distribuées</td></tr>
+        </table>
+      </div>
+
+      <p style="color:#6E6A8E; font-size:13px; margin-top:20px;">
+        Une fois terminé, cochez les items correspondants dans le dossier admin.
+      </p>
+      `,
+      { label: "Ouvrir le dossier offboarding", url: dashboardUrl }
+    );
+  },
+
+  /**
+   * Offboarding — checklist finance (envoyé APRÈS upload convention signée)
+   */
+  offboardingFinanceChecklist({
+    firstName,
+    lastName,
+    reason,
+    lastWorkingDay,
+    dashboardUrl,
+  }: {
+    firstName: string;
+    lastName: string;
+    reason: string;
+    lastWorkingDay: string;
+    dashboardUrl: string;
+  }) {
+    const isAggravated = reason === "faute_grave" || reason === "abandon_poste";
+
+    return wrapEmail(
+      "Offboarding — préparation documents financiers",
+      `
+      <h2 style="color:#1A1660; margin:0 0 8px; font-size:22px;">💰 Offboarding ${firstName} ${lastName}</h2>
+      <p style="color:#6E6A8E; margin:0 0 20px; font-size:14px;">
+        La convention de sortie a été signée. La procédure de sortie financière peut démarrer.
+      </p>
+
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom:20px;">
+        <tr><td style="padding:6px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase;">Agent</td></tr>
+        <tr><td style="padding:0 0 8px; color:#1F1B4B; font-size:15px;"><strong>${firstName} ${lastName}</strong></td></tr>
+        <tr><td style="padding:6px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase;">Motif</td></tr>
+        <tr><td style="padding:0 0 8px; color:#1F1B4B; font-size:15px;">${reason}</td></tr>
+        <tr><td style="padding:6px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase;">Dernier jour</td></tr>
+        <tr><td style="padding:0 0 8px; color:#1F1B4B; font-size:15px;"><strong>${lastWorkingDay}</strong></td></tr>
+      </table>
+
+      <div style="padding:16px 20px; background:#FAF5EF; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:11px; color:#F0651F; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;">📄 Documents à préparer et transmettre à l'agent</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="font-size:14px; color:#1F1B4B;">
+          <tr><td style="padding:6px 0; vertical-align:top; width:24px;">☐</td><td style="padding:6px 0;"><strong>Décompte de salaire final</strong> + solde de tout compte (art. 323b CO). Inclure : dernier mois, vacances non prises, 13e mois pro rata</td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;"><strong>Attestation d'employeur pour l'AC</strong> (SECO — assurance chômage). Salaire moyen 6 derniers mois + motif exact</td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;"><strong>Certificat de salaire annuel LAWID</strong> (à envoyer début année suivante — pour déclaration fiscale de l'agent)</td></tr>
+          <tr><td style="padding:6px 0; vertical-align:top;">☐</td><td style="padding:6px 0;">Confirmer que la <strong>caisse LPP</strong> a bien été notifiée de la sortie (elle enverra l'attestation de libre passage à l'agent)</td></tr>
+        </table>
+      </div>
+
+      <div style="padding:16px 20px; background:${isAggravated ? '#fff5f5' : '#f0f9ff'}; border-left:4px solid ${isAggravated ? '#dc2626' : '#0284c7'}; border-radius:8px; margin-bottom:20px;">
+        <div style="font-size:11px; color:${isAggravated ? '#dc2626' : '#0284c7'}; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">Compte de caution (Annexe III du contrat)</div>
+        <div style="font-size:14px; color:#1F1B4B; line-height:1.6;">
+          ${isAggravated
+            ? `<strong>Motif aggravé (faute grave / abandon)</strong> : Klary conserve <strong>l'intégralité</strong> des commissions dues dans le compte de caution pendant <strong>3 ans</strong> à compter de la fin du contrat. Ne PAS reverser les commissions récurrentes en attente.`
+            : `<strong>Motif standard</strong> : retenue de <strong>20% de l'indemnité annuelle nette</strong> dans le compte de caution pendant <strong>3 ans</strong> à compter de la fin du contrat. Le solde éventuel sera reversé à l'agent à l'issue de cette période, déduction faite des annulations.`}
+        </div>
+      </div>
+
+      <p style="color:#6E6A8E; font-size:13px; margin-top:20px;">
+        Cochez les items correspondants dans le dossier admin au fur et à mesure.
+      </p>
+      `,
+      { label: "Ouvrir le dossier offboarding", url: dashboardUrl }
+    );
+  },
+
+  /**
+   * Offboarding — supervision admin + alerte avocat si motif sensible
+   */
+  offboardingAdminSupervision({
+    firstName,
+    lastName,
+    reason,
+    lastWorkingDay,
+    initiatedByName,
+    adminNotes,
+    dashboardUrl,
+  }: {
+    firstName: string;
+    lastName: string;
+    reason: string;
+    lastWorkingDay: string;
+    initiatedByName?: string;
+    adminNotes?: string;
+    dashboardUrl: string;
+  }) {
+    const isSensitive =
+      reason === "faute_grave" ||
+      reason === "abandon_poste" ||
+      reason === "licenciement";
+
+    return wrapEmail(
+      "Supervision offboarding — action requise",
+      `
+      <h2 style="color:#1A1660; margin:0 0 8px; font-size:22px;">
+        📋 Nouveau processus d'offboarding initié
+      </h2>
+      <p style="color:#6E6A8E; margin:0 0 20px; font-size:14px;">
+        ${initiatedByName ? `Initié par : <strong>${initiatedByName}</strong>` : ""}
+      </p>
+
+      ${isSensitive ? `
+      <div style="padding:16px 20px; background:#dc2626; color:#fff; border-radius:10px; margin-bottom:20px;">
+        <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:8px;">🚨 CONSULTATION AVOCAT RECOMMANDÉE</div>
+        <div style="font-size:14px; line-height:1.5;">
+          Motif sensible détecté (<strong>${reason}</strong>). Consulter le conseiller juridique <strong>avant toute action irréversible</strong> :
+          <ul style="margin:8px 0 0; padding-left:20px;">
+            ${reason === 'faute_grave' ? '<li>Vérifier délai de réaction (art. 337 CO — sans délai)</li><li>Documenter les motifs justes objectifs et sérieux</li>' : ''}
+            ${reason === 'abandon_poste' ? '<li>Mise en demeure préalable écrite obligatoire</li><li>Attendre délai raisonnable avant résiliation</li>' : ''}
+            ${reason === 'licenciement' ? '<li>Vérifier respect du préavis contractuel</li><li>Motiver par écrit à la demande de l\'agent (art. 335 al. 2 CO)</li>' : ''}
+            <li>Risque de recours prud'homal — préparer preuve documentaire</li>
+          </ul>
+        </div>
+      </div>` : ""}
+
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom:20px;">
+        <tr><td style="padding:6px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase;">Agent</td></tr>
+        <tr><td style="padding:0 0 8px; color:#1F1B4B; font-size:15px;"><strong>${firstName} ${lastName}</strong></td></tr>
+        <tr><td style="padding:6px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase;">Motif</td></tr>
+        <tr><td style="padding:0 0 8px; color:#1F1B4B; font-size:15px;"><strong>${reason}</strong></td></tr>
+        <tr><td style="padding:6px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase;">Dernier jour effectif</td></tr>
+        <tr><td style="padding:0 0 8px; color:#1F1B4B; font-size:15px;"><strong>${lastWorkingDay}</strong></td></tr>
+        ${adminNotes ? `
+        <tr><td style="padding:6px 0; color:#6E6A8E; font-size:12px; font-weight:600; text-transform:uppercase;">Notes admin</td></tr>
+        <tr><td style="padding:0 0 8px; color:#1F1B4B; font-size:14px; white-space:pre-wrap;">${adminNotes}</td></tr>
+        ` : ""}
+      </table>
+
+      <div style="padding:14px 18px; background:#f0f9ff; border:1px dashed #0284c7; border-radius:6px; font-size:13px; color:#0c4a6e; margin-bottom:16px;">
+        ℹ <strong>Étapes suivantes automatiques :</strong><br>
+        • Accès techniques révoqués (email URGENT envoyé à office@)<br>
+        • Convention de sortie à télécharger + imprimer sur papier Klary<br>
+        • Remise en main propre ou courrier recommandé à l'agent<br>
+        • Upload de la convention signée déclenchera l'envoi à finance@
+      </div>
+      `,
+      { label: "Voir le dossier offboarding complet", url: dashboardUrl }
+    );
+  },
+
+  /**
    * Confirmation candidat — dossier onboarding bien reçu
    */
   onboardingConfirmation({ firstName }: { firstName: string }) {

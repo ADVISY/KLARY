@@ -59,6 +59,19 @@ export const OFFICE_EMAILS: string[] = (
   .filter(Boolean);
 
 /**
+ * Emails du service juridique / avocat Klary — alerté sur les
+ * offboardings sensibles (faute grave, licenciement) qui peuvent
+ * déclencher des risques procéduraux.
+ * Défaut : admin@klary.ch. Override via RESEND_LAWYER_EMAILS.
+ */
+export const LAWYER_EMAILS: string[] = (
+  process.env.RESEND_LAWYER_EMAILS || "admin@klary.ch"
+)
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+/**
  * Wrapper safe : ne fait rien si Resend n'est pas configuré.
  * (Utile en dev local sans clé API — évite de casser les endpoints.)
  */

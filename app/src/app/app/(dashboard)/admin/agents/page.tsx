@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { InitiateOffboardingModal } from "./InitiateOffboardingModal";
 
 export const metadata = {
   title: "Agents — Admin",
@@ -147,6 +148,9 @@ export default async function AdminAgentsPage() {
                 <th className="text-center px-5 py-3 font-semibold">
                   Statut
                 </th>
+                <th className="text-right px-5 py-3 font-semibold">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -231,6 +235,14 @@ export default async function AdminAgentsPage() {
                         <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-gray-600">
                           Inactif
                         </span>
+                      )}
+                    </td>
+                    <td className="px-5 py-3 text-right">
+                      {r.active && viewerRole?.role === "admin" && (
+                        <InitiateOffboardingModal
+                          agentId={r.user_id}
+                          agentName={fullName}
+                        />
                       )}
                     </td>
                   </tr>
