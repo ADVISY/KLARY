@@ -54,12 +54,17 @@ $QK$Erreur = agent qui fait 15 appels/jour et attend miracle → 0-1 vente/mois 
 TRUE),
 
 ('prospection_vente','V004','Prospection téléphonique','single',
-$QK$Quel est le MEILLEUR créneau horaire pour joindre des particuliers actifs au téléphone ?$QK$,
-$QK$["8h-10h du lundi matin", "18h-20h en semaine + samedi 10h-12h", "12h-14h heure du déjeuner", "23h-1h nuit"]$QK$::jsonb,
+$QK$Quels sont les 2 créneaux horaires OBLIGATOIRES de prospection téléphonique chez Klary (minimum 4h30/jour) ?$QK$,
+$QK$["8h-10h du lundi matin", "12h-14h + 17h-19h30 (créneaux Klary obligatoires — 4h30 minimum/jour de prospection active)", "9h-12h uniquement le matin", "23h-1h de nuit"]$QK$::jsonb,
 1,
-$QK$Fenêtres à haut taux de réponse : 18h-20h (sortie travail, disponible avant repas) + samedi matin 10h-12h. À l'inverse : 8h-10h lundi = personne veut être dérangé, 12h-14h = personne mange, journée en semaine = personne au travail. Optimiser son planning appel selon ce timing multiplie le taux de contact par 3-4.$QK$,
-$QK$["Terrible timing — les gens sont au travail ou n'ont pas encore commencé leur journée.", null, "Personne ne veut être dérangé pendant le déjeuner. Manque de respect.", "Illégal (article 3 LCD sur les pratiques déloyales) — appels après 21h interdits pour prospection."]$QK$::jsonb,
-$QK$Erreur = appeler pendant les heures de travail → 10% de contact → journée gâchée. Un agent qui structure sa journée avec fenêtres 18h-20h aura 30-40% de contacts, soit 3x plus de RDV.$QK$,
+$QK$Politique Klary : 2 créneaux OBLIGATOIRES de prospection téléphonique chaque jour :
+
+• 12h-14h : les prospects sont en pause déjeuner, disponibles au téléphone, réceptifs (pas encore de fatigue de la journée)
+• 17h-19h30 : sortie de travail, disponibles avant repas, décision plus facile
+
+Total = 4h30/jour minimum de prospection active. Ces créneaux sont NON NÉGOCIABLES pour un agent Klary en démarrage : sans discipline horaire, pas de volume d'appels, pas de RDV, pas de ventes.$QK$,
+$QK$["Terrible timing — les gens sont au travail, aucun contact utile.", null, "Créneaux Klary = 12h-14h + 17h-19h30, pas 9h-12h uniquement.", "Illégal (LCD art. 3) — appels après 21h interdits pour prospection."]$QK$::jsonb,
+$QK$Non-respect des créneaux Klary = objectif appels non atteint = pipeline vide = 0 vente. Cette discipline horaire n'est pas optionnelle — c'est le SOCLE du métier d'agent Klary. Un agent qui n'assure pas ses 4h30 quotidiennes sur les 2 fenêtres est en dérive dès la 2ᵉ semaine.$QK$,
 TRUE),
 
 ('prospection_vente','V005','Prospection réseau','single',
