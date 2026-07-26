@@ -1,7 +1,6 @@
 import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
+import { createClient } from "@supabase/supabase-js";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export const metadata = {
@@ -140,17 +139,11 @@ export default async function CandidatureDetailPage({
     .limit(1)
     .maybeSingle();
 
-  // Client service_role pour signed URLs storage
-  const cookieStore = cookies();
-  const serviceClient = createServerClient(
+  // Client service_role pur (sans cookies) pour signed URLs storage — bypass RLS
+  const serviceClient = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
-    {
-      cookies: {
-        getAll: () => cookieStore.getAll(),
-        setAll: () => {},
-      },
-    }
+    { auth: { persistSession: false, autoRefreshToken: false } }
   );
 
   // Signed URL CV

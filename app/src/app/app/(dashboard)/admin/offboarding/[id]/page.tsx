@@ -1,7 +1,6 @@
 import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
+import { createClient } from "@supabase/supabase-js";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { OffboardingDetailClient } from "./OffboardingDetailClient";
 
@@ -41,16 +40,10 @@ export default async function AdminOffboardingDetail({
   // Signed URL pour la convention signée si elle existe
   let signedConventionUrl: string | null = null;
   if (offb.convention_signed_storage_path) {
-    const cookieStore = cookies();
-    const service = createServerClient(
+    const service = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.SUPABASE_SERVICE_ROLE_KEY!,
-      {
-        cookies: {
-          getAll: () => cookieStore.getAll(),
-          setAll: () => {},
-        },
-      }
+      { auth: { persistSession: false, autoRefreshToken: false } }
     );
     const { data: sig } = await service.storage
       .from("offboarding-docs")

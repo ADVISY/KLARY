@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
+import { createClient } from "@supabase/supabase-js";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 /**
@@ -41,17 +40,11 @@ export async function GET(
     );
   }
 
-  // Générer signed URL via service_role (bucket privé)
-  const cookieStore = cookies();
-  const service = createServerClient(
+  // Générer signed URL via service_role pur — bypass RLS bucket privé
+  const service = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
-    {
-      cookies: {
-        getAll: () => cookieStore.getAll(),
-        setAll: () => {},
-      },
-    }
+    { auth: { persistSession: false, autoRefreshToken: false } }
   );
 
   const { data: sig } = await service.storage
