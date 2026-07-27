@@ -157,7 +157,7 @@ export function Sidebar({
         <Link href="/formation" className="inline-block">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/klary-logo-white.svg"
+            src="/klary-logo-white.png"
             alt="Klary"
             style={{ height: "52px", width: "auto", display: "block" }}
           />

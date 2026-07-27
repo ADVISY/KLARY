@@ -34,7 +34,13 @@ export async function middleware(request: NextRequest) {
     hostname.startsWith("app.") || hostname.startsWith("app-");
 
   // 1. Rewrite : app.klary.ch/xxx → /app/xxx
-  if (isAppHostname && !pathname.startsWith("/app") && !pathname.startsWith("/api")) {
+  //    Exceptions : /api/*, /verifier/* (page publique servie identiquement sur les 2 domaines)
+  if (
+    isAppHostname &&
+    !pathname.startsWith("/app") &&
+    !pathname.startsWith("/api") &&
+    !pathname.startsWith("/verifier")
+  ) {
     const url = request.nextUrl.clone();
     url.pathname = `/app${pathname === "/" ? "" : pathname}`;
     return NextResponse.rewrite(url);
