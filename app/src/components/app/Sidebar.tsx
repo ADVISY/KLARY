@@ -156,10 +156,18 @@ export function Sidebar({
       <div className="px-6 pt-7 pb-5 border-b border-white/10 shrink-0">
         <Link href="/formation" className="inline-block">
           {/* eslint-disable-next-line @next/next/no-img-element */}
+          {/* Utilise le logo couleur + filtre CSS pour l'afficher en blanc sur fond navy.
+              Le fichier klary-logo-white.png étant corrompu (transparent, 4KB), cette
+              approche évite un asset séparé et garantit un rendu net à toute taille. */}
           <img
-            src="/klary-logo-white.png"
+            src="/klary-logo.png"
             alt="Klary"
-            style={{ height: "52px", width: "auto", display: "block" }}
+            style={{
+              height: "52px",
+              width: "auto",
+              display: "block",
+              filter: "brightness(0) invert(1)",
+            }}
           />
         </Link>
         <div className="text-[10px] font-semibold tracking-widest uppercase text-white/50 mt-3">
