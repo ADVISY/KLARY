@@ -99,10 +99,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Charger candidat pour email
+    // Charger candidat pour email + infos pour event calendrier
     const { data: candidate } = await supabase
       .from("candidates")
-      .select("first_name, last_name, email, position_applied")
+      .select("first_name, last_name, email, phone, position_applied")
       .eq("id", interview.candidate_id)
       .maybeSingle();
 
@@ -113,10 +113,11 @@ export async function POST(request: NextRequest) {
       const dashboardUrl = `${appUrl}/admin/candidatures/${interview.candidate_id}`;
 
       // Générer le fichier .ics — invitation calendrier avec adresse bureau
+      // Tous les entretiens Klary durent 1h (cf. bloc Google Calendar plus bas)
       const icsContent = generateInterviewIcs({
         uid: interview.id,
         startISO: chosenSlot.start,
-        durationMin: chosenSlot.duration_min || 30,
+        durationMin: 60,
         candidateName: `${candidate.first_name} ${candidate.last_name}`,
         candidateEmail: candidate.email,
         organizerEmail: ADMIN_EMAIL,
@@ -164,18 +165,29 @@ export async function POST(request: NextRequest) {
       const googleConnected = await getStoredGoogleTokens();
       if (googleConnected) {
         try {
+          // Description enrichie de l'event (HTML autorisé par Google Calendar)
+          const description = [
+            `👤 <b>${candidate.first_name} ${candidate.last_name}</b>`,
+            `📧 <a href="mailto:${candidate.email}">${candidate.email}</a>`,
+            candidate.phone
+              ? `📞 <a href="tel:${candidate.phone.replace(/\s+/g, "")}">${candidate.phone}</a>`
+              : `📞 <i>(non renseigné)</i>`,
+            candidate.position_applied
+              ? `💼 Poste visé : ${candidate.position_applied}`
+              : null,
+            ``,
+            `📄 <a href="${dashboardUrl}">Voir la fiche candidat (CV, lettre, historique)</a>`,
+          ]
+            .filter(Boolean)
+            .join("\n");
+
           const event = await createCalendarEvent({
             summary: `Entretien Klary — ${candidate.first_name} ${candidate.last_name}`,
-            description: [
-              `Candidature : ${candidate.position_applied || "—"}`,
-              `Email candidat : ${candidate.email}`,
-              ``,
-              `Fiche candidat : ${dashboardUrl}`,
-            ].join("\n"),
+            description,
             location:
               "Klary Sàrl — Bâtiment Regus, Route de Crassier 7, 1262 Eysins",
             startISO: chosenSlot.start,
-            durationMin: chosenSlot.duration_min || 30,
+            durationMin: 60, // Tous les entretiens Klary durent 1h
             attendees: [
               {
                 email: candidate.email,
