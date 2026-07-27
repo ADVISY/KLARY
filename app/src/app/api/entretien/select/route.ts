@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
+import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import { sendEmail, ADMIN_EMAIL } from "@/lib/resend/client";
 import { templates } from "@/lib/resend/templates";
 import { formatSlot } from "@/lib/interview/generate-slots";
 import { generateInterviewIcs } from "@/lib/interview/ics";
+import {
+  createCalendarEvent,
+  getStoredGoogleTokens,
+} from "@/lib/google/calendar";
 
 const schema = z.object({
   token: z.string().uuid(),
@@ -33,17 +36,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Client service_role (bypass RLS)
-    const cookieStore = cookies();
-    const supabase = createServerClient(
+    // Client service_role pur (bypass RLS — le candidat n'est pas connecté)
+    const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.SUPABASE_SERVICE_ROLE_KEY!,
-      {
-        cookies: {
-          getAll: () => cookieStore.getAll(),
-          setAll: () => {},
-        },
-      }
+      { auth: { persistSession: false, autoRefreshToken: false } }
     );
 
     // Récupérer la ligne interview_slots par token
@@ -161,6 +158,41 @@ export async function POST(request: NextRequest) {
         }),
         attachments: [icsAttachment],
       }).catch((err) => console.error("Failed interview notif admin:", err));
+
+      // Créer l'event Google Calendar si connecté (best-effort, ne bloque pas)
+      const googleConnected = await getStoredGoogleTokens();
+      if (googleConnected) {
+        createCalendarEvent({
+          summary: `Entretien Klary — ${candidate.first_name} ${candidate.last_name}`,
+          description: [
+            `Candidature : ${candidate.position_applied || "—"}`,
+            `Email candidat : ${candidate.email}`,
+            ``,
+            `Fiche candidat : ${dashboardUrl}`,
+          ].join("\n"),
+          location: "Klary Sàrl — bureau (adresse à préciser)",
+          startISO: chosenSlot.start,
+          durationMin: chosenSlot.duration_min || 30,
+          attendees: [
+            {
+              email: candidate.email,
+              displayName: `${candidate.first_name} ${candidate.last_name}`,
+            },
+          ],
+          sendUpdates: "all",
+        })
+          .then(async (event) => {
+            // Stocker l'event ID pour permettre suppression/mise à jour future
+            await supabase
+              .from("interview_slots")
+              .update({ google_event_id: event.id })
+              .eq("id", interview.id);
+            console.log(`[google] Event created: ${event.htmlLink}`);
+          })
+          .catch((err) =>
+            console.error("[google] Failed to create calendar event:", err)
+          );
+      }
     }
 
     return NextResponse.json({
