@@ -1,5 +1,11 @@
 import Link from "next/link";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { PageTabs } from "@/components/app/PageTabs";
+
+const FORMATION_TABS = [
+  { href: "/formation", label: "Modules" },
+  { href: "/certifications", label: "Mes certifications" },
+];
 
 export const metadata = {
   title: "Formation",
@@ -42,7 +48,7 @@ export default async function FormationPage() {
 
   return (
     <div className="max-w-5xl mx-auto p-6 md:p-10">
-      <header className="mb-10">
+      <header className="mb-6">
         <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
           Formation & certification
         </div>
@@ -54,6 +60,8 @@ export default async function FormationPage() {
           devez obtenir au moins 80 % pour être certifié.
         </p>
       </header>
+
+      <PageTabs tabs={FORMATION_TABS} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {modules?.map((module) => {

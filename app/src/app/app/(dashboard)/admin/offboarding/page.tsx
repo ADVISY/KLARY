@@ -1,12 +1,18 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { PageTabs } from "@/components/app/PageTabs";
 
 export const metadata = {
   title: "Offboarding — Admin",
 };
 
 export const dynamic = "force-dynamic";
+
+const RH_TABS = [
+  { href: "/admin/onboarding", label: "Onboarding" },
+  { href: "/admin/offboarding", label: "Offboarding" },
+];
 
 const REASON_LABELS: Record<string, string> = {
   demission: "Démission",
@@ -66,7 +72,7 @@ export default async function AdminOffboardingListPage() {
 
   return (
     <div className="max-w-6xl mx-auto p-6 md:p-10">
-      <header className="mb-8">
+      <header className="mb-6">
         <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
           Backoffice · Offboarding
         </div>
@@ -82,6 +88,8 @@ export default async function AdminOffboardingListPage() {
           → bouton "Initier offboarding" sur l'agent concerné.
         </p>
       </header>
+
+      <PageTabs tabs={RH_TABS} />
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         <div className="bg-white rounded-xl border border-klary-light-grey p-4">

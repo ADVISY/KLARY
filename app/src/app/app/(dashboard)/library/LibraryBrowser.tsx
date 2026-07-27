@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import { PdfPreviewModal } from "@/components/app/PdfPreviewModal";
 
 type Doc = {
   id: string;
@@ -49,6 +50,11 @@ export function LibraryBrowser({
   const [selectedCat, setSelectedCat] = useState<string>("all");
   const [search, setSearch] = useState("");
   const [downloading, setDownloading] = useState<string | null>(null);
+  const [modal, setModal] = useState<{
+    url: string;
+    title: string;
+    filename: string;
+  } | null>(null);
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase().trim();
@@ -93,13 +99,13 @@ export function LibraryBrowser({
     }
   };
 
-  const preview = async (docId: string) => {
-    setDownloading(docId);
+  const preview = async (doc: Doc) => {
+    setDownloading(doc.id);
     try {
-      const res = await fetch(`/api/library/${docId}/download?preview=1`);
+      const res = await fetch(`/api/library/${doc.id}/download?preview=1`);
       const data = await res.json();
       if (data?.url) {
-        window.open(data.url, "_blank", "noopener,noreferrer");
+        setModal({ url: data.url, title: doc.title, filename: doc.filename });
       } else {
         alert("Impossible d'afficher ce document.");
       }
@@ -218,7 +224,7 @@ export function LibraryBrowser({
                   </div>
                   <div className="flex gap-2 shrink-0">
                     <button
-                      onClick={() => preview(d.id)}
+                      onClick={() => preview(d)}
                       disabled={downloading === d.id}
                       title="Ouvrir dans un nouvel onglet"
                       className="px-3 py-1.5 bg-white border border-klary-navy text-klary-navy text-xs font-semibold rounded-lg hover:bg-klary-navy hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
@@ -239,6 +245,15 @@ export function LibraryBrowser({
             );
           })}
         </div>
+      )}
+
+      {modal && (
+        <PdfPreviewModal
+          url={modal.url}
+          title={modal.title}
+          filename={modal.filename}
+          onClose={() => setModal(null)}
+        />
       )}
     </>
   );

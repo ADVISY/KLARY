@@ -1,10 +1,16 @@
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { MyDocumentsList } from "./MyDocumentsList";
+import { PageTabs } from "@/components/app/PageTabs";
 
 export const metadata = {
   title: "Mes documents — Klary",
 };
+
+const DOCUMENTS_TABS = [
+  { href: "/library", label: "Bibliothèque" },
+  { href: "/mes-documents", label: "Mes documents privés" },
+];
 
 export const dynamic = "force-dynamic";
 
@@ -27,7 +33,7 @@ export default async function MesDocumentsPage() {
 
   return (
     <div className="max-w-4xl mx-auto p-6 md:p-10">
-      <header className="mb-8">
+      <header className="mb-6">
         <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
           Espace personnel
         </div>
@@ -41,6 +47,8 @@ export default async function MesDocumentsPage() {
           administration, régie immobilière…).
         </p>
       </header>
+
+      <PageTabs tabs={DOCUMENTS_TABS} />
 
       <MyDocumentsList docs={docs || []} />
     </div>

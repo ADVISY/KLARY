@@ -2,6 +2,7 @@ import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { DocumentRow } from "./DocumentRow";
 
 export const metadata = {
   title: "Détail candidature",
@@ -615,61 +616,5 @@ function InfoRow({ label, value }: { label: string; value: string }) {
   );
 }
 
-function DocumentRow({
-  label,
-  description,
-  filename,
-  signedUrl,
-  highlight = false,
-}: {
-  label: string;
-  description: string;
-  filename: string;
-  signedUrl: string | null;
-  highlight?: boolean;
-}) {
-  return (
-    <div
-      className={`flex items-center justify-between gap-4 p-4 rounded-xl border ${
-        highlight
-          ? "border-klary-orange/30 bg-klary-orange/5"
-          : "border-klary-light-grey bg-white"
-      }`}
-    >
-      <div className="min-w-0 flex-1">
-        <div className="font-semibold text-klary-navy">{label}</div>
-        <div className="text-xs text-klary-grey mt-0.5 truncate">
-          {filename} · {description}
-        </div>
-      </div>
-      {signedUrl ? (
-        <div className="flex items-center gap-2 shrink-0">
-          <a
-            href={signedUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Ouvrir dans un nouvel onglet"
-            className="px-3 py-2 text-xs font-semibold text-klary-navy border border-klary-navy/20 rounded-lg hover:bg-klary-navy/5 transition"
-          >
-            👁 Voir
-          </a>
-          <a
-            href={`${signedUrl}&download=${encodeURIComponent(filename)}`}
-            title="Télécharger sur votre appareil"
-            className={`px-3 py-2 text-xs font-semibold text-white rounded-lg transition ${
-              highlight
-                ? "bg-klary-orange hover:bg-klary-orange/90"
-                : "bg-klary-navy hover:bg-klary-navy/90"
-            }`}
-          >
-            ⬇ Télécharger
-          </a>
-        </div>
-      ) : (
-        <span className="text-xs text-red-600 shrink-0">
-          Lien indisponible
-        </span>
-      )}
-    </div>
-  );
-}
+// DocumentRow extrait en composant client (./DocumentRow.tsx) pour brancher
+// PdfPreviewModal avec état interne.

@@ -1,8 +1,14 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { PageTabs } from "@/components/app/PageTabs";
 
 export const metadata = {
   title: "Mes certifications",
 };
+
+const FORMATION_TABS = [
+  { href: "/formation", label: "Modules" },
+  { href: "/certifications", label: "Mes certifications" },
+];
 
 export default async function CertificationsPage() {
   const supabase = createSupabaseServerClient();
@@ -20,7 +26,7 @@ export default async function CertificationsPage() {
 
   return (
     <div className="max-w-5xl mx-auto p-6 md:p-10">
-      <header className="mb-10">
+      <header className="mb-6">
         <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
           Certifications
         </div>
@@ -32,6 +38,8 @@ export default async function CertificationsPage() {
           valides 6 mois — à renouveler régulièrement.
         </p>
       </header>
+
+      <PageTabs tabs={FORMATION_TABS} />
 
       {!certs || certs.length === 0 ? (
         <div className="bg-white rounded-2xl border border-klary-light-grey p-10 text-center">

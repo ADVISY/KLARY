@@ -1,10 +1,16 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { PageTabs } from "@/components/app/PageTabs";
 
 export const metadata = {
   title: "Onboarding — Admin",
 };
+
+const RH_TABS = [
+  { href: "/admin/onboarding", label: "Onboarding" },
+  { href: "/admin/offboarding", label: "Offboarding" },
+];
 
 export default async function AdminOnboardingListPage() {
   const supabase = createSupabaseServerClient();
@@ -47,7 +53,7 @@ export default async function AdminOnboardingListPage() {
 
   return (
     <div className="max-w-6xl mx-auto p-6 md:p-10">
-      <header className="mb-8">
+      <header className="mb-6">
         <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
           Backoffice · Onboarding
         </div>
@@ -59,6 +65,8 @@ export default async function AdminOnboardingListPage() {
           leur embauche.
         </p>
       </header>
+
+      <PageTabs tabs={RH_TABS} />
 
       <div className="grid grid-cols-3 gap-4 mb-8">
         <div className="bg-white rounded-xl border border-klary-light-grey p-4">

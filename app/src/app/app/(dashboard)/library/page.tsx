@@ -1,10 +1,16 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { LibraryBrowser } from "./LibraryBrowser";
 import { CATEGORIES } from "./categories";
+import { PageTabs } from "@/components/app/PageTabs";
 
 export const metadata = {
   title: "Bibliothèque — Klary",
 };
+
+const DOCUMENTS_TABS = [
+  { href: "/library", label: "Bibliothèque" },
+  { href: "/mes-documents", label: "Mes documents privés" },
+];
 
 export const dynamic = "force-dynamic";
 
@@ -49,7 +55,7 @@ export default async function LibraryPage() {
 
   return (
     <div className="max-w-6xl mx-auto p-6 md:p-10">
-      <header className="mb-8">
+      <header className="mb-6">
         <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
           Ressources internes
         </div>
@@ -61,6 +67,8 @@ export default async function LibraryPage() {
           ce dont vous avez besoin pour vos rendez-vous clients.
         </p>
       </header>
+
+      <PageTabs tabs={DOCUMENTS_TABS} />
 
       <LibraryBrowser docs={docs || []} categories={CATEGORIES} />
     </div>
