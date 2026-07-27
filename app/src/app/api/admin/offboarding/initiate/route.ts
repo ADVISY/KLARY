@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
+import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
@@ -85,17 +84,11 @@ export async function POST(request: NextRequest) {
       .eq("user_id", parsed.data.user_id)
       .maybeSingle();
 
-    // Récupérer email agent via service_role
-    const cookieStore = cookies();
-    const service = createServerClient(
+    // Client service_role pur pour lecture email agent + inserts DB
+    const service = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.SUPABASE_SERVICE_ROLE_KEY!,
-      {
-        cookies: {
-          getAll: () => cookieStore.getAll(),
-          setAll: () => {},
-        },
-      }
+      { auth: { persistSession: false, autoRefreshToken: false } }
     );
     const { data: authUser } = await service.auth.admin.getUserById(
       parsed.data.user_id
@@ -165,65 +158,74 @@ export async function POST(request: NextRequest) {
       .filter(Boolean)
       .join(" ") || user.email || "";
 
-    // ─── EMAIL URGENT à office@ (révocation accès) ───
-    sendEmail({
-      to: OFFICE_EMAILS,
-      subject: `🚨 URGENT — Révoquer accès de ${agentName}`,
-      userId: parsed.data.user_id,
-      eventType: "offboarding_office_urgent",
-      html: templates.offboardingOfficeUrgent({
-        firstName: agentRole?.first_name || "",
-        lastName: agentRole?.last_name || "",
-        reason: parsed.data.reason,
-        lastWorkingDay: lastDayFormatted,
-        dashboardUrl,
-      }),
-    }).catch((err) =>
-      console.error("[offboarding/initiate] office email err:", err)
-    );
-
-    // ─── EMAIL agent (sans PJ, notification uniquement) ───
-    sendEmail({
-      to: agentEmail,
-      subject: "Fin de collaboration Klary — procédure de sortie",
-      userId: parsed.data.user_id,
-      eventType: "offboarding_agent_notice",
-      html: templates.offboardingAgentNotice({
-        firstName: agentRole?.first_name || "",
-        lastName: agentRole?.last_name || "",
-        reason: parsed.data.reason,
-        lastWorkingDay: lastDayFormatted,
-      }),
-    }).catch((err) =>
-      console.error("[offboarding/initiate] agent email err:", err)
-    );
-
-    // ─── EMAIL supervision admin + avocat ───
+    // ─── ENVOI DES 3 EMAILS EN PARALLÈLE (await pour garantir en serverless) ───
     const supervisionTo = Array.from(
       new Set([ADMIN_EMAIL, ...LAWYER_EMAILS])
     );
-    sendEmail({
-      to: supervisionTo,
-      subject: `[Offboarding] ${agentName} — ${parsed.data.reason}`,
-      userId: parsed.data.user_id,
-      eventType: "offboarding_admin_supervision",
-      html: templates.offboardingAdminSupervision({
-        firstName: agentRole?.first_name || "",
-        lastName: agentRole?.last_name || "",
-        reason: parsed.data.reason,
-        lastWorkingDay: lastDayFormatted,
-        initiatedByName: initiatorName,
-        adminNotes: parsed.data.admin_notes || undefined,
-        dashboardUrl,
+
+    const emailResults = await Promise.allSettled([
+      // Office : révocation accès URGENTE
+      sendEmail({
+        to: OFFICE_EMAILS,
+        subject: `🚨 URGENT — Révoquer accès de ${agentName}`,
+        userId: parsed.data.user_id,
+        eventType: "offboarding_office_urgent",
+        html: templates.offboardingOfficeUrgent({
+          firstName: agentRole?.first_name || "",
+          lastName: agentRole?.last_name || "",
+          reason: parsed.data.reason,
+          lastWorkingDay: lastDayFormatted,
+          dashboardUrl,
+        }),
       }),
-    }).catch((err) =>
-      console.error("[offboarding/initiate] supervision email err:", err)
-    );
+      // Agent : notification (sans PJ convention — remise en main propre)
+      sendEmail({
+        to: agentEmail,
+        subject: "Fin de collaboration Klary — procédure de sortie",
+        userId: parsed.data.user_id,
+        eventType: "offboarding_agent_notice",
+        html: templates.offboardingAgentNotice({
+          firstName: agentRole?.first_name || "",
+          lastName: agentRole?.last_name || "",
+          reason: parsed.data.reason,
+          lastWorkingDay: lastDayFormatted,
+        }),
+      }),
+      // Supervision admin + avocat
+      sendEmail({
+        to: supervisionTo,
+        subject: `[Offboarding] ${agentName} — ${parsed.data.reason}`,
+        userId: parsed.data.user_id,
+        eventType: "offboarding_admin_supervision",
+        html: templates.offboardingAdminSupervision({
+          firstName: agentRole?.first_name || "",
+          lastName: agentRole?.last_name || "",
+          reason: parsed.data.reason,
+          lastWorkingDay: lastDayFormatted,
+          initiatedByName: initiatorName,
+          adminNotes: parsed.data.admin_notes || undefined,
+          dashboardUrl,
+        }),
+      }),
+    ]);
+
+    // Log les échecs (mais on retourne succès — offboarding est enregistré,
+    // les emails peuvent être re-tentés manuellement)
+    const labels = ["office_urgent", "agent_notice", "admin_supervision"];
+    emailResults.forEach((r, i) => {
+      if (r.status === "rejected") {
+        console.error(`[offboarding/initiate] email ${labels[i]} FAILED:`, r.reason);
+      }
+    });
 
     return NextResponse.json({
       success: true,
       id: inserted.id,
       redirectUrl: `/admin/offboarding/${inserted.id}`,
+      emails: emailResults.map((r, i) => ({
+        target: labels[i],
+        status: r.status,
+      })),
     });
   } catch (err: any) {
     console.error("[offboarding/initiate] fatal:", err);
