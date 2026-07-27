@@ -394,6 +394,111 @@ export const templates = {
   },
 
   /**
+   * Rappel J-1 candidat — envoyé automatiquement 24h avant l'entretien
+   */
+  interviewReminderCandidate({
+    firstName,
+    slotLabel,
+  }: {
+    firstName: string;
+    slotLabel: string;
+  }) {
+    return wrapEmail(
+      "Rappel : votre entretien Klary demain",
+      `
+      <h2 style="color:#1A1660; margin:0 0 12px; font-size:22px;">Bonjour ${firstName},</h2>
+      <p style="color:#1F1B4B; margin:0 0 16px; font-size:15px; line-height:1.6;">
+        Petit rappel — votre entretien avec Klary a lieu <strong>demain</strong> :
+      </p>
+      <div style="padding:20px; background:#FAF5EF; border-left:4px solid #F0651F; border-radius:8px; margin:20px 0;">
+        <div style="font-size:11px; color:#6E6A8E; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">📅 Date & heure</div>
+        <div style="font-size:18px; color:#1A1660; font-weight:700;">${slotLabel}</div>
+      </div>
+
+      <div style="padding:20px; background:#FAF5EF; border-left:4px solid #1A1660; border-radius:8px; margin:20px 0;">
+        <div style="font-size:11px; color:#6E6A8E; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">📍 Lieu — rendez-vous en présentiel</div>
+        <div style="font-size:15px; color:#1F1B4B; line-height:1.6;">
+          <strong>Klary Sàrl — Bâtiment Regus</strong><br>
+          Route de Crassier 7<br>
+          1262 Eysins<br>
+          <div style="margin-top:10px; padding:10px 12px; background:#fff; border:1px dashed #F0651F; border-radius:6px; font-size:13px; color:#1A1660;">
+            ℹ <strong>À votre arrivée :</strong> présentez-vous à l'accueil Regus au rez-de-chaussée et demandez <strong>Klary</strong>. Sacha Bacconnier viendra vous accueillir.
+          </div>
+          <a href="https://maps.google.com/?q=Route+de+Crassier+7,+1262+Eysins" style="color:#F0651F; font-size:13px; margin-top:8px; display:inline-block;">Itinéraire Google Maps →</a>
+        </div>
+      </div>
+
+      <p style="color:#1F1B4B; margin:16px 0; font-size:15px; line-height:1.6;">
+        Merci de vous présenter <strong>5 minutes avant l'heure</strong> à l'accueil du bâtiment Regus.
+      </p>
+      <p style="color:#1F1B4B; margin:0 0 16px; font-size:15px; line-height:1.6;">
+        En cas d'empêchement de dernière minute, prévenez-nous au plus vite à <a href="mailto:rh@klary.ch" style="color:#F0651F;">rh@klary.ch</a>.
+      </p>
+      <p style="color:#6E6A8E; margin:24px 0 0; font-size:13px; line-height:1.6;">
+        À demain,<br>
+        <strong style="color:#1A1660;">L'équipe Klary</strong>
+      </p>
+      `
+    );
+  },
+
+  /**
+   * Rappel J-1 admin — récap des entretiens du lendemain
+   */
+  interviewReminderAdmin({
+    interviews,
+  }: {
+    interviews: Array<{
+      firstName: string;
+      lastName: string;
+      email: string;
+      slotLabel: string;
+      dashboardUrl: string;
+    }>;
+  }) {
+    const rows = interviews
+      .map(
+        (i) => `
+      <tr style="border-bottom:1px solid #F0EBE4;">
+        <td style="padding:14px 0; color:#1F1B4B; font-size:14px; vertical-align:top;">
+          <strong>${i.firstName} ${i.lastName}</strong><br>
+          <a href="mailto:${i.email}" style="color:#F0651F; font-size:12px;">${i.email}</a>
+        </td>
+        <td style="padding:14px 0; color:#1F1B4B; font-size:14px; vertical-align:top; text-align:right;">
+          <strong style="color:#1A1660;">${i.slotLabel}</strong><br>
+          <a href="${i.dashboardUrl}" style="color:#F0651F; font-size:12px;">Voir la fiche →</a>
+        </td>
+      </tr>`
+      )
+      .join("");
+
+    const count = interviews.length;
+    const plural = count > 1 ? "s" : "";
+
+    return wrapEmail(
+      `Rappel : ${count} entretien${plural} demain`,
+      `
+      <h2 style="color:#1A1660; margin:0 0 8px; font-size:22px;">📅 ${count} entretien${plural} prévu${plural} demain</h2>
+      <p style="color:#6E6A8E; margin:0 0 24px;">Récapitulatif automatique envoyé chaque matin pour les entretiens des prochaines 24h.</p>
+
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:20px 0;">
+        <thead>
+          <tr style="border-bottom:2px solid #1A1660;">
+            <th style="padding:10px 0; text-align:left; color:#6E6A8E; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Candidat</th>
+            <th style="padding:10px 0; text-align:right; color:#6E6A8E; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Créneau</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+
+      <p style="color:#6E6A8E; font-size:13px; margin-top:20px;">
+        📌 Rappel : l'événement est déjà dans ton agenda Google. Ce mail est juste un push matinal pour préparer la journée.
+      </p>
+      `
+    );
+  },
+
+  /**
    * Admission Klary — email bienvenue + processus complet
    */
   candidatureHired({

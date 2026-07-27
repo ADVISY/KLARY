@@ -170,7 +170,7 @@ export async function POST(request: NextRequest) {
             ``,
             `Fiche candidat : ${dashboardUrl}`,
           ].join("\n"),
-          location: "Klary Sàrl — bureau (adresse à préciser)",
+          location: "Klary Sàrl — Bâtiment Regus, Route de Crassier 7, 1262 Eysins",
           startISO: chosenSlot.start,
           durationMin: chosenSlot.duration_min || 30,
           attendees: [
