@@ -59,6 +59,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // SAFEGUARD : un admin ne peut pas s'offboarder lui-même
+    // (sinon il révoque son propre accès à admin.klary.ch et se coupe la branche)
+    if (parsed.data.user_id === user.id) {
+      return NextResponse.json(
+        {
+          error:
+            "Impossible d'initier un offboarding sur ton propre compte admin. Demande à un autre admin/manager de le faire, ou teste sur un compte agent de test.",
+        },
+        { status: 400 }
+      );
+    }
+
     // Bloquer si l'agent a déjà un offboarding en cours (non finalisé)
     const { data: existing } = await supabase
       .from("offboarding_processes")
