@@ -59,13 +59,30 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // SAFEGUARD : un admin ne peut pas s'offboarder lui-même
-    // (sinon il révoque son propre accès à admin.klary.ch et se coupe la branche)
+    // SAFEGUARD 1 : un admin ne peut pas s'offboarder lui-même
     if (parsed.data.user_id === user.id) {
       return NextResponse.json(
         {
           error:
-            "Impossible d'initier un offboarding sur ton propre compte admin. Demande à un autre admin/manager de le faire, ou teste sur un compte agent de test.",
+            "Impossible d'initier un offboarding sur ton propre compte. Demande à un autre admin/manager, ou teste sur un compte agent de test.",
+        },
+        { status: 400 }
+      );
+    }
+
+    // SAFEGUARD 2 : impossible d'offboarder un compte admin (protection élevée)
+    // Un admin doit d'abord être rétrogradé (role → agent) par un autre admin
+    // via l'UI avant qu'on puisse déclencher son offboarding.
+    const { data: targetRoleRow } = await supabase
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", parsed.data.user_id)
+      .maybeSingle();
+    if (targetRoleRow?.role === "admin") {
+      return NextResponse.json(
+        {
+          error:
+            "Ce compte a le rôle 'admin' — impossible de l'offboarder tel quel. Rétrograde-le d'abord en 'agent' (ou 'manager') via la fiche agent, puis réessaie. Cette protection évite la perte accidentelle du dernier accès admin.",
         },
         { status: 400 }
       );
