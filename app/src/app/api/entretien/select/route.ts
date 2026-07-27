@@ -159,39 +159,41 @@ export async function POST(request: NextRequest) {
         attachments: [icsAttachment],
       }).catch((err) => console.error("Failed interview notif admin:", err));
 
-      // Créer l'event Google Calendar si connecté (best-effort, ne bloque pas)
+      // Créer l'event Google Calendar si connecté (AWAIT — en serverless
+      // les promesses non-awaited sont perdues quand la fonction se termine)
       const googleConnected = await getStoredGoogleTokens();
       if (googleConnected) {
-        createCalendarEvent({
-          summary: `Entretien Klary — ${candidate.first_name} ${candidate.last_name}`,
-          description: [
-            `Candidature : ${candidate.position_applied || "—"}`,
-            `Email candidat : ${candidate.email}`,
-            ``,
-            `Fiche candidat : ${dashboardUrl}`,
-          ].join("\n"),
-          location: "Klary Sàrl — Bâtiment Regus, Route de Crassier 7, 1262 Eysins",
-          startISO: chosenSlot.start,
-          durationMin: chosenSlot.duration_min || 30,
-          attendees: [
-            {
-              email: candidate.email,
-              displayName: `${candidate.first_name} ${candidate.last_name}`,
-            },
-          ],
-          sendUpdates: "all",
-        })
-          .then(async (event) => {
-            // Stocker l'event ID pour permettre suppression/mise à jour future
-            await supabase
-              .from("interview_slots")
-              .update({ google_event_id: event.id })
-              .eq("id", interview.id);
-            console.log(`[google] Event created: ${event.htmlLink}`);
-          })
-          .catch((err) =>
-            console.error("[google] Failed to create calendar event:", err)
-          );
+        try {
+          const event = await createCalendarEvent({
+            summary: `Entretien Klary — ${candidate.first_name} ${candidate.last_name}`,
+            description: [
+              `Candidature : ${candidate.position_applied || "—"}`,
+              `Email candidat : ${candidate.email}`,
+              ``,
+              `Fiche candidat : ${dashboardUrl}`,
+            ].join("\n"),
+            location:
+              "Klary Sàrl — Bâtiment Regus, Route de Crassier 7, 1262 Eysins",
+            startISO: chosenSlot.start,
+            durationMin: chosenSlot.duration_min || 30,
+            attendees: [
+              {
+                email: candidate.email,
+                displayName: `${candidate.first_name} ${candidate.last_name}`,
+              },
+            ],
+            sendUpdates: "all",
+          });
+
+          await supabase
+            .from("interview_slots")
+            .update({ google_event_id: event.id })
+            .eq("id", interview.id);
+          console.log(`[google] Event created: ${event.htmlLink}`);
+        } catch (err: any) {
+          // Non-bloquant : log et continue, la sélection candidat reste OK
+          console.error("[google] Failed to create calendar event:", err?.message || err);
+        }
       }
     }
 
