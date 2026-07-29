@@ -472,7 +472,32 @@ export async function POST(request: NextRequest) {
         console.error("[onboarding/submit] Failed comptable email:", err)
       );
 
-    // ─── Confirmation candidat ───
+    // ─── Confirmation candidat + livret d'accueil en PJ ───
+    // Récupère le PDF du livret depuis le bucket library (best-effort, ne bloque pas)
+    let livretAttachment: { filename: string; content: Buffer } | undefined;
+    try {
+      const { data: livretDoc } = await supabase
+        .from("library_documents")
+        .select("storage_path, filename")
+        .eq("title", "Klary — Livret d'accueil agent (Édition 2026)")
+        .eq("is_active", true)
+        .maybeSingle();
+      if (livretDoc?.storage_path) {
+        const { data: fileBlob } = await supabase.storage
+          .from("library")
+          .download(livretDoc.storage_path);
+        if (fileBlob) {
+          const arrayBuffer = await fileBlob.arrayBuffer();
+          livretAttachment = {
+            filename: livretDoc.filename || "Livret_Accueil_Agent_Klary.pdf",
+            content: Buffer.from(arrayBuffer),
+          };
+        }
+      }
+    } catch (err) {
+      console.error("[onboarding/submit] livret attach failed (non-blocking):", err);
+    }
+
     sendEmail({
       to: candidate.email,
       subject: "Votre dossier d'onboarding est bien reçu — Klary",
@@ -481,6 +506,7 @@ export async function POST(request: NextRequest) {
       html: templates.onboardingConfirmation({
         firstName: candidate.first_name,
       }),
+      attachments: livretAttachment ? [livretAttachment] : undefined,
     }).catch((err) =>
       console.error("Failed onboarding candidat confirm:", err)
     );
