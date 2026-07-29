@@ -72,6 +72,82 @@ const wrapEmail = (title: string, body: string, cta?: { label: string; url: stri
 
 export const templates = {
   /**
+   * Baromètre équipe — invitation mensuelle envoyée le 1er du mois
+   */
+  barometerInvite({
+    firstName,
+    monthLabel,
+    surveyUrl,
+  }: {
+    firstName: string;
+    monthLabel: string;
+    surveyUrl: string;
+  }) {
+    return wrapEmail(
+      "Baromètre équipe Klary — 2 minutes de ton temps",
+      `
+      <h2 style="color:#1A1660; margin:0 0 12px; font-size:22px;">Salut ${firstName},</h2>
+      <p style="color:#1F1B4B; margin:0 0 16px; font-size:15px; line-height:1.6;">
+        C'est l'heure du baromètre équipe de <strong>${monthLabel}</strong> 🎯
+      </p>
+      <p style="color:#1F1B4B; margin:0 0 16px; font-size:15px; line-height:1.6;">
+        <strong>7 questions courtes</strong>, <strong>2 minutes chrono</strong>, <strong>100% anonyme</strong> — tes réponses ne sont associées à AUCUN identifiant, personne ne peut savoir ce que tu as répondu.
+      </p>
+
+      <div style="padding:14px 18px; background:#FAF5EF; border-left:4px solid #F0651F; border-radius:8px; margin:20px 0;">
+        <div style="font-size:13px; color:#1F1B4B; line-height:1.5;">
+          🎯 <strong>Pourquoi tu devrais répondre ?</strong><br>
+          Direction s'engage à <strong>agir sur au moins 1 point/trimestre</strong> issu de vos feedbacks. Ton avis pèse — vous êtes une petite équipe, chaque voix compte.
+        </div>
+      </div>
+
+      <p style="color:#6E6A8E; font-size:13px; margin-top:20px;">
+        Le lien expire dans <strong>10 jours</strong>. Un rappel automatique t'est envoyé sous 3 jours si tu n'as pas répondu.
+      </p>
+      <p style="color:#6E6A8E; margin:24px 0 0; font-size:13px; line-height:1.6;">
+        Merci d'avance,<br>
+        <strong style="color:#1A1660;">L'équipe Klary</strong>
+      </p>
+      `,
+      { label: "🖊 Répondre au baromètre (2 min)", url: surveyUrl }
+    );
+  },
+
+  /**
+   * Baromètre équipe — rappel J+3 aux non-répondants
+   */
+  barometerReminder({
+    firstName,
+    monthLabel,
+    surveyUrl,
+  }: {
+    firstName: string;
+    monthLabel: string;
+    surveyUrl: string;
+  }) {
+    return wrapEmail(
+      "Rappel : baromètre équipe Klary",
+      `
+      <h2 style="color:#1A1660; margin:0 0 12px; font-size:22px;">${firstName},</h2>
+      <p style="color:#1F1B4B; margin:0 0 16px; font-size:15px; line-height:1.6;">
+        Petit rappel — le baromètre équipe de <strong>${monthLabel}</strong> t'attend encore.
+      </p>
+      <p style="color:#1F1B4B; margin:0 0 16px; font-size:15px; line-height:1.6;">
+        <strong>2 minutes</strong>, <strong>7 questions</strong>, <strong>100% anonyme</strong>. Ton avis compte pour améliorer la vie de l'équipe.
+      </p>
+      <p style="color:#6E6A8E; font-size:13px; margin-top:20px;">
+        Lien encore valable pendant quelques jours.
+      </p>
+      <p style="color:#6E6A8E; margin:24px 0 0; font-size:13px; line-height:1.6;">
+        Merci !<br>
+        <strong style="color:#1A1660;">L'équipe Klary</strong>
+      </p>
+      `,
+      { label: "Répondre maintenant", url: surveyUrl }
+    );
+  },
+
+  /**
    * Notification admin — nouveau message de contact reçu depuis le site
    */
   contactAdminNotif({
