@@ -103,7 +103,7 @@ export const FooterV2 = () => {
 
         {/* Legal bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between text-xs text-white/50">
-          <p>© {new Date().getFullYear()} Klary Sàrl. Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} Klary Sàrl — CHE-275.800.008 — Tous droits réservés.</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link to="/mentions-legales" className="hover:text-white/80 transition-colors">
               Mentions légales

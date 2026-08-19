@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { DocumentRow } from "./DocumentRow";
+import { ResendNotifButton } from "./ResendNotifButton";
 
 export const metadata = {
   title: "Détail candidature",
@@ -481,12 +482,44 @@ export default async function CandidatureDetailPage({
         </form>
       </div>
 
+      {/* ─── Bloc "Aucun email envoyé" si vide ─── */}
+      {(!emails || emails.length === 0) && (
+        <div className="bg-amber-50/60 border border-amber-200 rounded-2xl p-6 mb-6">
+          <div className="flex items-start justify-between gap-3 flex-wrap">
+            <div className="flex-1 min-w-0">
+              <h2 className="font-bold text-klary-navy flex items-center gap-2">
+                📧 Aucun email n'a été envoyé
+              </h2>
+              <p className="text-sm text-klary-grey mt-1">
+                Il est possible que l'envoi initial ait échoué (clé Resend
+                invalide, rate limit, etc.). Tu peux relancer manuellement la
+                notification admin et la confirmation candidat.
+              </p>
+            </div>
+            <ResendNotifButton
+              candidateId={candidate.id}
+              target="both"
+              variant="primary"
+              label="Renvoyer notifications initiales"
+            />
+          </div>
+        </div>
+      )}
+
       {/* ─── Historique EMAILS envoyés ─── */}
       {emails && emails.length > 0 && (
         <div className="bg-white rounded-2xl border border-klary-light-grey p-6 mb-6">
-          <h2 className="font-bold text-klary-navy mb-4 flex items-center gap-2">
-            📧 Emails envoyés ({emails.length})
-          </h2>
+          <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
+            <h2 className="font-bold text-klary-navy flex items-center gap-2">
+              📧 Emails envoyés ({emails.length})
+            </h2>
+            <ResendNotifButton
+              candidateId={candidate.id}
+              target="both"
+              variant="primary"
+              label="Renvoyer notifications initiales"
+            />
+          </div>
           <ul className="space-y-2">
             {emails.map((e: any, i: number) => {
               const label =

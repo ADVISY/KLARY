@@ -84,7 +84,7 @@ export const LogoIntro = ({ onComplete }: LogoIntroProps) => {
             WebkitTextFillColor: "transparent",
           }}
         >
-          l'assurance enfin clair
+          l'assurance enfin claire
         </span>
       </div>
     </div>

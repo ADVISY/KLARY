@@ -33,7 +33,7 @@ const MentionsLegales = () => {
                 </a>
               </p>
               <p className="mt-3">
-                <strong className="text-foreground">Numéro IDE :</strong> CHE-XXX.XXX.XXX
+                <strong className="text-foreground">Numéro IDE :</strong> CHE-275.800.008
                 <br />
                 <strong className="text-foreground">Inscription FINMA :</strong> En cours
               </p>
