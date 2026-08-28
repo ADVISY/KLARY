@@ -86,10 +86,10 @@ export function AdminLibraryPanel({
   };
 
   const deleteDoc = async (id: string) => {
-    if (!confirm("Masquer ce document ? Il ne sera plus visible par les agents.")) return;
+    if (!confirm("Supprimer définitivement ce document ? Le fichier sera effacé du stockage et cette action est irréversible.")) return;
     const res = await fetch(`/api/library/${id}/delete`, { method: "POST" });
     if (res.ok) router.refresh();
-    else alert("Erreur");
+    else alert("Erreur lors de la suppression");
   };
 
   const categoryLabel = (key: string) =>

@@ -5,8 +5,8 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 /**
  * POST /api/library/[id]/delete
- * Soft delete (is_active = false) — l'admin peut réactiver.
- * Le fichier reste dans le bucket (peut être purgé manuellement).
+ * HARD delete — supprime le fichier du bucket ET la ligne DB.
+ * Permet aussi de re-uploader avec le même nom sans conflit.
  */
 export async function POST(
   _req: NextRequest,
@@ -42,13 +42,36 @@ export async function POST(
     }
   );
 
-  const { error } = await service
+  // 1) Récupérer le storage_path
+  const { data: doc, error: fetchErr } = await service
     .from("library_documents")
-    .update({ is_active: false, updated_at: new Date().toISOString() })
+    .select("storage_path")
+    .eq("id", params.id)
+    .maybeSingle();
+
+  if (fetchErr) {
+    return NextResponse.json({ error: fetchErr.message }, { status: 500 });
+  }
+
+  // 2) Supprimer le fichier du bucket (best-effort, on continue même si absent)
+  if (doc?.storage_path) {
+    const { error: rmErr } = await service.storage
+      .from("library")
+      .remove([doc.storage_path]);
+    if (rmErr) {
+      console.warn("[library delete] storage remove failed:", rmErr.message);
+      // On ne bloque pas — on continue pour supprimer la ligne DB
+    }
+  }
+
+  // 3) Supprimer la ligne DB
+  const { error: delErr } = await service
+    .from("library_documents")
+    .delete()
     .eq("id", params.id);
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  if (delErr) {
+    return NextResponse.json({ error: delErr.message }, { status: 500 });
   }
 
   return NextResponse.json({ success: true });
