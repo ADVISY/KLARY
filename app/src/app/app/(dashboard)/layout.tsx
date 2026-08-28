@@ -58,7 +58,8 @@ export default async function DashboardLayout({
         role={role}
         profileCompleted={profile?.profile_completed ?? false}
       />
-      <main className="flex-1 min-w-0">{children}</main>
+      {/* pt-14 sur mobile pour compenser le header burger fixed h-14 ; pt-0 sur desktop */}
+      <main className="flex-1 min-w-0 pt-14 md:pt-0">{children}</main>
     </div>
   );
 }

@@ -50,7 +50,7 @@ export default async function CandidaturesPage() {
     .order("created_at", { ascending: false });
 
   return (
-    <div className="max-w-6xl mx-auto p-6 md:p-10">
+    <div className="max-w-[1400px] mx-auto p-6 md:p-10">
       <header className="mb-8">
         <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
           Backoffice · Recrutement
@@ -75,7 +75,8 @@ export default async function CandidaturesPage() {
         </div>
       ) : (
         <div className="bg-white rounded-2xl border border-klary-light-grey overflow-hidden">
-          <table className="w-full text-sm">
+          <div className="w-full overflow-x-auto -mx-4 sm:mx-0">
+            <table className="w-full text-sm">
             <thead className="bg-klary-cream text-klary-ink">
               <tr>
                 <th className="text-left px-5 py-3 font-semibold">Candidat</th>
@@ -132,6 +133,7 @@ export default async function CandidaturesPage() {
               })}
             </tbody>
           </table>
+          </div>
         </div>
       )}
     </div>

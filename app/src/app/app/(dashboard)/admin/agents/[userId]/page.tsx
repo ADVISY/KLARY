@@ -108,7 +108,7 @@ export default async function AgentDetailPage({
     [profile.first_name, profile.last_name].filter(Boolean).join(" ") || "—";
 
   return (
-    <div className="max-w-5xl mx-auto p-6 md:p-10">
+    <div className="max-w-[1200px] mx-auto p-6 md:p-10">
       <div className="mb-6">
         <Link
           href="/admin/agents"

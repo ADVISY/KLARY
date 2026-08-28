@@ -268,7 +268,8 @@ export function AdminLibraryPanel({
             Aucun document dans la bibliothèque pour l'instant.
           </div>
         ) : (
-          <table className="w-full text-sm">
+          <div className="w-full overflow-x-auto -mx-4 sm:mx-0">
+            <table className="w-full text-sm">
             <thead className="bg-klary-cream text-klary-ink">
               <tr>
                 <th className="text-left px-5 py-3 font-semibold">Titre</th>
@@ -343,19 +344,18 @@ export function AdminLibraryPanel({
                     )}
                   </td>
                   <td className="px-5 py-3 text-right">
-                    {d.is_active && (
-                      <button
-                        onClick={() => deleteDoc(d.id)}
-                        className="text-red-600 text-xs font-semibold hover:underline"
-                      >
-                        Masquer
-                      </button>
-                    )}
+                    <button
+                      onClick={() => deleteDoc(d.id)}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 transition-colors"
+                    >
+                      🗑 Supprimer
+                    </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          </div>
         )}
       </div>
 

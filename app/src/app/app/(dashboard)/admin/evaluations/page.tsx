@@ -74,7 +74,7 @@ export default async function AdminEvaluationsPage() {
   const successRate = total > 0 ? Math.round((passed / total) * 100) : 0;
 
   return (
-    <div className="max-w-6xl mx-auto p-6 md:p-10">
+    <div className="max-w-[1400px] mx-auto p-6 md:p-10">
       <header className="mb-8">
         <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
           Backoffice · Formation
@@ -127,7 +127,8 @@ export default async function AdminEvaluationsPage() {
         </div>
       ) : (
         <div className="bg-white rounded-2xl border border-klary-light-grey overflow-hidden">
-          <table className="w-full text-sm">
+          <div className="w-full overflow-x-auto -mx-4 sm:mx-0">
+            <table className="w-full text-sm">
             <thead className="bg-klary-cream text-klary-ink">
               <tr>
                 <th className="text-left px-5 py-3 font-semibold">Agent</th>
@@ -225,6 +226,7 @@ export default async function AdminEvaluationsPage() {
               })}
             </tbody>
           </table>
+          </div>
         </div>
       )}
     </div>

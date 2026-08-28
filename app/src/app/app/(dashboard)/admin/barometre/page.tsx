@@ -105,7 +105,7 @@ export default async function AdminBarometrePage() {
   const current = metrics[metrics.length - 1];
 
   return (
-    <div className="max-w-6xl mx-auto p-6 md:p-10">
+    <div className="max-w-[1400px] mx-auto p-6 md:p-10">
       <header className="mb-8">
         <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
           Baromètre équipe

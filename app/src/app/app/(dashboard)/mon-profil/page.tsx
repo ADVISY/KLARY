@@ -26,7 +26,7 @@ export default async function ProfilePage() {
   const isFirstTime = !profile?.profile_completed;
 
   return (
-    <div className="max-w-3xl mx-auto p-6 md:p-10">
+    <div className="max-w-4xl mx-auto p-6 md:p-10">
       <header className="mb-8">
         <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
           Mon profil agent

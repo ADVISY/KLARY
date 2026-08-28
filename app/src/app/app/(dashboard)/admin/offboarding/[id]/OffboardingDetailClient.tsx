@@ -152,7 +152,7 @@ export function OffboardingDetailClient({
   ).length;
 
   return (
-    <div className="max-w-5xl mx-auto p-6 md:p-10">
+    <div className="max-w-[1200px] mx-auto p-6 md:p-10">
       <div className="mb-6">
         <Link
           href="/admin/offboarding"

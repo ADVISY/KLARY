@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 type NavItem = {
@@ -71,6 +72,16 @@ const iconPlug = (
 const iconPulse = (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h4l3-9 4 18 3-9h4" />
+  </svg>
+);
+const iconMenu = (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+);
+const iconClose = (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
 
@@ -159,28 +170,54 @@ export function Sidebar({
 }: SidebarProps) {
   const pathname = usePathname();
   const isAdmin = role === "admin" || role === "manager";
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  return (
-    <aside className="w-64 bg-klary-navy text-white flex flex-col shrink-0 h-screen sticky top-0 overflow-hidden">
+  // Fermer le drawer mobile après navigation
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  // Empêcher le scroll du body quand drawer ouvert
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  const sidebarContent = (
+    <>
       {/* Logo header — FIXÉ */}
-      <div className="px-6 pt-7 pb-5 border-b border-white/10 shrink-0">
+      <div className="px-6 pt-7 pb-5 border-b border-white/10 shrink-0 flex items-center justify-between">
         <Link href="/formation" className="inline-block">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          {/* Utilise le logo couleur + filtre CSS pour l'afficher en blanc sur fond navy.
-              Le fichier klary-logo-white.png étant corrompu (transparent, 4KB), cette
-              approche évite un asset séparé et garantit un rendu net à toute taille. */}
           <img
             src="/klary-logo.png"
             alt="Klary"
             style={{
-              height: "52px",
+              height: "44px",
               width: "auto",
               display: "block",
               filter: "brightness(0) invert(1)",
             }}
           />
         </Link>
-        <div className="text-[10px] font-semibold tracking-widest uppercase text-white/50 mt-3">
+        {/* Bouton fermer (mobile uniquement) */}
+        <button
+          onClick={() => setMobileOpen(false)}
+          className="md:hidden text-white/70 hover:text-white p-2 -mr-2"
+          aria-label="Fermer le menu"
+        >
+          {iconClose}
+        </button>
+      </div>
+
+      <div className="px-6 py-2 shrink-0">
+        <div className="text-[10px] font-semibold tracking-widest uppercase text-white/50">
           Plateforme interne
         </div>
       </div>
@@ -211,7 +248,7 @@ export function Sidebar({
               key={item.href}
               href={item.href}
               className={cn(
-                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+                "flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-colors min-h-[44px]",
                 active
                   ? "bg-klary-orange text-white"
                   : "text-white/70 hover:text-white hover:bg-white/5"
@@ -235,7 +272,7 @@ export function Sidebar({
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+                    "flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-colors min-h-[44px]",
                     active
                       ? "bg-klary-orange text-white"
                       : "text-white/70 hover:text-white hover:bg-white/5"
@@ -268,7 +305,7 @@ export function Sidebar({
         <form action="/api/auth/logout" method="POST" className="mt-3">
           <button
             type="submit"
-            className="w-full text-left text-xs text-white/60 hover:text-white transition-colors py-1.5 flex items-center gap-2"
+            className="w-full text-left text-xs text-white/60 hover:text-white transition-colors py-2 flex items-center gap-2 min-h-[44px]"
           >
             {iconLogout}
             Se déconnecter
@@ -295,6 +332,60 @@ export function Sidebar({
           scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
         }
       `}</style>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* ── HEADER MOBILE : burger + logo ── */}
+      <div className="md:hidden fixed top-0 left-0 right-0 z-40 bg-klary-navy border-b border-white/10 flex items-center justify-between px-4 h-14">
+        <button
+          onClick={() => setMobileOpen(true)}
+          className="text-white p-2 -ml-2 hover:bg-white/5 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
+          aria-label="Ouvrir le menu"
+        >
+          {iconMenu}
+        </button>
+        <Link href="/formation">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/klary-logo.png"
+            alt="Klary"
+            style={{
+              height: "28px",
+              width: "auto",
+              filter: "brightness(0) invert(1)",
+            }}
+          />
+        </Link>
+        <div className="w-11" /> {/* Placeholder pour équilibrer le burger */}
+      </div>
+
+      {/* ── OVERLAY MOBILE (backdrop) ── */}
+      {mobileOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
+          onClick={() => setMobileOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* ── SIDEBAR : desktop sticky, mobile drawer ── */}
+      <aside
+        className={cn(
+          "bg-klary-navy text-white flex flex-col shrink-0 overflow-hidden",
+          // Desktop : sticky visible
+          "md:w-64 md:h-screen md:sticky md:top-0 md:flex",
+          // Mobile : drawer coulissant depuis la gauche
+          "fixed top-0 left-0 h-full w-72 max-w-[85vw] z-50",
+          "transition-transform duration-300 ease-in-out",
+          mobileOpen
+            ? "translate-x-0"
+            : "-translate-x-full md:translate-x-0"
+        )}
+      >
+        {sidebarContent}
+      </aside>
+    </>
   );
 }
