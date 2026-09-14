@@ -12,8 +12,8 @@ import {
 import { templates } from "@/lib/resend/templates";
 
 /**
- * Normalise "Habib Agharbi" → "habib.agharbi@klary.ch"
- * (ASCII, minuscules, retire accents)
+ * Normalise "Habib Agharbi" → "agharbi@klary.ch"
+ * (ASCII, minuscules, retire accents — nom de famille uniquement)
  */
 function proposeKlaryEmail(firstName: string, lastName: string): string {
   const slug = (s: string) =>
@@ -22,7 +22,7 @@ function proposeKlaryEmail(firstName: string, lastName: string): string {
       .normalize("NFD")
       .replace(/[̀-ͯ]/g, "") // retire les accents combinants
       .replace(/[^a-z]/g, "");
-  return `${slug(firstName)}.${slug(lastName)}@klary.ch`;
+  return `${slug(lastName)}@klary.ch`;
 }
 
 /**

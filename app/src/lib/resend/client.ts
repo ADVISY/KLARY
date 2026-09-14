@@ -17,19 +17,18 @@ export const ADMIN_EMAIL =
 /**
  * Liste des emails des assistant(e)s Klary destinataires des tâches
  * d'onboarding technique (création email Infomaniak, Google Agenda,
- * Google Sheet, accès LYTA).
+ * Google Sheet, accès LYTA) déclenchées quand un agent obtient sa
+ * 1re certification et devient officiellement "embauché".
  * Configurable via `RESEND_ASSISTANTS_EMAILS` (séparés par des virgules).
- * Fallback : admin@klary.ch.
+ * Défaut : admin@klary.ch + backoffice@klary.ch.
  */
 export const ASSISTANTS_EMAILS: string[] = (
-  process.env.RESEND_ASSISTANTS_EMAILS || ""
+  process.env.RESEND_ASSISTANTS_EMAILS ||
+  "admin@klary.ch,backoffice@klary.ch"
 )
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
-if (ASSISTANTS_EMAILS.length === 0) {
-  ASSISTANTS_EMAILS.push(ADMIN_EMAIL);
-}
 
 /**
  * Emails des comptables/finance Klary destinataires des dossiers
@@ -46,13 +45,13 @@ export const COMPTABLE_EMAILS: string[] = (
   .filter(Boolean);
 
 /**
- * Emails "office" (back-office / secrétariat) mis en CC sur les
- * notifications importantes (onboarding, ...).
+ * Emails "back-office" mis en CC sur les notifications importantes
+ * (dossiers onboarding, offboarding, alertes internes).
  * Configurable via `RESEND_OFFICE_EMAILS` (séparés par des virgules).
- * Défaut : office@klary.ch.
+ * Défaut : backoffice@klary.ch.
  */
 export const OFFICE_EMAILS: string[] = (
-  process.env.RESEND_OFFICE_EMAILS || "office@klary.ch"
+  process.env.RESEND_OFFICE_EMAILS || "backoffice@klary.ch"
 )
   .split(",")
   .map((s) => s.trim())
@@ -60,16 +59,36 @@ export const OFFICE_EMAILS: string[] = (
 
 /**
  * Emails du service juridique / avocat Klary — alerté sur les
- * offboardings sensibles (faute grave, licenciement) qui peuvent
- * déclencher des risques procéduraux.
- * Défaut : admin@klary.ch. Override via RESEND_LAWYER_EMAILS.
+ * offboardings sensibles (faute grave, licenciement, abandon de poste)
+ * qui peuvent déclencher des risques procéduraux.
+ * Défaut : legal@klary.ch (⚠ à créer côté Infomaniak sinon bounce).
+ * Override via RESEND_LAWYER_EMAILS.
  */
 export const LAWYER_EMAILS: string[] = (
-  process.env.RESEND_LAWYER_EMAILS || "admin@klary.ch"
+  process.env.RESEND_LAWYER_EMAILS || "legal@klary.ch"
 )
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
+
+/**
+ * Destinataires standards de supervision offboarding — reçoivent
+ * TOUJOURS un email quand un offboarding est initié, quel que soit
+ * le motif. Compose admin + finance + back-office.
+ */
+export const OFFBOARDING_SUPERVISION_EMAILS: string[] = Array.from(
+  new Set([ADMIN_EMAIL, ...COMPTABLE_EMAILS, ...OFFICE_EMAILS])
+);
+
+/**
+ * Motifs d'offboarding qui déclenchent une alerte juridique
+ * supplémentaire vers LAWYER_EMAILS (legal@klary.ch).
+ */
+export const SENSITIVE_OFFBOARDING_REASONS = [
+  "licenciement",
+  "faute_grave",
+  "abandon_poste",
+] as const;
 
 /**
  * Wrapper safe : ne fait rien si Resend n'est pas configuré.

@@ -194,7 +194,11 @@ export async function POST(request: NextRequest) {
                 displayName: `${candidate.first_name} ${candidate.last_name}`,
               },
             ],
-            sendUpdates: "all",
+            // "none" pour éviter le rejet DMARC : Google enverrait l'invitation
+            // depuis calendar-notification@google.com en usurpant admin@klary.ch,
+            // ce que DMARC de klary.ch refuse (DKIM d=google.com, pas d=klary.ch).
+            // L'invitation propre part via Resend + .ics ci-dessus.
+            sendUpdates: "none",
           });
 
           await supabase

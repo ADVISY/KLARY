@@ -4,9 +4,10 @@ import { z } from "zod";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
   sendEmail,
-  ADMIN_EMAIL,
   OFFICE_EMAILS,
   LAWYER_EMAILS,
+  OFFBOARDING_SUPERVISION_EMAILS,
+  SENSITIVE_OFFBOARDING_REASONS,
 } from "@/lib/resend/client";
 import { templates } from "@/lib/resend/templates";
 
@@ -188,8 +189,15 @@ export async function POST(request: NextRequest) {
       .join(" ") || user.email || "";
 
     // ─── ENVOI DES 3 EMAILS EN PARALLÈLE (await pour garantir en serverless) ───
+    // Supervision standard : admin + finance + back-office (toujours)
+    // + Juridique (legal@klary.ch) UNIQUEMENT si motif sensible
+    const isSensitive = (SENSITIVE_OFFBOARDING_REASONS as readonly string[])
+      .includes(parsed.data.reason);
     const supervisionTo = Array.from(
-      new Set([ADMIN_EMAIL, ...LAWYER_EMAILS])
+      new Set([
+        ...OFFBOARDING_SUPERVISION_EMAILS,
+        ...(isSensitive ? LAWYER_EMAILS : []),
+      ])
     );
 
     const emailResults = await Promise.allSettled([

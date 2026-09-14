@@ -204,7 +204,12 @@ export type CalendarEventDetails = {
   startISO: string;
   durationMin: number;
   attendees?: { email: string; displayName?: string }[];
-  /** "all" (par défaut) envoie invitation email aux attendees */
+  /**
+   * "none" par défaut pour éviter le rejet DMARC klary.ch.
+   * (Google enverrait depuis calendar-notification@google.com en usurpant
+   * admin@klary.ch. Le domaine klary.ch a DMARC strict et refuse.)
+   * Les invitations propres sortent via Resend (.ics) côté endpoint.
+   */
   sendUpdates?: "all" | "externalOnly" | "none";
 };
 
@@ -232,7 +237,7 @@ export async function createCalendarEvent(
   };
 
   const url = `${CALENDAR_API_BASE}/calendars/primary/events?sendUpdates=${
-    details.sendUpdates || "all"
+    details.sendUpdates || "none"
   }`;
 
   const res = await fetch(url, {
@@ -254,7 +259,9 @@ export async function createCalendarEvent(
 
 export async function deleteCalendarEvent(eventId: string): Promise<void> {
   const accessToken = await getFreshAccessToken();
-  const url = `${CALENDAR_API_BASE}/calendars/primary/events/${eventId}?sendUpdates=all`;
+  // sendUpdates=none pour éviter le rejet DMARC klary.ch (cf. entretien/select).
+  // L'annulation propre est envoyée via Resend si besoin.
+  const url = `${CALENDAR_API_BASE}/calendars/primary/events/${eventId}?sendUpdates=none`;
   const res = await fetch(url, {
     method: "DELETE",
     headers: { Authorization: `Bearer ${accessToken}` },
