@@ -12,12 +12,14 @@ export const dynamic = "force-dynamic";
 const ROLE_LABELS: Record<string, string> = {
   admin: "Admin",
   manager: "Manager",
+  backoffice: "Backoffice",
   agent: "Agent",
 };
 
 const ROLE_COLORS: Record<string, string> = {
   admin: "bg-red-100 text-red-800",
   manager: "bg-purple-100 text-purple-800",
+  backoffice: "bg-amber-100 text-amber-800",
   agent: "bg-blue-100 text-blue-800",
 };
 

@@ -6,6 +6,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { AgentDocumentsSection } from "./AgentDocumentsSection";
 import { InitiateOffboardingModal } from "../InitiateOffboardingModal";
 import { JobTitleEditor } from "./JobTitleEditor";
+import { RoleEditor } from "./RoleEditor";
 
 const JOB_TITLE_LABELS: Record<string, string> = {
   conseiller: "Conseiller",
@@ -21,11 +22,13 @@ export const dynamic = "force-dynamic";
 const ROLE_LABELS: Record<string, string> = {
   admin: "Admin",
   manager: "Manager",
+  backoffice: "Backoffice",
   agent: "Agent",
 };
 const ROLE_COLORS: Record<string, string> = {
   admin: "bg-red-100 text-red-800",
   manager: "bg-purple-100 text-purple-800",
+  backoffice: "bg-amber-100 text-amber-800",
   agent: "bg-blue-100 text-blue-800",
 };
 const MODULE_LABELS: Record<string, string> = {
@@ -188,6 +191,23 @@ export default async function AgentDetailPage({
             💼 En tant qu'<strong>{profile.role}</strong>, cet utilisateur voit
             l'intégralité de la bibliothèque — pas besoin d'assigner un poste
             (conseiller / téléphoniste).
+          </div>
+        )}
+        {profile.role === "backoffice" && (
+          <div className="mt-6 p-3 bg-amber-50 border-l-4 border-amber-400 rounded text-xs text-amber-900">
+            📋 En tant que <strong>backoffice</strong>, cet utilisateur a accès
+            à la Bibliothèque, aux Candidatures et aux Messages contact
+            uniquement — aucun autre module admin.
+          </div>
+        )}
+
+        {viewerRole?.role === "admin" && (
+          <div className="mt-6">
+            <RoleEditor
+              userId={params.userId}
+              currentRole={profile.role}
+              isSelf={params.userId === user.id}
+            />
           </div>
         )}
       </div>
