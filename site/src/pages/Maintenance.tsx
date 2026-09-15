@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail } from "lucide-react";
+import { Mail, Briefcase, ArrowRight } from "lucide-react";
 import klaryLogo from "@/assets/klary-logo-horizontal.png";
 
 const Maintenance = () => {
@@ -126,6 +126,49 @@ const Maintenance = () => {
                 >
                   admin@klary.ch
                 </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Recruitment card */}
+          <div
+            className="mt-10 mx-auto max-w-xl text-left px-7 py-6 rounded-2xl backdrop-blur-sm relative overflow-hidden"
+            style={{
+              background: "linear-gradient(135deg, rgba(240,101,31,0.14) 0%, rgba(240,101,31,0.06) 100%)",
+              border: "1px solid rgba(240, 101, 31, 0.32)",
+            }}
+          >
+            <div className="flex items-start gap-4">
+              <span
+                className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+                style={{
+                  background: "rgba(240, 101, 31, 0.20)",
+                  color: "hsl(28 95% 72%)",
+                }}
+              >
+                <Briefcase className="w-5 h-5" />
+              </span>
+              <div className="flex-1">
+                <p className="text-[11px] uppercase tracking-[0.18em] font-bold text-[hsl(28_95%_78%)] mb-2">
+                  ▸ Nous recrutons
+                </p>
+                <h2 className="text-lg md:text-xl font-bold text-white mb-2 leading-tight">
+                  Rejoignez l'équipe Klary.
+                </h2>
+                <p className="text-sm md:text-base text-white/70 mb-4 leading-relaxed">
+                  Conseillers en assurance, téléphonistes, back-office : nous ouvrons plusieurs postes pour accompagner notre croissance.
+                </p>
+                <Link
+                  to="/preview/recrutement"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-white transition-all hover:translate-y-[-1px]"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(19 90% 54%) 0%, hsl(19 90% 60%) 100%)",
+                    boxShadow: "0 8px 24px rgba(240, 101, 31, 0.35)",
+                  }}
+                >
+                  <span>Voir les postes et postuler</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
           </div>
