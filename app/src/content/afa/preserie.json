@@ -1,0 +1,227 @@
+{
+  "source": "preserie_vbv",
+  "filiere_key": "maladie_complementaire",
+  "reference": "VBV — Assurance-maladie complémentaire, Présérie : le corrigé. Version Santé, 6 février 2025.",
+  "note": "Les questions de la présérie ne sont jamais réutilisées à l'examen, mais elles en reflètent exactement le niveau, le format et la structure.",
+  "cas": "Danijela Babic, enceinte, assurée base + complémentaire chez Eiger. Son mari Dean est chez un autre assureur. La famille souhaite être assurée ensemble.",
+  "questions": [
+    {
+      "external_id": "PRE-1.1", "theme": "conseil", "phase": "introduction",
+      "type": "multiple", "points": 2,
+      "notions": ["lsa_45", "phases_4"],
+      "context": "Voici comment j'ai prévu le déroulement de notre entretien.",
+      "question": "Quelles annonces sont correctes pour ouvrir l'entretien ?",
+      "options": [
+        { "text": "Je vais commencer par me présenter et par présenter Eiger Assurance maladie et, comme vous ne faites pas encore partie de nos clients, Monsieur Babic, tout de suite après ma présentation, je vous donnerai les informations importantes prévues selon l'art. 45 LSA.", "correct": true },
+        { "text": "Nous établirons ensemble le procès-verbal de cet entretien-conseil.", "correct": true },
+        { "text": "Je vérifie rapidement dans mon ordinateur portable l'évolution de vos sinistres et votre morale de paiement. Nous allons alors voir si cela vaut la peine de réaliser un entretien-conseil approfondi.", "correct": false, "why_wrong": "Vérifier la morale de paiement n'est pas du conseil client : c'est une sélection de risque, et elle n'a pas sa place en ouverture d'entretien." },
+        { "text": "Monsieur Babic, pour des motifs de protection des données, je vous prie de bien vouloir signer une procuration afin que je puisse saisir vos données personnelles dans notre base clientèle.", "correct": false, "why_wrong": "Une procuration n'est pas l'instrument prévu. L'obligation d'information découle de l'art. 45 LSA." }
+      ],
+      "explanation": "L'ouverture d'entretien impose la remise de la fiche d'information client (art. 45 LSA) et l'annonce du procès-verbal de conseil."
+    },
+    {
+      "external_id": "PRE-1.2", "theme": "conseil", "phase": "introduction",
+      "type": "multiple", "points": 2,
+      "notions": ["phases_4"],
+      "context": "Pour vous conseiller au mieux, j'aurais d'abord quelques questions à vous poser.",
+      "question": "Quelles questions préliminaires sont pertinentes ?",
+      "options": [
+        { "text": "Quel est l'état de santé général de votre famille ?", "correct": true },
+        { "text": "Qu'attendez-vous de notre entretien-conseil ?", "correct": true },
+        { "text": "Pouvez-vous me dire si vous attendez une fille ou un garçon ? Je pourrai alors vous faire parvenir une offre écrite.", "correct": false, "why_wrong": "Sans lien avec le besoin d'assurance : le sexe de l'enfant n'a aucune incidence sur la couverture." },
+        { "text": "Aujourd'hui, nous allons parler à la fois de l'assurance obligatoire des soins et des assurances maladie complémentaires. Cela vous convient ?", "correct": false, "why_wrong": "C'est une confirmation du plan d'entretien, pas une question d'analyse des besoins." }
+      ],
+      "explanation": "La phase d'analyse cherche l'état de santé et les attentes du client, pas des informations sans portée assurantielle."
+    },
+    {
+      "external_id": "PRE-1.3", "theme": "conseil", "phase": "introduction",
+      "type": "single", "points": 1,
+      "notions": ["nlpd_sante"],
+      "context": "Pour identifier vos besoins, nous travaillons avec un formulaire d'évaluation des besoins.",
+      "question": "Quelle question figure légitimement dans ce formulaire ?",
+      "options": [
+        { "text": "Quelles sont les prestations d'assurance-maladie que vous trouvez importantes ?", "correct": true },
+        { "text": "Pour vous, combien de temps doit durer un entretien-conseil ?", "correct": false, "why_wrong": "Sans rapport avec l'évaluation des besoins d'assurance." },
+        { "text": "Êtes-vous d'accord que vos données de santé soient utilisées à des fins publicitaires et transmises à des tiers ?", "correct": false, "why_wrong": "Contraire à la nLPD : une telle clause est nulle et expose à sanction. Les données de santé ne se transmettent jamais à des tiers à des fins publicitaires." }
+      ],
+      "explanation": "Piège nLPD classique : toute option proposant de transmettre des données de santé à des tiers est fausse."
+    },
+    {
+      "external_id": "PRE-2.1", "theme": "lamal_prestations", "phase": "analyse",
+      "type": "multiple", "points": 2,
+      "notions": ["maternite_catalogue"],
+      "context": "Comme j'attends un heureux événement, je voudrais savoir quelles sont les prestations assurées dans l'AOS pour la maternité.",
+      "question": "Quelles prestations de maternité sont couvertes par l'AOS ?",
+      "options": [
+        { "text": "Tous les examens de contrôle effectués par des médecins ou des sages-femmes ou médicalement prescrits, pendant et après la grossesse, sont assurés.", "correct": true },
+        { "text": "L'accouchement à l'hôpital ou en maison de naissance (tarif du canton de domicile), en ambulatoire ou à domicile, est assuré.", "correct": true },
+        { "text": "Les prestations de conseil en allaitement sont prises en charge, par exemple lorsqu'elles sont effectuées par des sages-femmes.", "correct": true },
+        { "text": "Les cours de préparation à l'accouchement ne sont pas assurés et doivent passer par une complémentaire.", "correct": false, "why_wrong": "Trompeur : les cours de préparation à l'accouchement sont partiellement couverts par l'AOS, jusqu'à 150 CHF." },
+        { "text": "L'AOS verse une allocation allaitement forfaitaire de 200 CHF si la mère allaite au minimum 30 jours.", "correct": false, "why_wrong": "Ce forfait n'existe pas dans l'AOS. C'est une invention destinée à piéger." }
+      ],
+      "explanation": "Le conseil en allaitement est la prestation la plus souvent oubliée. Attention aussi aux montants forfaitaires inventés."
+    },
+    {
+      "external_id": "PRE-2.2", "theme": "lamal_prestations", "phase": "analyse",
+      "type": "multiple", "points": 2,
+      "notions": ["maternite_exempte", "apg_vs_lamal"],
+      "context": "Et à quels autres points dois-je faire attention en lien avec la maternité ?",
+      "question": "Quelles affirmations sont exactes ?",
+      "options": [
+        { "text": "Dans l'AOS, le risque maternité est toujours assuré. Dans la complémentaire, il peut être inclus séparément ou exclu selon l'assureur et le produit.", "correct": true },
+        { "text": "Aucune participation aux coûts légale n'est prélevée sur les prestations de maternité légales.", "correct": true },
+        { "text": "Dans l'AOS, il faut payer la franchise et la quote-part même pour les prestations de maternité.", "correct": false, "why_wrong": "Faux : les prestations de maternité sont exemptes de franchise et de quote-part." },
+        { "text": "L'assurance-maladie verse l'allocation de maternité au titre de l'AOS.", "correct": false, "why_wrong": "PIÈGE MAJEUR : l'allocation de maternité relève des APG (LAPG), pas de la LAMal. La LAMal ne couvre que les prestations médicales." }
+      ],
+      "explanation": "Séparer nettement les deux logiques : la LAMal paie les soins, l'APG remplace le revenu (80 %, 14 semaines, max 220 CHF/jour)."
+    },
+    {
+      "external_id": "PRE-2.3", "theme": "lamal_bases", "phase": "analyse",
+      "type": "single", "points": 1,
+      "notions": ["aos_bebe_3mois"],
+      "context": "À partir de quand devons-nous annoncer notre enfant pour l'AOS ?",
+      "question": "Quel est le délai d'annonce du nouveau-né ?",
+      "options": [
+        { "text": "Dans les trois mois suivant la naissance.", "correct": true },
+        { "text": "Impérativement avant la naissance.", "correct": false, "why_wrong": "L'annonce prénatale est possible et utile pour la complémentaire, mais elle n'est pas obligatoire pour l'AOS." },
+        { "text": "Dans les 30 jours suivant la naissance.", "correct": false, "why_wrong": "Confusion fréquente : le délai légal est de trois mois, pas 30 jours." }
+      ],
+      "explanation": "Trois mois, comme pour toute prise de domicile en Suisse (art. 3 LAMal)."
+    },
+    {
+      "external_id": "PRE-2.4", "theme": "lca_complementaires", "phase": "analyse",
+      "type": "multiple", "points": 2,
+      "notions": ["lca_liberte"],
+      "context": "Quels avantages une annonce prénatale nous donne-t-elle dans l'assurance-maladie complémentaire ?",
+      "question": "Quels sont les avantages réels de l'annonce prénatale ?",
+      "options": [
+        { "text": "L'assurance-maladie décide s'il est possible de conclure une assurance sans réserve.", "correct": true },
+        { "text": "Selon l'assurance-maladie, les coûts consécutifs à une infirmité congénitale sont assurés.", "correct": true },
+        { "text": "Lorsque l'enfant à naître est assuré en division demi-privée, cette couverture s'applique aussi automatiquement à la mère au moment de la naissance.", "correct": false, "why_wrong": "Faux : rien n'est automatique. La couverture de la mère dépend de son propre contrat." },
+        { "text": "Si vous effectuez une annonce prénatale, vous bénéficiez d'un rabais de prime.", "correct": false, "why_wrong": "Aucun rabais spécifique n'est lié à l'annonce prénatale." },
+        { "text": "L'acceptation sans réserve peut être garantie avant la naissance moyennant le paiement unique de 250 CHF.", "correct": false, "why_wrong": "Montant inventé : aucune garantie ne s'achète par un paiement unique." }
+      ],
+      "explanation": "L'intérêt de l'annonce prénatale est l'acceptation sans réserve et la couverture des infirmités congénitales, jamais un avantage tarifaire."
+    },
+    {
+      "external_id": "PRE-3.1", "theme": "laa", "phase": "solution",
+      "type": "single", "points": 1,
+      "notions": ["laa_assujettissement"],
+      "context": "Puis-je inclure la couverture accidents dans l'AOS pendant le congé maternité ?",
+      "question": "Quelle réponse est correcte ?",
+      "options": [
+        { "text": "Oui, vous devez même le faire. Vous pouvez choisir librement d'assurer le risque accident auprès de l'AOS ou d'une assurance-accidents privée.", "correct": true },
+        { "text": "Oui, vous devez même le faire. Dès que vous réintégrerez votre emploi après le congé maternité, vous pourrez à nouveau exclure la couverture accidents de l'AOS.", "correct": false, "why_wrong": "La logique de réintégration est correcte sur le principe, mais la formulation omet la liberté de choix entre AOS et assurance privée." },
+        { "text": "Non, ce n'est pas nécessaire. Pendant le congé maternité, vous continuez de bénéficier de l'assurance-accidents obligatoire.", "correct": false, "why_wrong": "Faux : la couverture LAA cesse à l'arrêt du rapport de travail assuré, sous réserve de l'assurance par convention." }
+      ],
+      "explanation": "Dès que la couverture LAA tombe, il faut réintégrer le risque accident dans l'AOS ou souscrire une couverture privée."
+    },
+    {
+      "external_id": "PRE-3.2", "theme": "lca_complementaires", "phase": "solution",
+      "type": "single", "points": 1,
+      "notions": ["lca_indemnitaire"],
+      "context": "Est-ce possible que notre bébé soit doublement assuré contre les accidents ?",
+      "question": "Quelle réponse est correcte ?",
+      "options": [
+        { "text": "Oui, vous avez raison, c'est une erreur qui nous a échappé.", "correct": true },
+        { "text": "Oui, il est judicieux d'assurer le risque accident dans les deux produits.", "correct": false, "why_wrong": "Une double couverture ne procure aucun avantage : le principe indemnitaire interdit la double indemnisation." },
+        { "text": "Non, dans l'assurance-maladie complémentaire, l'accident n'est pas assuré.", "correct": false, "why_wrong": "Faux : les complémentaires peuvent parfaitement couvrir le risque accident." }
+      ],
+      "explanation": "Reconnaître l'erreur est la bonne posture de conseil : la double couverture fait payer deux fois sans indemniser deux fois."
+    },
+    {
+      "external_id": "PRE-3.3", "theme": "laa", "phase": "solution",
+      "type": "multiple", "points": 2,
+      "notions": ["laa_c"],
+      "context": "Mon employeur a conclu une assurance LAA-C. Se peut-il que je sois doublement assurée contre les accidents dans certains domaines ?",
+      "question": "Quelles affirmations sont exactes ?",
+      "options": [
+        { "text": "Oui, selon la couverture LAA-C, vous disposez déjà d'une assurance hospitalière en division demi-privée voire privée.", "correct": true },
+        { "text": "Oui, selon la couverture LAA-C, le capital invalidité peut être inclus ou non.", "correct": true },
+        { "text": "Non, il n'existe aucun chevauchement entre les prestations LAA-C et celles de l'AOS et des complémentaires.", "correct": false, "why_wrong": "Faux : les chevauchements sont fréquents, notamment sur la division hospitalière." },
+        { "text": "Non, comme le risque accident n'est pas assuré dans votre AOS, il ne peut pas y avoir de double assurance.", "correct": false, "why_wrong": "Le raisonnement est faux : la complémentaire peut couvrir l'accident indépendamment de l'AOS." }
+      ],
+      "explanation": "La LAA-C recouvre souvent la division hospitalière et le capital invalidité : c'est là qu'il faut chercher les doublons."
+    },
+    {
+      "external_id": "PRE-3.4", "theme": "lca_complementaires", "phase": "solution",
+      "type": "multiple", "points": 3,
+      "notions": ["lca_liberte", "lca_reticence", "lca_indemnitaire", "lca_pas_subside"],
+      "context": "J'ai entendu parler de l'assurance-maladie complémentaire. Qu'est-ce qui est correct ?",
+      "question": "Quelles affirmations sur la complémentaire LCA sont exactes ?",
+      "options": [
+        { "text": "L'assureur maladie peut refuser la proposition sans indiquer de motifs.", "correct": true },
+        { "text": "L'assureur maladie peut se départir du contrat si l'assuré ne paie pas la prime.", "correct": true },
+        { "text": "L'assureur maladie peut résilier le contrat en cas de fausses déclarations dans le questionnaire de santé.", "correct": true },
+        { "text": "En cas de sinistre, l'assureur maladie peut résilier le contrat après avoir procédé au paiement.", "correct": false, "why_wrong": "Possible uniquement si le contrat le prévoit et sous conditions. Présenté comme une règle générale, c'est faux." },
+        { "text": "On peut avoir plusieurs complémentaires pour la même prestation et tous les assureurs paient les prestations intégrales.", "correct": false, "why_wrong": "Contraire au principe indemnitaire : pas de double indemnisation pour un même sinistre." },
+        { "text": "On a droit à la réduction de prime pour les assurances-maladies complémentaires.", "correct": false, "why_wrong": "Les subsides ne concernent que l'AOS, jamais les complémentaires." }
+      ],
+      "explanation": "La LCA repose sur la liberté contractuelle : refus sans motif, réserves, réticence (art. 6 LCA). Mais pas de double indemnisation ni de subside."
+    },
+    {
+      "external_id": "PRE-3.5", "theme": "laa", "phase": "solution",
+      "type": "multiple", "points": 3,
+      "notions": ["laa_assujettissement"],
+      "context": "Mon mari Dean souhaite se mettre à son compte et créer une entreprise individuelle. À quoi doit-il prêter attention concernant l'assurance-accidents ?",
+      "question": "Quelles affirmations sont exactes ?",
+      "options": [
+        { "text": "En Suisse, il doit obligatoirement s'assurer pour le risque accident.", "correct": true },
+        { "text": "Il a le choix entre inclure le risque accident dans l'AOS ou conclure une assurance-accidents facultative selon la LAA.", "correct": true },
+        { "text": "S'il met fin à la couverture LAA facultative, il doit immédiatement réintégrer la couverture accidents dans l'AOS.", "correct": true },
+        { "text": "Il n'a pas besoin de changer quoi que ce soit.", "correct": false, "why_wrong": "Faux : en devenant indépendant, il sort de la LAA obligatoire et doit réorganiser sa couverture." },
+        { "text": "Il doit conclure une assurance-accidents obligatoire à son nom.", "correct": false, "why_wrong": "Les indépendants ne sont PAS soumis à la LAA obligatoire. Ils peuvent s'y assurer à titre facultatif." },
+        { "text": "S'il souhaite assurer les prestations stationnaires dans toute la Suisse, l'inclusion du risque accident dans l'AOS suffit.", "correct": false, "why_wrong": "L'AOS couvre au tarif du canton de domicile. Le libre choix de l'hôpital en Suisse suppose une complémentaire." }
+      ],
+      "explanation": "Point clé : l'indépendant n'est jamais soumis à la LAA obligatoire, mais il reste tenu de couvrir le risque accident, via l'AOS ou la LAA facultative."
+    },
+    {
+      "external_id": "PRE-4.1", "theme": "lca_complementaires", "phase": "conclusion",
+      "type": "multiple", "points": 3,
+      "notions": ["lca_revocation", "lca_info_continue", "lca_jamais_resilier"],
+      "context": "Pouvez-vous nous parler de la suite de la procédure concernant le changement d'assurance maladie de mon mari Dean ?",
+      "question": "Quelles affirmations sur la procédure sont exactes ?",
+      "options": [
+        { "text": "La proposition pour les complémentaires de votre mari sera examinée par l'examen du risque en fonction de son propre risque.", "correct": true },
+        { "text": "Si besoin, l'assureur maladie peut demander des rapports aux médecins traitants.", "correct": true },
+        { "text": "Dans le cas de la complémentaire, l'assureur peut prononcer des réserves ou des exclusions de prestations à la suite de certains diagnostics.", "correct": true },
+        { "text": "Votre mari a le droit de révoquer par écrit sa proposition pour la complémentaire dans les deux mois qui suivent la réception.", "correct": false, "why_wrong": "Le délai de révocation LCA est de 14 jours, pas deux mois." },
+        { "text": "Après la signature de la proposition, le devoir d'information selon l'art. 3 LCA prend fin.", "correct": false, "why_wrong": "Faux : le devoir d'information se poursuit au-delà de la signature." },
+        { "text": "Votre mari devrait résilier son ancienne complémentaire avant l'acceptation écrite de la nouvelle.", "correct": false, "why_wrong": "Erreur de conseil grave : on ne résilie JAMAIS avant l'acceptation écrite, sous peine de trou de couverture." },
+        { "text": "Le changement d'AOS de votre mari peut être refusé.", "correct": false, "why_wrong": "L'AOS est obligatoire et l'admission est libre : aucun refus possible." }
+      ],
+      "explanation": "Trois chiffres et règles à ancrer : révocation 14 jours, devoir d'information continu (art. 3 LCA), jamais de résiliation avant acceptation écrite."
+    },
+    {
+      "external_id": "PRE-4.2", "theme": "conseil", "phase": "conclusion",
+      "type": "multiple", "points": 2,
+      "notions": ["hors_competence", "phases_4"],
+      "context": "Madame et Monsieur Babic, je vous remercie de cet entretien. Pour finir, je souhaiterais vous poser quelques questions.",
+      "question": "Quelles questions de clôture sont appropriées ?",
+      "options": [
+        { "text": "Vous avez signé une offre sans engagement. Puis-je l'envoyer à l'assurance-maladie pour un examen préalable ?", "correct": true },
+        { "text": "Comment avez-vous trouvé l'entretien-conseil ? Qui dans votre entourage pourrait également en bénéficier ?", "correct": true },
+        { "text": "Pourrais-je vous contacter et vous accompagner dans la suite de la procédure, à savoir la résiliation auprès de l'assureur précédent, une fois les propositions traitées ?", "correct": true },
+        { "text": "Puis-je vous recommander de prendre plus de vitamine C et de fer pendant votre grossesse ?", "correct": false, "why_wrong": "Hors compétence : l'intermédiaire ne donne jamais de conseil médical." }
+      ],
+      "explanation": "La clôture couvre l'envoi pour examen préalable, la demande de recommandation et le suivi. L'envoi pour examen préalable est régulièrement oublié."
+    }
+  ],
+  "questions_en_attente_de_validation": [
+    {
+      "external_id": "PRE-2.5", "theme": "lamal_bases", "phase": "analyse",
+      "type": "multiple", "points": 3,
+      "raison_mise_en_attente": "Le corrigé retenu dans le cahier marque comme correcte l'option « Pour l'admission dans l'AOS, il faut répondre à un questionnaire de santé ». C'est contraire au droit : l'admission à l'AOS est libre et sans questionnaire de santé (le questionnaire ne concerne que les complémentaires LCA). Question désactivée tant que le corrigé officiel n'a pas été revérifié.",
+      "context": "Dean souhaiterait rejoindre Eiger Assurance maladie pour l'AOS ordinaire. À quoi devons-nous prêter attention ?",
+      "question": "Quelles affirmations sont exactes ?",
+      "options": [
+        { "text": "On peut être assuré pour l'AOS et la complémentaire auprès d'assureurs différents.", "correct": true },
+        { "text": "Dans l'AOS, il est possible de choisir différents modèles et franchises selon l'assureur.", "correct": true },
+        { "text": "Les prestations assurées, de même que les primes de l'AOS, sont identiques pour chaque assurance maladie.", "correct": false, "why_wrong": "Piège classique : les PRESTATIONS sont identiques par la loi, mais les PRIMES varient selon la caisse." },
+        { "text": "Il est permis de changer d'AOS et de rejoindre Eiger au 1er juillet de l'année en cours.", "correct": false, "why_wrong": "Le changement au 1er juillet n'est ouvert qu'en cas de hausse de prime, avec préavis au 31 mars." },
+        { "text": "Il est permis de changer d'assurance-maladie même en cas d'arriérés ayant fait l'objet d'une sommation.", "correct": false, "why_wrong": "Faux : les arriérés avec sommation bloquent le changement de caisse." },
+        { "text": "Pour l'admission dans l'AOS, il faut répondre à un questionnaire de santé.", "correct": false, "why_wrong": "À VÉRIFIER — voir raison_mise_en_attente." }
+      ]
+    }
+  ]
+}

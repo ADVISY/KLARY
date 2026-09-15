@@ -34,7 +34,7 @@ export async function POST(
       .eq("active", true)
       .maybeSingle();
 
-    if (role?.role !== "admin" && role?.role !== "manager") {
+    if (role?.role !== "admin" && role?.role !== "manager" && role?.role !== "backoffice") {
       return NextResponse.json(
         { error: "Accès réservé aux admins/managers" },
         { status: 403 }

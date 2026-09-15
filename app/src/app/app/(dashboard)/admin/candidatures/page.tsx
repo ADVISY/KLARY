@@ -40,7 +40,7 @@ export default async function CandidaturesPage() {
     .eq("active", true)
     .maybeSingle();
 
-  if (role?.role !== "admin" && role?.role !== "manager") {
+  if (role?.role !== "admin" && role?.role !== "manager" && role?.role !== "backoffice") {
     redirect("/formation");
   }
 

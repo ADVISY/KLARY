@@ -1,0 +1,1716 @@
+{
+ "source": "formation_externe",
+ "filiere_key": "vie",
+ "reference": "Banque de questions LPP reconstituée à partir d'un support de formation externe. Fond : LPP, OPP2, OPP3.",
+ "note": "Questions portant sur des dispositions légales et réglementaires suisses. Les valeurs chiffrées sont celles du support d'origine : elles doivent être revérifiées à chaque changement de paramètres annuels.",
+ "questions": [
+  {
+   "external_id": "EXT-LPP-001",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "A partir de quel revenu annuel est-on obligatoirement assuré à la LPP ?",
+   "options": [
+    {
+     "text": "22'050.- net auprès du même employeur",
+     "correct": false
+    },
+    {
+     "text": "22'050.- brut auprès de différents employeurs",
+     "correct": false
+    },
+    {
+     "text": "22'050.- net auprès de différents employeurs",
+     "correct": false
+    },
+    {
+     "text": "22'050.- brut auprès du même employeur",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 7, al. 1 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-002",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le montant de la déduction de coordination ?",
+   "options": [
+    {
+     "text": "22'050",
+     "correct": false
+    },
+    {
+     "text": "25'725",
+     "correct": true
+    },
+    {
+     "text": "29'400",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 8, al 1 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-003",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le montant de la limite supérieure du salaire en LPP obligatoire ?",
+   "options": [
+    {
+     "text": "148'200",
+     "correct": false
+    },
+    {
+     "text": "62'475",
+     "correct": false
+    },
+    {
+     "text": "88'200",
+     "correct": true
+    },
+    {
+     "text": "882'000",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 8, al. 1 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-004",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le montant du salaire coordonné maximum en LPP obligatoire ?",
+   "options": [
+    {
+     "text": "148'200",
+     "correct": false
+    },
+    {
+     "text": "62'475",
+     "correct": true
+    },
+    {
+     "text": "88'200",
+     "correct": false
+    },
+    {
+     "text": "44'100",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 8, al. 1 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-005",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le montant du salaire coordonné minimum soumis à cotisation ?",
+   "options": [
+    {
+     "text": "3'675",
+     "correct": true
+    },
+    {
+     "text": "22'050",
+     "correct": false
+    },
+    {
+     "text": "25'725",
+     "correct": false
+    },
+    {
+     "text": "29'400",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 8, al 2 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-006",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le montant maximum déductible pour un 3A d'une personne non-soumise à LPP ?",
+   "options": [
+    {
+     "text": "20 % du revenu, mais au maximum 7'056",
+     "correct": false
+    },
+    {
+     "text": "20 % du revenu, mais au maximum 35'280",
+     "correct": true
+    },
+    {
+     "text": "20 % du revenu, sans limite maximum au niveau du montant",
+     "correct": false
+    },
+    {
+     "text": "35'280.- par an quel que soit le revenu annuel",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 7, al. 1 let. b OPP 3."
+  },
+  {
+   "external_id": "EXT-LPP-007",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le montant maximum déductible pour un 3A d'une personne soumise à LPP ?",
+   "options": [
+    {
+     "text": "20 % du revenu, mais au maximum 7'056",
+     "correct": false
+    },
+    {
+     "text": "20 % du revenu, mais au maximum 35'280",
+     "correct": false
+    },
+    {
+     "text": "35'280.- par an quel que soit le revenu annuel",
+     "correct": false
+    },
+    {
+     "text": "7'056.- sans limite de pourcentage par rapport au revenu",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 7, al. 1 let. a OPP 3."
+  },
+  {
+   "external_id": "EXT-LPP-008",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Combien d'années de cotisations un homme doit-il totaliser pour atteindre l'avoir complet de vieillesse ?",
+   "options": [
+    {
+     "text": "44",
+     "correct": false
+    },
+    {
+     "text": "42",
+     "correct": false
+    },
+    {
+     "text": "40",
+     "correct": true
+    },
+    {
+     "text": "43",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-009",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le pourcentage des bonifications de vieillesse ?",
+   "options": [
+    {
+     "text": "7 / 10 / 12 / 18",
+     "correct": false
+    },
+    {
+     "text": "7 / 8 / 15 / 18",
+     "correct": false
+    },
+    {
+     "text": "7 / 10 / 15 / 18",
+     "correct": true
+    },
+    {
+     "text": "7 / 10 / 15 / 17",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 16 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-010",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Selon la LPP, quel est le pourcentage des bonifications d'une femme de 62 ans ?",
+   "options": [
+    {
+     "text": "7",
+     "correct": false
+    },
+    {
+     "text": "10",
+     "correct": false
+    },
+    {
+     "text": "12",
+     "correct": false
+    },
+    {
+     "text": "15",
+     "correct": false
+    },
+    {
+     "text": "18",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 16 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-011",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Selon la LPP, quel est le pourcentage des bonifications d'une femme de 33 ans ?",
+   "options": [
+    {
+     "text": "7",
+     "correct": true
+    },
+    {
+     "text": "10",
+     "correct": false
+    },
+    {
+     "text": "12",
+     "correct": false
+    },
+    {
+     "text": "15",
+     "correct": false
+    },
+    {
+     "text": "18",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 16 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-012",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Selon la LPP, quel est le pourcentage des bonifications d'une femme de 44 ans ?",
+   "options": [
+    {
+     "text": "7",
+     "correct": false
+    },
+    {
+     "text": "10",
+     "correct": true
+    },
+    {
+     "text": "12",
+     "correct": false
+    },
+    {
+     "text": "15",
+     "correct": false
+    },
+    {
+     "text": "18",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 16 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-013",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Selon la LPP, quel est le pourcentage des bonifications d'une femme de 47 ans ?",
+   "options": [
+    {
+     "text": "7",
+     "correct": false
+    },
+    {
+     "text": "10",
+     "correct": false
+    },
+    {
+     "text": "12",
+     "correct": false
+    },
+    {
+     "text": "15",
+     "correct": true
+    },
+    {
+     "text": "18",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 16 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-014",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "A partir de quand est-on assuré de manière obligatoire pour les risques décès et invalidité ?",
+   "options": [
+    {
+     "text": "Dès le 1er janvier de l'année du 17ème anniversaire",
+     "correct": false
+    },
+    {
+     "text": "Dès le 1er janvier suivant l'année du 17ème anniversaire",
+     "correct": true
+    },
+    {
+     "text": "Dès le 1er janvier de l'année du 24ème anniversaire",
+     "correct": false
+    },
+    {
+     "text": "Dès le 1er janvier suivant l'année du 24ème anniversaire",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 7, al. 1 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-015",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "A partir de quand cotise-t-on de manière obligatoire pour la part épargne ?",
+   "options": [
+    {
+     "text": "Dès le 1er janvier de l'année du 17ème anniversaire",
+     "correct": false
+    },
+    {
+     "text": "Dès le 1er janvier suivant l'année du 17ème anniversaire",
+     "correct": false
+    },
+    {
+     "text": "Dès le 1er janvier de l'année du 24ème anniversaire",
+     "correct": false
+    },
+    {
+     "text": "Dès le 1er janvier suivant l'année du 24ème anniversaire",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 7, al. 1 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-016",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le montant de la rente de veuve LPP ?",
+   "options": [
+    {
+     "text": "80 % de la rente vieillesse/invalidité de la personne décédée",
+     "correct": false
+    },
+    {
+     "text": "60 % du gain assuré de la personne décédée",
+     "correct": false
+    },
+    {
+     "text": "60 % de la rente vieillesse/invalidité de la personne décédée",
+     "correct": true
+    },
+    {
+     "text": "80 % du gain assuré de la personne décédée",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 21, al. 1 et 2 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-017",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le montant de la rente d'orphelin LPP ?",
+   "options": [
+    {
+     "text": "40 % de la rente vieillesse/invalidité de la personne décédée",
+     "correct": false
+    },
+    {
+     "text": "20 % de la rente vieillesse/invalidité de la personne décédée",
+     "correct": true
+    },
+    {
+     "text": "40 % du gain assuré de la personne décédée",
+     "correct": false
+    },
+    {
+     "text": "20 % du gain assuré de la personne décédée",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 21, al. 1 et 2 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-018",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le montant maximum de l'avoir de libre passage pouvant être retiré pour l'acquisition du propre logement ?",
+   "options": [
+    {
+     "text": "L'entier de l'avoir de libre passage en tout temps",
+     "correct": false
+    },
+    {
+     "text": "L'entier de l'avoir de libre passage jusqu'à l'âge de 50 ans",
+     "correct": true
+    },
+    {
+     "text": "La moitié de l'avoir de libre passage en tout temps",
+     "correct": false
+    },
+    {
+     "text": "La moitié de l'avoir de libre passage après l'âge de 50 ans",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 30c, al. 2 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-019",
+   "theme": "retraite",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Quand est-ce qu'un retrait anticipé peut-il être demandé ?",
+   "options": [
+    {
+     "text": "En tout temps",
+     "correct": false
+    },
+    {
+     "text": "Une fois tous les 3 ans",
+     "correct": false
+    },
+    {
+     "text": "Une fois tous les 5 ans",
+     "correct": true
+    },
+    {
+     "text": "Au plus tard 3 ans avant la naissance du droit aux prestations de vieillesse",
+     "correct": true
+    },
+    {
+     "text": "Au plus tard 2 ans avant la naissance du droit aux prestations de vieillesse",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 30c LPP."
+  },
+  {
+   "external_id": "EXT-LPP-020",
+   "theme": "retraite",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Dans quels cas un retrait anticipé peut-il être demandé ?",
+   "options": [
+    {
+     "text": "Départ définitif de la Suisse, quel que soit le pays",
+     "correct": false
+    },
+    {
+     "text": "Départ définitif de la Suisse, hors UE/AELE",
+     "correct": true
+    },
+    {
+     "text": "Départ définitif de la Suisse, uniquement en UE/AELE",
+     "correct": false
+    },
+    {
+     "text": "Personne s'établissant à son propre compte en Sàrl",
+     "correct": false
+    },
+    {
+     "text": "Personne s'établissant à son propre compte en raison individuelle",
+     "correct": true
+    },
+    {
+     "text": "Personne s'établissant à son propre compte en raison individuelle et S'affiliant à la LPP",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-021",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Dans quels cas un retrait anticipé peut-il être demandé ?",
+   "options": [
+    {
+     "text": "Achat d'une résidence principale à Annecy (France)",
+     "correct": true
+    },
+    {
+     "text": "Achat d'une résidence secondaire en Valais",
+     "correct": false
+    },
+    {
+     "text": "Achat d'une résidence principale à Zürich",
+     "correct": true
+    },
+    {
+     "text": "Achat d'une résidence secondaire à Madrid (Espagne)",
+     "correct": false
+    },
+    {
+     "text": "Achat d'une propriété commune avec son concubin",
+     "correct": false
+    },
+    {
+     "text": "Achat d'une propriété commune avec son conjoint",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-022",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Pour quelles prestations les personnes au chômage sont-elles couvertes par la LPP ?",
+   "options": [
+    {
+     "text": "Uniquement pour le risque invalidité par suite de maladie",
+     "correct": false
+    },
+    {
+     "text": "Pour le risque décès par suite de maladie",
+     "correct": true
+    },
+    {
+     "text": "Pour le risque invalidité par suite de maladie",
+     "correct": true
+    },
+    {
+     "text": "Pour les risques décès et invalidité ainsi que pour l'épargne",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 2, al. 3 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-023",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Qui paie les cotisations épargne de la LPP ?",
+   "options": [
+    {
+     "text": "L'employé paie l'entier des cotisations",
+     "correct": false
+    },
+    {
+     "text": "L'employeur paie l'entier des cotisations",
+     "correct": false
+    },
+    {
+     "text": "L'employé, l'employeur et la Confédération",
+     "correct": false
+    },
+    {
+     "text": "L'employé et l'employeur",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 66 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-024",
+   "theme": "retraite",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Selon la loi, arrivé à la retraite, quel pourcentage de son avoir de prévoyance un assuré peut-il retirer en capital ?",
+   "options": [
+    {
+     "text": "Au maximum 25 %",
+     "correct": true
+    },
+    {
+     "text": "Au minimum 25 %",
+     "correct": false
+    },
+    {
+     "text": "Il peut dans tous les cas retirer l'entier de son savoir",
+     "correct": false
+    },
+    {
+     "text": "Il peut retirer l'entier de son avoir, si le règlement de prévoyance le prévoit",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 37 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-025",
+   "theme": "retraite",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Jusqu'à quel âge une rente pour enfant d'invalide peut-elle être versée ?",
+   "options": [
+    {
+     "text": "Jusqu'à 18 ans, s'il poursuit des études",
+     "correct": false
+    },
+    {
+     "text": "Jusqu'à 18 ans, même s'il ne poursuit pas d'études",
+     "correct": true
+    },
+    {
+     "text": "Jusqu'à 25 ans, s'il poursuit des études",
+     "correct": true
+    },
+    {
+     "text": "Jusqu'à 25 ans, même s'il ne poursuit pas d'études",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 22, al. 3 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-026",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les cas ci-dessous, lesquels donnent droit à une rente de veuve ?",
+   "options": [
+    {
+     "text": "Femme de 45 ans, sans enfant et mariée depuis 3 ans",
+     "correct": false
+    },
+    {
+     "text": "Femme de 35 ans, un enfant de 7 ans et mariée depuis 9 ans",
+     "correct": true
+    },
+    {
+     "text": "Femme de 44 ans, mariée depuis 10 ans et sans enfant",
+     "correct": false
+    },
+    {
+     "text": "Femme de 50 ans, vivant en concubinage depuis 7 ans et sans enfant",
+     "correct": false
+    },
+    {
+     "text": "Femme de 28 ans, mariée depuis 3 ans et un enfant de 1 an",
+     "correct": true
+    },
+    {
+     "text": "Femme de 57 ans, sans enfant et mariée depuis 12 ans",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 19, al. 1 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-027",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quelles sont les conditions à remplir pour l'octroi d'une rente de veuve divorcée ?",
+   "options": [
+    {
+     "text": "Au moins 5 ans de mariage avec le défunt et avoir un enfant commun",
+     "correct": false
+    },
+    {
+     "text": "Au moins 5 ans de mariage avec le défunt et bénéficier d'une pension alimentaire lors du décès",
+     "correct": false
+    },
+    {
+     "text": "Au moins 10 ans de mariage avec le défunt et bénéficier d'une pension alimentaire lors du décès",
+     "correct": true
+    },
+    {
+     "text": "Au moins 10 ans de mariage avec le défunt et avoir un enfant commun",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 20, al. 1 OPP 2."
+  },
+  {
+   "external_id": "EXT-LPP-028",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quand est-ce qu'une rente de veuve s'éteint ?",
+   "options": [
+    {
+     "text": "Lorsque le dernier des enfants atteint l'âge de 18 ans",
+     "correct": false
+    },
+    {
+     "text": "Lorsque le dernier des enfants atteint l'âge de 25 ans",
+     "correct": false
+    },
+    {
+     "text": "Lorsque la veuve atteint l'âge de la retraite",
+     "correct": false
+    },
+    {
+     "text": "Lors du décès de la veuve",
+     "correct": true
+    },
+    {
+     "text": "Lorsque la veuve vie à nouveau en concubinage",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 22, al. 2 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-029",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Lorsqu'une veuve ne remplit pas les conditions pour l'octroi d'une rente de veuve, elle a droit une indemnité unique en capital. Quel est ce montant ?",
+   "options": [
+    {
+     "text": "Un capital égal à 1 rente annuelle de veuve",
+     "correct": false
+    },
+    {
+     "text": "Un capital égal à 3 rentes annuelles de veuve",
+     "correct": true
+    },
+    {
+     "text": "Un capital égal à 5 rentes annuelles de veuve",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 19, al. 2 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-030",
+   "theme": "retraite",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les réponses suivantes, lesquelles se rapportent au système de capitalisation ?",
+   "options": [
+    {
+     "text": "Les recettes d'une année servent à couvrir les dépenses de la même année",
+     "correct": false
+    },
+    {
+     "text": "Un avoir de vieillesse est constitué pour financer les prestations dues",
+     "correct": true
+    },
+    {
+     "text": "Chaque assuré constitue sa propre épargne",
+     "correct": true
+    },
+    {
+     "text": "La Confédération contribue à son financement",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-031",
+   "theme": "retraite",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les réponses suivantes, lesquelles se rapportent à la primauté des prestations ?",
+   "options": [
+    {
+     "text": "Les prestations sont fixées en premier lieu et ensuite les cotisations",
+     "correct": true
+    },
+    {
+     "text": "Les cotisations sont fixées en premier lieu et ensuite les prestations",
+     "correct": false
+    },
+    {
+     "text": "En cas de retrait anticipé les couvertures de risques diminuent",
+     "correct": false
+    },
+    {
+     "text": "En cas de retrait total ou partiel les couvertures de risques restent inchangées",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-032",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le montant minimum d'un retrait LPP ?",
+   "options": [
+    {
+     "text": "Aucun",
+     "correct": false
+    },
+    {
+     "text": "10'000",
+     "correct": false
+    },
+    {
+     "text": "20'000",
+     "correct": true
+    },
+    {
+     "text": "25'000",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-033",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les personnes suivantes, lesquelles ne sont pas soumises à la LPP ?",
+   "options": [
+    {
+     "text": "Salariés engagés pour une durée limitée à 12 mois",
+     "correct": false
+    },
+    {
+     "text": "Salariés engagés pour une durée de 3 mois",
+     "correct": true
+    },
+    {
+     "text": "Personnes à l'AI dont le degré d'invalidité est au moins de 70 %",
+     "correct": true
+    },
+    {
+     "text": "Salariés engagés pour une durée limitée de 4 mois",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 1j, al. 1 OPP 2."
+  },
+  {
+   "external_id": "EXT-LPP-034",
+   "theme": "retraite",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Une fleuriste avec un salaire annuel brut de CHF 35'000.- et un contrat d'une durée de 3 mois doit obligatoirement être assurée à la LPP.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 1j, al. 1, let b OPP 2."
+  },
+  {
+   "external_id": "EXT-LPP-035",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Selon l'OPP2, l'âge minimum pour une retraite anticipée en prévoyance professionnelle est de … (en dehors des professions avec des exigences spécifiques) ?",
+   "options": [
+    {
+     "text": "50",
+     "correct": false
+    },
+    {
+     "text": "55",
+     "correct": false
+    },
+    {
+     "text": "58",
+     "correct": true
+    },
+    {
+     "text": "59",
+     "correct": false
+    },
+    {
+     "text": "60",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-036",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 4,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les prestations suivantes, lesquelles sont prévues par la LPP ?",
+   "options": [
+    {
+     "text": "Rente de vieillesse",
+     "correct": true
+    },
+    {
+     "text": "Rente de veuve/veuf",
+     "correct": true
+    },
+    {
+     "text": "Rente d'orphelin",
+     "correct": true
+    },
+    {
+     "text": "Rente d'invalidité pour enfant",
+     "correct": false
+    },
+    {
+     "text": "Rente d'invalidité complémentaire pour conjoint",
+     "correct": false
+    },
+    {
+     "text": "Rente pour enfant d'invalide",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 13 à 26a LPP."
+  },
+  {
+   "external_id": "EXT-LPP-037",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Monsieur Moulin souhaite effectuer un retrait anticipé de sa caisse de pension afin de financer sa résidence principale. Il est assuré en primauté des prestations. De combien se rédui rait la rente d'orphelin s'il retire 75'000.- ? de retrait anticipé",
+   "options": [
+    {
+     "text": "0",
+     "correct": true
+    },
+    {
+     "text": "1'020",
+     "correct": false
+    },
+    {
+     "text": "5'100",
+     "correct": false
+    },
+    {
+     "text": "1'360",
+     "correct": false
+    },
+    {
+     "text": "6'800",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-038",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Monsieur Moulin souhaite effectuer un retrait anticipé de sa caisse de pension afin de financer sa résidence principale. Il est assuré en primauté des c otisations. De combien se rédui rait la rente de veuve s'il retire 75'000.- ?",
+   "options": [
+    {
+     "text": "0",
+     "correct": false
+    },
+    {
+     "text": "3'060",
+     "correct": true
+    },
+    {
+     "text": "5'100",
+     "correct": false
+    },
+    {
+     "text": "4'080",
+     "correct": false
+    },
+    {
+     "text": "6'800",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-039",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Monsieur Moulin souhaite effectuer un retrait anticipé de sa caisse de pension afin de financer sa résidence principale. Il est assuré en primauté des cotisations. De combien se rédui rait sa rente d'invalidité s'il retire 75'000.- ?",
+   "options": [
+    {
+     "text": "0",
+     "correct": false
+    },
+    {
+     "text": "3'060",
+     "correct": false
+    },
+    {
+     "text": "5'100",
+     "correct": true
+    },
+    {
+     "text": "4'060",
+     "correct": false
+    },
+    {
+     "text": "6'800",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-040",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Mr. Barman quitte son emploi afin de se lancer en tant qu'indépendant. Il décide de ne pas s'affilier à un 2ème pilier et son avoir doit être transféré à l'institution supplétive. Sans nouvelles de Mr. Barman, a près quel délai l 'institution de prévoyance de son anci en employeur doit-elle obligatoirement transférer l'avoir de libre passage ?",
+   "options": [
+    {
+     "text": "Aucun délai n'est fixé",
+     "correct": false
+    },
+    {
+     "text": "Après 6 mois au plus tôt",
+     "correct": true
+    },
+    {
+     "text": "Après 6 mois au maximum",
+     "correct": false
+    },
+    {
+     "text": "Après 1 an au plus tôt",
+     "correct": false
+    },
+    {
+     "text": "Après 1 an au maximum",
+     "correct": false
+    },
+    {
+     "text": "Après 2 ans au plus tôt",
+     "correct": false
+    },
+    {
+     "text": "Après 2 ans au maximum",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-041",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Pour l'achat de sa maison, Mr. Barman effectue un retrait EPL. Ce retrait figurera sur le registre foncier. Comment appelle-t'on ce terme ?",
+   "options": [
+    {
+     "text": "Une inscription",
+     "correct": false
+    },
+    {
+     "text": "Une mention",
+     "correct": true
+    },
+    {
+     "text": "Une annotation",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 30e, al. 2 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-042",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Pour l'achat d'une maison, Mr. Barman souhaite effectuer un retrait EPL. Néanmoins, il pense divorcer de son épouse avec laquelle il a souvent des disputes. Il vous demande alors votre avis. Parmi les réponses suivantes, choisissez celle qui correspond à la loi.",
+   "options": [
+    {
+     "text": "Comme il va probablement divorcer, Monsieur Barman peut effectuer un retrait EPL sans l'accord de son épouse",
+     "correct": false
+    },
+    {
+     "text": "Monsieur Barman peut effectuer un retrait EPL uniquement avec l'accord oral de son épouse",
+     "correct": false
+    },
+    {
+     "text": "Monsieur Barman peut effectuer un retrait EPL uniquement avec l'accord écrit de son épouse",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 30c, al. 5 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-043",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Monsieur Chevalley souhaite effectuer un remboursement d'une partie de son retrait EPL. Quel est le montant minimum ?",
+   "options": [
+    {
+     "text": "Aucun",
+     "correct": false
+    },
+    {
+     "text": "10'000",
+     "correct": true
+    },
+    {
+     "text": "20'000",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-044",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Jusqu'à quand un remboursement EPL peut-il être effectué ?",
+   "options": [
+    {
+     "text": "Jusqu'à 2 ans avant la retraite",
+     "correct": false
+    },
+    {
+     "text": "Jusqu'à 3 ans avant la retraite",
+     "correct": true
+    },
+    {
+     "text": "Jusqu'à 5 ans avant la retraite",
+     "correct": false
+    },
+    {
+     "text": "Jusqu'à la survenance d'un cas de prévoyance",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 30d, al. 3 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-045",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Votre client souhaite effectuer différents rachats auprès de sa caisse de pension à hauteur de CHF 15'000.- par an durant 5 ans. Il y a 9 ans, votre client a fait un retrait EPL de CHF 100'000.-. Parmi les affirmations suivantes,",
+   "options": [
+    {
+     "text": "Il peut sans autre effectuer les rachats prévus pendant 5 ans",
+     "correct": false
+    },
+    {
+     "text": "Il peut sans autre effectuer les rachats prévu pendant 5 ans, à condition que son épouse ait donné son accord écrit",
+     "correct": false
+    },
+    {
+     "text": "Il ne peut pas effectuer de rachat. Il doit d'abord rembourser le retrait EPL",
+     "correct": true
+    },
+    {
+     "text": "Il peut effectuer des rachats selon la lacune calculée par la caisse de pension",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 79b, al. 3 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-046",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Peut-on effectuer un rachat auprès de la caisse de pension grâce à un compte ou une police 3a afin d'augmenter les prestations de prévoyance ?  autorisé (Art. 3, al. 2, let. b OPP3). Néanmoins, les contributions déjà déduites du revenu imposable une 1ère fois ne peuvent pas l'être à nouveau.",
+   "options": [
+    {
+     "text": "Oui. Le rachat sera également déductible du revenu imposable",
+     "correct": false
+    },
+    {
+     "text": "Oui. Le rachat ne pourra toutefois pas être déduit du revenu imposable",
+     "correct": true
+    },
+    {
+     "text": "Non, un tel rachat n'est pas possible",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-047",
+   "theme": "retraite",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Un étranger arrivé en Suisse il y a deux ans peut effectuer un rachat pour la différence entre son avoir actuel de prévoyance et celui qu'il aurait eu s'il savait été affilié depuis ses 25 ans.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 60b, al. 1 OPP 2."
+  },
+  {
+   "external_id": "EXT-LPP-048",
+   "theme": "retraite",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Un rachat LPP augmente toujours les prestations de risques de l'assuré. risques sont assurées en % du salaire assuré. Un rachat n'aura donc aucun impact sur les couvertures de risques.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-049",
+   "theme": "retraite",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "À la suite d'un divorce, un rachat ne peut être effectué que lorsque le montant retiré a été remboursé.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 22d LFLP / Art. 79b, al. 4 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-050",
+   "theme": "retraite",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Durant les 10 premières années, une personne venant de l'étranger et jamais affiliée à une institution de prévoyance ne peut effectuer un rachat que pour 20 % de son salaire assuré.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 60b, al. 1 OPP 2."
+  },
+  {
+   "external_id": "EXT-LPP-051",
+   "theme": "retraite",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Lorsque l'employeur n'affilie pas ses employés à une institution de prévoyance comme il est tenu de le faire selon la loi, l'institution supplétive peut procéder à une affiliation d'office.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": true
+    },
+    {
+     "text": "Faux",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 11, al. 6 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-052",
+   "theme": "retraite",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Une entreprise s'est vu résilier son contrat par l'institution de prévoyance auprès de laquelle elle était assurée. Que peut-elle faire à présent ?",
+   "options": [
+    {
+     "text": "Rien. Elle n'a plus aucune possibilité car aucune institution ne l'acceptera",
+     "correct": false
+    },
+    {
+     "text": "S'adresser à une nouvelle institution de prévoyance qui sera obligée de l'accepter, puisque l'affiliation est obligatoire pour les employés",
+     "correct": false
+    },
+    {
+     "text": "L'entreprise peut s'adresser à l'institution supplétive qui peut toutefois refuser l'affiliation de l'entreprise et ses employés",
+     "correct": false
+    },
+    {
+     "text": "L'entreprise peut s'adresser à l'institution supplétive qui ne peut pas refuser l'affiliation de l'entreprise et ses employés",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 11, al. 3bis LPP."
+  },
+  {
+   "external_id": "EXT-LPP-053",
+   "theme": "retraite",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Une caisse dite enveloppante réunie les prestations obligatoires et surobligatoire dans un seul contrat. C'est la solution privilégiée par les entreprises qui accordent, à une partie de son personnel, des prestations plus généreuses que le minimum légal.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-054",
+   "theme": "retraite",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "L'épargne constituée par un employé dans la caisse de pension est soumise à l'impôt sur la fortune.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art, 81, al. 2 LPP."
+  },
+  {
+   "external_id": "EXT-LPP-055",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 4,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les affirmations suivantes, laquelle ou lesquelles sont correctes ?",
+   "options": [
+    {
+     "text": "La totalité des cotisations LPP sont déductibles du salaire",
+     "correct": false
+    },
+    {
+     "text": "Les cotisations LPP de l'employé sont déductibles du salaire",
+     "correct": true
+    },
+    {
+     "text": "Les rentes sont imposées à un taux unique et distinct séparé des autres revenus",
+     "correct": false
+    },
+    {
+     "text": "Les capitaux sont imposés à un taux unique et distinct séparé des autres revenus",
+     "correct": true
+    },
+    {
+     "text": "Un retrait EPL est imposé à un taux unique et distinct séparé des autres revenus",
+     "correct": true
+    },
+    {
+     "text": "Le remboursement d'un retrait EPL donne droit à un remboursement d'impôt",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art, 81, al. 2 LPP / Art. 83a, al. 2 LPP / Art. 331, al. 3 CO."
+  },
+  {
+   "external_id": "EXT-LPP-056",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Une institution de prévoyance peut décider d'accorder des prestations plus favorables à ses affiliés. Parmi les affirmations suivantes,",
+   "options": [
+    {
+     "text": "Inclusion d'un capital décès et/ou d'un capital invalidité",
+     "correct": true
+    },
+    {
+     "text": "Déduction de coordination selon le taux d'activité",
+     "correct": true
+    },
+    {
+     "text": "Suppression de la déduction coordination",
+     "correct": true
+    },
+    {
+     "text": "Bonifications de vieillesse jusqu'à 50 % du salaire assuré",
+     "correct": false
+    },
+    {
+     "text": "Salaire assuré jusqu'à 15 fois la limite supérieure du salaire LPP obligatoire",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-057",
+   "theme": "retraite",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Quelles sont les caractéristiques d'une mise en gage de l'avoir de prévoyance ?  pas réalisé, les prestations restent identiques et aucune imposition n'a lieu.",
+   "options": [
+    {
+     "text": "Diminution des prestations de retraite",
+     "correct": false
+    },
+    {
+     "text": "Pas de diminution des prestations de retraite",
+     "correct": true
+    },
+    {
+     "text": "Imposition du montant lors de la mise en gage",
+     "correct": false
+    },
+    {
+     "text": "Pas d'imposition du montant lors de la mise en gage",
+     "correct": true
+    },
+    {
+     "text": "Pas de mention au registre foncier",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-058",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Quelles sont les formes de propriétés autorisées pour un retrait EPL ?",
+   "options": [
+    {
+     "text": "Propriété commune avec son frère/sa sœur",
+     "correct": false
+    },
+    {
+     "text": "Propriété commune avec son concubin/sa concubine",
+     "correct": false
+    },
+    {
+     "text": "Propriété commune avec son conjoint/sa conjointe",
+     "correct": true
+    },
+    {
+     "text": "Propriété commune avec son/sa partenaire enregistré/e",
+     "correct": true
+    },
+    {
+     "text": "Copropriété avec un partenaire",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-059",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Quelles sont les utilisations autorisées pour un retrait EPL ?",
+   "options": [
+    {
+     "text": "Amortissement de la dette hypothécaire",
+     "correct": true
+    },
+    {
+     "text": "Paiement des intérêts de la dette hypothécaire",
+     "correct": false
+    },
+    {
+     "text": "Construction d'une résidence secondaire",
+     "correct": false
+    },
+    {
+     "text": "La construction de deux villas",
+     "correct": false
+    },
+    {
+     "text": "L'achat d'un logement en propriété",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LPP-060",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "De quelle manière est imposé le montant du retrait EPL ?",
+   "options": [
+    {
+     "text": "Les impôts peuvent être payés à l'aide du retrait EPL",
+     "correct": false
+    },
+    {
+     "text": "Les impôts ne peuvent pas être payés à l'aide du retrait EPL",
+     "correct": true
+    },
+    {
+     "text": "Le taux de l'impôt dépend de la forme de propriété",
+     "correct": false
+    },
+    {
+     "text": "Le taux dépend du montant du retrait",
+     "correct": true
+    },
+    {
+     "text": "Un impôt sur la fortune est payé lors du retrait",
+     "correct": false
+    },
+    {
+     "text": "Les impôts doivent être payés avec des fonds propres",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  }
+ ]
+}

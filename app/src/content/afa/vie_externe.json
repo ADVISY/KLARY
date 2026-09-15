@@ -1,0 +1,116 @@
+{
+ "source": "formation_externe",
+ "filiere_key": "vie",
+ "reference": "Questions à choix multiples issues de questionnaires de formation externes, réponses cochées dans le corrigé d'origine.",
+ "note": "Bonnes réponses relevées directement sur le corrigé : aucune construction.",
+ "questions": [
+  {
+   "external_id": "EXT-VIE-001",
+   "theme": "retraite",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les personnes ci-dessous, qui doit cotiser à l'AVS ?",
+   "options": [
+    {
+     "text": "Femme mariée dont le mari gagne 85'000.- par an",
+     "correct": false
+    },
+    {
+     "text": "Femme divorcée",
+     "correct": true
+    },
+    {
+     "text": "étudiant de 24 ans n'ayant pas d'activité lucrative",
+     "correct": true
+    },
+    {
+     "text": "étudiant de 19 ans n'ayant pas d'activité lucrative",
+     "correct": false
+    },
+    {
+     "text": "Retraité de 68 ans ayant une activité lucrative de 25'000.- par an",
+     "correct": true
+    },
+    {
+     "text": "Personne de 64 ans en préretraite",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-VIE-002",
+   "theme": "retraite",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les personnes ci-dessous, qui doit cotiser à la LPP pour la part épargne ?",
+   "options": [
+    {
+     "text": "Salarié de 35 ans ayant une activité lucrative de 56'000.- par an",
+     "correct": true
+    },
+    {
+     "text": "Indépendant de 35 ans ayant une activité lucrative de 56'000.- par an au total",
+     "correct": false
+    },
+    {
+     "text": "Etudiant de 22 ans ayant une activité lucrative de 30'000.- par an au total",
+     "correct": false
+    },
+    {
+     "text": "Etudiant de 26 ans ayant une activité lucrative de 30'000.- par an au total",
+     "correct": true
+    },
+    {
+     "text": "Etudiant de 26 ans ayant une activité lucrative de 21'000.- par an au total",
+     "correct": false
+    },
+    {
+     "text": "Salarié ayant trois activités lucrative à 30 % chacune, avec un revenu total de 57'000.-/an",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-VIE-003",
+   "theme": "retraite",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les personnes ci-dessous, qui doit cotiser à la LPP pour la prime de risque ?",
+   "options": [
+    {
+     "text": "Salarié de 35 ans ayant une activité lucrative de 56'000.- par an",
+     "correct": true
+    },
+    {
+     "text": "Indépendant de 35 ans ayant une activité lucrative de 56'000.- par an au total",
+     "correct": false
+    },
+    {
+     "text": "Etudiant de 22 ans ayant une activité lucrative de 30'000.- par an au total",
+     "correct": true
+    },
+    {
+     "text": "Etudiant de 26 ans ayant une activité lucrative de 30'000.- par an au total",
+     "correct": true
+    },
+    {
+     "text": "Etudiant de 26 ans ayant une activité lucrative de 21'000.- par an au total",
+     "correct": false
+    },
+    {
+     "text": "Salarié ayant trois activités lucrative à 30 % chacune pour 57'000.- par an au total",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  }
+ ]
+}

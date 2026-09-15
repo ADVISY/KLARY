@@ -1,0 +1,1057 @@
+{
+ "source": "formation_externe",
+ "filiere_key": "non_vie",
+ "reference": "Questions non-vie construites à partir de questionnaires de formation externes (RC entreprise, RC privée et immeubles, protection juridique, choses PME).",
+ "note": "Les bonnes réponses sont les items réellement énumérés dans les corrigés d'origine. Les distracteurs sont des items existants empruntés à un AUTRE domaine d'assurance : rien n'est inventé, seule l'association est construite. Ces questions méritent une relecture, un distracteur pouvant en théorie se révéler juste pour la question posée.",
+ "questions": [
+  {
+   "external_id": "GEN-NV-001",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance RC d'entreprise et RC professionnelle",
+   "question": "Quels sont les fondements légaux (bases légales) de l'assurance RC d'entreprise ?",
+   "options": [
+    {
+     "text": "LCA (traitement juridique des contrats d'assurance)",
+     "correct": true
+    },
+    {
+     "text": "CGA (couverture d'assurance)",
+     "correct": true
+    },
+    {
+     "text": "Lois fédérales (obligation d'assurance)",
+     "correct": true
+    },
+    {
+     "text": "Assurance marchandises",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Assurance des installations techniques (IT)",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Supports de données et données enregistrées",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Droit de la responsabilité civile (responsabilité)",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-002",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance RC d'entreprise et RC professionnelle",
+   "question": "Quels cercles de personnes sont assurés par l'assurance responsabilité civile d'entreprise ?",
+   "options": [
+    {
+     "text": "Techniques de mesure de film et de photographie",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Les employés",
+     "correct": true
+    },
+    {
+     "text": "Le preneur d'assurance en tant que propriétaire de l'entreprise",
+     "correct": true
+    },
+    {
+     "text": "Les membres de la famille de l'entrepreneur qui travaillent dans l'entreprise",
+     "correct": true
+    },
+    {
+     "text": "La direction",
+     "correct": true
+    },
+    {
+     "text": "Erreur de manipulation",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Machines de construction de route autopropulsées",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-003",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance RC d'entreprise et RC professionnelle",
+   "question": "Quels types de dommages (risques assurés) sont inclus dans la RC d'entreprise ?",
+   "options": [
+    {
+     "text": "Erreur de manipulation",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Somme d'assurance",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Dommages matériels",
+     "correct": true
+    },
+    {
+     "text": "Dommages économiques consécutifs",
+     "correct": true
+    },
+    {
+     "text": "Dommages corporels",
+     "correct": true
+    },
+    {
+     "text": "Machines de construction",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-004",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance RC d'entreprise et RC professionnelle",
+   "question": "Quels éléments déterminent la prime de l'assurance RC d'entreprise ?",
+   "options": [
+    {
+     "text": "Somme de garantie",
+     "correct": true
+    },
+    {
+     "text": "Défauts de conception et de matériel",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Police individuelle",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Type d'entreprise",
+     "correct": true
+    },
+    {
+     "text": "Taille de l'entreprise",
+     "correct": true
+    },
+    {
+     "text": "Malveillance",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Montant de la franchise",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-005",
+   "theme": "propriete_logement",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance RC privée, immeubles et maître de l'ouvrage",
+   "question": "Quel est le cercle possible des personnes assurées ?",
+   "options": [
+    {
+     "text": "Défauts de conception et de matériel",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Autres personnes (employés de maison, enfants mineurs, animaux domestiques)",
+     "correct": true
+    },
+    {
+     "text": "Autres personnes selon CGA des compagnies",
+     "correct": true
+    },
+    {
+     "text": "Frais fixes maintenus malgré l'arrêt des machines",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Le preneur d'assurance (P.A.)",
+     "correct": true
+    },
+    {
+     "text": "La famille du P.A. vivant en ménage commun",
+     "correct": true
+    },
+    {
+     "text": "Installations d'incinération",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-006",
+   "theme": "propriete_logement",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance RC privée, immeubles et maître de l'ouvrage",
+   "question": "Quelles sont les exclusions ?",
+   "options": [
+    {
+     "text": "Les propres dommages",
+     "correct": true
+    },
+    {
+     "text": "Frais fixes maintenus malgré l'arrêt des machines",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Les prétentions pour les dommages entre personnes faisant ménage commun",
+     "correct": true
+    },
+    {
+     "text": "Les prétentions pour les dommages entre personnes compris dans une assurance familiale",
+     "correct": true
+    },
+    {
+     "text": "Techniques de mesure de film et de photographie",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Défauts de conception et de matériel ou des vices de fabrication",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-007",
+   "theme": "propriete_logement",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance RC privée, immeubles et maître de l'ouvrage",
+   "question": "En quelle qualité un assuré peut-il être tenu responsable ?",
+   "options": [
+    {
+     "text": "Propriétaire du bâtiment et des constructions érigées sur son terrain (Art. 58 CO)",
+     "correct": true
+    },
+    {
+     "text": "Les membres de la famille de l'entrepreneur qui travaillent dans l'entreprise",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Dommages économiques consécutifs",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Frais de réparation de la conduite d'eau endommagée par le gel Non couvert",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Pour les dommages imprévus et soudains causés à l'environnement",
+     "correct": true
+    },
+    {
+     "text": "Pour les activités en rapport avec la propriété (Art. 41 CO)",
+     "correct": true
+    },
+    {
+     "text": "Propriétaire foncier (Art. 679 CCS)",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-008",
+   "theme": "propriete_logement",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance RC privée, immeubles et maître de l'ouvrage",
+   "question": "Comment se calcule la prime ?",
+   "options": [
+    {
+     "text": "Le degré de danger que la construction fait courir au voisinage",
+     "correct": true
+    },
+    {
+     "text": "Type de marchandises transportées",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "La somme garantie choisie",
+     "correct": true
+    },
+    {
+     "text": "La franchise choisie",
+     "correct": true
+    },
+    {
+     "text": "Le montant du coût de la construction",
+     "correct": true
+    },
+    {
+     "text": "Biens des clients Valeur à neuf",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Type d'objet et de risques",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-009",
+   "theme": "litiges_nv",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Protection juridique, RC véhicules à moteur et assurances diverses",
+   "question": "Quelles sont les PA dans l'assurance PJ privée (individuelle et famille), la circulation et celle d'entreprise ?",
+   "options": [
+    {
+     "text": "Le ou les entrepreneurs",
+     "correct": true
+    },
+    {
+     "text": "L'entreprise elle-même",
+     "correct": true
+    },
+    {
+     "text": "Marchandises achetées Prix de revient",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "La direction",
+     "correct": true
+    },
+    {
+     "text": "Les collaborateurs",
+     "correct": true
+    },
+    {
+     "text": "Les membres de la famille de l'entrepreneur qui travaillent dans l'entreprise",
+     "correct": true
+    },
+    {
+     "text": "Pollution de l'air",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-010",
+   "theme": "litiges_nv",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Protection juridique, RC véhicules à moteur et assurances diverses",
+   "question": "Qu'est-ce qu'un véhicule à moteur ?",
+   "options": [
+    {
+     "text": "Tracteurs et autres véhicules agricoles",
+     "correct": true
+    },
+    {
+     "text": "Motos et scooters",
+     "correct": true
+    },
+    {
+     "text": "Utilisateur, gardien ou transporteur d'objets confiés par des tiers",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Machines de construction de route autopropulsées",
+     "correct": true
+    },
+    {
+     "text": "Police individuelle",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Techniques de mesure de film et de photographie",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Voitures électriques et voitures solaires",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-011",
+   "theme": "litiges_nv",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Protection juridique, RC véhicules à moteur et assurances diverses",
+   "question": "Quels sont les éléments généralement couverts par l'assurance voyage ?",
+   "options": [
+    {
+     "text": "Protection de voyage",
+     "correct": true
+    },
+    {
+     "text": "Les employés",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Assistance en cas de panne",
+     "correct": true
+    },
+    {
+     "text": "Assurance de machines",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Remplacement du voyage",
+     "correct": true
+    },
+    {
+     "text": "Annulation de voyage",
+     "correct": true
+    },
+    {
+     "text": "Chiropracticiens",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-012",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": "Assurance de choses pour PME : commerce",
+   "question": "Indiquez si les exemples de sinistres suivants sont couverts ou exclus par l'assurance de chose de",
+   "options": [
+    {
+     "text": "Assurance des installations techniques (IT)",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Frais de réparation de la conduite d'eau endommagée par le gel Non couvert",
+     "correct": true
+    },
+    {
+     "text": "Propriétaire de l'ouvrage (RC Bâtiment et autres ouvrages)",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Défauts de conception et de matériel",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Outils volés dans le camion de livraison ouvert Non couvert",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-013",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance de choses pour PME : transport",
+   "question": "Quels éléments sont importants pour le calcul de la prime ?",
+   "options": [
+    {
+     "text": "Etendue de la couverture d'assurance",
+     "correct": true
+    },
+    {
+     "text": "Moyens de transport",
+     "correct": true
+    },
+    {
+     "text": "Durée du montage",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Type de marchandises transportées",
+     "correct": true
+    },
+    {
+     "text": "Installations d'incinération",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Employeur de personnel domestique",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Somme d'assurance",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-014",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Indiquez trois branches de l'assurance technique",
+   "options": [
+    {
+     "text": "Assurance casco de machines",
+     "correct": true
+    },
+    {
+     "text": "Assurance de montage",
+     "correct": true
+    },
+    {
+     "text": "Valeurs pécuniaires Premier risque",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Assurance des installations techniques (IT)",
+     "correct": true
+    },
+    {
+     "text": "Assurance de machines",
+     "correct": true
+    },
+    {
+     "text": "La franchise choisie",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Assurance d'équipement informatique",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-015",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Indiquez trois facteurs déterminants pour le calcul de la prime d'assurance de machines",
+   "options": [
+    {
+     "text": "Montant de la franchise",
+     "correct": true
+    },
+    {
+     "text": "Type de machine",
+     "correct": true
+    },
+    {
+     "text": "Les propres dommages",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Assurance marchandises",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Annulation de voyage",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Somme d'assurance",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-016",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Nommez trois risques couverts par l'assurance de montage",
+   "options": [
+    {
+     "text": "Erreurs de planification et de calcul",
+     "correct": true
+    },
+    {
+     "text": "Evénements naturels",
+     "correct": true
+    },
+    {
+     "text": "Négligence ou dommage intentionnel",
+     "correct": true
+    },
+    {
+     "text": "Erreur de manipulation",
+     "correct": true
+    },
+    {
+     "text": "Dépens (indemnité de procédure allouée à la partie adverse)",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Les propres dommages",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Défauts de conception et de matériel ou des vices de fabrication",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-017",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Indiquez trois facteurs déterminants pour le calcul de la prime d'assurance de montage",
+   "options": [
+    {
+     "text": "Dommages matériels",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Somme d'assurance",
+     "correct": true
+    },
+    {
+     "text": "Type d'objet et de risques",
+     "correct": true
+    },
+    {
+     "text": "Durée du montage",
+     "correct": true
+    },
+    {
+     "text": "Motos et scooters",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Police individuelle",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-018",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Nommez trois risques couverts par l'assurance casco de machines",
+   "options": [
+    {
+     "text": "Droit du travail",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Montant de la franchise",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Chute ou enlisement",
+     "correct": true
+    },
+    {
+     "text": "Annulation de voyage",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Vent et tempête",
+     "correct": true
+    },
+    {
+     "text": "Renversement",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-019",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Indiquez trois facteurs déterminants pour le calcul de la prime d'assurance casco de machines",
+   "options": [
+    {
+     "text": "Droit des patients",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Droits réels",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Type d'objet et de risques",
+     "correct": true
+    },
+    {
+     "text": "Somme d'assurance",
+     "correct": true
+    },
+    {
+     "text": "Lois fédérales (obligation d'assurance)",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-020",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Nommez trois risques couverts par l'assurance d'équipement informatique",
+   "options": [
+    {
+     "text": "Action de l'humidité",
+     "correct": true
+    },
+    {
+     "text": "Erreur de manipulation",
+     "correct": true
+    },
+    {
+     "text": "Décharges électriques",
+     "correct": true
+    },
+    {
+     "text": "Pollution de l'air",
+     "correct": true
+    },
+    {
+     "text": "La franchise choisie",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Corps étrangers",
+     "correct": true
+    },
+    {
+     "text": "Effets du personnel Premier risque",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-021",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Quels sont les objets et secteurs qui peuvent être couverts par l'assurance d'équipement informatique ?",
+   "options": [
+    {
+     "text": "Cycliste ou conducteur de mobylette",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Le montant du coût de la construction",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Installations électroniques de traitement des données et infrastructure",
+     "correct": true
+    },
+    {
+     "text": "Supports de données et données enregistrées",
+     "correct": true
+    },
+    {
+     "text": "Frais supplémentaires pour le maintien du traitement des données",
+     "correct": true
+    },
+    {
+     "text": "Les prétentions pour les dommages entre personnes faisant ménage commun",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-022",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Indiquez trois facteurs déterminants pour le calcul de la prime d'assurance d'équipement informatique",
+   "options": [
+    {
+     "text": "Somme d'assurance",
+     "correct": true
+    },
+    {
+     "text": "Valeurs pécuniaires Premier risque",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Dommages économiques consécutifs",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Type d'objet et de risques",
+     "correct": true
+    },
+    {
+     "text": "L'entreprise elle-même",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-023",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Nommez trois risques couverts par l'assurance des installations techniques",
+   "options": [
+    {
+     "text": "Défauts de conception et de matériel",
+     "correct": true
+    },
+    {
+     "text": "Les collaborateurs",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Malveillance",
+     "correct": true
+    },
+    {
+     "text": "Droit des assurances",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Erreur de manipulation",
+     "correct": true
+    },
+    {
+     "text": "Vent et tempête",
+     "correct": true
+    },
+    {
+     "text": "Décharges électriques",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-024",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Quels objets peuvent être couverts par l'assurance des installations techniques ?",
+   "options": [
+    {
+     "text": "Moyens de transport",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "La somme garantie choisie",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Dispositif de signalisation",
+     "correct": true
+    },
+    {
+     "text": "Techniques de mesure de film et de photographie",
+     "correct": true
+    },
+    {
+     "text": "Enseignes lumineuses",
+     "correct": true
+    },
+    {
+     "text": "Type de marchandises transportées",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-025",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Indiquez trois facteurs déterminants pour le calcul de la prime d'assurance des installations techniques",
+   "options": [
+    {
+     "text": "Réparation civile",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Le montant du coût de la construction",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Type d'objet et de risques",
+     "correct": true
+    },
+    {
+     "text": "Chef de famille",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Somme d'assurance",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "GEN-NV-026",
+   "theme": "pme",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "Assurance de choses pour PME : installations techniques",
+   "question": "Quelles catégories de dommages peuvent être couvertes par l'assurance perte d'exploitation machines ?",
+   "options": [
+    {
+     "text": "Gains perdus",
+     "correct": true
+    },
+    {
+     "text": "Personne privée (particulier) pour son propre comportement",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Frais supplémentaires pour des travaux devant être attribués à l'extérieur",
+     "correct": true
+    },
+    {
+     "text": "Marchandises achetées Prix de revient",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    },
+    {
+     "text": "Frais fixes maintenus malgré l'arrêt des machines",
+     "correct": true
+    },
+    {
+     "text": "Le preneur d'assurance en tant que propriétaire de l'entreprise",
+     "correct": false,
+     "why_wrong": "Proposition tirée d'un autre domaine d'assurance : elle ne fait pas partie de la réponse attendue."
+    }
+   ],
+   "explanation": null
+  }
+ ]
+}

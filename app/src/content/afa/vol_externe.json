@@ -1,0 +1,164 @@
+{
+ "source": "formation_externe",
+ "filiere_key": "non_vie",
+ "reference": "Cas pratiques de qualification du vol, issus d'un support de formation externe. Fond : distinction vol simple / vol avec effraction / détroussement.",
+ "note": "La qualification retenue est celle du corrigé d'origine, cohérente avec l'explication fournie pour chaque cas.",
+ "questions": [
+  {
+   "external_id": "EXT-VOL-001",
+   "theme": "menage",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": "Madame S. se balade dans la rue avec son sac à main suspendu à l'épaule droite. Subrepticement, un cycliste s'approche par derrière. En passant à côté d'elle, il attrape la bretelle, prend le sac de Madame S. et s'en va à toute allure. Madame S. est si mplement stupéfaite et ne peut rien faire d'autre que de se plaindre de la jeunesse actuelle et se rendre au poste de police le plus proche.",
+   "question": "De quoi s'agit-il juridiquement ?",
+   "options": [
+    {
+     "text": "Vol avec effraction",
+     "correct": false,
+     "why_wrong": null
+    },
+    {
+     "text": "Détroussement",
+     "correct": false,
+     "why_wrong": null
+    },
+    {
+     "text": "Vol simple",
+     "correct": true
+    }
+   ],
+   "explanation": "Dans le déroulement des faits, la surprise est prépondérante."
+  },
+  {
+   "external_id": "EXT-VOL-002",
+   "theme": "menage",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": "Un jeune homme se plante de manière provocante devant Monsieur P. et tient en laisse un pitbull - terrier grondant et montrant les crocs. Il désigne son chien du doigt et demande à Monsieur P. de lui donner son portefeuille.",
+   "question": "De quoi s'agit-il juridiquement ?",
+   "options": [
+    {
+     "text": "Vol avec effraction",
+     "correct": false,
+     "why_wrong": null
+    },
+    {
+     "text": "Détroussement",
+     "correct": true
+    },
+    {
+     "text": "Vol simple",
+     "correct": false,
+     "why_wrong": null
+    }
+   ],
+   "explanation": "La menace du recours à la force est manifeste. Monsieur P. doit s'attendre à ce que le malfrat lâche son chien sur lui."
+  },
+  {
+   "external_id": "EXT-VOL-003",
+   "theme": "menage",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": "L'électricien K. est attablé au restaurant pour manger une colla tion bien méritée. En regardant par la fenêtre, il voit un inconnu voler sa caisse à outils d ans son véhicule d'entreprise non fermé à clé. K. sort en courant sans réf léchir et rattrape le voleur environ 10 mètres plus loin. Il veut le saisir par l'épaule et lui demander une explication. A ce moment -là, l'inconnu se retourne et donne un violent coup de poing dans le visage de l'électricien K. qui tombe dans les pommes. Lorsque K. revient à lui, l'inconnu et la caisse à outils ont disparu sans laisser de traces.",
+   "question": "De quoi s'agit-il juridiquement ?",
+   "options": [
+    {
+     "text": "Vol avec effraction",
+     "correct": false,
+     "why_wrong": null
+    },
+    {
+     "text": "Détroussement",
+     "correct": true
+    },
+    {
+     "text": "Vol simple",
+     "correct": false,
+     "why_wrong": null
+    }
+   ],
+   "explanation": "Recours à la force pour conserver un objet volé précédemment."
+  },
+  {
+   "external_id": "EXT-VOL-004",
+   "theme": "menage",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": "Madame S., devenue plus prudente depuis son expérience dans le cas n° 1, est à nouveau en balade dans la même rue. Elle remarque que quelqu'un essaie d'attraper son sac derrière elle. Ses mains s'agrippent à son sac. Elle se retourne. Surpris, le malfrat saisit finalement le sac et l'arra che des mains de Madame S. par un violent coup.",
+   "question": "De quoi s'agit-il juridiquement ?",
+   "options": [
+    {
+     "text": "Vol avec effraction",
+     "correct": false,
+     "why_wrong": null
+    },
+    {
+     "text": "Détroussement",
+     "correct": true
+    },
+    {
+     "text": "Vol simple",
+     "correct": false,
+     "why_wrong": null
+    }
+   ],
+   "explanation": "Usage clair de la force pour surmonter l'opposition de Madame S. Page 2 / 2"
+  },
+  {
+   "external_id": "EXT-VOL-005",
+   "theme": "menage",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": "Paul O. n'a pas de chance. Sur une route verglacée, son véhicule dérape et percute un arbre de front. Paul O. s'en sort avec quelques contusions, mais il est coincé entre le siège et le volant. Son attaché- case est projeté hors du véhicule à travers le pare-brise. Après une minute, un bon samaritain vient à son secours. Ce dernier comprend tout de suite la situation : une victime en difficulté a besoin d'aide ! Il appelle un médecin d'urgence et les pompiers sans donner son nom. Le samaritain quitte le lieu de l'accident et emporte également l'attaché-case de Paul O.",
+   "question": "De quoi s'agit-il juridiquement ?",
+   "options": [
+    {
+     "text": "Vol avec effraction",
+     "correct": false,
+     "why_wrong": null
+    },
+    {
+     "text": "Détroussement",
+     "correct": true
+    },
+    {
+     "text": "Vol simple",
+     "correct": false,
+     "why_wrong": null
+    }
+   ],
+   "explanation": "Paul O. a été victime d'un accident et il n'est pas en mesure d'opposer une résistance à la suite de l'accident. Mais ce ne sont pas les blessures subies qui l'empêchent de s'opposer, mais sa situation fâcheuse ; le fait d'être coincé dans son véhicule."
+  },
+  {
+   "external_id": "EXT-VOL-006",
+   "theme": "menage",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": "Joe la Canaille est de nouveau en vadrouille. Avec une échelle, il monte sur le toit plat d'un entrepôt. Il enlève les vis d'une coupole de verre et pénètre dans l'entrepôt. Il dérobe des marchandises d'une valeur totale de CHF 2'000.– sur les rayons et quitte l'entrepôt de la même manière qu'il y était entré.",
+   "question": "De quoi s'agit-il juridiquement ?",
+   "options": [
+    {
+     "text": "Vol avec effraction",
+     "correct": false,
+     "why_wrong": null
+    },
+    {
+     "text": "Détroussement",
+     "correct": false,
+     "why_wrong": null
+    },
+    {
+     "text": "Vol simple",
+     "correct": true
+    }
+   ],
+   "explanation": "Joe la Canaille a ouvert une voie d'accès dans le bâtiment, comme il est prévu de l'ouvrir. Aucune détérioration de la substance de la chose, aucun recours à la force, pas d'effraction."
+  }
+ ]
+}

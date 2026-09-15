@@ -25,8 +25,9 @@ export default async function DashboardLayout({
     .eq("active", true);
 
   const ROLE_PRIORITY: Record<string, number> = {
-    admin: 3,
-    manager: 2,
+    admin: 4,
+    manager: 3,
+    backoffice: 2,
     agent: 1,
   };
   const profile = (profileRows ?? []).sort(

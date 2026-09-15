@@ -1,0 +1,32 @@
+{
+ "source": "formation_externe",
+ "filiere_key": "maladie_complementaire",
+ "reference": "Questions à choix multiples issues de questionnaires de formation externes, réponses cochées dans le corrigé d'origine.",
+ "note": "Bonnes réponses relevées directement sur le corrigé : aucune construction.",
+ "questions": [
+  {
+   "external_id": "EXT-LM-001",
+   "theme": "lamal_prestations",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Cochez les prestations pouvant être assurées dans l'assurance-maladie.",
+   "options": [
+    {
+     "text": "Frais de guérison (p. ex. médecin, médicaments)",
+     "correct": true
+    },
+    {
+     "text": "Prestations en espèces sous forme de rentes (par ex. perte de revenu en cas d'incapacité de gain",
+     "correct": false
+    },
+    {
+     "text": "Frais de soins (p. ex. thérapie, soins à domicile)",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  }
+ ]
+}

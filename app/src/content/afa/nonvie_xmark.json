@@ -1,0 +1,68 @@
+{
+ "source": "formation_externe",
+ "filiere_key": "non_vie",
+ "reference": "Questions à choix multiples issues de questionnaires de formation externes, réponses cochées dans le corrigé d'origine.",
+ "note": "Bonnes réponses relevées directement sur le corrigé : aucune construction.",
+ "questions": [
+  {
+   "external_id": "EXT-BL-001",
+   "theme": "litiges_nv",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les cas suivants, lequel n'entre pas dans la catégorie de la responsabilité civile causale simple ?",
+   "options": [
+    {
+     "text": "Responsabilité selon l'équité",
+     "correct": false
+    },
+    {
+     "text": "Responsabilité selon la LCR",
+     "correct": true
+    },
+    {
+     "text": "Responsabilité du fait des produits",
+     "correct": false
+    },
+    {
+     "text": "Responsabilité en tant que chef de famille",
+     "correct": false
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-BL-002",
+   "theme": "litiges_nv",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Dans quels cas suivants un particulier peut-il être confronté à la responsabilité causale aggravée ?",
+   "options": [
+    {
+     "text": "Chasseur",
+     "correct": true
+    },
+    {
+     "text": "Chef de famille",
+     "correct": false
+    },
+    {
+     "text": "Détenteur d'un animal",
+     "correct": false
+    },
+    {
+     "text": "Conducteur de cyclomoteur",
+     "correct": false
+    },
+    {
+     "text": "Détenteur de véhicule",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  }
+ ]
+}

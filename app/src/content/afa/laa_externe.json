@@ -1,0 +1,1713 @@
+{
+ "source": "formation_externe",
+ "filiere_key": "maladie_complementaire",
+ "reference": "Banque de questions LAA reconstituée à partir d'un support de formation externe. Fond : LAA, OLAA, LPGA.",
+ "note": "Questions portant sur des dispositions légales et réglementaires suisses. Les valeurs chiffrées sont celles du support d'origine : elles doivent être revérifiées à chaque changement de paramètres annuels.",
+ "questions": [
+  {
+   "external_id": "EXT-LAA-001",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [
+    "laa_assujettissement"
+   ],
+   "context": null,
+   "question": "A partir de quel revenu est-on obligatoirement assuré à la LAA ?",
+   "options": [
+    {
+     "text": "22'050",
+     "correct": false
+    },
+    {
+     "text": "3'675",
+     "correct": false
+    },
+    {
+     "text": "Pas de minimum",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 92 LAA / Art. 22, al. 1 et 2 LAA / Art. 115 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-002",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le salaire assuré maximum en LAA obligatoire ?",
+   "options": [
+    {
+     "text": "148'200",
+     "correct": true
+    },
+    {
+     "text": "62'475",
+     "correct": false
+    },
+    {
+     "text": "88'200",
+     "correct": false
+    },
+    {
+     "text": "126'000",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 22, al. 1 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-003",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [
+    "laa_8h"
+   ],
+   "context": null,
+   "question": "A partir de quand est-on assuré en assurance accident non-professionnel ?",
+   "options": [
+    {
+     "text": "A partir de la 1ère heure de travail",
+     "correct": false
+    },
+    {
+     "text": "A partir de 8 heures de travail par semaine auprès de différents employeurs",
+     "correct": false
+    },
+    {
+     "text": "A partir de 8 heures de travail par semaine auprès du même employeur",
+     "correct": true
+    },
+    {
+     "text": "A partir de 42 heures de travail par semaine",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 13, al. 1 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-004",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [
+    "laa_8h"
+   ],
+   "context": null,
+   "question": "A partir de quand est-on assuré en accident professionnel ?",
+   "options": [
+    {
+     "text": "A partir de 8 heures de travail auprès du même employeur",
+     "correct": false
+    },
+    {
+     "text": "Dès la signature du contrat de travail",
+     "correct": false
+    },
+    {
+     "text": "Dès le début des rapports de travail",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 3, al. 1 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-005",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [
+    "laa_survivants"
+   ],
+   "context": null,
+   "question": "Quel est le montant de la rente de veuve LAA ?",
+   "options": [
+    {
+     "text": "80 % de la rente d'invalidité",
+     "correct": false
+    },
+    {
+     "text": "40 % de la rente d'invalidité",
+     "correct": false
+    },
+    {
+     "text": "40 % du gain assuré",
+     "correct": true
+    },
+    {
+     "text": "80 % du gain assuré",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 31, al. 1 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-006",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [
+    "laa_survivants"
+   ],
+   "context": null,
+   "question": "Quel est le montant de la rente d'orphelin LAA ?",
+   "options": [
+    {
+     "text": "15 % de la rente d'invalidité",
+     "correct": false
+    },
+    {
+     "text": "20 % de la rente d'invalidité",
+     "correct": false
+    },
+    {
+     "text": "20 % du gain assuré",
+     "correct": false
+    },
+    {
+     "text": "15 % du gain assuré",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 31, al. 1 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-007",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [
+    "laa_survivants"
+   ],
+   "context": null,
+   "question": "Quel est le montant de la rente d'orphelin double ?",
+   "options": [
+    {
+     "text": "30 % du gain assuré",
+     "correct": false
+    },
+    {
+     "text": "25 % du gain assuré",
+     "correct": true
+    },
+    {
+     "text": "30 % de la rente d'invalidité",
+     "correct": false
+    },
+    {
+     "text": "25 % de la rente d'invalidité",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 31, al. 1 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-008",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [
+    "laa_survivants"
+   ],
+   "context": null,
+   "question": "Quel est la limite maximum assurée en LAA pour les rentes de survivants ?",
+   "options": [
+    {
+     "text": "70 % de la rente d'invalidité",
+     "correct": false
+    },
+    {
+     "text": "70 % du gain assuré",
+     "correct": true
+    },
+    {
+     "text": "80 % de la rente d'invalidité",
+     "correct": false
+    },
+    {
+     "text": "80 % du gain assuré",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 31, al. 1 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-009",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Monsieur Lacouleur est peintre en bâtiment auprès de l'entreprise « Peinture Sàrl ». Son salaire est de CHF 70'000.- par année. En cas d'invalidité, sa rente serait de CHF 56'000.- par an. Marié à Emilie, il a un garçon de 8 ans qui se nomme Pierre. En cas de décès, à combien se monte la rente d'Emilie ?",
+   "options": [
+    {
+     "text": "CHF 42'000.- par an",
+     "correct": false
+    },
+    {
+     "text": "CHF 33'600.- par an",
+     "correct": false
+    },
+    {
+     "text": "CHF 28'000.- par an",
+     "correct": true
+    },
+    {
+     "text": "CHF 22'400.- par an",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 31, al. 1 LAA / CHF 70'000.- * 40 %."
+  },
+  {
+   "external_id": "EXT-LAA-010",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Monsieur Lacouleur est peintre en bâtiment auprès de l'entreprise « Peinture Sàrl ». Son salaire est de CHF 70'000.- par année. En cas d'invalidité, sa rente serait de CHF 56'000.- par an. Marié à Emilie, il a un garçon de 8 ans qui se nomme Pierre. En cas de décès, à combien se monte la rente de Pierre ?",
+   "options": [
+    {
+     "text": "CHF 14'000.- par an",
+     "correct": false
+    },
+    {
+     "text": "CHF 11'200.- par an",
+     "correct": false
+    },
+    {
+     "text": "CHF 10'500.- par an",
+     "correct": true
+    },
+    {
+     "text": "CHF 8'400.- par an",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 31, al. 1 LAA / CHF 70'000.- * 15 %."
+  },
+  {
+   "external_id": "EXT-LAA-011",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [
+    "laa_survivants"
+   ],
+   "context": null,
+   "question": "Monsieur Lacouleur et son épouse viennent d'avoir un second enfant. En c as de décès de Mr. Lacouleur, quel serait le total des rentes auxquelles les survivants auraient droit ?",
+   "options": [
+    {
+     "text": "CHF 49'000.- par an",
+     "correct": true
+    },
+    {
+     "text": "CHF 45'500.- par an",
+     "correct": false
+    },
+    {
+     "text": "CHF 39'200.- par an",
+     "correct": false
+    },
+    {
+     "text": "CHF 36'400.- par an",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 31, al. 1 LAA / CHF 70'000.- * 70 %."
+  },
+  {
+   "external_id": "EXT-LAA-012",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Par qui l'assuré au chômage est-il couvert en LAA ?",
+   "options": [
+    {
+     "text": "La caisse supplétive",
+     "correct": false
+    },
+    {
+     "text": "L'assureur maladie",
+     "correct": false
+    },
+    {
+     "text": "L'assureur de l'ancien employeur",
+     "correct": false
+    },
+    {
+     "text": "Une compagnie d'assurance privée choisie par la caisse de chômage",
+     "correct": false
+    },
+    {
+     "text": "La SUVA",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LAA-013",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Par qui les militaires sont-ils couverts en LAA ?",
+   "options": [
+    {
+     "text": "La caisse supplétive",
+     "correct": false
+    },
+    {
+     "text": "L'assureur maladie",
+     "correct": false
+    },
+    {
+     "text": "L'assureur de l'ancien employeur",
+     "correct": false
+    },
+    {
+     "text": "Une compagnie d'assurance privée choisie par la caisse de chômage",
+     "correct": false
+    },
+    {
+     "text": "La SUVA",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 67, al. 1 LAA / Art. 81, al. 2 LAM."
+  },
+  {
+   "external_id": "EXT-LAA-014",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 3,
+   "notions": [
+    "laa_8h"
+   ],
+   "context": null,
+   "question": "Qui assume la charge des différentes cotisations LAA ?",
+   "options": [
+    {
+     "text": "L'employé assume l'entier des cotisations",
+     "correct": false
+    },
+    {
+     "text": "L'employeur assume l'entier des cotisations",
+     "correct": false
+    },
+    {
+     "text": "L'employé assume les cotisations de l'accident professionnel",
+     "correct": false
+    },
+    {
+     "text": "L'employeur assume les cotisations de l'accident professionnel",
+     "correct": true
+    },
+    {
+     "text": "L'employé assume les cotisations de l'accident non-professionnel",
+     "correct": true
+    },
+    {
+     "text": "L'employeur assume les cotisations de l'accident non-professionnel",
+     "correct": false
+    },
+    {
+     "text": "L'employé assume les cotisations des maladies professionnelles",
+     "correct": false
+    },
+    {
+     "text": "L'employeur assume les cotisations des maladies professionnelles",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 91, al. 1 et 2 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-015",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Existe-t'il des rentes pour enfant d'invalide en LAA ?",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 15 à 35 LAA / Ne figure pas parmi les prestations en espèces de la LAA."
+  },
+  {
+   "external_id": "EXT-LAA-016",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 2,
+   "notions": [
+    "laa_survivants"
+   ],
+   "context": null,
+   "question": "Jusqu'à quel âge une rente pour orphelin peut-elle être versée ?",
+   "options": [
+    {
+     "text": "Jusqu'à 18 ans, s'il poursuit des études",
+     "correct": false
+    },
+    {
+     "text": "Jusqu'à 18 ans, même s'il n'est plus aux études",
+     "correct": true
+    },
+    {
+     "text": "Jusqu'à 25 ans, s'il poursuit des études",
+     "correct": true
+    },
+    {
+     "text": "Jusqu'à 25 ans, même s'il ne poursuit pas d'études",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 30, al. 3 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-017",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 4,
+   "notions": [
+    "laa_survivants"
+   ],
+   "context": null,
+   "question": "Parmi les cas ci-dessous, lesquels donnent droit à une rente de veuve ?",
+   "options": [
+    {
+     "text": "Femme de 40 ans, mariée depuis 15 ans, sans enfant",
+     "correct": false
+    },
+    {
+     "text": "Femme de 48 ans, mariée depuis 3 ans, sans enfant",
+     "correct": true
+    },
+    {
+     "text": "Femme de 35 ans, mariée depuis 4 ans, un enfant de 2 ans",
+     "correct": true
+    },
+    {
+     "text": "Femme de 44 ans, mariée depuis 22 ans, un enfant de 20 qui est salarié",
+     "correct": true
+    },
+    {
+     "text": "Femme de 48 ans, en couple depuis 12 ans, un enfant de 10 ans",
+     "correct": false
+    },
+    {
+     "text": "Femme de 48 ans, en couple depuis 6 ans, sans enfant",
+     "correct": false
+    },
+    {
+     "text": "Femme de 34 ans, mariée depuis 8 ans, sans enfant, invalide à 60 %",
+     "correct": false
+    },
+    {
+     "text": "Femme de 34 ans, mariée depuis 8 ans, sans enfant, invalide à 70 %",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 29, al. 3 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-018",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 4,
+   "notions": [
+    "laa_survivants"
+   ],
+   "context": null,
+   "question": "Parmi les cas ci-dessous, lesquels donnent droit à une rente de veuf ?",
+   "options": [
+    {
+     "text": "Homme de 24 ans, marié depuis 2 ans, un enfant de 6 mois",
+     "correct": true
+    },
+    {
+     "text": "Homme de 48 ans, marié depuis 3 ans, sans enfant",
+     "correct": false
+    },
+    {
+     "text": "Homme de 35 ans, marié depuis 4 ans, un enfant de 2 ans",
+     "correct": true
+    },
+    {
+     "text": "Homme de 44 ans, marié depuis 22 ans, un enfant de 20 ans qui est salarié",
+     "correct": false
+    },
+    {
+     "text": "Homme de 44 ans, marié depuis 22 ans, un enfant de 20 ans aux études",
+     "correct": true
+    },
+    {
+     "text": "Homme de 48 ans, en couple depuis 12 ans, un enfant de 10 ans",
+     "correct": false
+    },
+    {
+     "text": "Homme de 34 ans, marié depuis 8 ans, sans enfant, invalide à 60 %",
+     "correct": false
+    },
+    {
+     "text": "Homme de 34 ans, marié depuis 8 ans, sans enfant, invalide à 70 %",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 29, al. 3 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-020",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [
+    "laa_survivants"
+   ],
+   "context": null,
+   "question": "Quelles sont les conditions à remplir pour l'octroi d'une rente de veuve/veuf divorcé/e ?",
+   "options": [
+    {
+     "text": "5 ans de mariage avec le défunt et bénéficier d'une pension alimentaire lors du décès du conjoint divorcé",
+     "correct": false
+    },
+    {
+     "text": "10 ans de mariage avec le défunt et bénéficier d'une pension alimentaire lors du décès du conjoint divorcé",
+     "correct": false
+    },
+    {
+     "text": "Bénéficier d'une pension alimentaire lors du décès du conjoint divorcé",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 29, al. 4 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-021",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 2,
+   "notions": [
+    "laa_survivants"
+   ],
+   "context": null,
+   "question": "Quand est-ce qu'une rente de veuve s'éteint ?",
+   "options": [
+    {
+     "text": "Lorsque le dernier des enfants atteint l'âge de 18/25 ans",
+     "correct": false
+    },
+    {
+     "text": "Lorsque la veuve atteint l'âge de la retraite",
+     "correct": false
+    },
+    {
+     "text": "Lors du décès de la veuve",
+     "correct": true
+    },
+    {
+     "text": "Lorsque la veuve vie à nouveau en couple depuis plus de 5 ans",
+     "correct": false
+    },
+    {
+     "text": "Lorsque la veuve se remarie",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 29, al. 6 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-022",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 2,
+   "notions": [
+    "laa_assujettissement"
+   ],
+   "context": null,
+   "question": "Parmi les personnes suivantes, lesquelles ne sont pas obligatoirement soumises à la LAA ?",
+   "options": [
+    {
+     "text": "Apprentis, stagiaires et volontaires",
+     "correct": false
+    },
+    {
+     "text": "Personnes bénéficiant des indemnités journalières de l'assurance chômage",
+     "correct": false
+    },
+    {
+     "text": "Femme travaillant sans salaire dans le restaurant du mari",
+     "correct": true
+    },
+    {
+     "text": "Travailleur indépendant au sein d'une raison individuelle",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 2 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-023",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 3,
+   "notions": [
+    "laa_survivants"
+   ],
+   "context": null,
+   "question": "Quel est le système de financement de la LAA ?",
+   "options": [
+    {
+     "text": "Système de répartition des dépenses pour les rentes d'invalidité et de survivants",
+     "correct": false
+    },
+    {
+     "text": "Système de répartition des dépenses pour les indemnité journalières et les frais de traitement",
+     "correct": true
+    },
+    {
+     "text": "Système de de répartition des capitaux de couverture pour les rentes d'invalidité et de survivants",
+     "correct": true
+    },
+    {
+     "text": "Système de de répartition des capitaux de couverture pour les indemnités journalières et les frais de traitement",
+     "correct": false
+    },
+    {
+     "text": "les excédents d'intérêts servent à financer les allocations de renchérissement",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 90 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-024",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 2,
+   "notions": [
+    "laa_8h"
+   ],
+   "context": null,
+   "question": "Comment une femme de ménage travaillant 4 heures par semaine auprès d'une école primaire à Lausanne (VD) et 5 heures par semaines auprès d'une autre école primaire à Renens (VD) est- elle assurée en assurance accident par ses employeurs ?",
+   "options": [
+    {
+     "text": "Elle est assurée en cas d'accidents professionnels et non-professionnels",
+     "correct": false
+    },
+    {
+     "text": "Elle est assurée uniquement en cas d'accidents professionnels",
+     "correct": true
+    },
+    {
+     "text": "Elle est assurée uniquement en cas d'accidents non-professionnels",
+     "correct": false
+    },
+    {
+     "text": "Elle doit s'assurer en accidents non-professionnels auprès de son employeur",
+     "correct": false
+    },
+    {
+     "text": "Elle doit s'assurer en accidents non-professionnels auprès de l'assureur maladie",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 13, al. 1 OLAA / Art. 1a, al. 2, let. b LAMal / Art. 8 LAMal."
+  },
+  {
+   "external_id": "EXT-LAA-025",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 3,
+   "notions": [
+    "laa_iai"
+   ],
+   "context": null,
+   "question": "Parmi les prestations en espèces suivantes, lesquelles sont prévues par la LAA ?",
+   "options": [
+    {
+     "text": "Rente de vieillesse",
+     "correct": false
+    },
+    {
+     "text": "Indemnité pour atteinte à l'intégrité",
+     "correct": true
+    },
+    {
+     "text": "Rente d'invalidité complémentaire pour conjoint",
+     "correct": false
+    },
+    {
+     "text": "Rente pour enfant d'invalide",
+     "correct": false
+    },
+    {
+     "text": "Indemnités journalières",
+     "correct": true
+    },
+    {
+     "text": "Allocation pour impotent",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 15 à 35 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-026",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Lorsque l'employeur n'affilie pas ses employés à une assurance accident comme il est tenu de le faire selon la loi, qui s'occupe de procéder à l'affiliation d'office auprès d'un assureur ?",
+   "options": [
+    {
+     "text": "La caisse de compensation",
+     "correct": false
+    },
+    {
+     "text": "La caisse supplétive",
+     "correct": true
+    },
+    {
+     "text": "La SUVA",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 73, al. 2 LAA / Art. 95 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-027",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 4,
+   "notions": [
+    "laa_iai",
+    "laa_8h"
+   ],
+   "context": null,
+   "question": "Parmi les affirmations suivantes, laquelle ou lesquelles sont correctes ?",
+   "options": [
+    {
+     "text": "La totalité des cotisations LAA sont déduites du salaire de l'employé",
+     "correct": false
+    },
+    {
+     "text": "Les cotisations de l'accident professionnel sont déduites du salaire de l'employé",
+     "correct": false
+    },
+    {
+     "text": "Les cotisations de l'accident non-professionnel peuvent être déduites du salaire de l'employé",
+     "correct": true
+    },
+    {
+     "text": "Les rentes sont imposées à un taux unique et distinct séparé des autres revenus",
+     "correct": false
+    },
+    {
+     "text": "Les rentes sont imposées à 100 % avec les autres revenus",
+     "correct": true
+    },
+    {
+     "text": "Les indemnités pour atteinte à l'intégrité sont imposés à un taux unique et distinct séparé des autres revenus",
+     "correct": false
+    },
+    {
+     "text": "Les indemnités pour atteinte à l'intégrité sont exonérées des impôts",
+     "correct": true
+    },
+    {
+     "text": "Les allocations pour impotent sont exonérées des impôts",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 22, 33 et 38 LIFD."
+  },
+  {
+   "external_id": "EXT-LAA-028",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 4,
+   "notions": [
+    "laa_8h"
+   ],
+   "context": null,
+   "question": "Un employeur peut décider d'accorder des prestations plus favorables à ses employés. Parmi les possibilités suivantes,",
+   "options": [
+    {
+     "text": "Inclusion d'un capital décès et/ou d'un capital invalidité",
+     "correct": true
+    },
+    {
+     "text": "Frais de séjours hospitaliers en division semi-privée ou privée",
+     "correct": true
+    },
+    {
+     "text": "Inclusion des entreprises téméraires en accidents non-professionnels",
+     "correct": true
+    },
+    {
+     "text": "Inclusion d'une rente de vieillesse",
+     "correct": false
+    },
+    {
+     "text": "Inclusion d'une rente pour enfant d'invalide",
+     "correct": false
+    },
+    {
+     "text": "Salaire assuré au-delà du maximum obligatoire",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LAA-029",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [
+    "laa_rente_compl"
+   ],
+   "context": null,
+   "question": "Parmi les affirmations suivantes, laquelle ou lesquelles sont correctes ?",
+   "options": [
+    {
+     "text": "Ensemble, le 1er et 2ème pilier doivent permettre aux assurés de maintenir leur niveau de vie antérieur et ne peuvent pas dépasser 100 % du revenu précédent",
+     "correct": false
+    },
+    {
+     "text": "Ensemble, le 1er et 2ème pilier doivent permettre aux assurés de maintenir leur niveau de vie antérieur et ne peuvent pas dépasser 90 % du revenu précédent",
+     "correct": true
+    },
+    {
+     "text": "Ensemble, le 1er et 2ème pilier doivent permettre aux assurés de maintenir leur niveau de vie antérieur et ne peuvent pas dépasser 80 % du revenu précédent",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 20, al. 2 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-030",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les affirmations suivantes, laquelle ou lesquelles sont correctes ?",
+   "options": [
+    {
+     "text": "La SUVA est une institution de droit privé et autonome sans but lucratif",
+     "correct": false
+    },
+    {
+     "text": "La SUVA est une institution de droit privé et autonome avec but lucratif",
+     "correct": false
+    },
+    {
+     "text": "La SUVA est une institution de droit public et autonome avec but lucratif",
+     "correct": false
+    },
+    {
+     "text": "La SUVA est une institution de droit public et autonome sans but lucratif",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 61 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-032",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "La nationalité est un critère de tarification dans l'assurance accident.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 92 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-033",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Un employé est assuré à la LAA uniquement à partir de 18 ans.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 1a LAA."
+  },
+  {
+   "external_id": "EXT-LAA-034",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 2,
+   "notions": [
+    "laa_assujettissement"
+   ],
+   "context": null,
+   "question": "Parmi les affirmations suivantes, lesquelles sont correctes ?",
+   "options": [
+    {
+     "text": "Un indépendant souhaitant s'assurer facultativement à la LAA peut librement choisir le montant du salaire assuré",
+     "correct": false
+    },
+    {
+     "text": "Un indépendant souhaitant s'assurer facultativement à la LAA ne peut librement",
+     "correct": true
+    },
+    {
+     "text": "Pour un membre de la famille (sans salaire) de l'indépendant souhaitant s'assurer facultativement à la LAA, le montant du salaire assuré peut être librement choisi",
+     "correct": false
+    },
+    {
+     "text": "Pour un membre de la famille (sans salaire) de l'indépendant souhaitant s'assurer facultativement à la LAA, le montant du salaire assuré ne peut être librement choisi. Un montant minimum doit être respecté",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 138 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-035",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [
+    "laa_8h"
+   ],
+   "context": null,
+   "question": "Le chemin en direction du travail est toujours considéré comme un accident non-professionnel.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 13, al. 2 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-036",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 1,
+   "notions": [
+    "laa_8h"
+   ],
+   "context": null,
+   "question": "A la fin des rapports de travail auprès d'une entreprise, une assurance par convention peut être conclue. Parmi les affirmations suivantes, lesquelles sont correctes ?",
+   "options": [
+    {
+     "text": "L'assurance accident de l'ancien employeur s'interrompt 31 jours après le droit au ½ salaire",
+     "correct": true
+    },
+    {
+     "text": "L'assurance accident de l'ancien employeur s'interrompt 1 mois après le droit au ½ salaire",
+     "correct": false
+    },
+    {
+     "text": "Une assurance par convention peut être conclue pour 6 mois au maximum, pour les accidents professionnels et non professionnels",
+     "correct": false
+    },
+    {
+     "text": "Une assurance par convention peut être conclue pour 6 mois au maximum, pour les accidents non-professionnels",
+     "correct": true
+    },
+    {
+     "text": "Seuls les employés travaillant plus de 8 heures par semaines auprès du même employeur peuvent conclure une assurance par convention",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 3, al. 2 et 3 LAA / Art. 8 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-037",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Sur la base des indications suivantes, quel est le montant de l'indemnité journalière ? Salaire mensuel de CHF 4'800. - / 13ème salaire CHF 4'800.- / Bonus pour objectifs CHF 2'000. - / Remboursement de frais de téléphone CHF 180.- par mois",
+   "options": [
+    {
+     "text": "CHF 182.35",
+     "correct": false
+    },
+    {
+     "text": "CHF 176.45",
+     "correct": false
+    },
+    {
+     "text": "CHF 145.90",
+     "correct": false
+    },
+    {
+     "text": "CHF 141.15",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LAA-038",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Sur la base des indications suivantes, quel est le montant annuel max. de la rente d'invalidité ? Salaire mensuel de CHF 10'500.- / 13ème salaire CHF 10'500.- / Bonus pour objectifs CHF 20'000.- / Remboursement de frais de téléphone CHF 180.- par mois  148'00.- ➔ 148'200 * 80 % = CHF 118'560.-",
+   "options": [
+    {
+     "text": "CHF 126'928",
+     "correct": false
+    },
+    {
+     "text": "CHF 125'200",
+     "correct": false
+    },
+    {
+     "text": "CHF 118'560",
+     "correct": true
+    }
+   ],
+   "explanation": null
+  },
+  {
+   "external_id": "EXT-LAA-039",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quelles sont les différences entre la couverture accident dans l'assurance accident de l'employeur et celle de l'assurance accident inclue dans la LAMal ?",
+   "options": [
+    {
+     "text": "Pas de franchise pour l'accident dans la LAMal",
+     "correct": false
+    },
+    {
+     "text": "Pas de franchise pour l'accident dans l'assurance accident de l'employeur",
+     "correct": true
+    },
+    {
+     "text": "Libre choix du médecin pour l'accident dans la LAMal",
+     "correct": false
+    },
+    {
+     "text": "Libre choix du médecin pour l'accident dans l'assurance accident de l'employeur",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 28 LAMal."
+  },
+  {
+   "external_id": "EXT-LAA-040",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le rôle de la caisse supplétive ?",
+   "options": [
+    {
+     "text": "Assume les frais liés aux prestations réglementaires des assureurs insolvables",
+     "correct": false
+    },
+    {
+     "text": "Assume les frais liés aux prestations légales des assureurs insolvables",
+     "correct": true
+    },
+    {
+     "text": "Alloue les prestations réglementaires aux travailleurs accidentés non assurés par leur employeur",
+     "correct": false
+    },
+    {
+     "text": "Alloue les prestations légales aux travailleurs accidentés non assurés par leur employeur",
+     "correct": true
+    },
+    {
+     "text": "Attribue à un assureur les employeurs qui, malgré sommation, n'ont pas assuré leur employés",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 72 et 73 LAA / Art. 94 à 96 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-041",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les affirmations suivantes, lesquelles sont correctes ?",
+   "options": [
+    {
+     "text": "Le gain minimum assuré est de CHF 325.- par jour",
+     "correct": false
+    },
+    {
+     "text": "Le gain maximum assuré est de CHF 406.- par jour",
+     "correct": true
+    },
+    {
+     "text": "Le montant du gain assuré pour les stagiaires et apprentis de + de 20 ans peut être librement déterminé par l'employeur",
+     "correct": false
+    },
+    {
+     "text": "Le gain minimum assuré pour les stagiaires et apprentis de - de 20 ans est de CHF 14'820.- par année",
+     "correct": true
+    },
+    {
+     "text": "Le gain minimum assuré pour les stagiaires et apprentis de + de 20 ans est de CHF 29'640.- par année",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 22 OLAA / Art. 23, al. 6 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-042",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 4,
+   "notions": [],
+   "context": null,
+   "question": "Qu'est-ce qui fait partie du salaire soumis aux cotisations ?",
+   "options": [
+    {
+     "text": "Salaire en espèce et salaire en nature",
+     "correct": true
+    },
+    {
+     "text": "Salaire en espèce uniquement",
+     "correct": false
+    },
+    {
+     "text": "Pourboire, si au minimum 20 % du salaire",
+     "correct": false
+    },
+    {
+     "text": "Pourboire, si au minimum 10 % du salaire",
+     "correct": true
+    },
+    {
+     "text": "Commissions",
+     "correct": true
+    },
+    {
+     "text": "Indemnité de vacances et pour jours fériés",
+     "correct": true
+    },
+    {
+     "text": "Frais de déplacements et de représentations",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 92 LAA / Art, 22, al. 1 et 2 LAA / Art. 115 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-043",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quelle est la définition d'un accident ?",
+   "options": [
+    {
+     "text": "Est réputée accident toute atteinte dommageable, soudaine et volontaire, portée au corps humain par une cause extérieure extraordinaire qui compromet la santé physique, mentale ou psychique ou qui entraine la mort",
+     "correct": false
+    },
+    {
+     "text": "Est réputée accident toute atteinte dommageable, soudaine et involontaire, portée au corps humain par une cause intérieure extraordinaire qui compromet la santé physique, mentale ou psychique ou qui entraine la mort",
+     "correct": false
+    },
+    {
+     "text": "Est réputée accident toute atteinte dommageable, soudaine et involontaire, portée au corps humain par une cause extérieure extraordinaire qui compromet la santé physique, mentale ou psychique ou qui entraine la mort",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 4 LPGA."
+  },
+  {
+   "external_id": "EXT-LAA-044",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 4,
+   "notions": [
+    "laa_8h"
+   ],
+   "context": null,
+   "question": "Lesquels de ces événements sont réputés accidents professionnels.",
+   "options": [
+    {
+     "text": "Accident se produisant durant la pause de midi",
+     "correct": true
+    },
+    {
+     "text": "Accident se produisant sur le trajet pour aller au travail pour une personne dont la durée de travail est de + de 8 heures par semaine",
+     "correct": false
+    },
+    {
+     "text": "Accident se produisant sur le trajet pour aller au travail pour une personne dont la durée de travail est de - de 8 heures par semaine",
+     "correct": true
+    },
+    {
+     "text": "Accident se produisant, durant le week-end, lors d'une sortie organisée et financée par l'entreprise",
+     "correct": true
+    },
+    {
+     "text": "Accident se produisant à l'hôtel lors d'un voyage d'affaire en Angleterre",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 12 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-045",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Quelle est la définition d'une maladie professionnelle ?",
+   "options": [
+    {
+     "text": "Maladies dues exclusivement ou de manière prépondérante, dans l'exercice de l'activité professionnelle, à des substances nocives ou à certains travaux",
+     "correct": true
+    },
+    {
+     "text": "Maladies dues principalement, dans l'exercice de l'activité professionnelle, à des substances nocives ou à certains travaux",
+     "correct": false
+    },
+    {
+     "text": "Les autres maladies dont il est prouvé qu'elles ont été causées de manière prépondérante par l'exercice de l'activité professionnelle",
+     "correct": false
+    },
+    {
+     "text": "Les autres maladies dont il est prouvé qu'elles ont été causées exclusivement ou de manière nettement prépondérante par l'exercice de l'activité professionnelle",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 9 LAA, Annexe 1 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-046",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "La LAA couvre également les traitements médicaux à l'étranger. Quel est le montant maximum pris en charge selon la base légale ?",
+   "options": [
+    {
+     "text": "Au maximum la moitié du montant qui aurait résulté d'un traitement en suisse",
+     "correct": false
+    },
+    {
+     "text": "Au maximum le montant qui aurait résulté d'un traitement en suisse",
+     "correct": false
+    },
+    {
+     "text": "Au maximum le double du montant qui aurait résulté d'un traitement en suisse",
+     "correct": true
+    },
+    {
+     "text": "Au maximum le triple montant qui aurait résulté d'un traitement en suisse",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 17 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-047",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Lors d'un traitement médical pris en charge par la LAA, le patient peut librement choisir le médecin auprès de qui il se fait soigner.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": true
+    },
+    {
+     "text": "Faux",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 10, al. 2 LAA / Art. 16 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-048",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Quels sont les dommages matériels couverts à la suite d'un accident ?",
+   "options": [
+    {
+     "text": "Lunettes",
+     "correct": true
+    },
+    {
+     "text": "Pantalon déchiré",
+     "correct": false
+    },
+    {
+     "text": "Veste abimée",
+     "correct": false
+    },
+    {
+     "text": "Appareils acoustiques",
+     "correct": true
+    },
+    {
+     "text": "Prothèses dentaires",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 12 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-049",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Laquelle de ces affirmations est correcte ?",
+   "options": [
+    {
+     "text": "La LAA fourni des moyens auxiliaires uniquement en prêt",
+     "correct": false
+    },
+    {
+     "text": "La LAA fourni des moyens auxiliaires uniquement en propriété",
+     "correct": false
+    },
+    {
+     "text": "La LAA fourni des moyens auxiliaires aussi bien en prêt qu'en propriété",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 11, al. 2 LAA / Art. 4 OMAA."
+  },
+  {
+   "external_id": "EXT-LAA-050",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Parmi les affirmations suivantes, laquelle ou lesquelles sont correctes ?",
+   "options": [
+    {
+     "text": "Les frais de voyage, transport et sauvetage en Suisse sont couverts jusqu'à un 1/5 du montant du gain annuel maximum assuré dans la LAA",
+     "correct": false
+    },
+    {
+     "text": "Les frais de voyage, transport et sauvetage à l'étranger sont couverts jusqu'à concurrence du total des frais nécessaires",
+     "correct": false
+    },
+    {
+     "text": "À la suite d'un décès, les frais de transport du corps à l'étranger sont couverts jusqu'à 1/5 du montant du gain annuel maximum assuré en LAA",
+     "correct": true
+    },
+    {
+     "text": "Les frais funéraires (d'ensevelissement) sont couverts jusqu'à 7x le montant du gain journalier maximum assuré en LAA",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 13 et 14 LAA / Art. 20 et 21 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-051",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "A partir de quel degré d'invalidité la LAA verse-t'elle une rente ?",
+   "options": [
+    {
+     "text": "A partir de 10 % de degré d'invalidité",
+     "correct": true
+    },
+    {
+     "text": "A partir de 25 % de degré d'invalidité",
+     "correct": false
+    },
+    {
+     "text": "A partir de 40 % de degré d'invalidité",
+     "correct": false
+    },
+    {
+     "text": "A partir de 49 % de degré d'invalidité",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 18 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-052",
+   "theme": "laa",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Jusqu'à quand les indemnités journalières de l'assurance accident sont-elles versées ?",
+   "options": [
+    {
+     "text": "Durant 1 an au maximum",
+     "correct": false
+    },
+    {
+     "text": "Durant 2 ans au maximum",
+     "correct": false
+    },
+    {
+     "text": "Jusqu'à la reprise de la capacité de travail",
+     "correct": true
+    },
+    {
+     "text": "Jusqu'à la décision de rente AI",
+     "correct": true
+    },
+    {
+     "text": "Jusqu'au décès de l'assuré",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 16, al. 2 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-053",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "En cas d'invalidité complète, la LAA verse toujours une rente d'invalidité d'un montant de 80 % du gain assuré. Celle-ci n'est jamais réduite.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 20, al. 2 LAA / Art. 31 et 32 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-054",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [
+    "laa_rente_compl"
+   ],
+   "context": null,
+   "question": "La rente LAA est une rente complémentaire. Additionnée au 1 er pilier, elle est réduite en conséquence pour ne pas dépasser le 90 % du gain présumé perdu de l'assuré.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": true
+    },
+    {
+     "text": "Faux",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 20, al. 2 LAA / Art. 31 et 32 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-055",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "La LPP peut également verser une rente en cas d'invalidité accident.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": true
+    },
+    {
+     "text": "Faux",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 1, al. 1 LPP."
+  },
+  {
+   "external_id": "EXT-LAA-056",
+   "theme": "laa",
+   "type": "single",
+   "points": 1,
+   "notions": [
+    "laa_iai"
+   ],
+   "context": null,
+   "question": "Quelle affirmation est correcte ?",
+   "options": [
+    {
+     "text": "L'indemnité pour atteinte à l'intégrité est versée en % du salaire assuré de la personne au moment de l'atteinte à l'intégrité",
+     "correct": false
+    },
+    {
+     "text": "L'indemnité pour atteinte à l'intégrité est versée en % du salaire maximum LAA assuré au moment de l'atteinte à l'intégrité",
+     "correct": true
+    },
+    {
+     "text": "Etant donné que l'atteinte à l'intégrité est attestée, celle-ci peut être versée avant la décision de rente d'invalidité",
+     "correct": false
+    }
+   ],
+   "explanation": "Base légale : Art. 36, al. 2 OLAA / Annexe 3 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-057",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Le droit à l'allocation d'impotent peut démarrer avant celui de la rente d'invalidité.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 37 et 62 OLAA."
+  },
+  {
+   "external_id": "EXT-LAA-058",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [
+    "laa_8h"
+   ],
+   "context": null,
+   "question": "Une réduction ou un refus de prestation s peut être décidé aussi bien à la suite d'un accident professionnel que non-professionnel.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 37, al. 2 LAA et 39 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-059",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Une réduction ou un refus de prestations peut être décidé aussi bien pour les prestations en espèces que pour les prestations de soins.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 36 LAA / Art. 21 LPGA."
+  },
+  {
+   "external_id": "EXT-LAA-060",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Lors d'un crime ou délit non intentionnel, les prestations de la LAA ne peuvent en aucun cas être réduites ou refusées.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 37, al. 3 LAA."
+  },
+  {
+   "external_id": "EXT-LAA-061",
+   "theme": "laa",
+   "type": "vrai_faux",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Si l'assuré a provoqué l'accident par une négligence légère, les indemnités journalières versées pendant les deux premières années suivant l'accident sont réduites par la LAA.  Points maximum possible : 110 points Points minimum à atteindre : 66 points (60 %) Pour chaque réponse fausse, un point négatif est calculé. Malgré les points négatifs, il ne peut y avoir moins de 0 point par question.",
+   "options": [
+    {
+     "text": "Vrai",
+     "correct": false
+    },
+    {
+     "text": "Faux",
+     "correct": true
+    }
+   ],
+   "explanation": "Base légale : Art. 37, al. 2 LAA."
+  }
+ ]
+}
