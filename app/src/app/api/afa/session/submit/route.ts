@@ -132,7 +132,8 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({
-      passingPct,
+      passingPct: filiere?.passing_pct ?? 60,
+      targetPct,
       passed,
       pointsMax: scored.pointsMax,
       pointsPartial: scored.pointsPartial,
