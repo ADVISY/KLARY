@@ -1,0 +1,1820 @@
+{
+  "source": "klary_interne",
+  "filiere_key": "non_vie",
+  "reference": "Banque Klary v2, extension NON-VIE 110 questions couvrant les 7 thèmes officiels VBV, avec ancrages législatifs et cas concrets.",
+  "note": "Questions rédigées à partir du profil de qualification VBV art. 190 OS, LCR, LCA (nouveau droit 2022), CGA de marché suisse en vigueur 2026.",
+  "questions": [
+    {
+      "external_id": "KLARY-NV-MN-001",
+      "theme": "menage",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Sur quelle base légale repose la responsabilité civile privée (RC privée) d'un particulier en Suisse ?",
+      "options": [
+        {"text": "Art. 41 CO : responsabilité pour acte illicite fautif", "correct": true},
+        {"text": "Art. 63 LCR : circulation routière", "correct": false, "why_wrong": "La LCR encadre la RC véhicule, pas la RC privée générale."},
+        {"text": "Art. 45 LSA : fiche d'information", "correct": false, "why_wrong": "La LSA règle la surveillance, pas la responsabilité."},
+        {"text": "Art. 55 CO seulement (chef de famille)", "correct": false, "why_wrong": "L'art. 55 CO vise la responsabilité de l'employeur ou du chef de famille, mais la base générale reste l'art. 41 CO."}
+      ],
+      "explanation": "Art. 41 CO : celui qui cause un dommage à autrui par un acte illicite fautif doit le réparer. La RC privée LCA couvre ce risque pour les actes de la vie quotidienne."
+    },
+    {
+      "external_id": "KLARY-NV-MN-002",
+      "theme": "menage",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Comment se calcule l'inventaire du ménage à déclarer sur un contrat choses ménage ?",
+      "options": [
+        {"text": "Valeur à neuf de tous les biens mobiliers, y compris vêtements et provisions", "correct": true},
+        {"text": "Valeur d'occasion sur brocante ou eBay", "correct": false, "why_wrong": "L'assureur indemnise en valeur à neuf ; sous-évaluer expose à la règle proportionnelle."},
+        {"text": "Uniquement la valeur des objets de plus de 500 CHF", "correct": false, "why_wrong": "Aucun seuil : l'ensemble du contenu compte."},
+        {"text": "Prix moyen d'un ménage suisse (~30 000 CHF)", "correct": false, "why_wrong": "Fourchette indicative pour vendre, jamais une base d'inventaire réelle."}
+      ],
+      "explanation": "Choses ménage : somme d'assurance = valeur à NEUF de tous les biens meubles (habits, meubles, appareils, provisions). Une sous-évaluation déclenche l'art. 69 al. 2 LCA (règle proportionnelle en cas de sous-assurance)."
+    },
+    {
+      "external_id": "KLARY-NV-MN-003",
+      "theme": "menage",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un client déclare 60 000 CHF d'inventaire pour un ménage réellement estimé à 100 000 CHF. Un incendie détruit pour 40 000 CHF de biens.",
+      "question": "Combien va-t-il percevoir de son assureur choses ménage ?",
+      "options": [
+        {"text": "40 000 CHF (dommage réel)", "correct": false, "why_wrong": "Ignorerait la sous-assurance."},
+        {"text": "24 000 CHF (60/100 x 40 000)", "correct": true},
+        {"text": "60 000 CHF (somme assurée)", "correct": false, "why_wrong": "Piège : le plafond ne s'applique que si le dommage dépasse la somme, pas ici."},
+        {"text": "0 CHF (contrat nul)", "correct": false, "why_wrong": "La sous-assurance réduit l'indemnité, elle n'annule pas le contrat."}
+      ],
+      "explanation": "Règle proportionnelle art. 69 al. 2 LCA : indemnité = dommage x (somme assurée / valeur réelle). Ici 40 000 x (60 000 / 100 000) = 24 000 CHF. Argument fort du conseil : mettre à jour l'inventaire chaque année."
+    },
+    {
+      "external_id": "KLARY-NV-MN-004",
+      "theme": "menage",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Qui est assuré par la RC privée souscrite par le chef de famille ?",
+      "options": [
+        {"text": "Le preneur lui-même", "correct": true},
+        {"text": "Son conjoint ou partenaire enregistré vivant sous le même toit", "correct": true},
+        {"text": "Les enfants mineurs sous autorité parentale", "correct": true},
+        {"text": "Les enfants majeurs sans revenu vivant à la maison, aux études", "correct": true},
+        {"text": "Le beau-frère de passage pour un week-end", "correct": false, "why_wrong": "Un simple invité n'entre pas dans le cercle assuré."},
+        {"text": "L'employé de maison salarié pour ses activités professionnelles", "correct": false, "why_wrong": "L'employé de maison relève d'un contrat de travail (art. 328 CO) et sa faute pro n'est pas couverte par la RC privée du ménage."}
+      ],
+      "explanation": "Cercle des personnes assurées RC privée (usage marché suisse) : preneur + membres de la communauté domestique (art. 331 CC), y compris enfants majeurs à charge en formation. Sur base des CGA type Zurich, AXA, Mobilière."
+    },
+    {
+      "external_id": "KLARY-NV-MN-005",
+      "theme": "menage",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un fiduciaire indépendant reçoit son propre client dans son bureau à Vevey.",
+      "question": "Ce fiduciaire renverse par mégarde du café sur l'ordinateur portable de son client (valeur 2 800 CHF). Sa RC privée intervient-elle ?",
+      "options": [
+        {"text": "Oui, la RC privée couvre tous les dommages non intentionnels", "correct": false, "why_wrong": "Erreur classique : la RC privée EXCLUT explicitement l'activité professionnelle."},
+        {"text": "Non, il faut une RC professionnelle ou d'entreprise", "correct": true},
+        {"text": "Oui, si le montant reste inférieur à 5 000 CHF", "correct": false, "why_wrong": "Aucun seuil ne fait basculer un risque pro dans une RC privée."},
+        {"text": "Oui, uniquement si le client a lui-même une RC privée", "correct": false}
+      ],
+      "explanation": "Toutes les CGA RC privée du marché suisse excluent les dommages causés dans l'exercice d'une activité professionnelle ou lucrative indépendante. Base : art. 33 LCA (portée du contrat) et clauses standards. Solution : RC professionnelle LCA."
+    },
+    {
+      "external_id": "KLARY-NV-MN-006",
+      "theme": "menage",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "En RC privée, un père est-il couvert lorsque sa fille de 8 ans casse par accident la vitrine d'un magasin ?",
+      "options": [
+        {"text": "Oui, au titre de la responsabilité du chef de famille (art. 333 CC)", "correct": true},
+        {"text": "Non, un enfant mineur est incapable de discernement donc ni lui ni ses parents ne répondent", "correct": false, "why_wrong": "Piège juridique : les parents restent responsables à titre de garde (art. 333 CC), et la RC privée s'active."},
+        {"text": "Oui, mais uniquement si le père était physiquement présent", "correct": false, "why_wrong": "La présence n'est pas la condition, la garde légale suffit."},
+        {"text": "Non, sauf option enfant en supplément", "correct": false, "why_wrong": "Aucune option supplémentaire n'est requise pour ses propres enfants sous autorité parentale."}
+      ],
+      "explanation": "Art. 333 CC : le chef de famille répond du dommage causé par les personnes mineures placées sous son autorité. La RC privée couvre systématiquement les enfants du ménage."
+    },
+    {
+      "external_id": "KLARY-NV-MN-007",
+      "theme": "menage",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Le chien Labrador d'une famille lausannoise mord un livreur venu déposer un colis à la porte.",
+      "question": "Sur quelle assurance faut-il déclarer le sinistre corporel du livreur ?",
+      "options": [
+        {"text": "La casco du véhicule du livreur", "correct": false, "why_wrong": "Aucun rapport avec un dommage corporel causé par un chien."},
+        {"text": "La RC privée du détenteur du chien (avec inclusion animaux)", "correct": true},
+        {"text": "La LAMal du livreur uniquement", "correct": false, "why_wrong": "La LAMal soigne, mais le lésé garde une créance civile contre le détenteur qui doit être couvert par la RC privée."},
+        {"text": "L'assurance ménage inventaire", "correct": false, "why_wrong": "L'inventaire couvre des choses, pas la responsabilité pour un chien."}
+      ],
+      "explanation": "Art. 56 CO : le détenteur d'un animal répond du dommage causé. La quasi-totalité des RC privées suisses incluent les chiens et chats du ménage. Certaines races (Rottweiler, Amstaff) nécessitent une attention CGA."
+    },
+    {
+      "external_id": "KLARY-NV-MN-008",
+      "theme": "menage",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles affirmations sont exactes concernant la distinction vol simple / vol avec effraction en choses ménage ?",
+      "options": [
+        {"text": "Le vol avec effraction (art. 139 CP) est couvert en base jusqu'à la somme d'inventaire", "correct": true},
+        {"text": "Le vol simple (sans effraction) est une garantie OPTIONNELLE", "correct": true},
+        {"text": "Le vol simple est plafonné à des sous-limites (souvent 2 000, 5 000 ou 10 000 CHF)", "correct": true},
+        {"text": "Aucune différence, tout est couvert au même montant", "correct": false, "why_wrong": "Piège : le vol simple est une garantie optionnelle et fortement limitée."},
+        {"text": "Le vol avec effraction est une garantie optionnelle", "correct": false, "why_wrong": "L'effraction fait partie de la couverture de base des choses ménage."}
+      ],
+      "explanation": "Vol avec effraction (traces d'effraction, art. 139 CP) : garantie de base jusqu'à la somme d'inventaire. Vol simple (sans effraction, ex. sac oublié) : garantie optionnelle plafonnée souvent à 2 000, 5 000 ou 10 000 CHF."
+    },
+    {
+      "external_id": "KLARY-NV-MN-009",
+      "theme": "menage",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une cliente stocke des bijoux d'une valeur de 40 000 CHF chez elle. Comment le contrat choses ménage traite-t-il ce risque ?",
+      "options": [
+        {"text": "Ils sont couverts sans limite dans la somme d'inventaire", "correct": false, "why_wrong": "Sous-limite systématique pour les objets de valeur, sauf déclaration expresse."},
+        {"text": "Sous-limite typique de 20 à 30% de la somme d'inventaire, ou plafond fixe (souvent 10 000 CHF)", "correct": true},
+        {"text": "Ils sont automatiquement exclus", "correct": false, "why_wrong": "Ils sont couverts, mais dans une sous-limite ; il faut souvent une assurance objets de valeur séparée pour le solde."},
+        {"text": "Seul le coffre de banque les couvre", "correct": false, "why_wrong": "Le coffre bancaire est une option, pas la règle."}
+      ],
+      "explanation": "Sous-limite CGA marché suisse : bijoux, montres, oeuvres d'art, collections plafonnés (souvent 10 000 CHF ou 20 à 30% de l'inventaire). Au-delà : déclaration séparée ou police valeurs séparée."
+    },
+    {
+      "external_id": "KLARY-NV-MN-010",
+      "theme": "menage",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Une locataire de 3,5 pièces à Renens rentre du travail : le flexible de sa machine à laver a lâché, causant 8 000 CHF de dégâts à son mobilier.",
+      "question": "Quelle assurance intervient pour indemniser ses biens abîmés ?",
+      "options": [
+        {"text": "La casco du véhicule", "correct": false, "why_wrong": "Aucun lien avec un dégât d'eau domestique."},
+        {"text": "La couverture dégâts d'eau de son assurance choses ménage", "correct": true},
+        {"text": "La RC de la régie", "correct": false, "why_wrong": "La régie est responsable des installations fixes du bâtiment, pas du contenu de la locataire."},
+        {"text": "L'assurance bâtiment du propriétaire", "correct": false, "why_wrong": "L'assurance bâtiment couvre la structure, pas le mobilier de la locataire."}
+      ],
+      "explanation": "Choses ménage, garantie dégâts d'eau : ruptures de conduites intérieures, refoulement d'eau, débordements. Les biens fixes du bâtiment sont couverts par l'assurance bâtiment (art. 58 CO et ECA cantonale)."
+    },
+    {
+      "external_id": "KLARY-NV-MN-011",
+      "theme": "menage",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels événements font partie de la couverture INCENDIE de base d'une assurance choses ménage ?",
+      "options": [
+        {"text": "Feu, fumée soudaine et accidentelle", "correct": true},
+        {"text": "Foudre directe", "correct": true},
+        {"text": "Explosion, implosion", "correct": true},
+        {"text": "Chute d'aéronefs ou parties de ceux-ci", "correct": true},
+        {"text": "Fatigue naturelle et usure normale des meubles", "correct": false, "why_wrong": "L'usure est explicitement exclue de toute assurance choses."},
+        {"text": "Brûlure d'un fer à repasser sur un tapis (dommage isolé sans propagation)", "correct": false, "why_wrong": "Piège : les dommages sans propagation (dommages par un foyer utile) sont couverts uniquement en option 'dommages incendie sans feu' non incluse en base."}
+      ],
+      "explanation": "Couverture incendie de base : feu, foudre, explosion, chute d'aéronefs (art. standard des CGA suisses, alignés sur l'ancienne norme ECA). Dommages par la chaleur sans feu (fer à repasser) : option séparée."
+    },
+    {
+      "external_id": "KLARY-NV-MN-012",
+      "theme": "menage",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Que veut dire le système de couverture 'premier risque' dans une assurance choses ?",
+      "options": [
+        {"text": "L'assureur ne paie que le premier sinistre de l'année", "correct": false, "why_wrong": "N'a aucun sens contractuel."},
+        {"text": "La somme assurée constitue un plafond fixe, sans application de la règle proportionnelle en cas de sous-assurance", "correct": true},
+        {"text": "Le client doit assurer ses biens au prix de neuf uniquement", "correct": false},
+        {"text": "L'assureur exige un premier paiement dans les 30 jours", "correct": false, "why_wrong": "Confusion avec la prime, sans lien avec le premier risque."}
+      ],
+      "explanation": "Premier risque : la somme convenue est le plafond, la règle proportionnelle art. 69 LCA ne s'applique pas. Pratique pour garanties additionnelles (bijoux, argent liquide, vol simple à l'extérieur)."
+    },
+    {
+      "external_id": "KLARY-NV-MN-013",
+      "theme": "menage",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": "Une famille part en vacances 3 semaines à Bali et emporte du matériel photo (7 000 CHF) et deux ordinateurs portables (4 500 CHF chacun).",
+      "question": "Quelles affirmations sur la couverture 'à l'extérieur' de la choses ménage sont EXACTES ?",
+      "options": [
+        {"text": "La couverture 'à l'extérieur' du domicile existe dans la police choses ménage", "correct": true},
+        {"text": "Elle est souvent plafonnée à environ 20% de la somme d'inventaire (ou plafond fixe)", "correct": true},
+        {"text": "Il faut vérifier CGA avant un départ prolongé et envisager une police valeurs dédiée si besoin", "correct": true},
+        {"text": "Les biens sont couverts partout dans le monde sans aucune sous-limite", "correct": false, "why_wrong": "Le plafond hors domicile est toujours réduit."},
+        {"text": "Les biens ne sont jamais couverts hors du domicile", "correct": false, "why_wrong": "La couverture externe existe, dans une sous-limite."}
+      ],
+      "explanation": "CGA choses ménage : les biens sont couverts partout dans le monde ('lieu d'assurance étendu') mais avec une sous-limite (souvent 20% ou plafond fixe). Vérifier avant un départ prolongé, sinon police valeurs dédiée."
+    },
+    {
+      "external_id": "KLARY-NV-MN-014",
+      "theme": "menage",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client a perdu la clé principale de son appartement à Lausanne. Le remplacement du cylindre coûte 900 CHF. Quelle assurance couvre ?",
+      "options": [
+        {"text": "L'assurance bâtiment de la régie", "correct": false, "why_wrong": "La régie n'a pas à supporter ce risque personnel du locataire."},
+        {"text": "L'option 'perte de clés / frais de serrurier' de la choses ménage ou RC privée selon assureur", "correct": true},
+        {"text": "L'assurance RC privée intégralement", "correct": false, "why_wrong": "La RC privée intervient s'il y a un dommage à autrui, ici le dommage est le coût propre du locataire."},
+        {"text": "La casco du véhicule", "correct": false}
+      ],
+      "explanation": "Option marché courante : 'perte de clés' rembourse le remplacement de serrures et cylindres. Rattachée soit à la choses ménage (couverture des propres coûts) soit à la RC (dommage locatif dû à la perte d'une clé maîtresse)."
+    },
+    {
+      "external_id": "KLARY-NV-MN-015",
+      "theme": "menage",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un client emploie une aide de ménage 4 heures par semaine, payée 30 CHF/heure, non déclarée.",
+      "question": "Quel risque juridique et assurantiel majeur l'expose ?",
+      "options": [
+        {"text": "Aucun, les petits emplois de moins de 5 heures sont exemptés", "correct": false, "why_wrong": "Faux : dès le 1er franc versé, il y a une relation employeur/employé au sens du CO."},
+        {"text": "Il doit affilier à l'AVS, souscrire l'assurance-accidents obligatoire (LAA) et cotiser dès la 1ère heure", "correct": true},
+        {"text": "Il doit uniquement déclarer aux impôts", "correct": false, "why_wrong": "Correct mais insuffisant : il manque tout le volet social LAA/AVS."},
+        {"text": "L'aide de ménage doit souscrire elle-même sa LAA", "correct": false, "why_wrong": "La LAA salariés est à la charge de l'employeur (art. 91 al. 1 LAA)."}
+      ],
+      "explanation": "Employer une aide de ménage = obligation AVS/AI/APG/AC + LAA obligatoire dès la 1ère heure de travail. Procédure simplifiée : Chèque-Emploi (Cantons romands). Non-affiliation = risque de recours de la CNA et amendes."
+    },
+    {
+      "external_id": "KLARY-NV-MN-016",
+      "theme": "menage",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Le fils de 20 ans du preneur, étudiant à Zurich, loue seul un studio. Est-il encore couvert par la RC privée familiale de ses parents ?",
+      "options": [
+        {"text": "Non, dès qu'il a son propre ménage il en sort du cercle assuré", "correct": true},
+        {"text": "Oui, jusqu'à 25 ans systématiquement", "correct": false, "why_wrong": "Erreur : la limite d'âge existe (souvent 25 ans) MAIS uniquement s'il vit dans la communauté domestique."},
+        {"text": "Oui, à condition que ses parents paient son loyer", "correct": false, "why_wrong": "Le financement du loyer ne remplace pas le critère de la communauté domestique."},
+        {"text": "Oui, tant qu'il est étudiant", "correct": false}
+      ],
+      "explanation": "CGA marché : membres du ménage assurés = communauté domestique effective. Quitter le foyer = sortir du cercle. Argument commercial : proposer une RC privée jeune adulte peu coûteuse dès l'installation en studio."
+    },
+    {
+      "external_id": "KLARY-NV-MN-017",
+      "theme": "menage",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels dommages sont typiquement EXCLUS d'une assurance RC privée ?",
+      "options": [
+        {"text": "Dommages causés à sa propre famille cohabitante", "correct": true},
+        {"text": "Dommages causés dans l'exercice d'une activité professionnelle indépendante", "correct": true},
+        {"text": "Dommages avec un véhicule à moteur soumis à la LCR", "correct": true},
+        {"text": "Dommages intentionnels", "correct": true},
+        {"text": "Verre cassé lors d'une partie de football entre amis dans un jardin privé", "correct": false, "why_wrong": "Cas classique couvert par la RC privée."},
+        {"text": "Dommage causé au domicile d'un tiers en tant qu'invité", "correct": false, "why_wrong": "Cas type couvert (dommage à la chose confiée dans certaines CGA, ou dommage matériel courant)."}
+      ],
+      "explanation": "Exclusions marché standard RC privée : sa propre famille (pas de tiers), activité pro, véhicules à moteur (relèvent de la RC LCR), intention (art. 14 LCA). Base : CGA type Zurich/Mobilière."
+    },
+    {
+      "external_id": "KLARY-NV-MN-018",
+      "theme": "menage",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un locataire abîme la porte du studio qu'il vient de louer. Quelle assurance intervient ?",
+      "options": [
+        {"text": "La RC privée avec inclusion 'dommages aux locaux loués' ou 'RC locative'", "correct": true},
+        {"text": "L'assurance bâtiment du propriétaire", "correct": false, "why_wrong": "La régie va facturer le locataire, la police bâtiment ne prend pas en charge un dommage causé par le locataire."},
+        {"text": "L'assurance ménage inventaire", "correct": false, "why_wrong": "L'inventaire couvre les biens du locataire, pas les dommages qu'il cause au bâtiment."},
+        {"text": "La casco du véhicule", "correct": false}
+      ],
+      "explanation": "Inclusion standard 'dommages aux locaux loués' de la RC privée LCA : couvre les dégâts causés à la chose louée. Sans cette inclusion, la régie facture le locataire au titre de l'art. 267 CO (restitution en bon état)."
+    },
+    {
+      "external_id": "KLARY-NV-MN-019",
+      "theme": "menage",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelle est la différence entre valeur à neuf et valeur actuelle dans une police choses ménage ?",
+      "options": [
+        {"text": "La valeur à neuf ne s'applique qu'aux véhicules", "correct": false, "why_wrong": "Concept général en assurance choses."},
+        {"text": "La valeur à neuf = coût de remplacement par un bien équivalent neuf ; la valeur actuelle = valeur à neuf moins vétusté", "correct": true},
+        {"text": "La valeur actuelle est toujours la même que la valeur à neuf", "correct": false, "why_wrong": "Elle en est déduite de la vétusté."},
+        {"text": "La valeur actuelle est la valeur de revente sur le marché de l'occasion", "correct": false, "why_wrong": "Confusion fréquente : la valeur actuelle assurantielle diffère du marché d'occasion."}
+      ],
+      "explanation": "Convention CGA choses : indemnisation en valeur à neuf tant que la vétusté n'excède pas ~40 ; au-delà, retour à la valeur actuelle. Objectif : éviter l'enrichissement (art. 62 LCA)."
+    },
+    {
+      "external_id": "KLARY-NV-MN-020",
+      "theme": "menage",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Une adolescente garde ponctuellement les enfants du voisin (baby-sitting occasionnel, 20 CHF/soir).",
+      "question": "Est-elle assurée en RC pendant cette activité ?",
+      "options": [
+        {"text": "Oui, la RC privée du chef de famille couvre le baby-sitting occasionnel", "correct": true},
+        {"text": "Non, elle est en activité professionnelle indépendante", "correct": false, "why_wrong": "Piège : le baby-sitting occasionnel n'est pas considéré comme une activité professionnelle au sens des CGA."},
+        {"text": "Oui, uniquement si le voisin déclare l'emploi à l'AVS", "correct": false, "why_wrong": "Aucun impact sur la couverture RC privée."},
+        {"text": "Non, seule la RC des parents des enfants gardés peut jouer", "correct": false, "why_wrong": "C'est ELLE qui doit être couverte, pas l'inverse."}
+      ],
+      "explanation": "CGA marché suisse : baby-sitting, cours de soutien scolaire, petits jobs occasionnels d'ado sont considérés comme extension de la vie privée. La RC privée du ménage couvre les dommages qu'elle cause (aux enfants, à l'appartement)."
+    },
+    {
+      "external_id": "KLARY-NV-VH-100",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un client compare deux offres RC véhicule à sommes différentes (5 mio vs 100 mio CHF).",
+      "question": "Quelle est la somme d'assurance minimale LÉGALE de la RC véhicule en Suisse depuis 2015 ?",
+      "options": [
+        {"text": "1 million CHF par sinistre", "correct": false, "why_wrong": "Ancien minimum d'avant réforme."},
+        {"text": "5 millions CHF par sinistre", "correct": true},
+        {"text": "10 millions CHF par sinistre", "correct": false, "why_wrong": "Pratique commerciale de nombreux assureurs, mais pas le minimum légal."},
+        {"text": "100 millions CHF par sinistre", "correct": false, "why_wrong": "Plafond illimité proposé chez certains assureurs, pas le minimum légal."}
+      ],
+      "explanation": "Art. 3 OAV : la somme d'assurance minimale de la RC véhicule est de 5 millions CHF par sinistre (personnes et choses confondus) depuis le 1er janvier 2015. En pratique, la plupart des CGA offrent 100 millions ou illimité."
+    },
+    {
+      "external_id": "KLARY-NV-VH-101",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un propriétaire prête sa voiture à un ami pour un week-end à Interlaken. L'ami provoque un accident, dommages 25 000 CHF au tiers.",
+      "question": "Comment intervient l'assurance RC véhicule ?",
+      "options": [
+        {"text": "La RC ne joue pas car l'ami n'est pas le preneur", "correct": false, "why_wrong": "La RC véhicule suit le VÉHICULE, pas le conducteur."},
+        {"text": "La RC du véhicule couvre le dommage au tiers ; l'assureur peut ensuite examiner un éventuel recours contre l'ami en cas de faute grave", "correct": true},
+        {"text": "L'ami doit avoir sa propre RC véhicule", "correct": false, "why_wrong": "Faux : la RC véhicule accompagne le véhicule immatriculé."},
+        {"text": "Aucune assurance ne prend en charge un prêt de véhicule", "correct": false}
+      ],
+      "explanation": "Art. 65 LCR : la RC véhicule couvre le détenteur ET tout conducteur autorisé. Recours possible en cas de faute grave (alcool, drogue, vitesse excessive) au sens de l'art. 65 al. 3 LCR et art. 14 LCA."
+    },
+    {
+      "external_id": "KLARY-NV-VH-102",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un conducteur provoque un accident avec 1,2 pour mille d'alcool dans le sang. L'assureur RC indemnise la victime pour 350 000 CHF.",
+      "question": "Que peut faire l'assureur RC contre le conducteur fautif ?",
+      "options": [
+        {"text": "Rien, le contrat interdit tout recours", "correct": false, "why_wrong": "L'ivresse qualifiée est un cas classique de recours."},
+        {"text": "Exercer un recours (regress) contre le conducteur pour une part du montant versé", "correct": true},
+        {"text": "Annuler rétroactivement l'assurance", "correct": false, "why_wrong": "L'assureur doit d'abord indemniser la victime (protection LCR) puis se retourne."},
+        {"text": "Confisquer le véhicule directement", "correct": false, "why_wrong": "Aucune compétence privée : c'est un acte d'autorité (art. 90a LCR)."}
+      ],
+      "explanation": "Art. 65 al. 3 LCR : l'assureur peut recourir contre le preneur ou le conducteur en cas de faute grave (alcool, drogue, vitesse). Barème de recours interne (règles de la CSAM) selon degré de responsabilité, jusqu'à 100% dans les cas les plus lourds."
+    },
+    {
+      "external_id": "KLARY-NV-VH-103",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Qu'est-ce que l'assurance 'occupants' d'un véhicule ?",
+      "options": [
+        {"text": "Une couverture accident pour les personnes transportées, indépendante de la RC", "correct": true},
+        {"text": "Une extension de la RC pour les invités du preneur", "correct": false, "why_wrong": "L'occupants est indépendante de la RC."},
+        {"text": "L'obligation légale de l'art. 63 LCR pour tous les passagers", "correct": false, "why_wrong": "L'obligation légale ne concerne que la RC, l'occupants est facultative."},
+        {"text": "Une assurance qui rembourse les billets d'auto-partage", "correct": false}
+      ],
+      "explanation": "L'assurance occupants LCA est facultative. Elle verse un capital en cas d'invalidité/décès et couvre les frais médicaux non pris en charge par la LAMal/LAA pour les personnes transportées. Utile pour les invités non-Suisses ou non assurés LAA."
+    },
+    {
+      "external_id": "KLARY-NV-VH-104",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un conducteur suisse voyage en voiture jusqu'en Serbie. Que doit-il présenter obligatoirement à la frontière ?",
+      "options": [
+        {"text": "Une carte verte internationale d'assurance", "correct": true},
+        {"text": "Sa police d'assurance en 3 exemplaires", "correct": false, "why_wrong": "La police complète n'est pas exigée : c'est la carte verte."},
+        {"text": "Une lettre notariée de son assureur", "correct": false},
+        {"text": "Rien, la RC suisse est reconnue dans le monde entier", "correct": false, "why_wrong": "Système carte verte requis hors Espace Économique Européen."}
+      ],
+      "explanation": "Système carte verte (Council of Bureaux) : preuve internationale de couverture RC véhicule. Obligatoire hors UE/AELE (dont Serbie). Fournie gratuitement par l'assureur RC."
+    },
+    {
+      "external_id": "KLARY-NV-VH-105",
+      "theme": "vehicule",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles affirmations sur le système bonus-malus RC véhicule en Suisse sont EXACTES ?",
+      "options": [
+        {"text": "Le degré de prime évolue à la baisse chaque année sans sinistre", "correct": true},
+        {"text": "Le degré remonte de plusieurs échelons après un sinistre responsable", "correct": true},
+        {"text": "Il existe un bonus-malus séparé pour la RC et pour la casco", "correct": true},
+        {"text": "Bonusserv permet à l'assureur de consulter l'historique sinistres du preneur", "correct": true},
+        {"text": "Le bonus double chaque année sans sinistre", "correct": false, "why_wrong": "Progression standardisée d'un degré par an, pas doublement."},
+        {"text": "Chaque sinistre annule tout le bonus accumulé", "correct": false, "why_wrong": "Recul par degrés selon barème, pas remise à zéro."}
+      ],
+      "explanation": "Bonus-malus RC : barème par degrés (souvent 22 à 0), 1 degré gagné par année sans sinistre, plusieurs degrés perdus par sinistre. Bonus-malus séparés RC et casco. Consultation possible via le système Bonusserv (info sinistres RC entre assureurs suisses)."
+    },
+    {
+      "external_id": "KLARY-NV-VH-106",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Après un accident où l'assureur casco a versé 12 000 CHF, quel est le délai pour résilier le contrat casco selon le nouveau droit LCA ?",
+      "options": [
+        {"text": "30 jours dès la survenance du sinistre", "correct": false, "why_wrong": "Ancien délai avant réforme 2022."},
+        {"text": "14 jours dès versement de l'indemnité", "correct": true},
+        {"text": "1 mois avant la prochaine échéance annuelle uniquement", "correct": false, "why_wrong": "Confusion avec la résiliation ordinaire annuelle."},
+        {"text": "Impossible avant 3 ans", "correct": false, "why_wrong": "L'art. 42 LCA prévoit un droit spécial après sinistre."}
+      ],
+      "explanation": "Art. 42 LCA (nouveau, 1er janvier 2022) : chaque partie peut résilier le contrat après sinistre, dans les 14 jours dès versement de l'indemnité. Cette réciprocité doit être connue du conseiller."
+    },
+    {
+      "external_id": "KLARY-NV-VH-107",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un client de 35 ans conduit une Tesla Model 3 en leasing sur 4 ans (48 000 CHF de résiduel). Il souhaite réduire ses primes.",
+      "question": "Il demande une casco PARTIELLE seulement. Que lui répondez-vous ?",
+      "options": [
+        {"text": "OK, la partielle suffit s'il conduit prudemment", "correct": false, "why_wrong": "Ne couvre pas la collision propre : la dette de leasing reste exposée."},
+        {"text": "Le contrat de leasing impose la casco COMPLÈTE pour toute la durée ; refuser expose le client à la dette résiduelle en cas de sinistre total", "correct": true},
+        {"text": "Le leasing implique automatiquement la RC uniquement", "correct": false},
+        {"text": "La casco complète n'existe pas pour les véhicules électriques", "correct": false, "why_wrong": "Elle existe, avec parfois option 'batterie' spécifique."}
+      ],
+      "explanation": "Contrat de leasing standard : casco complète obligatoire jusqu'à restitution. Le loueur reste économiquement propriétaire. Sinistre total sans complète = client débiteur du solde de leasing (souvent > 30 000 CHF sur véhicule électrique)."
+    },
+    {
+      "external_id": "KLARY-NV-VH-108",
+      "theme": "vehicule",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": "Le véhicule d'un client est endommagé sur un parking de centre commercial sans témoin (1 800 CHF de dégâts).",
+      "question": "Quelles affirmations sont VRAIES concernant les 'dommages de parking' ?",
+      "options": [
+        {"text": "La garantie 'dommages de parking' (casco) rembourse ce type de dommage", "correct": true},
+        {"text": "L'événement est souvent limité en nombre par an (2 à 4 événements par CGA)", "correct": true},
+        {"text": "L'impact sur le degré de bonus casco est généralement limité voire nul", "correct": true},
+        {"text": "La RC du responsable inconnu paie automatiquement", "correct": false, "why_wrong": "Impossible d'engager la RC d'un tiers non identifié sans preuve."},
+        {"text": "L'assurance protection juridique rembourse le sinistre matériel", "correct": false, "why_wrong": "La PJ finance des honoraires d'avocat, elle ne rembourse pas le sinistre matériel."}
+      ],
+      "explanation": "Option 'dommages de parking' des CGA casco : couvre les dommages causés par des tiers inconnus quand le véhicule est stationné. Souvent avec un plafond annuel (2 à 4 événements) et impact bonus limité."
+    },
+    {
+      "external_id": "KLARY-NV-VH-109",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une casco partielle couvre-t-elle une collision avec un chevreuil sur route de campagne ?",
+      "options": [
+        {"text": "Oui, la collision avec animaux sauvages fait partie de la casco partielle", "correct": true},
+        {"text": "Non, il faut la casco complète", "correct": false, "why_wrong": "Piège classique : les animaux sauvages font partie de la partielle."},
+        {"text": "Uniquement si l'animal meurt sur place", "correct": false, "why_wrong": "Aucune condition de ce type dans les CGA."},
+        {"text": "Uniquement en dehors des heures nocturnes", "correct": false}
+      ],
+      "explanation": "Casco partielle standard : vol, feu, éléments naturels, bris de glace, collision avec animaux sauvages. Cette dernière est un cas fréquent en Suisse (chevreuils, sangliers)."
+    },
+    {
+      "external_id": "KLARY-NV-VH-110",
+      "theme": "vehicule",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels dommages sont EXCLUS des couvertures RC véhicule et casco d'origine (à moins d'option spécifique) ?",
+      "options": [
+        {"text": "Dommages au véhicule lors d'une course de vitesse sur circuit", "correct": true},
+        {"text": "Dommages causés par un conducteur sans permis valable", "correct": true},
+        {"text": "Dommages intentionnels du preneur", "correct": true},
+        {"text": "Effets personnels dans le véhicule volé (bagages)", "correct": false, "why_wrong": "Piège : les effets personnels sont couverts jusqu'à un plafond dans la casco partielle."},
+        {"text": "Bris de glace sur autoroute", "correct": false, "why_wrong": "Bris de glace = garantie casco partielle."}
+      ],
+      "explanation": "Exclusions marché standard : compétitions et courses (art. CGA), conduite sans permis, actes intentionnels (art. 14 al. 1 LCA). Pour les courses : option 'events sportifs' spécifique. Base : art. 14 LCA."
+    },
+    {
+      "external_id": "KLARY-NV-VH-111",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Comment le nouveau droit LCA 2022 traite-t-il la faute grave (négligence grave) du preneur (art. 14 LCA) ?",
+      "options": [
+        {"text": "L'assureur peut réduire ses prestations en proportion", "correct": true},
+        {"text": "L'assureur doit toujours payer 100%", "correct": false, "why_wrong": "Faux, la faute grave permet une réduction."},
+        {"text": "Le contrat est nul rétroactivement", "correct": false, "why_wrong": "Confusion avec le dol/intention."},
+        {"text": "L'assureur ne peut jamais réduire ses prestations", "correct": false, "why_wrong": "Réduction possible pour négligence grave."}
+      ],
+      "explanation": "Art. 14 LCA : intention = l'assureur n'est pas lié ; négligence grave = réduction possible dans la mesure correspondant au degré de faute. Depuis la réforme 2022, la clause type impose une réduction proportionnelle claire."
+    },
+    {
+      "external_id": "KLARY-NV-VH-112",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client dépose les plaques d'immatriculation pour l'hiver. Que se passe-t-il pour son assurance ?",
+      "options": [
+        {"text": "Le contrat est résilié automatiquement", "correct": false, "why_wrong": "Non : il est SUSPENDU."},
+        {"text": "Le contrat est suspendu, la RC continue via une garantie 'plaques déposées' réduite, prime au prorata", "correct": true},
+        {"text": "Le client doit continuer à payer la prime pleine", "correct": false, "why_wrong": "Pratique commerciale : réduction si plaques déposées."},
+        {"text": "Le véhicule doit être revendu obligatoirement", "correct": false}
+      ],
+      "explanation": "Convention SVV (association suisse d'assurances) : plaques déposées auprès du SAN = contrat suspendu, garantie de base pour le véhicule en garage (feu, vol, éléments naturels), prime au prorata. Réactivation à la reprise des plaques."
+    },
+    {
+      "external_id": "KLARY-NV-VH-113",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un conducteur commet un délit de fuite après avoir endommagé une voiture stationnée sur un parking de la Migros. L'auteur reste introuvable malgré la vidéosurveillance.",
+      "question": "Comment la victime est-elle indemnisée pour les 6 200 CHF de dégâts ?",
+      "options": [
+        {"text": "Par le Fonds national de garantie automobile (art. 76 LCR)", "correct": true},
+        {"text": "Par la LAMal", "correct": false, "why_wrong": "La LAMal ne couvre pas les dommages matériels au véhicule."},
+        {"text": "Par sa RC véhicule personnelle", "correct": false, "why_wrong": "La RC véhicule couvre les dommages qu'ON CAUSE, pas ceux qu'on subit."},
+        {"text": "Par la casco partielle uniquement", "correct": false, "why_wrong": "Partielle ne couvre pas la collision par tiers inconnu ; c'est la casco complète 'stationnement' ou le Fonds qui interviennent."}
+      ],
+      "explanation": "Art. 76 LCR : Fonds national suisse de garantie automobile (FNG) intervient quand le responsable est non identifié, non assuré ou insolvable. Franchise standard de 1 000 CHF à la charge de la victime pour les dommages matériels."
+    },
+    {
+      "external_id": "KLARY-NV-VH-114",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Qu'entend-on par 'assurance protection du bonus' (option marché suisse) ?",
+      "options": [
+        {"text": "Option permettant de garder son degré de bonus après un premier sinistre responsable dans l'année", "correct": true},
+        {"text": "Ristourne prime en cas d'année sans sinistre", "correct": false, "why_wrong": "Confusion avec le bonus classique."},
+        {"text": "Option qui bloque le contrat pendant 3 ans", "correct": false},
+        {"text": "Option qui supprime la franchise casco", "correct": false, "why_wrong": "Ce serait une option 'franchise réduite'."}
+      ],
+      "explanation": "Option 'protection bonus' : le degré ne recule pas après un premier sinistre (souvent 1 fois par période) malgré la responsabilité. Argument commercial fort pour un client qui vient d'atteindre le plein bonus."
+    },
+    {
+      "external_id": "KLARY-NV-VH-115",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client possède une moto de 125 cm3. Doit-il souscrire la même RC véhicule qu'une voiture ?",
+      "options": [
+        {"text": "Non, les motos jusqu'à 125 cm3 sont exemptées", "correct": false, "why_wrong": "Fausse exemption : dès 50 cm3 ou 45 km/h, RC obligatoire."},
+        {"text": "Oui, toute moto immatriculée doit être couverte en RC selon l'art. 63 LCR", "correct": true},
+        {"text": "Non, la RC privée du ménage suffit", "correct": false, "why_wrong": "La RC privée exclut les véhicules à moteur soumis à la LCR."},
+        {"text": "Oui, mais seulement en été", "correct": false}
+      ],
+      "explanation": "Art. 63 LCR : tout véhicule immatriculé (voitures, motos, scooters, cyclomoteurs, tracteurs) doit être assuré en RC véhicule. Sans attestation : pas de permis de circulation."
+    },
+    {
+      "external_id": "KLARY-NV-VH-116",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un client déclare le vol de sa voiture. Il retrouve son véhicule 4 semaines plus tard, gravement dégradé.",
+      "question": "Quelle garantie casco intervient ?",
+      "options": [
+        {"text": "Casco partielle : vol et déprédations consécutives au vol sont couvertes", "correct": true},
+        {"text": "Casco complète uniquement", "correct": false, "why_wrong": "Piège : le vol relève de la casco PARTIELLE."},
+        {"text": "RC véhicule", "correct": false, "why_wrong": "La RC ne couvre jamais les propres dommages du preneur."},
+        {"text": "Aucune, le véhicule ayant été retrouvé", "correct": false, "why_wrong": "Non : les dégradations sont indemnisées comme sinistre partiel."}
+      ],
+      "explanation": "Art. 76 al. 2 LCR et CGA casco partielle : le vol et les dégradations consécutives sont couverts. Si le véhicule reste introuvable après 30 jours, indemnisation en valeur totale (valeur vénale majorée en début de contrat)."
+    },
+    {
+      "external_id": "KLARY-NV-VH-117",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client casse son pare-brise sur autoroute. Il peut le faire réparer par un vitrier partenaire de l'assureur. Que se passe-t-il ?",
+      "options": [
+        {"text": "Franchise standard casco pleine et impact sur le bonus", "correct": false, "why_wrong": "Le bris de glace ne recule pas le bonus, et la franchise est souvent réduite en réparation."},
+        {"text": "Franchise réduite (parfois supprimée) si réparation par le partenaire, aucun impact sur le degré de bonus", "correct": true},
+        {"text": "Le sinistre est refusé", "correct": false, "why_wrong": "Bris de glace = garantie casco partielle."},
+        {"text": "Il faut passer par un expert automobile obligatoirement", "correct": false, "why_wrong": "Aucune obligation d'expert pour un simple bris de glace."}
+      ],
+      "explanation": "Pratique du marché : le bris de glace fait partie de la casco partielle, sans influence sur le bonus, et la plupart des assureurs offrent franchise réduite (ou nulle) via un réseau partenaire (Carglass, Belron etc.)."
+    },
+    {
+      "external_id": "KLARY-NV-VH-118",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un conducteur est percuté par un tiers responsable identifié. Les réparations sur son véhicule s'élèvent à 8 500 CHF.",
+      "question": "Quelle assurance indemnise en priorité ?",
+      "options": [
+        {"text": "Sa propre casco complète (avec franchise à sa charge)", "correct": false, "why_wrong": "Possible en dépannage, mais l'assureur du tiers responsable rembourse en priorité (subrogation)."},
+        {"text": "La RC véhicule du tiers responsable", "correct": true},
+        {"text": "Sa protection juridique", "correct": false, "why_wrong": "La PJ paye les honoraires d'avocat, pas les réparations."},
+        {"text": "Le Fonds national de garantie", "correct": false, "why_wrong": "Le Fonds intervient si le responsable est inconnu, insolvable ou non assuré."}
+      ],
+      "explanation": "Principe : le responsable indemnise via sa RC véhicule (art. 58 LCR). L'assureur casco propre peut avancer via 'casco de complaisance' puis se subroger contre l'assureur RC adverse (art. 72 LCA)."
+    },
+    {
+      "external_id": "KLARY-NV-VH-119",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un client équipe sa BMW avec des jantes 22'' à 6 000 CHF, un système audio hifi et un wrap intégral.",
+      "question": "Ces accessoires 'tuning' après achat sont-ils assurés par la casco d'origine ?",
+      "options": [
+        {"text": "Oui, sans limite", "correct": false, "why_wrong": "Sous-limite pour les accessoires non déclarés."},
+        {"text": "Uniquement s'ils sont déclarés à l'assureur (extension casco pour accessoires spéciaux)", "correct": true},
+        {"text": "Non, jamais", "correct": false, "why_wrong": "Cela l'est via extension déclarée."},
+        {"text": "Oui, dans la limite de 500 CHF", "correct": false, "why_wrong": "Sous-limite typique existe (souvent 2 à 5 000 CHF), à vérifier CGA au cas par cas."}
+      ],
+      "explanation": "CGA casco : les accessoires spéciaux (jantes, système audio hi-fi, wrap complet) au-delà d'une sous-limite doivent être déclarés et donnent lieu à une prime additionnelle. Sinon, indemnisation limitée en cas de vol/vandalisme."
+    },
+    {
+      "external_id": "KLARY-NV-VG-100",
+      "theme": "voyages",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Que sait-on de la couverture LAMal à l'étranger (art. 36 OAMal) ?",
+      "options": [
+        {"text": "L'urgence est couverte à hauteur maximale du double du tarif suisse applicable", "correct": true},
+        {"text": "Le rapatriement médical n'est jamais couvert par la LAMal", "correct": true},
+        {"text": "Les soins programmés à l'étranger sont hors LAMal (sauf autorisation préalable)", "correct": true},
+        {"text": "L'urgence est couverte à 100% du tarif étranger", "correct": false, "why_wrong": "Piège fréquent : le tarif suisse doublé est la limite."},
+        {"text": "La LAMal ne rembourse jamais rien à l'étranger", "correct": false, "why_wrong": "Elle rembourse partiellement en cas d'urgence."}
+      ],
+      "explanation": "Art. 36 OAMal : la LAMal couvre les urgences médicales à l'étranger jusqu'à un maximum du double du tarif applicable en Suisse. Hors urgence : rien. Rapatriement : jamais. Ceci justifie l'assurance voyage LCA."
+    },
+    {
+      "external_id": "KLARY-NV-VG-101",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un client demande où appeler s'il tombe malade en voyage à Bali.",
+      "question": "L'assistance voyage 24h/24h fait-elle partie de la LAMal ?",
+      "options": [
+        {"text": "Oui, la LAMal offre une hotline 24h/24h internationale", "correct": false, "why_wrong": "La LAMal n'offre pas de plateforme d'assistance."},
+        {"text": "Non, l'assistance (téléphone, orientation médicale, avance de frais) est une prestation exclusive des polices voyage LCA privées", "correct": true},
+        {"text": "Oui, mais uniquement en Europe", "correct": false},
+        {"text": "Non, seule la LAA la propose", "correct": false, "why_wrong": "La LAA ne propose pas d'assistance de type voyage."}
+      ],
+      "explanation": "Assistance voyage : plateforme 24h/24h, avance des frais d'hospitalisation, mise en contact avec des médecins référencés, organisation du rapatriement médical. Prestation LCA hors LAMal (art. 36 OAMal ne l'inclut pas)."
+    },
+    {
+      "external_id": "KLARY-NV-VG-102",
+      "theme": "voyages",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Une cliente réserve un voyage aux Maldives pour 8 500 CHF (2 personnes). Deux semaines avant le départ, son conjoint est hospitalisé pour un infarctus.",
+      "question": "Comment se calcule l'indemnisation annulation ?",
+      "options": [
+        {"text": "Remboursement des frais annulation facturés par le tour-opérateur, sous plafond CGA, franchise typique 100 à 300 CHF", "correct": true},
+        {"text": "Remboursement à 100% du voyage sans questions", "correct": false, "why_wrong": "Le remboursement porte sur les frais RÉELS d'annulation (barème du tour-opérateur), pas sur le prix total systématiquement."},
+        {"text": "Rien, l'annulation n'est jamais couverte moins de 15 jours avant départ", "correct": false, "why_wrong": "Faux, aucune telle limite."},
+        {"text": "Uniquement en cas de décès", "correct": false, "why_wrong": "Maladie grave d'un proche = motif classique de couverture."}
+      ],
+      "explanation": "Annulation LCA : remboursement des frais annulation contractuels du prestataire (typiquement 100% dès 7 jours du départ selon CGV) sous plafond de la police et déduction d'une franchise. Motif imprévisible et grave = infarctus du conjoint (oui)."
+    },
+    {
+      "external_id": "KLARY-NV-VG-103",
+      "theme": "voyages",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un client suisse en séjour à New York fait un AVC. Il doit être rapatrié par vol médicalisé transcontinental, coût 45 000 CHF.",
+      "question": "Qui prend en charge le rapatriement ?",
+      "options": [
+        {"text": "La LAMal, comme urgence à l'étranger", "correct": false, "why_wrong": "PIÈGE ULTRA-CLASSIQUE : la LAMal ne couvre JAMAIS le rapatriement (art. 36 OAMal)."},
+        {"text": "L'assurance voyage / assistance LCA", "correct": true},
+        {"text": "L'ambassade suisse à titre humanitaire", "correct": false, "why_wrong": "Elle peut coordonner, jamais financer."},
+        {"text": "L'hôpital de New York en garantie de solvabilité", "correct": false}
+      ],
+      "explanation": "Rapatriement médical = jamais LAMal. C'est la première raison de souscrire une assurance voyage / assistance LCA. Coûts typiques : Europe 3 000 à 15 000 CHF, transcontinental médicalisé 30 000 à 100 000 CHF."
+    },
+    {
+      "external_id": "KLARY-NV-VG-104",
+      "theme": "voyages",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels motifs sont TYPIQUEMENT EXCLUS de l'assurance annulation voyage ?",
+      "options": [
+        {"text": "Simple changement d'avis du client", "correct": true},
+        {"text": "Grève de compagnie aérienne annoncée avant réservation", "correct": true},
+        {"text": "Pandémie déclarée avant la souscription", "correct": true},
+        {"text": "Guerre ou troubles civils dans la région de destination connus au moment de l'achat", "correct": true},
+        {"text": "Maladie soudaine et grave du conjoint diagnostiquée après la réservation", "correct": false, "why_wrong": "Cas classique COUVERT."},
+        {"text": "Décès d'un frère ou d'une soeur", "correct": false, "why_wrong": "Cas classique COUVERT."}
+      ],
+      "explanation": "Exclusions marché : convenance personnelle, événements connus/prévisibles au moment de la souscription, risques politiques/sanitaires annoncés. Base contractuelle : art. 4 LCA (bonne foi + risques déjà connus)."
+    },
+    {
+      "external_id": "KLARY-NV-VG-105",
+      "theme": "voyages",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": "Un client prévoit un voyage 'aventure' en Nouvelle-Zélande : canyoning, saut à l'élastique, plongée à 45 m.",
+      "question": "Quelles activités sont typiquement EXCLUES d'une police voyage standard (sans option) ?",
+      "options": [
+        {"text": "Canyoning", "correct": true},
+        {"text": "Parachutisme et saut à l'élastique", "correct": true},
+        {"text": "Plongée sous-marine au-delà de 40 m", "correct": true},
+        {"text": "Alpinisme au-delà de 4 000 m", "correct": true},
+        {"text": "Balade en bateau touristique dans une baie fermée", "correct": false, "why_wrong": "Activité de tourisme standard, couverte."},
+        {"text": "Randonnée pédestre en sentier balisé", "correct": false, "why_wrong": "Activité loisir courante, couverte."}
+      ],
+      "explanation": "CGA marché : les sports considérés à risque (canyoning, parachutisme, kite-surf, plongée > 40m, alpinisme > 4 000m) sont exclus de la base, disponibles en option 'sports aventure'. Toujours vérifier avant de recommander."
+    },
+    {
+      "external_id": "KLARY-NV-VG-106",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Le retard d'un vol de plus de 4 heures est-il indemnisé par l'assurance voyage ?",
+      "options": [
+        {"text": "Oui, dans les couvertures marché suisse, avec un forfait ou remboursement des frais raisonnables (repas, hôtel)", "correct": true},
+        {"text": "Non, jamais", "correct": false, "why_wrong": "C'est une prestation d'assistance standard sur les polices voyages haut de gamme."},
+        {"text": "Uniquement à partir de 24 heures", "correct": false, "why_wrong": "Seuil habituel 4 à 6 heures selon CGA."},
+        {"text": "Uniquement par la compagnie aérienne", "correct": false, "why_wrong": "La compagnie a une obligation (Règlement UE 261/2004) mais l'assureur voyage complète."}
+      ],
+      "explanation": "Prestation 'retard de transport public' : forfait 50 à 300 CHF ou remboursement des frais engagés (repas, nuit d'hôtel) au-delà d'un seuil de 4 à 6 heures. Cumulable avec les droits UE 261/2004."
+    },
+    {
+      "external_id": "KLARY-NV-VG-107",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "La responsabilité de la compagnie aérienne en cas de perte définitive de bagages est plafonnée par quelle convention internationale ?",
+      "options": [
+        {"text": "Convention de Vienne", "correct": false, "why_wrong": "Convention diplomatique, sans lien."},
+        {"text": "Convention de Montréal 1999, ~1 288 DTS (~1 400 CHF)", "correct": true},
+        {"text": "Traité de Rome", "correct": false},
+        {"text": "Convention de Bâle", "correct": false}
+      ],
+      "explanation": "Convention de Montréal 1999 : plafonne la responsabilité de la compagnie aérienne en cas de perte définitive à 1 288 DTS (env. 1 400 CHF). Au-delà, l'assurance bagages LCA complète (souvent jusqu'à 2 000 à 5 000 CHF)."
+    },
+    {
+      "external_id": "KLARY-NV-VG-108",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client demande si son assurance voyage annuelle couvre un séjour de 90 jours consécutifs en Australie. Que vérifiez-vous en priorité ?",
+      "options": [
+        {"text": "La durée maximum d'un voyage individuel prévue par la police (souvent 45 à 90 jours)", "correct": true},
+        {"text": "Sa vaccination anti-hépatite", "correct": false, "why_wrong": "Question médicale hors assurance."},
+        {"text": "Son degré de bonus casco", "correct": false, "why_wrong": "Sans rapport."},
+        {"text": "Sa RC privée", "correct": false, "why_wrong": "Sans rapport avec la durée voyage."}
+      ],
+      "explanation": "Assurance voyage annuelle : la couverture s'applique à condition que chaque voyage individuel ne dépasse pas une durée max (souvent 45, 60 ou 90 jours). Au-delà : produit 'long séjour' spécifique."
+    },
+    {
+      "external_id": "KLARY-NV-VG-109",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un enfant de 14 ans part en camp linguistique en Angleterre pour 3 semaines. Peut-il être assuré seul ?",
+      "options": [
+        {"text": "Non, il faut impérativement une assurance des parents", "correct": false, "why_wrong": "Une police voyage individuelle est possible dès l'enfance."},
+        {"text": "Oui, une police voyage individuelle ou une extension de la police familiale existante couvre le séjour", "correct": true},
+        {"text": "Non, sauf en cas de séjour < 7 jours", "correct": false, "why_wrong": "Aucune limite courte de ce type."},
+        {"text": "Oui, mais uniquement pour la RC", "correct": false}
+      ],
+      "explanation": "Camp linguistique enfant : couverture typique = assistance médicale, rapatriement, annulation, bagages, RC privée. Extension familiale suffit si l'enfant y est nommé. Vérifier la limite 'séjour scolaire encadré'."
+    },
+    {
+      "external_id": "KLARY-NV-VG-110",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un client suisse perd son passeport lors d'un séjour à Bali (à 5 jours de la fin du séjour).",
+      "question": "L'assurance voyage prend-elle en charge les démarches et frais ?",
+      "options": [
+        {"text": "Oui, prise en charge des frais de remplacement (émoluments) et assistance juridique/consulaire", "correct": true},
+        {"text": "Non, aucune assurance ne couvre ce risque", "correct": false, "why_wrong": "C'est un service standard des polices voyage haut de gamme."},
+        {"text": "Uniquement si le passeport est volé, pas perdu", "correct": false, "why_wrong": "Certaines CGA distinguent, la plupart couvrent perte et vol."},
+        {"text": "Uniquement dans les pays de l'UE", "correct": false}
+      ],
+      "explanation": "Prestation d'assistance 'documents de voyage' : émoluments consulaires, avance sur billet de retour si nécessaire, mise en relation ambassade. Utile lorsque le client doit prolonger son séjour en attendant un laissez-passer."
+    },
+    {
+      "external_id": "KLARY-NV-VG-111",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Une cliente déclare le vol de son sac à main à Barcelone (contenu 800 CHF).",
+      "question": "Quelle est la franchise typique par événement pour un sinistre bagages en assurance voyage LCA ?",
+      "options": [
+        {"text": "5 000 CHF fixes", "correct": false, "why_wrong": "Serait le PLAFOND, pas la franchise."},
+        {"text": "100 à 300 CHF selon police", "correct": true},
+        {"text": "10 CHF", "correct": false, "why_wrong": "Trop faible."},
+        {"text": "Aucune franchise", "correct": false, "why_wrong": "Rare en bagages, sauf produit premium spécifique."}
+      ],
+      "explanation": "Franchise typique bagages voyage : 100 à 300 CHF (Zurich, AXA, Helvetia, Mobilière). Cette franchise vise à éviter la déclaration d'objets mineurs."
+    },
+    {
+      "external_id": "KLARY-NV-VG-112",
+      "theme": "voyages",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": "Une famille de 4 personnes voyage 2 fois par an à l'étranger et fait 15 sorties ski par saison.",
+      "question": "Quels arguments justifient une assurance voyage annuelle familiale ?",
+      "options": [
+        {"text": "Prime globalement inférieure à l'addition de polices ponctuelles", "correct": true},
+        {"text": "Aucune démarche à effectuer avant chaque départ", "correct": true},
+        {"text": "Couverture continue pendant 12 mois (voyages < 45-60 jours)", "correct": true},
+        {"text": "Ajout typique des sports d'hiver dans les options familiales", "correct": true},
+        {"text": "La LAMal étranger devient inutile", "correct": false, "why_wrong": "La LAMal reste et intervient toujours en base (double tarif suisse en urgence)."},
+        {"text": "La casco du véhicule est comprise en assurance annuelle", "correct": false, "why_wrong": "Aucun rapport : casco = police véhicule."}
+      ],
+      "explanation": "Profil idéal annuelle familiale : 250 à 450 CHF/an couvrant les 4 membres pour tous les voyages < 45 à 60 jours + activités sportives. Argument fort : prévoyance sereine (rapatriement compris)."
+    },
+    {
+      "external_id": "KLARY-NV-VG-113",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client se voit refuser un visa touristique 3 semaines avant son départ. Ce motif est-il couvert par l'assurance annulation ?",
+      "options": [
+        {"text": "Toujours", "correct": false, "why_wrong": "Non systématique, dépend de la CGA."},
+        {"text": "Uniquement si l'option 'refus de visa non prévisible' est incluse ou activée", "correct": true},
+        {"text": "Non, jamais", "correct": false, "why_wrong": "Possible avec option ou couverture spécifique."},
+        {"text": "Uniquement pour les Suisses résidant à l'étranger", "correct": false}
+      ],
+      "explanation": "Refus de visa : couverture souvent optionnelle ou conditionnelle (demande faite dans les délais, dossier complet). À valider avec le client au moment de la souscription (art. 3 LCA : information continue)."
+    },
+    {
+      "external_id": "KLARY-NV-VG-114",
+      "theme": "voyages",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un cadre suisse doit se rendre à Bagdad pour signer un contrat, zone déconseillée par le DFAE.",
+      "question": "Comment est traité ce voyage professionnel côté assurance ?",
+      "options": [
+        {"text": "Aucune assurance voyage LCA ne couvre les zones expressément déconseillées par les autorités", "correct": true},
+        {"text": "Sa RC privée le couvre", "correct": false, "why_wrong": "La RC privée ne couvre pas les frais médicaux ni les zones à risque."},
+        {"text": "Sa police famille standard suffit", "correct": false, "why_wrong": "Zones de guerre / voyage déconseillé DFAE = exclusion CGA."},
+        {"text": "Sa casco s'applique en cas de dommage matériel", "correct": false, "why_wrong": "La casco couvre le véhicule, hors sujet."}
+      ],
+      "explanation": "Exclusion CGA classique : zones de guerre, régions désignées comme dangereuses par le DFAE. Solution : produits 'business travel high risk' spéciaux (Lloyd's, souscripteurs spécialisés), avec surprime et validation cas par cas."
+    },
+    {
+      "external_id": "KLARY-NV-PL-001",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un client déménage de Zurich vers Neuchâtel. Il possède 3 immeubles en Suisse (ZH, NE, GE) et vous demande de faire le point sur l'ECA.",
+      "question": "Dans quels cantons romands l'assurance ECA (établissement cantonal) est-elle OBLIGATOIRE et monopolistique ?",
+      "options": [
+        {"text": "GE, TI, VS, ZH", "correct": false, "why_wrong": "GE a bien un ECA obligatoire (via ECAB) mais TI, VS et ZH sont cantons GUSTAVO (marché libre)."},
+        {"text": "VD, FR, JU, NE (ainsi que GL, GR, BS...)", "correct": true},
+        {"text": "Tous les cantons suisses", "correct": false, "why_wrong": "19 cantons sur 26 seulement (les GUSTAVO en sont exclus)."},
+        {"text": "Aucun canton (le marché est totalement libre)", "correct": false, "why_wrong": "Faux : 19 cantons ont un ECA obligatoire."}
+      ],
+      "explanation": "Système suisse : 19 cantons à ECA obligatoire (assurance monopolistique) : VD, FR, NE, JU, BE, LU, ZG, SO, BL, BS, SH, AR, AI, SG, GR, GL, TG, NW, OW. 7 cantons GUSTAVO à marché libre : GE (particulier), TI, UR, SZ, VS, AG, ZH."
+    },
+    {
+      "external_id": "KLARY-NV-PL-002",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Comment est calculée la valeur d'assurance d'un bâtiment (contrat marché privé) ?",
+      "options": [
+        {"text": "Valeur vénale de marché (prix de vente)", "correct": false, "why_wrong": "Concept immobilier, pas assurantiel."},
+        {"text": "Valeur à neuf (coût de reconstruction) réactualisée par l'indice ICH (indice des coûts de construction)", "correct": true},
+        {"text": "Valeur fiscale communale", "correct": false, "why_wrong": "Utile pour l'impôt, pas l'assurance."},
+        {"text": "Prix de vente initial de la construction", "correct": false, "why_wrong": "Ignorerait l'inflation du secteur bâti."}
+      ],
+      "explanation": "Assurance bâtiment : valeur à neuf = coût de reconstruction à l'identique. Indexation via ICH (Chambre suisse d'experts en bâtiment) pour éviter la sous-assurance liée à l'inflation. Vérification tous les 5 à 10 ans conseillée."
+    },
+    {
+      "external_id": "KLARY-NV-PL-003",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un propriétaire fait construire une extension de 40m² sur sa villa (piscine intérieure). Que doit-il faire côté assurance ?",
+      "options": [
+        {"text": "Rien, la police bâtiment s'adapte automatiquement", "correct": false, "why_wrong": "L'adaptation nécessite une déclaration."},
+        {"text": "Déclarer la transformation à l'assureur (obligation d'annonce, art. 28 LCA) et adapter la valeur assurée", "correct": true},
+        {"text": "Souscrire une nouvelle police complète", "correct": false, "why_wrong": "Un avenant suffit."},
+        {"text": "Attendre la fin des travaux pour aviser", "correct": false, "why_wrong": "L'annonce doit être faite dès la modification du risque."}
+      ],
+      "explanation": "Art. 28 LCA : aggravation du risque = obligation d'annonce. Non-annonce = risque de refus de prestation. Pour un chantier, il faut aussi une RC prop. d'ouvrage (art. 58 CO) et une assurance construction (SIA 118)."
+    },
+    {
+      "external_id": "KLARY-NV-PL-004",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un particulier construit lui-même une piscine à côté de sa villa (chantier de 3 mois).",
+      "question": "Quelle assurance spécifique est INDISPENSABLE ?",
+      "options": [
+        {"text": "RC propriétaire d'ouvrage / RC maître d'ouvrage", "correct": true},
+        {"text": "Casco complète véhicule", "correct": false, "why_wrong": "Sans lien."},
+        {"text": "Protection juridique circulation", "correct": false},
+        {"text": "Assurance ménage inventaire", "correct": false, "why_wrong": "Ne couvre pas la responsabilité chantier."}
+      ],
+      "explanation": "Art. 58 CO : le propriétaire d'ouvrage répond des dommages causés par l'ouvrage en construction (chute d'un enfant dans la fouille, effondrement blessant un passant). RC prop. d'ouvrage LCA : couverture spécifique + assurance construction pour l'ouvrage lui-même."
+    },
+    {
+      "external_id": "KLARY-NV-PL-005",
+      "theme": "propriete_logement",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": "Un locataire glisse dans l'escalier mal éclairé d'un immeuble et se blesse (fracture, 3 mois d'ITT).",
+      "question": "Quelles affirmations sont VRAIES sur la responsabilité du propriétaire ?",
+      "options": [
+        {"text": "L'art. 58 CO fonde une responsabilité CAUSALE (objective) du propriétaire d'immeuble", "correct": true},
+        {"text": "Le défaut d'éclairage relève d'un défaut d'entretien couvert par l'art. 58 CO", "correct": true},
+        {"text": "La RC propriétaire d'immeuble LCA prend en charge le dommage corporel du locataire", "correct": true},
+        {"text": "L'art. 65 LCR s'applique", "correct": false, "why_wrong": "LCR = véhicules, aucun rapport."},
+        {"text": "Le propriétaire s'exonère facilement en prouvant l'absence de faute", "correct": false, "why_wrong": "Responsabilité OBJECTIVE : la faute n'est pas la condition."}
+      ],
+      "explanation": "Art. 58 CO : responsabilité causale du propriétaire d'immeuble pour tout défaut de construction ou d'entretien. C'est une responsabilité OBJECTIVE (sans faute). Couverture : RC prop. d'immeuble LCA (obligatoire dans les cantons ECA)."
+    },
+    {
+      "external_id": "KLARY-NV-PL-006",
+      "theme": "propriete_logement",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": "Un couple emménage dans sa nouvelle maison à Fribourg et vous demande ce qui va dans la police BÂTIMENT vs CONTENU.",
+      "question": "Quels éléments font partie du BÂTIMENT et non du contenu (choses ménage) ?",
+      "options": [
+        {"text": "Chaudière et installations de chauffage fixes", "correct": true},
+        {"text": "Cuisine intégrée fixe", "correct": true},
+        {"text": "Sanitaires fixes", "correct": true},
+        {"text": "Cheminée maçonnée", "correct": true},
+        {"text": "Meubles rembourrés du salon", "correct": false, "why_wrong": "Contenu : choses ménage."},
+        {"text": "Vêtements du preneur", "correct": false, "why_wrong": "Contenu : choses ménage."}
+      ],
+      "explanation": "Ligne de partage : le bâtiment inclut tout ce qui est fixé au bâtiment ou fait partie de sa structure (installations techniques, cuisines intégrées, revêtements). Contenu = mobilier meuble, effets personnels, appareils portables."
+    },
+    {
+      "external_id": "KLARY-NV-PL-007",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un propriétaire assure sa villa à 900 000 CHF (bâtiment). Valeur à neuf réelle : 1 200 000 CHF. Un dégât d'eau cause 60 000 CHF.",
+      "question": "Combien l'assurance verse-t-elle ?",
+      "options": [
+        {"text": "60 000 CHF", "correct": false, "why_wrong": "Ignorerait la sous-assurance."},
+        {"text": "45 000 CHF (60 000 x 900 000 / 1 200 000)", "correct": true},
+        {"text": "900 000 CHF (plafond)", "correct": false, "why_wrong": "Le plafond ne joue qu'en cas de dommage supérieur à la somme assurée."},
+        {"text": "0 CHF", "correct": false}
+      ],
+      "explanation": "Règle proportionnelle art. 69 al. 2 LCA appliquée au bâtiment. Le sous-assuré paie sa 'part'. Argument commercial fort : ajuster la valeur d'assurance à chaque transformation."
+    },
+    {
+      "external_id": "KLARY-NV-PL-008",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un propriétaire en PPE loue son appartement : qui doit assurer le contenu (mobilier meublé) laissé sur place ?",
+      "options": [
+        {"text": "Le propriétaire (le mobilier lui appartient)", "correct": true},
+        {"text": "Le locataire", "correct": false, "why_wrong": "Le locataire assure SON contenu, pas celui appartenant au propriétaire."},
+        {"text": "La régie du bâtiment", "correct": false, "why_wrong": "La régie gère l'immeuble, elle n'assure pas."},
+        {"text": "L'ECA cantonale", "correct": false, "why_wrong": "L'ECA (là où monopolistique) couvre le bâtiment, pas le mobilier meublé du propriétaire."}
+      ],
+      "explanation": "Assurance choses : chaque partie assure ce qui lui appartient. Location meublée = le propriétaire doit inscrire dans son inventaire ménage le mobilier laissé (au titre 'logement loué')."
+    },
+    {
+      "external_id": "KLARY-NV-PL-009",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un dégât d'eau important dû au refoulement des égouts publics touche une villa. Est-ce couvert par la garantie dégâts d'eau bâtiment ?",
+      "options": [
+        {"text": "Oui, systématiquement en base", "correct": false, "why_wrong": "Le refoulement d'égouts est souvent en option ou avec limite."},
+        {"text": "En option ou avec sous-limite (souvent 25 000 à 100 000 CHF), à vérifier CGA", "correct": true},
+        {"text": "Non, jamais", "correct": false, "why_wrong": "C'est un risque assurable, souvent en option."},
+        {"text": "Uniquement par l'ECA", "correct": false}
+      ],
+      "explanation": "CGA marché : le refoulement des égouts est en option 'dégâts d'eau étendus'. Recommandation forte pour les biens en zones basses ou au sous-sol. En cas de sinistre grave, montants vite élevés (contenu + bâtiment)."
+    },
+    {
+      "external_id": "KLARY-NV-PL-010",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un propriétaire fait installer 45 m² de panneaux photovoltaïques sur son toit à Sion (18 000 CHF).",
+      "question": "Comment les faire couvrir en assurance ?",
+      "options": [
+        {"text": "Aucun besoin, ils sont inclus d'office dans le bâtiment", "correct": false, "why_wrong": "Ils doivent être déclarés (aggravation de risque + valeur d'assurance)."},
+        {"text": "Déclarer à l'assureur bâtiment pour extension de la valeur assurée + couverture spécifique 'installations solaires'", "correct": true},
+        {"text": "Inscrire dans l'inventaire ménage", "correct": false, "why_wrong": "PV = installation fixe = bâtiment, pas contenu."},
+        {"text": "Prendre une casco spéciale", "correct": false, "why_wrong": "Casco = véhicules."}
+      ],
+      "explanation": "Art. 28 LCA : aggravation du risque, obligation d'annonce. Panneaux PV = installation fixe du bâtiment. Extension polices : incendie, foudre, grêle, vandalisme + perte de production optionnelle."
+    },
+    {
+      "external_id": "KLARY-NV-PL-011",
+      "theme": "propriete_logement",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles affirmations sont VRAIES concernant la garantie 'perte de loyer' d'un propriétaire bailleur ?",
+      "options": [
+        {"text": "Elle indemnise le loyer perdu quand le logement est inhabitable suite à sinistre couvert", "correct": true},
+        {"text": "Le déclencheur type est un feu, un dégât d'eau ou un événement naturel", "correct": true},
+        {"text": "La durée d'indemnisation est plafonnée par CGA (souvent 12 à 24 mois)", "correct": true},
+        {"text": "Elle rembourse le loyer si le locataire est insolvable", "correct": false, "why_wrong": "Cela relève de la couverture 'garantie de loyer' (produit différent, rare et restrictif)."},
+        {"text": "Elle protège contre la baisse du marché immobilier", "correct": false, "why_wrong": "Aucun rapport, pas un risque assurable."}
+      ],
+      "explanation": "Perte de loyer bâtiment : suite à incendie, dégât d'eau, tempête rendant l'appartement inhabitable, l'assureur indemnise le loyer non encaissé jusqu'à remise en état (souvent 12 à 24 mois plafond)."
+    },
+    {
+      "external_id": "KLARY-NV-PL-012",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Le pool suisse des dommages tremblement de terre couvre-t-il tous les propriétaires automatiquement ?",
+      "options": [
+        {"text": "Oui, la couverture est automatique pour tout bâtiment assuré", "correct": false, "why_wrong": "Le pool suisse verse dans certaines conditions et jusqu'à un plafond global."},
+        {"text": "Non, il s'agit d'une couverture solidaire limitée (~2 milliards CHF au global), ne remplaçant pas une assurance tremblement de terre spécifique", "correct": true},
+        {"text": "Oui, mais seulement dans les cantons monopolistiques", "correct": false, "why_wrong": "Le pool suisse dépasse le clivage ECA/marché libre."},
+        {"text": "Non, aucune couverture n'existe en Suisse", "correct": false, "why_wrong": "Le pool suisse existe."}
+      ],
+      "explanation": "Pool suisse pour la couverture des dommages sismiques : environ 2 milliards CHF au niveau national, franchise cantonale, prestations partielles selon barème. Pour zones à risque (Valais, Bâle) : couverture privée spécifique à conseiller."
+    },
+    {
+      "external_id": "KLARY-NV-PL-013",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un jeune locataire installe seul sa machine à laver et néglige le raccord d'évacuation. Un dégât d'eau important abîme le parquet de son appartement et celui du voisin d'en dessous.",
+      "question": "Sur quelle assurance intervient-il pour couvrir sa responsabilité envers la régie et le voisin ?",
+      "options": [
+        {"text": "L'assurance bâtiment de la régie", "correct": false, "why_wrong": "L'assureur bâtiment paie mais se retourne contre le locataire (subrogation art. 72 LCA)."},
+        {"text": "Sa RC privée avec inclusion 'RC locative' pour les dommages qu'il cause aux locaux loués", "correct": true},
+        {"text": "L'assurance ménage inventaire du propriétaire", "correct": false},
+        {"text": "Le Fonds national de garantie", "correct": false, "why_wrong": "Le FNG est pour la circulation, sans rapport."}
+      ],
+      "explanation": "RC privée avec 'dommages aux locaux loués' : indispensable pour tout locataire. Sinon subrogation de l'assureur bâtiment (art. 72 LCA) contre lui + facture régie."
+    },
+    {
+      "external_id": "KLARY-NV-PL-014",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un chantier de rénovation de 200 000 CHF sur une villa nécessite quelle assurance TECHNIQUE dédiée ?",
+      "options": [
+        {"text": "L'assurance travaux SIA 118 (assurance construction) et RC constructeur", "correct": true},
+        {"text": "La casco complète", "correct": false, "why_wrong": "Casco = véhicules."},
+        {"text": "L'assurance annulation voyage", "correct": false},
+        {"text": "L'assurance protection juridique circulation", "correct": false}
+      ],
+      "explanation": "Chantier de rénovation : assurance construction (SIA 118 norme suisse) pour l'ouvrage lui-même + RC constructeur (dommages tiers). Souvent souscrite par l'entrepreneur mais à vérifier avec le maître d'ouvrage."
+    },
+    {
+      "external_id": "KLARY-NV-PL-015",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Une famille achète un appartement en PPE de 3,5 pièces à Lausanne (750 000 CHF).",
+      "question": "Quelles assurances non-vie doit-elle typiquement souscrire ?",
+      "options": [
+        {"text": "Uniquement l'assurance ménage inventaire", "correct": false, "why_wrong": "Incomplet : RC privée + PPE + assurance bâtiment cantonale (VD) sont indispensables."},
+        {"text": "ECA VD (obligatoire pour bâtiment), assurance ménage inventaire, RC privée (souvent avec 'RC prop. immeuble' PPE si non couverte par la copropriété)", "correct": true},
+        {"text": "Casco complète du véhicule et rien d'autre", "correct": false},
+        {"text": "Aucune, tout est couvert par le fonds propre PPE", "correct": false, "why_wrong": "Le fonds propre finance l'entretien, pas les sinistres."}
+      ],
+      "explanation": "Panier NON-VIE type d'un propriétaire PPE Lausanne : (1) ECA VD (bâtiment monopole, incendie/éléments naturels), (2) Choses ménage inventaire, (3) RC privée avec option 'propriétaire d'immeuble PPE' si pas déjà couverte par la copropriété. Base : ECA VD 1998 + art. 58 CO."
+    },
+    {
+      "external_id": "KLARY-NV-PM-001",
+      "theme": "pme",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelle est la base légale de la responsabilité civile d'entreprise ?",
+      "options": [
+        {"text": "Art. 41 CO (acte illicite) et art. 55 CO (chef d'entreprise et famille du chef)", "correct": true},
+        {"text": "Art. 63 LCR", "correct": false, "why_wrong": "Concerne les véhicules."},
+        {"text": "Art. 36 OAMal", "correct": false, "why_wrong": "Couverture LAMal étranger."},
+        {"text": "Art. 45 LSA", "correct": false, "why_wrong": "Information client, pas RC."}
+      ],
+      "explanation": "RC entreprise = art. 41 CO (responsabilité pour acte illicite fautif) + art. 55 CO (responsabilité du chef d'entreprise / commettant pour les actes de ses employés dans l'exécution de leur travail). L'entreprise reste responsable si elle prouve n'avoir pas violé son devoir de diligence."
+    },
+    {
+      "external_id": "KLARY-NV-PM-002",
+      "theme": "pme",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Que couvre la RC d'EXPLOITATION d'une PME ?",
+      "options": [
+        {"text": "Les dommages corporels causés à des tiers par l'exploitation", "correct": true},
+        {"text": "Les dommages matériels causés à des tiers par l'exploitation", "correct": true},
+        {"text": "Les dommages causés par les employés dans l'exécution de leur travail (art. 55 CO)", "correct": true},
+        {"text": "Les dommages financiers purs sans support corporel/matériel", "correct": false, "why_wrong": "La perte financière pure est EXCLUE de la RC exploitation (RC pro dédiée)."},
+        {"text": "Les propres biens et machines de l'entreprise", "correct": false, "why_wrong": "Ce serait choses PME."},
+        {"text": "Les frais d'avocat pour litiges commerciaux", "correct": false, "why_wrong": "Ce serait protection juridique entreprise."}
+      ],
+      "explanation": "RC exploitation : dommages corporels et matériels causés à des tiers par l'activité, les locaux, le personnel (art. 41+55 CO). N'inclut pas la RC professionnelle (erreurs de conseil) ni les pertes financières pures (produits séparés)."
+    },
+    {
+      "external_id": "KLARY-NV-PM-003",
+      "theme": "pme",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un fiduciaire à Fribourg commet une erreur dans une déclaration fiscale, causant à son client PME une amende AVS de 12 000 CHF plus 3 000 CHF d'intérêts.",
+      "question": "Quelle couverture d'assurance intervient sur cette perte financière du client ?",
+      "options": [
+        {"text": "RC exploitation", "correct": false, "why_wrong": "Perte financière pure : hors RC exploitation."},
+        {"text": "RC professionnelle (RC erreurs et omissions du fiduciaire)", "correct": true},
+        {"text": "Choses PME", "correct": false, "why_wrong": "Couvre les biens de l'entreprise."},
+        {"text": "Casco complète", "correct": false}
+      ],
+      "explanation": "Perte financière pure (dommage sans support corporel ou matériel) = RC professionnelle spécifique (RC erreurs et omissions). Indispensable pour toutes les professions du conseil : fiduciaires, avocats, courtiers d'assurance, architectes."
+    },
+    {
+      "external_id": "KLARY-NV-PM-004",
+      "theme": "pme",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Que couvre une assurance perte d'exploitation d'une PME ?",
+      "options": [
+        {"text": "Les frais fixes que l'entreprise continue de supporter", "correct": true},
+        {"text": "La marge brute que l'entreprise ne peut plus générer", "correct": true},
+        {"text": "L'interruption d'activité suite à un sinistre couvert par la police choses PME sous-jacente", "correct": true},
+        {"text": "Les vols de marchandises", "correct": false, "why_wrong": "Couvert par choses PME."},
+        {"text": "Le salaire du dirigeant en maladie personnelle", "correct": false, "why_wrong": "Perte de gain, produit distinct (LCA)."}
+      ],
+      "explanation": "Perte d'exploitation LCA : lorsqu'un sinistre couvert bloque l'activité, l'assureur verse la marge brute que l'entreprise aurait générée + les frais fixes qu'elle continue de supporter. Période d'indemnisation typique : 12 à 24 mois."
+    },
+    {
+      "external_id": "KLARY-NV-PM-005",
+      "theme": "pme",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels risques sont couverts par l'assurance CHOSES PME de base ?",
+      "options": [
+        {"text": "Incendie, foudre, explosion", "correct": true},
+        {"text": "Dégâts d'eau (rupture conduite, refoulement)", "correct": true},
+        {"text": "Vol avec effraction et vandalisme après effraction", "correct": true},
+        {"text": "Événements naturels (tempête, grêle, avalanche, glissement de terrain)", "correct": true},
+        {"text": "Cyberattaque / rançongiciel", "correct": false, "why_wrong": "Risque cyber = police cyber PME dédiée."},
+        {"text": "Perte financière due à un changement de législation", "correct": false, "why_wrong": "Risque business non assurable."}
+      ],
+      "explanation": "Choses PME base : feu, dégâts d'eau, événements naturels, vol/vandalisme. Cyber, bris de machine, transport, machines de chantier = extensions spécifiques."
+    },
+    {
+      "external_id": "KLARY-NV-PM-006",
+      "theme": "pme",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un fabricant de jouets suisse basé à Aarau exporte 30% de son CA en Allemagne. Un défaut de peinture cause des lésions à un enfant à Munich.",
+      "question": "Quelle assurance intervient sur la responsabilité du fabricant ?",
+      "options": [
+        {"text": "RC produits (part de la RC entreprise), avec extension géographique EU/monde selon police", "correct": true},
+        {"text": "La casco du véhicule de livraison", "correct": false, "why_wrong": "Sans rapport."},
+        {"text": "L'assurance ménage", "correct": false},
+        {"text": "Aucune, la responsabilité produits n'existe pas en Suisse", "correct": false, "why_wrong": "LRFP (Loi fédérale sur la responsabilité du fait des produits) = responsabilité objective du fabricant."}
+      ],
+      "explanation": "LRFP + art. 41 CO : responsabilité objective du fabricant pour défaut de produit. RC produits = souvent incluse dans la RC entreprise, avec extension géographique déclarée. À vérifier obligatoirement pour les exportateurs."
+    },
+    {
+      "external_id": "KLARY-NV-PM-007",
+      "theme": "pme",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Une PME de 40 salariés est victime d'un rançongiciel (ransomware) qui chiffre tous les serveurs. L'exploitation est bloquée 8 jours.",
+      "question": "Quelles couvertures active-t-elle typiquement via une assurance cyber PME ?",
+      "options": [
+        {"text": "Frais d'expertise forensic (analyse technique de l'attaque)", "correct": true},
+        {"text": "Perte d'exploitation cyber pendant la période de blocage", "correct": true},
+        {"text": "Frais de notification aux personnes concernées (art. 24 nLPD)", "correct": true},
+        {"text": "RC cyber envers les tiers (clients, partenaires) dont les données ont fuité", "correct": true},
+        {"text": "Rançon versée aux attaquants, selon CGA et sous conditions strictes", "correct": true},
+        {"text": "Achat de nouveaux serveurs neufs (renouvellement matériel programmé)", "correct": false, "why_wrong": "Renouvellement volontaire = investissement, pas sinistre."},
+        {"text": "Salaire du dirigeant pendant qu'il gère la crise", "correct": false, "why_wrong": "Perte de gain personnelle non liée à la police cyber."}
+      ],
+      "explanation": "Cyber PME (marché suisse 2020-2026) : perte d'exploitation cyber, coûts de restauration des données, forensic, notification aux personnes concernées (art. 24 nLPD), RC cyber envers tiers, rançon selon CGA. Nouveauté ancrée dans le VBV depuis la révision programme 2024."
+    },
+    {
+      "external_id": "KLARY-NV-PM-008",
+      "theme": "pme",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Qu'est-ce qu'une couverture 'dommages consécutifs' en RC entreprise ?",
+      "options": [
+        {"text": "Les dommages générés en conséquence directe du sinistre initial (ex. perte financière subie par un tiers en aval)", "correct": true},
+        {"text": "Les dommages qui surviennent après le contrat", "correct": false, "why_wrong": "Confusion avec la 'claims made' / date d'effet."},
+        {"text": "Les dommages du contrat suivant", "correct": false},
+        {"text": "Les dommages moraux uniquement", "correct": false, "why_wrong": "Confusion avec le tort moral."}
+      ],
+      "explanation": "Dommages consécutifs : le sinistre initial (défaut de produit, prestation défectueuse) génère des dommages en cascade chez le client (perte de production, retards). Extension importante en RC entreprise B2B."
+    },
+    {
+      "external_id": "KLARY-NV-PM-009",
+      "theme": "pme",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une PME transporte des marchandises fragiles de Zurich à Milan. Que doit-elle assurer ?",
+      "options": [
+        {"text": "L'assurance transport (marchandises en cours de route) : couverture 'de dépôt à dépôt'", "correct": true},
+        {"text": "La casco complète du chauffeur", "correct": false, "why_wrong": "Casco = véhicule, pas marchandises."},
+        {"text": "L'assurance ménage inventaire du destinataire", "correct": false},
+        {"text": "La RC véhicule", "correct": false, "why_wrong": "Couvre les dommages aux TIERS, pas la propre marchandise transportée."}
+      ],
+      "explanation": "Assurance transport marchandises (assurance-transport LCA) : couvre les marchandises pendant le transport (route, rail, mer, air) sur base d'Incoterms définis. Prime en % de la valeur, faible mais essentielle en export."
+    },
+    {
+      "external_id": "KLARY-NV-PM-010",
+      "theme": "pme",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une entreprise emploie 25 personnes. Quelle assurance est OBLIGATOIRE dès la 1ère heure de travail d'un salarié ?",
+      "options": [
+        {"text": "L'assurance-accidents obligatoire (LAA)", "correct": true},
+        {"text": "L'assurance perte de gain maladie", "correct": false, "why_wrong": "Non obligatoire fédéralement (obligatoire seulement dans certains cantons via CCT)."},
+        {"text": "La cyber-assurance", "correct": false},
+        {"text": "La RC produits", "correct": false}
+      ],
+      "explanation": "LAA (Loi fédérale sur l'assurance-accidents) : obligation employeur pour tout salarié. Accidents professionnels + non professionnels si > 8h/semaine (art. 7 al. 2 LAA). Cotisations : AP à charge employeur, ANP à charge salarié."
+    },
+    {
+      "external_id": "KLARY-NV-PM-011",
+      "theme": "pme",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": "Une PME est victime d'un vol par effraction sur son site principal : les serrures ont été forcées, 60 000 CHF de matériel volé.",
+      "question": "Quelles affirmations sont VRAIES concernant la couverture du sinistre ?",
+      "options": [
+        {"text": "L'effraction est couverte en base par la choses PME", "correct": true},
+        {"text": "Les CGA imposent souvent le respect de mesures de sécurité (alarme raccordée, coffre pour espèces)", "correct": true},
+        {"text": "Le non-respect des mesures de sécurité peut entraîner une réduction des prestations", "correct": true},
+        {"text": "La perte d'exploitation liée peut être indemnisée si l'option existe", "correct": true},
+        {"text": "Le vol n'est jamais couvert en choses PME", "correct": false, "why_wrong": "L'effraction est couverte en base."},
+        {"text": "La RC exploitation intervient pour indemniser le matériel volé", "correct": false, "why_wrong": "RC exploitation = tiers, pas propres biens."}
+      ],
+      "explanation": "Vol avec effraction PME (art. 139 CP) = couverture de base. Attention aux clauses de sécurité (alarme raccordée, coffre pour espèces au-delà d'un seuil). Non-respect : réduction de prestations."
+    },
+    {
+      "external_id": "KLARY-NV-PM-012",
+      "theme": "pme",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Que couvre l'assurance 'bris de machine' d'une PME industrielle ?",
+      "options": [
+        {"text": "Une rupture soudaine d'axe ou de composant mécanique", "correct": true},
+        {"text": "Un court-circuit ou une défaillance électrique interne", "correct": true},
+        {"text": "Une erreur de manipulation par un opérateur", "correct": true},
+        {"text": "Le vol de la machine", "correct": false, "why_wrong": "Vol = choses PME."},
+        {"text": "La perte de valeur due à l'obsolescence technique", "correct": false, "why_wrong": "Usure/obsolescence = jamais assurable."},
+        {"text": "Les dommages incendie sur la machine", "correct": false, "why_wrong": "Incendie = choses PME de base."}
+      ],
+      "explanation": "Assurance bris de machine (assurance-technique) : couvre les dommages internes soudains et imprévus qui ne relèvent pas des risques choses classiques. Indispensable pour industrie de production, ateliers, hôpitaux avec équipements médicaux."
+    },
+    {
+      "external_id": "KLARY-NV-PM-013",
+      "theme": "pme",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un employeur est tenu à quel devoir principal envers ses salariés selon l'art. 328 CO ?",
+      "options": [
+        {"text": "Devoir de protection de la personnalité et de la santé (obligation de sécurité)", "correct": true},
+        {"text": "Devoir de fournir un véhicule d'entreprise", "correct": false},
+        {"text": "Devoir de payer une prime annuelle", "correct": false},
+        {"text": "Devoir d'assurer la casco de sa voiture privée", "correct": false}
+      ],
+      "explanation": "Art. 328 CO : l'employeur protège la personnalité et la santé du travailleur (mesures de sécurité, prévention, aménagements raisonnables). Violation = responsabilité art. 41 CO + LAA (dénonciation à la CNA / SUVA)."
+    },
+    {
+      "external_id": "KLARY-NV-PM-014",
+      "theme": "pme",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une PME souhaite couvrir la perte de gain de ses salariés en cas de maladie (au-delà des 3 semaines art. 324a CO). Quel produit conseiller ?",
+      "options": [
+        {"text": "L'assurance-accidents LAA", "correct": false, "why_wrong": "LAA couvre l'accident, pas la maladie."},
+        {"text": "Une assurance indemnité journalière maladie collective (LCA)", "correct": true},
+        {"text": "L'assurance choses PME", "correct": false},
+        {"text": "L'assurance protection juridique circulation", "correct": false}
+      ],
+      "explanation": "Indemnité journalière maladie collective LCA (parfois LAMal art. 67) : couvre 720 ou 730 jours d'incapacité maladie à 80% du salaire (délai d'attente 30 à 90 jours). Souvent imposée par une CCT (construction, hôtellerie, nettoyage)."
+    },
+    {
+      "external_id": "KLARY-NV-PM-015",
+      "theme": "pme",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une PME artisanale ouvre son entrepôt à des visiteurs. Un client trébuche sur un câble et se casse le poignet. Quelle assurance ?",
+      "options": [
+        {"text": "Choses PME", "correct": false, "why_wrong": "Choses PME couvre les biens de l'entreprise."},
+        {"text": "RC exploitation (dommage corporel causé à un tiers dans les locaux de l'entreprise)", "correct": true},
+        {"text": "La LAMal du client", "correct": false, "why_wrong": "La LAMal soigne, l'entreprise reste civilement responsable envers le client (art. 41 CO)."},
+        {"text": "Aucune", "correct": false}
+      ],
+      "explanation": "RC exploitation = dommage corporel/matériel causé aux visiteurs dans les locaux ou en lien avec l'activité (art. 41 + 55 CO). Absolument indispensable pour tout commerce accueillant du public."
+    },
+    {
+      "external_id": "KLARY-NV-PM-016",
+      "theme": "pme",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un dirigeant PME s'inquiète du risque de fraude interne (détournement par un employé). Que peut-on lui proposer ?",
+      "options": [
+        {"text": "Une assurance 'abus de confiance' / 'fidélité' (dommages financiers causés par les propres employés)", "correct": true},
+        {"text": "La RC exploitation", "correct": false, "why_wrong": "RC exploitation = tiers, pas propres pertes internes."},
+        {"text": "La casco complète", "correct": false},
+        {"text": "La LAMal", "correct": false}
+      ],
+      "explanation": "Assurance 'abus de confiance' (fidélité) : couvre les pertes financières causées par des actes délictueux d'employés (détournement, vol, escroquerie, art. 138 et 146 CP). Souvent proposée comme extension cyber ou en police séparée."
+    },
+    {
+      "external_id": "KLARY-NV-PM-017",
+      "theme": "pme",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels éléments composent typiquement un 'paquet PME' proposé par les assureurs suisses ?",
+      "options": [
+        {"text": "RC entreprise", "correct": true},
+        {"text": "Choses PME (feu, dégâts d'eau, vol, événements naturels)", "correct": true},
+        {"text": "Perte d'exploitation", "correct": true},
+        {"text": "Assurance technique (bris de machine, cyber selon option)", "correct": true},
+        {"text": "Casco individuelle du dirigeant (voiture privée)", "correct": false, "why_wrong": "Produit personnel du dirigeant, non collectif entreprise."},
+        {"text": "Assurance annulation voyages loisirs", "correct": false, "why_wrong": "Produit voyages, hors paquet PME."}
+      ],
+      "explanation": "Paquet PME standard (Zurich, AXA, Vaudoise, Mobilière) : RC + choses PME + perte d'exploitation + technique/cyber. Options : transport, RC pro, LAA complémentaire, IJM collective."
+    },
+    {
+      "external_id": "KLARY-NV-PM-018",
+      "theme": "pme",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Une boulangerie subit un incendie qui détruit le four principal. Impossible de produire pendant 4 mois. CA perdu : 320 000 CHF, marge brute : 40%, frais fixes maintenus : 45 000 CHF.",
+      "question": "Combien la perte d'exploitation devrait-elle indemniser (avant franchise) ?",
+      "options": [
+        {"text": "0 CHF, l'incendie ne déclenche pas la perte d'exploitation", "correct": false, "why_wrong": "Faux : la perte d'exploitation se déclenche sur les risques du contrat choses PME sous-jacent."},
+        {"text": "~173 000 CHF (marge brute 128 000 + frais fixes 45 000)", "correct": true},
+        {"text": "320 000 CHF (tout le CA)", "correct": false, "why_wrong": "L'assureur ne rembourse pas le CA total, seulement la marge et les frais fixes."},
+        {"text": "45 000 CHF (seulement les frais fixes)", "correct": false, "why_wrong": "La marge brute est également due."}
+      ],
+      "explanation": "Perte d'exploitation LCA : marge brute perdue (CA x taux de marge) + frais fixes maintenus pendant l'interruption. Ici 320 000 x 40% + 45 000 = 173 000 CHF. Période d'indemnisation limitée au plafond CGA."
+    },
+    {
+      "external_id": "KLARY-NV-PM-019",
+      "theme": "pme",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une PME possède 5 véhicules d'entreprise. Comment optimiser leur assurance ?",
+      "options": [
+        {"text": "5 polices individuelles séparées", "correct": false, "why_wrong": "Peu efficient administrativement et financièrement."},
+        {"text": "Un contrat flotte (fleet) : gestion centralisée, bonus/malus global, prime négociée sur volume", "correct": true},
+        {"text": "Aucune assurance requise, la RC entreprise suffit", "correct": false, "why_wrong": "Chaque véhicule immatriculé doit avoir sa RC véhicule (art. 63 LCR)."},
+        {"text": "L'ECA cantonale", "correct": false, "why_wrong": "L'ECA concerne les bâtiments, pas les véhicules."}
+      ],
+      "explanation": "Contrat flotte véhicules d'entreprise : gestion simplifiée (un seul contrat), bonus/malus global (moins volatile), prime volumétrique. Seuil d'accès typique : 5 à 10 véhicules selon assureur."
+    },
+    {
+      "external_id": "KLARY-NV-PM-020",
+      "theme": "pme",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un restaurant à Genève subit une perte d'exploitation liée à une pandémie déclarée par les autorités qui impose la fermeture 3 mois.",
+      "question": "L'assurance perte d'exploitation classique intervient-elle ?",
+      "options": [
+        {"text": "Oui, systématiquement", "correct": false, "why_wrong": "Le risque pandémie est presque toujours exclu depuis 2020."},
+        {"text": "Non : les fermetures administratives dues à des pandémies sont typiquement EXCLUES des CGA marché suisse depuis la révision post-Covid", "correct": true},
+        {"text": "Oui, si la pandémie est mondiale", "correct": false},
+        {"text": "Uniquement pour les entreprises de moins de 10 salariés", "correct": false}
+      ],
+      "explanation": "Depuis 2020, la majorité des CGA suisses ont expressément exclu le risque pandémique et les fermetures administratives liées. Solutions dédiées : produits paramétriques ou extensions spécifiques (rares et chères). À expliquer sans ambiguïté au client."
+    },
+    {
+      "external_id": "KLARY-NV-LJ-001",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Que couvre la protection juridique circulation ?",
+      "options": [
+        {"text": "Les frais juridiques (avocat, expert, procès) liés à un litige survenu en tant qu'usager de la route", "correct": true},
+        {"text": "Les dommages matériels au véhicule", "correct": false, "why_wrong": "Ce sont la casco / la RC adverse."},
+        {"text": "Les amendes de circulation", "correct": false, "why_wrong": "Les amendes pénales ne sont JAMAIS assurables."},
+        {"text": "Les frais de dépannage sur autoroute", "correct": false, "why_wrong": "Prestation assistance, hors PJ."}
+      ],
+      "explanation": "PJ circulation : couvre les honoraires d'avocat, frais d'expert et de justice pour tout litige lié à l'usage d'un véhicule (accident, contravention à contester, litige garagiste, litige achat/vente véhicule). Pas les amendes pénales (art. 14 al. 1 LCA)."
+    },
+    {
+      "external_id": "KLARY-NV-LJ-002",
+      "theme": "litiges_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels domaines relèvent typiquement de la protection juridique PRIVÉE (par opposition à la circulation) ?",
+      "options": [
+        {"text": "Litiges de bail (locataire)", "correct": true},
+        {"text": "Litiges de consommation (achat internet, produits défectueux)", "correct": true},
+        {"text": "Litiges avec l'employeur (droit du travail)", "correct": true},
+        {"text": "Litiges LAMal / assurance maladie", "correct": true},
+        {"text": "Litiges de circulation (accident véhicule)", "correct": false, "why_wrong": "Cela relève de la PJ CIRCULATION, pas privée."},
+        {"text": "Litiges familiaux (divorce, autorité parentale)", "correct": false, "why_wrong": "Exclusion classique de la PJ privée."}
+      ],
+      "explanation": "PJ privée : bail, consommation, droit du travail, assurances sociales, voisinage, propriété. Circulation à part. Exclusions typiques : famille, droit fiscal, pénal grave."
+    },
+    {
+      "external_id": "KLARY-NV-LJ-003",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une personne assurée en PJ peut-elle choisir librement son avocat ?",
+      "options": [
+        {"text": "Non, l'assureur impose son avocat interne", "correct": false, "why_wrong": "L'art. 32 LSA garantit le libre choix dans certaines conditions."},
+        {"text": "Oui, en cas de conflit d'intérêts ou pour toute procédure judiciaire/administrative (art. 32 LSA)", "correct": true},
+        {"text": "Oui, uniquement s'il paie la moitié des honoraires", "correct": false, "why_wrong": "Aucune franchise supplémentaire de ce type imposée par la loi."},
+        {"text": "Non, jamais", "correct": false}
+      ],
+      "explanation": "Art. 32 LSA (libre choix de l'avocat) : l'assuré peut choisir un avocat pour toute procédure judiciaire, administrative ou en cas de conflit d'intérêts avec l'assureur. Directive européenne équivalente 87/344/CEE (reprise en droit suisse)."
+    },
+    {
+      "external_id": "KLARY-NV-LJ-004",
+      "theme": "litiges_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles affirmations sont vraies concernant le délai de carence en PJ privée ?",
+      "options": [
+        {"text": "Un délai de carence de 1 à 3 mois s'applique typiquement", "correct": true},
+        {"text": "Il vise à éviter la souscription juste avant un litige déjà connu", "correct": true},
+        {"text": "La PJ circulation est souvent sans carence", "correct": true},
+        {"text": "La couverture est toujours immédiate", "correct": false, "why_wrong": "Un délai de carence est très fréquent en PJ privée."},
+        {"text": "Le délai standard est de 5 ans", "correct": false, "why_wrong": "Trop long, non commercial."}
+      ],
+      "explanation": "Délai de carence CGA (Wartefrist) : période initiale (souvent 1 à 3 mois) pendant laquelle certains litiges ne sont pas couverts. Objectif : éviter la souscription 'juste avant un litige connu'. Circulation : souvent sans carence."
+    },
+    {
+      "external_id": "KLARY-NV-LJ-005",
+      "theme": "litiges_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Que rembourse concrètement une protection juridique ?",
+      "options": [
+        {"text": "Honoraires d'avocat", "correct": true},
+        {"text": "Frais de justice et de tribunal", "correct": true},
+        {"text": "Frais d'expertises et de traduction", "correct": true},
+        {"text": "Dépens alloués à la partie adverse en cas de perte", "correct": true},
+        {"text": "Amendes pénales prononcées contre l'assuré", "correct": false, "why_wrong": "Les amendes ne sont JAMAIS assurables (art. 14 al. 1 LCA + ordre public)."},
+        {"text": "Dommages-intérêts que l'assuré doit verser à la partie adverse", "correct": false, "why_wrong": "Ce serait la RC privée ou entreprise, pas la PJ."}
+      ],
+      "explanation": "PJ = uniquement les FRAIS pour faire valoir un droit ou se défendre. Jamais les amendes, jamais les dommages-intérêts (relèvent des RC). Plafond typique 250 000 à 600 000 CHF/cas."
+    },
+    {
+      "external_id": "KLARY-NV-LJ-006",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un client est mis en prévention pour un vol qualifié (crime intentionnel grave).",
+      "question": "Sa protection juridique privée finance-t-elle son avocat pénaliste ?",
+      "options": [
+        {"text": "Oui, sans condition", "correct": false, "why_wrong": "L'intention exclut la couverture selon CGA marché."},
+        {"text": "Non : les procédures pénales pour crimes/délits intentionnels sont exclues (couverture rétablie uniquement en cas d'acquittement)", "correct": true},
+        {"text": "Oui, uniquement pour un vol", "correct": false},
+        {"text": "Oui, si le montant en jeu dépasse 100 000 CHF", "correct": false, "why_wrong": "Aucun seuil de ce type."}
+      ],
+      "explanation": "CGA PJ : intention = exclusion (base : ordre public + art. 14 al. 1 LCA). Certaines polices rétablissent la couverture rétroactivement en cas d'acquittement ou de classement (avance des frais, remboursement à l'issue)."
+    },
+    {
+      "external_id": "KLARY-NV-LJ-007",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un locataire à Lausanne veut contester une hausse de loyer devant la commission de conciliation. Sa PJ privée intervient-elle ?",
+      "options": [
+        {"text": "Non, les litiges de bail sont exclus", "correct": false, "why_wrong": "Faux : les litiges de bail sont un CAS COURANT de PJ privée."},
+        {"text": "Oui, à condition que le délai de carence soit expiré et que la valeur litigieuse dépasse le seuil CGA", "correct": true},
+        {"text": "Oui, uniquement si la hausse est illicite", "correct": false, "why_wrong": "La PJ finance la procédure, l'issue de la contestation est une autre question."},
+        {"text": "Oui, sans aucune condition", "correct": false, "why_wrong": "Délai de carence typique 1 à 3 mois."}
+      ],
+      "explanation": "Bail = coeur de métier PJ privée. Prise en charge des honoraires d'avocat, frais commission conciliation, tribunal des baux, sous réserve du délai de carence et de la valeur litigieuse minimale (souvent 200 à 500 CHF)."
+    },
+    {
+      "external_id": "KLARY-NV-LJ-008",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un client se retrouve en conflit familial (divorce contesté).",
+      "question": "Sa PJ privée intervient-elle ?",
+      "options": [
+        {"text": "Oui, la PJ couvre systématiquement le divorce", "correct": false, "why_wrong": "Erreur classique : le droit de la famille est EXCLU."},
+        {"text": "Non : le droit de la famille (divorce, autorité parentale, succession) est typiquement EXCLU des CGA PJ privée", "correct": true},
+        {"text": "Oui, si le divorce est prononcé par consentement mutuel", "correct": false},
+        {"text": "Oui, uniquement pour les demandes de pension alimentaire", "correct": false, "why_wrong": "Aucune telle sous-condition."}
+      ],
+      "explanation": "Exclusion CGA marché : droit de la famille (divorce, succession, autorité parentale) toujours hors couverture. Alternative : conseil juridique via associations, aide juridique cantonale sous conditions de revenu."
+    },
+    {
+      "external_id": "KLARY-NV-LJ-009",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quel est le plafond typique par cas d'une PJ privée standard sur le marché suisse ?",
+      "options": [
+        {"text": "5 000 CHF", "correct": false, "why_wrong": "Trop faible pour un procès sérieux."},
+        {"text": "250 000 à 600 000 CHF selon assureur, avec sous-limites étranger", "correct": true},
+        {"text": "10 millions CHF", "correct": false, "why_wrong": "Serait la RC véhicule."},
+        {"text": "Aucun plafond", "correct": false, "why_wrong": "Toute PJ a un plafond CGA."}
+      ],
+      "explanation": "Plafond marché suisse : 250 000 à 600 000 CHF par cas (Assista, AXA-ARAG, Coop PJ, Protekta, Orion). Sous-limites en Europe (souvent 50 000) et hors Europe (souvent 25 000)."
+    },
+    {
+      "external_id": "KLARY-NV-LJ-010",
+      "theme": "litiges_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles différences distinguent la PJ CIRCULATION de la PJ PRIVÉE ?",
+      "options": [
+        {"text": "La PJ circulation couvre les litiges d'usage de véhicules (accident, achat, garagiste)", "correct": true},
+        {"text": "La PJ privée couvre bail, consommation, travail, LAMal, voisinage", "correct": true},
+        {"text": "La PJ circulation est souvent sans carence", "correct": true},
+        {"text": "Elles peuvent être souscrites séparément ou en combiné", "correct": true},
+        {"text": "La PJ circulation est obligatoire par la loi", "correct": false, "why_wrong": "Aucune PJ n'est obligatoire ; c'est la RC véhicule qui l'est (art. 63 LCR)."},
+        {"text": "La PJ privée couvre les amendes routières", "correct": false, "why_wrong": "Amendes = jamais assurables."}
+      ],
+      "explanation": "Deux produits distincts, souvent commercialisés ensemble par les assureurs (combi PJ). Circulation = usage véhicule ; Privée = tout le reste de la vie civile. Argument commercial : ~250 CHF/an pour les 2 = investissement raisonnable."
+    },
+    {
+      "external_id": "KLARY-NV-CN-100",
+      "theme": "conseil_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles obligations sont à respecter DURANT chaque phase de l'entretien de conseil non-vie ?",
+      "options": [
+        {"text": "Remettre la fiche d'information art. 45 LSA en prise de contact", "correct": true},
+        {"text": "Analyser les besoins (situation, biens, personnes à charge, budget) avant proposition", "correct": true},
+        {"text": "Motiver par écrit la recommandation retenue et les alternatives écartées", "correct": true},
+        {"text": "Documenter dans un PV de conseil signé du client", "correct": true},
+        {"text": "Ne présenter qu'une seule offre pour aller plus vite", "correct": false, "why_wrong": "Contraire au devoir de conseil : plusieurs solutions doivent être comparées."},
+        {"text": "Résilier le contrat de l'assureur précédent à la place du client", "correct": false, "why_wrong": "Interdit : seul le client peut résilier son contrat."}
+      ],
+      "explanation": "Structure VBV canonique du conseil non-vie : (1) Contact et fiche d'info art. 45 LSA, (2) Analyse des besoins, (3) Proposition motivée, (4) Conclusion + suivi + PV de conseil. Toutes doivent être documentées."
+    },
+    {
+      "external_id": "KLARY-NV-CN-101",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un futur conseiller vous demande la différence entre les statuts inscrits sur la fiche d'information art. 45 LSA.",
+      "question": "Quelle est la différence entre un intermédiaire d'assurance LIÉ et NON LIÉ selon la LSA ?",
+      "options": [
+        {"text": "Aucune, les termes sont synonymes", "correct": false, "why_wrong": "Distinction juridique fondamentale."},
+        {"text": "L'intermédiaire LIÉ agit pour une ou plusieurs entreprises d'assurance ; le NON LIÉ agit dans un rapport de fidélité envers le preneur (courtier indépendant)", "correct": true},
+        {"text": "Le lié n'est pas rémunéré, le non lié l'est", "correct": false, "why_wrong": "Les deux sont rémunérés (commissions ou honoraires)."},
+        {"text": "Le lié travaille à l'étranger", "correct": false}
+      ],
+      "explanation": "Art. 40 al. 1 LSA (révisée) : l'intermédiaire lié agit pour le compte d'un ou plusieurs assureurs. L'intermédiaire NON lié est dans un rapport de fidélité envers le PRENEUR (courtier). Depuis 2024, seuls les non liés doivent s'inscrire au registre FINMA."
+    },
+    {
+      "external_id": "KLARY-NV-CN-102",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Nouveau régime FINMA depuis le 1er janvier 2024.",
+      "question": "Qui doit s'inscrire obligatoirement au registre FINMA des intermédiaires depuis 2024 ?",
+      "options": [
+        {"text": "Tous les intermédiaires, liés et non liés", "correct": false, "why_wrong": "Réforme 2024 : seuls les NON LIÉS sont inscrits par la FINMA. Les liés sont inscrits dans un registre interne par leur assureur."},
+        {"text": "Seuls les intermédiaires NON LIÉS (courtiers) sont soumis à l'inscription au registre FINMA", "correct": true},
+        {"text": "Uniquement les intermédiaires ayant plus de 10 ans d'expérience", "correct": false},
+        {"text": "Uniquement ceux qui traitent de l'assurance-vie", "correct": false, "why_wrong": "Toutes les branches sont concernées."}
+      ],
+      "explanation": "LSA révisée (en vigueur depuis 2024) : le registre FINMA public ne concerne que les intermédiaires NON LIÉS. Les intermédiaires liés sont inscrits dans un registre interne géré par leur assureur. Formation continue obligatoire (art. 43 LSA) dans les deux cas."
+    },
+    {
+      "external_id": "KLARY-NV-CN-103",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quel est le régime de résiliation ordinaire pour un contrat non-vie de longue durée (nouveau droit LCA depuis 2022) ?",
+      "options": [
+        {"text": "Aucune résiliation avant l'échéance", "correct": false, "why_wrong": "Faux depuis la réforme."},
+        {"text": "Droit ordinaire de résiliation annuel après 3 ans (art. 35a LCA), même si le contrat est de plus longue durée", "correct": true},
+        {"text": "Résiliation à tout moment sans motif", "correct": false, "why_wrong": "Sauf produits spécifiques, ce n'est pas la règle générale non-vie."},
+        {"text": "Résiliation uniquement en cas de sinistre", "correct": false}
+      ],
+      "explanation": "Art. 35a LCA (nouveau) : après 3 ans, le preneur peut résilier annuellement, même si le contrat est de 5 ou 10 ans. Argument commercial fort à connaître : fin des contrats longs 'verrouillés' d'avant 2022."
+    },
+    {
+      "external_id": "KLARY-NV-CN-104",
+      "theme": "conseil_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles informations doit contenir la fiche d'information au preneur (art. 45 LSA) ?",
+      "options": [
+        {"text": "Identité et statut de l'intermédiaire (lié / non lié)", "correct": true},
+        {"text": "Partenaires (assureurs représentés)", "correct": true},
+        {"text": "Formation continue de l'intermédiaire", "correct": true},
+        {"text": "Coordonnées de l'organe de médiation (Ombudsman)", "correct": true},
+        {"text": "Mode de rémunération (commissions, honoraires)", "correct": true},
+        {"text": "Numéro AVS du preneur", "correct": false, "why_wrong": "Absurde, aucune obligation LSA de ce type."},
+        {"text": "Salaire du dirigeant de la compagnie", "correct": false, "why_wrong": "Aucun sens et confidentiel."}
+      ],
+      "explanation": "Art. 45 LSA : contenu obligatoire de la fiche d'information à remettre au preneur AVANT toute conclusion. Identité, statut, partenaires, rémunération, organe de médiation, formation, protection des données. Signée et documentée en dossier."
+    },
+    {
+      "external_id": "KLARY-NV-CN-105",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un preneur adopte un chien Rottweiler 8 mois après avoir souscrit sa RC privée. Il vous appelle pour savoir quoi faire.",
+      "question": "Que doit-il faire selon la LCA ?",
+      "options": [
+        {"text": "Ne rien faire, tant que le contrat est en cours", "correct": false, "why_wrong": "Faux, obligation d'annonce."},
+        {"text": "L'annoncer à l'assureur (art. 28 LCA) : l'assureur peut ajuster la prime ou dénoncer le contrat", "correct": true},
+        {"text": "Résilier immédiatement", "correct": false, "why_wrong": "Pas systématique, à discuter avec l'assureur."},
+        {"text": "Souscrire une police complémentaire", "correct": false, "why_wrong": "Pas obligatoire : l'ajustement du contrat existant est la voie normale."}
+      ],
+      "explanation": "Art. 28 LCA : le preneur doit annoncer les modifications importantes qui aggravent le risque. Non-annonce = risque de refus de prestation. L'assureur peut ajuster la prime ou résilier avec préavis 30 jours."
+    },
+    {
+      "external_id": "KLARY-NV-CN-106",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un preneur a fait de fausses déclarations en souscrivant (art. 6 LCA). Quelle est la conséquence ?",
+      "options": [
+        {"text": "L'assureur peut résilier le contrat dans les 4 semaines dès connaissance de la réticence", "correct": true},
+        {"text": "Le contrat reste valable sans aucune conséquence", "correct": false, "why_wrong": "Faux : la LCA prévoit un régime spécifique de la réticence."},
+        {"text": "Le contrat est automatiquement nul rétroactivement", "correct": false, "why_wrong": "Piège : le nouveau droit (2022) a atténué les conséquences ; le contrat n'est plus nul de plein droit."},
+        {"text": "Le preneur doit payer une amende à la FINMA", "correct": false, "why_wrong": "Aucune sanction administrative directe."}
+      ],
+      "explanation": "Art. 6 LCA (révisé 2022) : en cas de réticence (déclaration inexacte de faits importants), l'assureur peut résilier dans les 4 semaines dès qu'il en a connaissance. Prestations passées peuvent être remises en cause si lien causal avec le fait tu."
+    },
+    {
+      "external_id": "KLARY-NV-CN-107",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un client souscrit une nouvelle police RC entreprise. Le conseiller rédige un PV de conseil.",
+      "question": "Quel élément est INDISPENSABLE pour la valeur probante du PV ?",
+      "options": [
+        {"text": "Les besoins identifiés, les solutions proposées, les motifs de la recommandation, la date, la signature du client", "correct": true},
+        {"text": "La photo d'identité du conseiller", "correct": false},
+        {"text": "Le numéro de compte bancaire du client", "correct": false, "why_wrong": "Sans lien avec le conseil."},
+        {"text": "Le nom du directeur régional", "correct": false}
+      ],
+      "explanation": "Le PV de conseil sert de preuve en cas de litige (LSFin, LSA, jurisprudence Trib. féd.). Contenu obligatoire : besoins, solutions, motifs, alternatives écartées, date, signature. Protection majeure du conseiller."
+    },
+    {
+      "external_id": "KLARY-NV-CN-108",
+      "theme": "conseil_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Selon l'art. 3 LCA (information avant la conclusion), quelles informations le preneur doit-il OBLIGATOIREMENT recevoir avant la signature ?",
+      "options": [
+        {"text": "Identité de l'assureur", "correct": true},
+        {"text": "Risques assurés et étendue de la couverture", "correct": true},
+        {"text": "Prime et durée du contrat", "correct": true},
+        {"text": "Exclusions principales", "correct": true},
+        {"text": "Traitement des données personnelles (art. 24 nLPD)", "correct": true},
+        {"text": "Salaire annuel du CEO de l'assureur", "correct": false, "why_wrong": "Absurde, aucune obligation légale."},
+        {"text": "Adresse privée de l'agent général", "correct": false, "why_wrong": "Sans lien avec l'information contractuelle art. 3 LCA."}
+      ],
+      "explanation": "Art. 3 LCA : information avant la conclusion du contrat. Assureur, risques, étendue, exclusions, prime, durée, traitement des données personnelles (art. 24 nLPD). Le preneur bénéficie du droit de révocation art. 2a LCA (14 jours) dès la conclusion."
+    },
+    {
+      "external_id": "KLARY-NV-CN-109",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un client résilie sa RC ménage après un sinistre payé 3 500 CHF par l'assureur.",
+      "question": "Dans quel délai peut-il le faire selon le nouveau droit LCA ?",
+      "options": [
+        {"text": "30 jours dès sinistre", "correct": false, "why_wrong": "Ancien délai avant réforme 2022."},
+        {"text": "14 jours dès versement de l'indemnité (art. 42 LCA nouveau)", "correct": true},
+        {"text": "1 mois avant la fin du contrat", "correct": false, "why_wrong": "Confusion avec la résiliation ordinaire."},
+        {"text": "Impossible avant 3 ans", "correct": false, "why_wrong": "L'art. 42 LCA prévoit un droit spécial après sinistre."}
+      ],
+      "explanation": "Art. 42 LCA (nouveau, 1er janvier 2022) : après le paiement d'une indemnité, chacune des parties peut résilier dans les 14 jours. Réciproque et à annoncer au client dès le conseil (protection du preneur ET de l'assureur)."
+    }
+  ]
+}
