@@ -1,0 +1,302 @@
+{
+  "source": "klary_interne",
+  "filiere_key": "non_vie",
+  "reference": "Banque Klary — complément NON-VIE couvrant vehicule, voyages et conseil_nv. Ces 3 thèmes manquaient au seed initial issu du programme externe.",
+  "note": "Questions rédigées à partir du profil de qualification VBV art. 190 OS, de la LCR, LCA (nouveau droit 2022) et de la pratique courante des assureurs suisses (AXA, Zurich, Helvetia, Mobilière) en vigueur 2026.",
+  "questions": [
+    {
+      "external_id": "KLARY-NV-VH-001",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "En Suisse, quelle assurance véhicule est obligatoire par la loi ?",
+      "options": [
+        {"text": "Casco complète", "correct": false, "why_wrong": "Toujours facultative, même en leasing (exigence contractuelle, pas légale)."},
+        {"text": "Responsabilité civile véhicule (RC)", "correct": true},
+        {"text": "Casco partielle", "correct": false, "why_wrong": "Facultative."},
+        {"text": "Occupants + RC", "correct": false, "why_wrong": "Occupants toujours facultative."}
+      ],
+      "explanation": "Art. 63 LCR : RC véhicule OBLIGATOIRE. Sans attestation, aucun permis de circulation. Somme légale minimale : 5 millions CHF par sinistre depuis 2015 (art. 3 OAV)."
+    },
+    {
+      "external_id": "KLARY-NV-VH-002",
+      "theme": "vehicule",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Parmi les événements suivants, lesquels sont couverts par la casco PARTIELLE ?",
+      "options": [
+        {"text": "Vol du véhicule", "correct": true},
+        {"text": "Grêle, chute de pierres, tempête", "correct": true},
+        {"text": "Bris de glace", "correct": true},
+        {"text": "Collision avec un animal sauvage", "correct": true},
+        {"text": "Collision avec un autre véhicule par faute du conducteur", "correct": false, "why_wrong": "C'est la casco COMPLÈTE qui couvre les dommages de collision par faute propre."},
+        {"text": "Incendie et forces de la nature", "correct": true}
+      ],
+      "explanation": "Casco partielle = événements NON dus à la conduite : vol, feu, nature, animaux, bris de glace. Casco complète = casco partielle + dommages de collision par faute propre (le seul cas où la RC de l'autre ne paie pas)."
+    },
+    {
+      "external_id": "KLARY-NV-VH-003",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client provoque un accident et déclenche sa casco complète pour couvrir son véhicule. Quel impact sur son degré de bonus ?",
+      "options": [
+        {"text": "Aucun impact, la casco est indépendante de la RC", "correct": false, "why_wrong": "Le bonus/malus casco existe aussi, à ne pas confondre."},
+        {"text": "Recul du degré de bonus casco (malus)", "correct": true},
+        {"text": "Seul le bonus RC recule", "correct": false, "why_wrong": "La RC recule uniquement quand elle-même est mise en cause, pas la casco propre."},
+        {"text": "Perte de 5 ans de bonus", "correct": false, "why_wrong": "Non standardisé : dépend du barème de chaque assureur."}
+      ],
+      "explanation": "Bonus/malus séparés RC et casco. Une casco propre déclenchée recule seulement le bonus casco. Un accident dont il est responsable recule ET la RC (car l'assureur RC de la victime paie) ET la casco (car il paie ses propres dégâts)."
+    },
+    {
+      "external_id": "KLARY-NV-VH-004",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Que couvre le Fonds national de garantie automobile suisse ?",
+      "options": [
+        {"text": "Les dommages causés aux véhicules stationnés par des inconnus", "correct": false, "why_wrong": "Piège : ce serait dommages parking, propre à la casco."},
+        {"text": "Les dommages causés par un véhicule non identifié, non assuré ou volé", "correct": true},
+        {"text": "Les frais de dépannage à l'étranger", "correct": false},
+        {"text": "Les frais de justice après procès pénal", "correct": false}
+      ],
+      "explanation": "Art. 76 LCR : Fonds national de garantie intervient quand la RC ne peut pas payer (véhicule non identifié après délit de fuite, véhicule non assuré, véhicule volé sans couverture)."
+    },
+    {
+      "external_id": "KLARY-NV-VH-005",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client en leasing sur 4 ans. Quelle option casco lui recommandez-vous en priorité ?",
+      "options": [
+        {"text": "Casco partielle seulement (moins chère)", "correct": false, "why_wrong": "Ne couvre pas la collision par faute propre : dette de leasing exposée."},
+        {"text": "Casco complète pendant toute la durée du leasing", "correct": true},
+        {"text": "Aucune casco, juste la RC obligatoire", "correct": false, "why_wrong": "Aucune banque de leasing ne l'accepte, et le risque de dette résiduelle est majeur."},
+        {"text": "Casco complète seulement les 2 premières années", "correct": false, "why_wrong": "Piège : oui certains assureurs proposent ça, mais le contrat de leasing exige normalement la casco complète pour TOUTE la durée."}
+      ],
+      "explanation": "Contrat de leasing = obligation contractuelle de casco complète pour toute la durée. Si sinistre total sans casco complète : le loueur/preneur reste redevable de la valeur résiduelle du véhicule."
+    },
+    {
+      "external_id": "KLARY-NV-VH-006",
+      "theme": "vehicule",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un jeune conducteur (18 ans, permis depuis 6 mois) demande une casco complète. Que se passe-t-il en général chez les assureurs suisses ?",
+      "options": [
+        {"text": "Prime standard, aucun impact", "correct": false},
+        {"text": "Surprime jeune conducteur ou franchise renforcée les premières années", "correct": true},
+        {"text": "Refus systématique", "correct": false, "why_wrong": "Aucun assureur ne refuse par principe, mais les conditions sont durcies."},
+        {"text": "Passage obligatoire par le Bureau national d'assurance", "correct": false}
+      ],
+      "explanation": "Pratique du marché : jeunes conducteurs et permis récents = statistiquement à risque. Surprime + franchise supplémentaire jusqu'à ~25 ans ou 3 ans de permis sans sinistre. À signaler dès le premier entretien."
+    },
+    {
+      "external_id": "KLARY-NV-VG-001",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelle assurance couvre les frais médicaux d'un touriste suisse hospitalisé aux États-Unis après un accident ?",
+      "options": [
+        {"text": "La LAMal seule, au tarif suisse doublé", "correct": false, "why_wrong": "Piège : LAMal couvre urgence à l'étranger au double du tarif suisse, largement insuffisant aux États-Unis."},
+        {"text": "La LAA obligatoire, sans plafond", "correct": false, "why_wrong": "LAA couvre l'accident mais pas au tarif US ; la couverture voyage LCA complète."},
+        {"text": "L'assurance voyage LCA prend en charge le solde après LAMal/LAA", "correct": true},
+        {"text": "Aucune, les frais sont à la charge du touriste", "correct": false}
+      ],
+      "explanation": "PIÈGE MAJEUR : la LAMal couvre l'urgence étranger au maximum au double du tarif suisse (art. 36 OAMal). Un séjour hospitalier aux États-Unis coûte 10 à 20 x. L'assurance voyage LCA complète est INDISPENSABLE hors Europe."
+    },
+    {
+      "external_id": "KLARY-NV-VG-002",
+      "theme": "voyages",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels motifs d'annulation sont TYPIQUEMENT couverts par une assurance annulation voyage ?",
+      "options": [
+        {"text": "Maladie ou accident grave de l'assuré", "correct": true},
+        {"text": "Décès d'un proche", "correct": true},
+        {"text": "Convocation devant un tribunal", "correct": true},
+        {"text": "Dommage matériel important au domicile (incendie, cambriolage)", "correct": true},
+        {"text": "Changement d'avis du client (envie de rester chez soi)", "correct": false, "why_wrong": "Aucun assureur ne couvre l'annulation par convenance personnelle."},
+        {"text": "Grève de la compagnie aérienne annoncée à l'avance", "correct": false, "why_wrong": "Grève annoncée = risque connu, généralement exclu."}
+      ],
+      "explanation": "L'annulation est couverte pour les motifs GRAVES et IMPRÉVISIBLES au moment de la réservation. Convenance personnelle et risques déjà connus = exclus."
+    },
+    {
+      "external_id": "KLARY-NV-VG-003",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelle est la principale différence entre une assurance voyage annuelle et une assurance voyage unique ?",
+      "options": [
+        {"text": "L'assurance annuelle couvre tous les voyages de l'année ; l'unique un seul voyage", "correct": true},
+        {"text": "L'annuelle est toujours moins chère", "correct": false, "why_wrong": "Faux : elle n'est rentable qu'à partir de 2-3 voyages/an environ."},
+        {"text": "L'unique couvre des durées illimitées", "correct": false},
+        {"text": "L'annuelle est obligatoire pour partir plus d'1 mois", "correct": false}
+      ],
+      "explanation": "Annuelle = couvre tous les voyages < ~45 jours pendant 12 mois. Unique = un voyage précis, dates connues. L'annuelle devient rentable à ~3 voyages/an pour un couple/famille. Argument commercial : pratique et sans démarche à chaque départ."
+    },
+    {
+      "external_id": "KLARY-NV-VG-004",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un skieur suisse se blesse en Autriche et doit être rapatrié en hélicoptère. Qui prend en charge le rapatriement ?",
+      "options": [
+        {"text": "La LAMal automatiquement", "correct": false, "why_wrong": "PIÈGE ULTRA-CLASSIQUE : la LAMal NE COUVRE JAMAIS le rapatriement (art. 36 OAMal)."},
+        {"text": "L'assurance voyage / assistance LCA", "correct": true},
+        {"text": "La LAA obligatoire", "correct": false, "why_wrong": "LAA couvre les soins liés à l'accident, pas le rapatriement médical."},
+        {"text": "Les autorités autrichiennes", "correct": false}
+      ],
+      "explanation": "RAPATRIEMENT = JAMAIS LAMal. C'est un des motifs premiers de souscription d'une assurance voyage/assistance. Coût typique rapatriement hélicoptère Alpes : 3 000-15 000 CHF, vol médicalisé longue distance : 30 000-100 000 CHF."
+    },
+    {
+      "external_id": "KLARY-NV-VG-005",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client perd ses bagages à l'aéroport de Bangkok. Que couvre son assurance voyage bagages ?",
+      "options": [
+        {"text": "La valeur à neuf des bagages sans limite", "correct": false, "why_wrong": "Toujours plafond CGA."},
+        {"text": "La valeur actuelle des bagages jusqu'à un plafond CGA, souvent 2 000-5 000 CHF", "correct": true},
+        {"text": "Uniquement les frais de nettoyage", "correct": false},
+        {"text": "Rien : les bagages restent à la charge de la compagnie aérienne", "correct": false, "why_wrong": "La compagnie a une responsabilité limitée (Convention de Montréal ~1 400 CHF), mais l'assurance voyage complète."}
+      ],
+      "explanation": "Assurance bagages LCA : couvre vol, perte définitive et détérioration. Plafond typique 2 000-5 000 CHF, sous-limites pour objets de valeur (bijoux, appareils électroniques). Franchise 100-300 CHF. La responsabilité aérienne (Convention de Montréal) est déduite."
+    },
+    {
+      "external_id": "KLARY-NV-VG-006",
+      "theme": "voyages",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une famille de 4 personnes voyage 2 fois par an à l'étranger et fait des sorties ski hebdomadaires. Quelle offre voyage est la plus adaptée ?",
+      "options": [
+        {"text": "Une assurance voyage unique par voyage", "correct": false, "why_wrong": "Peu pratique et rapidement plus cher."},
+        {"text": "Une assurance annuelle voyage FAMILIALE avec option ski/sports", "correct": true},
+        {"text": "Rien : la LAMal suffit en Europe", "correct": false, "why_wrong": "PIÈGE : couverture LAMal étranger = urgence uniquement + rapatriement exclu."},
+        {"text": "L'assurance ménage uniquement", "correct": false}
+      ],
+      "explanation": "Profil idéal pour une annuelle familiale : ~250-450 CHF/an couvrant les 4 membres pour tous les voyages < 45-60 jours + activités sportives incluses. Argument valeur ajoutée : pas à repenser à s'assurer avant chaque départ."
+    },
+    {
+      "external_id": "KLARY-NV-CN-001",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Dans un entretien non-vie, quel est le PREMIER document à remettre au client (art. 45 LSA) ?",
+      "options": [
+        {"text": "Le devis chiffré", "correct": false, "why_wrong": "Vient en phase solution."},
+        {"text": "La fiche d'information au preneur d'assurance", "correct": true},
+        {"text": "Les CGA de tous les produits proposés", "correct": false, "why_wrong": "Trop volumineux pour un premier entretien ; remises avec la proposition."},
+        {"text": "Un questionnaire de santé", "correct": false, "why_wrong": "Non-vie : rare qu'on demande un questionnaire de santé sauf couvertures spécifiques."}
+      ],
+      "explanation": "Art. 45 LSA : fiche d'information = obligation identique en vie ET en non-vie. Elle documente le statut du conseiller (lié/non lié), ses partenaires, sa formation, l'organe de médiation, la protection des données. Doit être signée."
+    },
+    {
+      "external_id": "KLARY-NV-CN-002",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Selon la structure classique d'un entretien de conseil non-vie, dans quel ordre priorisez-vous les couvertures ?",
+      "options": [
+        {"text": "Casco complète > RC > protection juridique", "correct": false, "why_wrong": "Erreur de priorisation : RC vient toujours AVANT casco propre."},
+        {"text": "RC (obligatoire ou fortement conseillée) > couvertures de biens > options confort", "correct": true},
+        {"text": "Protection juridique > casco > RC", "correct": false},
+        {"text": "Peu importe l'ordre, on présente tout ensemble", "correct": false, "why_wrong": "Sans priorisation, le client se noie et ne comprend pas la structure de son besoin."}
+      ],
+      "explanation": "Règle du conseil : d'abord ce qui protège des ATTEINTES MAJEURES à autrui ou soi (RC véhicule, RC privée, RC PME) puis les couvertures de biens (ménage inventaire, casco), enfin les options confort (annulation, protection juridique, assistance). C'est l'ordre du risque décroissant."
+    },
+    {
+      "external_id": "KLARY-NV-CN-003",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Nouveau droit LCA en vigueur depuis le 1er janvier 2022.",
+      "question": "Quelle nouveauté clé du droit LCA 2022 concerne la résiliation par le client ?",
+      "options": [
+        {"text": "Le client ne peut plus jamais résilier avant l'échéance", "correct": false, "why_wrong": "Faux, c'est même l'inverse."},
+        {"text": "Droit ordinaire de résiliation annuel après 3 ans, même si le contrat est de plus longue durée", "correct": true},
+        {"text": "Résiliation possible uniquement en cas d'augmentation de prime", "correct": false, "why_wrong": "Ce droit existait déjà."},
+        {"text": "Résiliation possible à tout moment sans motif", "correct": false, "why_wrong": "Piège : c'est valable seulement pour la maladie complémentaire dans certains cas, pas comme règle générale non-vie."}
+      ],
+      "explanation": "Art. 35a LCA (nouveau) : après 3 ans, le preneur peut résilier annuellement le contrat, même si celui-ci est conclu pour une durée plus longue. Fin des contrats de 5 ou 10 ans imposés. Argument commercial fort à connaître."
+    },
+    {
+      "external_id": "KLARY-NV-CN-004",
+      "theme": "conseil_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Que doit contenir OBLIGATOIREMENT le procès-verbal de conseil non-vie remis au client ?",
+      "options": [
+        {"text": "Les besoins identifiés du client", "correct": true},
+        {"text": "Les solutions recommandées", "correct": true},
+        {"text": "Les motifs de la recommandation (raison d'être du produit choisi)", "correct": true},
+        {"text": "La date de l'entretien et l'identité du conseiller", "correct": true},
+        {"text": "Le salaire annuel de tous les collaborateurs de la compagnie", "correct": false, "why_wrong": "Absurde : information confidentielle sans lien avec le conseil."},
+        {"text": "Les alternatives présentées et les raisons de leur écartement", "correct": true}
+      ],
+      "explanation": "Le PV de conseil sert de preuve de la qualité du conseil (LSFin, LSA, jurisprudence). Traçabilité complète du besoin > analyse > proposition > choix. Point protecteur pour le conseiller en cas de plainte."
+    },
+    {
+      "external_id": "KLARY-NV-CN-005",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client vous dit : « J'ai déjà une assurance ménage chez X, je préfère la garder pour le moment ». Que faites-vous ?",
+      "options": [
+        {"text": "Insister jusqu'à ce qu'il change", "correct": false, "why_wrong": "Pratique déloyale, contraire à la LCD art. 3."},
+        {"text": "Respecter la décision, documenter dans le PV, proposer un rappel à l'échéance", "correct": true},
+        {"text": "Résilier son ancien contrat à sa place pour l'obliger à souscrire", "correct": false, "why_wrong": "Absolument interdit et pénalement répréhensible."},
+        {"text": "Terminer l'entretien immédiatement", "correct": false}
+      ],
+      "explanation": "Respect du client + documentation = protection du conseiller. Le rappel à l'échéance permet un contact professionnel légitime à un moment où le client est réellement disposé à comparer."
+    },
+    {
+      "external_id": "KLARY-NV-CN-006",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client résilie son contrat non-vie après un sinistre payé par l'assureur. Sur quel article s'appuie l'assureur pour se réserver le droit de résilier aussi ?",
+      "options": [
+        {"text": "Art. 42 LCA : droit de résiliation après sinistre", "correct": true},
+        {"text": "Art. 12 LCR", "correct": false, "why_wrong": "Loi circulation routière, hors sujet."},
+        {"text": "Art. 3 nLPD", "correct": false},
+        {"text": "Art. 45 LSA", "correct": false, "why_wrong": "Concerne l'information client, pas la résiliation."}
+      ],
+      "explanation": "Art. 42 LCA (nouveau droit) : chaque partie peut résilier le contrat après un sinistre, dans les 14 jours dès versement de l'indemnité. Cette réciprocité doit être annoncée au client dès le conseil."
+    }
+  ]
+}

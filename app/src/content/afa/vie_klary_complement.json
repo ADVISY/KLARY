@@ -1,0 +1,332 @@
+{
+  "source": "klary_interne",
+  "filiere_key": "vie",
+  "reference": "Banque Klary — complément VIE couvrant heriter_leguer, activite_independante et conseil_vie. Ces 3 thèmes manquaient au seed initial issu du programme externe.",
+  "note": "Questions rédigées à partir du profil de qualification VBV art. 190 OS, du CC/LPP en vigueur au 01.01.2026 (nouveau droit successoral) et du plafond 3a fédéral 2026.",
+  "questions": [
+    {
+      "external_id": "KLARY-VIE-HL-001",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Depuis la réforme du droit successoral entrée en vigueur le 1er janvier 2023, quelle est la réserve héréditaire des descendants ?",
+      "options": [
+        {"text": "3/4 de leur part légale", "correct": false, "why_wrong": "C'était l'ancien droit avant 2023."},
+        {"text": "1/2 de leur part légale", "correct": true},
+        {"text": "1/4 de leur part légale", "correct": false, "why_wrong": "Il n'a jamais existé de réserve à 1/4 pour les descendants."},
+        {"text": "Aucune réserve, quotité disponible libre", "correct": false, "why_wrong": "Les descendants ont TOUJOURS une réserve, même après la réforme."}
+      ],
+      "explanation": "Nouveau droit CC art. 471 : réserve des descendants réduite de 3/4 à 1/2 de la part légale. Réserve du conjoint : inchangée à 1/2. Réserve des parents : supprimée."
+    },
+    {
+      "external_id": "KLARY-VIE-HL-002",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un couple concubin sans enfants ni testament : que reçoit le concubin survivant si l'autre décède ?",
+      "options": [
+        {"text": "La moitié de la succession", "correct": false, "why_wrong": "Confusion avec le régime du mariage."},
+        {"text": "Le quart de la succession", "correct": false},
+        {"text": "Rien : le concubin n'est pas héritier légal", "correct": true},
+        {"text": "L'ensemble de la succession si aucun autre héritier", "correct": false, "why_wrong": "En l'absence d'héritiers légaux, la succession revient au canton (art. 466 CC), pas au concubin."}
+      ],
+      "explanation": "Le concubin n'a AUCUN droit successoral légal. Pour transmettre à un concubin, il faut testament ou clause bénéficiaire (3a/3b/vie). C'est LE motif principal de conseil vie chez les concubins."
+    },
+    {
+      "external_id": "KLARY-VIE-HL-003",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Marc, 52 ans, marié, deux enfants majeurs. Patrimoine net : 800 000 CHF. Il souhaite avantager au maximum son épouse.",
+      "question": "Quelle part maximale peut-il attribuer à son épouse par testament, sans porter atteinte aux réserves ?",
+      "options": [
+        {"text": "1/4 (réserve de l'épouse) + 1/2 (quotité disponible) = 3/4", "correct": true},
+        {"text": "La totalité (100 %)", "correct": false, "why_wrong": "Cela porterait atteinte aux réserves des enfants."},
+        {"text": "1/2 seulement", "correct": false, "why_wrong": "Ne tient pas compte de la quotité disponible cumulée à la réserve du conjoint."},
+        {"text": "5/8", "correct": false}
+      ],
+      "explanation": "Avec conjoint et descendants : part légale conjoint = 1/2, part légale descendants = 1/2. Réserve conjoint = 1/2 de sa part = 1/4. Réserve descendants (nouveau droit) = 1/2 de leur part = 1/4. Quotité disponible = 1 (1/4 + 1/4) = 1/2. Maximum au conjoint = sa réserve 1/4 + quotité 1/2 = 3/4."
+    },
+    {
+      "external_id": "KLARY-VIE-HL-004",
+      "theme": "heriter_leguer",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Concernant la clause bénéficiaire du pilier 3a (art. 2 OPP 3), quelles affirmations sont exactes ?",
+      "options": [
+        {"text": "L'ordre des bénéficiaires est IMPOSÉ par la loi, pas librement choisi", "correct": true},
+        {"text": "Le conjoint survivant a la priorité absolue", "correct": true},
+        {"text": "Le concubin peut être désigné, à condition d'avoir été soutenu de manière substantielle par le défunt ou d'avoir un enfant commun ou d'avoir vécu 5 ans en ménage commun", "correct": true},
+        {"text": "Le titulaire peut désigner n'importe qui, comme en 3b", "correct": false, "why_wrong": "C'est faux : la 3a suit un ORDRE LÉGAL. La liberté totale n'existe qu'en 3b."},
+        {"text": "Les avoirs 3a échappent à la succession et vont directement au bénéficiaire désigné", "correct": true}
+      ],
+      "explanation": "Ordre imposé 3a : 1er = conjoint, 2e = descendants + concubin qualifié + personnes à charge (à parts égales sauf autre répartition), 3e = parents, 4e = frères/sœurs, 5e = autres héritiers. Argument commercial fort : transmission hors masse successorale."
+    },
+    {
+      "external_id": "KLARY-VIE-HL-005",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelle forme de testament est valable en droit suisse ?",
+      "options": [
+        {"text": "Testament dactylographié et signé par le testateur", "correct": false, "why_wrong": "Un testament olographe doit être ENTIÈREMENT ÉCRIT à la main."},
+        {"text": "Testament olographe : entièrement manuscrit, daté et signé par le testateur", "correct": true},
+        {"text": "Testament oral enregistré sur vidéo", "correct": false, "why_wrong": "Le testament oral (art. 506 CC) n'est admis qu'en cas de danger de mort imminent, devant 2 témoins, et perd sa validité 14 jours après."},
+        {"text": "Testament signé uniquement, avec le contenu tapé", "correct": false}
+      ],
+      "explanation": "Art. 505 CC : testament olographe = ENTIÈREMENT manuscrit + daté + signé. Alternative : testament public devant notaire et 2 témoins (art. 499-504 CC)."
+    },
+    {
+      "external_id": "KLARY-VIE-HL-006",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une assurance-vie mixte comporte une clause bénéficiaire nominative pour l'épouse en cas de décès. Le capital-décès versé fait-il partie de la masse successorale ?",
+      "options": [
+        {"text": "Oui, comme tout capital ", "correct": false, "why_wrong": "Un des avantages majeurs de l'assurance-vie avec clause bénéficiaire nominative."},
+        {"text": "Non, il est versé directement au bénéficiaire hors succession", "correct": true},
+        {"text": "Oui, mais seulement si le montant dépasse 100 000 CHF", "correct": false, "why_wrong": "Aucun seuil de ce type n'existe."},
+        {"text": "Seulement la valeur de rachat entre dans la succession", "correct": false, "why_wrong": "Piège : c'est vrai pour le calcul fiscal réserve/réduction dans certains cas, mais pas pour l'attribution du capital."}
+      ],
+      "explanation": "Art. 76-79 LCA : le capital versé au bénéficiaire nominatif ne rentre PAS dans la masse successorale. Impôt sur les successions selon canton, mais aucun droit des héritiers réservataires SAUF action en réduction si atteinte aux réserves (art. 476 CC)."
+    },
+    {
+      "external_id": "KLARY-VIE-HL-007",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un pacte successoral se distingue d'un testament principalement parce que :",
+      "options": [
+        {"text": "Il peut être rédigé de la main du testateur seul", "correct": false, "why_wrong": "Le pacte exige la forme authentique (notaire + 2 témoins)."},
+        {"text": "Il est bilatéral et ne peut être modifié qu'avec l'accord des parties", "correct": true},
+        {"text": "Il n'a pas besoin d'être signé", "correct": false},
+        {"text": "Il ne concerne que les couples mariés", "correct": false, "why_wrong": "Ouvert à toute personne majeure capable de discernement."}
+      ],
+      "explanation": "Art. 512-515 CC : pacte successoral = acte bilatéral (ou multilatéral) devant notaire. Ne peut être révoqué unilatéralement (au contraire du testament, révocable à tout moment). Utilisé pour verrouiller un accord entre héritiers ou renoncer à des droits."
+    },
+    {
+      "external_id": "KLARY-VIE-HL-008",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'action en réduction ouverte à un héritier réservataire dont la réserve n'a pas été respectée se prescrit par :",
+      "options": [
+        {"text": "1 an dès la connaissance de la lésion", "correct": true},
+        {"text": "5 ans dès le décès", "correct": false, "why_wrong": "Ce délai n'existe pas en droit successoral."},
+        {"text": "10 ans dès le décès", "correct": false, "why_wrong": "Confusion avec un délai absolu."},
+        {"text": "3 mois dès l'ouverture du testament", "correct": false}
+      ],
+      "explanation": "Art. 533 CC : 1 an dès la connaissance de la lésion, dans tous les cas 10 ans dès la publication du testament ou l'ouverture de la succession. Délai court, donc à rappeler au client."
+    },
+    {
+      "external_id": "KLARY-VIE-AI-001",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un indépendant est-il obligatoirement assuré à la LAA (assurance-accidents obligatoire) ?",
+      "options": [
+        {"text": "Oui, dès qu'il commence son activité", "correct": false, "why_wrong": "Confusion avec les salariés."},
+        {"text": "Non, mais il peut s'assurer à titre facultatif", "correct": true},
+        {"text": "Oui, s'il gagne plus de 21 510 CHF/an", "correct": false, "why_wrong": "C'est un seuil LPP, sans lien avec la LAA."},
+        {"text": "Non, il doit obligatoirement passer par une IJM LCA privée", "correct": false}
+      ],
+      "explanation": "Art. 4 LAA : les indépendants NE sont PAS soumis à la LAA obligatoire. Ils peuvent s'assurer à titre facultatif auprès de la SUVA (art. 4-5 LAA). PIÈGE : question souvent inversée à l'examen."
+    },
+    {
+      "external_id": "KLARY-VIE-AI-002",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quel est le plafond du pilier 3a pour un indépendant sans caisse de pensions LPP, en 2026 ?",
+      "options": [
+        {"text": "7 258 CHF (petit pilier 3a)", "correct": false, "why_wrong": "C'est le plafond du salarié affilié à une LPP."},
+        {"text": "20 % du revenu net d'activité, maximum 36 288 CHF", "correct": true},
+        {"text": "10 % du revenu, maximum 20 000 CHF", "correct": false},
+        {"text": "50 % du revenu sans plafond", "correct": false}
+      ],
+      "explanation": "Art. 7 OPP 3 : indépendant SANS LPP = grand pilier 3a = 20 % du revenu net d'activité, plafonné à 5 fois le plafond LPP art. 8 al. 1 LPP. Plafond 2026 : 36 288 CHF. Argument fiscal massif : déductible du revenu imposable."
+    },
+    {
+      "external_id": "KLARY-VIE-AI-003",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un indépendant peut-il toucher des indemnités de l'assurance-chômage (LACI) en cas d'échec de son activité ?",
+      "options": [
+        {"text": "Oui, comme tout travailleur", "correct": false, "why_wrong": "Erreur classique."},
+        {"text": "Non, les indépendants ne sont pas assurés à la LACI", "correct": true},
+        {"text": "Oui, mais uniquement pour 90 jours", "correct": false, "why_wrong": "Pas de dispositif de ce type."},
+        {"text": "Oui, uniquement si l'activité durait depuis plus de 3 ans", "correct": false}
+      ],
+      "explanation": "Art. 2 LACI : cotisent SEULEMENT les salariés. Un indépendant qui cesse son activité ne perçoit AUCUNE indemnité LACI. Il peut retrouver le droit s'il redevient salarié et cotise à nouveau 12 mois sur les 24 précédant l'inscription."
+    },
+    {
+      "external_id": "KLARY-VIE-AI-004",
+      "theme": "activite_independante",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles couvertures un indépendant devrait-il prioritairement examiner à l'ouverture de son activité ?",
+      "options": [
+        {"text": "IJM LCA pour couvrir la perte de gain en cas de maladie", "correct": true},
+        {"text": "Adhésion facultative LAA (SUVA) pour couvrir les accidents", "correct": true},
+        {"text": "Adhésion facultative à la LPP (2e pilier)", "correct": true},
+        {"text": "3a grand plafond pour prévoyance + fiscalité", "correct": true},
+        {"text": "RC professionnelle selon activité", "correct": true},
+        {"text": "Assurance-chômage LACI", "correct": false, "why_wrong": "Pas ouverte aux indépendants (art. 2 LACI)."}
+      ],
+      "explanation": "L'indépendant est le profil le plus exposé : aucune couverture d'office. Le conseiller doit couvrir en priorité les 4 grands trous : perte de gain (IJM + LAA), prévoyance vieillesse (LPP + 3a), décès/invalidité (assurance-vie risque pur), responsabilité (RC pro)."
+    },
+    {
+      "external_id": "KLARY-VIE-AI-005",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un indépendant qui adhère facultativement à une LPP peut-il déduire ses cotisations du revenu imposable ?",
+      "options": [
+        {"text": "Non, seul le pilier 3a est déductible", "correct": false, "why_wrong": "Piège : le 3a ET la LPP facultative sont déductibles."},
+        {"text": "Oui, intégralement, comme un salarié affilié", "correct": true},
+        {"text": "Uniquement 50 % des cotisations", "correct": false},
+        {"text": "Uniquement si l'activité génère moins de 100 000 CHF", "correct": false}
+      ],
+      "explanation": "Art. 33 al. 1 lit. d LIFD : cotisations LPP entièrement déductibles, y compris pour les indépendants affiliés à titre facultatif. Levier fiscal important pour les revenus > 100 000 CHF."
+    },
+    {
+      "external_id": "KLARY-VIE-AI-006",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une indépendante enceinte est-elle couverte par l'allocation-maternité APG (LAPG) ?",
+      "options": [
+        {"text": "Non, l'APG maternité ne concerne que les salariées", "correct": false, "why_wrong": "PIÈGE fréquent. Les indépendantes SONT couvertes."},
+        {"text": "Oui, aux mêmes conditions que les salariées : 80 % du revenu, 14 semaines, max 220 CHF/jour", "correct": true},
+        {"text": "Uniquement 50 % du revenu, 8 semaines", "correct": false},
+        {"text": "Uniquement si elle a souscrit une LCA facultative", "correct": false}
+      ],
+      "explanation": "LAPG : depuis 2005, l'allocation-maternité couvre aussi les indépendantes affiliées à l'AVS, aux mêmes conditions (art. 16b LAPG). Cotisation prélevée sur les cotisations AVS/AI/APG habituelles."
+    },
+    {
+      "external_id": "KLARY-VIE-CV-001",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quel document doit être remis obligatoirement au client lors du premier entretien de conseil en prévoyance ?",
+      "options": [
+        {"text": "Un devis chiffré", "correct": false, "why_wrong": "Le devis vient PLUS TARD, en phase solution."},
+        {"text": "La fiche d'information au preneur d'assurance (art. 45 LSA)", "correct": true},
+        {"text": "Une copie du contrat CGA", "correct": false, "why_wrong": "Les CGA sont remises avec la proposition/police, pas en amont."},
+        {"text": "Une attestation de compétences AFA", "correct": false}
+      ],
+      "explanation": "Art. 45 LSA : fiche d'information obligatoire au 1er entretien. Contient l'identité de l'intermédiaire, ses liens de dépendance, ses partenaires, sa formation, la procédure en cas de plainte, l'organe de médiation. Doit être PROUVÉE (signature du client)."
+    },
+    {
+      "external_id": "KLARY-VIE-CV-002",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Dans la méthode d'analyse en 4 phases (introduction, analyse, solution, conclusion), à quel moment identifie-t-on la lacune de prévoyance en cas d'invalidité ?",
+      "options": [
+        {"text": "Phase 1 : introduction", "correct": false},
+        {"text": "Phase 2 : analyse", "correct": true},
+        {"text": "Phase 3 : solution", "correct": false, "why_wrong": "La solution vient RÉPONDRE à la lacune, elle ne l'identifie pas."},
+        {"text": "Phase 4 : conclusion", "correct": false}
+      ],
+      "explanation": "Phase 2 = analyse des besoins et de la situation actuelle. On chiffre les prestations 1er/2e/3e pilier attendues, on compare au revenu actuel, on calcule la lacune. La solution (phase 3) répond à cette lacune."
+    },
+    {
+      "external_id": "KLARY-VIE-CV-003",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quel taux de couverture du dernier salaire est généralement recommandé pour maintenir le niveau de vie à la retraite ?",
+      "options": [
+        {"text": "Environ 40 %", "correct": false},
+        {"text": "Environ 60 % (1er + 2e pilier LPP obligatoire)", "correct": true},
+        {"text": "Environ 100 %", "correct": false, "why_wrong": "Non, le système suisse vise environ 60 % avec les 2 premiers piliers, complétés par le 3e."},
+        {"text": "Environ 20 %", "correct": false}
+      ],
+      "explanation": "Objectif constitutionnel (art. 113 Cst) : 1er + 2e pilier = maintenir le niveau de vie antérieur de façon appropriée = ~60 % du dernier salaire. Le 3e pilier vise à combler l'écart vers 80-100 %."
+    },
+    {
+      "external_id": "KLARY-VIE-CV-004",
+      "theme": "conseil_vie",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Selon les obligations LSA/nLPD, quelles précautions doit prendre un conseiller vie lors du recueil d'informations sur la santé du client ?",
+      "options": [
+        {"text": "Obtenir le consentement écrit du client pour transmettre les données à l'assureur", "correct": true},
+        {"text": "Ne transmettre AUCUNE donnée de santé à des tiers à des fins publicitaires", "correct": true},
+        {"text": "Conserver les données de santé aussi longtemps que possible", "correct": false, "why_wrong": "Principe de minimisation nLPD : conservation limitée à ce qui est nécessaire."},
+        {"text": "Peut partager oralement avec un collègue conseiller sans autorisation", "correct": false, "why_wrong": "Violation du secret professionnel et de la nLPD."},
+        {"text": "Documenter le fondement légal du traitement", "correct": true}
+      ],
+      "explanation": "nLPD : les données de santé sont des données sensibles (art. 5 lit. c ch. 2 nLPD). Consentement exprès requis, finalité précise, conservation limitée, sécurité renforcée. Interdiction absolue de finalité publicitaire."
+    },
+    {
+      "external_id": "KLARY-VIE-CV-005",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client vous demande de recommander médicalement s'il doit s'inquiéter d'un symptôme cardiaque. Que devez-vous faire ?",
+      "options": [
+        {"text": "Répondre selon vos connaissances générales", "correct": false},
+        {"text": "Renvoyer le client vers un médecin ; le conseil médical n'entre pas dans notre périmètre", "correct": true},
+        {"text": "Consulter un pharmacien", "correct": false},
+        {"text": "Contacter l'assureur pour avis médical", "correct": false}
+      ],
+      "explanation": "PIÈGE : toute option évoquant un conseil médical direct est FAUSSE. Le conseiller reste dans son périmètre de compétences (couvertures d'assurance), pas dans la médecine. Renvoi systématique vers le médecin."
+    },
+    {
+      "external_id": "KLARY-VIE-CV-006",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quel est le délai de révocation offert au client après signature d'une proposition d'assurance-vie (LCA) ?",
+      "options": [
+        {"text": "2 mois", "correct": false, "why_wrong": "Piège : confusion avec le délai de résiliation en cas de changement de tarif."},
+        {"text": "14 jours dès signature", "correct": true},
+        {"text": "24 heures", "correct": false},
+        {"text": "30 jours", "correct": false}
+      ],
+      "explanation": "Art. 2a LCA (nouveau droit 2022) : délai de révocation de 14 jours, en la forme écrite ou par un autre moyen permettant la preuve par texte. Point clé à mentionner obligatoirement en conclusion de vente."
+    }
+  ]
+}
