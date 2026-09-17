@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS afa_filieres (
   updated_at  TIMESTAMPTZ DEFAULT NOW()
 );
 
+DROP TRIGGER IF EXISTS trg_afa_filieres_updated_at ON afa_filieres;
 CREATE TRIGGER trg_afa_filieres_updated_at BEFORE UPDATE ON afa_filieres
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
@@ -43,6 +44,7 @@ CREATE TABLE IF NOT EXISTS afa_themes (
 
 CREATE INDEX idx_afa_themes_filiere ON afa_themes(filiere_key);
 
+DROP TRIGGER IF EXISTS trg_afa_themes_updated_at ON afa_themes;
 CREATE TRIGGER trg_afa_themes_updated_at BEFORE UPDATE ON afa_themes
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
@@ -93,6 +95,7 @@ CREATE TABLE IF NOT EXISTS afa_questions (
 CREATE INDEX idx_afa_questions_filiere ON afa_questions(filiere_key);
 CREATE INDEX idx_afa_questions_theme   ON afa_questions(theme_id);
 
+DROP TRIGGER IF EXISTS trg_afa_questions_updated_at ON afa_questions;
 CREATE TRIGGER trg_afa_questions_updated_at BEFORE UPDATE ON afa_questions
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
@@ -174,5 +177,6 @@ CREATE TABLE IF NOT EXISTS afa_fiches (
 
 CREATE INDEX idx_afa_fiches_filiere ON afa_fiches(filiere_key);
 
+DROP TRIGGER IF EXISTS trg_afa_fiches_updated_at ON afa_fiches;
 CREATE TRIGGER trg_afa_fiches_updated_at BEFORE UPDATE ON afa_fiches
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();

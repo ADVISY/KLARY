@@ -33,6 +33,7 @@ CREATE INDEX IF NOT EXISTS idx_internal_docs_user ON internal_documents(user_id)
 CREATE INDEX IF NOT EXISTS idx_internal_docs_type ON internal_documents(document_type);
 CREATE INDEX IF NOT EXISTS idx_internal_docs_created ON internal_documents(created_at DESC);
 
+DROP TRIGGER IF EXISTS trg_internal_docs_updated_at ON internal_documents;
 CREATE TRIGGER trg_internal_docs_updated_at BEFORE UPDATE ON internal_documents
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 

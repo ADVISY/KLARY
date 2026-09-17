@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS user_roles (
 
 CREATE INDEX idx_user_roles_user_id ON user_roles(user_id);
 
+DROP TRIGGER IF EXISTS trg_user_roles_updated_at ON user_roles;
 CREATE TRIGGER trg_user_roles_updated_at BEFORE UPDATE ON user_roles
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
@@ -63,6 +64,7 @@ CREATE TABLE IF NOT EXISTS contact_messages (
 CREATE INDEX idx_contact_status ON contact_messages(status);
 CREATE INDEX idx_contact_created ON contact_messages(created_at DESC);
 
+DROP TRIGGER IF EXISTS trg_contact_updated_at ON contact_messages;
 CREATE TRIGGER trg_contact_updated_at BEFORE UPDATE ON contact_messages
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
@@ -89,6 +91,7 @@ CREATE TABLE IF NOT EXISTS candidates (
 CREATE INDEX idx_candidates_status ON candidates(status);
 CREATE INDEX idx_candidates_email ON candidates(email);
 
+DROP TRIGGER IF EXISTS trg_candidates_updated_at ON candidates;
 CREATE TRIGGER trg_candidates_updated_at BEFORE UPDATE ON candidates
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
@@ -105,6 +108,7 @@ CREATE TABLE IF NOT EXISTS training_modules (
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+DROP TRIGGER IF EXISTS trg_training_modules_updated_at ON training_modules;
 CREATE TRIGGER trg_training_modules_updated_at BEFORE UPDATE ON training_modules
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
@@ -128,6 +132,7 @@ CREATE TABLE IF NOT EXISTS training_questions (
 
 CREATE INDEX idx_training_questions_module ON training_questions(module_key);
 
+DROP TRIGGER IF EXISTS trg_training_questions_updated_at ON training_questions;
 CREATE TRIGGER trg_training_questions_updated_at BEFORE UPDATE ON training_questions
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
