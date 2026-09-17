@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon Klary -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#1A1660" />
+
+    <!-- SEO -->
+    <title>Klary — L'assurance enfin claire</title>
+    <meta name="description" content="Klary, cabinet de courtage indépendant en assurances et finances pour particuliers et entreprises en Suisse. Conseil neutre, comparaison honnête, économies réelles." />
+    <meta name="author" content="Klary Sàrl" />
+    <meta name="keywords" content="assurance suisse, courtier assurance, LAMal, 3e pilier, hypothèque, prévoyance, LPP, comparateur assurance, Klary, Suisse romande" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://klary.ch/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_CH" />
+    <meta property="og:site_name" content="Klary" />
+    <meta property="og:url" content="https://klary.ch/" />
+    <meta property="og:title" content="Klary — L'assurance enfin claire" />
+    <meta property="og:description" content="Courtier indépendant en Suisse. On compare, négocie et optimise vos contrats — santé, prévoyance, hypothèque. Gratuit, neutre, sans engagement." />
+    <meta property="og:image" content="https://klary.ch/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Klary — L'assurance enfin claire" />
+    <meta name="twitter:description" content="Courtier indépendant en Suisse. Conseil neutre, comparaison honnête, économies réelles." />
+    <meta name="twitter:image" content="https://klary.ch/og-image.png" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "InsuranceAgency",
+      "name": "Klary Sàrl",
+      "description": "Cabinet de courtage indépendant en assurances et finances",
+      "url": "https://klary.ch",
+      "telephone": "+41225000000",
+      "email": "admin@klary.ch",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Route de Lausanne 31",
+        "postalCode": "1262",
+        "addressLocality": "Eysins",
+        "addressCountry": "CH"
+      },
+      "areaServed": "CH"
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

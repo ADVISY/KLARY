@@ -13,7 +13,7 @@ const values = [
   { icon: Search,       title: "Transparence totale", desc: "On vous montre les chiffres bruts, les écarts, les commissions. Pas de petits caractères, pas de coût caché." },
   { icon: TrendingDown, title: "Économies réelles",    desc: "+1'247 CHF/an en moyenne, sans rogner sur les garanties. Souvent même en améliorant la couverture." },
   { icon: Users,        title: "Suivi humain",        desc: "Un conseiller dédié. Pas de hotline anonyme. On vous connaît, vous nous connaissez." },
-  { icon: ShieldCheck,  title: "FINMA conforme",      desc: "Cabinet enregistré auprès de la FINMA, surveillé, audité. Vos données sont protégées par la nLPD suisse." },
+  { icon: ShieldCheck,  title: "Cabinet agréé LSA",   desc: "Cabinet de courtage en assurances agréé au sens de la LSA. Vos données sont protégées par la nLPD suisse." },
   { icon: Heart,        title: "Engagement long terme", desc: "Une fois client, on reste là. Renouvellements, sinistres, changements de vie — on accompagne tout." },
 ];
 

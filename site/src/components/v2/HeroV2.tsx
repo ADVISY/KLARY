@@ -115,7 +115,7 @@ export const HeroV2 = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4" style={{ color: "hsl(var(--accent))" }} />
-                <span>FINMA conforme</span>
+                <span>Conforme LSA</span>
               </div>
             </div>
           </div>

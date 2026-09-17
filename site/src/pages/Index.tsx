@@ -11,7 +11,6 @@ import { SolutionSection } from "@/components/v2/sections/SolutionSection";
 import { CoveragesSection } from "@/components/v2/sections/CoveragesSection";
 import { ProcessSection } from "@/components/v2/sections/ProcessSection";
 import { TestimonialsSection } from "@/components/v2/sections/TestimonialsSection";
-import { PartnersSection } from "@/components/v2/sections/PartnersSection";
 import { FAQSection } from "@/components/v2/sections/FAQSection";
 import { FinalCtaSection } from "@/components/v2/sections/FinalCtaSection";
 import { FooterV2 } from "@/components/v2/FooterV2";
@@ -49,7 +48,6 @@ const Index = () => {
           <ProcessSection />
           <LiveSavingsCounter />
           <TestimonialsSection />
-          <PartnersSection />
           <FAQSection />
           <FinalCtaSection />
         </main>

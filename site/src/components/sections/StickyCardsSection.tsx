@@ -138,7 +138,7 @@ const formatNumber = (n: number, format?: "int" | "decimal" | "thousands") => {
 const PrevoyanceVisual = ({ reveal }: { reveal: number }) => {
   const taxAmount = useCountUp(840, reveal > 0.3);
   const capital3a = useCountUp(168000, reveal > 0.35);
-  const companies = ["Helvetia", "Swiss Life", "AXA", "Zurich", "Generali", "Vaudoise", "Allianz", "Bâloise"];
+  const companies: string[] = [];
   return (
     <div className="space-y-3">
       {/* Notif impôts */}

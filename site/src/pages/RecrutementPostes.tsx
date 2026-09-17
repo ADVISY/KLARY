@@ -40,7 +40,7 @@ const POSTES: Poste[] = [
       "Représenter Klary avec professionnalisme et éthique",
     ],
     profile: [
-      "Inscription FINMA (ou en cours / volonté de l'obtenir)",
+      "Certification AFA / VBV (ou en cours d'obtention)",
       "Expérience en vente ou conseil souhaitée",
       "Excellent relationnel et sens de l'écoute",
       "Permis de conduire + véhicule personnel",
@@ -66,7 +66,7 @@ const POSTES: Poste[] = [
     profile: [
       "Solide connaissance du système des 3 piliers suisse",
       "Formation IAF, brevet fédéral ou équivalent (un plus)",
-      "Inscription FINMA appréciée",
+      "Certification AFA / VBV appréciée",
       "Rigueur, discrétion et orientation client",
       "Permis de conduire + véhicule",
     ],

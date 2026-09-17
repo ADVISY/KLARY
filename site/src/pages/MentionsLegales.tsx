@@ -35,7 +35,7 @@ const MentionsLegales = () => {
               <p className="mt-3">
                 <strong className="text-foreground">Numéro IDE :</strong> CHE-275.800.008
                 <br />
-                <strong className="text-foreground">Inscription FINMA :</strong> En cours
+                <strong className="text-foreground">Statut :</strong> Intermédiaire d'assurance lié au sens de l'art. 40 LSA
               </p>
             </div>
           </div>
@@ -72,9 +72,7 @@ const MentionsLegales = () => {
               interdite sans autorisation écrite préalable.
             </p>
             <p>
-              Les marques des compagnies d'assurance affichées sur le site (Helvetia, Swiss Life, AXA, Zurich,
-              Generali, etc.) appartiennent à leurs détenteurs respectifs. Klary Sàrl agit en tant que courtier
-              indépendant et n'est lié à aucune compagnie.
+              Les éventuelles marques tierces mentionnées sur le site appartiennent à leurs détenteurs respectifs.
             </p>
           </div>
         </PageSectionV2>

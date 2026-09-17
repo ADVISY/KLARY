@@ -26,7 +26,7 @@ const pillars: Pillar[] = [
     title: "Conseil neutre",
     headline: "Indépendants, aucune compagnie derrière nous.",
     desc: "On ne pousse pas un produit pour toucher une commission. On vous dit ce qui est vraiment le mieux — même si ce n'est pas chez nous.",
-    bullets: ["Inscription FINMA", "Aucun lien capitalistique", "Conseil écrit signé"],
+    bullets: ["Cabinet agréé LSA", "Conseil écrit signé", "Devoir d'information art. 45 LSA"],
     accent: "hsl(244 65% 50%)",
     iconColor: "hsl(244 80% 78%)",
     variant: "left",

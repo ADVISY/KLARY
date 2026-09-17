@@ -21,7 +21,7 @@ import { CookieBanner } from "./components/v2/CookieBanner";
  *         Les pages légales (/mentions-legales, /politique-confidentialite) restent publiques.
  * false → site complet public (état normal).
  *
- * À basculer à false dès réception effective de l'inscription FINMA.
+ * À basculer à false une fois le site validé pour publication complète.
  */
 const MAINTENANCE_MODE = true;
 

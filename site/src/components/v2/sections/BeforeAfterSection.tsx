@@ -25,7 +25,7 @@ const afterData = {
   franchise: "2'500.-",
   modele: "Médecin de famille",
   flags: [
-    { ok: true, text: "Complémentaire hospitalisation chez Helvetia (A+)" },
+    { ok: true, text: "Complémentaire hospitalisation adaptée à votre profil" },
     { ok: true, text: "Franchise optimisée pour votre profil santé" },
     { ok: true, text: "Modèle médecin = -18% sur la prime de base" },
   ],
