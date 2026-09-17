@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
 import { z } from "zod";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServerClient, createSupabaseServiceClient } from "@/lib/supabase/server";
 
 const schema = z.object({
   job_title: z.enum(["conseiller", "telephoniste"]).nullable(),
@@ -44,17 +42,7 @@ export async function POST(
       );
     }
 
-    const cookieStore = cookies();
-    const service = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!,
-      {
-        cookies: {
-          getAll: () => cookieStore.getAll(),
-          setAll: () => {},
-        },
-      }
-    );
+    const service = createSupabaseServiceClient();
 
     const { error } = await service
       .from("user_roles")

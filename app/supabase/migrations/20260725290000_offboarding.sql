@@ -74,6 +74,7 @@ CREATE INDEX IF NOT EXISTS idx_offboarding_user ON offboarding_processes(user_id
 CREATE INDEX IF NOT EXISTS idx_offboarding_created ON offboarding_processes(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_offboarding_completed ON offboarding_processes(completed_at);
 
+DROP TRIGGER IF EXISTS trg_offboarding_updated_at ON offboarding_processes;
 CREATE TRIGGER trg_offboarding_updated_at BEFORE UPDATE ON offboarding_processes
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 

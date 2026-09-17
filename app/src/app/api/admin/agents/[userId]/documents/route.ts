@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServerClient, createSupabaseServiceClient } from "@/lib/supabase/server";
 
 const MAX_SIZE = 25 * 1024 * 1024; // 25 Mo
 const ACCEPTED_TYPES = [
@@ -64,17 +62,7 @@ export async function POST(
       return NextResponse.json({ error: "Type de fichier non accepté" }, { status: 400 });
     }
 
-    const cookieStore = cookies();
-    const service = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!,
-      {
-        cookies: {
-          getAll: () => cookieStore.getAll(),
-          setAll: () => {},
-        },
-      }
-    );
+    const service = createSupabaseServiceClient();
 
     // Path : {userId}/{year}/{documentType}_{timestamp}.{ext}
     const ext = file.name.split(".").pop() || "pdf";

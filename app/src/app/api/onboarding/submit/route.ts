@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
 import { z } from "zod";
+import { createSupabaseServiceClient } from "@/lib/supabase/server";
 import {
   sendEmail,
   COMPTABLE_EMAILS,
@@ -266,17 +265,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Client service_role (bypass RLS)
-    const cookieStore = cookies();
-    const supabase = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!,
-      {
-        cookies: {
-          getAll: () => cookieStore.getAll(),
-          setAll: () => {},
-        },
-      }
-    );
+    const supabase = createSupabaseServiceClient();
 
     // Charger le formulaire par token
     const { data: onbForm, error: fetchErr } = await supabase

@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
 import { z } from "zod";
+import { createSupabaseServiceClient } from "@/lib/supabase/server";
 import { sendEmail, ADMIN_EMAIL } from "@/lib/resend/client";
 import { templates } from "@/lib/resend/templates";
 
@@ -116,17 +115,7 @@ export async function POST(request: NextRequest) {
     }
 
     // ─── Client Supabase (service_role) ───
-    const cookieStore = cookies();
-    const supabase = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!,
-      {
-        cookies: {
-          getAll: () => cookieStore.getAll(),
-          setAll: () => {},
-        },
-      }
-    );
+    const supabase = createSupabaseServiceClient();
 
     const data = parsed.data;
     const now = Date.now();

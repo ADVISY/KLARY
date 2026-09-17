@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
 import { z } from "zod";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServerClient, createSupabaseServiceClient } from "@/lib/supabase/server";
 
 const CHECKLIST_ITEMS = [
   "access_revoked",
@@ -79,17 +77,7 @@ export async function POST(
       // On garde les notes / montant / to
     }
 
-    const cookieStore = cookies();
-    const service = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!,
-      {
-        cookies: {
-          getAll: () => cookieStore.getAll(),
-          setAll: () => {},
-        },
-      }
-    );
+    const service = createSupabaseServiceClient();
 
     const { error: updateErr } = await service
       .from("offboarding_processes")

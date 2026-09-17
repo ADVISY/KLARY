@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServerClient, createSupabaseServiceClient } from "@/lib/supabase/server";
 
 /**
  * POST /api/library/[id]/delete
@@ -30,17 +28,7 @@ export async function POST(
     return NextResponse.json({ error: "Accès refusé" }, { status: 403 });
   }
 
-  const cookieStore = cookies();
-  const service = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!,
-    {
-      cookies: {
-        getAll: () => cookieStore.getAll(),
-        setAll: () => {},
-      },
-    }
-  );
+  const service = createSupabaseServiceClient();
 
   // 1) Récupérer le storage_path
   const { data: doc, error: fetchErr } = await service

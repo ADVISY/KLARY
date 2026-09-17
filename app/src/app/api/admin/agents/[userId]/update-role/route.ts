@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { createClient } from "@supabase/supabase-js";
+import {
+  createSupabaseServerClient,
+  createSupabaseServiceClient,
+} from "@/lib/supabase/server";
 
 /**
  * POST /api/admin/agents/[userId]/update-role
@@ -64,11 +66,7 @@ export async function POST(
   }
 
   // Update via service_role pour bypass RLS
-  const serviceSupabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!,
-    { auth: { persistSession: false, autoRefreshToken: false } }
-  );
+  const serviceSupabase = createSupabaseServiceClient();
 
   const { error } = await serviceSupabase
     .from("user_roles")
