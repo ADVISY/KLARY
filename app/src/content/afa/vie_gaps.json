@@ -1,0 +1,584 @@
+{
+  "source": "klary_interne",
+  "filiere_key": "vie",
+  "reference": "Compléments Klary VIE gaps 35 questions. Ciblage thèmes légers : hériter/léguer (10), activité indépendante (10), conduite de l'entretien vie (15).",
+  "note": "Registre VBV strict, chiffres 2026, nouveau droit successoral révisé 2023, LSFin en vigueur depuis 2020. Ancrages CC, CO, LPP, LCA, LSA, LSFin, LIFD.",
+  "questions": [
+    {
+      "external_id": "KLARY-VIE-GAP-001",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Depuis la révision du droit successoral entrée en vigueur le 01.01.2023, à combien s'élève la réserve héréditaire des descendants ?",
+      "options": [
+        {"text": "1/2 de leur part légale", "correct": true},
+        {"text": "3/4 de leur part légale", "correct": false, "why_wrong": "Ancienne réserve avant la révision 2023 : abaissée à 1/2 depuis."},
+        {"text": "1/3 de leur part légale", "correct": false, "why_wrong": "Aucune fraction de ce type dans le CC pour les descendants."},
+        {"text": "La totalité de leur part légale", "correct": false}
+      ],
+      "explanation": "Art. 471 CC (révisé 2023) : la réserve des descendants est de 1/2 de leur droit de succession (auparavant 3/4). La quotité disponible du de cujus s'agrandit d'autant."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-002",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Marc décède en laissant son épouse et deux enfants. Sa succession nette est de 800 000 CHF. Aucun testament.",
+      "question": "Quelle est la quotité disponible dont Marc aurait pu disposer par testament ?",
+      "options": [
+        {"text": "200 000 CHF", "correct": false, "why_wrong": "Calcul faux : la réserve conjoint + descendants ne mange pas 3/4 depuis la révision 2023."},
+        {"text": "500 000 CHF", "correct": true},
+        {"text": "400 000 CHF", "correct": false, "why_wrong": "Correspondrait à l'ancien droit avant 2023."},
+        {"text": "800 000 CHF", "correct": false}
+      ],
+      "explanation": "Art. 471 CC (2023) : réserve conjoint = 1/2 de sa part légale (1/4 x 1/2 = 1/8 = 100 000). Réserve descendants = 1/2 x 3/4 = 3/8 = 300 000. Quotité disponible = 800 000 - 400 000 = 500 000 CHF (5/8)."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-003",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Sous quelle forme un pacte successoral doit-il obligatoirement être conclu pour être valable ?",
+      "options": [
+        {"text": "Acte authentique devant notaire, en présence de 2 témoins", "correct": true},
+        {"text": "Simple écrit signé par les parties", "correct": false, "why_wrong": "L'écrit privé n'est admis que pour le testament olographe, jamais pour un pacte."},
+        {"text": "Testament olographe daté et signé", "correct": false, "why_wrong": "Un pacte est bilatéral : il ne peut prendre la forme d'un testament unilatéral."},
+        {"text": "Convention notariée sans témoins", "correct": false, "why_wrong": "Les 2 témoins restent exigés par la loi."}
+      ],
+      "explanation": "Art. 512 CC : le pacte successoral n'est valable qu'en la forme du testament public, soit acte authentique devant officier public (notaire) et 2 témoins."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-004",
+      "theme": "heriter_leguer",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles conditions doit remplir un testament olographe pour être valable ?",
+      "options": [
+        {"text": "Rédigé entièrement à la main par le testateur", "correct": true},
+        {"text": "Daté (jour, mois, année) de la main du testateur", "correct": true},
+        {"text": "Signé de la main du testateur", "correct": true},
+        {"text": "Contresigné par 2 témoins", "correct": false, "why_wrong": "Les témoins concernent le testament public, pas l'olographe."},
+        {"text": "Enregistré auprès du registre foncier", "correct": false, "why_wrong": "Aucun enregistrement obligatoire pour l'olographe."},
+        {"text": "Rédigé à l'ordinateur puis signé", "correct": false, "why_wrong": "L'écriture manuscrite intégrale est exigée, sinon nullité."}
+      ],
+      "explanation": "Art. 505 CC : testament olographe = écriture manuscrite intégrale, date complète et signature, tous 3 de la main du testateur. Défaut = nullité."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-005",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Sophie a été lésée dans sa réserve par un legs excessif fait au concubin de sa mère décédée. Elle apprend la lésion 5 mois après l'ouverture de la succession.",
+      "question": "Dans quel délai Sophie doit-elle intenter l'action en réduction pour ne pas être forclose ?",
+      "options": [
+        {"text": "1 an dès qu'elle a connaissance de la lésion, et 10 ans dès l'ouverture", "correct": true},
+        {"text": "3 mois dès l'ouverture de la succession, sans exception", "correct": false, "why_wrong": "Aucun délai de 3 mois dans l'art. 533 CC pour l'action en réduction."},
+        {"text": "5 ans à compter du décès dans tous les cas", "correct": false, "why_wrong": "5 ans n'est pas prévu ; le délai relatif est de 1 an dès connaissance."},
+        {"text": "Aucun délai : imprescriptible en présence de réservataires", "correct": false, "why_wrong": "L'action se prescrit par 1 an relatif / 10 ans absolu."}
+      ],
+      "explanation": "Art. 533 al. 1 CC : action en réduction prescrite par 1 an dès la connaissance de la lésion et, dans tous les cas, par 10 ans dès l'ouverture du testament ou dès la mort pour les autres dispositions."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-006",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelle est la différence essentielle entre le rapport (art. 626 CC) et la réduction (art. 522 CC) ?",
+      "options": [
+        {"text": "Le rapport concerne les héritiers légaux entre eux ; la réduction protège la réserve d'un héritier lésé", "correct": true},
+        {"text": "Le rapport vise uniquement les biens immobiliers ; la réduction les biens mobiliers", "correct": false, "why_wrong": "Aucune distinction selon la nature du bien."},
+        {"text": "Le rapport se demande au juge, la réduction par acte notarié", "correct": false, "why_wrong": "Confusion procédurale : les deux se règlent en principe par action civile."},
+        {"text": "La réduction s'applique aux dons manuels, le rapport aux legs", "correct": false, "why_wrong": "Inverse : les legs subissent la réduction, les libéralités entre vifs sont rapportables."}
+      ],
+      "explanation": "Art. 626 CC : rapport = obligation pour héritier légal de rapporter à la masse ce qu'il a reçu du vivant en avancement d'hoirie. Art. 522 CC : réduction = action pour restaurer la réserve d'un héritier lésé par un legs ou une libéralité excessive."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-007",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Franz, ressortissant suisse et allemand, domicilié à Genève, souhaite rédiger un testament couvrant ses biens en Suisse et en Allemagne.",
+      "question": "Quelle option juridique lui permet d'unifier le droit applicable à sa succession internationale ?",
+      "options": [
+        {"text": "Une professio juris : élire le droit de sa nationalité (allemand) au titre de l'art. 90 al. 2 LDIP", "correct": true},
+        {"text": "Un simple testament olographe suisse, valable partout", "correct": false, "why_wrong": "L'olographe n'unifie pas le droit applicable ; les biens à l'étranger restent soumis au droit local sans professio."},
+        {"text": "Un testament international selon la Convention de Washington 1973, obligatoirement", "correct": false, "why_wrong": "La Convention règle la forme et son admission ; elle ne détermine pas le droit applicable au fond."},
+        {"text": "Rien : la Suisse impose son droit à tous les Suisses domiciliés", "correct": false}
+      ],
+      "explanation": "Art. 90 al. 2 LDIP : un étranger domicilié en Suisse peut soumettre sa succession au droit de l'un de ses États nationaux (professio juris). Franz, bi-national, peut ainsi désigner le droit allemand."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-008",
+      "theme": "heriter_leguer",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Une clause bénéficiaire en faveur d'un tiers dans un pilier 3a produit quels effets successoraux ?",
+      "options": [
+        {"text": "Le capital 3a passe hors succession directement au bénéficiaire", "correct": true},
+        {"text": "Le capital reste soumis à l'action en réduction si la réserve est lésée", "correct": true},
+        {"text": "L'ordre des bénéficiaires 3a est fixé par ordonnance OPP3 art. 2", "correct": true},
+        {"text": "Le bénéficiaire supporte l'impôt sur les prestations en capital indépendant", "correct": true},
+        {"text": "Le capital tombe automatiquement dans la masse successorale", "correct": false, "why_wrong": "Contradiction : la prévoyance liée est hors succession en principe."},
+        {"text": "Le tiers hérite sans aucune fiscalité", "correct": false, "why_wrong": "Impôt cantonal sur prestations en capital applicable, taux séparé."}
+      ],
+      "explanation": "Art. 2 OPP3 : ordre légal 3a strict. Le capital sort hors succession civile mais reste attaquable en réduction si atteinte à la réserve (art. 522 CC). Fiscalité : impôt séparé sur prestation en capital (art. 38 LIFD)."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-009",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un concubin non marié peut-il hériter légalement (ab intestat) en Suisse ?",
+      "options": [
+        {"text": "Non, il n'a aucun droit successoral légal ; il doit être institué par testament", "correct": true},
+        {"text": "Oui, après 5 ans de vie commune prouvée", "correct": false, "why_wrong": "Aucune reconnaissance légale de la concubinat en droit successoral suisse."},
+        {"text": "Oui, dans la limite de 1/4 de la succession", "correct": false, "why_wrong": "Aucune fraction légale prévue pour un concubin."},
+        {"text": "Oui, s'il partage un enfant avec le défunt", "correct": false, "why_wrong": "L'enfant hérite en tant que descendant, pas le concubin."}
+      ],
+      "explanation": "CC (art. 457 ss) : le concubin n'est pas héritier légal. Pour lui laisser des biens : testament ou pacte successoral, dans les limites de la quotité disponible (art. 470 CC)."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-010",
+      "theme": "heriter_leguer",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Pierre, veuf, laisse 3 enfants et une succession de 1 200 000 CHF. Il avait fait 10 ans avant son décès une donation de 300 000 CHF à sa fille aînée, sans dispense de rapport.",
+      "question": "Comment se calcule la masse à partager et la part de chaque enfant ?",
+      "options": [
+        {"text": "Masse rapportée = 1 500 000 CHF, part de chacun 500 000, fille aînée reçoit 200 000 nets", "correct": true},
+        {"text": "Masse 1 200 000, part 400 000 chacun sans rapport", "correct": false, "why_wrong": "Ignore l'obligation de rapport de la donation en avancement d'hoirie."},
+        {"text": "Masse 1 500 000, part 500 000, mais fille aînée reçoit 0", "correct": false, "why_wrong": "Le rapport est en valeur : elle conserve les 300 000, reçoit le complément 200 000."},
+        {"text": "Masse 1 200 000, la fille aînée est exclue du partage", "correct": false}
+      ],
+      "explanation": "Art. 626 CC : sans dispense de rapport expresse, la donation est rapportable. Masse = 1 200 000 + 300 000 = 1 500 000. Chaque enfant reçoit 500 000. La fille aînée déduit les 300 000 déjà perçus : elle touche 200 000 nets."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-011",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un salarié qui devient indépendant sans être affilié à une caisse LPP peut cotiser au pilier 3a jusqu'à quel plafond en 2026 ?",
+      "options": [
+        {"text": "20 % du revenu AVS, max 36 288 CHF", "correct": true},
+        {"text": "7 258 CHF (petit 3a)", "correct": false, "why_wrong": "C'est le plafond du salarié affilié LPP, pas de l'indépendant sans LPP."},
+        {"text": "10 % du revenu, sans plafond", "correct": false, "why_wrong": "Aucun taux de 10 % ni d'absence de plafond dans l'OPP3."},
+        {"text": "50 % du revenu AVS", "correct": false, "why_wrong": "Confusion avec le rachat LPP maximum, pas 3a."}
+      ],
+      "explanation": "Art. 7 al. 1 let. b OPP3 : indépendant sans 2e pilier peut cotiser jusqu'à 20 % du revenu d'activité lucrative, plafonné à 36 288 CHF en 2026 (grand 3a)."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-012",
+      "theme": "activite_independante",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels sont les avantages du grand pilier 3a (indépendant sans LPP) par rapport à une LPP facultative ?",
+      "options": [
+        {"text": "Plafond de déduction fiscale beaucoup plus élevé (36 288 vs 7 258 CHF)", "correct": true},
+        {"text": "Souplesse de contribution année par année", "correct": true},
+        {"text": "Rachats supplémentaires possibles en LPP fac. pour combler des lacunes", "correct": false, "why_wrong": "C'est un avantage de la LPP fac., pas du 3a."},
+        {"text": "Prestations d'invalidité et de décès à définir dans le contrat 3a", "correct": true},
+        {"text": "Couverture obligatoire pour risques décès/invalidité", "correct": false, "why_wrong": "Aucune obligation légale : le 3a bancaire pur n'assure pas ces risques."}
+      ],
+      "explanation": "Art. 7 OPP3 : indépendant sans LPP a un plafond 3a très élevé. Souplesse annuelle et choix des risques dans version assurance. La LPP fac. offre en revanche les rachats de prévoyance (art. 79b LPP) et une couverture décès/invalidité systématique."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-013",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Julie, salariée avec 90 000 CHF de salaire AVS, quitte son emploi pour devenir consultante indépendante.",
+      "question": "Que doit-elle faire en priorité pour éviter une lacune de prévoyance ?",
+      "options": [
+        {"text": "S'affilier à une caisse LPP facultative ou verser sa prestation de libre passage sur un compte LPP, puis planifier 3a et risques", "correct": true},
+        {"text": "Retirer tout son avoir LPP en capital et le placer sur son compte bancaire privé", "correct": false, "why_wrong": "Retrait anticipé LPP indépendant possible (art. 5 LFLP) mais sans planification, perte fiscale et couverture risques."},
+        {"text": "Ne rien faire : l'AVS suffit à couvrir la retraite", "correct": false, "why_wrong": "L'AVS seule (rente max 2 520 CHF) ne maintient jamais le niveau de vie."},
+        {"text": "Souscrire uniquement une RC pro et une IJM", "correct": false, "why_wrong": "Insuffisant : ne couvre pas la retraite ni l'invalidité longue durée."}
+      ],
+      "explanation": "Passage salarié à indépendant : art. 5 LFLP autorise retrait LP mais mieux vaut affiliation LPP fac. ou compte LP + grand 3a + IJM + RC pro. Analyse complète des besoins (art. 3 LCA, art. 45 LSA)."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-014",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Un artisan indépendant de 58 ans souhaite transmettre son entreprise individuelle à son fils.",
+      "question": "Quel dispositif fiscal fédéral peut-il utiliser pour reporter l'imposition des réserves latentes lors de la remise ?",
+      "options": [
+        {"text": "Le report d'imposition par transfert à un successeur poursuivant l'activité, sur demande, art. 18a LIFD", "correct": true},
+        {"text": "Une exonération pure et simple des réserves latentes en cas de succession familiale", "correct": false, "why_wrong": "Aucune exonération totale : seul un report d'imposition est possible sous conditions."},
+        {"text": "L'impôt anticipé fédéral remplace tout impôt sur le revenu", "correct": false, "why_wrong": "L'IA n'est pas un substitut à l'IFD, il s'agit de deux impôts distincts."},
+        {"text": "L'immunisation via un pilier 3a", "correct": false, "why_wrong": "3a n'a aucun effet sur les réserves latentes d'une entreprise individuelle."}
+      ],
+      "explanation": "Art. 18a LIFD : report d'imposition des réserves latentes en cas de reprise par un membre de la famille poursuivant l'exploitation. À combiner avec art. 37b LIFD pour taux privilégié sur bénéfice de liquidation à la retraite."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-015",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelle assurance est indispensable pour un consultant IT indépendant afin de couvrir un défaut de conseil ayant causé une perte financière au client ?",
+      "options": [
+        {"text": "RC professionnelle avec extension pertes patrimoniales pures", "correct": true},
+        {"text": "RC privée seule (art. 41 CO)", "correct": false, "why_wrong": "La RC privée exclut expressément l'activité pro lucrative indépendante."},
+        {"text": "Assurance choses PME", "correct": false, "why_wrong": "Couvre les biens matériels, pas la responsabilité pour dommage financier."},
+        {"text": "Protection juridique circulation", "correct": false, "why_wrong": "Ne concerne que les litiges de la circulation routière."}
+      ],
+      "explanation": "RC professionnelle avec avenant pertes patrimoniales pures (préjudice financier sans dommage corporel ni matériel préalable) : indispensable pour métiers de conseil (fiduciaire, IT, ingénieur). Base LCA + CGA marché."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-016",
+      "theme": "activite_independante",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels risques cyber concrets doit couvrir la police d'un indépendant traitant des données clients ?",
+      "options": [
+        {"text": "Frais de restauration des données après ransomware", "correct": true},
+        {"text": "Frais d'annonce nLPD au PFPDT et aux personnes concernées", "correct": true},
+        {"text": "Perte d'exploitation liée à l'indisponibilité IT", "correct": true},
+        {"text": "Responsabilité civile pour violation nLPD envers tiers", "correct": true},
+        {"text": "Vol physique du véhicule professionnel", "correct": false, "why_wrong": "Cela relève de la casco véhicule, pas de la cyber."},
+        {"text": "Franchise médicale AOS du dirigeant", "correct": false}
+      ],
+      "explanation": "Police cyber PME/indépendant : restauration data, notification nLPD (art. 24 nLPD), interruption d'activité, RC data. Distincte des couvertures classiques choses et RC."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-017",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un indépendant en incapacité de travail totale bénéficie-t-il d'office d'indemnités journalières maladie ?",
+      "options": [
+        {"text": "Non, il doit souscrire volontairement une IJM LCA ou LAMal facultative", "correct": true},
+        {"text": "Oui, la LAA le couvre automatiquement dès le 3e jour", "correct": false, "why_wrong": "La LAA obligatoire ne concerne que les salariés."},
+        {"text": "Oui, dès 30 jours, sans démarche", "correct": false, "why_wrong": "Aucune IJM automatique pour indépendant."},
+        {"text": "Oui, par l'APG", "correct": false, "why_wrong": "L'APG couvre service militaire, maternité, paternité, proche aidant, pas la maladie ordinaire."}
+      ],
+      "explanation": "Indépendant : IJM non obligatoire. Options : IJM LCA privée ou IJM LAMal facultative (art. 67 ss LAMal). Sans souscription, aucune couverture perte de gain maladie."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-018",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Sébastien, indépendant affilié à une caisse LPP fac., dispose d'une lacune de rachat de 120 000 CHF selon sa caisse.",
+      "question": "Que doit-il vérifier avant d'effectuer un rachat déductible fiscalement ?",
+      "options": [
+        {"text": "Absence de retrait EPL/versement anticipé dans les 3 dernières années et respect de la période de blocage 3 ans avant retrait en capital", "correct": true},
+        {"text": "Rien : le rachat est toujours immédiatement retirable en capital", "correct": false, "why_wrong": "Blocage 3 ans avant retrait en capital sous peine de reprise fiscale."},
+        {"text": "L'accord obligatoire de l'AVS", "correct": false, "why_wrong": "L'AVS n'a aucun rôle décisionnel dans le rachat LPP."},
+        {"text": "Que sa fortune privée ne dépasse pas 500 000 CHF", "correct": false}
+      ],
+      "explanation": "Art. 79b LPP + circulaire AFC 3/2024 : rachat déductible sous conditions. Blocage 3 ans avant retrait en capital sinon reprise imposition et annulation déduction. Précédents EPL doivent être remboursés avant rachat."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-019",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Une indépendante décède subitement à 52 ans. Son mari (salarié) et 2 enfants restent. Elle ne cotisait qu'à l'AVS et 3a.",
+      "question": "Quelles sont les prestations de prévoyance disponibles pour la famille survivante ?",
+      "options": [
+        {"text": "Rente veuve/enfants AVS + capital 3a selon ordre OPP3 art. 2 ; aucune rente LPP", "correct": true},
+        {"text": "Rente veuve LPP obligatoire à 60 % de la rente projetée", "correct": false, "why_wrong": "Pas de LPP si non affiliée : aucune rente LPP versée."},
+        {"text": "Capital LAA sur 12 fois le salaire mensuel", "correct": false, "why_wrong": "LAA ne concerne pas les indépendants sauf couverture facultative art. 4 LAA (à souscrire)."},
+        {"text": "Aucune prestation : indépendante sans droits", "correct": false, "why_wrong": "L'AVS et le 3a produisent bien des prestations."}
+      ],
+      "explanation": "Décès indépendante non affiliée LPP : AVS survivants (art. 23 ss LAVS) + versement capital 3a selon ordre OPP3 (conjoint puis descendants). Lacune LPP = message clé du conseil aux indépendants."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-020",
+      "theme": "activite_independante",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Un indépendant part à la retraite et retire son avoir 3a en une année : à quel régime fiscal est soumise cette prestation en capital ?",
+      "options": [
+        {"text": "Impôt séparé sur les prestations en capital, taux réduit (1/5 du barème ordinaire) au niveau fédéral", "correct": true},
+        {"text": "Barème ordinaire IFD, cumulé avec le revenu de l'année", "correct": false, "why_wrong": "Non : imposition séparée pour éviter la progressivité."},
+        {"text": "Exonération totale d'impôt", "correct": false, "why_wrong": "Aucune exonération : impôt réduit mais dû."},
+        {"text": "Impôt anticipé de 35 % libératoire", "correct": false, "why_wrong": "L'IA ne s'applique pas ainsi ; c'est un impôt à la source récupérable."}
+      ],
+      "explanation": "Art. 38 LIFD : prestations en capital de prévoyance imposées séparément à un taux correspondant à 1/5 du barème ordinaire. Étaler retraits (3a + LP) sur plusieurs années réduit la charge cantonale progressive."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-021",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Selon la LSFin, dans quelle classe de clients se trouve par défaut un particulier salarié sans expérience particulière ?",
+      "options": [
+        {"text": "Client privé", "correct": true},
+        {"text": "Client professionnel", "correct": false, "why_wrong": "Le client pro est défini strictement (art. 4 al. 3 LSFin) : institut financier, entité publique, entreprise avec trésorerie pro."},
+        {"text": "Client institutionnel", "correct": false, "why_wrong": "Réservé aux banques, assurances, fonds selon art. 4 al. 4 LSFin."},
+        {"text": "Client qualifié LPCC", "correct": false, "why_wrong": "Notion LPCC, pas LSFin."}
+      ],
+      "explanation": "Art. 4 LSFin : segmentation en 3 classes (privé / professionnel / institutionnel). Un particulier lambda est client privé et bénéficie de la protection maximale."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-022",
+      "theme": "conseil_vie",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles obligations le prestataire doit-il remplir vis-à-vis d'un client privé selon la LSFin ?",
+      "options": [
+        {"text": "Vérifier le caractère approprié (art. 11 LSFin) pour un simple conseil transactionnel", "correct": true},
+        {"text": "Vérifier l'adéquation (art. 12 LSFin) pour un conseil en placement portefeuille", "correct": true},
+        {"text": "Fournir la fiche d'information de base FIB pour instruments financiers concernés (art. 60 LSFin)", "correct": true},
+        {"text": "Documenter le conseil (art. 15 LSFin)", "correct": true},
+        {"text": "Aucune obligation de documentation pour un client privé", "correct": false, "why_wrong": "L'art. 15 LSFin impose au contraire la documentation obligatoire."},
+        {"text": "Utiliser exclusivement des produits maison", "correct": false}
+      ],
+      "explanation": "Art. 7 à 15 LSFin : règles de comportement (info, adéquation/appropriation, documentation, transparence, diligence). Application intégrale pour client privé."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-023",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un couple marié de 45 ans, 2 enfants (8 et 11 ans), revenus 180 000 CHF, souhaite planifier prévoyance et couverture décès.",
+      "question": "Quelle étape de l'analyse des besoins est prioritaire pour ce couple ?",
+      "options": [
+        {"text": "Calculer les lacunes AVS/LPP en cas de décès du conjoint principal et projeter les besoins des enfants jusqu'à leur majorité/formation", "correct": true},
+        {"text": "Proposer immédiatement un fonds actions agressif", "correct": false, "why_wrong": "Avant produit, il faut l'analyse : sinon violation art. 12 LSFin (adéquation)."},
+        {"text": "Faire signer d'abord un mandat de gestion", "correct": false, "why_wrong": "Le mandat vient après l'analyse et le PV de conseil."},
+        {"text": "Vendre un pilier 3a bancaire à chacun sans analyse", "correct": false, "why_wrong": "Défaut de conseil : sanction civile et FINMA possible."}
+      ],
+      "explanation": "Phase analyse (LSFin art. 7 + méthode 4 phases) : identifier situation familiale, revenus, patrimoine, objectifs, tolérance au risque, calculer lacunes avant toute solution."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-024",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Que couvre exactement le devoir d'information de l'art. 8 LSFin ?",
+      "options": [
+        {"text": "Information sur le prestataire, ses services, coûts, conflits d'intérêts, offre de marché considérée", "correct": true},
+        {"text": "Seulement les frais annuels du produit vendu", "correct": false, "why_wrong": "L'art. 8 est bien plus large que les seuls frais."},
+        {"text": "Uniquement le nom du produit et son rendement passé", "correct": false, "why_wrong": "Insuffisant : information sur la nature du service, risques, coûts, conflits est obligatoire."},
+        {"text": "Rien : c'est l'art. 45 LSA qui régit tout", "correct": false, "why_wrong": "L'art. 45 LSA vise l'intermédiation assurance, l'art. 8 LSFin la prestation de services financiers."}
+      ],
+      "explanation": "Art. 8 LSFin : le prestataire informe le client privé de son identité, statut, services, coûts, risques, éventuels conflits d'intérêts et de l'offre de marché prise en compte."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-025",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Sarah recommande à son client Marc, retraité prudent, un produit structuré à capital garanti mais avec longue durée et pénalité de sortie.",
+      "question": "Quelle règle LSFin Sarah doit-elle impérativement respecter pour ne pas engager sa responsabilité ?",
+      "options": [
+        {"text": "Vérifier l'adéquation avec objectifs, situation financière, connaissances et tolérance au risque de Marc (art. 12 LSFin)", "correct": true},
+        {"text": "Uniquement vérifier l'appropriation de la transaction (art. 11 LSFin)", "correct": false, "why_wrong": "Le conseil en placement porte sur un portefeuille : l'adéquation art. 12 est la règle."},
+        {"text": "Aucune vérification : Marc a signé le contrat", "correct": false, "why_wrong": "La signature ne dispense pas des règles LSFin d'ordre public."},
+        {"text": "Se limiter à l'exécution simple sans conseil", "correct": false, "why_wrong": "Ce serait requalifier le service, ce que l'analyse des faits ne permet pas."}
+      ],
+      "explanation": "Art. 12 LSFin : le conseil en placement portefeuille impose la vérification d'adéquation (suitability). Défaut = responsabilité civile et sanction FINMA."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-026",
+      "theme": "conseil_vie",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels éléments doivent figurer dans un procès-verbal de conseil (PV) selon la LSFin ?",
+      "options": [
+        {"text": "Besoins et objectifs du client", "correct": true},
+        {"text": "Raisons de la recommandation formulée", "correct": true},
+        {"text": "Situation financière et de risque du client", "correct": true},
+        {"text": "Produits présentés et retenus", "correct": true},
+        {"text": "Le salaire du conseiller", "correct": false, "why_wrong": "Non requis dans le PV : ce sont les frais, coûts et rémunérations liés au service qui doivent être divulgués."},
+        {"text": "L'adresse email personnelle de la famille du conseiller", "correct": false}
+      ],
+      "explanation": "Art. 15 LSFin + FSN : le PV de conseil documente le processus (besoins, objectifs, situation, produits, motifs, alternatives). Preuve essentielle en cas de litige."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-027",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un client dépose une réclamation formelle. Quelle est l'obligation minimale du prestataire selon la LSFin ?",
+      "options": [
+        {"text": "Adhérer à un organe de médiation reconnu (ombudsman) et informer le client de cette possibilité (art. 74 ss LSFin)", "correct": true},
+        {"text": "Refuser de traiter la réclamation si elle n'est pas envoyée par pli recommandé", "correct": false, "why_wrong": "Aucune exigence de forme opposable au client."},
+        {"text": "Payer immédiatement l'indemnité demandée", "correct": false, "why_wrong": "Le paiement n'est pas automatique : il dépend du bien-fondé."},
+        {"text": "Résilier immédiatement la relation d'affaires", "correct": false}
+      ],
+      "explanation": "Art. 74 à 78 LSFin : tout prestataire doit être affilié à un organe de médiation reconnu et informer le client de la procédure ombudsman en cas de désaccord persistant."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-028",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Le secret professionnel de l'intermédiaire d'assurance peut-il être levé sur simple demande d'un tiers curieux ?",
+      "options": [
+        {"text": "Non, seuls le consentement écrit du client ou une base légale (autorité, juge) le permettent", "correct": true},
+        {"text": "Oui, si le tiers est un membre de la famille", "correct": false, "why_wrong": "Aucun automatisme familial ; secret protégé strictement."},
+        {"text": "Oui, si le tiers présente une carte professionnelle", "correct": false, "why_wrong": "Une carte pro ne vaut pas base légale."},
+        {"text": "Oui, dans tous les cas si le montant est faible", "correct": false, "why_wrong": "Aucun seuil ne dispense du secret."}
+      ],
+      "explanation": "Art. 47 LB par analogie + art. 35 nLPD + art. 45 LSA : intermédiaires soumis à un devoir de discrétion. Levée sur consentement écrit ou décision d'autorité."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-029",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un intermédiaire non lié conseille des solutions LPP surobligatoire. Il perçoit une commission de la compagnie retenue.",
+      "question": "Quelle règle LSFin s'applique impérativement à ces rémunérations ?",
+      "options": [
+        {"text": "Communication transparente et, à défaut d'accord explicite, transfert de la rétrocession au client (art. 26 LSFin)", "correct": true},
+        {"text": "La commission est libre et n'a pas à être communiquée", "correct": false, "why_wrong": "Violation art. 26 LSFin et jurisprudence TF sur les rétrocessions."},
+        {"text": "Elle doit être remise obligatoirement à la FINMA", "correct": false, "why_wrong": "Aucune obligation de remise à la FINMA."},
+        {"text": "Elle est nulle et non avenue automatiquement", "correct": false}
+      ],
+      "explanation": "Art. 26 LSFin : information sur les rémunérations reçues de tiers. Sans consentement éclairé du client, la commission doit lui revenir. Notion issue de la jurisprudence TF (rétrocessions)."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-030",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Qui doit obligatoirement s'inscrire au registre des intermédiaires d'assurance tenu par la FINMA ?",
+      "options": [
+        {"text": "Les intermédiaires non liés (indépendants d'une compagnie) et, depuis 2024, également les intermédiaires liés", "correct": true},
+        {"text": "Uniquement les courtiers agréés en assurance-vie collective", "correct": false, "why_wrong": "Restriction inexacte : la LSA vise tous les intermédiaires."},
+        {"text": "Aucun : le registre est purement facultatif", "correct": false, "why_wrong": "Registre obligatoire pour exercer légalement."},
+        {"text": "Uniquement les personnes morales", "correct": false, "why_wrong": "Personnes physiques exerçant l'intermédiation doivent aussi être inscrites."}
+      ],
+      "explanation": "Art. 40 à 44 LSA (révisée 2024) : registre FINMA obligatoire pour intermédiaires non liés ; formation continue et conditions personnelles également exigées."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-031",
+      "theme": "conseil_vie",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Que doit contenir la fiche d'information transmise au preneur d'assurance selon l'art. 45 LSA ?",
+      "options": [
+        {"text": "Identité et adresse de l'intermédiaire", "correct": true},
+        {"text": "Rapports contractuels avec les compagnies (lié / non lié)", "correct": true},
+        {"text": "Mode de rémunération de l'intermédiaire", "correct": true},
+        {"text": "Modalités du traitement des données personnelles", "correct": true},
+        {"text": "Le CV professionnel complet du conseiller", "correct": false, "why_wrong": "Non exigé par art. 45 LSA."},
+        {"text": "Le nom du chef de la FINMA en poste", "correct": false}
+      ],
+      "explanation": "Art. 45 LSA : fiche d'information obligatoire avant conclusion, avec identité, statut, liens contractuels, rémunération, protection des données. Preuve à conserver."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-032",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Un client institutionnel (caisse de pension) demande des services d'investissement à une société de gestion.",
+      "question": "Quelles règles LSFin s'appliquent à cette relation ?",
+      "options": [
+        {"text": "La plupart des règles de comportement art. 8 à 16 LSFin ne s'appliquent pas ; le client institutionnel peut y renoncer (art. 20 LSFin)", "correct": true},
+        {"text": "Toutes les règles LSFin s'appliquent intégralement, sans dérogation possible", "correct": false, "why_wrong": "La LSFin gradue explicitement la protection selon le segment (art. 20 LSFin)."},
+        {"text": "Seule la nLPD s'applique", "correct": false, "why_wrong": "La LSFin s'applique toujours en principe, avec des allègements."},
+        {"text": "Les règles LBA sont dispensées", "correct": false, "why_wrong": "La LBA reste applicable à tout intermédiaire financier."}
+      ],
+      "explanation": "Art. 20 LSFin : le client institutionnel est réputé disposer de l'expertise ; les règles art. 8 à 16 sont applicables sur base opt-in ou renonciation. Protection graduée."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-033",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "En cas d'opting-up d'un client privé fortuné (élection en client professionnel), quelle est la conséquence principale ?",
+      "options": [
+        {"text": "Perte partielle de la protection LSFin : allègement documentation, adéquation, information", "correct": true},
+        {"text": "Aucun impact : la protection est identique dans les 3 classes", "correct": false, "why_wrong": "Faux : la LSFin gradue la protection selon la classe."},
+        {"text": "Il devient client institutionnel automatiquement", "correct": false, "why_wrong": "L'opting-up mène à la classe professionnelle, pas institutionnelle."},
+        {"text": "La FINMA doit valider individuellement chaque opting-up", "correct": false, "why_wrong": "Aucune validation individuelle FINMA requise."}
+      ],
+      "explanation": "Art. 5 LSFin : opting-up des clients privés fortunés (patrimoine ≥ 500 000 CHF + connaissances) vers client professionnel. Consentement écrit. Allègement de la protection."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-034",
+      "theme": "conseil_vie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelle obligation de formation continue s'impose aux intermédiaires d'assurance sous la LSA révisée ?",
+      "options": [
+        {"text": "Formation continue régulière obligatoire, dont le contenu et la durée sont fixés par les standards de la branche (BVK/AFA)", "correct": true},
+        {"text": "Aucune obligation : la seule formation initiale suffit à vie", "correct": false, "why_wrong": "Contraire à l'art. 43 LSA révisé qui impose formation continue."},
+        {"text": "Formation d'au moins 200 heures par an", "correct": false, "why_wrong": "Aucun standard fixé à 200 heures ; les branches définissent le volume."},
+        {"text": "Formation uniquement en cas de plainte client", "correct": false, "why_wrong": "Aucun lien avec les plaintes ; obligation permanente."}
+      ],
+      "explanation": "Art. 43 LSA : obligation de formation initiale et continue pour intermédiaires. Standards fixés par organisations de branche (SAQ, BVK/AFA). Cybelia = pièce du dossier FINMA."
+    },
+    {
+      "external_id": "KLARY-VIE-GAP-035",
+      "theme": "conseil_vie",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Une conseillère prépare un entretien vie avec un couple d'indépendants, revenus mixtes 250 000 CHF, 3 enfants, patrimoine 900 000 CHF.",
+      "question": "Quels documents et éléments doit-elle préparer et remettre avant/pendant l'entretien pour respecter LSFin et LSA ?",
+      "options": [
+        {"text": "Fiche d'information art. 45 LSA (identité, statut, rémunération, données)", "correct": true},
+        {"text": "Segmentation LSFin du couple (privé par défaut, opting-up éventuel)", "correct": true},
+        {"text": "Questionnaire de besoins couvrant prévoyance, décès, invalidité, patrimoine, entreprise", "correct": true},
+        {"text": "FIB des produits envisagés (art. 60 LSFin) et rappel des rétrocessions (art. 26)", "correct": true},
+        {"text": "PV de conseil détaillé signé par les deux parties", "correct": true},
+        {"text": "Photocopie de la CNI de tous les proches non concernés", "correct": false, "why_wrong": "Aucune base légale : violerait la nLPD (minimisation des données)."},
+        {"text": "Extrait du casier judiciaire des enfants mineurs", "correct": false, "why_wrong": "Aucune pertinence, atteinte à la nLPD."}
+      ],
+      "explanation": "Entretien conforme : fiche art. 45 LSA, segmentation LSFin, analyse besoins documentée (art. 7 LSFin), FIB (art. 60), rémunérations (art. 26), PV signé (art. 15). Respect nLPD (minimisation, finalité, sécurité)."
+    }
+  ]
+}

@@ -19,7 +19,7 @@ export default async function RevisionAfaPage({
 
   const { data: filieres } = await supabase
     .from("afa_filieres")
-    .select("key, title, passing_pct, duration_min")
+    .select("key, title, passing_pct, internal_target_pct, duration_min")
     .eq("active", true)
     .order("sort_order");
 
@@ -70,8 +70,12 @@ export default async function RevisionAfaPage({
         </h1>
         <p className="text-klary-grey max-w-2xl">
           Entraînement libre et illimité. L&apos;épreuve dure{" "}
-          {filiere?.duration_min ?? 30} minutes et le seuil de réussite est de{" "}
-          {filiere?.passing_pct ?? 60} % des points.
+          {filiere?.duration_min ?? 30} minutes. Seuil VBV officiel{" "}
+          {filiere?.passing_pct ?? 60} %.{" "}
+          <strong className="text-klary-navy">
+            Cible interne Klary : {filiere?.internal_target_pct ?? 80} %
+          </strong>{" "}
+          (marge de sécurité pour passer sereinement).
         </p>
       </header>
 
@@ -145,9 +149,10 @@ export default async function RevisionAfaPage({
             <Stat
               label="Dernier score (partiel)"
               value={`${derniere.score_pct_partial ?? 0} %`}
-              hint={`${derniere.points_partial ?? 0} / ${derniere.points_max ?? 0} points`}
+              hint={`${derniere.points_partial ?? 0} / ${derniere.points_max ?? 0} points · cible ${filiere?.internal_target_pct ?? 80} %`}
               tone={
-                (derniere.score_pct_partial ?? 0) >= (filiere?.passing_pct ?? 60)
+                (derniere.score_pct_partial ?? 0) >=
+                (filiere?.internal_target_pct ?? 80)
                   ? "ok"
                   : "warn"
               }
@@ -155,9 +160,10 @@ export default async function RevisionAfaPage({
             <Stat
               label="Dernier score (strict)"
               value={`${derniere.score_pct_strict ?? 0} %`}
-              hint="Tout ou rien par question"
+              hint={`Tout ou rien par question · cible ${filiere?.internal_target_pct ?? 80} %`}
               tone={
-                (derniere.score_pct_strict ?? 0) >= (filiere?.passing_pct ?? 60)
+                (derniere.score_pct_strict ?? 0) >=
+                (filiere?.internal_target_pct ?? 80)
                   ? "ok"
                   : "warn"
               }

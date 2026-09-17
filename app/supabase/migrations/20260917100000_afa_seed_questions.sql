@@ -5,6 +5,1087 @@
 -- Régénérer : node scripts/afa/generate-seed.mjs
 -- ═════════════════════════════════════════════════════════
 
+-- ───────── generales_klary_bank.json — Banque Klary GÉNÉRALES (PV1) 120 questions. Socle commun tous profils : industrie assurance, droit CO/LCA/LSA/nLPD/LBA/LSFin, acquisition et vente, litiges et procédures. ─────────
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-001', 'generales', t.id, 'single',
+       NULL, 'Quelle autorité surveille les entreprises d''assurance privées en Suisse ?', '[{"text":"L''ASA (Association Suisse d''Assurances)","correct":false,"why_wrong":"L''ASA est une organisation faîtière, pas un régulateur."},{"text":"La FINMA (Autorité fédérale de surveillance des marchés financiers)","correct":true},{"text":"L''OFAS (Office fédéral des assurances sociales)","correct":false,"why_wrong":"L''OFAS surveille les assurances sociales (AVS, AI, LPP), pas les assureurs privés."},{"text":"Le SECO","correct":false,"why_wrong":"Le SECO est le Secrétariat d''État à l''économie, sans compétence de surveillance des assureurs."}]'::jsonb, 1,
+       'Art. 1 et 46 LSA : la FINMA surveille les entreprises d''assurance privées. Piège classique : ne pas confondre avec l''ASA (faîtière) ni avec l''OFAS (assurances sociales).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-002', 'generales', t.id, 'single',
+       NULL, 'L''ASA (Association Suisse d''Assurances) est :', '[{"text":"Une autorité de surveillance dotée de pouvoirs de sanction","correct":false,"why_wrong":"L''ASA n''a aucun pouvoir de sanction ; les sanctions relèvent de la FINMA."},{"text":"Une organisation faîtière de la branche, sans compétence étatique","correct":true},{"text":"Une caisse de compensation fédérale","correct":false,"why_wrong":"Les caisses de compensation gèrent l''AVS/AI, cela n''a rien à voir avec l''ASA."},{"text":"Une autorité de conciliation obligatoire","correct":false,"why_wrong":"La conciliation relève de l''Ombudsman, pas de l''ASA."}]'::jsonb, 1,
+       'L''ASA est l''organisation faîtière des assureurs privés suisses (auto-régulation, statistiques, formation VBV). Elle n''a aucun pouvoir régulatoire : la surveillance relève de la FINMA (LSA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-003', 'generales', t.id, 'single',
+       NULL, 'L''intervention de l''Ombudsman de l''assurance privée et de la SUVA est :', '[{"text":"Payante, à hauteur de 200 CHF par dossier","correct":false,"why_wrong":"Le service est gratuit pour le consommateur."},{"text":"Gratuite pour le client et non contraignante pour l''assureur","correct":true},{"text":"Gratuite et impose une décision opposable à l''assureur","correct":false,"why_wrong":"PIÈGE MAJEUR : l''Ombudsman ne rend pas de décision opposable."},{"text":"Réservée aux courtiers","correct":false,"why_wrong":"L''Ombudsman est ouvert à tout consommateur d''assurance."}]'::jsonb, 1,
+       'L''Ombudsman est gratuit et sa position n''a pas de force exécutoire : il joue un rôle de médiation. Piège récurrent : confusion avec un jugement.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-004', 'generales', t.id, 'multiple',
+       NULL, 'Quelles formes juridiques sont autorisées pour une entreprise d''assurance opérant en Suisse ? (art. 7 LSA)', '[{"text":"Société anonyme (SA)","correct":true},{"text":"Société coopérative","correct":true},{"text":"Société en nom collectif","correct":false,"why_wrong":"Exclue par l''art. 7 LSA : responsabilité personnelle incompatible avec la surveillance prudentielle."},{"text":"Entreprise individuelle","correct":false,"why_wrong":"Exclue par la LSA."},{"text":"Succursale d''assureur étranger dûment autorisée","correct":true},{"text":"Association","correct":false,"why_wrong":"L''association au sens du CC ne fait pas partie des formes admises par la LSA."}]'::jsonb, 2,
+       'Art. 7 LSA : SA, coopérative, ou succursale d''assureur étranger autorisée. Les autres formes sont exclues (contrôle prudentiel exige capital et structure adéquats).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-005', 'generales', t.id, 'multiple',
+       NULL, 'Quelle loi régit le contrat d''assurance privée conclu entre un assureur et son client ?', '[{"text":"La LCA (Loi sur le contrat d''assurance)","correct":true},{"text":"Le CO à titre subsidiaire (art. 100 al. 1 LCA)","correct":true},{"text":"La LSA (surveillance, mais pas le contrat lui-même)","correct":false,"why_wrong":"La LSA régit la surveillance des assureurs, pas la relation contractuelle avec le client."},{"text":"La LAMal exclusivement","correct":false,"why_wrong":"La LAMal ne régit que l''assurance-maladie sociale obligatoire."},{"text":"Le CP","correct":false,"why_wrong":"Le code pénal ne régit pas la relation contractuelle."}]'::jsonb, 1,
+       'La LCA (loi fédérale sur le contrat d''assurance) régit la relation contractuelle assureur/preneur. La LSA régit la surveillance ; le CO est subsidiaire (art. 100 LCA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-006', 'generales', t.id, 'single',
+       NULL, 'Le principe de l''aléa dans le contrat d''assurance signifie que :', '[{"text":"L''assureur choisit librement les risques qu''il couvre","correct":false,"why_wrong":"Cela relève de la politique de souscription, pas de la définition de l''aléa."},{"text":"La survenance ou la date du sinistre est incertaine au moment de la conclusion","correct":true},{"text":"L''assureur est certain de réaliser un bénéfice","correct":false,"why_wrong":"Notion opposée à l''aléa."},{"text":"Le preneur peut modifier les conditions à tout moment","correct":false,"why_wrong":"Faux : les modifications passent par avenant écrit."}]'::jsonb, 1,
+       'Le contrat d''assurance est un contrat aléatoire : les parties ne peuvent pas savoir à la conclusion si, quand ou dans quelle mesure la prestation sera due. Sans aléa (sinistre déjà survenu ou certain) : nullité.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-007', 'generales', t.id, 'multiple',
+       NULL, 'Le principe de mutualité en assurance repose sur :', '[{"text":"La mise en commun des primes d''un grand nombre d''assurés exposés à un même risque","correct":true},{"text":"La compensation des sinistres de quelques-uns par les primes de tous","correct":true},{"text":"La loi des grands nombres pour rendre les charges prévisibles","correct":true},{"text":"L''obligation pour chaque assuré de subir le même dommage","correct":false,"why_wrong":"La mutualité ne suppose pas l''identité des dommages, mais la communauté de risque."},{"text":"La garantie de l''État sur les prestations","correct":false,"why_wrong":"L''État ne garantit pas les prestations des assureurs privés."}]'::jsonb, 2,
+       'Mutualité = communauté de risque + loi des grands nombres. Les primes du collectif financent les sinistres individuels ; c''est le fondement technique de l''assurance.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-008', 'generales', t.id, 'single',
+       NULL, 'Quelle différence essentielle sépare une assurance de sommes (forfaitaire) d''une assurance de dommages (indemnitaire) ?', '[{"text":"L''assurance de dommages verse un montant fixé à l''avance ; l''assurance de sommes rembourse le dommage réel","correct":false,"why_wrong":"Définitions inversées."},{"text":"L''assurance de sommes verse un capital ou une rente convenus ; l''assurance de dommages indemnise le préjudice effectif dans la limite de la somme assurée","correct":true},{"text":"Les deux types imposent une expertise obligatoire du dommage","correct":false,"why_wrong":"L''expertise n''est requise qu''en assurance de dommages selon le cas."},{"text":"L''assurance de sommes est interdite en Suisse","correct":false,"why_wrong":"Elle est parfaitement admise (assurance-vie notamment)."}]'::jsonb, 2,
+       'Assurance de sommes (vie, invalidité forfaitaire) : prestation prédéfinie, principe indemnitaire non applicable. Assurance de dommages (ménage, RC, casco) : art. 96 LCA, principe indemnitaire, pas d''enrichissement possible.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-009', 'generales', t.id, 'single',
+       NULL, 'Le régime prudentiel applicable aux assureurs suisses est :', '[{"text":"Solvency II (directive UE)","correct":false,"why_wrong":"Solvency II est le régime européen. La Suisse applique son propre modèle."},{"text":"Le Test suisse de solvabilité (SST), fondé sur les risques","correct":true},{"text":"Les accords de Bâle III","correct":false,"why_wrong":"Bâle III concerne les banques, pas les assureurs."},{"text":"La loi COVID d''urgence","correct":false,"why_wrong":"Aucun régime prudentiel n''a été instauré par la loi COVID."}]'::jsonb, 2,
+       'Le SST (Swiss Solvency Test) est le régime prudentiel des assureurs suisses depuis 2011, reconnu équivalent à Solvency II par l''UE. Bâle est le régime bancaire.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-010', 'generales', t.id, 'multiple',
+       NULL, 'L''OFAS (Office fédéral des assurances sociales) est responsable de la surveillance de quelles branches ?', '[{"text":"AVS / AI","correct":true},{"text":"APG (allocation pour perte de gain)","correct":true},{"text":"Allocations familiales","correct":true},{"text":"Assurances-vie privées","correct":false,"why_wrong":"Compétence FINMA."},{"text":"LPP (prévoyance professionnelle : haute surveillance)","correct":true},{"text":"Assurances complémentaires LCA","correct":false,"why_wrong":"Compétence FINMA."}]'::jsonb, 2,
+       'L''OFAS surveille les assurances sociales fédérales (AVS, AI, APG, allocations familiales) et exerce la haute surveillance sur la LPP. L''assurance privée relève de la FINMA (LSA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-011', 'generales', t.id, 'single',
+       NULL, 'Selon l''art. 40 LSA (nouveau droit), quels intermédiaires doivent obligatoirement s''inscrire au registre FINMA ?', '[{"text":"Tous les intermédiaires, liés et non liés","correct":false,"why_wrong":"Depuis la révision LSA 2024, seuls les non liés s''inscrivent au registre."},{"text":"Uniquement les intermédiaires non liés (courtiers indépendants)","correct":true},{"text":"Uniquement les intermédiaires liés (agents)","correct":false,"why_wrong":"Les liés sont rattachés à leur assureur qui répond de leur activité."},{"text":"Seulement les intermédiaires exerçant à l''étranger","correct":false,"why_wrong":"Le critère est le rattachement ou non, pas le lieu d''exercice."}]'::jsonb, 1,
+       'Art. 40 al. 2 et 41 LSA (révision entrée en vigueur 01.01.2024) : seuls les intermédiaires NON liés doivent être inscrits au registre FINMA. Les liés sont couverts par la responsabilité de l''assureur.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-012', 'generales', t.id, 'single',
+       NULL, 'Le Fonds national suisse de garantie (BNG) intervient pour :', '[{"text":"Indemniser les victimes de véhicules non identifiés, non assurés ou volés","correct":true},{"text":"Garantir les rentes LPP en cas de faillite d''une caisse","correct":false,"why_wrong":"C''est le rôle du Fonds de garantie LPP (art. 56 LPP)."},{"text":"Compenser les catastrophes naturelles pour les propriétaires","correct":false,"why_wrong":"C''est le pool ECA/ES cantonaux."},{"text":"Rembourser les primes en cas de faillite d''un assureur maladie","correct":false,"why_wrong":"Il existe un institut commun LAMal (art. 18 LAMal), pas le BNG."}]'::jsonb, 1,
+       'Art. 76 LCR : le Fonds national suisse de garantie (BNG) indemnise les victimes de véhicules non identifiés, non assurés ou volés. À ne pas confondre avec le Fonds de garantie LPP.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-013', 'generales', t.id, 'multiple',
+       NULL, 'Quels éléments sont indispensables à la validité d''un contrat d''assurance selon la LCA ?', '[{"text":"Un risque assurable (aléa)","correct":true},{"text":"Une prime convenue","correct":true},{"text":"Une prestation d''assurance définie","correct":true},{"text":"L''approbation préalable de la FINMA pour chaque police","correct":false,"why_wrong":"La FINMA n''approuve pas les polices individuelles ; elle approuve certains produits (LAA-C) et surveille l''entreprise."},{"text":"Un intérêt assurable pour les assurances de dommages","correct":true},{"text":"La signature d''un notaire","correct":false,"why_wrong":"Aucune forme authentique n''est exigée."}]'::jsonb, 2,
+       'Éléments constitutifs : aléa, prime, prestation, intérêt assurable (pour les assurances de dommages, art. 48 LCA). Le contrat est consensuel (pas de forme authentique requise).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-014', 'generales', t.id, 'single',
+       'Un dirigeant de PME vous demande qui surveille son assurance-maladie complémentaire (LCA), sa LAA obligatoire et sa caisse LPP.', 'Quelle réponse est correcte concernant les autorités compétentes ?', '[{"text":"FINMA pour les trois","correct":false,"why_wrong":"FINMA ne surveille pas la LAA ni la LPP directement."},{"text":"OFAS pour les trois","correct":false,"why_wrong":"OFAS ne surveille pas la LCA."},{"text":"FINMA pour la LCA complémentaire, OFSP/SUVA pour la LAA, OFAS + autorités cantonales pour la LPP","correct":true},{"text":"Le Conseil fédéral pour les trois","correct":false,"why_wrong":"Le Conseil fédéral légifère mais ne surveille pas les assureurs individuellement."}]'::jsonb, 2,
+       'Répartition : FINMA (assurances privées LCA, LSA) ; SUVA + OFSP pour la LAA ; OFAS haute surveillance LPP + autorités cantonales de surveillance directe (art. 61 LPP).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-015', 'generales', t.id, 'single',
+       NULL, 'Le système suisse de prévoyance est structuré autour de :', '[{"text":"1 pilier unique (AVS)","correct":false,"why_wrong":"La Suisse est structurée sur trois piliers, non un seul."},{"text":"2 piliers (AVS + LPP)","correct":false,"why_wrong":"Le 3e pilier est également un pilier officiel du système (Cst. art. 111)."},{"text":"3 piliers : prévoyance étatique, professionnelle, individuelle","correct":true},{"text":"4 piliers incluant les allocations familiales","correct":false,"why_wrong":"Les allocations familiales sont un régime social, pas un pilier de prévoyance."}]'::jsonb, 1,
+       'Cst. art. 111 : système des trois piliers. 1er pilier AVS/AI/PC (couverture minimum vitale), 2e pilier LPP (maintien du niveau de vie), 3e pilier (prévoyance individuelle 3a/3b).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-016', 'generales', t.id, 'multiple',
+       'Vous préparez un support pédagogique interne pour de nouveaux conseillers qui confondent AVS/LAA (obligatoires) avec les complémentaires LCA.', 'Quelles caractéristiques distinguent l''assurance sociale de l''assurance privée ?', '[{"text":"L''assurance sociale est en principe obligatoire (LAMal, AVS, LAA)","correct":true},{"text":"L''assurance privée repose sur la liberté contractuelle et la LCA","correct":true},{"text":"L''assurance sociale utilise la solidarité (redistribution), pas seulement la mutualité","correct":true},{"text":"L''assurance privée impose un tarif unique fixé par l''État","correct":false,"why_wrong":"L''assureur privé fixe librement sa tarification (approbation FINMA pour certaines branches)."},{"text":"L''assurance sociale peut refuser un affilié pour antécédents","correct":false,"why_wrong":"Interdit : pas de sélection dans l''AOS."}]'::jsonb, 3,
+       'Assurance sociale : loi impérative, obligation d''affiliation, solidarité redistributive. Assurance privée : consensuelle (LCA), sélection possible, tarification technique.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-017', 'generales', t.id, 'single',
+       NULL, 'Dans une compagnie d''assurance de forme mutualiste ou coopérative :', '[{"text":"Les preneurs sont en même temps sociétaires","correct":true},{"text":"Les primes sont fixées par l''État","correct":false,"why_wrong":"Faux : l''assureur mutualiste fixe ses tarifs sous surveillance FINMA."},{"text":"Il n''existe aucune obligation de constituer un capital","correct":false,"why_wrong":"La LSA exige un capital / fonds de garantie."},{"text":"L''entreprise ne peut couvrir que la LAMal","correct":false,"why_wrong":"Aucune restriction de branche liée à la forme mutualiste."}]'::jsonb, 1,
+       'Dans une coopérative (art. 828 CO) ou mutuelle, les assurés participent à la vie sociale (assemblée générale, ristournes possibles). L''excédent peut être redistribué. Reste soumise à la LSA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-018', 'generales', t.id, 'single',
+       NULL, 'Dans une société coopérative d''assurance (art. 828 CO), le principe démocratique est :', '[{"text":"Une voix par part sociale détenue","correct":false,"why_wrong":"Piège : c''est le principe SA (art. 692 CO)."},{"text":"Une voix par sociétaire, indépendamment du nombre de parts","correct":true},{"text":"Vote pondéré par la prime versée","correct":false,"why_wrong":"Aucun système de vote pondéré par la prime dans la coopérative."},{"text":"Absence de droit de vote","correct":false,"why_wrong":"Le sociétaire dispose d''un droit de vote (une voix)."}]'::jsonb, 2,
+       'Art. 885 CO : dans la coopérative, chaque sociétaire a une seule voix, quel que soit le nombre de parts. Différence structurante avec la SA (art. 692 CO : vote au capital).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-019', 'generales', t.id, 'multiple',
+       NULL, 'Le rôle de la réassurance est :', '[{"text":"Permettre à l''assureur de transférer une partie de ses risques à un autre assureur","correct":true},{"text":"Mutualiser les grands sinistres (catastrophes, cumuls)","correct":true},{"text":"Augmenter la capacité de souscription de l''assureur primaire","correct":true},{"text":"Remplacer l''assurance directe auprès du client final","correct":false,"why_wrong":"La réassurance n''intervient jamais avec le client final."},{"text":"Fixer les tarifs pour toute la branche","correct":false,"why_wrong":"Aucun réassureur ne fixe les tarifs de la branche primaire."}]'::jsonb, 1,
+       'La réassurance est un contrat entre assureurs : elle permet la mutualisation des grands risques (catastrophes, cumuls) et l''accès à des capacités additionnelles. Aucune relation avec l''assuré final.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-020', 'generales', t.id, 'single',
+       'Un client hésite entre s''assurer chez une société anonyme cotée et chez une coopérative d''assurance.', 'Quelle information objective devez-vous lui donner ?', '[{"text":"La SA est toujours meilleur marché","correct":false,"why_wrong":"Aucune règle générale ; dépend du produit et du portefeuille."},{"text":"La coopérative peut redistribuer un excédent à ses sociétaires-preneurs, la SA verse des dividendes à ses actionnaires","correct":true},{"text":"Seule la SA est surveillée par la FINMA","correct":false,"why_wrong":"Les deux formes sont surveillées par la FINMA."},{"text":"La coopérative n''a pas besoin de capital de départ","correct":false,"why_wrong":"Un fonds de garantie est requis par la LSA."}]'::jsonb, 2,
+       'Différence structurelle : SA = orientation actionnaires ; coopérative = orientation sociétaires (excédents distribuables aux preneurs). Les deux relèvent de la surveillance FINMA (LSA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-021', 'generales', t.id, 'multiple',
+       NULL, 'Quelles missions relèvent de la FINMA (LFINMA / LSA) ?', '[{"text":"Octroyer et retirer l''autorisation d''exercer aux assureurs","correct":true},{"text":"Approuver certains tarifs (LAA complémentaire, prévoyance obligatoire)","correct":true},{"text":"Contrôler la solvabilité (SST) et les provisions techniques","correct":true},{"text":"Fixer les rentes AVS","correct":false,"why_wrong":"Compétence Conseil fédéral / OFAS."},{"text":"Sanctionner un intermédiaire non lié inscrit au registre","correct":true},{"text":"Négocier les CCT de la branche","correct":false,"why_wrong":"Compétence des partenaires sociaux."}]'::jsonb, 2,
+       'La FINMA est l''autorité de surveillance intégrée : autorisation, surveillance prudentielle (SST), approbation de certains tarifs, sanction des intermédiaires inscrits (LFINMA + LSA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-022', 'generales', t.id, 'single',
+       NULL, 'Une prise de position de l''Ombudsman de l''assurance privée a pour effet juridique :', '[{"text":"Force exécutoire immédiate","correct":false,"why_wrong":"PIÈGE : aucune force exécutoire."},{"text":"Une recommandation, sans caractère contraignant pour l''assureur","correct":true},{"text":"Un jugement susceptible d''appel","correct":false,"why_wrong":"L''Ombudsman n''est pas un tribunal."},{"text":"Une amende automatique en cas de refus","correct":false,"why_wrong":"L''Ombudsman ne dispose d''aucun pouvoir d''amende."}]'::jsonb, 1,
+       'La prise de position de l''Ombudsman est une recommandation. L''assuré conserve toujours la voie civile (art. 46b LCA). Point souvent testé à l''AFA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-023', 'generales', t.id, 'single',
+       'Une compagnie d''assurance suisse veut lancer un nouveau produit d''assurance-vie liée à des placements (unit-linked) destiné à la clientèle privée. Elle vous demande quelles autorités et quels régimes s''appliquent avant le lancement.', 'Quel enchaînement est correct ?', '[{"text":"Approbation systématique préalable de chaque police par la FINMA","correct":false,"why_wrong":"Depuis la réforme LSA, l''approbation systématique des tarifs a été largement supprimée."},{"text":"Notification/approbation prudentielle FINMA de la solution technique, respect de la LCA pour le contrat, respect de la LSFin pour la distribution du volet instrument financier, respect nLPD sur les données","correct":true},{"text":"Uniquement respect de la LCA, sans autre régime","correct":false,"why_wrong":"Un produit unit-linked touche à la LSFin (information/adéquation) et à la nLPD."},{"text":"Autorisation cantonale préalable pour chaque canton de commercialisation","correct":false,"why_wrong":"La surveillance est fédérale (FINMA)."}]'::jsonb, 3,
+       'Un produit vie-placement mobilise plusieurs régimes : LSA (surveillance FINMA), LCA (contrat), LSFin (règles de conduite pour l''instrument financier, adéquation), nLPD (traitement des données). Vision transversale attendue du conseiller.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-024', 'generales', t.id, 'multiple',
+       NULL, 'Un événement est assurable s''il est :', '[{"text":"L''événement doit être aléatoire","correct":true},{"text":"L''événement doit être futur","correct":true},{"text":"L''événement doit être licite (art. 20 CO)","correct":true},{"text":"L''événement doit être évaluable en argent","correct":true},{"text":"L''événement doit être certain et déjà survenu","correct":false,"why_wrong":"Contrat nul faute d''aléa."},{"text":"L''événement doit être voulu par le preneur","correct":false,"why_wrong":"La volonté détruirait l''aléa."}]'::jsonb, 1,
+       'Critères de l''assurabilité : aléatoire (aléa), futur, licite (art. 20 CO), évaluable en argent. Un événement déjà survenu ou provoqué intentionnellement n''est pas assurable (art. 9 LCA ancien / dispositions LCA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-025', 'generales', t.id, 'multiple',
+       'Un client structure son patrimoine et demande une vue globale de toutes ses branches, sociales et privées, pour éviter les doublons.', 'Parmi les branches d''assurance ci-dessous, lesquelles appartiennent aux assurances non-vie ?', '[{"text":"Assurance ménage","correct":true},{"text":"Assurance RC véhicule (LCR)","correct":true},{"text":"Assurance-vie mixte","correct":false,"why_wrong":"Branche vie."},{"text":"Assurance protection juridique","correct":true},{"text":"3e pilier a","correct":false,"why_wrong":"Branche vie (prévoyance)."},{"text":"Assurance perte d''exploitation PME","correct":true}]'::jsonb, 3,
+       'Non-vie : dommages aux choses, RC, PJ, transport, technique. Vie : capital ou rente lié à la personne (vie, décès, invalidité forfaitaire). Cette distinction structure la surveillance FINMA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-026', 'generales', t.id, 'multiple',
+       NULL, 'Le principe indemnitaire (art. 96 LCA) s''oppose :', '[{"text":"Il interdit l''enrichissement de l''assuré","correct":true},{"text":"Il plafonne la prestation au dommage effectivement subi","correct":true},{"text":"Il justifie la subrogation de l''assureur (art. 95c LCA)","correct":true},{"text":"Il s''oppose à la mutualisation","correct":false,"why_wrong":"Aucune opposition : la mutualisation est en amont, l''indemnitaire en aval."},{"text":"Il s''applique à l''assurance-vie de sommes","correct":false,"why_wrong":"Non : l''assurance de sommes échappe au principe indemnitaire."}]'::jsonb, 2,
+       'Principe indemnitaire : dans les assurances de dommages, la prestation est limitée au préjudice réel. Pas de double indemnisation, subrogation de l''assureur (art. 95c LCA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-027', 'generales', t.id, 'single',
+       NULL, 'Le marché suisse de l''assurance privée se caractérise notamment par :', '[{"text":"Un très faible taux de pénétration (< 1 %)","correct":false,"why_wrong":"La Suisse est parmi les pays au monde à la plus forte pénétration."},{"text":"Une des plus fortes densités de primes par habitant au monde","correct":true},{"text":"Un monopole d''État sur toutes les branches","correct":false,"why_wrong":"Marché ouvert ; seules certaines branches cantonales (ECA) fonctionnent en monopole."},{"text":"Une interdiction des assureurs étrangers","correct":false,"why_wrong":"Les succursales étrangères sont admises (art. 15 LSA)."}]'::jsonb, 1,
+       'La Suisse figure structurellement parmi les tout premiers marchés au monde en primes par habitant (vie + non-vie). Marché ouvert, régulé par la FINMA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-028', 'generales', t.id, 'single',
+       'Une entreprise d''assurance holding détient plusieurs filiales suisses (vie, non-vie, réassurance). Elle vous demande comment la FINMA la surveille.', 'Quelle affirmation est correcte ?', '[{"text":"Chaque filiale est surveillée séparément sans coordination","correct":false,"why_wrong":"Contraire à la surveillance de groupe (art. 65 ss LSA)."},{"text":"La FINMA exerce une surveillance sur base individuelle ET une surveillance de groupe consolidée (SST groupe)","correct":true},{"text":"Seul le siège étranger est surveillé","correct":false,"why_wrong":"Faux : la FINMA surveille les entités suisses même si maison mère est à l''étranger."},{"text":"La surveillance est déléguée à l''ASA","correct":false,"why_wrong":"L''ASA n''est pas un régulateur."}]'::jsonb, 3,
+       'Art. 65-79 LSA : la FINMA exerce une surveillance individuelle (chaque entité) ET une surveillance de groupe / conglomérat (solvabilité consolidée, gouvernance, gestion des risques). Vise à empêcher un défaut par contagion.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-029', 'generales', t.id, 'single',
+       NULL, 'Quelle différence existe entre risque et aléa dans le vocabulaire de l''assurance ?', '[{"text":"Ce sont deux synonymes stricts","correct":false,"why_wrong":"Distinction technique importante."},{"text":"Le risque est l''événement redouté (incendie, décès) ; l''aléa est l''incertitude qui affecte sa survenance ou sa date","correct":true},{"text":"Le risque est certain ; l''aléa est facultatif","correct":false,"why_wrong":"Le risque est justement soumis à l''aléa."},{"text":"Le risque relève du preneur, l''aléa de l''assureur exclusivement","correct":false}]'::jsonb, 2,
+       'Risque = l''événement dommageable objet de la couverture. Aléa = caractère incertain de sa survenance. Sans aléa, pas de contrat d''assurance valable.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-IN-030', 'generales', t.id, 'multiple',
+       NULL, 'L''auto-régulation de la branche par l''ASA se manifeste notamment par :', '[{"text":"Des règles déontologiques (code de conduite)","correct":true},{"text":"La formation VBV / AFA des intermédiaires","correct":true},{"text":"La publication de statistiques et données de marché","correct":true},{"text":"Des amendes prononcées contre les compagnies","correct":false,"why_wrong":"Seule la FINMA sanctionne (art. 30 ss LFINMA)."},{"text":"Le retrait d''autorisation d''un assureur","correct":false,"why_wrong":"Compétence exclusive de la FINMA."}]'::jsonb, 2,
+       'L''ASA est faîtière : code de conduite, formation VBV / AFA, statistiques, lobbying. Aucune compétence de sanction : c''est la FINMA (LFINMA / LSA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'industrie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-001', 'generales', t.id, 'single',
+       NULL, 'Depuis quand le nouveau droit LCA (révision majeure) est-il en vigueur ?', '[{"text":"1er janvier 2020","correct":false,"why_wrong":"Aucune révision majeure LCA n''est entrée en vigueur en 2020."},{"text":"1er janvier 2022","correct":true},{"text":"1er septembre 2023","correct":false,"why_wrong":"Confusion avec la nLPD."},{"text":"1er janvier 2024","correct":false,"why_wrong":"Confusion avec la révision LSA."}]'::jsonb, 1,
+       'La révision majeure de la LCA (droit de révocation art. 2a, prescription 5 ans art. 46, résiliation ordinaire art. 35a etc.) est en vigueur depuis le 01.01.2022.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-002', 'generales', t.id, 'single',
+       NULL, 'Quel est le délai de révocation d''une proposition d''assurance selon l''art. 2a LCA ?', '[{"text":"7 jours","correct":false,"why_wrong":"Ce délai ne correspond à aucune disposition LCA."},{"text":"14 jours","correct":true},{"text":"30 jours","correct":false,"why_wrong":"PIÈGE fréquent : ce n''est pas 30 jours."},{"text":"2 mois","correct":false,"why_wrong":"Ancienne durée avant réforme, régulièrement citée par erreur."}]'::jsonb, 1,
+       'Art. 2a LCA : le preneur peut révoquer sa proposition ou l''acceptation par écrit dans les 14 jours dès sa connaissance de la conclusion. Piège classique VBV.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-003', 'generales', t.id, 'single',
+       NULL, 'Quel est le délai de prescription des créances découlant du contrat d''assurance selon l''art. 46 LCA (nouveau droit) ?', '[{"text":"1 an","correct":false,"why_wrong":"Aucun délai LCA n''est fixé à 1 an pour la prescription."},{"text":"2 ans","correct":false,"why_wrong":"Ancien délai avant 2022, régulièrement confondu."},{"text":"5 ans dès la survenance du fait générateur","correct":true},{"text":"10 ans","correct":false,"why_wrong":"C''est le délai ordinaire CO 127, mais la LCA est spéciale."}]'::jsonb, 1,
+       'Art. 46 LCA (révision 2022) : les créances découlant du contrat d''assurance se prescrivent par 5 ans dès la survenance du fait sur lequel elles reposent. Avant 2022 : 2 ans.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-004', 'generales', t.id, 'multiple',
+       NULL, 'Le devoir d''information de l''assureur selon l''art. 3 LCA porte notamment sur :', '[{"text":"L''identité de l''assureur","correct":true},{"text":"L''étendue de la couverture et les exclusions principales","correct":true},{"text":"Les primes et autres obligations du preneur","correct":true},{"text":"Le délai et la forme de résiliation","correct":true},{"text":"Uniquement au moment de la signature, puis plus jamais","correct":false,"why_wrong":"PIÈGE : le devoir d''information est continu pendant toute la durée du contrat."},{"text":"Le traitement des données personnelles","correct":true}]'::jsonb, 2,
+       'Art. 3 LCA : information précontractuelle ET continue. Piège classique : croire que l''obligation s''éteint à la signature. Elle perdure pour toute la vie du contrat.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-005', 'generales', t.id, 'multiple',
+       NULL, 'En cas de réticence (déclaration inexacte ou omission dans le questionnaire de santé), l''assureur peut :', '[{"text":"Résilier le contrat dans les 4 semaines dès la connaissance","correct":true},{"text":"Refuser les prestations liées au fait tu","correct":true},{"text":"Résilier à tout moment sans délai","correct":false,"why_wrong":"La loi impose un délai de 4 semaines."},{"text":"Uniquement diminuer la prime","correct":false,"why_wrong":"La sanction n''est pas une baisse de prime."},{"text":"Rien : la réticence n''a plus d''effet sous le nouveau droit","correct":false,"why_wrong":"La réticence reste sanctionnée par l''art. 6 LCA."}]'::jsonb, 1,
+       'Art. 6 LCA : en cas de réticence, l''assureur peut résilier dans les 4 semaines dès qu''il a eu connaissance de la réticence. La libération de prestation vaut pour les sinistres en lien avec le fait tu.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-006', 'generales', t.id, 'multiple',
+       NULL, 'Quelles conditions cumulatives sont exigées pour qu''une responsabilité civile délictuelle soit engagée selon l''art. 41 CO ?', '[{"text":"Un acte illicite","correct":true},{"text":"Une faute (ou une responsabilité causale légale)","correct":true},{"text":"Un dommage","correct":true},{"text":"Un lien de causalité adéquate","correct":true},{"text":"Un contrat entre auteur et lésé","correct":false,"why_wrong":"C''est la RC contractuelle (art. 97 CO), pas l''art. 41."},{"text":"Une décision pénale préalable","correct":false,"why_wrong":"La condamnation pénale n''est pas nécessaire."}]'::jsonb, 1,
+       'Art. 41 CO : conditions cumulatives de la RC délictuelle : acte illicite, faute (ou responsabilité causale légale), dommage, lien de causalité adéquate. Si l''une manque : pas de responsabilité.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-007', 'generales', t.id, 'multiple',
+       NULL, 'Selon l''art. 45 LSA (obligations d''information et de conduite du conseiller), l''intermédiaire doit remettre au client :', '[{"text":"Son identité et son adresse professionnelle","correct":true},{"text":"Sa qualité (intermédiaire lié ou non lié) et les assureurs qu''il représente","correct":true},{"text":"L''existence de liens contractuels avec des assureurs et sa rémunération de principe","correct":true},{"text":"L''autorité compétente pour les plaintes (Ombudsman)","correct":true},{"text":"Le rendement financier annuel de sa société","correct":false,"why_wrong":"Aucune obligation d''information sur le rendement propre du conseiller."},{"text":"Le nom de tous ses autres clients","correct":false,"why_wrong":"Interdit par le secret professionnel et la nLPD."}]'::jsonb, 2,
+       'Art. 45 LSA + OS : la fiche d''information client (FIC) précise identité, statut (lié/non lié), assureurs, rémunération, voies de réclamation. Remise obligatoire lors du premier contact.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-008', 'generales', t.id, 'multiple',
+       NULL, 'Quelle est la différence essentielle entre un intermédiaire d''assurance lié et non lié au sens de l''art. 40 LSA ?', '[{"text":"Le lié agit dans un rapport de fidélité avec un ou plusieurs assureurs","correct":true},{"text":"Le non lié agit sur mandat du preneur, en toute indépendance","correct":true},{"text":"Le non lié doit être inscrit au registre FINMA (art. 41 LSA)","correct":true},{"text":"Aucune différence, tous les intermédiaires sont juridiquement égaux","correct":false,"why_wrong":"La LSA distingue clairement les deux statuts."},{"text":"Le lié est nécessairement salarié","correct":false,"why_wrong":"Un agent lié peut être indépendant tout en étant rattaché à un ou plusieurs assureurs."}]'::jsonb, 2,
+       'Art. 40 LSA : intermédiaire LIÉ = rattaché à un ou plusieurs assureurs (fidélité, souvent salarié / agent) ; NON LIÉ = mandaté par le preneur, indépendant (courtier), inscription au registre FINMA obligatoire.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-009', 'generales', t.id, 'single',
+       NULL, 'L''inscription au registre FINMA des intermédiaires d''assurance est :', '[{"text":"Obligatoire pour tous les intermédiaires liés et non liés","correct":false,"why_wrong":"Depuis 2024, seuls les non liés doivent s''inscrire."},{"text":"Obligatoire pour les intermédiaires non liés, facultative pour les liés","correct":true},{"text":"Obligatoire pour les liés uniquement","correct":false,"why_wrong":"Les liés relèvent de la responsabilité de leur assureur."},{"text":"Facultative pour tous","correct":false,"why_wrong":"Faux : la LSA rend l''inscription obligatoire pour les non liés."}]'::jsonb, 1,
+       'Art. 41 LSA (révision LSA 2024) : obligation d''inscription au registre FINMA uniquement pour les intermédiaires NON liés. Les intermédiaires liés sont couverts par la responsabilité de l''assureur qui les mandate.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-010', 'generales', t.id, 'single',
+       NULL, 'Depuis quand la nouvelle loi sur la protection des données (nLPD) est-elle en vigueur ?', '[{"text":"1er janvier 2022","correct":false,"why_wrong":"C''est le nouveau droit LCA."},{"text":"1er septembre 2023","correct":true},{"text":"25 mai 2018 (comme le RGPD)","correct":false,"why_wrong":"Date d''entrée en vigueur du RGPD UE, la Suisse a suivi plus tard."},{"text":"1er janvier 2024","correct":false,"why_wrong":"Confusion possible avec la révision LSA, mais la nLPD date du 01.09.2023."}]'::jsonb, 1,
+       'La nLPD est entrée en vigueur le 01.09.2023. Elle renforce les droits des personnes concernées, l''obligation de tenir un registre des traitements et rehausse les sanctions pénales pour les responsables.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-011', 'generales', t.id, 'multiple',
+       'Vous mettez en place un registre des traitements pour votre société de courtage : quels principes structurent chaque fiche ?', 'Quels principes fondamentaux la nLPD impose-t-elle au responsable du traitement ?', '[{"text":"Licéité, bonne foi, proportionnalité, finalité","correct":true},{"text":"Exactitude et mise à jour des données","correct":true},{"text":"Sécurité (mesures techniques et organisationnelles adéquates)","correct":true},{"text":"Transparence (information de la personne concernée)","correct":true},{"text":"Communication libre à tout tiers commercial","correct":false,"why_wrong":"Contraire au principe de finalité."},{"text":"Conservation illimitée par défaut","correct":false,"why_wrong":"Contraire au principe de proportionnalité et de minimisation."}]'::jsonb, 3,
+       'Art. 6 nLPD : principes de licéité, bonne foi, proportionnalité, finalité, exactitude, sécurité (art. 8), transparence (art. 19-21). Toute violation expose à des sanctions administratives et pénales.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-012', 'generales', t.id, 'single',
+       NULL, 'Selon la LBA / OBA, à partir de quel seuil une opération en espèces impose une identification renforcée du client ?', '[{"text":"5''000 CHF","correct":false,"why_wrong":"Seuil trop bas ; la LBA fixe 15''000 CHF pour les espèces."},{"text":"10''000 CHF","correct":false,"why_wrong":"Seuil bancaire général, pas assurance."},{"text":"15''000 CHF","correct":true},{"text":"25''000 CHF","correct":false,"why_wrong":"Piège : c''est le seuil pour la vie à prime unique."}]'::jsonb, 1,
+       'Art. 3 LBA et OBA-FINMA : identification obligatoire dès 15''000 CHF pour les opérations en espèces. Piège classique : ne pas confondre avec le seuil vie unique (25''000).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-013', 'generales', t.id, 'single',
+       NULL, 'En matière d''assurance-vie à prime unique, le seuil LBA à partir duquel s''applique l''obligation d''identification est :', '[{"text":"15''000 CHF","correct":false,"why_wrong":"Seuil général espèces."},{"text":"25''000 CHF (prime unique)","correct":true},{"text":"100''000 CHF","correct":false,"why_wrong":"Aucun seuil LBA vie unique n''est fixé à 100''000 CHF."},{"text":"Pas de seuil, identification systématique","correct":false,"why_wrong":"Il existe des seuils précis."}]'::jsonb, 1,
+       'OBA-FINMA : pour l''assurance-vie à prime unique, seuil d''identification à 25''000 CHF (et 5''000 CHF/an pour les primes périodiques dans certains cas). À distinguer du seuil espèces de 15''000.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-014', 'generales', t.id, 'multiple',
+       'Vous encaissez pour un nouveau client une prime unique de 40''000 CHF en espèces, avec doutes sur l''origine.', 'Les devoirs de diligence de l''intermédiaire sous la LBA comprennent :', '[{"text":"Identifier le cocontractant","correct":true},{"text":"Identifier l''ayant droit économique","correct":true},{"text":"Clarifier l''arrière-plan économique en cas de risque accru","correct":true},{"text":"Communiquer sans délai au MROS tout soupçon fondé de blanchiment","correct":true},{"text":"Informer préalablement le client du soupçon (tipping-off)","correct":false,"why_wrong":"Interdiction absolue : art. 10a LBA (interdiction d''informer)."},{"text":"Bloquer les valeurs suspectées immédiatement sans autre formalité","correct":true}]'::jsonb, 3,
+       'LBA : identification, ADE, clarification, communication MROS, blocage. Interdiction absolue d''informer le client (tipping-off, art. 10a LBA) : sanction pénale à la clé.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-015', 'generales', t.id, 'multiple',
+       NULL, 'L''article 3 LCD interdit notamment :', '[{"text":"Les indications inexactes ou fallacieuses sur soi-même ou ses produits","correct":true},{"text":"Le dénigrement d''un concurrent","correct":true},{"text":"Les envois publicitaires de masse sans consentement (art. 3 al. 1 let. o)","correct":true},{"text":"Le démarchage abusif ou trompeur (art. 3 al. 1 let. u)","correct":true},{"text":"Toute forme de publicité","correct":false,"why_wrong":"La publicité honnête reste licite."},{"text":"La conclusion d''un contrat avec un concurrent","correct":false,"why_wrong":"La liberté contractuelle demeure."}]'::jsonb, 1,
+       'Art. 3 LCD : liste de comportements déloyaux (indications trompeuses, dénigrement, comparaisons inexactes, cadeaux abusifs, appels publicitaires sans consentement, etc.). Cœur du droit de la concurrence.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-016', 'generales', t.id, 'multiple',
+       NULL, 'Sous la LSFin, un conseiller en assurance-vie liée à des instruments financiers doit :', '[{"text":"Effectuer une vérification d''adéquation en cas de conseil personnalisé","correct":true},{"text":"Effectuer une vérification d''appropriation en cas de conseil sans profil personnalisé","correct":true},{"text":"Documenter la prestation fournie et remettre les informations LSFin","correct":true},{"text":"Éviter toute évaluation, la LSFin ne s''applique jamais à l''assurance","correct":false,"why_wrong":"La LSFin s''applique aux produits d''assurance qualifiables d''instruments financiers."},{"text":"Demander l''accord préalable de la FINMA avant chaque conseil","correct":false,"why_wrong":"Aucune approbation FINMA n''est requise avant chaque conseil individuel."}]'::jsonb, 2,
+       'LSFin : différenciation entre pure information/exécution (pas de vérification), conseil (appropriation) et conseil personnalisé (adéquation). S''applique aux produits d''assurance qualifiables d''instruments financiers (vie liée à des placements).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-017', 'generales', t.id, 'multiple',
+       'Un candidat AFA vous demande la base constitutionnelle de la trilogie AVS / LPP / LAMal pour son examen.', 'Quels domaines les art. 111 à 117 de la Constitution fédérale (Cst) attribuent-ils à la Confédération ?', '[{"text":"L''AVS et l''AI (art. 112)","correct":true},{"text":"La prévoyance professionnelle (art. 113)","correct":true},{"text":"L''assurance-chômage (art. 114)","correct":true},{"text":"L''assurance-maladie et l''assurance-accidents (art. 117)","correct":true},{"text":"L''organisation judiciaire cantonale exclusive","correct":false,"why_wrong":"Compétence cantonale, pas fédérale."},{"text":"La fixation des impôts communaux","correct":false,"why_wrong":"Compétence communale/cantonale."}]'::jsonb, 3,
+       'Cst. 111-117 : bases constitutionnelles des trois piliers, de l''AC et de la LAMal/LAA. Toute assurance sociale suisse trouve son ancrage constitutionnel dans ces articles.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-018', 'generales', t.id, 'single',
+       'Un client vous offre 500 CHF pour que vous ''oubliez'' d''annoncer un antécédent médical dans la proposition.', 'Quelle attitude est conforme au droit et à l''éthique VBV ?', '[{"text":"Accepter, cela reste dans la limite du raisonnable","correct":false,"why_wrong":"Corruption + réticence, doublement illicite."},{"text":"Refuser, informer le client des conséquences (réticence, résiliation) et rédiger la proposition conformément à la réalité","correct":true},{"text":"Accepter mais reverser l''argent à l''assureur","correct":false,"why_wrong":"Le reversement ne blanchit pas l''infraction ; la réticence subsiste."},{"text":"Refuser mais laisser le client soumettre la proposition inexacte lui-même","correct":false,"why_wrong":"Le devoir de conseil impose d''agir, pas de fermer les yeux."}]'::jsonb, 1,
+       'Acceptation = complicité de réticence (art. 6 LCA) + violation art. 45 LSA + potentielle infraction pénale. Le devoir de loyauté impose de refuser fermement et d''informer le client des risques.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-019', 'generales', t.id, 'multiple',
+       NULL, 'Quelle est la différence entre le contrat de courtage (art. 412 CO) et le contrat de mandat (art. 394 CO) ?', '[{"text":"Le courtage vise l''indication ou la négociation d''un contrat (art. 412 CO)","correct":true},{"text":"Le mandat est l''exécution de services pour autrui (art. 394 CO)","correct":true},{"text":"Le courtier d''assurance combine souvent les deux régimes","correct":true},{"text":"Aucune, ce sont des synonymes","correct":false,"why_wrong":"Régimes juridiques distincts au CO."},{"text":"Le mandat est toujours gratuit","correct":false,"why_wrong":"Le mandat peut être rémunéré (art. 394 al. 3 CO)."}]'::jsonb, 2,
+       'Art. 412 CO : le courtier obtient rémunération pour avoir indiqué ou négocié un contrat. Art. 394 CO : le mandataire exécute des affaires pour le compte d''autrui. Le courtier d''assurance combine souvent les deux (courtage pour la conclusion + mandat pour la gestion).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-020', 'generales', t.id, 'multiple',
+       'Un intermédiaire non lié récidive dans la non-remise de la FIC. La FINMA ouvre une procédure.', 'Quelles sanctions peut prononcer la FINMA en cas de violation grave de l''art. 45 LSA par un intermédiaire non lié inscrit ?', '[{"text":"Décision en constatation d''illicéité","correct":true},{"text":"Interdiction d''exercer","correct":true},{"text":"Retrait de l''inscription au registre","correct":true},{"text":"Confiscation du gain illicite","correct":true},{"text":"Emprisonnement immédiat","correct":false,"why_wrong":"Une privation de liberté relève du juge pénal, pas de la FINMA."},{"text":"Publication de la décision (naming and shaming)","correct":true}]'::jsonb, 3,
+       'LFINMA (art. 30 ss) : la FINMA dispose d''un arsenal administratif (décisions, interdictions, retrait d''inscription, confiscation, publication). La peine privative de liberté relève du juge pénal.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-021', 'generales', t.id, 'single',
+       NULL, 'La LSA s''applique :', '[{"text":"Aux caisses AVS","correct":false,"why_wrong":"Régies par la LAVS et surveillance OFAS."},{"text":"Aux entreprises d''assurance privées et aux intermédiaires d''assurance","correct":true},{"text":"Aux banques","correct":false,"why_wrong":"LB."},{"text":"Aux caisses de compensation cantonales","correct":false,"why_wrong":"Les caisses de compensation relèvent de la LAVS et de la surveillance OFAS."}]'::jsonb, 1,
+       'Art. 1 LSA : la loi régit la surveillance des entreprises d''assurance privées et des intermédiaires. Assurances sociales : lois spécifiques (LAMal, LAVS, LAI, LPP, LAA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-022', 'generales', t.id, 'multiple',
+       'Madame Roulin a signé une proposition d''assurance ménage il y a 10 jours. Elle vous appelle car elle veut annuler après avoir trouvé mieux ailleurs.', 'Que pouvez-vous lui répondre ?', '[{"text":"Elle dispose d''un délai de 14 jours dès la connaissance de la conclusion (art. 2a LCA)","correct":true},{"text":"La révocation doit être faite par écrit","correct":true},{"text":"Trop tard, seul un cas de résiliation extraordinaire permet de sortir","correct":false,"why_wrong":"Le délai de révocation art. 2a LCA (14 jours) n''est pas écoulé."},{"text":"Seulement 7 jours, donc trop tard","correct":false,"why_wrong":"Le délai légal est de 14 jours, pas 7."},{"text":"Elle doit payer la première prime avant de pouvoir résilier","correct":false,"why_wrong":"Aucune condition de paiement préalable."}]'::jsonb, 2,
+       'Art. 2a LCA : révocation possible par écrit dans les 14 jours. Ici, 10 jours écoulés : le droit est intact. La révocation efface les effets du contrat rétroactivement.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-023', 'generales', t.id, 'single',
+       NULL, 'Selon l''art. 12 LCA, quand le contrat d''assurance est-il conclu ?', '[{"text":"Dès la signature de la proposition par le preneur","correct":false,"why_wrong":"La proposition n''est qu''une offre."},{"text":"Dès l''acceptation par l''assureur (accord des volontés)","correct":true},{"text":"Dès le paiement de la première prime","correct":false,"why_wrong":"Le paiement n''est pas condition de conclusion."},{"text":"Dès la délivrance de la police signée par les deux parties","correct":false,"why_wrong":"La police atteste du contrat, elle n''est pas condition de formation."}]'::jsonb, 1,
+       'Le contrat est conclu par la rencontre de l''offre (proposition) et de l''acceptation (par l''assureur). La police atteste du contrat ; elle n''est pas condition de formation.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-024', 'generales', t.id, 'multiple',
+       'Un client omet volontairement de mentionner un traitement contre une hypertension sévère dans la proposition de complémentaire. L''assureur accepte, puis découvre le fait 6 mois plus tard.', 'Quels sont les droits de l''assureur ?', '[{"text":"Résilier le contrat dans les 4 semaines dès la connaissance","correct":true},{"text":"Refuser la prestation pour les sinistres liés au fait tu","correct":true},{"text":"Rien, la réticence n''est jamais opposable si l''assureur a accepté","correct":false,"why_wrong":"L''acceptation ne fait pas obstacle à l''art. 6 LCA."},{"text":"Poursuivre uniquement au pénal","correct":false,"why_wrong":"La voie civile de l''art. 6 LCA est ouverte prioritairement."},{"text":"Retenir 10 % des primes futures","correct":false,"why_wrong":"Aucune sanction de ce type prévue par la LCA."}]'::jsonb, 2,
+       'Art. 6 LCA : réticence sanctionnée par la résiliation (4 semaines dès connaissance) et libération de la prestation pour les sinistres liés au fait tu. Point classique VBV.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-025', 'generales', t.id, 'multiple',
+       'Un assureur veut utiliser des données de santé pour proposer un nouveau produit préventif à ses assurés.', 'Sous la nLPD, quels traitements de données de santé par un assureur sont admissibles ?', '[{"text":"Traitement nécessaire à l''exécution du contrat (souscription, gestion du sinistre)","correct":true},{"text":"Traitement fondé sur le consentement exprès du client","correct":true},{"text":"Traitement fondé sur une obligation légale (LBA, LAMal)","correct":true},{"text":"Transmission à un partenaire commercial à des fins publicitaires sans consentement","correct":false,"why_wrong":"Interdit : donnée sensible, base légale exigée."},{"text":"Publication sur les réseaux sociaux à titre pédagogique","correct":false,"why_wrong":"Manifestement contraire à la nLPD."}]'::jsonb, 3,
+       'Les données de santé sont sensibles (art. 5 nLPD). Traitement licite si base légale (contrat, loi) ou consentement libre, éclairé, exprès. Marketing = interdit sans consentement.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-026', 'generales', t.id, 'single',
+       'Vous concluez une assurance-vie à prime unique de 60''000 CHF pour un nouveau client. Il souhaite verser en espèces, refuse de justifier l''origine des fonds et paraît nerveux.', 'Quelle procédure s''impose ?', '[{"text":"Accepter les fonds, la vente prime","correct":false,"why_wrong":"Grave violation LBA."},{"text":"Identifier le cocontractant et l''ayant droit économique, clarifier l''arrière-plan, et en cas de soupçon fondé communiquer au MROS sans en informer le client","correct":true},{"text":"Refuser purement et simplement et rompre le contact","correct":false,"why_wrong":"L''obligation de communication au MROS demeure."},{"text":"Informer le client du soupçon et le laisser corriger sa position","correct":false,"why_wrong":"Interdiction d''informer (art. 10a LBA), sanction pénale."}]'::jsonb, 3,
+       'LBA : identification renforcée + clarification + communication MROS + blocage sans informer. Le tipping-off (art. 10a LBA) est pénalement sanctionné. Toujours documenter la procédure.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-027', 'generales', t.id, 'single',
+       NULL, 'La LPGA (loi fédérale sur la partie générale du droit des assurances sociales) s''applique :', '[{"text":"Aux assurances privées LCA","correct":false,"why_wrong":"LCA = régime privé."},{"text":"Aux assurances sociales fédérales (AVS, AI, LAA, LAMal, APG, etc.)","correct":true},{"text":"Aux banques","correct":false,"why_wrong":"Les banques relèvent de la LB, pas de la LPGA."},{"text":"Uniquement à la LPP","correct":false,"why_wrong":"La LPP est expressément exclue de la LPGA (art. 2 LPGA)."}]'::jsonb, 1,
+       'LPGA (art. 2) : socle commun applicable aux assurances sociales fédérales sauf LPP. Notions communes : prestations, prescription, litige, coordination des prestations.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-028', 'generales', t.id, 'single',
+       NULL, 'L''obligation de formation continue du conseiller (VBV / AFA) est :', '[{"text":"Facultative","correct":false,"why_wrong":"Elle est exigée par la LSA / OS."},{"text":"Imposée par l''art. 43 LSA et l''OS : formation initiale + continue documentée","correct":true},{"text":"Uniquement recommandée par l''ASA","correct":false,"why_wrong":"L''ASA gère les standards, mais l''obligation est légale."},{"text":"Fixée par le seul contrat de travail","correct":false,"why_wrong":"L''obligation est légale (LSA / OS), au-delà de tout contrat de travail."}]'::jsonb, 2,
+       'Art. 43-45 LSA + OS : formation initiale et continue obligatoires, documentées, permettant l''inscription et son maintien au registre FINMA (intermédiaires non liés).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-029', 'generales', t.id, 'single',
+       'Vous êtes courtier (intermédiaire non lié). Un assureur vous propose une commission majorée si vous placez ses produits chez vos clients, même quand un concurrent serait mieux adapté.', 'Quelle est la conduite conforme à la LSA / LSFin / éthique VBV ?', '[{"text":"Accepter en silence, la commission n''est pas soumise à information","correct":false,"why_wrong":"Contraire à l''art. 45 LSA (transparence rémunération) et à l''obligation de loyauté du mandataire (art. 398 CO)."},{"text":"Refuser l''incitation ou du moins l''informer intégralement au client, respecter l''obligation d''agir dans son meilleur intérêt (best advice), documenter la décision","correct":true},{"text":"Accepter mais reverser la commission au client sans autre information","correct":false,"why_wrong":"L''obligation de transparence subsiste."},{"text":"Se retirer du courtage sans autre formalité","correct":false,"why_wrong":"Ne résout pas la question du devoir de loyauté au client déjà mandant."}]'::jsonb, 3,
+       'Conflit d''intérêts : LSA art. 45 (transparence rémunération), LSFin (règles de conduite), CO art. 398 (loyauté du mandataire). Le courtier doit agir dans le meilleur intérêt du preneur, informer sur les rémunérations et documenter.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-DR-030', 'generales', t.id, 'multiple',
+       'Un client vous demande d''exercer ses droits nLPD sur les traitements que votre courtage a effectués sur ses données.', 'Quels droits la nLPD confère-t-elle à la personne concernée ?', '[{"text":"Droit d''accès à ses données (art. 25)","correct":true},{"text":"Droit à la rectification des données inexactes","correct":true},{"text":"Droit d''être informé de traitements automatisés produisant des effets juridiques (décision individuelle automatisée)","correct":true},{"text":"Droit à la remise/transfert des données (portabilité art. 28)","correct":true},{"text":"Droit d''exiger la publication publique de ses données","correct":false,"why_wrong":"Aucun droit à publication imposée."},{"text":"Droit d''imposer une amende personnelle au responsable","correct":false,"why_wrong":"Les sanctions relèvent du PFPDT / juge pénal."}]'::jsonb, 3,
+       'nLPD : droits d''accès, rectification, information sur les décisions automatisées, portabilité. Sanctions administratives / pénales prononcées par les autorités (PFPDT, juge pénal), pas par la personne concernée.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'droit'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-001', 'generales', t.id, 'single',
+       NULL, 'Quelles sont, dans l''ordre, les 4 phases officielles de l''entretien de conseil VBV ?', '[{"text":"Solution, analyse, introduction, conclusion","correct":false,"why_wrong":"Ordre incorrect."},{"text":"Introduction, analyse, solution, conclusion","correct":true},{"text":"Prospection, closing, up-selling, fidélisation","correct":false,"why_wrong":"Ce sont des étapes commerciales, pas les 4 phases officielles VBV."},{"text":"Contact, présentation, prix, signature","correct":false,"why_wrong":"Cette séquence commerciale ne correspond pas à la structure VBV."}]'::jsonb, 1,
+       'Les 4 phases VBV (profil de qualification art. 190 OS) : (1) Introduction, (2) Analyse des besoins, (3) Solution / recommandation, (4) Conclusion / suivi. Structure aussi celle de l''étude de cas à l''examen.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-002', 'generales', t.id, 'multiple',
+       NULL, 'L''objectif principal de la phase ''Analyse'' de l''entretien est :', '[{"text":"Identifier la situation, les besoins et les objectifs du client","correct":true},{"text":"Recenser les couvertures existantes et détecter les lacunes","correct":true},{"text":"Documenter la prise d''informations pour le dossier (art. 45 LSA)","correct":true},{"text":"Présenter immédiatement le produit le plus rentable","correct":false,"why_wrong":"La solution vient après l''analyse."},{"text":"Signer la proposition sans autre échange","correct":false,"why_wrong":"Impossible sans recommandation motivée."}]'::jsonb, 1,
+       'L''analyse cherche à comprendre la situation personnelle, familiale, financière et de couverture du client. Sans analyse : pas de recommandation adéquate, violation potentielle de l''art. 45 LSA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-003', 'generales', t.id, 'multiple',
+       'Vous auditez les canaux de prospection de votre équipe et devez signaler les pratiques non conformes.', 'Parmi les sources de prospection admises et éthiques :', '[{"text":"Recommandations de clients existants","correct":true},{"text":"Réseaux professionnels et de proximité","correct":true},{"text":"Événements et salons publics","correct":true},{"text":"Fichiers d''adresses acquis illégalement","correct":false,"why_wrong":"Contraire à la nLPD (base légale, finalité) et à la LCD."},{"text":"Bases publiques (registre du commerce, données ouvertes)","correct":true},{"text":"Écoute téléphonique non autorisée","correct":false,"why_wrong":"Infraction pénale (art. 179ter CP)."}]'::jsonb, 3,
+       'Prospection éthique : réseau, recommandations, événements, données publiques. Interdit : fichiers illicites, écoutes, spam sans opt-in (LCD art. 3 al. 1 let. o et u), traitement contraire à la nLPD.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-004', 'generales', t.id, 'single',
+       NULL, 'Une question ouverte se distingue d''une question fermée par :', '[{"text":"Le fait qu''elle appelle une réponse par oui / non","correct":false,"why_wrong":"Description d''une question fermée."},{"text":"Le fait qu''elle invite le client à développer, à raconter, à expliquer","correct":true},{"text":"Le fait qu''elle est toujours technique","correct":false,"why_wrong":"Une question ouverte peut être très simple, pas nécessairement technique."},{"text":"Le fait qu''elle est réservée aux experts","correct":false,"why_wrong":"Aucune restriction d''utilisation."}]'::jsonb, 1,
+       'Question ouverte (que, comment, pourquoi, dites-moi) : invite à développer, essentielle en phase d''analyse. Question fermée : oui/non, utile pour valider un point précis ou clôturer.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-005', 'generales', t.id, 'single',
+       'Un client dit : ''Votre offre est plus chère que celle de votre concurrent.''', 'Quelle réponse est la plus professionnelle et éthique ?', '[{"text":"Casser immédiatement le prix de 20 %","correct":false,"why_wrong":"Perte de crédibilité et marge, sans traiter le fond."},{"text":"Questionner ce qui est comparé (couverture, franchise, exclusions), reformuler le besoin, valoriser les différences objectives, puis décider","correct":true},{"text":"Dénigrer le concurrent","correct":false,"why_wrong":"Interdit par l''art. 3 al. 1 let. a LCD (dénigrement)."},{"text":"Ignorer l''objection et poursuivre","correct":false,"why_wrong":"Une objection ignorée revient au moment du closing."}]'::jsonb, 2,
+       'Traitement d''objection prix : décomposer, comparer sur base équivalente, valoriser les différences (franchise, exclusions, service). Le dénigrement du concurrent est prohibé par la LCD.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-006', 'generales', t.id, 'multiple',
+       NULL, 'La technique de closing dite ''alternative'' consiste à :', '[{"text":"Poser une question binaire présupposant la décision (franchise 500 ou 1''000)","correct":true},{"text":"Proposer deux options positives équivalentes en couverture","correct":true},{"text":"Menacer d''une hausse de prime","correct":false,"why_wrong":"Pression indue contraire à la déontologie et potentiellement LCD."},{"text":"Ne rien dire et attendre","correct":false,"why_wrong":"Le silence prolongé n''est pas une technique de closing structurée."},{"text":"Répéter systématiquement le prix","correct":false,"why_wrong":"Répéter le prix accentue l''objection."}]'::jsonb, 1,
+       'Closing alternatif : proposer deux options positives, la question posée n''étant plus ''si'' mais ''quel''. Reste éthique tant qu''aucune pression indue n''est exercée.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-007', 'generales', t.id, 'multiple',
+       'Votre direction commerciale vous demande d''argumenter le cross-selling comme levier de rentabilité éthique.', 'Le cross-selling (vente croisée) permet notamment :', '[{"text":"D''élargir le champ de couverture du client à ses besoins réels","correct":true},{"text":"D''améliorer la rentabilité et la fidélisation du portefeuille","correct":true},{"text":"D''augmenter les revenus par client sans nouvelle acquisition","correct":true},{"text":"De contourner l''obligation d''analyse des besoins","correct":false,"why_wrong":"L''obligation d''analyse (art. 45 LSA) demeure entière."},{"text":"De vendre systématiquement le produit le plus rentable pour l''assureur","correct":false,"why_wrong":"Contraire au best advice."}]'::jsonb, 3,
+       'Cross-selling : bénéfique s''il répond à un besoin analysé (ex. RC ménage + PJ + inventaire). Il ne dispense jamais de l''analyse de besoins et du best advice.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-008', 'generales', t.id, 'single',
+       NULL, 'Un courtier (intermédiaire non lié) reçoit ses instructions de :', '[{"text":"L''assureur exclusivement","correct":false,"why_wrong":"C''est l''intermédiaire lié."},{"text":"Le preneur d''assurance (mandant)","correct":true},{"text":"La FINMA","correct":false,"why_wrong":"La FINMA ne donne pas d''instructions individuelles au courtier."},{"text":"L''Ombudsman","correct":false,"why_wrong":"L''Ombudsman ne donne aucune instruction au courtier."}]'::jsonb, 1,
+       'Le courtier agit sur mandat du preneur (art. 40 al. 2 LSA + art. 394 CO). Sa loyauté première va au client. L''agent lié, lui, représente l''assureur qui le mandate.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-009', 'generales', t.id, 'single',
+       'Vous téléphonez à un prospect particulier pour proposer un rendez-vous. Il refuse et raccroche.', 'Quelle est la conduite conforme LCD / éthique ?', '[{"text":"Le rappeler chaque jour jusqu''à obtenir un oui","correct":false,"why_wrong":"Harcèlement, contraire à la LCD (art. 3 al. 1 let. u)."},{"text":"Respecter le refus, noter et cesser toute sollicitation","correct":true},{"text":"Le rappeler d''un autre numéro pour tromper l''affichage","correct":false,"why_wrong":"Manœuvre trompeuse contraire à la LCD art. 3."},{"text":"Passer par un proche pour contourner","correct":false,"why_wrong":"Détournement caractéristique, contraire à la LCD et à la bonne foi."}]'::jsonb, 2,
+       'Un refus doit être respecté. La LCD (art. 3 al. 1 let. u) interdit les sollicitations non désirées et les manœuvres trompeuses. Documenter l''opt-out et arrêter.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-010', 'generales', t.id, 'multiple',
+       NULL, 'En début d''entretien, le ''brise-glace'' sert principalement à :', '[{"text":"Établir un climat de confiance","correct":true},{"text":"Détendre l''atmosphère et faciliter la parole du client","correct":true},{"text":"Faire signer une pré-proposition","correct":false,"why_wrong":"Signer sans analyse est une faute professionnelle."},{"text":"Contourner l''analyse des besoins","correct":false,"why_wrong":"Le brise-glace ne dispense d''aucune obligation."},{"text":"Fixer la commission","correct":false,"why_wrong":"Aucun lien entre brise-glace et rémunération."}]'::jsonb, 1,
+       'Le brise-glace (small talk professionnel) permet la mise en confiance, condition d''un entretien productif. Il ne remplace jamais l''analyse ni la remise de la fiche d''information client (art. 45 LSA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-011', 'generales', t.id, 'multiple',
+       NULL, 'Parmi ces éléments, lesquels constituent des signaux d''achat du client ?', '[{"text":"Il demande des précisions sur les modalités de paiement","correct":true},{"text":"Il commence à se projeter (utilisation du ''quand j''aurai le contrat...'')","correct":true},{"text":"Il pose des questions détaillées sur le fonctionnement en cas de sinistre","correct":true},{"text":"Il regarde ostensiblement sa montre pour couper court","correct":false,"why_wrong":"Signal négatif : demande d''écourter."},{"text":"Il croise les bras et se tait","correct":false,"why_wrong":"Signal plutôt défensif."}]'::jsonb, 2,
+       'Signaux d''achat : questions concrètes de mise en œuvre, projection dans l''avenir avec le produit, prise de notes, comparaison de scénarios. Utile pour amorcer le closing.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-012', 'generales', t.id, 'single',
+       NULL, 'La méthode SPIN (Situation, Problème, Implication, Need-payoff / bénéfice) est particulièrement utile :', '[{"text":"En phase de closing","correct":false,"why_wrong":"C''est un outil de découverte, pas de closing."},{"text":"En phase d''analyse des besoins pour faire prendre conscience du problème et du bénéfice de la solution","correct":true},{"text":"En phase de suivi","correct":false,"why_wrong":"La méthode SPIN structure la découverte, pas le suivi."},{"text":"Elle est interdite en Suisse","correct":false,"why_wrong":"Aucune interdiction : c''est une méthode commerciale reconnue."}]'::jsonb, 2,
+       'SPIN (Rackham) est une méthode de questionnement structuré en phase 2 (analyse) : elle transforme un besoin latent en besoin explicite, condition d''une recommandation acceptée.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-013', 'generales', t.id, 'multiple',
+       NULL, 'L''empathie en entretien de conseil consiste à :', '[{"text":"Reformuler et reconnaître le point de vue du client","correct":true},{"text":"Valider verbalement l''émotion du client sans nécessairement l''approuver","correct":true},{"text":"Toujours donner raison au client","correct":false,"why_wrong":"Confusion avec la complaisance, non professionnelle."},{"text":"Éviter tout contact visuel","correct":false,"why_wrong":"Contraire à la posture d''écoute active."},{"text":"Parler plus vite pour convaincre","correct":false,"why_wrong":"L''empathie ne dépend pas du débit de parole."}]'::jsonb, 1,
+       'Empathie professionnelle : comprendre le vécu et les émotions du client, les valider verbalement (reformulation), sans renoncer à son propre rôle de conseil (best advice).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-014', 'generales', t.id, 'multiple',
+       'Vous formez un jeune conseiller qui panique devant les objections et souhaite un protocole clair.', 'Face à une objection, quelles étapes structurées permettent un traitement professionnel ?', '[{"text":"Écouter jusqu''au bout sans interrompre","correct":true},{"text":"Reformuler pour vérifier la bonne compréhension","correct":true},{"text":"Isoler l''objection (est-ce le seul point ?)","correct":true},{"text":"Argumenter avec un fait ou un bénéfice, puis confirmer","correct":true},{"text":"Contredire immédiatement et hausser le ton","correct":false,"why_wrong":"Contre-productif et non professionnel."},{"text":"Ignorer l''objection en changeant de sujet","correct":false,"why_wrong":"Perte de confiance."}]'::jsonb, 3,
+       'Traitement d''objection : écouter, reformuler, isoler, argumenter, valider. Une objection non traitée revient au moment du closing.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-015', 'generales', t.id, 'multiple',
+       NULL, 'La reformulation permet notamment de :', '[{"text":"Vérifier la compréhension mutuelle","correct":true},{"text":"Montrer une écoute active au client","correct":true},{"text":"Sécuriser la suite de l''entretien avant de proposer une solution","correct":true},{"text":"Gagner du temps sans écouter","correct":false,"why_wrong":"La reformulation exige justement une écoute attentive."},{"text":"Éviter de répondre à l''objection","correct":false,"why_wrong":"Elle prépare la réponse, elle ne l''esquive pas."}]'::jsonb, 1,
+       'La reformulation est un pilier de l''écoute active : elle valide la bonne compréhension, montre au client qu''il est entendu et sécurise la suite de l''entretien.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-016', 'generales', t.id, 'single',
+       'Un client se referme, ne répond plus à vos questions, hoche la tête sans conviction.', 'Quelle réaction est la plus professionnelle ?', '[{"text":"Pousser la conclusion et signer","correct":false,"why_wrong":"Vente forcée, potentiellement contraire à l''éthique et au best advice."},{"text":"Marquer une pause, poser une question ouverte sur ce qui le préoccupe, laisser un silence pour l''inviter à s''exprimer","correct":true},{"text":"Baisser immédiatement le prix","correct":false,"why_wrong":"Baisser le prix ne traite pas la réserve non exprimée."},{"text":"Terminer l''entretien sans un mot","correct":false,"why_wrong":"Fermeture prématurée non professionnelle."}]'::jsonb, 2,
+       'Face au retrait, la réponse professionnelle est de rouvrir la parole (question ouverte + silence). Le silence est un outil puissant qui invite le client à verbaliser sa réserve.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-017', 'generales', t.id, 'multiple',
+       NULL, 'L''up-selling consiste à :', '[{"text":"Proposer une couverture d''un niveau supérieur (casco complète vs partielle)","correct":true},{"text":"Augmenter le capital assuré sur un même besoin identifié","correct":true},{"text":"Proposer un produit d''une autre branche","correct":false,"why_wrong":"C''est le cross-selling, pas l''up-selling."},{"text":"Baisser le prix pour convaincre","correct":false,"why_wrong":"Aucun lien avec l''up-selling."},{"text":"Résilier l''ancienne police du client","correct":false,"why_wrong":"Aucun lien avec la notion d''up-selling."}]'::jsonb, 1,
+       'Up-selling = monter en gamme sur le même besoin (casco partielle → complète, LCA basique → premium). Cross-selling = étendre à d''autres besoins (ménage + PJ).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-018', 'generales', t.id, 'multiple',
+       'Vous préparez la trame d''un premier rendez-vous type conforme LSA/LCA pour toute votre équipe.', 'Les devoirs pré-contractuels du conseiller comprennent :', '[{"text":"Remettre la fiche d''information client (art. 45 LSA)","correct":true},{"text":"Informer sur la couverture, les exclusions, les primes (art. 3 LCA)","correct":true},{"text":"Documenter l''analyse des besoins et le conseil donné","correct":true},{"text":"Cacher les commissions perçues","correct":false,"why_wrong":"Contraire à l''art. 45 LSA (transparence)."},{"text":"Faire signer avant même l''analyse","correct":false,"why_wrong":"Contraire au processus VBV et au best advice."}]'::jsonb, 3,
+       'Pré-contractuel : information (LCA 3), FIC (LSA 45), documentation de l''analyse des besoins et du conseil. Base juridique de la traçabilité et de la protection de l''assuré.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-019', 'generales', t.id, 'single',
+       'Vous démarchez un prospect via LinkedIn et souhaitez lui envoyer une offre personnalisée par email.', 'Quelle règle nLPD / LCD s''applique ?', '[{"text":"Tout est permis, LinkedIn étant public","correct":false,"why_wrong":"La publicité de la source ne dispense pas des règles nLPD et LCD."},{"text":"Vous devez respecter la finalité de la collecte, informer sur le traitement (nLPD art. 19-21) et obtenir l''accord préalable pour les envois publicitaires (LCD art. 3 al. 1 let. o)","correct":true},{"text":"Vous pouvez envoyer l''offre par email sans jamais indiquer votre identité","correct":false,"why_wrong":"Contraire à l''obligation d''identifier l''expéditeur (LCD / nLPD)."},{"text":"Il suffit d''ajouter ''confidentiel'' à l''email","correct":false,"why_wrong":"La mention ne dispense d''aucune obligation légale."}]'::jsonb, 2,
+       'nLPD : information sur la collecte et la finalité. LCD art. 3 al. 1 let. o : envois publicitaires massifs sans opt-in prohibés. La prospection professionnelle ''B2B'' reste encadrée.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-020', 'generales', t.id, 'single',
+       NULL, 'La fiche d''information client (art. 45 LSA) doit être remise :', '[{"text":"Après la signature du contrat","correct":false,"why_wrong":"Trop tard : la fonction est de pré-informer."},{"text":"Lors du premier contact / avant la conclusion du contrat","correct":true},{"text":"Uniquement sur demande du client","correct":false,"why_wrong":"La remise est proactive et obligatoire, pas conditionnelle."},{"text":"Une fois par an","correct":false,"why_wrong":"Aucun rythme annuel : la remise se fait dès le premier contact."}]'::jsonb, 1,
+       'Art. 45 LSA + OS : remise au premier contact ou en tout cas avant la conclusion, sur support durable. Sanction FINMA en cas d''omission.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-021', 'generales', t.id, 'single',
+       'Madame Berger, 42 ans, indépendante, mariée avec 2 enfants, vient d''ouvrir son cabinet. Elle vous demande de tout revoir : prévoyance, RC pro, ménage, PJ. Vous avez 1 heure.', 'Quelle démarche VBV structurée devez-vous suivre ?', '[{"text":"Signer immédiatement une offre ''toutes couvertures'' pour rentabiliser l''entretien","correct":false,"why_wrong":"Aucune analyse, best advice violé."},{"text":"Suivre les 4 phases : introduction (FIC + cadre), analyse (situation, besoins, couvertures existantes, lacunes), solution (proposer une hiérarchisation avec chiffres), conclusion (proposition, calendrier, prochaine étape), en documentant chaque étape","correct":true},{"text":"Aborder uniquement la prévoyance et laisser tomber le reste","correct":false,"why_wrong":"Ne répond pas à la demande."},{"text":"Renvoyer la cliente vers un autre conseiller","correct":false,"why_wrong":"Renvoi non justifié dans le contexte."}]'::jsonb, 3,
+       'Cas complexe multi-produits : la structure des 4 phases VBV s''applique intégralement, avec priorisation (risque de perte de revenu > protection famille > protection biens) et documentation (art. 45 LSA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-022', 'generales', t.id, 'multiple',
+       NULL, 'Quelles obligations distinguent, dans la pratique, un agent lié d''un courtier vis-à-vis du client ?', '[{"text":"L''agent lié doit informer sur les assureurs qu''il représente","correct":true},{"text":"Le courtier agit sur mandat du preneur (loyauté première au client)","correct":true},{"text":"Le courtier doit être inscrit au registre FINMA (art. 41 LSA)","correct":true},{"text":"Les deux sont soumis à l''art. 45 LSA (informations à fournir)","correct":true},{"text":"Seul l''agent lié doit suivre une formation initiale","correct":false,"why_wrong":"Formation obligatoire pour les deux (art. 43 LSA)."},{"text":"Le courtier peut cacher ses commissions","correct":false,"why_wrong":"Transparence exigée."}]'::jsonb, 2,
+       'Les deux catégories relèvent de l''art. 45 LSA. Différence structurelle : rattachement à un assureur (lié) vs mandat du preneur et inscription obligatoire au registre FINMA (non lié).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-023', 'generales', t.id, 'multiple',
+       NULL, 'Le ''handoff'' (passage de relais entre commercial et gestionnaire) sert à :', '[{"text":"Éviter que le client soit livré à lui-même après la signature","correct":true},{"text":"Sécuriser l''expérience de gestion sinistre","correct":true},{"text":"Réduire les annulations post-vente","correct":true},{"text":"Se débarrasser du client","correct":false,"why_wrong":"Contraire à l''objectif de fidélisation."},{"text":"Éviter les questions du client","correct":false,"why_wrong":"Contraire au devoir d''information continue."},{"text":"Réduire les prestations d''assurance","correct":false,"why_wrong":"Aucun lien avec le handoff."}]'::jsonb, 1,
+       'Le handoff sécurise la satisfaction et la fidélisation : présentation nominale du gestionnaire, transfert du dossier, cadrage des prochaines étapes. Réduit le taux d''annulation post-vente.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-024', 'generales', t.id, 'single',
+       'Un client très satisfait vous dit qu''il vous recommandera à son frère.', 'Que faites-vous concrètement ?', '[{"text":"Le remercier vaguement et attendre","correct":false,"why_wrong":"Passivité : opportunité de recommandation perdue."},{"text":"Le remercier, demander explicitement l''autorisation d''être présenté, fixer un canal (email / appel), et remercier après l''échange effectif","correct":true},{"text":"Appeler directement son frère avec les coordonnées trouvées en ligne","correct":false,"why_wrong":"Traitement nLPD sans base et démarchage LCD douteux."},{"text":"Envoyer un cadeau au client sans plus formaliser","correct":false,"why_wrong":"Cadeaux à surveiller (LCD, LBA), sans traiter la recommandation."}]'::jsonb, 2,
+       'Recommandation active : capitaliser sur l''ouverture, formaliser l''autorisation (nLPD), s''assurer d''un canal, boucler avec un remerciement. Le NPS se construit à ces moments.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-025', 'generales', t.id, 'multiple',
+       NULL, 'Quel délai typique de suivi post-vente est reconnu comme bonne pratique ?', '[{"text":"Un contact dans les 30 à 90 jours après la conclusion","correct":true},{"text":"Un point annuel systématique","correct":true},{"text":"Un contact déclenché à chaque événement de vie majeur (mariage, enfant, achat immobilier)","correct":true},{"text":"Aucun suivi n''est nécessaire","correct":false,"why_wrong":"Contraire au devoir d''information continue (art. 3 LCA)."},{"text":"Tous les 5 ans seulement","correct":false,"why_wrong":"Cadence trop faible pour un conseil de qualité."},{"text":"Uniquement en cas de sinistre","correct":false,"why_wrong":"Insuffisant : l''analyse des besoins évolue avec la vie du client."}]'::jsonb, 1,
+       'Bonne pratique : contact rapproché post-vente (30-90 jours) pour vérifier la mise en place, puis revue annuelle. Ancrage aussi dans le devoir d''information continu (art. 3 LCA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-026', 'generales', t.id, 'single',
+       'Vous êtes en négociation avec un chef d''entreprise pour un package : LAA-C, IJM collective, LPP surobligatoire, RC professionnelle. Il exige 15 % de rabais sur toutes les primes.', 'Comment structurer une réponse professionnelle ?', '[{"text":"Refuser en bloc et clôturer","correct":false,"why_wrong":"Ferme la relation sans exploration de solutions équilibrées."},{"text":"Accepter tout, quitte à sacrifier la marge","correct":false,"why_wrong":"Risque de mauvaise recommandation et de perte de crédibilité."},{"text":"Ré-analyser les besoins réels, ajuster les couvertures (franchises, exclusions, capitaux), objectiver ce qui peut baisser sans dégrader la protection critique, et documenter le résultat","correct":true},{"text":"Diminuer la couverture LAA-C obligatoire en dessous du minimum légal","correct":false,"why_wrong":"Illégal."}]'::jsonb, 3,
+       'Négociation multi-lignes : n''est pas ''discount global''. Rebâtir la structure (analyse), objectiver les leviers (franchise, capitaux, garanties optionnelles), documenter la décision, respecter les seuils légaux (LAA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-027', 'generales', t.id, 'multiple',
+       'Votre responsable qualité inspecte les techniques de closing pour identifier les pratiques à risque LCD/LSA.', 'Parmi les techniques de closing suivantes, lesquelles sont considérées comme éthiques et compatibles avec le devoir de conseil ?', '[{"text":"Closing par récapitulatif des bénéfices convenus","correct":true},{"text":"Closing alternatif (deux options positives)","correct":true},{"text":"Closing par question directe une fois les objections traitées","correct":true},{"text":"Closing par mensonge sur la disponibilité limitée du produit","correct":false,"why_wrong":"Manœuvre trompeuse LCD."},{"text":"Closing par pression émotionnelle sur la santé d''un proche","correct":false,"why_wrong":"Non professionnel et potentiellement abusif."}]'::jsonb, 3,
+       'Closing éthique : récapitulatif, alternatif, direct. Interdits : mensonges (LCD), pression indue, urgence artificielle. La conclusion doit être un choix éclairé.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-028', 'generales', t.id, 'multiple',
+       NULL, 'L''écoute active implique notamment :', '[{"text":"Contact visuel et posture ouverte","correct":true},{"text":"Reformulation et prise de notes","correct":true},{"text":"Questions de clarification et silences respectés","correct":true},{"text":"Interrompre pour montrer sa compétence","correct":false,"why_wrong":"Contraire à l''écoute active."},{"text":"Répondre au téléphone pendant que le client parle","correct":false,"why_wrong":"Comportement disqualifiant en entretien."}]'::jsonb, 1,
+       'Écoute active : contact visuel, posture ouverte, reformulation, prise de notes, questions de clarification. Base d''un entretien de qualité et d''une bonne analyse.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-029', 'generales', t.id, 'single',
+       NULL, 'L''analyse des besoins peut s''appuyer sur la pyramide de Maslow pour :', '[{"text":"Rappeler au client qu''il est irrationnel","correct":false,"why_wrong":"Attaque personnelle contre-productive."},{"text":"Hiérarchiser les besoins : sécurité de base (LAA, LAMal), stabilité (LPP, IJM), projets (3a, ménage, PJ), accomplissement (épargne, prévoyance libre)","correct":true},{"text":"Vendre systématiquement le produit le plus cher","correct":false,"why_wrong":"Contraire au best advice."},{"text":"Négliger la partie ''protection'' au profit du ''plaisir''","correct":false,"why_wrong":"Inverse la logique de Maslow appliquée à l''assurance."}]'::jsonb, 2,
+       'Maslow appliqué : partir de la protection vitale (sécurité) puis remonter (projets, patrimoine). Aide à structurer l''entretien et à hiérarchiser les priorités.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-AC-030', 'generales', t.id, 'multiple',
+       NULL, 'La fidélisation d''un portefeuille repose principalement sur :', '[{"text":"La qualité du suivi et la disponibilité en cas de sinistre","correct":true},{"text":"La revue régulière des besoins","correct":true},{"text":"La transparence sur les rémunérations et les décisions","correct":true},{"text":"Le prix le plus bas systématiquement","correct":false,"why_wrong":"Un prix bas seul ne fidélise pas si la qualité fait défaut."},{"text":"Les cadeaux de fin d''année exclusivement","correct":false,"why_wrong":"Insuffisant : ne remplace pas la relation de conseil."},{"text":"Le silence après la vente","correct":false,"why_wrong":"Absence de suivi = risque d''attrition majeure."}]'::jsonb, 1,
+       'Fidélisation = confiance x accessibilité x pertinence. Le suivi de sinistre est un moment clé de vérité. Une revue annuelle est également un puissant levier de rétention et de cross-selling utile.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'acquisition'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-001', 'generales', t.id, 'multiple',
+       NULL, 'L''Ombudsman de l''assurance privée et de la SUVA joue le rôle de :', '[{"text":"Médiateur neutre entre l''assuré et l''assureur","correct":true},{"text":"Service gratuit pour l''assuré","correct":true},{"text":"Recommandation non contraignante à l''égard de l''assureur","correct":true},{"text":"Tribunal privé qui rend des décisions exécutoires","correct":false,"why_wrong":"Ni tribunal ni décision exécutoire."},{"text":"Autorité de police","correct":false,"why_wrong":"L''Ombudsman n''a aucun pouvoir de police."},{"text":"Chambre de commerce","correct":false,"why_wrong":"Aucun lien avec les chambres de commerce."}]'::jsonb, 1,
+       'L''Ombudsman est un médiateur neutre et indépendant. Service gratuit pour l''assuré, ses prises de position ne sont pas contraignantes. Voie civile toujours ouverte (art. 46b LCA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-002', 'generales', t.id, 'single',
+       NULL, 'Selon l''art. 46 al. 1 LCA (révision 2022), les créances découlant du contrat d''assurance se prescrivent par :', '[{"text":"2 ans dès la connaissance du fait","correct":false,"why_wrong":"Ancien délai."},{"text":"5 ans dès la survenance du fait sur lequel elles reposent","correct":true},{"text":"10 ans dès la conclusion du contrat","correct":false},{"text":"1 an dès le refus de l''assureur","correct":false}]'::jsonb, 1,
+       'Art. 46 al. 1 LCA (dès 2022) : prescription de 5 ans dès la survenance du fait générateur (avant : 2 ans). Nouvelle règle facile à confondre à l''examen.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-003', 'generales', t.id, 'single',
+       NULL, 'Le for compétent pour une action civile fondée sur un contrat d''assurance (art. 46b LCA) est :', '[{"text":"Uniquement le siège de l''assureur","correct":false,"why_wrong":"L''art. 46b LCA offre une alternative au preneur, au for de son domicile."},{"text":"Au choix du preneur : son domicile suisse ou le siège / la succursale suisse de l''assureur","correct":true},{"text":"Uniquement à Zurich (siège FINMA)","correct":false,"why_wrong":"La FINMA n''a aucun rôle judiciaire pour les litiges individuels."},{"text":"Le domicile du témoin","correct":false,"why_wrong":"Aucun for lié au témoin."}]'::jsonb, 1,
+       'Art. 46b LCA : le preneur peut agir soit à son domicile suisse, soit au siège / succursale suisse de l''assureur. Disposition protectrice de l''assuré, impérative.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-004', 'generales', t.id, 'multiple',
+       NULL, 'Quelles étapes standard structurent le traitement d''un sinistre par un assureur ?', '[{"text":"Réception et enregistrement de l''annonce","correct":true},{"text":"Vérification de la couverture (contrat, exclusions, délais)","correct":true},{"text":"Évaluation du dommage (expertise si nécessaire)","correct":true},{"text":"Décision (acceptation / refus / offre transactionnelle)","correct":true},{"text":"Paiement ou décision motivée","correct":true},{"text":"Suppression automatique du contrat sans notification","correct":false,"why_wrong":"Aucune règle n''impose la suppression sans notification."}]'::jsonb, 2,
+       'Cycle sinistre : annonce, ouverture, vérification, évaluation, décision, règlement. Chaque étape doit être documentée. Refus : motivé et notifié au preneur, avec voies de recours (Ombudsman, action civile).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-005', 'generales', t.id, 'single',
+       NULL, 'Le principe indemnitaire (art. 96 LCA) signifie que :', '[{"text":"L''indemnité peut dépasser le dommage subi","correct":false,"why_wrong":"Contraire au principe."},{"text":"L''indemnité est plafonnée au dommage effectivement subi","correct":true},{"text":"L''assureur peut refuser toute indemnité","correct":false,"why_wrong":"Contraire au principe indemnitaire qui prévoit une indemnisation à hauteur du dommage."},{"text":"Le sinistre doit être supérieur à 10''000 CHF","correct":false,"why_wrong":"Aucun seuil légal de ce type."}]'::jsonb, 1,
+       'Principe fondamental des assurances de dommages : pas d''enrichissement. Justifie l''interdiction du cumul, la subrogation (art. 95c LCA) et l''exigence d''un intérêt assurable (art. 48 LCA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-006', 'generales', t.id, 'single',
+       NULL, 'La subrogation légale de l''assureur (art. 95c LCA, ex-art. 72 LCA ancien) implique que :', '[{"text":"L''assureur, ayant indemnisé son assuré, se substitue à ce dernier dans ses droits contre le tiers responsable jusqu''à concurrence de l''indemnité versée","correct":true},{"text":"L''assureur reverse à l''assuré ses propres réserves techniques","correct":false,"why_wrong":"Aucun lien avec la subrogation."},{"text":"Le tiers responsable peut refuser toute action","correct":false,"why_wrong":"Le responsable reste débiteur, y compris envers l''assureur subrogé."},{"text":"L''assuré perd tous ses droits contre le tiers","correct":false,"why_wrong":"Il ne les perd que dans la mesure indemnisée."}]'::jsonb, 2,
+       'Subrogation (art. 95c LCA, révision 2022 ; anciennement art. 72 LCA) : mécanisme central des assurances de dommages. Empêche l''enrichissement et permet à l''assureur de récupérer auprès du responsable.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-007', 'generales', t.id, 'multiple',
+       NULL, 'L''obligation d''aviser sans retard l''assureur du sinistre (art. 38 LCA) incombe :', '[{"text":"Au preneur d''assurance dès qu''il en a connaissance","correct":true},{"text":"À l''ayant droit à la prestation (bénéficiaire)","correct":true},{"text":"Uniquement à l''assureur","correct":false,"why_wrong":"L''assureur est destinataire, pas débiteur de l''annonce."},{"text":"À l''expert désigné","correct":false,"why_wrong":"L''expert n''a pas d''obligation légale d''annonce."},{"text":"À la FINMA","correct":false,"why_wrong":"La FINMA n''est pas destinataire des annonces individuelles."}]'::jsonb, 1,
+       'Art. 38 LCA : obligation d''annonce sans retard. Une déclaration tardive peut, selon les conditions, entraîner une réduction de la prestation si l''assureur a subi un préjudice (art. 45 LCA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-008', 'generales', t.id, 'single',
+       'Un client reçoit un refus de prestation par courrier de son assureur pour un sinistre ménage.', 'Quelles voies de recours devez-vous lui indiquer ?', '[{"text":"Aucune voie de recours possible","correct":false,"why_wrong":"Toujours au moins la voie civile ouverte (art. 46b LCA)."},{"text":"Contestation motivée à l''assureur, saisine de l''Ombudsman (gratuit), puis action civile devant le juge compétent (art. 46b LCA) dans le délai de prescription (5 ans art. 46 LCA)","correct":true},{"text":"Plainte pénale immédiate","correct":false,"why_wrong":"Sans indice d''infraction, la voie pénale n''a pas sa place."},{"text":"Recours à l''ASA","correct":false,"why_wrong":"L''ASA ne tranche pas les litiges individuels."}]'::jsonb, 2,
+       'Chaîne classique : contestation interne, médiation Ombudsman, action civile. Respecter la prescription (5 ans art. 46 LCA) et le for (art. 46b LCA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-009', 'generales', t.id, 'multiple',
+       'Un client vous demande s''il doit renoncer à agir en justice après avoir saisi l''Ombudsman : rassurez-le et cadrez.', 'Quelles limites encadrent l''action de l''Ombudsman de l''assurance privée ?', '[{"text":"Ses prises de position ne sont pas contraignantes","correct":true},{"text":"Il n''a pas le pouvoir d''ordonner une expertise judiciaire","correct":true},{"text":"Il n''interrompt pas la prescription de plein droit sans démarche complémentaire","correct":true},{"text":"Il peut être saisi gratuitement par l''assuré","correct":true},{"text":"Il rend des jugements exécutoires immédiatement","correct":false,"why_wrong":"Confusion classique : ce n''est pas un juge."},{"text":"Il remplace le juge civil","correct":false,"why_wrong":"L''action civile reste ouverte (art. 46b LCA)."}]'::jsonb, 3,
+       'Ombudsman = médiation gratuite non contraignante. Attention à ne pas laisser courir la prescription (5 ans art. 46 LCA) pendant la médiation : conseiller le client sur des actes interruptifs si nécessaire (art. 135 CO).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-010', 'generales', t.id, 'single',
+       NULL, 'Une clause d''arbitrage figurant dans les CGA d''assurance :', '[{"text":"Est toujours valable, même sans consentement individuel","correct":false,"why_wrong":"Sans consentement clair, la clause est fragilisée."},{"text":"N''est valable que si le consentement du preneur est clair et si les règles impératives sur le for (art. 46b LCA) et le CPC sont respectées","correct":true},{"text":"Est expressément interdite en Suisse","correct":false,"why_wrong":"L''arbitrage reste admissible sous conditions."},{"text":"Nécessite l''accord préalable de la FINMA","correct":false,"why_wrong":"Aucune autorisation FINMA requise."}]'::jsonb, 1,
+       'Une clause d''arbitrage doit résulter d''un consentement clair du consommateur et respecter les règles impératives protectrices (for LCA 46b, CPC). Prudence dans le conseil : la voie ordinaire reste normalement offerte.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-011', 'generales', t.id, 'multiple',
+       'Suite à un accrochage, le lésé réclame directement à l''assureur RC véhicule du responsable.', 'Quel principe s''applique en RC circulation ?', '[{"text":"Le lésé dispose d''une action directe contre l''assureur RC véhicule du responsable (art. 65 LCR)","correct":true},{"text":"L''assureur peut opposer certaines exclusions valables au lésé, mais pas les moyens tirés du seul rapport interne au responsable","correct":true},{"text":"Le lésé ne peut agir que contre le responsable, jamais contre l''assureur","correct":false,"why_wrong":"Faux : l''action directe est expressément consacrée par l''art. 65 LCR."},{"text":"L''assureur peut refuser toute discussion tant qu''un jugement n''est pas rendu","correct":false,"why_wrong":"Refus contraire à l''obligation de traiter le sinistre."},{"text":"Le lésé doit d''abord attaquer la FINMA","correct":false,"why_wrong":"La FINMA n''est pas une instance de recours pour les litiges individuels."}]'::jsonb, 2,
+       'Art. 65 LCR : action directe du lésé contre l''assureur RC véhicule. Exception marquée au relatif du contrat, en raison du caractère obligatoire de la couverture.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-012', 'generales', t.id, 'single',
+       NULL, 'En cas de faute grave du preneur (art. 14 LCA), l''assureur peut :', '[{"text":"Refuser toute prestation systématiquement, quelle que soit la gravité","correct":false,"why_wrong":"Refus uniquement dans certaines conditions ; en général, réduction proportionnelle."},{"text":"Réduire la prestation dans une mesure correspondant au degré de la faute","correct":true},{"text":"Résilier le contrat sans autre formalité pour tous ses clients","correct":false,"why_wrong":"La sanction reste individuelle, jamais collective."},{"text":"Doubler la prime future","correct":false,"why_wrong":"Aucune règle légale d''un doublement automatique."}]'::jsonb, 1,
+       'Art. 14 LCA : sinistre par faute grave → réduction dans la mesure du degré de la faute. Faute intentionnelle : refus. Négligence légère : pas de réduction. Distinction cruciale à connaître.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-013', 'generales', t.id, 'multiple',
+       'Vous instruisez un dossier de RC : lister méthodiquement les conditions à démontrer pour engager la responsabilité.', 'L''action en responsabilité civile fondée sur l''art. 41 CO exige la démonstration :', '[{"text":"D''un acte illicite (violation d''une norme)","correct":true},{"text":"D''une faute (intention ou négligence)","correct":true},{"text":"D''un dommage patrimonial ou tort moral","correct":true},{"text":"D''un lien de causalité naturelle ET adéquate entre l''acte et le dommage","correct":true},{"text":"D''une décision pénale préalable","correct":false,"why_wrong":"Non exigée."},{"text":"D''un contrat entre auteur et lésé","correct":false,"why_wrong":"Le contrat n''est pas requis en RC délictuelle (autrement : art. 97 CO, responsabilité contractuelle)."}]'::jsonb, 3,
+       'Art. 41 CO : illicéité, faute (ou responsabilité causale légale), dommage, causalité. Grille structurante à maîtriser en RC (privée, véhicule, professionnelle).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-014', 'generales', t.id, 'multiple',
+       NULL, 'En cas d''aggravation essentielle du risque en cours de contrat imputable au preneur (art. 28 LCA), celui-ci doit :', '[{"text":"En informer l''assureur sans délai par écrit (art. 28 LCA)","correct":true},{"text":"Documenter la nature et l''ampleur de l''aggravation","correct":true},{"text":"Rien signaler, l''assureur s''en rendra compte","correct":false,"why_wrong":"Devoir d''information explicite."},{"text":"Résilier immédiatement le contrat","correct":false,"why_wrong":"La résiliation appartient à l''assureur dans ce contexte."},{"text":"Attendre la prochaine échéance","correct":false,"why_wrong":"L''obligation est immédiate."}]'::jsonb, 1,
+       'Art. 28 LCA (nouveau droit) : le preneur doit annoncer par écrit toute aggravation essentielle. À défaut : l''assureur peut résilier / réduire la prestation. Devoir de collaboration renforcé.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-015', 'generales', t.id, 'single',
+       NULL, 'Dans le nouveau droit LCA, en cas de diminution essentielle du risque, le preneur peut :', '[{"text":"Rien exiger : la prime reste identique","correct":false,"why_wrong":"Contraire à l''art. 30 LCA (symétrie avec l''aggravation)."},{"text":"Demander une réduction de la prime pour l''avenir (art. 30 LCA)","correct":true},{"text":"Obtenir le remboursement de toutes les primes passées","correct":false,"why_wrong":"Effet pour l''avenir, pas rétroactif."},{"text":"Résilier gratuitement pendant 5 ans","correct":false,"why_wrong":"Aucun droit de résiliation gratuit sur 5 ans."}]'::jsonb, 2,
+       'Art. 30 LCA : symétrie de l''aggravation, en cas de diminution essentielle et durable du risque, le preneur peut exiger une adaptation de la prime pour l''avenir.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-016', 'generales', t.id, 'single',
+       'Un sinistre ménage est couvert simultanément par la RC privée du responsable et par l''assurance ménage de la victime.', 'Comment se règle la coordination des prestations ?', '[{"text":"La victime peut cumuler les deux indemnisations","correct":false,"why_wrong":"Contraire au principe indemnitaire."},{"text":"L''assurance de choses de la victime paie et se subroge dans les droits contre le responsable (ou son assureur RC) selon art. 95c LCA","correct":true},{"text":"Le responsable ne doit rien tant que l''assureur de la victime n''a pas payé","correct":false,"why_wrong":"Le responsable reste débiteur, la subrogation intervient ensuite."},{"text":"L''Ombudsman tranche automatiquement","correct":false,"why_wrong":"L''Ombudsman n''a pas de compétence de trancher les recours subrogatoires."}]'::jsonb, 3,
+       'Interaction classique assurance de choses / RC : l''assureur de dommages avance la prestation à la victime puis se retourne contre le responsable via la subrogation (art. 95c LCA). Empêche la double indemnisation.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-017', 'generales', t.id, 'single',
+       NULL, 'La sur-indemnisation est interdite en assurance de dommages car :', '[{"text":"Elle contrevient au principe indemnitaire (art. 96 LCA)","correct":true},{"text":"Elle est parfaitement admise si le client cotise deux fois","correct":false,"why_wrong":"Interdiction stricte de l''enrichissement en assurance de dommages."},{"text":"Elle n''existe que dans les assurances-vie","correct":false,"why_wrong":"L''assurance-vie de sommes n''est pas soumise au principe indemnitaire."},{"text":"Elle est autorisée en cas d''invalidité","correct":false,"why_wrong":"Faux : dépend du type de couverture (indemnitaire ou forfaitaire)."}]'::jsonb, 1,
+       'Assurance de dommages : indemnitaire strict (art. 96 LCA). Assurance de sommes (vie) : cumul possible car pas indemnitaire. Distinction clé du programme VBV.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-018', 'generales', t.id, 'multiple',
+       'Un assuré souhaite comprendre le déroulé complet de la saisine Ombudsman avant de s''engager.', 'Quelles étapes suit typiquement une procédure devant l''Ombudsman de l''assurance privée ?', '[{"text":"L''assuré doit d''abord avoir présenté sa réclamation à l''assureur","correct":true},{"text":"Dépôt gratuit d''une demande écrite / en ligne à l''Ombudsman","correct":true},{"text":"Instruction contradictoire avec les parties","correct":true},{"text":"Prise de position (recommandation non contraignante)","correct":true},{"text":"Décision exécutoire immédiate avec titre exécutoire","correct":false,"why_wrong":"Confusion : l''Ombudsman n''est pas un juge."},{"text":"Recours obligatoire à la FINMA","correct":false,"why_wrong":"La FINMA n''est pas une instance de recours pour les litiges individuels."}]'::jsonb, 3,
+       'Procédure Ombudsman : réclamation préalable, saisine gratuite, instruction, prise de position. Sans force exécutoire ; l''action civile reste ouverte (art. 46b LCA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-019', 'generales', t.id, 'single',
+       'Un preneur oublie de payer sa prime. L''assureur lui adresse une sommation écrite avec fixation d''un délai de 14 jours.', 'Que se passe-t-il si le preneur ne paie pas dans le délai (art. 20 LCA) ?', '[{"text":"La couverture est suspendue dès l''expiration du délai jusqu''au paiement","correct":true},{"text":"Le contrat est immédiatement résilié sans autre procédure","correct":false,"why_wrong":"Suspension d''abord, puis résiliation possible."},{"text":"L''assureur perd tout droit à la prime","correct":false,"why_wrong":"L''assureur conserve sa créance de prime pour la période due."},{"text":"Le sinistre survenu pendant la suspension reste couvert","correct":false,"why_wrong":"PIÈGE fréquent : pendant la suspension, aucun sinistre n''est couvert."}]'::jsonb, 2,
+       'Art. 20 LCA : sommation + délai 14 jours. À défaut de paiement, suspension de la couverture. L''assureur peut ensuite résilier (art. 21 LCA) ou reprendre le contrat au paiement effectif.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-020', 'generales', t.id, 'multiple',
+       NULL, 'Selon l''art. 35a LCA (nouveau droit), après un premier renouvellement le preneur peut résilier :', '[{"text":"Après 3 ans de contrat, avec un préavis (art. 35a LCA)","correct":true},{"text":"En respectant la forme écrite prévue au contrat ou par la loi","correct":true},{"text":"À tout moment sans indemnité","correct":false,"why_wrong":"Faux : le droit de résiliation ordinaire est encadré."},{"text":"Uniquement en cas de sinistre","correct":false,"why_wrong":"C''est un cas de résiliation extraordinaire, distinct."},{"text":"Uniquement avec l''accord de la FINMA","correct":false,"why_wrong":"La FINMA n''intervient pas dans les résiliations individuelles."}]'::jsonb, 1,
+       'Art. 35a LCA (nouveau droit 2022) : le contrat de longue durée peut être résilié après 3 ans, moyennant le respect du préavis prévu. Renforce la position du preneur.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-021', 'generales', t.id, 'single',
+       'Un assuré tombe malade en voyage à l''étranger et doit être hospitalisé.', 'Quelle est la coordination LAMal / LCA voyage ?', '[{"text":"La LAMal couvre uniquement l''urgence, jusqu''au double du tarif suisse ; la LCA voyage peut compléter (frais réels, rapatriement, assistance)","correct":true},{"text":"La LAMal rembourse intégralement partout dans le monde","correct":false,"why_wrong":"Faux : le remboursement est plafonné."},{"text":"Le rapatriement médical est couvert par la LAMal","correct":false,"why_wrong":"Non : le rapatriement relève d''une LCA voyage / complémentaire."},{"text":"La FINMA prend en charge les frais","correct":false,"why_wrong":"La FINMA ne rembourse aucun frais individuel."}]'::jsonb, 2,
+       'Art. 36 OAMal : LAMal = urgence à l''étranger, plafonnée au double du tarif suisse. LCA voyage = complément indispensable (frais réels, rapatriement, assistance 24 h).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-022', 'generales', t.id, 'multiple',
+       'Un enquêteur suspecte une fraude au sinistre chez un client historique. Quelles actions structurer ?', 'En cas de déclaration frauduleuse du preneur lors d''un sinistre (art. 40 LCA), l''assureur peut :', '[{"text":"Refuser la prestation","correct":true},{"text":"Résilier le contrat","correct":true},{"text":"Demander la restitution des prestations déjà versées si elles reposent sur la fraude","correct":true},{"text":"Dénoncer les faits au ministère public si un délit est constitué (escroquerie art. 146 CP)","correct":true},{"text":"Doubler automatiquement la prime des autres assurés","correct":false,"why_wrong":"Aucun automatisme légal."},{"text":"Emprisonner l''assuré lui-même","correct":false,"why_wrong":"Compétence exclusive du juge pénal."}]'::jsonb, 3,
+       'Art. 40 LCA : la fraude au sinistre libère l''assureur de toute prestation en lien. Résiliation possible. Selon la gravité : plainte pénale pour escroquerie (art. 146 CP). Un des sujets sensibles VBV.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-023', 'generales', t.id, 'single',
+       'Un accident implique un cycliste (blessé), un piéton (blessé) et une voiture (endommagée) : le conducteur automobile est fautif à 100 %.', 'Comment se règlent les indemnisations ?', '[{"text":"Rien à indemniser, seul le conducteur est en cause","correct":false,"why_wrong":"L''assurance RC obligatoire du véhicule prend en charge les tiers lésés."},{"text":"L''assureur RC véhicule du conducteur indemnise les tiers lésés (piéton, cycliste, dommages matériels adverses) ; les blessures relèvent aussi de la LAA / LAMal des victimes, avec subrogation possible contre l''assureur RC (art. 72 LPGA)","correct":true},{"text":"Chacun paie ses propres dommages","correct":false,"why_wrong":"Faux : le principe de responsabilité et l''assurance RC obligatoire s''appliquent."},{"text":"L''État indemnise directement","correct":false,"why_wrong":"L''État n''indemnise pas directement ; il existe le BNG pour les cas résiduels."}]'::jsonb, 3,
+       'RC obligatoire véhicule : les tiers sont indemnisés par l''assureur RC (action directe art. 65 LCR). Les prestations LAA / LAMal des victimes ouvrent une subrogation légale (art. 72 LPGA) contre l''assureur RC : coordination des assurances sociales et privées.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-024', 'generales', t.id, 'single',
+       NULL, 'L''action de l''assuré pour obtenir la prestation d''assurance se prescrit selon l''art. 46 LCA (dès 2022) par :', '[{"text":"1 an","correct":false,"why_wrong":"Aucun délai LCA de 1 an pour la prescription."},{"text":"5 ans dès la survenance du fait","correct":true},{"text":"10 ans","correct":false,"why_wrong":"Délai du CO ordinaire (art. 127), la LCA est plus courte."},{"text":"6 mois","correct":false,"why_wrong":"Aucun délai LCA de 6 mois."}]'::jsonb, 1,
+       'Art. 46 al. 1 LCA (nouveau droit) : 5 ans dès la survenance du fait. Rappel : la médiation Ombudsman n''interrompt pas automatiquement la prescription (art. 135 CO), documenter les actes interruptifs si besoin.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-025', 'generales', t.id, 'multiple',
+       NULL, 'Quelle est la conséquence principale de l''art. 40 LCA (sinistre invoqué à tort par le preneur) ?', '[{"text":"L''assureur est libéré de sa prestation liée au sinistre invoqué à tort","correct":true},{"text":"L''assureur peut résilier le contrat","correct":true},{"text":"L''assureur doit payer intégralement","correct":false,"why_wrong":"Contraire au texte de l''art. 40 LCA."},{"text":"L''assureur doit rembourser toutes les primes précédentes","correct":false,"why_wrong":"Aucune règle de remboursement rétroactif."},{"text":"L''assureur perd tout droit à agir pénalement","correct":false,"why_wrong":"La voie pénale reste ouverte selon les infractions."}]'::jsonb, 2,
+       'Art. 40 LCA : la dissimulation ou déclaration inexacte destinée à obtenir une prestation indue libère l''assureur du lien contractuel. Il peut aussi résilier et refuser la prestation.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-026', 'generales', t.id, 'multiple',
+       'Un client hésite à souscrire une PJ et veut comprendre ce qui est réellement pris en charge.', 'Une assurance protection juridique privée couvre typiquement :', '[{"text":"Les honoraires d''avocat","correct":true},{"text":"Les frais judiciaires et de procédure","correct":true},{"text":"Les frais d''expertise nécessaires","correct":true},{"text":"Les amendes pénales","correct":false,"why_wrong":"Les amendes sont exclues (art. 92 al. 1 let. c CP a contrario, principe général)."},{"text":"Les dommages causés à un tiers par l''assuré","correct":false,"why_wrong":"Rôle de la RC, pas de la PJ."}]'::jsonb, 3,
+       'PJ = prise en charge des frais liés à la défense juridique. Ne couvre pas la RC (rôle de la RC privée) ni les amendes/peines pénales.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-027', 'generales', t.id, 'single',
+       NULL, 'Avant d''ouvrir une procédure civile ordinaire, une tentative de conciliation devant l''autorité de conciliation cantonale (art. 197 CPC) est :', '[{"text":"Facultative","correct":false,"why_wrong":"Elle est en principe obligatoire, avec quelques exceptions."},{"text":"En principe obligatoire, sauf exceptions prévues (art. 198 CPC)","correct":true},{"text":"Interdite en assurance","correct":false,"why_wrong":"Aucune interdiction : la conciliation civile reste applicable."},{"text":"Réservée aux causes de plus de 100''000 CHF","correct":false,"why_wrong":"Aucun seuil de ce type ; la conciliation est indépendante de la valeur litigieuse."}]'::jsonb, 1,
+       'Art. 197-198 CPC : conciliation obligatoire préalable dans la plupart des cas civils. Exceptions : procédures sommaires, mesures provisionnelles, certaines matières particulières.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-028', 'generales', t.id, 'single',
+       'Une assurance ménage indemnise un vol par effraction pour 20''000 CHF. La police est prise avec valeur à neuf, sans sous-assurance.', 'Comment appliquer le principe indemnitaire dans ce cas ?', '[{"text":"L''assureur verse la valeur à neuf convenue, jusqu''à concurrence du dommage effectif et de la somme d''assurance, sans permettre d''enrichissement","correct":true},{"text":"L''assureur peut verser le double de la valeur à neuf","correct":false,"why_wrong":"Contraire au principe indemnitaire."},{"text":"L''assureur ne verse rien si la somme d''assurance n''est pas atteinte","correct":false,"why_wrong":"Confusion avec la sous-assurance."},{"text":"La FINMA fixe le montant de l''indemnité","correct":false,"why_wrong":"La FINMA n''intervient pas dans le règlement de sinistres individuels."}]'::jsonb, 3,
+       'Valeur à neuf = remplacement à l''équivalent. Reste plafonné au dommage réel et à la somme d''assurance. Pas d''enrichissement : principe indemnitaire (art. 96 LCA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-029', 'generales', t.id, 'single',
+       NULL, 'Les frais d''avocat sont pris en charge par la PJ :', '[{"text":"Sans aucune limite ni cadre","correct":false,"why_wrong":"Toutes les PJ posent des plafonds et des conditions."},{"text":"Dans les limites contractuelles (montant maximal, choix de l''avocat selon règles LCA / LSA, cas assurés)","correct":true},{"text":"Uniquement en cas de succès judiciaire","correct":false,"why_wrong":"La couverture PJ ne dépend pas de l''issue du procès."},{"text":"Jamais si un règlement amiable est signé","correct":false,"why_wrong":"Faux : la PJ soutient aussi les règlements amiables."}]'::jsonb, 2,
+       'PJ : couverture plafonnée, cas assurés définis, libre choix de l''avocat en principe (art. 32 LSA / dispositions harmonisées), pas d''obligation de gagner le procès.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-GEN-LT-030', 'generales', t.id, 'single',
+       NULL, 'L''ultime voie de recours contre un jugement cantonal en matière civile assurantielle est :', '[{"text":"Le recours au Tribunal fédéral (LTF)","correct":true},{"text":"Un recours à la FINMA","correct":false,"why_wrong":"FINMA n''est pas une instance de recours judiciaire."},{"text":"Un recours à l''ASA","correct":false,"why_wrong":"L''ASA n''est pas une juridiction."},{"text":"Un recours à l''Ombudsman","correct":false,"why_wrong":"L''Ombudsman n''a pas de compétence de révision de jugements."}]'::jsonb, 1,
+       'Après épuisement des voies cantonales, recours au Tribunal fédéral (LTF art. 72 ss pour les affaires civiles), sous conditions (valeur litigieuse, question juridique de principe).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'generales' AND t.key = 'litiges'
+ON CONFLICT (external_id) DO NOTHING;
+
 -- ───────── laa_externe.json — Banque de questions LAA reconstituée à partir d'un support de formation externe. Fond : LAA, OLAA, LPGA. ─────────
 INSERT INTO afa_questions
   (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
@@ -1202,6 +2283,1943 @@ SELECT 'EXT-LPP-060', 'vie', t.id, 'multiple',
        NULL, 'formation_externe', TRUE
 FROM afa_themes t
 WHERE t.filiere_key = 'vie' AND t.key = 'epargne'
+ON CONFLICT (external_id) DO NOTHING;
+
+-- ───────── maladie_klary_bank.json — Banque Klary MALADIE COMPLÉMENTAIRE (PV2) 180 questions couvrant les 7 thèmes vides/creux (hors LAA déjà couvert). Préparation ciblée 7e tentative examen. ─────────
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-001', 'maladie_complementaire', t.id, 'multiple',
+       'Nadia arrive à Genève depuis l''Espagne le 10 janvier 2026.', 'Dans quel délai toute personne prenant domicile en Suisse doit-elle s''affilier à une caisse-maladie AOS ?', '[{"text":"30 jours","correct":false,"why_wrong":"30 jours est le délai souvent confondu avec l''annonce d''un nouveau-né mais pas avec l''affiliation LAMal."},{"text":"3 mois","correct":true},{"text":"6 mois","correct":false,"why_wrong":"Aucun texte ne prévoit 6 mois : le délai légal est 3 mois (art. 3 LAMal)."},{"text":"1 an","correct":false},{"text":"La couverture prend effet rétroactivement à la prise de domicile","correct":true}]'::jsonb, 1,
+       'Art. 3 LAMal : toute personne domiciliée en Suisse doit s''assurer pour les soins en cas de maladie dans les 3 mois qui suivent la prise de domicile ou la naissance.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-002', 'maladie_complementaire', t.id, 'multiple',
+       'Sophie a accouché le 4 mars 2026. Elle hésite à annoncer son nouveau-né à sa caisse-maladie et pense avoir 30 jours.', 'Quel est le délai réel d''annonce d''un nouveau-né à la caisse-maladie AOS ?', '[{"text":"30 jours","correct":false,"why_wrong":"Piège classique : on confond avec un autre délai administratif. Le délai LAMal est 3 mois."},{"text":"3 mois","correct":true},{"text":"6 mois","correct":false,"why_wrong":"Pas de base légale à 6 mois."},{"text":"1 mois","correct":false,"why_wrong":"Le délai est 3 mois, pas 1 mois."},{"text":"La couverture démarre rétroactivement à la date de naissance","correct":true}]'::jsonb, 2,
+       'Art. 3 LAMal : l''annonce du nouveau-né doit avoir lieu dans les 3 mois suivant la naissance. Avec un enregistrement rétroactif à la naissance, il n''y a aucun trou de couverture.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-003', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelle est la date de changement de caisse ordinaire pour l''AOS et quel préavis faut-il respecter ?', '[{"text":"1er janvier, préavis au 30 novembre","correct":true},{"text":"1er janvier, préavis au 31 décembre","correct":false,"why_wrong":"Le préavis doit parvenir à la caisse au 30 novembre au plus tard."},{"text":"1er avril, préavis 3 mois avant","correct":false,"why_wrong":"La date de changement est le 1er janvier."},{"text":"1er juillet uniquement","correct":false,"why_wrong":"Le 1er juillet n''est ouvert qu''en cas de hausse de prime."},{"text":"Possibilité complémentaire au 1er juillet en cas de hausse de prime (préavis 31.03)","correct":true}]'::jsonb, 1,
+       'Art. 7 LAMal : changement au 1er janvier avec préavis parvenant à la caisse au 30 novembre. Possibilité complémentaire au 1er juillet en cas de hausse de prime (préavis 31 mars).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-004', 'maladie_complementaire', t.id, 'multiple',
+       'Marc reçoit en octobre un avis de hausse de prime AOS applicable au 1er janvier.', 'Quelle date de résiliation extraordinaire peut-il utiliser et jusqu''à quand doit-il envoyer son préavis ?', '[{"text":"1er juillet, préavis au 31 mars","correct":false,"why_wrong":"Le 1er juillet est réservé aux hausses de prime au 1er juillet, pas aux hausses au 1er janvier."},{"text":"1er janvier, préavis au 30 novembre","correct":true},{"text":"1er février, préavis au 31 décembre","correct":false,"why_wrong":"Aucune base légale pour février."},{"text":"N''importe quand, sans préavis","correct":false},{"text":"Résiliation adressée sous forme démontrable par texte à la caisse","correct":true}]'::jsonb, 2,
+       'Art. 7 al. 2 LAMal : en cas de communication de hausse de prime, la caisse doit informer 2 mois avant, et l''assuré peut résilier pour le 31 décembre (effet 1er janvier) avec préavis au 30 novembre. La possibilité du 1er juillet vise les hausses en cours d''année.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-005', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Parmi les affirmations suivantes sur l''AOS, lesquelles sont exactes ?', '[{"text":"Les prestations AOS sont identiques d''une caisse à l''autre car fixées par la loi","correct":true},{"text":"Les primes AOS varient d''une caisse à l''autre et par région","correct":true},{"text":"Une caisse-maladie ne peut pas refuser une affiliation AOS","correct":true},{"text":"Les primes AOS sont identiques pour toutes les caisses d''un même canton","correct":false,"why_wrong":"Piège classique : ce sont les PRESTATIONS qui sont identiques, pas les primes."},{"text":"Une caisse peut refuser une personne pour raisons de santé en AOS","correct":false,"why_wrong":"L''AOS est obligatoire ET sans réserve de santé (art. 4 LAMal)."}]'::jsonb, 3,
+       'Art. 24 LAMal (prestations identiques), art. 61 LAMal (primes par caisse et par région), art. 4 LAMal (interdiction de refus et de réserves en AOS). Ne pas confondre avec la LCA où l''assureur est libre.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-006', 'maladie_complementaire', t.id, 'multiple',
+       'Un jeune adulte part au service long (école de recrue prolongée) pour 4 mois.', 'Quelle est la durée minimum de service militaire à partir de laquelle l''AOS peut être suspendue ?', '[{"text":"30 jours","correct":false,"why_wrong":"Le seuil légal est de plus de 60 jours."},{"text":"Plus de 60 jours","correct":true},{"text":"Plus de 90 jours","correct":false,"why_wrong":"Le seuil est fixé à plus de 60 jours par l''art. 3 al. 4 LAMal."},{"text":"Aucune suspension possible","correct":false},{"text":"La couverture est reprise par l''assurance militaire durant le service","correct":true}]'::jsonb, 1,
+       'Art. 3 al. 4 LAMal : suspension possible de la couverture AOS pour les personnes accomplissant un service militaire de plus de 60 jours (couverture assurée par l''assurance militaire).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-007', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Un assuré n''a pas payé plusieurs primes AOS et a fait l''objet d''une sommation. Peut-il changer de caisse au 1er janvier suivant ?', '[{"text":"Oui, sans condition","correct":false,"why_wrong":"La loi bloque le changement en cas d''arriérés notifiés."},{"text":"Non, l''ancienne caisse peut s''opposer au changement tant que les arriérés ne sont pas soldés","correct":true},{"text":"Oui, mais avec un préavis de 6 mois","correct":false},{"text":"Oui, mais uniquement chez une caisse publique","correct":false},{"text":"La caisse peut poursuivre la procédure de recouvrement au canton","correct":true}]'::jsonb, 2,
+       'Art. 64a LAMal : la caisse peut refuser le changement en cas d''arriérés ayant fait l''objet d''une sommation ou d''actes de défaut de biens, jusqu''au paiement intégral. Objectif : éviter la fuite en avant.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-008', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelles personnes sont soumises à l''obligation d''affiliation AOS en Suisse ?', '[{"text":"Tout titulaire d''un permis B, C, L, F ou N domicilié en Suisse","correct":true},{"text":"Les enfants de parents domiciliés en Suisse","correct":true},{"text":"Les demandeurs d''asile","correct":true},{"text":"Les touristes en séjour de 2 semaines","correct":false,"why_wrong":"Aucun domicile en Suisse : pas d''obligation LAMal."},{"text":"Les diplomates étrangers accrédités en Suisse","correct":false,"why_wrong":"Exemption prévue pour le personnel diplomatique (art. 2 OAMal)."}]'::jsonb, 3,
+       'Art. 3 LAMal + art. 1-2 OAMal : le critère est le domicile en Suisse. Les diplomates étrangers et certaines catégories très spécifiques sont exemptés. Les touristes ne sont pas concernés (pas de domicile).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-009', 'maladie_complementaire', t.id, 'multiple',
+       'Karim travaille en Suisse et vit en France comme frontalier.', 'Quel dispositif s''applique à sa couverture santé obligatoire ?', '[{"text":"Il est automatiquement affilié à l''AOS suisse","correct":false,"why_wrong":"Le frontalier bénéficie d''un droit d''option, pas d''une affiliation automatique."},{"text":"Il dispose d''un droit d''option entre AOS suisse et système français (CMU/assurance privée)","correct":true},{"text":"Il ne peut pas s''affilier à l''AOS suisse","correct":false,"why_wrong":"L''affiliation AOS est ouverte via le droit d''option."},{"text":"Il est obligatoirement affilié en France","correct":false},{"text":"Choix à formaliser dans les 3 mois de la prise d''emploi","correct":true}]'::jsonb, 2,
+       'Accords bilatéraux CH-UE : les frontaliers CH/FR/DE/AT/IT disposent d''un droit d''option entre l''AOS suisse et l''assurance de leur pays de résidence. Choix à formaliser dans les 3 mois de la prise d''emploi.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-010', 'maladie_complementaire', t.id, 'multiple',
+       'Deux voisins comparent leur prime AOS mensuelle et constatent des différences.', 'Le calcul des primes AOS repose principalement sur quel principe ?', '[{"text":"Prime individuelle par tête (per capita), indépendante du revenu","correct":true},{"text":"Prime proportionnelle au salaire","correct":false,"why_wrong":"Confusion avec les cotisations AVS/AI : la prime AOS n''est pas proportionnelle au revenu."},{"text":"Prime forfaitaire nationale unique","correct":false,"why_wrong":"La prime varie par canton, région et caisse."},{"text":"Prime fixée par l''employeur","correct":false},{"text":"Prime différenciée par canton et région (max 3 régions)","correct":true}]'::jsonb, 1,
+       'Art. 61 LAMal : la prime AOS est perçue par tête (per capita), différenciée par canton, région de primes (max 3) et catégorie d''âge (enfant, jeune adulte 19-25 ans, adulte). Elle ne dépend pas du revenu.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-011', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelles catégories de primes AOS existent selon l''âge de l''assuré ?', '[{"text":"Enfants (0 à 18 ans)","correct":true},{"text":"Jeunes adultes (19 à 25 ans)","correct":true},{"text":"Adultes (dès 26 ans)","correct":true},{"text":"Seniors (dès 65 ans) avec prime majorée","correct":false,"why_wrong":"Pas de catégorie senior LAMal : la prime adulte reste stable après 25 ans."},{"text":"Étudiants avec prime spécifique","correct":false,"why_wrong":"Pas de tarif étudiant dédié : ils entrent dans la catégorie jeunes adultes."}]'::jsonb, 3,
+       'Art. 61 al. 3 LAMal : trois catégories d''âge. Depuis 1996, aucune majoration en fonction de l''âge après 25 ans (interdiction de discriminer les seniors sur la prime AOS).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-012', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Combien de régions de primes maximum un canton peut-il compter selon l''OFSP ?', '[{"text":"1","correct":false,"why_wrong":"La loi autorise jusqu''à 3 régions par canton."},{"text":"2","correct":false},{"text":"3","correct":true},{"text":"5","correct":false,"why_wrong":"Le plafond fixé par l''OFSP est de 3 régions."},{"text":"Zones urbaine, semi-urbaine, rurale possibles","correct":true}]'::jsonb, 1,
+       'Art. 61 al. 2 LAMal + ordonnance OFSP : maximum 3 régions de primes par canton, distinguant zones urbaines, semi-urbaines et rurales selon les coûts effectifs.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-013', 'maladie_complementaire', t.id, 'multiple',
+       'Bruno rédige la résiliation de sa caisse-maladie pour la 1re fois.', 'Sous quelle forme la résiliation d''une caisse AOS doit-elle être adressée pour être valable ?', '[{"text":"Verbalement par téléphone","correct":false,"why_wrong":"La forme écrite (recommandée) est requise pour la preuve."},{"text":"Par écrit, avec accusé de réception avant l''échéance","correct":true},{"text":"Par SMS","correct":false},{"text":"Par simple email non signé","correct":false,"why_wrong":"L''email brut ne prouve pas la réception dans les délais."},{"text":"Lettre recommandée avec preuve de réception recommandée","correct":true}]'::jsonb, 1,
+       'Art. 7 LAMal : la résiliation doit parvenir à la caisse (pas seulement être envoyée) avant l''échéance. Pratique standard : lettre recommandée avec preuve de réception.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-014', 'maladie_complementaire', t.id, 'multiple',
+       'Un futur retraité de 62 ans envisage de changer de caisse pour économiser.', 'En AOS, une caisse peut-elle imposer des réserves de santé lors de l''affiliation ?', '[{"text":"Oui, comme en LCA","correct":false,"why_wrong":"Confusion avec la LCA : en AOS, aucune réserve n''est possible."},{"text":"Non, jamais (interdiction absolue)","correct":true},{"text":"Oui, mais uniquement pour les nouveaux arrivants en Suisse","correct":false},{"text":"Oui, si l''assuré a plus de 55 ans","correct":false},{"text":"Ni examen médical, ni questionnaire de santé ne peuvent être exigés en AOS","correct":true}]'::jsonb, 1,
+       'Art. 4 LAMal : les caisses AOS acceptent chaque personne domiciliée en Suisse SANS réserve, SANS examen médical, SANS refus. C''est un pilier du système obligatoire.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-015', 'maladie_complementaire', t.id, 'multiple',
+       'Nadia (30 ans) veut changer de caisse au 1er janvier 2027 pour économiser sur sa prime.', 'Quelles conditions doit-elle respecter pour que le changement soit valable ?', '[{"text":"Envoyer sa résiliation avant le 30 novembre 2026 (réception effective)","correct":true},{"text":"Signer un contrat avec la nouvelle caisse avant la fin de l''année","correct":true},{"text":"Ne pas avoir d''arriérés de prime sommés à l''ancienne caisse","correct":true},{"text":"Obtenir l''accord écrit de son médecin traitant","correct":false,"why_wrong":"L''AOS ne dépend pas de considérations médicales : aucun accord médical requis."},{"text":"Attendre 12 mois d''ancienneté avant de pouvoir changer","correct":false,"why_wrong":"Aucun délai d''ancienneté n''est exigé."}]'::jsonb, 3,
+       'Art. 7 et 64a LAMal : 3 conditions pratiques : préavis reçu au 30.11, adhésion à la nouvelle caisse continue, absence d''arriérés sommés. Piège de conseil : ne jamais résilier sans confirmation d''adhésion sinon risque d''affiliation d''office.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-016', 'maladie_complementaire', t.id, 'multiple',
+       'Un jeune expatrié fraîchement installé oublie son affiliation LAMal.', 'Que se passe-t-il si une personne domiciliée en Suisse ne s''affilie pas dans les 3 mois ?', '[{"text":"Elle n''a plus le droit d''avoir la LAMal","correct":false,"why_wrong":"Elle sera affiliée d''office, pas exclue."},{"text":"Le canton (autorité désignée) l''affilie d''office à une caisse","correct":true},{"text":"Elle est automatiquement exemptée","correct":false},{"text":"Elle paie une amende de 5 000 CHF","correct":false,"why_wrong":"Sanction possible mais mesure principale = affiliation d''office."},{"text":"Les primes non payées peuvent être perçues rétroactivement","correct":true}]'::jsonb, 1,
+       'Art. 6 LAMal : les cantons désignent une autorité pour affilier d''office toute personne qui ne respecte pas son obligation, avec effet rétroactif à la prise de domicile (primes dues). Objectif : universalité de la couverture.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-017', 'maladie_complementaire', t.id, 'multiple',
+       'Une famille à revenus modestes reçoit une hausse de prime AOS.', 'Qui décide de l''octroi des subsides cantonaux pour la prime AOS ?', '[{"text":"La caisse-maladie","correct":false,"why_wrong":"La caisse encaisse la prime, elle ne décide pas des subsides."},{"text":"L''OFSP","correct":false,"why_wrong":"L''OFSP surveille les tarifs mais ne fixe pas les subsides individuels."},{"text":"Le canton (via son service dédié) selon des critères de revenu et fortune","correct":true},{"text":"L''employeur","correct":false},{"text":"La caisse-maladie n''a aucun pouvoir de décision sur l''octroi du subside","correct":true}]'::jsonb, 1,
+       'Art. 65 LAMal : les cantons accordent des réductions de primes aux assurés de condition économique modeste selon leurs propres barèmes (revenu et fortune). Un client à revenus modestes doit être orienté vers son service cantonal.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-018', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels documents ou éléments prouvent l''existence d''une couverture AOS active ?', '[{"text":"La carte d''assuré délivrée par la caisse","correct":true},{"text":"La police AOS avec numéro d''affiliation","correct":true},{"text":"Une attestation de la caisse","correct":true},{"text":"Un simple bulletin de versement de prime","correct":false,"why_wrong":"Un bulletin de versement ne prouve pas la couverture, seulement une intention de paiement."},{"text":"La carte d''identité suisse","correct":false,"why_wrong":"La CI ne renseigne pas sur l''affiliation AOS."}]'::jsonb, 3,
+       'Art. 42a LAMal : les assureurs remettent une carte d''assuré. Cette carte, la police et une attestation de la caisse font foi. Le bulletin de versement seul ne prouve rien.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-019', 'maladie_complementaire', t.id, 'multiple',
+       'Bruno, 22 ans, étudiant à Genève, veut savoir dans quelle catégorie de prime AOS il se trouve.', 'À quelle catégorie tarifaire appartient-il ?', '[{"text":"Enfant (prime réduite jusqu''à 18 ans)","correct":false,"why_wrong":"Bruno a plus de 18 ans."},{"text":"Jeune adulte (19 à 25 ans)","correct":true},{"text":"Adulte (26 ans et plus)","correct":false,"why_wrong":"La catégorie adulte commence à 26 ans."},{"text":"Étudiant (tarif spécifique)","correct":false,"why_wrong":"Il n''existe pas de tarif étudiant dédié en LAMal."},{"text":"Le tarif jeune adulte est en général inférieur au tarif adulte plein","correct":true}]'::jsonb, 2,
+       'Art. 61 al. 3 LAMal : la catégorie jeune adulte couvre les 19 à 25 ans révolus. Bruno relève de cette catégorie jusqu''à ses 26 ans. Le tarif jeune adulte est en général inférieur au tarif adulte plein.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-020', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'L''AOS suisse couvre-t-elle un traitement médical pratiqué à titre non urgent aux États-Unis ?', '[{"text":"Oui, intégralement","correct":false,"why_wrong":"La LAMal ne couvre le hors-Suisse que pour l''urgence, plafonnée à 2× le tarif suisse (art. 36 OAMal)."},{"text":"Non, l''AOS ne couvre à l''étranger que les urgences","correct":true},{"text":"Oui, à 50 %","correct":false},{"text":"Uniquement dans les hôpitaux universitaires américains","correct":false},{"text":"Une LCA voyage/assistance est nécessaire pour couvrir le hors urgence","correct":true}]'::jsonb, 1,
+       'Art. 34 LAMal + art. 36 OAMal : à l''étranger, l''AOS prend en charge uniquement les soins d''URGENCE au maximum au double du tarif suisse. Un traitement programmé aux États-Unis n''entre pas dans la couverture.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-021', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels systèmes de facturation coexistent dans le cadre de l''AOS ?', '[{"text":"Tiers payant : le fournisseur adresse la facture à la caisse","correct":true},{"text":"Tiers garant : l''assuré paie le fournisseur puis se fait rembourser","correct":true},{"text":"Facturation directe au patient uniquement","correct":false,"why_wrong":"Le patient n''est jamais le seul débiteur : la caisse rembourse ou paie directement."},{"text":"Facturation forfaitaire imposée par l''OFSP","correct":false},{"text":"Prépaiement obligatoire par la caisse","correct":false,"why_wrong":"Aucun système de prépaiement systématique en LAMal."}]'::jsonb, 3,
+       'Art. 42 LAMal : deux systèmes coexistent. Tiers garant est le régime légal ordinaire pour les médecins ; le tiers payant est standard pour l''hospitalier et pharmacies. Conventions tarifaires précisent l''application.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-022', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Un assuré peut-il changer chaque année de franchise et de modèle d''assurance ?', '[{"text":"Non, la franchise est fixée à vie","correct":false,"why_wrong":"L''assuré peut ajuster sa franchise annuellement."},{"text":"Oui, à chaque 1er janvier avec préavis conforme","correct":true},{"text":"Une seule fois tous les 5 ans","correct":false},{"text":"Uniquement en cas de changement de caisse","correct":false,"why_wrong":"Le changement de franchise est possible même en restant dans la même caisse."},{"text":"Modification du modèle possible également au 1er janvier","correct":true}]'::jsonb, 1,
+       'Art. 94 OAMal : possibilité de modifier la franchise et le modèle (médecin de famille, HMO, etc.) au 1er janvier avec préavis au 30 novembre à la caisse. Point de conseil clé pour optimiser la prime.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-023', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Un ressortissant suisse déménage à Berlin le 1er mai. Que devient son AOS ?', '[{"text":"Elle continue automatiquement","correct":false,"why_wrong":"L''AOS suit le domicile en Suisse : le départ met fin à l''obligation."},{"text":"Elle prend fin le jour du départ effectif (résiliation extraordinaire)","correct":true},{"text":"Elle reste valable 12 mois après le départ","correct":false},{"text":"Il doit continuer à payer la prime pendant 5 ans","correct":false},{"text":"L''assuré doit se couvrir dans son nouveau pays de résidence","correct":true}]'::jsonb, 2,
+       'Art. 3 LAMal (couplé au domicile) : la fin du domicile en Suisse fait tomber l''obligation d''assurance. L''assuré résilie sur présentation de la preuve du départ. Il doit ensuite se couvrir dans le pays d''accueil.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-024', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Un employé suisse est envoyé en mission au Japon par son employeur pour 8 mois. Quel régime LAMal s''applique ?', '[{"text":"Il perd toute couverture LAMal","correct":false,"why_wrong":"La couverture peut être maintenue selon les règles de détachement."},{"text":"Il reste soumis à l''AOS suisse pendant sa mission temporaire (avec règles particulières de coordination)","correct":true},{"text":"Il doit obligatoirement s''affilier au Japon","correct":false},{"text":"Il bascule automatiquement en LCA voyage","correct":false,"why_wrong":"L''AOS ne devient jamais LCA voyage : le contrat de base subsiste."},{"text":"Une LCA voyage complémentaire est fortement recommandée pour le rapatriement","correct":true}]'::jsonb, 2,
+       'Art. 3 LAMal + art. 4-5 OAMal : en cas de détachement temporaire par un employeur suisse, l''assuré reste soumis à l''AOS. Une LCA voyage complémentaire est fortement recommandée pour couvrir rapatriement et frais étrangers au-delà du plafond LAMal.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-025', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels acteurs jouent un rôle dans le système LAMal ?', '[{"text":"L''OFSP (surveillance, approbation des primes)","correct":true},{"text":"Les caisses-maladie agréées","correct":true},{"text":"Les cantons (réductions de primes, hôpitaux, planification)","correct":true},{"text":"La FINMA en tant qu''autorité d''approbation des primes AOS","correct":false,"why_wrong":"La FINMA surveille les assureurs privés (LCA), pas les primes AOS. C''est l''OFSP qui approuve les primes AOS."},{"text":"La CNA/SUVA en tant qu''assureur AOS","correct":false,"why_wrong":"La SUVA est un acteur LAA, pas LAMal."}]'::jsonb, 3,
+       'Répartition classique : OFSP (approbation primes AOS, surveillance), caisses (mise en oeuvre), cantons (planification hospitalière, subsides). La FINMA se concentre sur LCA ; la SUVA sur LAA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-026', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Les primes AOS 2026 augmentent-elles avec l''état de santé ou l''historique de sinistres de l''assuré ?', '[{"text":"Oui, un bonus/malus est appliqué","correct":false,"why_wrong":"Aucun bonus/malus n''est admis en AOS."},{"text":"Non, la prime est indépendante de l''état de santé et des sinistres","correct":true},{"text":"Oui, mais seulement en cas d''accident","correct":false},{"text":"Uniquement si l''assuré change de caisse","correct":false},{"text":"Prime uniforme dans une catégorie d''âge, canton et région donnés","correct":true}]'::jsonb, 1,
+       'Art. 61 LAMal : la prime AOS est per capita, uniforme dans une catégorie d''âge, d''un canton et d''une région, indépendamment de la santé. Aucun bonus/malus n''est admis. En LCA en revanche, des rabais sinistralité peuvent exister.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-027', 'maladie_complementaire', t.id, 'multiple',
+       'Lucia arrive à Zurich le 15 juin 2026 depuis l''Italie avec un permis B pour prendre un emploi.', 'Que doit-elle faire concernant l''AOS ?', '[{"text":"S''affilier à une caisse-maladie dans les 3 mois","correct":true},{"text":"La couverture prend effet rétroactivement au 15 juin (prise de domicile)","correct":true},{"text":"Choisir une franchise entre 300 et 2 500 CHF","correct":true},{"text":"Demander une exemption car elle est déjà couverte en Italie","correct":false,"why_wrong":"Le domicile en Suisse crée l''obligation. La couverture italienne cesse au départ."},{"text":"Attendre 6 mois pour évaluer les meilleures caisses","correct":false,"why_wrong":"Le délai est de 3 mois, pas 6."}]'::jsonb, 3,
+       'Art. 3 LAMal + art. 5 al. 1 LAMal : affiliation obligatoire dans les 3 mois, effet rétroactif à la prise de domicile. Le choix de la franchise (300 à 2 500 CHF adulte) fait partie du contrat initial. Lucia doit compléter par une LCA santé complémentaire si elle veut plus.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-028', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Combien de caisses-maladie agréées LAMal existe-t-il approximativement en Suisse en 2026 ?', '[{"text":"Environ 5","correct":false,"why_wrong":"Le marché compte plusieurs dizaines d''acteurs."},{"text":"Environ 40 à 50 caisses","correct":true},{"text":"Plus de 500","correct":false},{"text":"1 seule (caisse unique nationale)","correct":false,"why_wrong":"L''initiative caisse unique a été refusée en 2014."},{"text":"Le marché a connu une concentration progressive ces 20 dernières années","correct":true}]'::jsonb, 1,
+       'Le marché AOS compte environ 40 à 50 caisses agréées par l''OFSP en 2026 (concentration progressive). La caisse unique a été refusée en votation. Argument de vente : comparaison annuelle des primes.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-029', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Une caisse-maladie AOS peut-elle exiger un questionnaire de santé lors du changement d''affiliation ?', '[{"text":"Oui, comme pour la LCA","correct":false,"why_wrong":"Confusion LCA/AOS : le questionnaire santé est propre à la LCA."},{"text":"Non, jamais en AOS","correct":true},{"text":"Oui, uniquement pour les personnes de plus de 60 ans","correct":false},{"text":"Uniquement pour les modèles alternatifs","correct":false,"why_wrong":"Les modèles alternatifs sont un choix contractuel, sans questionnaire de santé."},{"text":"L''AOS accueille chaque personne domiciliée sans condition de santé","correct":true}]'::jsonb, 2,
+       'Art. 4 LAMal : interdiction pour l''AOS de discriminer selon la santé. Aucun questionnaire n''est admis. La LCA au contraire fonde la prime et la police sur les déclarations de santé (réserves possibles).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LB-030', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Que doit vérifier un conseiller avant qu''un client résilie son AOS pour changer de caisse ?', '[{"text":"Que la nouvelle caisse a accepté l''affiliation par écrit avant l''échéance","correct":true},{"text":"L''absence d''arriérés de primes sommés à l''ancienne caisse","correct":true},{"text":"Le respect du préavis (30.11 pour effet au 1er janvier)","correct":true},{"text":"L''accord du médecin traitant du client","correct":false,"why_wrong":"Sans objet en AOS."},{"text":"L''acceptation d''un questionnaire de santé par la nouvelle caisse","correct":false,"why_wrong":"Aucun questionnaire n''est admis en AOS."}]'::jsonb, 3,
+       'Bonnes pratiques de conseil (art. 45 LSA, devoir d''information) : garantir la continuité (jamais de trou de couverture), vérifier les arriérés (blocage art. 64a LAMal), respecter le calendrier. Confusion LCA/AOS à éviter.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_bases'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-001', 'maladie_complementaire', t.id, 'multiple',
+       'Sarah, 27 ans, souhaite comprendre la franchise minimum de son AOS.', 'Quelle est la franchise minimum ordinaire AOS pour un adulte en 2026 ?', '[{"text":"0 CHF","correct":false,"why_wrong":"0 CHF est le minimum pour les enfants, pas pour les adultes."},{"text":"300 CHF","correct":true},{"text":"500 CHF","correct":false,"why_wrong":"500 CHF est un choix de franchise à option, pas le minimum légal."},{"text":"1 000 CHF","correct":false},{"text":"La franchise 300 CHF est la franchise ordinaire adulte (art. 103 OAMal)","correct":true}]'::jsonb, 1,
+       'Art. 64 LAMal + art. 103 OAMal : franchise ordinaire adulte = 300 CHF (minimum légal). Franchises à option : 500, 1 000, 1 500, 2 000, 2 500 CHF (rabais de prime croissant).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-002', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelle est la franchise maximum à option pour un adulte en 2026 ?', '[{"text":"1 500 CHF","correct":false,"why_wrong":"1 500 CHF est une option intermédiaire."},{"text":"2 000 CHF","correct":false},{"text":"2 500 CHF","correct":true},{"text":"3 000 CHF","correct":false,"why_wrong":"Le maximum légal reste 2 500 CHF pour l''adulte."},{"text":"Rabais de prime croissant en contrepartie du risque financier assumé","correct":true}]'::jsonb, 1,
+       'Art. 103 OAMal : franchise maximum adulte = 2 500 CHF. Choix : 300 / 500 / 1 000 / 1 500 / 2 000 / 2 500 CHF.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-003', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelle est la franchise maximum à option pour un enfant en 2026 ?', '[{"text":"0 CHF","correct":false,"why_wrong":"0 CHF est le minimum enfant, pas le maximum."},{"text":"300 CHF","correct":false},{"text":"600 CHF","correct":true},{"text":"1 000 CHF","correct":false,"why_wrong":"1 000 CHF n''existe pas pour les enfants."},{"text":"La franchise enfant ordinaire est 0 CHF","correct":true}]'::jsonb, 1,
+       'Art. 103 al. 2 OAMal : franchise enfant de 0 (ordinaire) à 600 CHF maximum. Paliers : 0 / 100 / 200 / 300 / 400 / 500 / 600 CHF.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-004', 'maladie_complementaire', t.id, 'single',
+       'Sarah cumule des soins ambulatoires importants tout au long de l''année.', 'Quel est le plafond annuel de la quote-part LAMal pour un adulte ?', '[{"text":"500 CHF","correct":false,"why_wrong":"Aucune base légale à 500 CHF."},{"text":"700 CHF","correct":true},{"text":"1 000 CHF","correct":false,"why_wrong":"1 000 CHF est parfois confondu mais le plafond légal est 700."},{"text":"2 500 CHF","correct":false,"why_wrong":"2 500 est la franchise adulte maximum, pas le plafond de la quote-part."}]'::jsonb, 2,
+       'Art. 64 al. 2 LAMal + art. 103 al. 2 OAMal : quote-part 10 % après franchise, plafonnée à 700 CHF/an pour les adultes. Au-delà, la caisse rembourse 100 %.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-005', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quel est le plafond annuel de la quote-part LAMal pour un enfant ?', '[{"text":"350 CHF","correct":true},{"text":"500 CHF","correct":false,"why_wrong":"500 CHF n''existe pas comme plafond enfant."},{"text":"700 CHF","correct":false,"why_wrong":"700 est le plafond adulte, pas enfant."},{"text":"175 CHF","correct":false},{"text":"Le plafond enfant est exactement la moitié du plafond adulte","correct":true}]'::jsonb, 1,
+       'Art. 103 OAMal : plafond quote-part enfant = 350 CHF/an (moitié du plafond adulte). Piège classique : ne pas confondre avec le plafond adulte.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-006', 'maladie_complementaire', t.id, 'single',
+       'Ahmed (adulte, franchise 300) accumule 10 000 CHF de soins couverts en 2026.', 'Combien paiera-t-il de sa poche au total (franchise + quote-part) ?', '[{"text":"300 CHF","correct":false,"why_wrong":"La quote-part 10 % s''ajoute (plafonnée)."},{"text":"1 000 CHF","correct":true},{"text":"1 270 CHF","correct":false,"why_wrong":"La quote-part est plafonnée à 700 CHF (art. 64 LAMal), pas 970."},{"text":"1 700 CHF","correct":false,"why_wrong":"Le plafond de quote-part est 700 CHF/an adulte."}]'::jsonb, 2,
+       'Art. 64 LAMal : franchise 300 + quote-part 10 % sur 9 700 = 970 mais plafonnée à 700. Total = 300 + 700 = 1 000 CHF (coût max annuel adulte franchise ordinaire, hors hospit 15 CHF/jour).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-007', 'maladie_complementaire', t.id, 'single',
+       'Marta (adulte, franchise 300) engendre 15 000 CHF de frais AOS en 2026.', 'Quel est son coût total à sa charge (franchise + quote-part) ?', '[{"text":"300 CHF","correct":false,"why_wrong":"La quote-part 10 % s''ajoute (plafonnée)."},{"text":"1 000 CHF (300 franchise + 700 plafond quote-part)","correct":true},{"text":"1 500 CHF","correct":false,"why_wrong":"Le plafond de quote-part bloque à 700."},{"text":"2 700 CHF","correct":false,"why_wrong":"10 % de 15 000 = 1 500 mais plafonné à 700."}]'::jsonb, 2,
+       'Art. 64 LAMal : franchise 300 + quote-part 10 % sur 14 700 = 1 470 mais plafonnée à 700 CHF. Coût max annuel adulte franchise ordinaire = 300 + 700 = 1 000 CHF (hors hospit 15 CHF/jour).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-008', 'maladie_complementaire', t.id, 'single',
+       'Louis (adulte, franchise 2 500) engendre 20 000 CHF de frais AOS en 2026.', 'Coût maximum total à sa charge ?', '[{"text":"2 500 CHF","correct":false,"why_wrong":"Il faut ajouter la quote-part."},{"text":"3 200 CHF (2 500 + 700)","correct":true},{"text":"5 000 CHF","correct":false,"why_wrong":"Plafond quote-part 700 empêche ce montant."},{"text":"700 CHF","correct":false}]'::jsonb, 2,
+       'Coût max adulte franchise 2 500 = franchise 2 500 + plafond quote-part 700 = 3 200 CHF/an (hors hospit). Argument de vente pour LCA hospit ou LCA franchise complémentaire.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-009', 'maladie_complementaire', t.id, 'multiple',
+       'Ahmed est hospitalisé pour une opération non urgente en division commune.', 'Quelle est la contribution journalière aux frais de séjour hospitalier pour un adulte AOS ?', '[{"text":"10 CHF/jour","correct":false,"why_wrong":"Le montant fixé par l''OAMal est 15 CHF."},{"text":"15 CHF/jour","correct":true},{"text":"25 CHF/jour","correct":false},{"text":"50 CHF/jour","correct":false,"why_wrong":"50 CHF/jour est une somme parfois trouvée en LCA hospit, pas AOS."},{"text":"Cette contribution s''ajoute à la franchise et à la quote-part","correct":true}]'::jsonb, 1,
+       'Art. 104 OAMal : contribution de 15 CHF par jour d''hospitalisation à charge de l''assuré adulte. Cette contribution s''ajoute à la franchise et à la quote-part sans plafond spécifique.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-010', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Qui est exempté de la contribution hospitalière de 15 CHF/jour ?', '[{"text":"Les enfants","correct":true},{"text":"Les jeunes adultes en formation (jusqu''à 25 ans)","correct":true},{"text":"Les femmes en séjour lié à la maternité","correct":true},{"text":"Les personnes âgées de plus de 65 ans","correct":false,"why_wrong":"Pas d''exonération liée à l''âge après 26 ans."},{"text":"Les patients avec franchise à 2 500 CHF","correct":false,"why_wrong":"Le choix de franchise n''exempte pas de la contribution hospit."}]'::jsonb, 3,
+       'Art. 104 OAMal : sont exemptés les enfants (0-18), les jeunes adultes en formation (19-25) et les femmes pour les prestations de maternité. Adulte lambda paie 15 CHF/jour.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-011', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelle quote-part s''applique aux médicaments originaux quand un générique de moins de 20 % moins cher existe ?', '[{"text":"10 %","correct":false,"why_wrong":"10 % est la quote-part ordinaire, mais elle passe à 40 % si l''assuré refuse le générique."},{"text":"20 %","correct":false},{"text":"40 %","correct":true},{"text":"50 %","correct":false,"why_wrong":"Aucune base légale à 50 %."},{"text":"Levier pédagogique en conseil pour orienter vers le générique","correct":true}]'::jsonb, 1,
+       'Art. 38a OPAS : quote-part portée à 40 % (au lieu de 10 %) sur les médicaments originaux si un générique nettement moins cher existe et que l''assuré demande néanmoins l''original. Levier pédagogique en conseil.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-012', 'maladie_complementaire', t.id, 'multiple',
+       'Un client interroge son conseiller sur le principe du médecin de famille.', 'Le principe du modèle médecin de famille repose sur :', '[{"text":"Un rabais de prime en échange de l''engagement de consulter d''abord son médecin de famille","correct":true},{"text":"Une couverture élargie sans restriction","correct":false,"why_wrong":"Le rabais s''obtient contre une restriction, jamais une extension."},{"text":"Un remboursement à 100 % sans franchise","correct":false},{"text":"L''interdiction d''aller à l''hôpital","correct":false,"why_wrong":"L''urgence hospitalière reste toujours ouverte."},{"text":"L''urgence hospitalière reste toujours ouverte sans passage préalable","correct":true}]'::jsonb, 1,
+       'Art. 41 al. 4 LAMal : modèles alternatifs (médecin de famille, HMO, télémédecine) offrent un rabais de prime en contrepartie d''une restriction du libre choix. Toujours détailler les exceptions (urgence, gynécologie, ophtalmologie) en conseil.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-013', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels modèles alternatifs LAMal existent typiquement sur le marché suisse ?', '[{"text":"Médecin de famille (Hausarzt)","correct":true},{"text":"HMO (centre médical)","correct":true},{"text":"Télémédecine (appel préalable)","correct":true},{"text":"Modèle premium sans restriction avec rabais 30 %","correct":false,"why_wrong":"Aucun rabais sans contrepartie de restriction."},{"text":"Modèle direct hôpital","correct":false,"why_wrong":"Aucun modèle alternatif n''oriente d''abord vers l''hôpital."}]'::jsonb, 3,
+       'Art. 41 al. 4 LAMal : trois modèles alternatifs standards. Rabais typiques : 10 à 20 % de la prime standard. Piège : ne pas oublier les exceptions d''urgence dans l''entretien de vente.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-014', 'maladie_complementaire', t.id, 'single',
+       'Sarah (30 ans) choisit le modèle télémédecine avec rabais 15 %. Elle consulte directement un spécialiste sans passer par l''appel préalable.', 'Quelle est la conséquence ?', '[{"text":"Aucune, la prestation est prise en charge normalement","correct":false,"why_wrong":"La violation contractuelle a des conséquences."},{"text":"La caisse peut refuser ou réduire la prise en charge selon le règlement","correct":true},{"text":"Elle perd sa couverture AOS complète","correct":false,"why_wrong":"L''AOS de base subsiste, seul le rabais/modèle est en cause."},{"text":"Elle doit rembourser 3 ans de primes","correct":false}]'::jsonb, 2,
+       'Art. 41 al. 4 LAMal + règlement de la caisse : le non-respect du modèle alternatif peut entraîner une prise en charge selon le tarif standard sans rabais, voire une non-prise en charge. À expliciter au client à la signature.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-015', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelles prestations sont EXEMPTÉES de participation aux coûts (franchise ET quote-part) en AOS ?', '[{"text":"Les prestations de maternité au sens de l''art. 29 LAMal","correct":true},{"text":"Certaines prestations préventives listées par l''OPAS (dépistage, vaccinations couvertes)","correct":true},{"text":"Les prestations liées à une IVG légale","correct":true},{"text":"Toutes les consultations chez un généraliste","correct":false,"why_wrong":"Une consultation ordinaire est soumise à franchise + quote-part."},{"text":"L''hospitalisation ordinaire","correct":false,"why_wrong":"L''hospit est soumise franchise + quote-part + 15 CHF/jour."}]'::jsonb, 3,
+       'Art. 64 al. 7 LAMal : maternité et IVG exemptes. Art. 26 LAMal + OPAS : certaines prestations préventives également (mammographie, coloscopie de dépistage selon règles). Point de vente maternité clé.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-016', 'maladie_complementaire', t.id, 'multiple',
+       'Un assuré demande à quelle date reprendre ses soins programmés en fin d''année.', 'À quelle fréquence la franchise se réinitialise-t-elle ?', '[{"text":"Tous les 1er janvier (année civile)","correct":true},{"text":"À la date anniversaire du contrat","correct":false,"why_wrong":"La franchise LAMal suit l''année civile, pas l''anniversaire."},{"text":"Tous les 3 mois","correct":false},{"text":"Une seule fois pour toute la durée du contrat","correct":false,"why_wrong":"Elle se réinitialise chaque année."},{"text":"Le plafond de quote-part se calcule aussi sur l''année civile","correct":true}]'::jsonb, 1,
+       'Art. 64 LAMal : franchise et plafond de quote-part se calculent sur l''année civile (1er janvier au 31 décembre). Argumentaire : consulter en fin d''année si franchise atteinte, sinon reporter début d''année suivante.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-017', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels choix de franchise adulte AOS existent en 2026 ?', '[{"text":"300 CHF","correct":true},{"text":"500 CHF","correct":true},{"text":"1 500 CHF","correct":true},{"text":"2 500 CHF","correct":true},{"text":"3 000 CHF","correct":false,"why_wrong":"3 000 CHF n''existe pas, plafond légal 2 500."}]'::jsonb, 3,
+       'Art. 103 OAMal : les 6 paliers adulte sont 300 / 500 / 1 000 / 1 500 / 2 000 / 2 500 CHF. Rabais de prime croissant en contrepartie du risque financier.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-018', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels choix de franchise enfant AOS existent en 2026 ?', '[{"text":"0 CHF","correct":true},{"text":"100 CHF","correct":true},{"text":"300 CHF","correct":true},{"text":"600 CHF","correct":true},{"text":"1 000 CHF","correct":false,"why_wrong":"Pas de palier au-dessus de 600 CHF pour les enfants."}]'::jsonb, 1,
+       'Art. 103 al. 2 OAMal : franchise enfant = 0 / 100 / 200 / 300 / 400 / 500 / 600 CHF. La franchise 0 est la norme pour un enfant.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-019', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un cumul franchise à option ET modèle alternatif est-il possible sur le même contrat AOS ?', '[{"text":"Non, on doit choisir entre les deux","correct":false,"why_wrong":"Le cumul est admis."},{"text":"Oui, les rabais se cumulent pour réduire la prime","correct":true},{"text":"Uniquement si l''assuré a plus de 40 ans","correct":false},{"text":"Uniquement pour la franchise 300","correct":false}]'::jsonb, 2,
+       'Art. 62 LAMal + art. 93a OAMal : les caisses admettent le cumul franchise à option + modèle alternatif, cumulant les rabais. Optimisation classique de conseil pour clients en bonne santé.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-020', 'maladie_complementaire', t.id, 'multiple',
+       'Un client insiste pour obtenir un bonus fidélité 5 ans sans sinistre.', 'Un rabais de prime AOS peut-il être accordé pour bonne santé ou absence de sinistre ?', '[{"text":"Oui, chaque caisse peut le prévoir","correct":false,"why_wrong":"L''AOS n''admet ni bonus/malus, ni tarification à l''état de santé."},{"text":"Non, les seuls rabais admis sont la franchise à option et le modèle alternatif","correct":true},{"text":"Oui, à hauteur de 10 % après 5 ans sans sinistre","correct":false},{"text":"Uniquement pour les jeunes adultes","correct":false},{"text":"Aucun rabais fidélité admis en AOS (contrairement à la LCA)","correct":true}]'::jsonb, 1,
+       'Art. 61 LAMal : primes uniformes. Seuls la franchise à option (art. 62) et les modèles alternatifs (art. 41 al. 4) donnent droit à rabais. Contrairement à la LCA où bonus/malus et rabais fidélité existent.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-021', 'maladie_complementaire', t.id, 'multiple',
+       'Un client demande à changer sa franchise du 300 au 2 500 en cours d''année (juillet).', 'Peut-il le faire ?', '[{"text":"Oui, à tout moment avec préavis 30 jours","correct":false,"why_wrong":"Aucun changement en cours d''année."},{"text":"Non, le changement de franchise ne prend effet qu''au 1er janvier suivant, préavis 30 novembre","correct":true},{"text":"Oui, mais uniquement en cas de sinistre","correct":false},{"text":"Oui, au 1er juillet avec préavis 31 mars","correct":false,"why_wrong":"La possibilité de juillet est réservée à la résiliation en cas de hausse de prime, pas à un changement de franchise."},{"text":"Modification également possible avec le changement de caisse au 1er janvier","correct":true}]'::jsonb, 2,
+       'Art. 94 OAMal : la modification de franchise est possible au 1er janvier avec préavis au 30 novembre. Un souhait de baisse de franchise en cours d''année n''est pas admis (protection anti-sélection).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-022', 'maladie_complementaire', t.id, 'multiple',
+       'Jean (10 ans, franchise 0) est hospitalisé 20 jours pour une opération programmée.', 'Quelle contribution hospitalière lui sera demandée ?', '[{"text":"300 CHF (20 x 15)","correct":false,"why_wrong":"Les enfants sont exemptés de la contribution 15 CHF/jour."},{"text":"0 CHF","correct":true},{"text":"700 CHF","correct":false,"why_wrong":"700 est le plafond quote-part adulte, sans rapport avec la contribution enfant."},{"text":"150 CHF","correct":false},{"text":"Les jeunes adultes en formation sont également exemptés (jusqu''à 25 ans)","correct":true}]'::jsonb, 2,
+       'Art. 104 OAMal : les enfants sont exemptés de la contribution journalière hospitalière de 15 CHF. Seule la quote-part 10 % (plafonnée à 350) peut s''appliquer sur la partie ambulatoire ou couverte.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-023', 'maladie_complementaire', t.id, 'multiple',
+       'Léa (28 ans, franchise 1 500) accumule 3 000 CHF de frais AOS en 2026 dont 500 CHF de médicaments originaux (générique 10 % moins cher disponible).', 'Comment se répartit sa participation aux coûts ?', '[{"text":"Elle paie l''intégralité des 1 500 CHF de franchise","correct":true},{"text":"Sur les 1 500 CHF restants (hors médicaments originaux), quote-part 10 % = 150 CHF (plafonnée à 700 : effective)","correct":true},{"text":"Sur les 500 CHF de médicaments originaux, quote-part 40 % = 200 CHF (soumis au plafond global 700)","correct":true},{"text":"Aucune franchise car il s''agit de médicaments","correct":false,"why_wrong":"La franchise s''applique aux médicaments comme au reste."},{"text":"Plafond quote-part 350 CHF adulte","correct":false,"why_wrong":"Plafond adulte = 700, pas 350."}]'::jsonb, 3,
+       'Art. 64 LAMal + art. 38a OPAS : franchise 1 500 puis quote-part différenciée (10 % standard, 40 % originaux). Total = 1 500 + 150 + 200 = 1 850 CHF (plafond 700 non atteint). Cas typique VBV.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-024', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Vrai ou faux : la franchise LAMal s''applique aussi aux prestations de maternité ?', '[{"text":"Vrai","correct":false,"why_wrong":"Piège classique : les prestations de maternité sont exemptes."},{"text":"Faux, les prestations de maternité sont exemptes de franchise ET de quote-part","correct":true},{"text":"Vrai, sauf pour les femmes de moins de 25 ans","correct":false},{"text":"Vrai, sauf en cas d''accouchement à domicile","correct":false},{"text":"Argument fort à mettre en avant lors du conseil grossesse","correct":true}]'::jsonb, 2,
+       'Art. 64 al. 7 LAMal : les prestations de maternité (art. 29 LAMal) sont exemptes de franchise et de quote-part. Argument fort en conseil grossesse.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-025', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quel est le rabais de prime typique offert par un modèle alternatif (fourchette indicative marché suisse) ?', '[{"text":"0 à 5 %","correct":false,"why_wrong":"Trop faible : les modèles offrent en moyenne 10 à 20 %."},{"text":"10 à 20 % de la prime standard","correct":true},{"text":"30 à 50 %","correct":false,"why_wrong":"Rabais irréaliste."},{"text":"Toujours 25 % fixes","correct":false},{"text":"Chaque assureur communique sa propre grille de rabais","correct":true}]'::jsonb, 1,
+       'Le marché suisse propose des rabais typiques de 10 à 20 % pour les modèles médecin de famille, HMO ou télémédecine. Argument commercial standard, à documenter avec les grilles de la caisse.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-026', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Une consultation ambulatoire est-elle soumise à la contribution hospitalière de 15 CHF/jour ?', '[{"text":"Oui","correct":false,"why_wrong":"La contribution 15 CHF/jour ne concerne que le séjour hospitalier stationnaire."},{"text":"Non, uniquement pour un séjour hospitalier stationnaire","correct":true},{"text":"Uniquement pour les consultations en urgence","correct":false},{"text":"Uniquement pour les adultes de plus de 55 ans","correct":false},{"text":"La contribution ne s''applique donc pas aux consultations ambulatoires","correct":true}]'::jsonb, 1,
+       'Art. 104 OAMal : la contribution de 15 CHF/jour vise le séjour stationnaire hospitalier. L''ambulatoire est soumis à franchise + quote-part uniquement.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-027', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels leviers un conseiller peut-il utiliser pour réduire la prime AOS d''un client jeune en bonne santé ?', '[{"text":"Augmenter la franchise à option (jusqu''à 2 500 CHF)","correct":true},{"text":"Choisir un modèle alternatif (médecin de famille, HMO, télémédecine)","correct":true},{"text":"Comparer les primes entre caisses agréées","correct":true},{"text":"Souscrire une LCA hospitalisation privée","correct":false,"why_wrong":"La LCA ne réduit pas la prime AOS, elle ajoute une couverture."},{"text":"Demander un rabais fidélité","correct":false,"why_wrong":"Pas de rabais fidélité en AOS."}]'::jsonb, 3,
+       '3 leviers légaux : franchise à option, modèle alternatif, changement de caisse. Toujours documenter le breakeven (franchise 2 500 = risque max 3 200 CHF/an contre économie de prime).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-028', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Un adulte franchise 1 500 dépense 800 CHF de frais AOS dans l''année. Combien lui reste-t-il à charge ?', '[{"text":"800 CHF (car en dessous de la franchise)","correct":true},{"text":"80 CHF (quote-part 10 %)","correct":false,"why_wrong":"La franchise 1 500 n''est pas atteinte : tout est à charge."},{"text":"150 CHF","correct":false},{"text":"700 CHF (plafond quote-part)","correct":false,"why_wrong":"Sans dépasser la franchise, la quote-part ne s''applique pas."},{"text":"Impact conseil : franchise haute = risque de payer plus en petit sinistre","correct":true}]'::jsonb, 2,
+       'Art. 64 LAMal : tant que le total annuel des frais reste inférieur à la franchise, tout est à charge de l''assuré. Pas de quote-part avant franchise atteinte. Impact conseil : franchise haute = risque de payer plus si petit sinistre.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-029', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'La prime AOS d''un enfant est-elle plus élevée ou plus basse qu''un adulte ?', '[{"text":"Plus élevée","correct":false,"why_wrong":"Le tarif enfant est réduit."},{"text":"Plus basse (rabais légal important)","correct":true},{"text":"Identique","correct":false},{"text":"Nulle jusqu''à 18 ans","correct":false,"why_wrong":"L''AOS enfant a une prime, réduite mais non nulle."},{"text":"Les jeunes adultes (19-25) bénéficient aussi d''un tarif réduit","correct":true}]'::jsonb, 1,
+       'Art. 61 al. 3 LAMal : les enfants (0-18) paient une prime nettement réduite (souvent 20 à 25 % du tarif adulte). Les jeunes adultes 19-25 bénéficient aussi d''un tarif réduit.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LC-030', 'maladie_complementaire', t.id, 'multiple',
+       'Marie, 32 ans, en bonne santé, envisage franchise 2 500 CHF + modèle télémédecine + changement de caisse pour 2027.', 'Quels points le conseiller doit-il vérifier avec elle ?', '[{"text":"Sa capacité financière à assumer 3 200 CHF en cas de gros sinistre (2 500 + 700)","correct":true},{"text":"Sa compréhension de la restriction du modèle télémédecine (appel préalable)","correct":true},{"text":"Le respect du préavis 30 novembre 2026 pour effet 1er janvier 2027","correct":true},{"text":"L''absence d''arriérés de primes sommés à l''ancienne caisse","correct":true},{"text":"Le questionnaire de santé de la nouvelle caisse","correct":false,"why_wrong":"Aucun questionnaire en AOS."}]'::jsonb, 3,
+       'Combinaison classique d''optimisation : gain de prime significatif contre risque financier et restriction contractuelle. À documenter dans le PV de conseil pour couvrir la responsabilité du conseiller (art. 45 LSA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_couts'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-001', 'maladie_complementaire', t.id, 'multiple',
+       'Un conseiller réexplique à un client où trouver la définition des prestations AOS.', 'Sur quel article repose le catalogue des prestations de l''AOS ?', '[{"text":"Art. 3 LAMal","correct":false,"why_wrong":"Art. 3 traite de l''obligation d''assurance."},{"text":"Art. 25 LAMal","correct":true},{"text":"Art. 45 LAMal","correct":false,"why_wrong":"Art. 45 régit le rapport avec les fournisseurs."},{"text":"Art. 64 LAMal","correct":false,"why_wrong":"Art. 64 traite de la participation aux coûts."},{"text":"Complété par l''OPAS et la LiMA pour le détail","correct":true}]'::jsonb, 1,
+       'Art. 25 LAMal : catalogue général des prestations (mesures diagnostiques et thérapeutiques). Complété par l''OPAS (ordonnance sur les prestations) et la LiMA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-002', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quel article LAMal régit les prestations de maternité ?', '[{"text":"Art. 25 LAMal","correct":false,"why_wrong":"Art. 25 = catalogue général."},{"text":"Art. 29 LAMal","correct":true},{"text":"Art. 36 LAMal","correct":false,"why_wrong":"Art. 36 traite du service à l''étranger."},{"text":"Art. 42 LAMal","correct":false},{"text":"Prestations exemptes de participation aux coûts (art. 64 al. 7)","correct":true}]'::jsonb, 1,
+       'Art. 29 LAMal : catalogue spécifique de la maternité (contrôles prénatals, accouchement, conseils d''allaitement, cours de préparation jusqu''à 150 CHF, contrôle post-partum).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-003', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Que couvre spécifiquement l''AOS au titre des prestations de maternité (art. 29) ?', '[{"text":"Les contrôles prénataux prévus","correct":true},{"text":"L''accouchement (sage-femme, médecin, hôpital)","correct":true},{"text":"Les conseils d''allaitement","correct":true},{"text":"Le cours de préparation à l''accouchement jusqu''à 150 CHF","correct":true},{"text":"Un forfait allaitement de 200 CHF","correct":false,"why_wrong":"Aucun forfait 200 CHF : c''est un piège classique."}]'::jsonb, 3,
+       'Art. 29 LAMal : 4 postes couverts (contrôles, accouchement, conseils allaitement, cours prépa max 150 CHF). Ne pas oublier que ces prestations sont EXEMPTES de franchise et quote-part (art. 64 al. 7).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-004', 'maladie_complementaire', t.id, 'multiple',
+       'Emma est enceinte et effectue un contrôle prénatal ordinaire à la 20e semaine.', 'Quelle participation aux coûts lui sera-t-elle demandée ?', '[{"text":"Franchise + quote-part 10 %","correct":false,"why_wrong":"Piège majeur : les prestations de maternité sont exemptes."},{"text":"Aucune (exemption franchise ET quote-part)","correct":true},{"text":"Quote-part 10 % uniquement","correct":false,"why_wrong":"Exempte de tout."},{"text":"Franchise 300 CHF uniquement","correct":false},{"text":"Point de vente majeur en conseil grossesse","correct":true}]'::jsonb, 2,
+       'Art. 64 al. 7 LAMal : les prestations de maternité au sens de l''art. 29 sont exemptes de participation aux coûts. Point de vente majeur en conseil grossesse.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-005', 'maladie_complementaire', t.id, 'multiple',
+       'Fabien, en vacances à Montréal, se casse une jambe et est traité localement.', 'Un traitement médical URGENT est reçu par un assuré suisse en vacances au Canada. Comment l''AOS intervient-elle ?', '[{"text":"Prise en charge intégrale du tarif canadien","correct":false,"why_wrong":"Le plafond légal est le double du tarif suisse."},{"text":"Prise en charge urgence uniquement, plafonnée au double du tarif suisse","correct":true},{"text":"Aucune couverture","correct":false,"why_wrong":"L''urgence est bien couverte."},{"text":"Prise en charge complète et rapatriement inclus","correct":false,"why_wrong":"Rapatriement JAMAIS couvert par LAMal."},{"text":"Le rapatriement reste à charge d''une LCA voyage","correct":true}]'::jsonb, 2,
+       'Art. 36 OAMal : à l''étranger, l''AOS couvre uniquement l''urgence, au maximum au DOUBLE du tarif suisse. Rapatriement toujours à la charge d''une LCA voyage. Piège VBV classique.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-006', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Vrai ou faux : le rapatriement médical depuis l''étranger est pris en charge par la LAMal ?', '[{"text":"Vrai, dans la limite du double du tarif suisse","correct":false,"why_wrong":"Le rapatriement n''est jamais couvert par la LAMal."},{"text":"Faux, jamais (relève d''une LCA voyage ou assistance)","correct":true},{"text":"Vrai, mais uniquement en Europe","correct":false},{"text":"Vrai, mais soumis à une franchise supplémentaire","correct":false},{"text":"La LAMal couvre uniquement les frais médicaux d''urgence (double tarif suisse)","correct":true}]'::jsonb, 2,
+       'Art. 36 OAMal : la LAMal couvre les frais médicaux d''urgence à l''étranger. Le rapatriement (transport) est TOUJOURS exclu et relève d''une assurance voyage LCA. Piège VBV majeur.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-007', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Sur quelle liste sont inscrits les médicaments remboursés par l''AOS ?', '[{"text":"La liste des spécialités (LS) de l''OFSP","correct":true},{"text":"La liste FINMA","correct":false,"why_wrong":"La FINMA ne gère pas la liste des médicaments."},{"text":"Le catalogue de Swissmedic uniquement","correct":false,"why_wrong":"Swissmedic autorise mais ne fixe pas le remboursement."},{"text":"La liste des caisses-maladie","correct":false},{"text":"Swissmedic autorise la mise sur le marché en amont","correct":true}]'::jsonb, 1,
+       'Art. 52 LAMal + OPAS : les médicaments remboursés sont ceux inscrits sur la Liste des Spécialités (LS) tenue par l''OFSP, avec prix maximum. Swissmedic autorise la mise sur le marché, l''OFSP décide du remboursement.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-008', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelles disciplines de médecine complémentaire sont couvertes par l''AOS (sous conditions) ?', '[{"text":"Acupuncture","correct":true},{"text":"Médecine anthroposophique","correct":true},{"text":"Homéopathie","correct":true},{"text":"Phytothérapie","correct":true},{"text":"Ostéopathie","correct":false,"why_wrong":"L''ostéopathie n''est pas dans les 5 disciplines couvertes AOS ordinaire (LCA uniquement)."}]'::jsonb, 3,
+       'Art. 35 LAMal + OPAS : 5 disciplines de médecine complémentaire couvertes par l''AOS sous conditions (acupuncture, médecine anthroposophique, homéopathie, phytothérapie, MTC) si dispensées par un médecin FMH avec certification. Ostéopathie et naturopathie = LCA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-009', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Un adulte a-t-il droit au remboursement de ses lunettes par l''AOS ?', '[{"text":"Oui, jusqu''à 300 CHF/an","correct":false,"why_wrong":"Aucune couverture pour adultes en AOS ordinaire."},{"text":"Non, sauf en cas de maladie oculaire spécifique documentée","correct":true},{"text":"Oui, tous les 2 ans","correct":false},{"text":"Oui, sur prescription","correct":false,"why_wrong":"Les lunettes adulte relèvent de la LCA."},{"text":"Sur prescription en cas de pathologie oculaire spécifique","correct":true}]'::jsonb, 2,
+       'Art. 25 LAMal + OPAS : plus de forfait annuel adulte depuis 2011. Les lunettes adultes relèvent d''une LCA. Exception : lésion médicale grave (post-opératoire, pathologie spécifique) prise en charge sur prescription.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-010', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quel montant annuel maximal l''AOS rembourse-t-elle pour les lunettes des enfants (jusqu''à 18 ans) ?', '[{"text":"0 CHF (comme adulte)","correct":false,"why_wrong":"Les enfants ont un forfait légal."},{"text":"180 CHF/an sur prescription médicale","correct":true},{"text":"500 CHF/an","correct":false,"why_wrong":"Le forfait légal est 180 CHF."},{"text":"300 CHF tous les 2 ans","correct":false},{"text":"Sur prescription ophtalmologique, pour les moins de 18 ans","correct":true}]'::jsonb, 1,
+       'OPAS art. 3c : 180 CHF/an maximum pour les moins de 18 ans, sur prescription ophtalmologique. Piège : ne concerne QUE les enfants.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-011', 'maladie_complementaire', t.id, 'single',
+       'Jean demande si un traitement de racine dentaire est remboursé AOS.', 'Le traitement dentaire ordinaire est-il couvert par l''AOS ?', '[{"text":"Oui, à 50 %","correct":false,"why_wrong":"Aucune couverture dentaire ordinaire en AOS."},{"text":"Non, sauf traitement rendu nécessaire par une maladie grave non évitable (art. 31 LAMal)","correct":true},{"text":"Oui, jusqu''à 500 CHF/an","correct":false},{"text":"Oui, uniquement l''orthodontie enfant","correct":false}]'::jsonb, 2,
+       'Art. 31 LAMal : les soins dentaires ordinaires ne sont pas couverts. Exceptions : maladie grave non évitable du système masticateur, maladie systémique ayant provoqué l''atteinte, séquelles d''accident (LAA). Sinon LCA dentaire.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-012', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelles prestations préventives sont typiquement couvertes par l''AOS ?', '[{"text":"Vaccinations recommandées par l''OFSP","correct":true},{"text":"Mammographie de dépistage selon programme cantonal","correct":true},{"text":"Coloscopie de dépistage à partir de 50 ans (conditions OPAS)","correct":true},{"text":"Cures thermales de bien-être","correct":false,"why_wrong":"Les cures thermales de bien-être ne sont pas remboursées AOS (LCA uniquement)."},{"text":"Abonnement fitness","correct":false,"why_wrong":"Fitness relève de la LCA uniquement."}]'::jsonb, 3,
+       'Art. 26 LAMal + OPAS : catalogue de mesures préventives limitatif (vaccinations, dépistages ciblés). Cures et fitness sont clairement LCA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-013', 'maladie_complementaire', t.id, 'single',
+       NULL, 'L''allocation de maternité (revenu pendant le congé) relève-t-elle de la LAMal ?', '[{"text":"Oui, elle est versée par la caisse-maladie","correct":false,"why_wrong":"Piège majeur : LAMal couvre les prestations médicales, pas le revenu."},{"text":"Non, elle relève de la LAPG (14 semaines, 80 %, max 220 CHF/jour)","correct":true},{"text":"Oui, elle est financée par la quote-part","correct":false},{"text":"Non, elle relève de l''assurance-chômage","correct":false}]'::jsonb, 1,
+       'LAPG : allocation maternité = 14 semaines, 80 % du revenu, plafond 220 CHF/jour (2026). La LAMal couvre uniquement les prestations médicales (art. 29). Piège VBV majeur.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-014', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelles prestations la LAMal exclut-elle expressément (couverture LCA nécessaire) ?', '[{"text":"Chirurgie oculaire au laser (LASIK) purement esthétique/de confort","correct":true},{"text":"Soins dentaires ordinaires","correct":true},{"text":"Rapatriement médical depuis l''étranger","correct":true},{"text":"Vaccinations recommandées OFSP","correct":false,"why_wrong":"Les vaccinations recommandées sont couvertes AOS."},{"text":"Prestations d''urgence en Suisse","correct":false,"why_wrong":"Les urgences en Suisse sont couvertes."}]'::jsonb, 3,
+       'LASIK confort, dentaire ordinaire, rapatriement = LCA. Vaccinations OFSP et urgences en Suisse sont couvertes AOS. Argumentaire vente LCA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-015', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Combien de séances de physiothérapie l''AOS rembourse-t-elle par prescription initiale avant réévaluation ?', '[{"text":"3 séances","correct":false,"why_wrong":"Le paquet standard est plus long."},{"text":"9 séances","correct":true},{"text":"20 séances","correct":false,"why_wrong":"20 nécessite une nouvelle prescription."},{"text":"50 séances","correct":false}]'::jsonb, 2,
+       'OPAS : 9 séances par prescription initiale de physiothérapie couvertes AOS. Renouvellement possible sur nouvelle prescription médicale. Au-delà, prise de position du médecin-conseil.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-016', 'maladie_complementaire', t.id, 'single',
+       'Marc a besoin d''un suivi psychologique post-burnout via un psychologue non médecin.', 'L''AOS couvre-t-elle la psychothérapie non médicale (psychologue) ?', '[{"text":"Non, jamais","correct":false,"why_wrong":"Depuis 2022, remboursement possible sous conditions."},{"text":"Oui depuis 2022, sur prescription médicale, avec fournisseur reconnu","correct":true},{"text":"Oui, sans conditions","correct":false},{"text":"Uniquement pour les enfants","correct":false}]'::jsonb, 1,
+       'Modèle de prescription (dès 2022) : la psychothérapie déléguée à un psychologue-psychothérapeute reconnu est couverte AOS sur prescription médicale, avec conditions d''exercice OFSP.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-017', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quel est le plafond de remboursement AOS pour le transport médical (autre que sauvetage) ?', '[{"text":"50 % des frais, max 500 CHF/an","correct":true},{"text":"100 % des frais","correct":false,"why_wrong":"Ni 100 %, ni sans plafond."},{"text":"Illimité","correct":false},{"text":"1 000 CHF/an","correct":false,"why_wrong":"Le plafond OPAS est 500 CHF/an."}]'::jsonb, 1,
+       'OPAS : 50 % des frais de transport médicalement nécessaire, plafonnés à 500 CHF/an. Le sauvetage a un plafond distinct de 5 000 CHF (50 % des frais).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-018', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quel est le plafond de remboursement AOS pour un sauvetage (montagne, mer, etc.) ?', '[{"text":"50 % des frais, max 500 CHF/an","correct":false,"why_wrong":"500 CHF = transport ordinaire, pas sauvetage."},{"text":"50 % des frais, max 5 000 CHF/an","correct":true},{"text":"Illimité","correct":false},{"text":"100 % des frais","correct":false,"why_wrong":"L''AOS rembourse la moitié, pas la totalité."}]'::jsonb, 1,
+       'OPAS : sauvetage = 50 % des frais avec plafond 5 000 CHF/an. Argument classique en faveur d''une LCA voyage/rapatriement (frais réels très supérieurs).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-019', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un nouveau-né est-il couvert immédiatement à la naissance ?', '[{"text":"Non, il faut attendre 30 jours","correct":false,"why_wrong":"La couverture est effective rétroactivement dès la naissance."},{"text":"Oui, l''affiliation rétroactive dès la naissance couvre les soins (à condition d''annoncer dans les 3 mois)","correct":true},{"text":"Il est couvert par l''assurance de la mère à vie","correct":false,"why_wrong":"Il doit avoir sa propre affiliation."},{"text":"Non, jusqu''à 3 mois révolus","correct":false}]'::jsonb, 2,
+       'Art. 3 LAMal : l''affiliation rétroactive à la naissance couvre l''ensemble des frais dès le jour 1 si annoncée dans les 3 mois. Nécessite de choisir la caisse et la franchise du nouveau-né rapidement.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-020', 'maladie_complementaire', t.id, 'multiple',
+       'Jean, 55 ans, part en vacances en Thaïlande. Il souffre d''une crise cardiaque et est hospitalisé 10 jours à Bangkok, puis rapatrié en jet médicalisé (coût 60 000 CHF).', 'Comment se répartissent les prises en charge ?', '[{"text":"AOS : hospitalisation d''urgence, plafonnée à 2 x le tarif suisse (art. 36 OAMal)","correct":true},{"text":"AOS : franchise et quote-part appliquées normalement","correct":true},{"text":"Rapatriement : à la charge d''une LCA voyage/assistance ou de Jean","correct":true},{"text":"AOS : rapatriement intégralement pris en charge","correct":false,"why_wrong":"Piège absolu : rapatriement JAMAIS AOS."},{"text":"Aucune couverture AOS en Thaïlande","correct":false,"why_wrong":"L''urgence est bien couverte, plafonnée."}]'::jsonb, 3,
+       'Art. 36 OAMal : urgence à l''étranger couverte au double du tarif suisse. Rapatriement (60 000 CHF !) toujours hors LAMal. Argumentaire massif LCA voyage/assistance : les 60 000 CHF sont totalement à charge sans couverture privée.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-021', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un traitement à l''étranger PROGRAMMÉ (non urgent) peut-il être pris en charge par l''AOS ?', '[{"text":"Oui, dans tous les cas","correct":false,"why_wrong":"Le principe est celui de la territorialité."},{"text":"Non, sauf dérogation OFSP exceptionnelle (traitement non disponible en Suisse)","correct":true},{"text":"Oui, si le coût est inférieur au tarif suisse","correct":false},{"text":"Oui, uniquement en Europe","correct":false}]'::jsonb, 1,
+       'Art. 34 LAMal + art. 36a OAMal : la LAMal couvre les soins prodigués en Suisse (principe de territorialité). Dérogation possible pour un traitement non disponible en Suisse et sur autorisation préalable.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-022', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels types de fournisseurs peuvent facturer à l''AOS (art. 35 et suivants) ?', '[{"text":"Médecins agréés","correct":true},{"text":"Pharmacies conventionnées","correct":true},{"text":"Hôpitaux figurant sur la liste cantonale","correct":true},{"text":"Naturopathes non médecins","correct":false,"why_wrong":"Les naturopathes ne sont pas fournisseurs LAMal (LCA uniquement)."},{"text":"Coach fitness certifié","correct":false,"why_wrong":"Le fitness n''est pas un fournisseur LAMal."}]'::jsonb, 3,
+       'Art. 35-40 LAMal : liste limitative des fournisseurs admis (médecins, pharmaciens, hôpitaux, sages-femmes, physio, ergo, chiro, diététicien, etc.). Naturopathes et coachs = LCA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-023', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Une IVG légale est-elle prise en charge par l''AOS et avec quelle participation ?', '[{"text":"Non, non couverte","correct":false,"why_wrong":"L''IVG légale est prise en charge AOS."},{"text":"Oui, exempte de franchise et de quote-part (art. 64 al. 7 LAMal)","correct":true},{"text":"Oui, avec franchise et quote-part normales","correct":false,"why_wrong":"Exempte comme la maternité."},{"text":"Uniquement remboursée par le canton","correct":false}]'::jsonb, 2,
+       'Art. 30 LAMal + art. 64 al. 7 : IVG légale prise en charge et exempte de participation aux coûts, au même titre que les prestations de maternité.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-024', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quelle organisation autorise la mise sur le marché des médicaments en Suisse ?', '[{"text":"L''OFSP","correct":false,"why_wrong":"L''OFSP décide du remboursement (LS), pas de la mise sur le marché."},{"text":"Swissmedic","correct":true},{"text":"La FINMA","correct":false,"why_wrong":"La FINMA surveille les assurances privées."},{"text":"Santésuisse","correct":false,"why_wrong":"Santésuisse est une association de caisses."}]'::jsonb, 1,
+       'Swissmedic autorise la mise sur le marché (sécurité, efficacité). L''OFSP décide de l''inscription sur la Liste des Spécialités (remboursement AOS) avec prix maximum.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-025', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un ambulancier facture 800 CHF pour un transport médical d''urgence. Combien l''AOS rembourse-t-elle ?', '[{"text":"800 CHF (100 %)","correct":false,"why_wrong":"L''AOS ne prend que 50 % avec plafond 500 CHF/an transport."},{"text":"400 CHF (50 %), sous plafond 500 CHF/an","correct":true},{"text":"0 CHF","correct":false},{"text":"5 000 CHF (plafond sauvetage)","correct":false,"why_wrong":"5 000 = sauvetage, pas transport."}]'::jsonb, 2,
+       'OPAS : transport médical AOS = 50 % des frais, max 500 CHF/an. Sur 800 CHF : 400 CHF pris en charge (dans le plafond). Argument LCA transport/rapatriement pour combler.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-026', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Combien de temps une femme peut-elle bénéficier de conseils d''allaitement remboursés par la LAMal ?', '[{"text":"1 mois après l''accouchement","correct":false,"why_wrong":"La durée est plus longue."},{"text":"Jusqu''à 3 séances (art. 29 LAMal + OPAS)","correct":true},{"text":"1 an","correct":false},{"text":"Aucune couverture","correct":false,"why_wrong":"Prestation clairement couverte."}]'::jsonb, 2,
+       'Art. 29 LAMal + OPAS art. 16 : 3 séances de conseils d''allaitement dispensées par une sage-femme, infirmière ou personne formée. Sans franchise ni quote-part.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-027', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un contrôle gynécologique préventif est-il remboursé par l''AOS ?', '[{"text":"Oui, tous les ans intégralement","correct":false,"why_wrong":"Fréquence encadrée."},{"text":"Oui, tous les 3 ans (frottis PAP inclus)","correct":true},{"text":"Non, uniquement en cas de symptôme","correct":false},{"text":"Uniquement à partir de 50 ans","correct":false}]'::jsonb, 1,
+       'OPAS : contrôle gynécologique préventif tous les 3 ans (frottis cytologique). Franchise et quote-part s''appliquent (contrairement à la maternité).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-028', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Que couvre spécifiquement la LAMal en cas de maladie ?', '[{"text":"Le diagnostic et le traitement médical","correct":true},{"text":"Les médicaments de la Liste des Spécialités","correct":true},{"text":"L''hospitalisation en division commune du canton de résidence","correct":true},{"text":"L''indemnité journalière obligatoire en cas d''incapacité de travail","correct":false,"why_wrong":"L''IJM LAMal est FACULTATIVE (art. 67)."},{"text":"L''allocation de maternité","correct":false,"why_wrong":"APG, pas LAMal."}]'::jsonb, 3,
+       'Art. 25 LAMal : catalogue des prestations en nature (diagnostic, traitement, médicaments LS, hospitalisation division commune). L''IJM LAMal est facultative. L''allocation maternité relève de la LAPG.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-029', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Une consultation chez un ostéopathe est-elle prise en charge par l''AOS ?', '[{"text":"Oui, sans conditions","correct":false,"why_wrong":"L''ostéopathie n''est pas dans le catalogue AOS."},{"text":"Non, elle relève d''une LCA (médecine complémentaire)","correct":true},{"text":"Oui, dans les 5 disciplines couvertes","correct":false,"why_wrong":"L''ostéopathie ne fait pas partie des 5 disciplines couvertes."},{"text":"Oui, jusqu''à 500 CHF/an","correct":false}]'::jsonb, 1,
+       'OPAS : les 5 disciplines LAMal sont acupuncture, médecine anthroposophique, homéopathie, phytothérapie, médecine traditionnelle chinoise. Ostéopathie et naturopathie = LCA médecine complémentaire.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LP-030', 'maladie_complementaire', t.id, 'multiple',
+       'Fatou attend son 2e enfant. Elle demande à son conseiller ce qui est couvert par la LAMal et ce qui ne l''est pas.', 'Quelles réponses le conseiller doit-il apporter ?', '[{"text":"Contrôles prénataux, accouchement, conseils d''allaitement : couverts et exemptés de participation aux coûts","correct":true},{"text":"Cours de préparation à l''accouchement : jusqu''à 150 CHF","correct":true},{"text":"Allocation maternité (revenu) : par la LAPG, non LAMal","correct":true},{"text":"Chambre privée ou semi-privée : nécessite une LCA hospitalisation","correct":true},{"text":"Rapatriement en cas de complication à l''étranger : couvert par LAMal","correct":false,"why_wrong":"Rapatriement JAMAIS LAMal (LCA voyage)."}]'::jsonb, 3,
+       'Rappels art. 29 + 64 al. 7 LAMal + LAPG. Argumentaire complet grossesse : LAMal pour prestations médicales, LAPG pour le revenu, LCA hospitalisation pour le confort. Le conseiller structure une offre cohérente.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lamal_prestations'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-001', 'maladie_complementaire', t.id, 'single',
+       'Un client refusé par un assureur LCA demande à un conseiller les motifs.', 'En LCA santé complémentaire, l''assureur peut-il refuser une proposition sans indiquer de motif ?', '[{"text":"Non, refus interdit","correct":false,"why_wrong":"Confusion avec l''AOS : la LCA est libre."},{"text":"Oui, la liberté contractuelle s''applique (contrairement à l''AOS)","correct":true},{"text":"Oui, mais uniquement pour raisons financières","correct":false},{"text":"Uniquement pour les personnes de plus de 60 ans","correct":false}]'::jsonb, 1,
+       'Principe LCA : liberté contractuelle. L''assureur peut refuser sans motiver, poser des réserves, ou fixer une prime majorée. Contraste net avec l''art. 4 LAMal (obligation d''accepter en AOS).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-002', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quel est le délai légal de révocation d''une proposition d''assurance LCA ?', '[{"text":"7 jours","correct":false,"why_wrong":"Le délai légal est 14 jours."},{"text":"14 jours (art. 2a LCA)","correct":true},{"text":"1 mois","correct":false},{"text":"2 mois","correct":false,"why_wrong":"Piège classique : on confond avec un autre délai. La bonne référence est 14 jours."}]'::jsonb, 2,
+       'Art. 2a LCA : le preneur peut révoquer sa proposition ou son acceptation par écrit ou sous forme démontrable par texte dans les 14 jours. Piège récurrent : ne pas confondre avec 2 mois.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-003', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Une réticence (fausses déclarations au questionnaire de santé) permet à l''assureur de :', '[{"text":"Doubler la prime rétroactivement","correct":false,"why_wrong":"La sanction est la résiliation, non le doublement."},{"text":"Résilier le contrat dans les 4 semaines après connaissance (art. 6 LCA)","correct":true},{"text":"Aucune conséquence","correct":false},{"text":"Uniquement refuser le sinistre concerné","correct":false,"why_wrong":"Sanction plus large : résiliation du contrat."}]'::jsonb, 2,
+       'Art. 6 LCA : en cas de réticence, l''assureur peut résilier le contrat dans les 4 semaines dès qu''il en a connaissance. Il peut aussi refuser les prestations liées. Objectif : sanctionner la mauvaise foi.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-004', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'En LCA santé complémentaire, quelles pratiques sont autorisées à l''assureur ?', '[{"text":"Refuser une proposition sans motiver","correct":true},{"text":"Poser des réserves de santé (exclusions temporaires ou permanentes)","correct":true},{"text":"Majorer la prime en fonction du risque","correct":true},{"text":"Résilier au 1er sinistre sans motif","correct":false,"why_wrong":"La résiliation au sinistre a été supprimée par la LCA révisée en 2022."},{"text":"Recueillir des données médicales sans consentement","correct":false,"why_wrong":"Consentement requis (nLPD, art. 5-6)."}]'::jsonb, 3,
+       'Liberté contractuelle LCA vs contrôle nLPD. La LCA révisée (2022) a supprimé le droit de résiliation en cas de sinistre pour les branches d''importance sociale (santé notamment). Réserves possibles, jamais dissimulées.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-005', 'maladie_complementaire', t.id, 'single',
+       'Un client accidenté possède 2 LCA hospit et cherche à cumuler les remboursements.', 'Le principe indemnitaire en LCA signifie que :', '[{"text":"L''assuré ne peut pas être indemnisé au-delà du dommage effectif (pas d''enrichissement)","correct":true},{"text":"L''assuré est payé forfaitairement","correct":false,"why_wrong":"Le forfaitaire (assurance de sommes) suit une autre logique."},{"text":"L''assuré perçoit toujours le double du sinistre","correct":false},{"text":"Aucune prestation n''est due tant que le sinistre n''est pas total","correct":false}]'::jsonb, 2,
+       'Principe indemnitaire LCA : la prestation ne peut excéder le dommage. Pas de double indemnisation par cumul de contrats sur un même sinistre. À distinguer de l''assurance de sommes (vie, IJ forfaitaire) où le forfait est libre.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-006', 'maladie_complementaire', t.id, 'single',
+       NULL, 'L''ordre à respecter absolument avant de résilier une ancienne LCA santé est :', '[{"text":"Résilier d''abord, puis chercher un nouveau contrat","correct":false,"why_wrong":"Erreur majeure : risque de trou de couverture sans acceptation confirmée."},{"text":"Obtenir l''acceptation écrite de la nouvelle LCA AVANT de résilier l''ancienne","correct":true},{"text":"Résilier simultanément","correct":false},{"text":"Aucun ordre à respecter","correct":false}]'::jsonb, 1,
+       'Règle d''or du conseil LCA : ne JAMAIS résilier avant l''acceptation écrite de la nouvelle police, y compris des réserves éventuelles. Un client refusé après résiliation se retrouve sans couverture complémentaire (santé antérieure exclue à vie possible).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-007', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un client demande une LCA hospitalisation privée. Cette catégorie signifie :', '[{"text":"Chambre à 2 lits, choix limité du médecin","correct":false,"why_wrong":"C''est la définition demi-privée."},{"text":"Chambre individuelle, libre choix du médecin dans l''hôpital","correct":true},{"text":"Chambre commune, sans supplément","correct":false,"why_wrong":"La division commune est couverte par l''AOS."},{"text":"Chambre à 4 lits","correct":false}]'::jsonb, 2,
+       'LCA hospitalisation : demi-privée (chambre 2 lits + choix médecin) et privée (chambre individuelle + libre choix médecin). L''AOS ne couvre que la division commune du canton de résidence.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-008', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels avantages typiques offre une LCA hospitalisation demi-privée par rapport à la division commune AOS ?', '[{"text":"Chambre à 2 lits","correct":true},{"text":"Choix restreint du médecin/spécialiste","correct":true},{"text":"Prise en charge dans l''ensemble de la Suisse (pas seulement canton de résidence)","correct":true},{"text":"Réduction de la prime AOS de 50 %","correct":false,"why_wrong":"Pas d''impact sur la prime AOS."},{"text":"Gratuité de la franchise AOS","correct":false,"why_wrong":"La LCA ne modifie pas la franchise AOS."}]'::jsonb, 3,
+       'LCA demi-privée : confort et choix médecin dans l''hôpital contracté, extension nationale ou plus. Ne modifie ni la prime AOS, ni la franchise AOS (couches indépendantes).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-009', 'maladie_complementaire', t.id, 'single',
+       NULL, 'L''obligation d''information de l''assureur LCA prend-elle fin à la signature du contrat ?', '[{"text":"Oui, une fois signé, le devoir cesse","correct":false,"why_wrong":"Le devoir est continu (art. 3 LCA)."},{"text":"Non, le devoir est continu tout au long du contrat (art. 3 LCA)","correct":true},{"text":"Oui, sauf en cas de sinistre","correct":false},{"text":"Uniquement à la reconduction annuelle","correct":false}]'::jsonb, 1,
+       'Art. 3 LCA : devoir d''information continu. L''assureur doit informer notamment en cas de modification tarifaire, de conditions générales, de restructuration de la police. Base de la relation de confiance.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-010', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Existe-t-il un subside cantonal pour les primes LCA santé complémentaire ?', '[{"text":"Oui, comme pour l''AOS","correct":false,"why_wrong":"Le subside cantonal ne concerne que l''AOS (art. 65 LAMal)."},{"text":"Non, les subsides sont réservés à l''AOS","correct":true},{"text":"Oui, à hauteur de 20 %","correct":false},{"text":"Uniquement pour les LCA hospitalisation","correct":false}]'::jsonb, 2,
+       'Art. 65 LAMal : les subsides cantonaux (réduction de prime) sont exclusivement destinés à l''AOS. La LCA relève de la responsabilité contractuelle privée, sans aide publique.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-011', 'maladie_complementaire', t.id, 'multiple',
+       'Un client jeune actif liste ce qu''il attend en LCA ambulatoire complémentaire.', 'Quelles prestations sont typiquement couvertes par une LCA santé complémentaire ambulatoire ?', '[{"text":"Médecine complémentaire (ostéopathie, naturopathie...) non couverte AOS","correct":true},{"text":"Lunettes/lentilles adultes (100 à 400 CHF/an selon contrat)","correct":true},{"text":"Abonnement fitness (200 à 500 CHF/an typique)","correct":true},{"text":"Franchise AOS","correct":false,"why_wrong":"La franchise AOS est un choix de l''assuré, pas une couverture LCA."},{"text":"Cotisations AVS","correct":false,"why_wrong":"Sans rapport avec la santé."}]'::jsonb, 3,
+       'LCA ambulatoire typique : catalogue étendu (méd. complémentaire, prévention, lunettes, fitness, chirurgie oculaire). Chiffres commerciaux à connaître par coeur (gap identifié Anisa).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-012', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un LASIK (chirurgie oculaire au laser correctrice) est-il typiquement couvert par une LCA ?', '[{"text":"Oui, intégralement dans tout contrat LCA","correct":false,"why_wrong":"Le remboursement est plafonné selon contrat."},{"text":"Oui, plafonné généralement à 1 000 à 3 000 CHF selon la LCA","correct":true},{"text":"Non, jamais","correct":false,"why_wrong":"Nombreuses LCA le couvrent partiellement."},{"text":"Oui, mais uniquement pour les moins de 30 ans","correct":false}]'::jsonb, 2,
+       'LCA ambulatoire haut de gamme : chirurgie oculaire au laser typiquement plafonnée entre 1 000 et 3 000 CHF (une fois par oeil, à vie). Chiffres commerciaux à connaître (piège Anisa identifié).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-013', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un remboursement typique en LCA médecine alternative se situe autour de :', '[{"text":"10 % des frais, max 100 CHF/an","correct":false,"why_wrong":"Trop faible : les gammes marché sont bien supérieures."},{"text":"75 à 90 % des frais, plafond annuel 500 à 3 000 CHF selon contrat","correct":true},{"text":"100 % sans plafond","correct":false,"why_wrong":"Aucun contrat n''offre l''illimité pour la médecine alternative."},{"text":"50 %, plafond 5 000 CHF/mois","correct":false}]'::jsonb, 2,
+       'LCA médecine alternative marché suisse : remboursement 75-90 % avec plafonds annuels entre 500 et 3 000 CHF selon la gamme. Point sensible en conseil (positionnement produit).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-014', 'maladie_complementaire', t.id, 'single',
+       'Un adulte souhaite couvrir un futur bridge dentaire à 4 000 CHF.', 'Une LCA dentaire adulte prend typiquement en charge :', '[{"text":"100 % des soins sans plafond","correct":false,"why_wrong":"Toujours plafonné en LCA dentaire."},{"text":"50 à 75 % des frais avec plafonds annuels échelonnés dans le temps","correct":true},{"text":"Uniquement le détartrage","correct":false},{"text":"Aucun soin conservateur","correct":false,"why_wrong":"Les soins conservateurs sont typiquement couverts."}]'::jsonb, 1,
+       'LCA dentaire adulte : remboursement 50-75 %, plafonds annuels souvent croissants (500 en année 1, 1 000 en année 2, jusqu''à 3 000-5 000 à terme). Réserves fréquentes pour dents déjà atteintes.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-015', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels risques une réserve de santé LCA peut-elle prendre ?', '[{"text":"Exclusion temporaire (ex : 5 ans) d''une pathologie donnée","correct":true},{"text":"Exclusion permanente d''une pathologie donnée","correct":true},{"text":"Majoration de prime pour un risque aggravé","correct":true},{"text":"Résiliation automatique au 1er sinistre","correct":false,"why_wrong":"Résiliation au sinistre supprimée en LCA santé révisée."},{"text":"Modification unilatérale du plafond en cours d''année","correct":false,"why_wrong":"Modification unilatérale non admise."}]'::jsonb, 3,
+       'Art. 3 LCA + pratique : les réserves santé sont écrites, précises, limitées dans le temps ou permanentes selon le contrat. Elles doivent être communiquées lors de l''acceptation. La révision LCA 2022 a renforcé la protection de l''assuré.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-016', 'maladie_complementaire', t.id, 'single',
+       'Camille signe une LCA médecine alternative le 5 mars 2026. Le 15 mars, elle change d''avis et souhaite se rétracter.', 'Peut-elle le faire ?', '[{"text":"Non, le contrat est ferme dès la signature","correct":false,"why_wrong":"La LCA prévoit un droit de révocation."},{"text":"Oui, dans le délai de 14 jours (art. 2a LCA)","correct":true},{"text":"Oui, sous 2 mois","correct":false,"why_wrong":"Confusion classique : c''est 14 jours."},{"text":"Uniquement avec l''accord de l''assureur","correct":false}]'::jsonb, 2,
+       'Art. 2a LCA : révocation possible dans les 14 jours dès l''acceptation. Camille est dans le délai (10 jours après signature). Notifier par écrit ou forme démontrable par texte.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-017', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quelle autorité surveille les assureurs LCA ?', '[{"text":"L''OFSP","correct":false,"why_wrong":"L''OFSP surveille l''AOS."},{"text":"La FINMA","correct":true},{"text":"Le canton","correct":false},{"text":"Swissmedic","correct":false,"why_wrong":"Swissmedic autorise les médicaments."}]'::jsonb, 1,
+       'LSA + FINMA : la Finma surveille les assureurs privés (dont LCA santé complémentaire). L''OFSP surveille les caisses AOS. Deux régulateurs distincts pour un même marché de santé.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-018', 'maladie_complementaire', t.id, 'single',
+       'Un assuré souhaite quitter sa LCA hospit privée pour une offre concurrente.', 'Quel délai de résiliation ordinaire s''applique typiquement à une LCA santé complémentaire ?', '[{"text":"30 novembre pour effet 1er janvier (comme LAMal)","correct":false,"why_wrong":"La LCA suit ses propres conditions générales."},{"text":"3 mois avant l''échéance annuelle (selon conditions générales)","correct":true},{"text":"Aucun délai","correct":false},{"text":"10 ans minimum sans résiliation","correct":false,"why_wrong":"Aucun contrat LCA ne peut être verrouillé aussi longtemps."}]'::jsonb, 2,
+       'Pratique LCA : préavis 3 mois avant l''échéance annuelle (souvent 31.12) prévu dans les CGA. La LCA révisée (2022) impose une possibilité de résiliation annuelle (art. 35a LCA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-019', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels critères l''assureur LCA utilise-t-il pour fixer la prime ?', '[{"text":"L''âge de l''assuré","correct":true},{"text":"L''état de santé (résultat questionnaire, exclusions)","correct":true},{"text":"Le niveau de couverture choisi","correct":true},{"text":"Le revenu de l''assuré","correct":false,"why_wrong":"Le revenu n''est pas un critère LCA santé."},{"text":"Le canton de résidence uniquement (comme AOS)","correct":false,"why_wrong":"La LCA utilise plus de critères que le seul canton."}]'::jsonb, 3,
+       'Contraste LCA/AOS : la LCA tarifie selon âge, santé, couverture, sinistralité, sexe (selon produit). L''AOS uniformise dans la catégorie (âge, région, canton). Le revenu n''entre pas en LCA santé.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-020', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Une LCA hospitalisation privée à l''étranger inclut typiquement :', '[{"text":"Uniquement les cliniques suisses","correct":false,"why_wrong":"L''extension étranger fait justement partie de l''offre."},{"text":"La couverture hospitalière étranger, transport et rapatriement selon contrat","correct":true},{"text":"Aucune couverture à l''étranger","correct":false},{"text":"Le remboursement des primes AOS","correct":false}]'::jsonb, 2,
+       'LCA hospit privée haut de gamme : extension étranger sans plafond ou avec plafond élevé, transport médical et rapatriement inclus. Complète le manque flagrant de l''AOS (double tarif suisse seulement, pas de rapatriement).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-021', 'maladie_complementaire', t.id, 'single',
+       NULL, 'L''AOS et la LCA doivent-elles être auprès de la même caisse ?', '[{"text":"Oui, obligatoirement","correct":false,"why_wrong":"Libre choix des deux couvertures."},{"text":"Non, l''assuré est libre de séparer AOS et LCA chez deux compagnies différentes","correct":true},{"text":"Uniquement si l''assuré a plus de 40 ans","correct":false},{"text":"Uniquement pour la LCA hospitalisation","correct":false}]'::jsonb, 1,
+       'Aucune obligation légale : le client peut avoir son AOS chez la caisse A et sa LCA chez l''assureur B. Argument pour comparer et optimiser chaque couche séparément.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-022', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Le principe indemnitaire empêche-t-il le cumul d''une LCA hospit demi-privée et d''une seconde LCA hospit demi-privée sur le même sinistre ?', '[{"text":"Non, on peut cumuler et être surindemnisé","correct":false,"why_wrong":"Principe indemnitaire l''interdit."},{"text":"Oui, il n''est pas possible d''être indemnisé au-delà du dommage réel","correct":true},{"text":"Uniquement si les deux LCA sont chez la même compagnie","correct":false},{"text":"Uniquement pour la médecine alternative","correct":false}]'::jsonb, 2,
+       'Principe indemnitaire LCA : pas de double indemnisation pour un même sinistre. Deux LCA hospit se répartissent proportionnellement. Aucun intérêt à double-souscrire par erreur.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-023', 'maladie_complementaire', t.id, 'multiple',
+       'Karim, 38 ans, souscrit une nouvelle LCA hospitalisation privée. Il a une hernie discale connue depuis 2020, sans intervention prévue.', 'Que doit-il anticiper ?', '[{"text":"L''assureur peut poser une réserve de santé sur la colonne vertébrale (temporaire ou permanente)","correct":true},{"text":"L''assureur peut majorer la prime","correct":true},{"text":"L''assureur peut refuser la proposition sans motiver","correct":true},{"text":"L''assureur est obligé de l''accepter comme en AOS","correct":false,"why_wrong":"AOS obligatoire, LCA libre."},{"text":"Résilier immédiatement son ancienne LCA pour économiser","correct":false,"why_wrong":"Erreur majeure : jamais résilier avant acceptation écrite."}]'::jsonb, 3,
+       'Consequences de la liberté contractuelle LCA + questionnaire de santé. Règle d''or : garder l''ancienne couverture jusqu''à confirmation formelle (avec réserves finalisées) de la nouvelle.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-024', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Une LCA fitness/prévention prend typiquement en charge :', '[{"text":"Jusqu''à 500 CHF/an d''abonnement fitness ou sport reconnu","correct":true},{"text":"Uniquement les cures thermales","correct":false,"why_wrong":"Les cures sont un autre poste LCA."},{"text":"Uniquement les médicaments","correct":false},{"text":"Aucune activité sportive","correct":false,"why_wrong":"La prévention couvre bien le fitness."}]'::jsonb, 1,
+       'LCA prévention : forfaits annuels typiques 200 à 500 CHF pour abonnement fitness/piscine/sport en centre reconnu. Argument acquisition jeune adulte. Chiffres commerciaux à maîtriser.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-LX-025', 'maladie_complementaire', t.id, 'multiple',
+       'Un client hésite entre AOS et LCA et demande au conseiller les vraies différences.', 'En quoi la LCA se distingue-t-elle fondamentalement de l''AOS ?', '[{"text":"Liberté contractuelle (refus, réserves, majoration possibles)","correct":true},{"text":"Prime individualisée selon âge, santé, sexe (non uniforme)","correct":true},{"text":"Prestations personnalisées et évolutives selon contrat","correct":true},{"text":"Subsides cantonaux disponibles comme en AOS","correct":false,"why_wrong":"Aucun subside pour LCA (art. 65 LAMal)."},{"text":"Obligation légale de souscription universelle","correct":false,"why_wrong":"LCA facultative, AOS obligatoire."}]'::jsonb, 3,
+       'Résumé des 5 différences fondamentales : liberté vs obligation ; prime individualisée vs per capita ; prestations variables vs identiques ; pas de subside vs subside AOS ; refus possible vs interdiction. À maîtriser en conseil.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'lca_complementaires'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-001', 'maladie_complementaire', t.id, 'single',
+       'Un artisan indépendant demande à son conseiller s''il doit obligatoirement souscrire une IJM.', 'L''IJM LAMal (art. 67-77) est-elle obligatoire ?', '[{"text":"Oui, comme l''AOS","correct":false,"why_wrong":"L''IJM LAMal est facultative (art. 67)."},{"text":"Non, elle est facultative","correct":true},{"text":"Obligatoire uniquement pour les salariés","correct":false},{"text":"Obligatoire à partir de 18 ans","correct":false}]'::jsonb, 1,
+       'Art. 67 LAMal : IJM LAMal FACULTATIVE, souscrite individuellement ou collectivement (employeur). À distinguer de l''obligation CO 324a qui pèse sur l''employeur.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-002', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quelle est la durée maximale de versement d''une IJM LAMal (art. 72) ?', '[{"text":"360 jours sur 540","correct":false,"why_wrong":"Chiffre erroné."},{"text":"720 jours sur 900","correct":true},{"text":"730 jours sur 1000","correct":false,"why_wrong":"Piège classique : chiffre proche mais faux."},{"text":"365 jours sur 365","correct":false}]'::jsonb, 2,
+       'Art. 72 LAMal : IJM versée pendant 720 jours dans une période de 900 jours consécutifs. Chiffre à connaître par coeur (piège récurrent VBV).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-003', 'maladie_complementaire', t.id, 'single',
+       'Un employeur PME souscrit une IJM collective pour son personnel.', 'L''IJM collective d''employeur relève en pratique de quel régime ?', '[{"text":"LAMal art. 67-77","correct":false,"why_wrong":"En pratique, la LCA est utilisée pour l''IJM collective."},{"text":"LCA (loi sur le contrat d''assurance)","correct":true},{"text":"LAA","correct":false,"why_wrong":"LAA = accidents, pas maladie."},{"text":"LPP","correct":false}]'::jsonb, 1,
+       'En pratique : les IJM collectives conclues par les employeurs relèvent typiquement de la LCA (marché privé, souplesse). Piège VBV : ne pas confondre avec l''IJM LAMal facultative individuelle.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-004', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelles échelles de durée de versement du salaire par l''employeur existent (art. 324a CO) ?', '[{"text":"Échelle bernoise","correct":true},{"text":"Échelle bâloise","correct":true},{"text":"Échelle zurichoise","correct":true},{"text":"Échelle genevoise","correct":false,"why_wrong":"Pas d''échelle genevoise officielle : la pratique GE suit typiquement Berne."},{"text":"Échelle nationale unique","correct":false,"why_wrong":"Aucune échelle nationale unique en CO 324a."}]'::jsonb, 3,
+       'Art. 324a CO : à défaut d''accord conventionnel, la doctrine et la pratique cantonale ont dégagé 3 échelles (Berne, Bâle, Zurich). Chacune fixe la durée selon les années d''ancienneté.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-005', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Selon l''échelle bernoise, un salarié en 1re année d''ancienneté a droit au salaire pendant :', '[{"text":"1 semaine","correct":false,"why_wrong":"Le minimum légal est 3 semaines."},{"text":"3 semaines","correct":true},{"text":"1 mois","correct":false,"why_wrong":"1 mois correspond à l''année 2."},{"text":"6 mois","correct":false,"why_wrong":"6 mois correspond à une ancienneté beaucoup plus longue."}]'::jsonb, 2,
+       'Échelle bernoise (référence CO 324a al. 2) : 3 semaines la 1re année, 1 mois la 2e année, puis progression selon l''ancienneté. Le minimum absolu légal est 3 semaines dès l''année 1.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-006', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un employeur qui a conclu une IJM LCA équivalente est libéré de son obligation CO 324a s''il :', '[{"text":"Ne participe pas à la prime","correct":false,"why_wrong":"La libération suppose une contribution significative de l''employeur."},{"text":"Prend en charge au moins 50 % de la prime IJM","correct":true},{"text":"Paie 100 % de la prime","correct":false,"why_wrong":"50 % suffit selon la jurisprudence."},{"text":"Prend en charge 25 % maximum","correct":false}]'::jsonb, 2,
+       'Jurisprudence CO 324a : pour libérer l''employeur de son obligation directe, l''IJM collective LCA doit être équivalente ou meilleure ET la prime supportée au moins à 50 % par l''employeur. Sinon obligation directe subsiste.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-007', 'maladie_complementaire', t.id, 'single',
+       'Un dirigeant PME compare 3 offres IJM du marché.', 'Quel taux d''indemnité IJM est typiquement offert dans les contrats collectifs LCA du marché suisse ?', '[{"text":"50 % du salaire","correct":false,"why_wrong":"Le standard marché est 80 %."},{"text":"80 % du salaire","correct":true},{"text":"100 % du salaire","correct":false,"why_wrong":"100 % est rare (couvrirait au-delà du principe indemnitaire)."},{"text":"40 %","correct":false}]'::jsonb, 1,
+       'Standard marché LCA IJM : 80 % du salaire brut. Certains contrats vont à 90 % ou 100 %, souvent avec délai d''attente allongé pour compenser.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-008', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels sont les leviers pour réduire la prime IJM (collective ou individuelle) ?', '[{"text":"Allonger le délai d''attente (30, 60, 90 jours)","correct":true},{"text":"Réduire la durée de prestation (par ex 730 jours)","correct":true},{"text":"Diminuer le taux (par ex 80 % au lieu de 90 %)","correct":true},{"text":"Augmenter le nombre de sinistres passés","correct":false,"why_wrong":"Cela augmente la prime, ne la réduit pas."},{"text":"Passer d''une couverture LCA à une IJM LAMal collective sans limite","correct":false,"why_wrong":"L''IJM LAMal a une limite légale de 720/900."}]'::jsonb, 2,
+       '3 leviers standards : délai d''attente, durée, taux. Le tarif suit une logique risque : plus l''assureur supporte tôt et longtemps, plus la prime augmente.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-009', 'maladie_complementaire', t.id, 'single',
+       NULL, 'L''IJM LAMal admet-elle des réserves de santé ?', '[{"text":"Oui, comme la LCA","correct":false,"why_wrong":"L''IJM LAMal exclut les réserves permanentes."},{"text":"Non, réserves limitées à 5 ans max si pathologie préexistante (art. 69 LAMal)","correct":true},{"text":"Oui, sans limite","correct":false},{"text":"Aucune réserve possible","correct":false,"why_wrong":"Une réserve de 5 ans est admise."}]'::jsonb, 1,
+       'Art. 69 LAMal : l''IJM LAMal peut exclure les maladies existantes lors de l''affiliation, mais la réserve tombe au plus tard après 5 ans. Contrairement à la LCA (réserves permanentes possibles).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-010', 'maladie_complementaire', t.id, 'single',
+       'Marc, employé année 4 (ancienneté), tombe malade. Son employeur applique l''échelle bernoise.', 'Combien de temps l''employeur doit-il verser le salaire selon l''échelle bernoise (année 4) ?', '[{"text":"1 mois","correct":false,"why_wrong":"1 mois = année 2."},{"text":"2 mois","correct":true},{"text":"6 mois","correct":false,"why_wrong":"6 mois correspond à une ancienneté bien plus longue."},{"text":"3 semaines","correct":false,"why_wrong":"3 semaines = année 1."}]'::jsonb, 2,
+       'Échelle bernoise : 3 semaines (année 1), 1 mois (année 2), 2 mois (années 3-4), 3 mois (années 5-9), 4 mois (années 10-14), etc. Marc année 4 = 2 mois.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-011', 'maladie_complementaire', t.id, 'single',
+       'Un indépendant récent s''étonne que son ancien employeur n''ait plus d''obligation envers lui.', 'Le CO 324a s''applique-t-il aux indépendants ?', '[{"text":"Oui, comme aux salariés","correct":false,"why_wrong":"Le CO 324a régit uniquement le contrat de travail."},{"text":"Non, l''indépendant doit se couvrir librement (IJM LCA individuelle)","correct":true},{"text":"Oui, si affilié à une caisse","correct":false},{"text":"Uniquement au conjoint travaillant dans l''entreprise","correct":false}]'::jsonb, 1,
+       'Art. 324a CO : obligation de l''employeur envers le salarié. L''indépendant n''a pas d''employeur : il doit souscrire une IJM LCA individuelle pour se couvrir. Argument central de conseil aux indépendants.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-012', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Combien de temps est cumulable une IJM LAMal si le salarié tombe malade avec plusieurs interruptions sur 3 ans ?', '[{"text":"Illimité","correct":false,"why_wrong":"Le plafond est 720/900."},{"text":"720 jours cumulés dans les 900 jours consécutifs","correct":true},{"text":"365 jours par période","correct":false},{"text":"1 000 jours cumulés","correct":false,"why_wrong":"Chiffre erroné."}]'::jsonb, 2,
+       'Art. 72 LAMal : le compteur 720/900 s''applique aux jours indemnisés cumulés dans la fenêtre glissante de 900 jours consécutifs pour la même cause. Piège VBV : bien retenir 720 sur 900.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-013', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelles autres prestations peuvent se cumuler avec l''IJM (avec règle de surindemnisation) ?', '[{"text":"APG maternité (14 semaines)","correct":true},{"text":"AI (rente invalidité)","correct":true},{"text":"LAA (indemnité journalière accident)","correct":true},{"text":"Subsides cantonaux d''AOS","correct":false,"why_wrong":"Les subsides réduisent la prime AOS, sans rapport avec l''IJM."},{"text":"3e pilier B non lié","correct":false,"why_wrong":"3b relève de l''épargne privée, pas des prestations sociales."}]'::jsonb, 2,
+       'Cumul possible avec règles de coordination : le total ne peut dépasser le revenu net perdu (principe indemnitaire pour la LCA + coordination LPGA). L''AOS ne verse pas d''IJ.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-014', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un délai d''attente typique en IJM LCA collective (avec CO 324a en amont) est de :', '[{"text":"0 jour","correct":false,"why_wrong":"Souvent 30 à 90 jours pour économiser la prime."},{"text":"30, 60 ou 90 jours (coordination avec obligation CO 324a de l''employeur)","correct":true},{"text":"1 an","correct":false,"why_wrong":"Bien trop long en pratique."},{"text":"365 jours","correct":false}]'::jsonb, 2,
+       'Délai d''attente IJM collective LCA typique 30-90 jours pour laisser l''employeur assumer ses obligations CO 324a en premier. La coordination doit garantir la continuité du salaire.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-015', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quelle est la limite de salaire retenue par l''IJM LAMal ?', '[{"text":"Aucune limite (couvre le salaire réel)","correct":false,"why_wrong":"L''IJM LAMal n''obligatoirement couvre pas le salaire réel intégral."},{"text":"Fixée par le contrat, souvent alignée sur le salaire déclaré","correct":true},{"text":"148 200 CHF (comme LAA)","correct":false,"why_wrong":"148 200 CHF = plafond LAA."},{"text":"90 720 CHF (comme LPP)","correct":false,"why_wrong":"90 720 CHF = salaire max LPP obligatoire."}]'::jsonb, 1,
+       'IJM LAMal : le montant assuré est convenu contractuellement (individuel ou collectif). Pas de plafond légal spécifique comme en LAA. Attention à la déclaration correcte du salaire pour éviter la sous-assurance.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-016', 'maladie_complementaire', t.id, 'single',
+       'Sophie est enceinte et reçoit l''APG maternité. Peut-elle aussi toucher son IJM LCA collective pendant les 14 semaines ?', NULL, '[{"text":"Oui, cumul intégral","correct":false,"why_wrong":"Interdiction de surindemnisation."},{"text":"Non, l''APG couvre le revenu pendant les 14 semaines maternité (pas de cumul IJM)","correct":true},{"text":"Oui, mais uniquement pour la 15e semaine","correct":false},{"text":"L''APG et l''IJM se cumulent sans coordination","correct":false,"why_wrong":"Coordination LPGA appliquée."}]'::jsonb, 2,
+       'LAPG + LCA : l''APG maternité prime pendant les 14 semaines à hauteur de 80 % (max 220 CHF/j). L''IJM ne verse pas de doublon. Elle peut compléter au-delà des 14 semaines si l''incapacité persiste pour maladie liée.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-017', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Une IJM LCA sans réserve peut-elle être conclue pour un salarié malade au moment de la souscription ?', '[{"text":"Oui, obligatoirement","correct":false,"why_wrong":"L''assureur peut poser une réserve ou refuser."},{"text":"Non, l''assureur peut refuser ou poser des réserves (liberté contractuelle LCA)","correct":true},{"text":"Oui, avec surprime automatique","correct":false},{"text":"Non, uniquement avec accord du médecin traitant","correct":false}]'::jsonb, 1,
+       'Liberté contractuelle LCA + art. 6 LCA sur la réticence : l''assureur peut refuser, poser des réserves ou majorer la prime. Différence majeure avec l''IJM LAMal (réserves limitées à 5 ans).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-018', 'maladie_complementaire', t.id, 'multiple',
+       'Léa (année 6 ancienneté, échelle zurichoise) tombe malade. Son employeur a une IJM collective LCA avec délai d''attente 60 jours, taux 80 %, durée 730 jours.', 'Comment se déroule la couverture ?', '[{"text":"L''employeur verse le salaire selon l''échelle zurichoise pendant sa durée d''obligation","correct":true},{"text":"L''IJM LCA commence à verser 80 % du salaire dès le 61e jour (fin délai d''attente)","correct":true},{"text":"La couverture IJM peut aller jusqu''à 730 jours (contrat)","correct":true},{"text":"L''employeur peut se libérer sans participer à la prime IJM","correct":false,"why_wrong":"50 % de la prime est requis pour la libération CO 324a."},{"text":"L''IJM couvre 100 % du salaire dès le 1er jour","correct":false,"why_wrong":"Le taux est 80 %, avec délai d''attente."}]'::jsonb, 3,
+       'Coordination CO 324a + IJM LCA : employeur d''abord, puis IJM prend le relais. Le contrat IJM doit être communiqué au salarié (art. 3 LCA). Vérifier la coordination pour éviter tout trou.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-019', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Le libre passage entre IJM LAMal et IJM LCA existe-t-il ?', '[{"text":"Oui, automatique et sans questionnaire","correct":false,"why_wrong":"Le passage LAMal → LCA n''est pas automatique."},{"text":"Un passage individuel LAMal → LCA nécessite un nouveau questionnaire de santé","correct":true},{"text":"Impossible","correct":false,"why_wrong":"Le passage est possible mais soumis aux règles LCA."},{"text":"Uniquement au 1er janvier","correct":false}]'::jsonb, 2,
+       'L''IJM LAMal et l''IJM LCA sont deux régimes distincts. Le libre passage individuel LAMal → LCA suppose l''acceptation LCA (questionnaire santé, réserves). Un droit de libre passage collectif peut exister à la sortie d''un contrat collectif LCA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-020', 'maladie_complementaire', t.id, 'single',
+       'Un chômeur inscrit à l''ORP tombe malade et se demande qui prend en charge.', 'Un chômeur qui tombe malade est couvert par :', '[{"text":"L''IJM LAMal automatique","correct":false,"why_wrong":"Pas de couverture LAMal IJM automatique pour un chômeur."},{"text":"L''assurance-chômage prolonge sous conditions, avec limites (art. 28 LACI)","correct":true},{"text":"L''AOS uniquement","correct":false,"why_wrong":"L''AOS couvre les soins, pas le revenu."},{"text":"Aucune prestation","correct":false}]'::jsonb, 1,
+       'Art. 28 LACI : en cas de maladie, le chômeur inscrit reçoit ses indemnités pendant 30 jours, puis les limitations s''appliquent. Argument pour souscrire une IJM LCA individuelle en anticipation.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-021', 'maladie_complementaire', t.id, 'single',
+       NULL, 'L''échelle bâloise se distingue de l''échelle bernoise principalement par :', '[{"text":"Des durées identiques","correct":false,"why_wrong":"Chaque échelle a ses propres durées."},{"text":"Une progression de durée légèrement différente selon les années d''ancienneté","correct":true},{"text":"L''application aux indépendants","correct":false,"why_wrong":"CO 324a ne s''applique jamais aux indépendants."},{"text":"Un taux différent (40 % au lieu de 100 %)","correct":false,"why_wrong":"Le taux CO 324a est 100 % du salaire."}]'::jsonb, 2,
+       'Les 3 échelles (Berne, Bâle, Zurich) proposent des durées de versement du salaire par l''employeur selon les années d''ancienneté. Le taux est toujours 100 % du salaire (contre 80 % pour l''IJM qui prend le relais).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-022', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Le taux CO 324a de versement du salaire par l''employeur est :', '[{"text":"80 % du salaire","correct":false,"why_wrong":"80 % est le taux IJM collective LCA, pas CO 324a."},{"text":"100 % du salaire","correct":true},{"text":"50 %","correct":false},{"text":"60 %","correct":false}]'::jsonb, 1,
+       'Art. 324a CO : l''employeur verse le SALAIRE (100 %) pendant la durée d''obligation légale ou conventionnelle. C''est ensuite l''IJM (typiquement 80 %) qui prend le relais après délai d''attente.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-023', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Un contrat collectif d''IJM LCA à la sortie d''un emploi permet typiquement :', '[{"text":"Un passage à titre individuel avec l''assureur du contrat collectif","correct":true},{"text":"Sans nouveau questionnaire de santé (dans certains contrats)","correct":true},{"text":"Dans un délai limité après la fin du contrat de travail (souvent 30-90 jours)","correct":true},{"text":"Le maintien intégral du financement par l''ancien employeur","correct":false,"why_wrong":"Le financement passe au titulaire à titre individuel."},{"text":"Uniquement si l''assuré est en incapacité","correct":false}]'::jsonb, 2,
+       'CGA IJM LCA collective : clause de libre passage individuel à la sortie de l''entreprise. Point clé de conseil pour éviter la perte de couverture lors d''un changement d''emploi. Formaliser rapidement.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-024', 'maladie_complementaire', t.id, 'single',
+       'Un salarié malade épuise ses 720 jours d''IJM sur 900 jours consécutifs. Il est reconnu invalide à 100 %.', 'Quelle prestation prend le relais ?', '[{"text":"Rien : il perd toute couverture","correct":false,"why_wrong":"La rente AI/LPP prend le relais."},{"text":"Rente AI + rente LPP invalidité","correct":true},{"text":"APG maternité","correct":false},{"text":"AOS avec 100 % du salaire","correct":false,"why_wrong":"L''AOS ne verse pas de revenu."}]'::jsonb, 2,
+       'Coordination sociale : IJM 720 jours puis rente AI (dès taux 40 %) + rente invalidité LPP (dès taux 40 %, échelonnée). Argument pour PLP (perte de gain longue durée) et couverture LPP complémentaire.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-IJ-025', 'maladie_complementaire', t.id, 'single',
+       'Un consultant indépendant analyse s''il faut préférer IJM LAMal ou LCA.', 'Un indépendant peut-il s''affilier à une IJM LAMal ?', '[{"text":"Non, jamais","correct":false,"why_wrong":"L''IJM LAMal individuelle est ouverte à toute personne domiciliée en Suisse."},{"text":"Oui, à titre facultatif (art. 67 LAMal), avec évaluation médicale","correct":true},{"text":"Uniquement si son revenu est inférieur à 50 000 CHF","correct":false},{"text":"Uniquement pour les indépendants agricoles","correct":false}]'::jsonb, 1,
+       'Art. 67 LAMal : toute personne domiciliée en Suisse (indépendant inclus) peut souscrire une IJM LAMal individuelle. Réserves possibles (limite 5 ans). Alternative IJM LCA individuelle avec plus de souplesse mais réserves permanentes.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'ijm'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-001', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quelle est la durée de l''allocation de maternité APG en Suisse en 2026 ?', '[{"text":"8 semaines","correct":false,"why_wrong":"8 semaines correspond au minimum légal d''interdiction de travail post-partum."},{"text":"14 semaines","correct":true},{"text":"16 semaines","correct":false,"why_wrong":"16 semaines n''est pas prévu par la LAPG."},{"text":"6 mois","correct":false}]'::jsonb, 1,
+       'LAPG : allocation maternité = 14 semaines (98 jours) à 80 % du revenu, plafonnée à 220 CHF/jour (2026). Interdiction de travail 8 semaines post-partum.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-002', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quel est le taux de l''allocation maternité APG ?', '[{"text":"60 %","correct":false,"why_wrong":"Le taux légal est 80 %."},{"text":"80 %","correct":true},{"text":"100 %","correct":false,"why_wrong":"Aucune allocation LAPG n''est à 100 %."},{"text":"50 %","correct":false}]'::jsonb, 1,
+       'LAPG art. 16b : 80 % du revenu antérieur soumis AVS, plafond 220 CHF/jour (2026). Convertible en mois : environ 6 600 CHF/mois maximum.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-003', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quel est le montant maximum journalier de l''APG maternité en 2026 ?', '[{"text":"180 CHF","correct":false,"why_wrong":"Chiffre erroné."},{"text":"220 CHF","correct":true},{"text":"240 CHF","correct":false,"why_wrong":"Chiffre erroné pour 2026."},{"text":"300 CHF","correct":false}]'::jsonb, 1,
+       'LAPG : plafond journalier 220 CHF (soit 80 % d''un revenu 100 000 CHF/an environ). Chiffre à connaître pour argumentaire IJM LCA (comble la différence pour hauts revenus).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-004', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quelle est la durée du congé paternité APG en Suisse en 2026 ?', '[{"text":"1 semaine","correct":false,"why_wrong":"Le congé paternité est de 2 semaines depuis 2021."},{"text":"2 semaines (10 jours ouvrables)","correct":true},{"text":"4 semaines","correct":false},{"text":"Aucun congé","correct":false,"why_wrong":"Le congé paternité existe depuis 2021."}]'::jsonb, 1,
+       'LAPG art. 16i (dès 2021) : congé paternité 2 semaines à 80 % du revenu, plafond 220 CHF/jour, à prendre dans les 6 mois suivant la naissance.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-005', 'maladie_complementaire', t.id, 'single',
+       'Une conseillère explique la couverture accident d''un demandeur d''emploi.', 'Quel article de la LACI règle la couverture accidents des chômeurs ?', '[{"text":"Art. 22 LACI","correct":false,"why_wrong":"Art. 22 LACI traite du montant des indemnités."},{"text":"Art. 22a LACI","correct":true},{"text":"Art. 28 LACI","correct":false,"why_wrong":"Art. 28 traite de la maladie."},{"text":"Art. 45 LACI","correct":false}]'::jsonb, 1,
+       'Art. 22a LACI : les chômeurs sont assurés d''office contre les accidents auprès de la SUVA, indépendamment de tout contrat ou de la durée de travail. Piège VBV majeur.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-006', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Un chômeur inscrit à l''ORP est couvert par quelles assurances sociales ?', '[{"text":"LAA (accidents pro et non pro) via SUVA (art. 22a LACI)","correct":true},{"text":"AVS/AI/APG (cotisations prélevées sur les indemnités)","correct":true},{"text":"AOS (LAMal) : reste à sa charge","correct":true},{"text":"LPP obligatoire (2e pilier)","correct":false,"why_wrong":"Le 2e pilier obligatoire est suspendu ; l''assurance risques est facultative via prestations de libre passage."},{"text":"IJM LAMal automatique","correct":false,"why_wrong":"L''IJM LAMal reste facultative."}]'::jsonb, 2,
+       'Couverture chômeur : SUVA obligatoire (accidents), AVS/AI/APG continue (via LACI), AOS individuelle. Le 2e pilier obligatoire s''arrête ; le libre passage protège les avoirs. Piège Anisa : SUVA sans condition d''heures.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-007', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quel est le taux de cotisation LACI 2026 pour les salaires jusqu''au plafond LAA ?', '[{"text":"1 %","correct":false,"why_wrong":"Le taux est plus élevé."},{"text":"2,2 % (1,1 % employeur + 1,1 % salarié)","correct":true},{"text":"5 %","correct":false},{"text":"0,5 %","correct":false}]'::jsonb, 1,
+       'LACI : 2,2 % au total (paritaire 1,1 %/1,1 %) jusqu''au plafond 148 200 CHF/an. Cotisation de solidarité 1 % au-delà.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-008', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un service militaire ouvre-t-il droit à des APG (revenu) ?', '[{"text":"Non, aucune indemnité","correct":false,"why_wrong":"Les APG service couvrent bien le revenu."},{"text":"Oui, l''APG service verse une allocation calculée sur le revenu antérieur (LAPG)","correct":true},{"text":"Oui, l''AVS verse le salaire","correct":false},{"text":"Oui, la LAMal verse le salaire","correct":false,"why_wrong":"La LAMal ne verse pas de revenu."}]'::jsonb, 2,
+       'LAPG : les APG service (militaire, civil, protection civile) versent une allocation basée sur le revenu antérieur, avec composantes de base, garde d''enfants, exploitation. Financement paritaire avec la maternité.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-009', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quel article LAA règle l''intervention de la caisse supplétive LAA ?', '[{"text":"Art. 22a LACI","correct":false,"why_wrong":"22a LACI = SUVA chômeurs."},{"text":"Art. 73 LAA","correct":true},{"text":"Art. 1a LAA","correct":false},{"text":"Art. 45 LSA","correct":false}]'::jsonb, 1,
+       'Art. 73 LAA : la caisse supplétive LAA intervient en cas d''employeur défaillant (non assuré, insolvable) pour garantir les prestations LAA à l''assuré. Piège VBV : elle ne dépend pas uniquement de la SUVA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-010', 'maladie_complementaire', t.id, 'single',
+       'Karim, chômeur inscrit, glisse sur le trottoir en allant à un entretien d''embauche.', 'Quelle assurance couvre son accident ?', '[{"text":"L''AOS uniquement","correct":false,"why_wrong":"L''accident est couvert par la SUVA au titre de l''art. 22a LACI."},{"text":"La SUVA (LAA) automatiquement (art. 22a LACI)","correct":true},{"text":"L''APG militaire","correct":false},{"text":"Aucune couverture","correct":false}]'::jsonb, 2,
+       'Art. 22a LACI : couverture SUVA automatique pour tout chômeur, sans condition. Cela évite un passage forcé par l''AOS (moins bien couvrante). Piège VBV majeur (Anisa).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-011', 'maladie_complementaire', t.id, 'single',
+       'Un futur retraité vérifie le calcul de sa rente AVS 2026.', 'L''AVS 2026 verse une rente mensuelle minimum de :', '[{"text":"1 000 CHF","correct":false,"why_wrong":"Chiffre 2026 = 1 260."},{"text":"1 260 CHF","correct":true},{"text":"1 500 CHF","correct":false},{"text":"800 CHF","correct":false}]'::jsonb, 1,
+       'AVS 2026 : rente minimum 1 260 CHF/mois, rente maximum simple 2 520 CHF/mois. Rente couple plafonnée à 150 % de la rente maximum.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-012', 'maladie_complementaire', t.id, 'single',
+       NULL, 'La rente AVS 2026 maximum (simple) est :', '[{"text":"2 250 CHF/mois","correct":false,"why_wrong":"Chiffre incorrect."},{"text":"2 520 CHF/mois","correct":true},{"text":"3 000 CHF/mois","correct":false},{"text":"1 800 CHF/mois","correct":false}]'::jsonb, 1,
+       'AVS 2026 : rente maximum simple 2 520 CHF/mois. Nécessite carrière complète (44 ans) au revenu déterminant maximal. Rente couple max 150 %.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-013', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelles prestations APG existent en Suisse (LAPG) ?', '[{"text":"APG service militaire, civil et protection civile","correct":true},{"text":"APG maternité (14 semaines, 80 %, max 220 CHF/j)","correct":true},{"text":"APG paternité (2 semaines, 80 %, max 220 CHF/j)","correct":true},{"text":"APG adoption (2 semaines, dès 2023)","correct":true},{"text":"APG chômage","correct":false,"why_wrong":"Le chômage relève de la LACI, pas de la LAPG."}]'::jsonb, 2,
+       'LAPG : 5 régimes (service, maternité, paternité, adoption, prise en charge d''un enfant gravement atteint). Financement paritaire, cotisation totale 0,5 % du salaire.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-014', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Le taux total de cotisation AVS/AI/APG en 2026 (paritaire, part salariale) est :', '[{"text":"5,3 %","correct":true},{"text":"7 %","correct":false,"why_wrong":"Chiffre trop élevé pour la part salariale."},{"text":"8,7 %","correct":false,"why_wrong":"8,7 % est le taux total AVS seule paritaire (2×4,35 arrondi selon année)."},{"text":"10 %","correct":false}]'::jsonb, 2,
+       'Cotisations paritaires 2026 : AVS 8,7 % (4,35 % chacun), AI 1,4 % (0,7 % chacun), APG 0,5 % (0,25 % chacun) = 10,6 % total dont 5,3 % salariale. Retenir la répartition paritaire.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-015', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un salarié en incapacité totale reçoit une IJM LCA 80 % + rente AI 40 %. Comment gère-t-on le cumul ?', '[{"text":"100 % additionné (surindemnisation acceptée)","correct":false,"why_wrong":"La coordination LPGA interdit la surindemnisation."},{"text":"Coordination LPGA : la prestation totale ne dépasse pas le revenu net perdu","correct":true},{"text":"Aucun cumul possible","correct":false,"why_wrong":"Cumul possible avec coordination."},{"text":"IJM prime toujours sur AI","correct":false}]'::jsonb, 2,
+       'Coordination LPGA : la somme des prestations ne peut dépasser le dommage effectif (revenu net perdu). L''IJM se réduit à concurrence de la rente AI selon règles contractuelles LCA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-016', 'maladie_complementaire', t.id, 'single',
+       'Une salariée en burn-out est reconnue invalide à 45 %.', 'Le taux minimum d''invalidité ouvrant droit à une rente AI est :', '[{"text":"20 %","correct":false,"why_wrong":"Taux insuffisant."},{"text":"40 %","correct":true},{"text":"50 %","correct":false,"why_wrong":"50 % ouvre une demi-rente, pas le premier quart."},{"text":"70 %","correct":false,"why_wrong":"70 % ouvre une rente entière."}]'::jsonb, 2,
+       'Art. 28 LAI : rente AI dès 40 % d''invalidité (échelonnement linéaire jusqu''à 70 % = rente entière). Piège VBV : bien retenir le seuil 40 % (rente initiale).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-017', 'maladie_complementaire', t.id, 'single',
+       NULL, 'L''APG paternité prise en charge se paie-t-elle en jours ou en semaines ?', '[{"text":"10 jours ouvrables (2 semaines)","correct":true},{"text":"14 jours calendaires","correct":false,"why_wrong":"Le décompte est en jours ouvrables."},{"text":"30 jours","correct":false},{"text":"60 jours","correct":false}]'::jsonb, 1,
+       'LAPG art. 16j : congé paternité = 10 jours ouvrables (2 semaines) à prendre dans les 6 mois suivant la naissance, en une fois ou fractionné.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-018', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un employeur défaillant (sans assurance LAA) laisse un accidenté sans couverture. Qui intervient ?', '[{"text":"La SUVA obligatoirement","correct":false,"why_wrong":"La SUVA n''intervient que pour ses branches assurées."},{"text":"La caisse supplétive LAA (art. 73 LAA)","correct":true},{"text":"L''AOS","correct":false,"why_wrong":"L''AOS n''assume pas les frais accidents relevant LAA."},{"text":"Le canton","correct":false}]'::jsonb, 1,
+       'Art. 73 LAA : la caisse supplétive garantit les prestations LAA quand un employeur soumis n''a pas assuré ses salariés. Recours contre l''employeur ensuite.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-019', 'maladie_complementaire', t.id, 'multiple',
+       'Nadia, salariée 32 ans, tombe enceinte. Elle vient consulter son conseiller pour comprendre ses droits.', 'Que peut-elle attendre concrètement ?', '[{"text":"LAMal : prise en charge maternité (art. 29) exempte de participation aux coûts","correct":true},{"text":"LAPG : allocation maternité 14 semaines à 80 % (max 220 CHF/jour) après l''accouchement","correct":true},{"text":"Employeur : maintien du salaire selon CO 324a et LTr (interdiction de travail 8 semaines post-partum)","correct":true},{"text":"APG à la place de la LAMal pour les frais médicaux","correct":false,"why_wrong":"APG couvre le revenu, LAMal les frais médicaux."},{"text":"Résiliation de son contrat de travail possible pendant la grossesse","correct":false,"why_wrong":"Protection contre le licenciement pendant grossesse + 16 semaines (art. 336c CO)."}]'::jsonb, 3,
+       'Panorama complet : LAMal (soins) + LAPG (revenu) + CO/LTr (protection travail). Conseil global grossesse : ne pas confondre les régimes. Compléter éventuellement par une LCA hospit privée pour le confort.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-SC-020', 'maladie_complementaire', t.id, 'single',
+       'Un consultant IT indépendant demande s''il est couvert LAA d''office.', 'Un indépendant est-il obligatoirement affilié à la LAA ?', '[{"text":"Oui, comme les salariés","correct":false,"why_wrong":"Piège VBV majeur : les indépendants NE sont PAS soumis à la LAA obligatoire."},{"text":"Non, LAA facultative pour les indépendants (art. 4 LAA)","correct":true},{"text":"Uniquement s''il emploie du personnel","correct":false,"why_wrong":"L''employeur assure ses employés, mais pour lui-même c''est facultatif."},{"text":"Uniquement en cas d''activité manuelle","correct":false}]'::jsonb, 1,
+       'Art. 1a et 4 LAA : les salariés sont couverts obligatoirement. Les indépendants (et membres de famille non salariés) peuvent s''assurer à titre facultatif. Point de conseil essentiel aux indépendants.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'social_connexe'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-001', 'maladie_complementaire', t.id, 'single',
+       'Un client demande une copie de sa fiche d''information avant tout entretien.', 'Quel article de la LSA impose la remise d''une fiche d''information client au 1er entretien ?', '[{"text":"Art. 40 LSA","correct":false,"why_wrong":"Art. 40 distingue courtier et agent lié."},{"text":"Art. 45 LSA","correct":true},{"text":"Art. 3 LCA","correct":false,"why_wrong":"Art. 3 LCA = devoir d''information de l''assureur."},{"text":"Art. 6 LCA","correct":false}]'::jsonb, 1,
+       'Art. 45 LSA : l''intermédiaire doit remettre au client au 1er contact une fiche d''information (identité, produits, rémunération, autorité de surveillance, procédure de plainte).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-002', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Quelles sont les 4 phases de l''entretien de conseil VBV ?', '[{"text":"Introduction, argumentation, vente, encaissement","correct":false,"why_wrong":"Vocabulaire commercial, pas VBV."},{"text":"Introduction, analyse, solution, conclusion","correct":true},{"text":"Acquisition, présentation, négociation, closing","correct":false},{"text":"Prise de contact, questionnaire, tarification, signature","correct":false}]'::jsonb, 1,
+       'Structure officielle VBV : 4 phases (introduction, analyse des besoins, présentation de la solution, conclusion). Ces 4 phases structurent aussi l''étude de cas dirigée à l''examen.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-003', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Que doit typiquement contenir la fiche d''information client (art. 45 LSA) ?', '[{"text":"Identité de l''intermédiaire et de l''assureur","correct":true},{"text":"Nature de la relation (courtier indépendant ou agent lié)","correct":true},{"text":"Rémunération (commissions, honoraires)","correct":true},{"text":"Autorité de surveillance et procédure de plainte","correct":true},{"text":"Historique médical du conseiller","correct":false,"why_wrong":"L''historique médical n''a rien à voir avec la fiche."}]'::jsonb, 2,
+       'Art. 45 LSA : la fiche doit assurer la transparence sur l''intermédiaire, sa rémunération, son statut et les voies de recours. Document conservé et signé par le client.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-004', 'maladie_complementaire', t.id, 'single',
+       'Un intermédiaire souhaite envoyer les données santé d''un client à son courtier partenaire.', 'Selon la nLPD, les données de santé sont :', '[{"text":"Ordinaires, traitables librement","correct":false,"why_wrong":"Elles sont classées sensibles."},{"text":"Sensibles (art. 5 lit. c ch. 2 nLPD), consentement explicite et sécurisation renforcée","correct":true},{"text":"Publiques","correct":false},{"text":"Secrètes uniquement en cas de séropositivité","correct":false}]'::jsonb, 2,
+       'Art. 5 lit. c ch. 2 nLPD : les données concernant la santé sont sensibles, exigeant consentement explicite, sécurisation renforcée, base légale claire pour tout traitement. Levier majeur en conseil santé.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-005', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un conseiller peut-il donner un avis médical personnalisé à un client ?', '[{"text":"Oui, si formé","correct":false,"why_wrong":"Piège classique : hors périmètre professionnel."},{"text":"Non, jamais (hors compétence : renvoyer au médecin)","correct":true},{"text":"Oui, pour les cas simples","correct":false},{"text":"Uniquement pour les diagnostics psychologiques","correct":false}]'::jsonb, 1,
+       'Éthique et cadre de la LSA : le conseiller ne dispense JAMAIS de conseil médical. Renvoi systématique au médecin traitant ou spécialiste. Option ''conseil médical'' toujours fausse en VBV.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-006', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un courtier (art. 40 LSA) se distingue d''un agent lié par :', '[{"text":"Son indépendance à l''égard des assureurs (représente le client)","correct":true},{"text":"Son mandat unique auprès d''un seul assureur","correct":false,"why_wrong":"C''est la définition de l''agent lié."},{"text":"L''absence de rémunération","correct":false,"why_wrong":"Le courtier reçoit aussi une rémunération."},{"text":"L''exclusion de la surveillance FINMA","correct":false,"why_wrong":"Les deux sont surveillés."}]'::jsonb, 2,
+       'Art. 40 LSA : le courtier agit en tant qu''intermédiaire indépendant, mandaté par le client, sans lien contractuel exclusif avec un assureur. L''agent lié représente un ou plusieurs assureurs qui l''ont mandaté.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-007', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Que doit couvrir la phase Analyse d''un entretien de conseil santé ?', '[{"text":"Situation personnelle et familiale du client","correct":true},{"text":"Situation financière et professionnelle","correct":true},{"text":"Couvertures existantes (AOS, LCA, IJM)","correct":true},{"text":"Besoins prioritaires exprimés","correct":true},{"text":"Signature immédiate du contrat","correct":false,"why_wrong":"La signature est en phase Conclusion, pas Analyse."}]'::jsonb, 2,
+       'Phase Analyse : recueil exhaustif d''informations pertinentes. Base d''une proposition adaptée, protège aussi le conseiller (traçabilité, obligation LSA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-008', 'maladie_complementaire', t.id, 'single',
+       'Un conseiller expérimenté rappelle à son stagiaire les preuves à conserver.', 'Le PV de conseil (procès-verbal d''entretien) est :', '[{"text":"Facultatif","correct":false,"why_wrong":"Il est essentiel pour la traçabilité et la protection du conseiller."},{"text":"Fortement recommandé, sert de trace écrite du conseil donné et signé par le client","correct":true},{"text":"Un document interne de la compagnie","correct":false},{"text":"Un document de l''autorité fiscale","correct":false}]'::jsonb, 1,
+       'PV de conseil : trace la situation analysée, les besoins identifiés, la solution proposée, les recommandations écartées. Signé par le client. Protection majeure en cas de litige (art. 45 LSA + jurisprudence).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-009', 'maladie_complementaire', t.id, 'single',
+       'Karim consulte pour la 1re fois. Le conseiller lui propose immédiatement un contrat sans questionnaire préalable.', 'Quelle règle est violée ?', '[{"text":"Aucune, la vente rapide est encouragée","correct":false,"why_wrong":"L''analyse est obligatoire."},{"text":"Devoir d''analyse des besoins (art. 45 LSA + phase Analyse VBV)","correct":true},{"text":"Interdiction de vente le lundi","correct":false,"why_wrong":"Aucune telle règle."},{"text":"Devoir de confidentialité","correct":false}]'::jsonb, 2,
+       'Art. 45 LSA + méthode VBV : impossible de proposer une solution adaptée sans phase d''analyse. La proposition doit reposer sur des besoins identifiés. Vente forcée = manquement disciplinaire potentiel.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-010', 'maladie_complementaire', t.id, 'single',
+       'Un futur intermédiaire indépendant prépare son dossier FINMA.', 'Un conseiller doit-il être inscrit à un registre public ?', '[{"text":"Non","correct":false,"why_wrong":"L''inscription au registre FINMA est requise pour les intermédiaires non liés."},{"text":"Oui, au registre FINMA des intermédiaires (art. 42 et 43 LSA)","correct":true},{"text":"Uniquement les courtiers étrangers","correct":false},{"text":"Uniquement les indépendants","correct":false}]'::jsonb, 1,
+       'Art. 42 LSA : registre public FINMA des intermédiaires non liés (courtiers). L''agent lié est enregistré via sa compagnie. Vérification possible sur le site FINMA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-011', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Le devoir d''information de l''assureur LCA cesse-t-il à la signature du contrat (art. 3 LCA) ?', '[{"text":"Oui, une fois signé","correct":false,"why_wrong":"Piège Anisa : le devoir est continu."},{"text":"Non, il est continu tout au long de la relation contractuelle","correct":true},{"text":"Uniquement pour les cas de sinistre","correct":false},{"text":"Uniquement en cas de changement de prime","correct":false}]'::jsonb, 1,
+       'Art. 3 LCA : devoir d''information continu (avant, pendant, après signature). Toute modification tarifaire, contractuelle, réglementaire doit être communiquée. Base de la relation de confiance.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-012', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quels documents un conseiller doit-il typiquement conserver pour une durée légale ?', '[{"text":"Fiche d''information client signée (art. 45 LSA)","correct":true},{"text":"PV de conseil daté et signé","correct":true},{"text":"Contrats et avenants signés","correct":true},{"text":"Dossier médical intégral du client","correct":false,"why_wrong":"Le dossier médical intégral ne relève pas du conseiller."},{"text":"Photocopie de la carte de crédit du client","correct":false,"why_wrong":"Aucune raison légitime, violation nLPD/LBA."}]'::jsonb, 2,
+       'Traçabilité minimale : fiche LSA, PV, contrats. Durée de conservation : 10 ans après fin de contrat (CO 962). Interdiction de conserver plus que nécessaire pour la finalité (nLPD).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-013', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Combien d''heures de formation continue sont typiquement exigées pour un intermédiaire d''assurance ?', '[{"text":"5 heures/an","correct":false,"why_wrong":"Chiffre trop bas."},{"text":"20 heures/an (60 heures sur 3 ans, standard VBV)","correct":true},{"text":"100 heures/an","correct":false},{"text":"Aucune obligation","correct":false,"why_wrong":"Obligation de formation continue existe."}]'::jsonb, 2,
+       'Cercle des intermédiaires + VBV : 20 heures de formation continue/an ou 60 heures/3 ans, à documenter. Depuis LSA révisée, obligation renforcée pour maintenir l''agrément.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-014', 'maladie_complementaire', t.id, 'single',
+       NULL, 'Un client refuse de signer le consentement de traitement de ses données de santé. Que doit faire le conseiller ?', '[{"text":"Continuer et enregistrer les données quand même","correct":false,"why_wrong":"Violation majeure nLPD art. 5-6."},{"text":"Respecter le refus, expliquer les conséquences (offre impossible à personnaliser) et documenter le refus","correct":true},{"text":"Signer à la place du client","correct":false,"why_wrong":"Faux en documents."},{"text":"Menacer d''un refus définitif de toute assurance","correct":false}]'::jsonb, 2,
+       'nLPD art. 5-6 : consentement explicite requis pour les données sensibles. Refus opposable : le conseiller documente et informe des conséquences (impossibilité d''offrir un produit personnalisé). Respect absolu.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-015', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'La phase Conclusion d''un entretien de conseil comprend typiquement :', '[{"text":"Récapitulatif de la solution retenue","correct":true},{"text":"Signature de la proposition/police","correct":true},{"text":"Rappel du droit de révocation (14 jours art. 2a LCA)","correct":true},{"text":"Prise de RDV de suivi","correct":true},{"text":"Récupération immédiate de la carte de crédit","correct":false,"why_wrong":"Encaissement de la prime ne se fait pas sans mandat spécifique."}]'::jsonb, 2,
+       'Phase Conclusion (VBV 4e phase) : bouclage clair, engagement écrit, information sur droits post-signature, prochain contact. Base d''une relation client durable.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-016', 'maladie_complementaire', t.id, 'single',
+       'Une cliente demande à voir toutes ses données conservées par la compagnie.', 'Le droit d''accès du client à ses données personnelles est régi par :', '[{"text":"Art. 3 LCA","correct":false,"why_wrong":"Art. 3 LCA = devoir d''information de l''assureur, pas accès aux données."},{"text":"Art. 25 nLPD (droit d''accès)","correct":true},{"text":"Art. 40 LSA","correct":false},{"text":"Art. 6 LCA","correct":false}]'::jsonb, 1,
+       'Art. 25 nLPD : le client peut demander l''accès à ses données personnelles auprès du responsable de traitement, avec délai de 30 jours pour répondre. Devoir renforcé en 2023 avec l''entrée en vigueur de la nLPD.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-017', 'maladie_complementaire', t.id, 'single',
+       'Marie signe une LCA hospitalisation privée. Elle appelle 10 jours plus tard pour se rétracter, invoquant une meilleure offre concurrente.', 'Quelle est la réponse à lui apporter ?', '[{"text":"Le contrat est ferme, aucune rétractation possible","correct":false,"why_wrong":"Droit de révocation 14 jours applicable."},{"text":"Elle peut se rétracter dans le délai de 14 jours (art. 2a LCA) par écrit ou forme démontrable par texte","correct":true},{"text":"Rétractation seulement avec accord de la compagnie","correct":false},{"text":"Rétractation impossible après paiement de la 1re prime","correct":false}]'::jsonb, 2,
+       'Art. 2a LCA : révocation 14 jours dès l''acceptation de la proposition ou dès réception de la police. Aucun frais, sans motif. Marie est à J+10, dans les délais.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-018', 'maladie_complementaire', t.id, 'single',
+       'Un directeur commercial propose de partager les données santé avec un partenaire pub.', 'Un conseiller peut-il transmettre les données de santé du client à un partenaire commercial à des fins publicitaires ?', '[{"text":"Oui, avec consentement implicite","correct":false,"why_wrong":"Consentement explicite requis, interdiction pour la publicité."},{"text":"Non, jamais (interdiction absolue nLPD art. 5-6 pour les données sensibles à des fins étrangères)","correct":true},{"text":"Oui, dans les 30 jours suivant la signature","correct":false},{"text":"Uniquement si le partenaire est en Suisse","correct":false}]'::jsonb, 1,
+       'nLPD art. 5 lit. c ch. 2 + art. 6 : données de santé sensibles. Interdiction absolue de transmission à des tiers pour marketing sans base légale et consentement explicite spécifique. Sanction pénale possible.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-019', 'maladie_complementaire', t.id, 'multiple',
+       'Ali, 45 ans, consulte pour la 1re fois. Il souhaite optimiser sa couverture santé (AOS, IJM en tant qu''indépendant, LCA hospit privée).', 'Quelles obligations le conseiller doit-il respecter ?', '[{"text":"Remise de la fiche d''information client (art. 45 LSA)","correct":true},{"text":"Analyse complète des besoins (phase 2 VBV)","correct":true},{"text":"Consentement écrit pour le traitement des données de santé (nLPD)","correct":true},{"text":"Rédaction d''un PV de conseil signé","correct":true},{"text":"Prescription médicale préalable","correct":false,"why_wrong":"Aucune prescription requise pour un conseil en assurance."}]'::jsonb, 3,
+       'Enchaînement classique : LSA + nLPD + méthode VBV. Un dossier complet et signé protège le conseiller et documente la valeur ajoutée du conseil. Base pour la formation continue.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-MAL-CO-020', 'maladie_complementaire', t.id, 'multiple',
+       NULL, 'Quelles règles éthiques et légales encadrent la conduite d''un intermédiaire en assurance ?', '[{"text":"Devoir de loyauté et de diligence envers le client (art. 45 LSA)","correct":true},{"text":"Formation continue documentée (obligation professionnelle)","correct":true},{"text":"Respect de la nLPD (données sensibles santé)","correct":true},{"text":"Respect de la LCD (concurrence loyale)","correct":true},{"text":"Signalement obligatoire des états de santé au fisc","correct":false,"why_wrong":"Aucune obligation de ce type : violation du secret professionnel."}]'::jsonb, 2,
+       'Cadre éthique/légal : LSA (devoir professionnel), nLPD (données), LCD (concurrence loyale), formation continue. Le secret professionnel protège les données du client. Ne jamais transmettre au fisc/tiers sans base légale expresse.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'maladie_complementaire' AND t.key = 'conseil'
+ON CONFLICT (external_id) DO NOTHING;
+
+-- ───────── nonvie_gaps.json — Compléments Klary NON-VIE gaps 35 questions. Ciblage thèmes légers : propriété du logement (10), litiges juridiques (10), conduite de l'entretien non-vie (15). ─────────
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-001', 'non_vie', t.id, 'multiple',
+       NULL, 'Dans quels cantons romands ou alémaniques l''assurance bâtiment ECA (assurance immobilière cantonale) est-elle obligatoire et monopolistique ?', '[{"text":"Vaud (VD)","correct":true},{"text":"Fribourg (FR)","correct":true},{"text":"Jura (JU)","correct":true},{"text":"Neuchâtel (NE)","correct":true},{"text":"Bâle-Ville (BS)","correct":true},{"text":"Genève (GE)","correct":false,"why_wrong":"Genève est un canton dit GUSTAVO (marché privé), pas d''ECA cantonale."},{"text":"Zurich (ZH)","correct":false,"why_wrong":"Zurich a bien un établissement cantonal mais avec particularités ; le point clé du QCM est qu''ECA romande est présente à VD/FR/JU/NE + GL/GR/BS."},{"text":"Valais (VS)","correct":false,"why_wrong":"Valais est en marché privé."}]'::jsonb, 2,
+       'Cantons à ECA obligatoire (monopoles cantonaux) : AG, BE, BL, BS, FR, GL, GR, JU, LU, NE, NW, SG, SH, SO, TG, VD, ZG, ZH. Cantons GUSTAVO (marché privé) : GE, VS, TI, UR, SZ, OW, AI, AR.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'propriete_logement'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-002', 'non_vie', t.id, 'single',
+       'M. Baumann réalise une extension importante (véranda + panneaux photovoltaïques) de sa villa vaudoise, augmentant la valeur du bâtiment de 25 %.', 'Que doit-il obligatoirement faire vis-à-vis de son assureur bâtiment (ECA VD ou complément privé) ?', '[{"text":"Annoncer immédiatement la modification et la nouvelle valeur pour adapter la somme d''assurance (art. 51 LCA / règlement ECA)","correct":true},{"text":"Rien : l''ECA couvre automatiquement toute augmentation","correct":false,"why_wrong":"Aucune couverture automatique en cas d''aggravation du risque."},{"text":"Attendre le sinistre pour recalculer","correct":false,"why_wrong":"Attendre le sinistre = sous-assurance et application règle proportionnelle art. 69 LCA."},{"text":"Résilier son contrat et en souscrire un nouveau","correct":false}]'::jsonb, 2,
+       'Art. 51 LCA (aggravation) + règlements ECA cantonales : annoncer les modifications significatives du bâtiment. Défaut d''annonce = risque de sous-assurance (règle proportionnelle) ou de résiliation.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'propriete_logement'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-003', 'non_vie', t.id, 'single',
+       NULL, 'Sur quelle base légale repose la responsabilité civile du propriétaire d''immeuble pour dommages causés par vices de construction ou défauts d''entretien ?', '[{"text":"Art. 58 CO : responsabilité causale objective du propriétaire d''ouvrage","correct":true},{"text":"Art. 41 CO : responsabilité pour acte illicite fautif","correct":false,"why_wrong":"L''art. 41 exige une faute ; l''art. 58 est causal, sans faute."},{"text":"Art. 55 CO : responsabilité de l''employeur","correct":false,"why_wrong":"Concerne les auxiliaires salariés, pas les ouvrages."},{"text":"Art. 328 CO : protection de la personnalité du travailleur","correct":false}]'::jsonb, 2,
+       'Art. 58 CO : le propriétaire d''un bâtiment ou de tout autre ouvrage répond du dommage causé par des vices de construction ou par le défaut d''entretien. Responsabilité causale, sans faute exigée.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'propriete_logement'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-004', 'non_vie', t.id, 'single',
+       'M. Delacroix mandate un entrepreneur pour rénover sa toiture. Un ouvrier chute d''un échafaudage mal sécurisé et se blesse gravement.', 'Quelle responsabilité peut être engagée pour le maître d''ouvrage particulier et quelle assurance intervient ?', '[{"text":"Responsabilité du maître d''ouvrage art. 58 CO + RC entreprise du poseur ; couverture par RC propriétaire d''ouvrage (RC chantier)","correct":true},{"text":"Aucune responsabilité du maître d''ouvrage : seul l''entrepreneur répond","correct":false,"why_wrong":"Le maître d''ouvrage peut être coresponsable en cas de manquement à son devoir de coordination (SIA/CFC)."},{"text":"Uniquement RC véhicule si l''ouvrier est arrivé en voiture","correct":false,"why_wrong":"Aucun rapport avec la LCR pour un accident sur chantier."},{"text":"RC privée classique du particulier","correct":false,"why_wrong":"La RC privée exclut les risques liés à un chantier de construction significatif."}]'::jsonb, 2,
+       'Pour tout chantier privé important : souscrire une RC propriétaire d''ouvrage (RC chantier / RC constructeur), en complément de la RC pro des entreprises. Base : art. 58 CO + CGA type marché.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'propriete_logement'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-005', 'non_vie', t.id, 'single',
+       NULL, 'Quelle est la différence essentielle entre valeur à neuf et valeur vénale d''un bâtiment ?', '[{"text":"Valeur à neuf = coût de reconstruction à neuf ; valeur vénale = valeur à neuf moins vétusté","correct":true},{"text":"Valeur à neuf = valeur du terrain ; valeur vénale = valeur du bâtiment seul","correct":false,"why_wrong":"Confusion avec valeur immobilière globale."},{"text":"Valeur à neuf = prix de vente ; valeur vénale = valeur d''incendie","correct":false,"why_wrong":"La valeur d''incendie est en réalité la valeur à neuf assurée par l''ECA."},{"text":"Aucune différence en pratique","correct":false}]'::jsonb, 1,
+       'Assurance bâtiment (ECA/privée) : indemnité normalement calculée sur valeur à neuf (coût actuel de reconstruction). La valeur vénale est le prix probable de vente (valeur à neuf déduction faite de la vétusté).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'propriete_logement'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-006', 'non_vie', t.id, 'single',
+       NULL, 'À quoi sert l''indice ICH (indice des coûts de construction) dans un contrat d''assurance bâtiment ?', '[{"text":"Adapter annuellement la somme d''assurance à l''évolution des coûts de construction pour éviter la sous-assurance","correct":true},{"text":"Fixer le taux d''imposition foncière","correct":false,"why_wrong":"L''ICH n''a aucune fonction fiscale."},{"text":"Calculer la prime uniquement en fonction des sinistres passés","correct":false,"why_wrong":"L''ICH est un indice de coût, pas une statistique sinistres."},{"text":"Déterminer la valeur cadastrale","correct":false,"why_wrong":"La valeur cadastrale relève des cantons, indépendante de l''ICH."}]'::jsonb, 1,
+       'Indice cantonal des coûts de construction (ICH) : ajuste automatiquement la somme d''assurance bâtiment pour suivre l''inflation des coûts. Anti sous-assurance (art. 69 LCA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'propriete_logement'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-007', 'non_vie', t.id, 'single',
+       'Une maison assurée pour 500 000 CHF vaut réellement 800 000 CHF (valeur à neuf). Un incendie détruit pour 200 000 CHF.', 'Quel montant d''indemnité l''assureur privé (hors ECA monopolistique) versera-t-il en application de l''art. 69 LCA ?', '[{"text":"125 000 CHF (200 000 x 500 000 / 800 000)","correct":true},{"text":"200 000 CHF (le dommage complet)","correct":false,"why_wrong":"Ignore la règle proportionnelle applicable en cas de sous-assurance."},{"text":"500 000 CHF (somme assurée)","correct":false,"why_wrong":"Le dommage est inférieur à la somme assurée : le plafond ne joue pas."},{"text":"0 CHF (contrat nul)","correct":false,"why_wrong":"La sous-assurance réduit l''indemnité, n''annule pas le contrat."}]'::jsonb, 3,
+       'Art. 69 al. 2 LCA (règle proportionnelle) : indemnité = dommage x (somme assurée / valeur réelle). 200 000 x (500 000 / 800 000) = 125 000 CHF.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'propriete_logement'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-008', 'non_vie', t.id, 'multiple',
+       NULL, 'Quels dommages sont typiquement couverts par une assurance bâtiment complémentaire privée (au-delà de l''ECA) ?', '[{"text":"Dégâts d''eau (rupture de conduites, refoulement, pluie)","correct":true},{"text":"Bris de glaces du bâtiment","correct":true},{"text":"Vol par effraction dans les parties communes","correct":true},{"text":"Tremblement de terre selon options du canton","correct":true},{"text":"Usure normale des matériaux","correct":false,"why_wrong":"L''usure n''est pas un sinistre au sens de la LCA."},{"text":"Négligence intentionnelle du propriétaire","correct":false,"why_wrong":"L''intentionnel est exclu (art. 14 LCA)."}]'::jsonb, 2,
+       'ECA cantonale couvre incendie et éléments naturels (art. 33 LCA + règlements cantonaux). Compléments privés : dégâts d''eau, vol, bris glaces, séisme selon canton.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'propriete_logement'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-009', 'non_vie', t.id, 'single',
+       NULL, 'Que couvre spécifiquement une RC propriétaire d''immeuble locatif (non habité par le propriétaire) ?', '[{"text":"Les dommages causés à des tiers (locataires, visiteurs) par le bâtiment lui-même ou son entretien","correct":true},{"text":"Les loyers impayés des locataires","correct":false,"why_wrong":"Cela relève d''une assurance loyers, pas d''une RC."},{"text":"Les dommages aux biens propres du propriétaire","correct":false,"why_wrong":"L''assurance choses les couvre, pas la RC."},{"text":"Les frais d''entretien courant","correct":false,"why_wrong":"Aucune assurance couvre l''entretien courant."}]'::jsonb, 1,
+       'RC propriétaire d''immeuble : couverture des prétentions de tiers fondées sur l''art. 58 CO (dommage causé par vice ou défaut d''entretien du bâtiment). Indispensable pour tout immeuble de rendement.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'propriete_logement'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-010', 'non_vie', t.id, 'single',
+       'Une PPE en Valais (canton GUSTAVO, sans ECA) doit s''assurer pour l''incendie et les éléments naturels.', 'Quelle est la particularité du marché valaisan pour l''assurance bâtiment ?', '[{"text":"Marché privé ouvert : la PPE choisit librement un assureur privé, avec offre compétitive","correct":true},{"text":"Monopole cantonal ECA Valais obligatoire","correct":false,"why_wrong":"VS est GUSTAVO, pas d''ECA."},{"text":"Interdiction totale d''assurer contre l''incendie","correct":false,"why_wrong":"Absurde : la couverture est obligatoire, seulement via marché privé."},{"text":"Obligation d''auto-assurance","correct":false}]'::jsonb, 2,
+       'Cantons GUSTAVO (GE, VS, TI, UR, SZ, OW, AI, AR) : bâtiment assuré via marché privé, pas d''ECA. Concurrence entre assureurs privés.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'propriete_logement'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-011', 'non_vie', t.id, 'single',
+       NULL, 'Quelle est la différence essentielle entre protection juridique circulation et protection juridique privée ?', '[{"text":"La PJ circulation couvre les litiges liés au véhicule et à la LCR ; la PJ privée couvre les autres domaines (travail, bail, consommation, patrimoine)","correct":true},{"text":"La PJ circulation est facultative ; la PJ privée est obligatoire","correct":false,"why_wrong":"Les deux sont facultatives (LCA)."},{"text":"Aucune différence : elles se substituent l''une à l''autre","correct":false,"why_wrong":"Chacune couvre un périmètre distinct."},{"text":"PJ circulation prend en charge les amendes","correct":false,"why_wrong":"Les amendes pénales sont exclues des PJ."}]'::jsonb, 1,
+       'Marché suisse : PJ circulation (usage véhicule, sinistre LCR, recours, permis) et PJ privée (bail, travail, consommation, voisinage, patrimoine, contrats). Souvent combinées, jamais confondues.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'litiges_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-012', 'non_vie', t.id, 'single',
+       NULL, 'Quand l''assuré peut-il exercer le libre choix de l''avocat selon la LSA ?', '[{"text":"Dès qu''un conflit d''intérêts avec l''assureur PJ apparaît, ou dès qu''une procédure judiciaire ou administrative est engagée (art. 32 LSA)","correct":true},{"text":"Uniquement pour les affaires supérieures à 100 000 CHF","correct":false,"why_wrong":"Aucun seuil monétaire ; c''est l''existence de la procédure ou du conflit qui déclenche."},{"text":"Jamais : l''assureur impose son avocat","correct":false,"why_wrong":"Violation de l''art. 32 LSA."},{"text":"Uniquement en droit pénal","correct":false,"why_wrong":"Le libre choix couvre tous les domaines dès qu''une procédure ou un conflit intervient."}]'::jsonb, 2,
+       'Art. 32 LSA : libre choix de l''avocat garanti dès conflit d''intérêts assuré/assureur ou dès qu''une procédure judiciaire ou administrative doit être ouverte. Directive UE reprise en droit suisse.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'litiges_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-013', 'non_vie', t.id, 'multiple',
+       NULL, 'Quels domaines sont typiquement exclus des CGA de protection juridique privée sur le marché suisse ?', '[{"text":"Litiges de droit de la famille (divorce, garde, entretien)","correct":true},{"text":"Procès pénaux pour crime ou faute grave intentionnelle","correct":true},{"text":"Litiges liés au patrimoine spéculatif et jeux de hasard","correct":true},{"text":"Litiges bailleur professionnel/locataire dans certains produits","correct":true},{"text":"Litige salarial d''un employé assuré (couvert avec délai de carence)","correct":false,"why_wrong":"Généralement couvert (avec délai carence 3 mois), pas exclu."},{"text":"Recours automobile après collision","correct":false,"why_wrong":"Recours LCR : cœur de la PJ circulation."}]'::jsonb, 2,
+       'Exclusions typiques PJ privée (CGA marché) : droit de la famille, pénal grave intentionnel, spéculation, guerre, dette de jeu. Les litiges de bail et travail sont en principe inclus (délai carence).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'litiges_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-014', 'non_vie', t.id, 'single',
+       'Un salarié souscrit une PJ privée le 1er février et cite son employeur en justice le 15 mars pour un litige salarial dont il connaissait l''existence en janvier.', 'L''assureur PJ intervient-il ?', '[{"text":"Non : délai de carence typique 3 mois pour litiges de travail et litige préexistant à la souscription","correct":true},{"text":"Oui, sans réserve","correct":false,"why_wrong":"Ignore le délai de carence et l''antériorité du litige."},{"text":"Oui, mais uniquement pour les frais d''avocat","correct":false,"why_wrong":"Aucune couverture partielle : sinistre antérieur à la couverture."},{"text":"Oui, si le préjudice dépasse 10 000 CHF","correct":false,"why_wrong":"Aucun seuil ne fait renaître un litige préexistant."}]'::jsonb, 2,
+       'CGA type PJ privée : délai carence 3 mois pour bail, travail, contrats ; exclusion des litiges préexistants (art. 9 LCA sinistre déjà survenu). Sinistre non couvert.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'litiges_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-015', 'non_vie', t.id, 'single',
+       NULL, 'Quelles sommes d''assurance PJ retrouve-t-on classiquement sur le marché suisse ?', '[{"text":"Entre 250 000 CHF et 600 000 CHF par cas, selon le produit","correct":true},{"text":"10 000 à 20 000 CHF par cas","correct":false,"why_wrong":"Trop bas ; les PJ standard sont plus larges."},{"text":"1 000 000 à 5 000 000 CHF systématique","correct":false,"why_wrong":"Fourchette exceptionnelle, pas standard."},{"text":"Illimité pour tous les produits","correct":false,"why_wrong":"Aucun assureur PJ suisse ne propose une somme illimitée standard."}]'::jsonb, 1,
+       'Sommes d''assurance PJ marché suisse : 250 000 à 600 000 CHF par cas est la fourchette standard, avec sous-limites selon la nature du litige et l''étranger.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'litiges_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-016', 'non_vie', t.id, 'single',
+       NULL, 'Comment la LSA garantit-elle l''indépendance de la gestion des sinistres PJ vis-à-vis de l''assureur de responsabilité ?', '[{"text":"Séparation organisationnelle (entreprise distincte, gestion externalisée, ou déclaration d''indépendance) selon art. 32 LSA et OS","correct":true},{"text":"Interdiction totale d''appartenir à un même groupe","correct":false,"why_wrong":"Le groupe est admis avec séparation ; pas d''interdiction absolue."},{"text":"Aucune obligation particulière","correct":false,"why_wrong":"Violerait la directive européenne reprise en LSA."},{"text":"Contrôle direct de la FINMA pour chaque sinistre","correct":false}]'::jsonb, 2,
+       'Art. 32 LSA : séparation organisationnelle (Chinese wall), entité juridique distincte ou externalisation. But : éviter conflit d''intérêts entre RC et PJ.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'litiges_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-017', 'non_vie', t.id, 'single',
+       'L''assureur PJ estime les chances de succès de l''assuré insuffisantes et refuse la prise en charge d''une procédure.', 'Quel droit essentiel possède l''assuré dans ce cas ?', '[{"text":"Demander une expertise arbitrale (arbitre indépendant) ou saisir l''ombudsman ; passer outre à ses frais et être remboursé si succès","correct":true},{"text":"Aucun recours possible","correct":false,"why_wrong":"Contraire aux CGA type et à la LSA."},{"text":"Attaquer directement l''assureur devant la FINMA","correct":false,"why_wrong":"La FINMA ne tranche pas les litiges individuels."},{"text":"Exiger le paiement immédiat de la somme assurée","correct":false,"why_wrong":"La somme assurée n''est pas une prestation forfaitaire."}]'::jsonb, 3,
+       'CGA type PJ + art. 32 LSA : en cas de refus pour chances de succès insuffisantes, l''assuré peut demander une expertise arbitrale (arbitre) ; ombudsman assurance privée ; s''il gagne à ses frais, prise en charge rétroactive.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'litiges_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-018', 'non_vie', t.id, 'single',
+       NULL, 'Une PJ entreprise couvre-t-elle par défaut les litiges de l''entreprise contre ses propres salariés ?', '[{"text":"Oui, les litiges droit du travail (employeur/employé) sont typiquement couverts, avec délai de carence 3 mois","correct":true},{"text":"Non, exclus systématiquement","correct":false,"why_wrong":"Les CGA PJ entreprise couvrent en général ce risque."},{"text":"Uniquement si l''entreprise emploie moins de 5 personnes","correct":false,"why_wrong":"Aucun seuil d''effectif fixé par la loi."},{"text":"Uniquement en cas de licenciement collectif","correct":false,"why_wrong":"Non limité aux licenciements collectifs."}]'::jsonb, 2,
+       'PJ entreprise couvre litiges de l''employeur (droit du travail, bail commercial, contrats fournisseurs, encaissement) avec sous-limites et délai de carence 3 mois.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'litiges_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-019', 'non_vie', t.id, 'multiple',
+       NULL, 'Que prend en charge la PJ dans le cadre d''un litige couvert ?', '[{"text":"Honoraires d''avocat","correct":true},{"text":"Frais de justice et de procédure","correct":true},{"text":"Frais d''expertise judiciaire","correct":true},{"text":"Dépens alloués à la partie adverse en cas de perte","correct":true},{"text":"Amendes pénales prononcées contre l''assuré","correct":false,"why_wrong":"Les amendes sont exclues (art. 14 LCA + ordre public)."},{"text":"Peines pécuniaires ou dommages punitifs","correct":false,"why_wrong":"Exclusion d''ordre public : ces sanctions sont personnelles."}]'::jsonb, 2,
+       'Prestations PJ (CGA marché) : avocat, frais de procédure, expertise, dépens adverses, cautions à concurrence de la somme assurée. Amendes et dommages punitifs exclus.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'litiges_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-020', 'non_vie', t.id, 'single',
+       NULL, 'Une PJ circulation couvre-t-elle un litige commercial entre l''assuré et son fournisseur de pièces auto ?', '[{"text":"Non : la PJ circulation vise l''usage du véhicule et les litiges LCR, pas les contrats commerciaux avec fournisseurs","correct":true},{"text":"Oui, tout ce qui touche au véhicule est couvert","correct":false,"why_wrong":"Interprétation trop large : la PJ circulation cible l''usage routier."},{"text":"Oui, uniquement si le fournisseur est étranger","correct":false,"why_wrong":"L''étranger ne modifie pas la matière du litige."},{"text":"Oui, dans la limite de 5 000 CHF","correct":false,"why_wrong":"Aucune sous-limite ne fait entrer un litige contractuel dans la PJ circulation."}]'::jsonb, 1,
+       'PJ circulation (CGA marché) : recours après accident, permis, responsabilité pénale liée à la conduite, contrat de véhicule direct (achat, réparation). Litiges commerciaux type garantie fournisseur : plutôt PJ privée.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'litiges_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-021', 'non_vie', t.id, 'single',
+       NULL, 'Depuis la révision LCA 2022, après combien d''années le preneur peut-il résilier annuellement un contrat à durée pluriannuelle ?', '[{"text":"Après 3 ans, chaque année, avec préavis 3 mois (art. 35a LCA)","correct":true},{"text":"Uniquement à l''échéance initiale de 5 ans","correct":false,"why_wrong":"Ancien droit avant 2022 ; désormais résiliation annuelle après 3 ans."},{"text":"Après 10 ans","correct":false,"why_wrong":"Aucune durée de 10 ans dans la LCA révisée."},{"text":"À tout moment sans préavis","correct":false,"why_wrong":"Un préavis de 3 mois est requis."}]'::jsonb, 1,
+       'Art. 35a LCA (révision 2022) : droit de résiliation ordinaire pour la fin de la 3e année, puis chaque année, avec préavis 3 mois. Impératif : ne peut être modifié au détriment du preneur.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-022', 'non_vie', t.id, 'single',
+       NULL, 'Après un sinistre indemnisé, dans quel délai les parties peuvent-elles résilier le contrat selon la LCA révisée ?', '[{"text":"14 jours à compter de la connaissance du versement (art. 42 LCA)","correct":true},{"text":"30 jours","correct":false,"why_wrong":"Ancien droit ; le délai est descendu à 14 jours en 2022."},{"text":"3 mois","correct":false,"why_wrong":"Confusion avec la résiliation ordinaire, pas la sinistre."},{"text":"Aucune résiliation possible après sinistre","correct":false,"why_wrong":"Faux : art. 42 LCA prévoit explicitement ce droit."}]'::jsonb, 1,
+       'Art. 42 LCA (2022) : après un sinistre indemnisé, chacune des parties peut résilier dans un délai de 14 jours à compter du versement de l''indemnité. Effet fin en général 4 semaines après.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-023', 'non_vie', t.id, 'multiple',
+       NULL, 'Que doit communiquer l''assureur au preneur avant la conclusion du contrat selon l''art. 3a LCA (devoir d''information) ?', '[{"text":"Identité de l''assureur","correct":true},{"text":"Risques assurés et étendue de la couverture","correct":true},{"text":"Montant de la prime et autres frais","correct":true},{"text":"Durée et modalités de résiliation","correct":true},{"text":"Traitement des données personnelles","correct":true},{"text":"Le salaire du dirigeant de la compagnie","correct":false,"why_wrong":"Aucune obligation légale de le publier au client."},{"text":"La stratégie de placement du portefeuille interne","correct":false,"why_wrong":"Non exigé par l''art. 3 LCA."}]'::jsonb, 2,
+       'Art. 3 LCA révisé : devoir d''information précontractuelle étendu (identité, risques, prime, durée, résiliation, données). Sanction (art. 3a) : droit de résiliation du preneur pendant 4 semaines si défaut d''information.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-024', 'non_vie', t.id, 'single',
+       'Un preneur a omis, au questionnaire de santé, de mentionner un traitement antihypertenseur qu''il suit depuis 3 ans.', 'Quel est le régime de la réticence selon l''art. 6 LCA révisé ?', '[{"text":"L''assureur peut résilier dans les 4 semaines dès qu''il a connaissance de la réticence ; ses prestations peuvent être réduites en lien de causalité avec le fait tu","correct":true},{"text":"Nullité automatique du contrat","correct":false,"why_wrong":"Ancien droit ; le régime actuel est la résiliation dans les 4 semaines."},{"text":"Aucune sanction : le questionnaire est purement indicatif","correct":false,"why_wrong":"Faux : le devoir de déclaration reste précis (art. 4 LCA)."},{"text":"Amende pénale immédiate","correct":false,"why_wrong":"Aucune amende pénale automatique en matière civile de LCA."}]'::jsonb, 2,
+       'Art. 6 LCA révisé : réticence sanctionnée par résiliation possible dans 4 semaines dès connaissance ; refus ou réduction de prestation uniquement en cas de lien de causalité entre le fait tu et le sinistre.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-025', 'non_vie', t.id, 'multiple',
+       NULL, 'Que doit contenir obligatoirement la fiche d''information de l''intermédiaire d''assurance selon l''art. 45 LSA ?', '[{"text":"Nom et adresse de l''intermédiaire","correct":true},{"text":"Statut : intermédiaire lié ou non lié","correct":true},{"text":"Compagnies partenaires ou représentées","correct":true},{"text":"Nature et source de la rémunération","correct":true},{"text":"Modalités du traitement des données personnelles","correct":true},{"text":"Le nom des concurrents directs","correct":false,"why_wrong":"Aucune obligation légale."},{"text":"L''organigramme complet de la maison mère","correct":false}]'::jsonb, 2,
+       'Art. 45 LSA : fiche d''information écrite remise au preneur avant conclusion. Preuve à conserver. Preuve d''ancrage LCD (transparence, art. 3 LCD).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-026', 'non_vie', t.id, 'single',
+       NULL, 'En cas de vente à distance (téléphone, internet) d''un contrat d''assurance en Suisse, quel droit essentiel possède le preneur ?', '[{"text":"Droit de révocation de 14 jours dès conclusion ou remise des documents (art. 2a LCA)","correct":true},{"text":"Droit de révocation de 30 jours","correct":false,"why_wrong":"Ancien projet ; le délai adopté en 2022 est 14 jours."},{"text":"Aucun droit spécifique","correct":false,"why_wrong":"Contraire à la nouvelle LCA."},{"text":"Résiliation immédiate uniquement en visioconférence","correct":false}]'::jsonb, 2,
+       'Art. 2a LCA (2022) : droit de révocation 14 jours pour tout contrat conclu (par écrit, à distance ou en présentiel), avec exceptions (contrat < 1 mois, prov.). Renforce la protection du consommateur.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-027', 'non_vie', t.id, 'single',
+       NULL, 'Le devoir de conseil / recommandation personnalisée de l''intermédiaire d''assurance découle de quelle base ?', '[{"text":"Art. 45 LSA (information et documentation) et art. 3 LCA (devoir d''info), avec responsabilité art. 68 LSA","correct":true},{"text":"Uniquement de la LSFin","correct":false,"why_wrong":"La LSFin n''est en principe pas applicable aux contrats d''assurance dommage (art. 3 let. b LSFin) ; la source est LSA/LCA."},{"text":"Aucune base légale : pratique purement commerciale","correct":false,"why_wrong":"Base légale claire dans LSA et LCA révisées."},{"text":"Art. 41 CO exclusivement","correct":false,"why_wrong":"L''art. 41 CO est une base résiduelle, pas la base spécifique du conseil assurance."}]'::jsonb, 2,
+       'Devoir de conseil intermédiaire : art. 45 LSA (fiche + analyse), art. 3 LCA (info précontractuelle). Responsabilité de l''intermédiaire (art. 68 LSA) en cas de faute de conseil.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-028', 'non_vie', t.id, 'multiple',
+       NULL, 'Selon la nLPD (en vigueur 01.09.2023) appliquée à un intermédiaire non-vie, quels sont les principes clés à respecter ?', '[{"text":"Licéité et finalité","correct":true},{"text":"Proportionnalité et minimisation","correct":true},{"text":"Exactitude et sécurité","correct":true},{"text":"Information et transparence (annonce en cas de violation)","correct":true},{"text":"Interdiction totale de toute donnée sensible","correct":false,"why_wrong":"Les données sensibles peuvent être traitées avec consentement explicite ou base légale."},{"text":"Anonymisation obligatoire de tous les dossiers en 24 h","correct":false}]'::jsonb, 2,
+       'Art. 6 ss nLPD : principes de licéité, finalité, proportionnalité, exactitude, sécurité, information. Art. 24 nLPD : notification des violations au PFPDT dans les meilleurs délais.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-029', 'non_vie', t.id, 'single',
+       'Un intermédiaire non lié conclut un contrat multirisques PME avec un client. Après signature, il reçoit d''une compagnie non retenue une commission plus élevée.', 'Comment doit-il gérer ce conflit d''intérêts selon LSA + règles marché ?', '[{"text":"Divulguer la structure de rémunération, refuser tout incitatif altérant l''objectivité du conseil et documenter la décision dans le dossier","correct":true},{"text":"Changer discrètement la recommandation vers la compagnie plus rémunératrice sans en informer le client","correct":false,"why_wrong":"Violation grave art. 45 LSA + LCD + devoir de fidélité mandataire."},{"text":"Ignorer le fait : ce n''est pas juridiquement pertinent","correct":false,"why_wrong":"Le conflit d''intérêts doit être géré et documenté (art. 45 LSA)."},{"text":"Facturer la différence au client","correct":false}]'::jsonb, 3,
+       'Gestion des conflits d''intérêts (art. 45 LSA + LCD art. 3) : transparence rémunération, primauté de l''intérêt client, documentation. Sanction FINMA et civile (art. 398 CO mandat).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-030', 'non_vie', t.id, 'single',
+       NULL, 'Quelles obligations subsistent pour l''intermédiaire une fois le contrat conclu (obligations post-contractuelles) ?', '[{"text":"Suivi du client, information sur les changements pertinents, conservation du dossier et disponibilité en cas de sinistre","correct":true},{"text":"Aucune : la mission cesse à la signature","correct":false,"why_wrong":"Violation du mandat (art. 394 ss CO) et du devoir continu de l''art. 3 LCA."},{"text":"Uniquement facturer le renouvellement annuel","correct":false,"why_wrong":"Insuffisant : le service post-conclusion est central."},{"text":"Envoyer un cadeau annuel au client","correct":false}]'::jsonb, 1,
+       'Obligations post-contractuelles : suivi et actualisation (art. 3 LCA + mandat art. 394 CO), conservation dossier (nLPD + LSA 10 ans typiquement), assistance sinistre. Base de la fidélisation.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-031', 'non_vie', t.id, 'single',
+       NULL, 'Quelle sanction majeure sur un contrat existant si l''assureur a manqué à son devoir d''information précontractuelle (art. 3 LCA) ?', '[{"text":"Le preneur peut résilier le contrat dans un délai de 4 semaines dès qu''il a eu connaissance du manquement, avec effet ex tunc pour les primes non couvertes","correct":true},{"text":"Aucune sanction : le contrat est parfait","correct":false,"why_wrong":"Contraire à la LCA révisée qui protège le consommateur."},{"text":"Amende pénale automatique à l''assureur","correct":false,"why_wrong":"Aucune amende pénale directe en matière civile LCA."},{"text":"Nullité rétroactive absolue et remboursement de toutes les prestations reçues","correct":false,"why_wrong":"La sanction est la résiliation, pas la nullité absolue."}]'::jsonb, 2,
+       'Art. 3a LCA : en cas de manquement au devoir d''information, le preneur peut résilier le contrat par déclaration écrite dans les 4 semaines dès connaissance, au plus tard 2 ans après conclusion.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-032', 'non_vie', t.id, 'single',
+       'Une assurée découvre une clause qu''elle juge insolite dans les CGA de son contrat non-vie, non explicitée par le conseiller.', 'Comment le juge apprécie-t-il la validité de cette clause ?', '[{"text":"Règle des clauses insolites : nulle si inhabituelle et non spécifiquement portée à l''attention du preneur (jurisprudence TF, art. 8 LCD)","correct":true},{"text":"Elle est toujours valable dès signature","correct":false,"why_wrong":"Faux : la jurisprudence exclut les clauses insolites non signalées."},{"text":"Elle doit être ratifiée par la FINMA","correct":false,"why_wrong":"La FINMA ne ratifie pas les clauses individuelles."},{"text":"Elle est traitée comme un usage local","correct":false}]'::jsonb, 2,
+       'Doctrine et TF (règle des clauses insolites) : clause CGA inhabituelle et défavorable non spécifiquement signalée n''est pas opposable. Art. 8 LCD sanctionne également les clauses abusives.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-033', 'non_vie', t.id, 'multiple',
+       'Un intermédiaire prépare un rendez-vous non-vie complet avec un couple propriétaire d''une villa VD, 2 véhicules, 3 enfants, revenus 200 000 CHF.', 'Quels éléments doit-il documenter et remettre pour être conforme LCA/LSA révisées + nLPD ?', '[{"text":"Fiche d''information art. 45 LSA (statut, rémunération, données)","correct":true},{"text":"Analyse besoins couvrant ménage, RC privée, véhicules, bâtiment ECA + complément, PJ, voyages","correct":true},{"text":"Devoir d''info art. 3 LCA respecté (couverture, prime, durée, résiliation)","correct":true},{"text":"PV / dossier de conseil signé et conservé selon délais LSA","correct":true},{"text":"Consentement nLPD sur traitement et éventuel partage avec compagnies","correct":true},{"text":"Copie du permis de conduire des enfants mineurs de 8 et 10 ans","correct":false,"why_wrong":"Sans permis, sans finalité : violation minimisation nLPD."},{"text":"Photocopie de la carte bancaire complète","correct":false,"why_wrong":"Interdit par nLPD + risques fraude."}]'::jsonb, 3,
+       'Entretien non-vie conforme : art. 45 LSA + art. 3 LCA + analyse documentée + PV + nLPD (données strictement nécessaires, finalité, sécurité). Best practice VBV.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-034', 'non_vie', t.id, 'single',
+       NULL, 'Selon l''art. 4 LCA, à qui incombe le devoir de déclarer précisément les faits importants pour l''appréciation du risque ?', '[{"text":"Au proposant (preneur), pour les faits que l''assureur lui demande par écrit et qui influencent son appréciation","correct":true},{"text":"À l''assureur seul, qui doit tout deviner","correct":false,"why_wrong":"Le proposant a le devoir de déclarer, à la question posée."},{"text":"À l''intermédiaire, en solidarité","correct":false,"why_wrong":"L''intermédiaire assiste, la déclaration reste celle du proposant."},{"text":"À personne : la LCA a supprimé toute déclaration","correct":false,"why_wrong":"Faux : art. 4 LCA maintient le devoir."}]'::jsonb, 1,
+       'Art. 4 LCA : le proposant doit déclarer par écrit à l''assureur tous les faits importants pour l''appréciation du risque qui lui sont ou doivent lui être connus, selon les questions écrites de l''assureur.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-NV-GAP-035', 'non_vie', t.id, 'single',
+       'Un assureur modifie unilatéralement ses CGA en cours de contrat, en augmentant les primes de 15 %.', 'Quel droit essentiel possède le preneur selon la LCA révisée ?', '[{"text":"Résilier le contrat dans les 30 jours suivant la communication de la modification (art. 35 LCA)","correct":true},{"text":"Aucun : la compagnie modifie librement le contrat","correct":false,"why_wrong":"Contraire à l''art. 35 LCA qui protège le preneur."},{"text":"Il doit accepter tacitement","correct":false,"why_wrong":"La modification tacite est encadrée : le preneur conserve un droit de résiliation."},{"text":"Il peut résilier sans délai, sans forme","correct":false,"why_wrong":"Un délai formel de 30 jours par écrit s''impose."}]'::jsonb, 3,
+       'Art. 35 LCA : en cas d''adaptation contractuelle unilatérale (prime, CGA), le preneur peut résilier le contrat dans les 30 jours à compter de la communication, avec effet à la date d''entrée en vigueur de la modification.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'non_vie' AND t.key = 'conseil_nv'
 ON CONFLICT (external_id) DO NOTHING;
 
 -- ───────── nonvie_genere.json — Questions non-vie construites à partir de questionnaires de formation externes (RC entreprise, RC privée et immeubles, protection juridique, choses PME). ─────────
@@ -2865,6 +5883,322 @@ FROM afa_themes t
 WHERE t.filiere_key = 'vie' AND t.key = 'retraite'
 ON CONFLICT (external_id) DO NOTHING;
 
+-- ───────── vie_gaps.json — Compléments Klary VIE gaps 35 questions. Ciblage thèmes légers : hériter/léguer (10), activité indépendante (10), conduite de l'entretien vie (15). ─────────
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-001', 'vie', t.id, 'single',
+       NULL, 'Depuis la révision du droit successoral entrée en vigueur le 01.01.2023, à combien s''élève la réserve héréditaire des descendants ?', '[{"text":"1/2 de leur part légale","correct":true},{"text":"3/4 de leur part légale","correct":false,"why_wrong":"Ancienne réserve avant la révision 2023 : abaissée à 1/2 depuis."},{"text":"1/3 de leur part légale","correct":false,"why_wrong":"Aucune fraction de ce type dans le CC pour les descendants."},{"text":"La totalité de leur part légale","correct":false}]'::jsonb, 1,
+       'Art. 471 CC (révisé 2023) : la réserve des descendants est de 1/2 de leur droit de succession (auparavant 3/4). La quotité disponible du de cujus s''agrandit d''autant.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'heriter_leguer'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-002', 'vie', t.id, 'single',
+       'Marc décède en laissant son épouse et deux enfants. Sa succession nette est de 800 000 CHF. Aucun testament.', 'Quelle est la quotité disponible dont Marc aurait pu disposer par testament ?', '[{"text":"200 000 CHF","correct":false,"why_wrong":"Calcul faux : la réserve conjoint + descendants ne mange pas 3/4 depuis la révision 2023."},{"text":"500 000 CHF","correct":true},{"text":"400 000 CHF","correct":false,"why_wrong":"Correspondrait à l''ancien droit avant 2023."},{"text":"800 000 CHF","correct":false}]'::jsonb, 2,
+       'Art. 471 CC (2023) : réserve conjoint = 1/2 de sa part légale (1/4 x 1/2 = 1/8 = 100 000). Réserve descendants = 1/2 x 3/4 = 3/8 = 300 000. Quotité disponible = 800 000 - 400 000 = 500 000 CHF (5/8).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'heriter_leguer'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-003', 'vie', t.id, 'single',
+       NULL, 'Sous quelle forme un pacte successoral doit-il obligatoirement être conclu pour être valable ?', '[{"text":"Acte authentique devant notaire, en présence de 2 témoins","correct":true},{"text":"Simple écrit signé par les parties","correct":false,"why_wrong":"L''écrit privé n''est admis que pour le testament olographe, jamais pour un pacte."},{"text":"Testament olographe daté et signé","correct":false,"why_wrong":"Un pacte est bilatéral : il ne peut prendre la forme d''un testament unilatéral."},{"text":"Convention notariée sans témoins","correct":false,"why_wrong":"Les 2 témoins restent exigés par la loi."}]'::jsonb, 2,
+       'Art. 512 CC : le pacte successoral n''est valable qu''en la forme du testament public, soit acte authentique devant officier public (notaire) et 2 témoins.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'heriter_leguer'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-004', 'vie', t.id, 'multiple',
+       NULL, 'Quelles conditions doit remplir un testament olographe pour être valable ?', '[{"text":"Rédigé entièrement à la main par le testateur","correct":true},{"text":"Daté (jour, mois, année) de la main du testateur","correct":true},{"text":"Signé de la main du testateur","correct":true},{"text":"Contresigné par 2 témoins","correct":false,"why_wrong":"Les témoins concernent le testament public, pas l''olographe."},{"text":"Enregistré auprès du registre foncier","correct":false,"why_wrong":"Aucun enregistrement obligatoire pour l''olographe."},{"text":"Rédigé à l''ordinateur puis signé","correct":false,"why_wrong":"L''écriture manuscrite intégrale est exigée, sinon nullité."}]'::jsonb, 2,
+       'Art. 505 CC : testament olographe = écriture manuscrite intégrale, date complète et signature, tous 3 de la main du testateur. Défaut = nullité.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'heriter_leguer'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-005', 'vie', t.id, 'single',
+       'Sophie a été lésée dans sa réserve par un legs excessif fait au concubin de sa mère décédée. Elle apprend la lésion 5 mois après l''ouverture de la succession.', 'Dans quel délai Sophie doit-elle intenter l''action en réduction pour ne pas être forclose ?', '[{"text":"1 an dès qu''elle a connaissance de la lésion, et 10 ans dès l''ouverture","correct":true},{"text":"3 mois dès l''ouverture de la succession, sans exception","correct":false,"why_wrong":"Aucun délai de 3 mois dans l''art. 533 CC pour l''action en réduction."},{"text":"5 ans à compter du décès dans tous les cas","correct":false,"why_wrong":"5 ans n''est pas prévu ; le délai relatif est de 1 an dès connaissance."},{"text":"Aucun délai : imprescriptible en présence de réservataires","correct":false,"why_wrong":"L''action se prescrit par 1 an relatif / 10 ans absolu."}]'::jsonb, 3,
+       'Art. 533 al. 1 CC : action en réduction prescrite par 1 an dès la connaissance de la lésion et, dans tous les cas, par 10 ans dès l''ouverture du testament ou dès la mort pour les autres dispositions.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'heriter_leguer'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-006', 'vie', t.id, 'single',
+       NULL, 'Quelle est la différence essentielle entre le rapport (art. 626 CC) et la réduction (art. 522 CC) ?', '[{"text":"Le rapport concerne les héritiers légaux entre eux ; la réduction protège la réserve d''un héritier lésé","correct":true},{"text":"Le rapport vise uniquement les biens immobiliers ; la réduction les biens mobiliers","correct":false,"why_wrong":"Aucune distinction selon la nature du bien."},{"text":"Le rapport se demande au juge, la réduction par acte notarié","correct":false,"why_wrong":"Confusion procédurale : les deux se règlent en principe par action civile."},{"text":"La réduction s''applique aux dons manuels, le rapport aux legs","correct":false,"why_wrong":"Inverse : les legs subissent la réduction, les libéralités entre vifs sont rapportables."}]'::jsonb, 2,
+       'Art. 626 CC : rapport = obligation pour héritier légal de rapporter à la masse ce qu''il a reçu du vivant en avancement d''hoirie. Art. 522 CC : réduction = action pour restaurer la réserve d''un héritier lésé par un legs ou une libéralité excessive.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'heriter_leguer'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-007', 'vie', t.id, 'single',
+       'Franz, ressortissant suisse et allemand, domicilié à Genève, souhaite rédiger un testament couvrant ses biens en Suisse et en Allemagne.', 'Quelle option juridique lui permet d''unifier le droit applicable à sa succession internationale ?', '[{"text":"Une professio juris : élire le droit de sa nationalité (allemand) au titre de l''art. 90 al. 2 LDIP","correct":true},{"text":"Un simple testament olographe suisse, valable partout","correct":false,"why_wrong":"L''olographe n''unifie pas le droit applicable ; les biens à l''étranger restent soumis au droit local sans professio."},{"text":"Un testament international selon la Convention de Washington 1973, obligatoirement","correct":false,"why_wrong":"La Convention règle la forme et son admission ; elle ne détermine pas le droit applicable au fond."},{"text":"Rien : la Suisse impose son droit à tous les Suisses domiciliés","correct":false}]'::jsonb, 3,
+       'Art. 90 al. 2 LDIP : un étranger domicilié en Suisse peut soumettre sa succession au droit de l''un de ses États nationaux (professio juris). Franz, bi-national, peut ainsi désigner le droit allemand.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'heriter_leguer'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-008', 'vie', t.id, 'multiple',
+       NULL, 'Une clause bénéficiaire en faveur d''un tiers dans un pilier 3a produit quels effets successoraux ?', '[{"text":"Le capital 3a passe hors succession directement au bénéficiaire","correct":true},{"text":"Le capital reste soumis à l''action en réduction si la réserve est lésée","correct":true},{"text":"L''ordre des bénéficiaires 3a est fixé par ordonnance OPP3 art. 2","correct":true},{"text":"Le bénéficiaire supporte l''impôt sur les prestations en capital indépendant","correct":true},{"text":"Le capital tombe automatiquement dans la masse successorale","correct":false,"why_wrong":"Contradiction : la prévoyance liée est hors succession en principe."},{"text":"Le tiers hérite sans aucune fiscalité","correct":false,"why_wrong":"Impôt cantonal sur prestations en capital applicable, taux séparé."}]'::jsonb, 2,
+       'Art. 2 OPP3 : ordre légal 3a strict. Le capital sort hors succession civile mais reste attaquable en réduction si atteinte à la réserve (art. 522 CC). Fiscalité : impôt séparé sur prestation en capital (art. 38 LIFD).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'heriter_leguer'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-009', 'vie', t.id, 'single',
+       NULL, 'Un concubin non marié peut-il hériter légalement (ab intestat) en Suisse ?', '[{"text":"Non, il n''a aucun droit successoral légal ; il doit être institué par testament","correct":true},{"text":"Oui, après 5 ans de vie commune prouvée","correct":false,"why_wrong":"Aucune reconnaissance légale de la concubinat en droit successoral suisse."},{"text":"Oui, dans la limite de 1/4 de la succession","correct":false,"why_wrong":"Aucune fraction légale prévue pour un concubin."},{"text":"Oui, s''il partage un enfant avec le défunt","correct":false,"why_wrong":"L''enfant hérite en tant que descendant, pas le concubin."}]'::jsonb, 1,
+       'CC (art. 457 ss) : le concubin n''est pas héritier légal. Pour lui laisser des biens : testament ou pacte successoral, dans les limites de la quotité disponible (art. 470 CC).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'heriter_leguer'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-010', 'vie', t.id, 'single',
+       'Pierre, veuf, laisse 3 enfants et une succession de 1 200 000 CHF. Il avait fait 10 ans avant son décès une donation de 300 000 CHF à sa fille aînée, sans dispense de rapport.', 'Comment se calcule la masse à partager et la part de chaque enfant ?', '[{"text":"Masse rapportée = 1 500 000 CHF, part de chacun 500 000, fille aînée reçoit 200 000 nets","correct":true},{"text":"Masse 1 200 000, part 400 000 chacun sans rapport","correct":false,"why_wrong":"Ignore l''obligation de rapport de la donation en avancement d''hoirie."},{"text":"Masse 1 500 000, part 500 000, mais fille aînée reçoit 0","correct":false,"why_wrong":"Le rapport est en valeur : elle conserve les 300 000, reçoit le complément 200 000."},{"text":"Masse 1 200 000, la fille aînée est exclue du partage","correct":false}]'::jsonb, 3,
+       'Art. 626 CC : sans dispense de rapport expresse, la donation est rapportable. Masse = 1 200 000 + 300 000 = 1 500 000. Chaque enfant reçoit 500 000. La fille aînée déduit les 300 000 déjà perçus : elle touche 200 000 nets.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'heriter_leguer'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-011', 'vie', t.id, 'single',
+       NULL, 'Un salarié qui devient indépendant sans être affilié à une caisse LPP peut cotiser au pilier 3a jusqu''à quel plafond en 2026 ?', '[{"text":"20 % du revenu AVS, max 36 288 CHF","correct":true},{"text":"7 258 CHF (petit 3a)","correct":false,"why_wrong":"C''est le plafond du salarié affilié LPP, pas de l''indépendant sans LPP."},{"text":"10 % du revenu, sans plafond","correct":false,"why_wrong":"Aucun taux de 10 % ni d''absence de plafond dans l''OPP3."},{"text":"50 % du revenu AVS","correct":false,"why_wrong":"Confusion avec le rachat LPP maximum, pas 3a."}]'::jsonb, 1,
+       'Art. 7 al. 1 let. b OPP3 : indépendant sans 2e pilier peut cotiser jusqu''à 20 % du revenu d''activité lucrative, plafonné à 36 288 CHF en 2026 (grand 3a).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'activite_independante'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-012', 'vie', t.id, 'multiple',
+       NULL, 'Quels sont les avantages du grand pilier 3a (indépendant sans LPP) par rapport à une LPP facultative ?', '[{"text":"Plafond de déduction fiscale beaucoup plus élevé (36 288 vs 7 258 CHF)","correct":true},{"text":"Souplesse de contribution année par année","correct":true},{"text":"Rachats supplémentaires possibles en LPP fac. pour combler des lacunes","correct":false,"why_wrong":"C''est un avantage de la LPP fac., pas du 3a."},{"text":"Prestations d''invalidité et de décès à définir dans le contrat 3a","correct":true},{"text":"Couverture obligatoire pour risques décès/invalidité","correct":false,"why_wrong":"Aucune obligation légale : le 3a bancaire pur n''assure pas ces risques."}]'::jsonb, 2,
+       'Art. 7 OPP3 : indépendant sans LPP a un plafond 3a très élevé. Souplesse annuelle et choix des risques dans version assurance. La LPP fac. offre en revanche les rachats de prévoyance (art. 79b LPP) et une couverture décès/invalidité systématique.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'activite_independante'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-013', 'vie', t.id, 'single',
+       'Julie, salariée avec 90 000 CHF de salaire AVS, quitte son emploi pour devenir consultante indépendante.', 'Que doit-elle faire en priorité pour éviter une lacune de prévoyance ?', '[{"text":"S''affilier à une caisse LPP facultative ou verser sa prestation de libre passage sur un compte LPP, puis planifier 3a et risques","correct":true},{"text":"Retirer tout son avoir LPP en capital et le placer sur son compte bancaire privé","correct":false,"why_wrong":"Retrait anticipé LPP indépendant possible (art. 5 LFLP) mais sans planification, perte fiscale et couverture risques."},{"text":"Ne rien faire : l''AVS suffit à couvrir la retraite","correct":false,"why_wrong":"L''AVS seule (rente max 2 520 CHF) ne maintient jamais le niveau de vie."},{"text":"Souscrire uniquement une RC pro et une IJM","correct":false,"why_wrong":"Insuffisant : ne couvre pas la retraite ni l''invalidité longue durée."}]'::jsonb, 2,
+       'Passage salarié à indépendant : art. 5 LFLP autorise retrait LP mais mieux vaut affiliation LPP fac. ou compte LP + grand 3a + IJM + RC pro. Analyse complète des besoins (art. 3 LCA, art. 45 LSA).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'activite_independante'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-014', 'vie', t.id, 'single',
+       'Un artisan indépendant de 58 ans souhaite transmettre son entreprise individuelle à son fils.', 'Quel dispositif fiscal fédéral peut-il utiliser pour reporter l''imposition des réserves latentes lors de la remise ?', '[{"text":"Le report d''imposition par transfert à un successeur poursuivant l''activité, sur demande, art. 18a LIFD","correct":true},{"text":"Une exonération pure et simple des réserves latentes en cas de succession familiale","correct":false,"why_wrong":"Aucune exonération totale : seul un report d''imposition est possible sous conditions."},{"text":"L''impôt anticipé fédéral remplace tout impôt sur le revenu","correct":false,"why_wrong":"L''IA n''est pas un substitut à l''IFD, il s''agit de deux impôts distincts."},{"text":"L''immunisation via un pilier 3a","correct":false,"why_wrong":"3a n''a aucun effet sur les réserves latentes d''une entreprise individuelle."}]'::jsonb, 3,
+       'Art. 18a LIFD : report d''imposition des réserves latentes en cas de reprise par un membre de la famille poursuivant l''exploitation. À combiner avec art. 37b LIFD pour taux privilégié sur bénéfice de liquidation à la retraite.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'activite_independante'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-015', 'vie', t.id, 'single',
+       NULL, 'Quelle assurance est indispensable pour un consultant IT indépendant afin de couvrir un défaut de conseil ayant causé une perte financière au client ?', '[{"text":"RC professionnelle avec extension pertes patrimoniales pures","correct":true},{"text":"RC privée seule (art. 41 CO)","correct":false,"why_wrong":"La RC privée exclut expressément l''activité pro lucrative indépendante."},{"text":"Assurance choses PME","correct":false,"why_wrong":"Couvre les biens matériels, pas la responsabilité pour dommage financier."},{"text":"Protection juridique circulation","correct":false,"why_wrong":"Ne concerne que les litiges de la circulation routière."}]'::jsonb, 2,
+       'RC professionnelle avec avenant pertes patrimoniales pures (préjudice financier sans dommage corporel ni matériel préalable) : indispensable pour métiers de conseil (fiduciaire, IT, ingénieur). Base LCA + CGA marché.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'activite_independante'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-016', 'vie', t.id, 'multiple',
+       NULL, 'Quels risques cyber concrets doit couvrir la police d''un indépendant traitant des données clients ?', '[{"text":"Frais de restauration des données après ransomware","correct":true},{"text":"Frais d''annonce nLPD au PFPDT et aux personnes concernées","correct":true},{"text":"Perte d''exploitation liée à l''indisponibilité IT","correct":true},{"text":"Responsabilité civile pour violation nLPD envers tiers","correct":true},{"text":"Vol physique du véhicule professionnel","correct":false,"why_wrong":"Cela relève de la casco véhicule, pas de la cyber."},{"text":"Franchise médicale AOS du dirigeant","correct":false}]'::jsonb, 2,
+       'Police cyber PME/indépendant : restauration data, notification nLPD (art. 24 nLPD), interruption d''activité, RC data. Distincte des couvertures classiques choses et RC.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'activite_independante'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-017', 'vie', t.id, 'single',
+       NULL, 'Un indépendant en incapacité de travail totale bénéficie-t-il d''office d''indemnités journalières maladie ?', '[{"text":"Non, il doit souscrire volontairement une IJM LCA ou LAMal facultative","correct":true},{"text":"Oui, la LAA le couvre automatiquement dès le 3e jour","correct":false,"why_wrong":"La LAA obligatoire ne concerne que les salariés."},{"text":"Oui, dès 30 jours, sans démarche","correct":false,"why_wrong":"Aucune IJM automatique pour indépendant."},{"text":"Oui, par l''APG","correct":false,"why_wrong":"L''APG couvre service militaire, maternité, paternité, proche aidant, pas la maladie ordinaire."}]'::jsonb, 1,
+       'Indépendant : IJM non obligatoire. Options : IJM LCA privée ou IJM LAMal facultative (art. 67 ss LAMal). Sans souscription, aucune couverture perte de gain maladie.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'activite_independante'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-018', 'vie', t.id, 'single',
+       'Sébastien, indépendant affilié à une caisse LPP fac., dispose d''une lacune de rachat de 120 000 CHF selon sa caisse.', 'Que doit-il vérifier avant d''effectuer un rachat déductible fiscalement ?', '[{"text":"Absence de retrait EPL/versement anticipé dans les 3 dernières années et respect de la période de blocage 3 ans avant retrait en capital","correct":true},{"text":"Rien : le rachat est toujours immédiatement retirable en capital","correct":false,"why_wrong":"Blocage 3 ans avant retrait en capital sous peine de reprise fiscale."},{"text":"L''accord obligatoire de l''AVS","correct":false,"why_wrong":"L''AVS n''a aucun rôle décisionnel dans le rachat LPP."},{"text":"Que sa fortune privée ne dépasse pas 500 000 CHF","correct":false}]'::jsonb, 2,
+       'Art. 79b LPP + circulaire AFC 3/2024 : rachat déductible sous conditions. Blocage 3 ans avant retrait en capital sinon reprise imposition et annulation déduction. Précédents EPL doivent être remboursés avant rachat.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'activite_independante'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-019', 'vie', t.id, 'single',
+       'Une indépendante décède subitement à 52 ans. Son mari (salarié) et 2 enfants restent. Elle ne cotisait qu''à l''AVS et 3a.', 'Quelles sont les prestations de prévoyance disponibles pour la famille survivante ?', '[{"text":"Rente veuve/enfants AVS + capital 3a selon ordre OPP3 art. 2 ; aucune rente LPP","correct":true},{"text":"Rente veuve LPP obligatoire à 60 % de la rente projetée","correct":false,"why_wrong":"Pas de LPP si non affiliée : aucune rente LPP versée."},{"text":"Capital LAA sur 12 fois le salaire mensuel","correct":false,"why_wrong":"LAA ne concerne pas les indépendants sauf couverture facultative art. 4 LAA (à souscrire)."},{"text":"Aucune prestation : indépendante sans droits","correct":false,"why_wrong":"L''AVS et le 3a produisent bien des prestations."}]'::jsonb, 3,
+       'Décès indépendante non affiliée LPP : AVS survivants (art. 23 ss LAVS) + versement capital 3a selon ordre OPP3 (conjoint puis descendants). Lacune LPP = message clé du conseil aux indépendants.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'activite_independante'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-020', 'vie', t.id, 'single',
+       NULL, 'Un indépendant part à la retraite et retire son avoir 3a en une année : à quel régime fiscal est soumise cette prestation en capital ?', '[{"text":"Impôt séparé sur les prestations en capital, taux réduit (1/5 du barème ordinaire) au niveau fédéral","correct":true},{"text":"Barème ordinaire IFD, cumulé avec le revenu de l''année","correct":false,"why_wrong":"Non : imposition séparée pour éviter la progressivité."},{"text":"Exonération totale d''impôt","correct":false,"why_wrong":"Aucune exonération : impôt réduit mais dû."},{"text":"Impôt anticipé de 35 % libératoire","correct":false,"why_wrong":"L''IA ne s''applique pas ainsi ; c''est un impôt à la source récupérable."}]'::jsonb, 2,
+       'Art. 38 LIFD : prestations en capital de prévoyance imposées séparément à un taux correspondant à 1/5 du barème ordinaire. Étaler retraits (3a + LP) sur plusieurs années réduit la charge cantonale progressive.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'activite_independante'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-021', 'vie', t.id, 'single',
+       NULL, 'Selon la LSFin, dans quelle classe de clients se trouve par défaut un particulier salarié sans expérience particulière ?', '[{"text":"Client privé","correct":true},{"text":"Client professionnel","correct":false,"why_wrong":"Le client pro est défini strictement (art. 4 al. 3 LSFin) : institut financier, entité publique, entreprise avec trésorerie pro."},{"text":"Client institutionnel","correct":false,"why_wrong":"Réservé aux banques, assurances, fonds selon art. 4 al. 4 LSFin."},{"text":"Client qualifié LPCC","correct":false,"why_wrong":"Notion LPCC, pas LSFin."}]'::jsonb, 1,
+       'Art. 4 LSFin : segmentation en 3 classes (privé / professionnel / institutionnel). Un particulier lambda est client privé et bénéficie de la protection maximale.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-022', 'vie', t.id, 'multiple',
+       NULL, 'Quelles obligations le prestataire doit-il remplir vis-à-vis d''un client privé selon la LSFin ?', '[{"text":"Vérifier le caractère approprié (art. 11 LSFin) pour un simple conseil transactionnel","correct":true},{"text":"Vérifier l''adéquation (art. 12 LSFin) pour un conseil en placement portefeuille","correct":true},{"text":"Fournir la fiche d''information de base FIB pour instruments financiers concernés (art. 60 LSFin)","correct":true},{"text":"Documenter le conseil (art. 15 LSFin)","correct":true},{"text":"Aucune obligation de documentation pour un client privé","correct":false,"why_wrong":"L''art. 15 LSFin impose au contraire la documentation obligatoire."},{"text":"Utiliser exclusivement des produits maison","correct":false}]'::jsonb, 2,
+       'Art. 7 à 15 LSFin : règles de comportement (info, adéquation/appropriation, documentation, transparence, diligence). Application intégrale pour client privé.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-023', 'vie', t.id, 'single',
+       'Un couple marié de 45 ans, 2 enfants (8 et 11 ans), revenus 180 000 CHF, souhaite planifier prévoyance et couverture décès.', 'Quelle étape de l''analyse des besoins est prioritaire pour ce couple ?', '[{"text":"Calculer les lacunes AVS/LPP en cas de décès du conjoint principal et projeter les besoins des enfants jusqu''à leur majorité/formation","correct":true},{"text":"Proposer immédiatement un fonds actions agressif","correct":false,"why_wrong":"Avant produit, il faut l''analyse : sinon violation art. 12 LSFin (adéquation)."},{"text":"Faire signer d''abord un mandat de gestion","correct":false,"why_wrong":"Le mandat vient après l''analyse et le PV de conseil."},{"text":"Vendre un pilier 3a bancaire à chacun sans analyse","correct":false,"why_wrong":"Défaut de conseil : sanction civile et FINMA possible."}]'::jsonb, 2,
+       'Phase analyse (LSFin art. 7 + méthode 4 phases) : identifier situation familiale, revenus, patrimoine, objectifs, tolérance au risque, calculer lacunes avant toute solution.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-024', 'vie', t.id, 'single',
+       NULL, 'Que couvre exactement le devoir d''information de l''art. 8 LSFin ?', '[{"text":"Information sur le prestataire, ses services, coûts, conflits d''intérêts, offre de marché considérée","correct":true},{"text":"Seulement les frais annuels du produit vendu","correct":false,"why_wrong":"L''art. 8 est bien plus large que les seuls frais."},{"text":"Uniquement le nom du produit et son rendement passé","correct":false,"why_wrong":"Insuffisant : information sur la nature du service, risques, coûts, conflits est obligatoire."},{"text":"Rien : c''est l''art. 45 LSA qui régit tout","correct":false,"why_wrong":"L''art. 45 LSA vise l''intermédiation assurance, l''art. 8 LSFin la prestation de services financiers."}]'::jsonb, 2,
+       'Art. 8 LSFin : le prestataire informe le client privé de son identité, statut, services, coûts, risques, éventuels conflits d''intérêts et de l''offre de marché prise en compte.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-025', 'vie', t.id, 'single',
+       'Sarah recommande à son client Marc, retraité prudent, un produit structuré à capital garanti mais avec longue durée et pénalité de sortie.', 'Quelle règle LSFin Sarah doit-elle impérativement respecter pour ne pas engager sa responsabilité ?', '[{"text":"Vérifier l''adéquation avec objectifs, situation financière, connaissances et tolérance au risque de Marc (art. 12 LSFin)","correct":true},{"text":"Uniquement vérifier l''appropriation de la transaction (art. 11 LSFin)","correct":false,"why_wrong":"Le conseil en placement porte sur un portefeuille : l''adéquation art. 12 est la règle."},{"text":"Aucune vérification : Marc a signé le contrat","correct":false,"why_wrong":"La signature ne dispense pas des règles LSFin d''ordre public."},{"text":"Se limiter à l''exécution simple sans conseil","correct":false,"why_wrong":"Ce serait requalifier le service, ce que l''analyse des faits ne permet pas."}]'::jsonb, 3,
+       'Art. 12 LSFin : le conseil en placement portefeuille impose la vérification d''adéquation (suitability). Défaut = responsabilité civile et sanction FINMA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-026', 'vie', t.id, 'multiple',
+       NULL, 'Quels éléments doivent figurer dans un procès-verbal de conseil (PV) selon la LSFin ?', '[{"text":"Besoins et objectifs du client","correct":true},{"text":"Raisons de la recommandation formulée","correct":true},{"text":"Situation financière et de risque du client","correct":true},{"text":"Produits présentés et retenus","correct":true},{"text":"Le salaire du conseiller","correct":false,"why_wrong":"Non requis dans le PV : ce sont les frais, coûts et rémunérations liés au service qui doivent être divulgués."},{"text":"L''adresse email personnelle de la famille du conseiller","correct":false}]'::jsonb, 2,
+       'Art. 15 LSFin + FSN : le PV de conseil documente le processus (besoins, objectifs, situation, produits, motifs, alternatives). Preuve essentielle en cas de litige.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-027', 'vie', t.id, 'single',
+       NULL, 'Un client dépose une réclamation formelle. Quelle est l''obligation minimale du prestataire selon la LSFin ?', '[{"text":"Adhérer à un organe de médiation reconnu (ombudsman) et informer le client de cette possibilité (art. 74 ss LSFin)","correct":true},{"text":"Refuser de traiter la réclamation si elle n''est pas envoyée par pli recommandé","correct":false,"why_wrong":"Aucune exigence de forme opposable au client."},{"text":"Payer immédiatement l''indemnité demandée","correct":false,"why_wrong":"Le paiement n''est pas automatique : il dépend du bien-fondé."},{"text":"Résilier immédiatement la relation d''affaires","correct":false}]'::jsonb, 1,
+       'Art. 74 à 78 LSFin : tout prestataire doit être affilié à un organe de médiation reconnu et informer le client de la procédure ombudsman en cas de désaccord persistant.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-028', 'vie', t.id, 'single',
+       NULL, 'Le secret professionnel de l''intermédiaire d''assurance peut-il être levé sur simple demande d''un tiers curieux ?', '[{"text":"Non, seuls le consentement écrit du client ou une base légale (autorité, juge) le permettent","correct":true},{"text":"Oui, si le tiers est un membre de la famille","correct":false,"why_wrong":"Aucun automatisme familial ; secret protégé strictement."},{"text":"Oui, si le tiers présente une carte professionnelle","correct":false,"why_wrong":"Une carte pro ne vaut pas base légale."},{"text":"Oui, dans tous les cas si le montant est faible","correct":false,"why_wrong":"Aucun seuil ne dispense du secret."}]'::jsonb, 2,
+       'Art. 47 LB par analogie + art. 35 nLPD + art. 45 LSA : intermédiaires soumis à un devoir de discrétion. Levée sur consentement écrit ou décision d''autorité.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-029', 'vie', t.id, 'single',
+       'Un intermédiaire non lié conseille des solutions LPP surobligatoire. Il perçoit une commission de la compagnie retenue.', 'Quelle règle LSFin s''applique impérativement à ces rémunérations ?', '[{"text":"Communication transparente et, à défaut d''accord explicite, transfert de la rétrocession au client (art. 26 LSFin)","correct":true},{"text":"La commission est libre et n''a pas à être communiquée","correct":false,"why_wrong":"Violation art. 26 LSFin et jurisprudence TF sur les rétrocessions."},{"text":"Elle doit être remise obligatoirement à la FINMA","correct":false,"why_wrong":"Aucune obligation de remise à la FINMA."},{"text":"Elle est nulle et non avenue automatiquement","correct":false}]'::jsonb, 2,
+       'Art. 26 LSFin : information sur les rémunérations reçues de tiers. Sans consentement éclairé du client, la commission doit lui revenir. Notion issue de la jurisprudence TF (rétrocessions).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-030', 'vie', t.id, 'single',
+       NULL, 'Qui doit obligatoirement s''inscrire au registre des intermédiaires d''assurance tenu par la FINMA ?', '[{"text":"Les intermédiaires non liés (indépendants d''une compagnie) et, depuis 2024, également les intermédiaires liés","correct":true},{"text":"Uniquement les courtiers agréés en assurance-vie collective","correct":false,"why_wrong":"Restriction inexacte : la LSA vise tous les intermédiaires."},{"text":"Aucun : le registre est purement facultatif","correct":false,"why_wrong":"Registre obligatoire pour exercer légalement."},{"text":"Uniquement les personnes morales","correct":false,"why_wrong":"Personnes physiques exerçant l''intermédiation doivent aussi être inscrites."}]'::jsonb, 1,
+       'Art. 40 à 44 LSA (révisée 2024) : registre FINMA obligatoire pour intermédiaires non liés ; formation continue et conditions personnelles également exigées.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-031', 'vie', t.id, 'multiple',
+       NULL, 'Que doit contenir la fiche d''information transmise au preneur d''assurance selon l''art. 45 LSA ?', '[{"text":"Identité et adresse de l''intermédiaire","correct":true},{"text":"Rapports contractuels avec les compagnies (lié / non lié)","correct":true},{"text":"Mode de rémunération de l''intermédiaire","correct":true},{"text":"Modalités du traitement des données personnelles","correct":true},{"text":"Le CV professionnel complet du conseiller","correct":false,"why_wrong":"Non exigé par art. 45 LSA."},{"text":"Le nom du chef de la FINMA en poste","correct":false}]'::jsonb, 2,
+       'Art. 45 LSA : fiche d''information obligatoire avant conclusion, avec identité, statut, liens contractuels, rémunération, protection des données. Preuve à conserver.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-032', 'vie', t.id, 'single',
+       'Un client institutionnel (caisse de pension) demande des services d''investissement à une société de gestion.', 'Quelles règles LSFin s''appliquent à cette relation ?', '[{"text":"La plupart des règles de comportement art. 8 à 16 LSFin ne s''appliquent pas ; le client institutionnel peut y renoncer (art. 20 LSFin)","correct":true},{"text":"Toutes les règles LSFin s''appliquent intégralement, sans dérogation possible","correct":false,"why_wrong":"La LSFin gradue explicitement la protection selon le segment (art. 20 LSFin)."},{"text":"Seule la nLPD s''applique","correct":false,"why_wrong":"La LSFin s''applique toujours en principe, avec des allègements."},{"text":"Les règles LBA sont dispensées","correct":false,"why_wrong":"La LBA reste applicable à tout intermédiaire financier."}]'::jsonb, 3,
+       'Art. 20 LSFin : le client institutionnel est réputé disposer de l''expertise ; les règles art. 8 à 16 sont applicables sur base opt-in ou renonciation. Protection graduée.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-033', 'vie', t.id, 'single',
+       NULL, 'En cas d''opting-up d''un client privé fortuné (élection en client professionnel), quelle est la conséquence principale ?', '[{"text":"Perte partielle de la protection LSFin : allègement documentation, adéquation, information","correct":true},{"text":"Aucun impact : la protection est identique dans les 3 classes","correct":false,"why_wrong":"Faux : la LSFin gradue la protection selon la classe."},{"text":"Il devient client institutionnel automatiquement","correct":false,"why_wrong":"L''opting-up mène à la classe professionnelle, pas institutionnelle."},{"text":"La FINMA doit valider individuellement chaque opting-up","correct":false,"why_wrong":"Aucune validation individuelle FINMA requise."}]'::jsonb, 2,
+       'Art. 5 LSFin : opting-up des clients privés fortunés (patrimoine ≥ 500 000 CHF + connaissances) vers client professionnel. Consentement écrit. Allègement de la protection.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-034', 'vie', t.id, 'single',
+       NULL, 'Quelle obligation de formation continue s''impose aux intermédiaires d''assurance sous la LSA révisée ?', '[{"text":"Formation continue régulière obligatoire, dont le contenu et la durée sont fixés par les standards de la branche (BVK/AFA)","correct":true},{"text":"Aucune obligation : la seule formation initiale suffit à vie","correct":false,"why_wrong":"Contraire à l''art. 43 LSA révisé qui impose formation continue."},{"text":"Formation d''au moins 200 heures par an","correct":false,"why_wrong":"Aucun standard fixé à 200 heures ; les branches définissent le volume."},{"text":"Formation uniquement en cas de plainte client","correct":false,"why_wrong":"Aucun lien avec les plaintes ; obligation permanente."}]'::jsonb, 1,
+       'Art. 43 LSA : obligation de formation initiale et continue pour intermédiaires. Standards fixés par organisations de branche (SAQ, BVK/AFA). Cybelia = pièce du dossier FINMA.', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
+INSERT INTO afa_questions
+  (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
+SELECT 'KLARY-VIE-GAP-035', 'vie', t.id, 'multiple',
+       'Une conseillère prépare un entretien vie avec un couple d''indépendants, revenus mixtes 250 000 CHF, 3 enfants, patrimoine 900 000 CHF.', 'Quels documents et éléments doit-elle préparer et remettre avant/pendant l''entretien pour respecter LSFin et LSA ?', '[{"text":"Fiche d''information art. 45 LSA (identité, statut, rémunération, données)","correct":true},{"text":"Segmentation LSFin du couple (privé par défaut, opting-up éventuel)","correct":true},{"text":"Questionnaire de besoins couvrant prévoyance, décès, invalidité, patrimoine, entreprise","correct":true},{"text":"FIB des produits envisagés (art. 60 LSFin) et rappel des rétrocessions (art. 26)","correct":true},{"text":"PV de conseil détaillé signé par les deux parties","correct":true},{"text":"Photocopie de la CNI de tous les proches non concernés","correct":false,"why_wrong":"Aucune base légale : violerait la nLPD (minimisation des données)."},{"text":"Extrait du casier judiciaire des enfants mineurs","correct":false,"why_wrong":"Aucune pertinence, atteinte à la nLPD."}]'::jsonb, 3,
+       'Entretien conforme : fiche art. 45 LSA, segmentation LSFin, analyse besoins documentée (art. 7 LSFin), FIB (art. 60), rémunérations (art. 26), PV signé (art. 15). Respect nLPD (minimisation, finalité, sécurité).', 'klary_interne', TRUE
+FROM afa_themes t
+WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
+ON CONFLICT (external_id) DO NOTHING;
+
 -- ───────── vie_klary_bank_v2.json — Banque Klary v2 : extension VIE de 90 questions couvrant les 6 thèmes officiels VBV (garantie des revenus, retraite, épargne, hériter/léguer, activité indépendante, conduite de l'entretien) avec ancrages législatifs suisses et cas pratiques. ─────────
 INSERT INTO afa_questions
   (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
@@ -3857,7 +7191,7 @@ FROM afa_themes t
 WHERE t.filiere_key = 'vie' AND t.key = 'conseil_vie'
 ON CONFLICT (external_id) DO NOTHING;
 
--- ───────── vie_klary_prevoyance_privee.json — Banque Klary — prévoyance privée VIE 75 questions. Types d'assurance vie (risque pur/mixte/capitalisation/unit-linked), 3a vs 3b, banque vs assurance, protection famille (veuve/orphelin/capital décès), lien avec accident/maladie/décès. ─────────
+-- ───────── vie_klary_prevoyance_privee.json — Banque Klary : prévoyance privée VIE 75 questions. Types d'assurance vie (risque pur/mixte/capitalisation/unit-linked), 3a vs 3b, banque vs assurance, protection famille (veuve/orphelin/capital décès), lien avec accident/maladie/décès. ─────────
 INSERT INTO afa_questions
   (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
 SELECT 'KLARY-VIE-PP-001', 'vie', t.id, 'single',
@@ -3879,7 +7213,7 @@ ON CONFLICT (external_id) DO NOTHING;
 INSERT INTO afa_questions
   (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
 SELECT 'KLARY-VIE-PP-003', 'vie', t.id, 'multiple',
-       NULL, 'Comparaison pilier 3a vs pilier 3b : quelles affirmations sont exactes ?', '[{"text":"Le pilier 3b n''a AUCUN plafond fédéral de versement","correct":true},{"text":"Le pilier 3a est déductible du revenu imposable, dans la limite du plafond","correct":true},{"text":"Les versements 3b sont déductibles du revenu imposable comme le 3a","correct":false,"why_wrong":"Faux : les versements 3b ne sont PAS déductibles au niveau fédéral. Seules quelques déductions cantonales limitées existent (Genève, Vaud)."},{"text":"Le pilier 3a est bloqué jusqu''à 5 ans avant l''âge de référence AVS","correct":true},{"text":"Le pilier 3b est librement disponible en tout temps (rachat/résiliation)","correct":true}]'::jsonb, 2,
+       NULL, 'Comparaison pilier 3a vs pilier 3b : quelles affirmations sont exactes ?', '[{"text":"Le pilier 3b n''a AUCUN plafond fédéral de versement","correct":true},{"text":"Le pilier 3a est déductible du revenu imposable, dans la limite du plafond","correct":true},{"text":"Les versements 3b sont déductibles du revenu imposable comme le 3a","correct":false,"why_wrong":"Faux : les versements 3b ne sont PAS déductibles au niveau fédéral. Seules quelques déductions cantonales limitées existent (Genève, Vaud)."},{"text":"Le pilier 3a est bloqué jusqu''à 5 ans avant l''âge de référence AVS","correct":true},{"text":"Le pilier 3b est librement disponible en tout temps (rachat/résiliation)","correct":true}]'::jsonb, 3,
        '3a = prévoyance liée, plafonnée et fiscalement avantageuse, mais bloquée. 3b = prévoyance libre, sans plafond ni déduction, disponible en tout temps. Art. 82 LPP et OPP 3 encadrent le 3a ; le 3b relève du droit privé (LCA/CO).', 'klary_interne', TRUE
 FROM afa_themes t
 WHERE t.filiere_key = 'vie' AND t.key = 'epargne'
@@ -4212,7 +7546,7 @@ ON CONFLICT (external_id) DO NOTHING;
 INSERT INTO afa_questions
   (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
 SELECT 'KLARY-VIE-PP-040', 'vie', t.id, 'multiple',
-       NULL, 'Avantages et inconvénients d''une assurance-vie mixte : quelles affirmations sont exactes ?', '[{"text":"Avantage : cumul d''une protection décès et d''une épargne garantie à l''échéance","correct":true},{"text":"Avantage : discipline d''épargne (engagement pluriannuel)","correct":true},{"text":"Inconvénient : rendement souvent inférieur à un placement banque + assurance risque pur séparée","correct":true},{"text":"Inconvénient : peu de souplesse contractuelle (durée, primes)","correct":true},{"text":"Avantage : liquidité totale à tout moment sans coût","correct":false,"why_wrong":"Faux : le rachat anticipé entraîne une perte significative dans les premières années."}]'::jsonb, 2,
+       NULL, 'Avantages et inconvénients d''une assurance-vie mixte : quelles affirmations sont exactes ?', '[{"text":"Avantage : cumul d''une protection décès et d''une épargne garantie à l''échéance","correct":true},{"text":"Avantage : discipline d''épargne (engagement pluriannuel)","correct":true},{"text":"Inconvénient : rendement souvent inférieur à un placement banque + assurance risque pur séparée","correct":true},{"text":"Inconvénient : peu de souplesse contractuelle (durée, primes)","correct":true},{"text":"Avantage : liquidité totale à tout moment sans coût","correct":false,"why_wrong":"Faux : le rachat anticipé entraîne une perte significative dans les premières années."}]'::jsonb, 3,
        'Mixte = solution combinée mais coûteuse. Comparaison à faire avec la stratégie ''buy term and invest the difference'' : temporaire décès + compte 3a titres, souvent plus performant sur longue durée.', 'klary_interne', TRUE
 FROM afa_themes t
 WHERE t.filiere_key = 'vie' AND t.key = 'garantie_revenus'
@@ -4221,7 +7555,7 @@ ON CONFLICT (external_id) DO NOTHING;
 INSERT INTO afa_questions
   (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
 SELECT 'KLARY-VIE-PP-041', 'vie', t.id, 'multiple',
-       NULL, 'Avantages et inconvénients d''une assurance-vie unit-linked : quelles affirmations sont exactes ?', '[{"text":"Avantage : potentiel de rendement supérieur à long terme","correct":true},{"text":"Avantage : choix des fonds selon le profil de risque du client","correct":true},{"text":"Inconvénient : risque de perte en capital, aucune garantie sauf option spécifique","correct":true},{"text":"Inconvénient : frais internes de fonds cumulés aux frais d''assurance","correct":true},{"text":"Avantage : capital garanti à l''échéance dans tous les cas","correct":false,"why_wrong":"Faux : la garantie est facultative et payante."}]'::jsonb, 2,
+       NULL, 'Avantages et inconvénients d''une assurance-vie unit-linked : quelles affirmations sont exactes ?', '[{"text":"Avantage : potentiel de rendement supérieur à long terme","correct":true},{"text":"Avantage : choix des fonds selon le profil de risque du client","correct":true},{"text":"Inconvénient : risque de perte en capital, aucune garantie sauf option spécifique","correct":true},{"text":"Inconvénient : frais internes de fonds cumulés aux frais d''assurance","correct":true},{"text":"Avantage : capital garanti à l''échéance dans tous les cas","correct":false,"why_wrong":"Faux : la garantie est facultative et payante."}]'::jsonb, 3,
        'Unit-linked = enveloppe à performance liée. Attention à la double couche de frais (assurance + fonds). Recommandé aux clients avertis, horizon long, tolérance au risque. LSFin s''applique pour l''information sur les instruments financiers.', 'klary_interne', TRUE
 FROM afa_themes t
 WHERE t.filiere_key = 'vie' AND t.key = 'garantie_revenus'
@@ -4266,7 +7600,7 @@ ON CONFLICT (external_id) DO NOTHING;
 INSERT INTO afa_questions
   (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
 SELECT 'KLARY-VIE-PP-046', 'vie', t.id, 'multiple',
-       NULL, 'Concernant la rente de veuve du 1er pilier (AVS), quelles conditions doivent être remplies ?', '[{"text":"La veuve a des enfants (à charge), sans condition d''âge ni de durée de mariage","correct":true},{"text":"La veuve sans enfant : mariage de 5 ans au moins ET veuve d''au moins 45 ans révolus","correct":true},{"text":"La rente de veuve est versée à vie ou jusqu''au remariage","correct":true},{"text":"Aucune condition, toute veuve a automatiquement droit à la rente","correct":false,"why_wrong":"Faux : conditions strictes d''âge et de mariage."},{"text":"La rente est de 100 % de la rente AVS du défunt","correct":false,"why_wrong":"Faux : 80 % de la rente de vieillesse du défunt."}]'::jsonb, 2,
+       NULL, 'Concernant la rente de veuve du 1er pilier (AVS), quelles conditions doivent être remplies ?', '[{"text":"La veuve a des enfants (à charge), sans condition d''âge ni de durée de mariage","correct":true},{"text":"La veuve sans enfant : mariage de 5 ans au moins ET veuve d''au moins 45 ans révolus","correct":true},{"text":"La rente de veuve est versée à vie ou jusqu''au remariage","correct":true},{"text":"Aucune condition, toute veuve a automatiquement droit à la rente","correct":false,"why_wrong":"Faux : conditions strictes d''âge et de mariage."},{"text":"La rente est de 100 % de la rente AVS du défunt","correct":false,"why_wrong":"Faux : 80 % de la rente de vieillesse du défunt."}]'::jsonb, 1,
        'Art. 23 LAVS : rente de veuve = 80 % de la rente de vieillesse. Conditions : (a) enfants à charge OU (b) sans enfant : mariage min 5 ans + veuvage à 45 ans+. S''éteint en cas de remariage (art. 23 al. 4 LAVS).', 'klary_interne', TRUE
 FROM afa_themes t
 WHERE t.filiere_key = 'vie' AND t.key = 'garantie_revenus'
@@ -4302,7 +7636,7 @@ ON CONFLICT (external_id) DO NOTHING;
 INSERT INTO afa_questions
   (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
 SELECT 'KLARY-VIE-PP-050', 'vie', t.id, 'single',
-       NULL, 'Un salarié décède, laissant conjoint + 2 enfants mineurs. Quelle rente LPP obligatoire par enfant orphelin ?', '[{"text":"20 % de la rente d''invalidité du défunt","correct":true},{"text":"40 % de la rente d''invalidité","correct":false,"why_wrong":"Confusion avec l''AVS (rente orphelin = 40 % rente vieillesse défunt)."},{"text":"10 %","correct":false},{"text":"60 %","correct":false,"why_wrong":"Confusion avec la rente de conjoint LPP."}]'::jsonb, 2,
+       NULL, 'Un salarié décède, laissant conjoint + 2 enfants mineurs. Quelle rente LPP obligatoire par enfant orphelin ?', '[{"text":"20 % de la rente d''invalidité du défunt","correct":true},{"text":"40 % de la rente d''invalidité","correct":false,"why_wrong":"Confusion avec l''AVS (rente orphelin = 40 % rente vieillesse défunt)."},{"text":"10 %","correct":false},{"text":"60 %","correct":false,"why_wrong":"Confusion avec la rente de conjoint LPP."}]'::jsonb, 1,
        'Art. 21 LPP : rente d''orphelin LPP obligatoire = 20 % de la rente d''invalidité présumée du défunt, par enfant. La rente de conjoint est de 60 %. Cumul possible avec 1er pilier.', 'klary_interne', TRUE
 FROM afa_themes t
 WHERE t.filiere_key = 'vie' AND t.key = 'garantie_revenus'
@@ -4356,7 +7690,7 @@ ON CONFLICT (external_id) DO NOTHING;
 INSERT INTO afa_questions
   (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
 SELECT 'KLARY-VIE-PP-056', 'vie', t.id, 'multiple',
-       NULL, 'Concernant le choix entre rente et capital LPP à la retraite (art. 37 LPP), quelles affirmations sont exactes ?', '[{"text":"Le retrait sous forme de capital du régime obligatoire est un droit d''au moins 25 % du capital","correct":true},{"text":"Le règlement de caisse peut autoriser le retrait à 100 % en capital","correct":true},{"text":"Le retrait en capital doit être demandé dans un délai prévu par le règlement (souvent 3 ans avant la retraite)","correct":true},{"text":"Un salarié marié doit obtenir l''accord écrit de son conjoint pour un retrait en capital","correct":true},{"text":"Le capital est imposé comme un revenu ordinaire progressif","correct":false,"why_wrong":"Faux : imposition séparée à taux réduit (art. 38 LIFD)."}]'::jsonb, 2,
+       NULL, 'Concernant le choix entre rente et capital LPP à la retraite (art. 37 LPP), quelles affirmations sont exactes ?', '[{"text":"Le retrait sous forme de capital du régime obligatoire est un droit d''au moins 25 % du capital","correct":true},{"text":"Le règlement de caisse peut autoriser le retrait à 100 % en capital","correct":true},{"text":"Le retrait en capital doit être demandé dans un délai prévu par le règlement (souvent 3 ans avant la retraite)","correct":true},{"text":"Un salarié marié doit obtenir l''accord écrit de son conjoint pour un retrait en capital","correct":true},{"text":"Le capital est imposé comme un revenu ordinaire progressif","correct":false,"why_wrong":"Faux : imposition séparée à taux réduit (art. 38 LIFD)."}]'::jsonb, 3,
        'Art. 37 al. 2 LPP : minimum 25 % du capital retirable. Art. 37 al. 5 LPP : accord écrit du conjoint obligatoire. Formalités du règlement à respecter (délai de préavis). Effet fiscal : capital = taux réduit ponctuel, rente = imposition annuelle ordinaire.', 'klary_interne', TRUE
 FROM afa_themes t
 WHERE t.filiere_key = 'vie' AND t.key = 'retraite'
@@ -4491,7 +7825,7 @@ ON CONFLICT (external_id) DO NOTHING;
 INSERT INTO afa_questions
   (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
 SELECT 'KLARY-VIE-PP-071', 'vie', t.id, 'multiple',
-       NULL, 'Avantages et inconvénients de l''anticipation de la rente AVS :', '[{"text":"Avantage : rente plus tôt, utile en cas de fin d''activité forcée ou souhaitée","correct":true},{"text":"Avantage : plus d''années de perception si espérance de vie limitée","correct":true},{"text":"Inconvénient : rente réduite à vie","correct":true},{"text":"Inconvénient : cotisation AVS obligatoire jusqu''à l''âge de référence sur les revenus d''activité subsistants","correct":true},{"text":"Avantage : capital versé en plus","correct":false,"why_wrong":"Faux : l''AVS ne verse jamais un capital, uniquement une rente."}]'::jsonb, 2,
+       NULL, 'Avantages et inconvénients de l''anticipation de la rente AVS :', '[{"text":"Avantage : rente plus tôt, utile en cas de fin d''activité forcée ou souhaitée","correct":true},{"text":"Avantage : plus d''années de perception si espérance de vie limitée","correct":true},{"text":"Inconvénient : rente réduite à vie","correct":true},{"text":"Inconvénient : cotisation AVS obligatoire jusqu''à l''âge de référence sur les revenus d''activité subsistants","correct":true},{"text":"Avantage : capital versé en plus","correct":false,"why_wrong":"Faux : l''AVS ne verse jamais un capital, uniquement une rente."}]'::jsonb, 1,
        'Anticiper = compromis. Utile si santé fragile, revenu suffisant sinon, cessation d''activité. Attention : la réduction est PERMANENTE, la rente ne remonte pas à l''âge de référence. Cotisation AVS due jusqu''à l''âge de référence (art. 4 LAVS).', 'klary_interne', TRUE
 FROM afa_themes t
 WHERE t.filiere_key = 'vie' AND t.key = 'retraite'
@@ -4500,7 +7834,7 @@ ON CONFLICT (external_id) DO NOTHING;
 INSERT INTO afa_questions
   (external_id, filiere_key, theme_id, question_type, context, question, options, points, explanation, source, active)
 SELECT 'KLARY-VIE-PP-072', 'vie', t.id, 'multiple',
-       NULL, 'Avantages et inconvénients de l''ajournement de la rente AVS :', '[{"text":"Avantage : rente majorée à vie (jusqu''à +31,5 %)","correct":true},{"text":"Avantage : diminue l''impôt sur le revenu pendant les années d''ajournement","correct":true},{"text":"Inconvénient : moins d''années de perception (risque de décès prématuré)","correct":true},{"text":"Inconvénient : nécessite d''autres ressources pendant l''ajournement","correct":true},{"text":"Avantage : rente rétroactivement doublée après l''ajournement","correct":false,"why_wrong":"Faux : la majoration est actuarielle, pas rétroactive."}]'::jsonb, 2,
+       NULL, 'Avantages et inconvénients de l''ajournement de la rente AVS :', '[{"text":"Avantage : rente majorée à vie (jusqu''à +31,5 %)","correct":true},{"text":"Avantage : diminue l''impôt sur le revenu pendant les années d''ajournement","correct":true},{"text":"Inconvénient : moins d''années de perception (risque de décès prématuré)","correct":true},{"text":"Inconvénient : nécessite d''autres ressources pendant l''ajournement","correct":true},{"text":"Avantage : rente rétroactivement doublée après l''ajournement","correct":false,"why_wrong":"Faux : la majoration est actuarielle, pas rétroactive."}]'::jsonb, 1,
        'Ajourner = pari sur la longévité. Recommandé aux profils en bonne santé, revenus alternatifs disponibles, patrimoine suffisant. Point mort actuariel : env. 80 ans. Au-delà : rentabilité positive.', 'klary_interne', TRUE
 FROM afa_themes t
 WHERE t.filiere_key = 'vie' AND t.key = 'retraite'
@@ -4588,4 +7922,4 @@ FROM afa_themes t
 WHERE t.filiere_key = 'non_vie' AND t.key = 'menage'
 ON CONFLICT (external_id) DO NOTHING;
 
--- 485 question(s) traitée(s).
+-- 855 question(s) traitée(s).

@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
     const { data: filiere } = await supabase
       .from("afa_filieres")
-      .select("key, title, passing_pct, duration_min")
+      .select("key, title, passing_pct, internal_target_pct, duration_min")
       .eq("key", filiereKey)
       .eq("active", true)
       .single();

@@ -1,0 +1,589 @@
+{
+  "source": "klary_interne",
+  "filiere_key": "non_vie",
+  "reference": "Compléments Klary NON-VIE gaps 35 questions. Ciblage thèmes légers : propriété du logement (10), litiges juridiques (10), conduite de l'entretien non-vie (15).",
+  "note": "Registre VBV strict, chiffres 2026, nouveau droit LCA 2022 en vigueur. Ancrages LCA, LSA, LSFin, CO, CC, nLPD.",
+  "questions": [
+    {
+      "external_id": "KLARY-NV-GAP-001",
+      "theme": "propriete_logement",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Dans quels cantons romands ou alémaniques l'assurance bâtiment ECA (assurance immobilière cantonale) est-elle obligatoire et monopolistique ?",
+      "options": [
+        {"text": "Vaud (VD)", "correct": true},
+        {"text": "Fribourg (FR)", "correct": true},
+        {"text": "Jura (JU)", "correct": true},
+        {"text": "Neuchâtel (NE)", "correct": true},
+        {"text": "Bâle-Ville (BS)", "correct": true},
+        {"text": "Genève (GE)", "correct": false, "why_wrong": "Genève est un canton dit GUSTAVO (marché privé), pas d'ECA cantonale."},
+        {"text": "Zurich (ZH)", "correct": false, "why_wrong": "Zurich a bien un établissement cantonal mais avec particularités ; le point clé du QCM est qu'ECA romande est présente à VD/FR/JU/NE + GL/GR/BS."},
+        {"text": "Valais (VS)", "correct": false, "why_wrong": "Valais est en marché privé."}
+      ],
+      "explanation": "Cantons à ECA obligatoire (monopoles cantonaux) : AG, BE, BL, BS, FR, GL, GR, JU, LU, NE, NW, SG, SH, SO, TG, VD, ZG, ZH. Cantons GUSTAVO (marché privé) : GE, VS, TI, UR, SZ, OW, AI, AR."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-002",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "M. Baumann réalise une extension importante (véranda + panneaux photovoltaïques) de sa villa vaudoise, augmentant la valeur du bâtiment de 25 %.",
+      "question": "Que doit-il obligatoirement faire vis-à-vis de son assureur bâtiment (ECA VD ou complément privé) ?",
+      "options": [
+        {"text": "Annoncer immédiatement la modification et la nouvelle valeur pour adapter la somme d'assurance (art. 51 LCA / règlement ECA)", "correct": true},
+        {"text": "Rien : l'ECA couvre automatiquement toute augmentation", "correct": false, "why_wrong": "Aucune couverture automatique en cas d'aggravation du risque."},
+        {"text": "Attendre le sinistre pour recalculer", "correct": false, "why_wrong": "Attendre le sinistre = sous-assurance et application règle proportionnelle art. 69 LCA."},
+        {"text": "Résilier son contrat et en souscrire un nouveau", "correct": false}
+      ],
+      "explanation": "Art. 51 LCA (aggravation) + règlements ECA cantonales : annoncer les modifications significatives du bâtiment. Défaut d'annonce = risque de sous-assurance (règle proportionnelle) ou de résiliation."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-003",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Sur quelle base légale repose la responsabilité civile du propriétaire d'immeuble pour dommages causés par vices de construction ou défauts d'entretien ?",
+      "options": [
+        {"text": "Art. 58 CO : responsabilité causale objective du propriétaire d'ouvrage", "correct": true},
+        {"text": "Art. 41 CO : responsabilité pour acte illicite fautif", "correct": false, "why_wrong": "L'art. 41 exige une faute ; l'art. 58 est causal, sans faute."},
+        {"text": "Art. 55 CO : responsabilité de l'employeur", "correct": false, "why_wrong": "Concerne les auxiliaires salariés, pas les ouvrages."},
+        {"text": "Art. 328 CO : protection de la personnalité du travailleur", "correct": false}
+      ],
+      "explanation": "Art. 58 CO : le propriétaire d'un bâtiment ou de tout autre ouvrage répond du dommage causé par des vices de construction ou par le défaut d'entretien. Responsabilité causale, sans faute exigée."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-004",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "M. Delacroix mandate un entrepreneur pour rénover sa toiture. Un ouvrier chute d'un échafaudage mal sécurisé et se blesse gravement.",
+      "question": "Quelle responsabilité peut être engagée pour le maître d'ouvrage particulier et quelle assurance intervient ?",
+      "options": [
+        {"text": "Responsabilité du maître d'ouvrage art. 58 CO + RC entreprise du poseur ; couverture par RC propriétaire d'ouvrage (RC chantier)", "correct": true},
+        {"text": "Aucune responsabilité du maître d'ouvrage : seul l'entrepreneur répond", "correct": false, "why_wrong": "Le maître d'ouvrage peut être coresponsable en cas de manquement à son devoir de coordination (SIA/CFC)."},
+        {"text": "Uniquement RC véhicule si l'ouvrier est arrivé en voiture", "correct": false, "why_wrong": "Aucun rapport avec la LCR pour un accident sur chantier."},
+        {"text": "RC privée classique du particulier", "correct": false, "why_wrong": "La RC privée exclut les risques liés à un chantier de construction significatif."}
+      ],
+      "explanation": "Pour tout chantier privé important : souscrire une RC propriétaire d'ouvrage (RC chantier / RC constructeur), en complément de la RC pro des entreprises. Base : art. 58 CO + CGA type marché."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-005",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelle est la différence essentielle entre valeur à neuf et valeur vénale d'un bâtiment ?",
+      "options": [
+        {"text": "Valeur à neuf = coût de reconstruction à neuf ; valeur vénale = valeur à neuf moins vétusté", "correct": true},
+        {"text": "Valeur à neuf = valeur du terrain ; valeur vénale = valeur du bâtiment seul", "correct": false, "why_wrong": "Confusion avec valeur immobilière globale."},
+        {"text": "Valeur à neuf = prix de vente ; valeur vénale = valeur d'incendie", "correct": false, "why_wrong": "La valeur d'incendie est en réalité la valeur à neuf assurée par l'ECA."},
+        {"text": "Aucune différence en pratique", "correct": false}
+      ],
+      "explanation": "Assurance bâtiment (ECA/privée) : indemnité normalement calculée sur valeur à neuf (coût actuel de reconstruction). La valeur vénale est le prix probable de vente (valeur à neuf déduction faite de la vétusté)."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-006",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "À quoi sert l'indice ICH (indice des coûts de construction) dans un contrat d'assurance bâtiment ?",
+      "options": [
+        {"text": "Adapter annuellement la somme d'assurance à l'évolution des coûts de construction pour éviter la sous-assurance", "correct": true},
+        {"text": "Fixer le taux d'imposition foncière", "correct": false, "why_wrong": "L'ICH n'a aucune fonction fiscale."},
+        {"text": "Calculer la prime uniquement en fonction des sinistres passés", "correct": false, "why_wrong": "L'ICH est un indice de coût, pas une statistique sinistres."},
+        {"text": "Déterminer la valeur cadastrale", "correct": false, "why_wrong": "La valeur cadastrale relève des cantons, indépendante de l'ICH."}
+      ],
+      "explanation": "Indice cantonal des coûts de construction (ICH) : ajuste automatiquement la somme d'assurance bâtiment pour suivre l'inflation des coûts. Anti sous-assurance (art. 69 LCA)."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-007",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Une maison assurée pour 500 000 CHF vaut réellement 800 000 CHF (valeur à neuf). Un incendie détruit pour 200 000 CHF.",
+      "question": "Quel montant d'indemnité l'assureur privé (hors ECA monopolistique) versera-t-il en application de l'art. 69 LCA ?",
+      "options": [
+        {"text": "125 000 CHF (200 000 x 500 000 / 800 000)", "correct": true},
+        {"text": "200 000 CHF (le dommage complet)", "correct": false, "why_wrong": "Ignore la règle proportionnelle applicable en cas de sous-assurance."},
+        {"text": "500 000 CHF (somme assurée)", "correct": false, "why_wrong": "Le dommage est inférieur à la somme assurée : le plafond ne joue pas."},
+        {"text": "0 CHF (contrat nul)", "correct": false, "why_wrong": "La sous-assurance réduit l'indemnité, n'annule pas le contrat."}
+      ],
+      "explanation": "Art. 69 al. 2 LCA (règle proportionnelle) : indemnité = dommage x (somme assurée / valeur réelle). 200 000 x (500 000 / 800 000) = 125 000 CHF."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-008",
+      "theme": "propriete_logement",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels dommages sont typiquement couverts par une assurance bâtiment complémentaire privée (au-delà de l'ECA) ?",
+      "options": [
+        {"text": "Dégâts d'eau (rupture de conduites, refoulement, pluie)", "correct": true},
+        {"text": "Bris de glaces du bâtiment", "correct": true},
+        {"text": "Vol par effraction dans les parties communes", "correct": true},
+        {"text": "Tremblement de terre selon options du canton", "correct": true},
+        {"text": "Usure normale des matériaux", "correct": false, "why_wrong": "L'usure n'est pas un sinistre au sens de la LCA."},
+        {"text": "Négligence intentionnelle du propriétaire", "correct": false, "why_wrong": "L'intentionnel est exclu (art. 14 LCA)."}
+      ],
+      "explanation": "ECA cantonale couvre incendie et éléments naturels (art. 33 LCA + règlements cantonaux). Compléments privés : dégâts d'eau, vol, bris glaces, séisme selon canton."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-009",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Que couvre spécifiquement une RC propriétaire d'immeuble locatif (non habité par le propriétaire) ?",
+      "options": [
+        {"text": "Les dommages causés à des tiers (locataires, visiteurs) par le bâtiment lui-même ou son entretien", "correct": true},
+        {"text": "Les loyers impayés des locataires", "correct": false, "why_wrong": "Cela relève d'une assurance loyers, pas d'une RC."},
+        {"text": "Les dommages aux biens propres du propriétaire", "correct": false, "why_wrong": "L'assurance choses les couvre, pas la RC."},
+        {"text": "Les frais d'entretien courant", "correct": false, "why_wrong": "Aucune assurance couvre l'entretien courant."}
+      ],
+      "explanation": "RC propriétaire d'immeuble : couverture des prétentions de tiers fondées sur l'art. 58 CO (dommage causé par vice ou défaut d'entretien du bâtiment). Indispensable pour tout immeuble de rendement."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-010",
+      "theme": "propriete_logement",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Une PPE en Valais (canton GUSTAVO, sans ECA) doit s'assurer pour l'incendie et les éléments naturels.",
+      "question": "Quelle est la particularité du marché valaisan pour l'assurance bâtiment ?",
+      "options": [
+        {"text": "Marché privé ouvert : la PPE choisit librement un assureur privé, avec offre compétitive", "correct": true},
+        {"text": "Monopole cantonal ECA Valais obligatoire", "correct": false, "why_wrong": "VS est GUSTAVO, pas d'ECA."},
+        {"text": "Interdiction totale d'assurer contre l'incendie", "correct": false, "why_wrong": "Absurde : la couverture est obligatoire, seulement via marché privé."},
+        {"text": "Obligation d'auto-assurance", "correct": false}
+      ],
+      "explanation": "Cantons GUSTAVO (GE, VS, TI, UR, SZ, OW, AI, AR) : bâtiment assuré via marché privé, pas d'ECA. Concurrence entre assureurs privés."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-011",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelle est la différence essentielle entre protection juridique circulation et protection juridique privée ?",
+      "options": [
+        {"text": "La PJ circulation couvre les litiges liés au véhicule et à la LCR ; la PJ privée couvre les autres domaines (travail, bail, consommation, patrimoine)", "correct": true},
+        {"text": "La PJ circulation est facultative ; la PJ privée est obligatoire", "correct": false, "why_wrong": "Les deux sont facultatives (LCA)."},
+        {"text": "Aucune différence : elles se substituent l'une à l'autre", "correct": false, "why_wrong": "Chacune couvre un périmètre distinct."},
+        {"text": "PJ circulation prend en charge les amendes", "correct": false, "why_wrong": "Les amendes pénales sont exclues des PJ."}
+      ],
+      "explanation": "Marché suisse : PJ circulation (usage véhicule, sinistre LCR, recours, permis) et PJ privée (bail, travail, consommation, voisinage, patrimoine, contrats). Souvent combinées, jamais confondues."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-012",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quand l'assuré peut-il exercer le libre choix de l'avocat selon la LSA ?",
+      "options": [
+        {"text": "Dès qu'un conflit d'intérêts avec l'assureur PJ apparaît, ou dès qu'une procédure judiciaire ou administrative est engagée (art. 32 LSA)", "correct": true},
+        {"text": "Uniquement pour les affaires supérieures à 100 000 CHF", "correct": false, "why_wrong": "Aucun seuil monétaire ; c'est l'existence de la procédure ou du conflit qui déclenche."},
+        {"text": "Jamais : l'assureur impose son avocat", "correct": false, "why_wrong": "Violation de l'art. 32 LSA."},
+        {"text": "Uniquement en droit pénal", "correct": false, "why_wrong": "Le libre choix couvre tous les domaines dès qu'une procédure ou un conflit intervient."}
+      ],
+      "explanation": "Art. 32 LSA : libre choix de l'avocat garanti dès conflit d'intérêts assuré/assureur ou dès qu'une procédure judiciaire ou administrative doit être ouverte. Directive UE reprise en droit suisse."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-013",
+      "theme": "litiges_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels domaines sont typiquement exclus des CGA de protection juridique privée sur le marché suisse ?",
+      "options": [
+        {"text": "Litiges de droit de la famille (divorce, garde, entretien)", "correct": true},
+        {"text": "Procès pénaux pour crime ou faute grave intentionnelle", "correct": true},
+        {"text": "Litiges liés au patrimoine spéculatif et jeux de hasard", "correct": true},
+        {"text": "Litiges bailleur professionnel/locataire dans certains produits", "correct": true},
+        {"text": "Litige salarial d'un employé assuré (couvert avec délai de carence)", "correct": false, "why_wrong": "Généralement couvert (avec délai carence 3 mois), pas exclu."},
+        {"text": "Recours automobile après collision", "correct": false, "why_wrong": "Recours LCR : cœur de la PJ circulation."}
+      ],
+      "explanation": "Exclusions typiques PJ privée (CGA marché) : droit de la famille, pénal grave intentionnel, spéculation, guerre, dette de jeu. Les litiges de bail et travail sont en principe inclus (délai carence)."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-014",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un salarié souscrit une PJ privée le 1er février et cite son employeur en justice le 15 mars pour un litige salarial dont il connaissait l'existence en janvier.",
+      "question": "L'assureur PJ intervient-il ?",
+      "options": [
+        {"text": "Non : délai de carence typique 3 mois pour litiges de travail et litige préexistant à la souscription", "correct": true},
+        {"text": "Oui, sans réserve", "correct": false, "why_wrong": "Ignore le délai de carence et l'antériorité du litige."},
+        {"text": "Oui, mais uniquement pour les frais d'avocat", "correct": false, "why_wrong": "Aucune couverture partielle : sinistre antérieur à la couverture."},
+        {"text": "Oui, si le préjudice dépasse 10 000 CHF", "correct": false, "why_wrong": "Aucun seuil ne fait renaître un litige préexistant."}
+      ],
+      "explanation": "CGA type PJ privée : délai carence 3 mois pour bail, travail, contrats ; exclusion des litiges préexistants (art. 9 LCA sinistre déjà survenu). Sinistre non couvert."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-015",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelles sommes d'assurance PJ retrouve-t-on classiquement sur le marché suisse ?",
+      "options": [
+        {"text": "Entre 250 000 CHF et 600 000 CHF par cas, selon le produit", "correct": true},
+        {"text": "10 000 à 20 000 CHF par cas", "correct": false, "why_wrong": "Trop bas ; les PJ standard sont plus larges."},
+        {"text": "1 000 000 à 5 000 000 CHF systématique", "correct": false, "why_wrong": "Fourchette exceptionnelle, pas standard."},
+        {"text": "Illimité pour tous les produits", "correct": false, "why_wrong": "Aucun assureur PJ suisse ne propose une somme illimitée standard."}
+      ],
+      "explanation": "Sommes d'assurance PJ marché suisse : 250 000 à 600 000 CHF par cas est la fourchette standard, avec sous-limites selon la nature du litige et l'étranger."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-016",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Comment la LSA garantit-elle l'indépendance de la gestion des sinistres PJ vis-à-vis de l'assureur de responsabilité ?",
+      "options": [
+        {"text": "Séparation organisationnelle (entreprise distincte, gestion externalisée, ou déclaration d'indépendance) selon art. 32 LSA et OS", "correct": true},
+        {"text": "Interdiction totale d'appartenir à un même groupe", "correct": false, "why_wrong": "Le groupe est admis avec séparation ; pas d'interdiction absolue."},
+        {"text": "Aucune obligation particulière", "correct": false, "why_wrong": "Violerait la directive européenne reprise en LSA."},
+        {"text": "Contrôle direct de la FINMA pour chaque sinistre", "correct": false}
+      ],
+      "explanation": "Art. 32 LSA : séparation organisationnelle (Chinese wall), entité juridique distincte ou externalisation. But : éviter conflit d'intérêts entre RC et PJ."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-017",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "L'assureur PJ estime les chances de succès de l'assuré insuffisantes et refuse la prise en charge d'une procédure.",
+      "question": "Quel droit essentiel possède l'assuré dans ce cas ?",
+      "options": [
+        {"text": "Demander une expertise arbitrale (arbitre indépendant) ou saisir l'ombudsman ; passer outre à ses frais et être remboursé si succès", "correct": true},
+        {"text": "Aucun recours possible", "correct": false, "why_wrong": "Contraire aux CGA type et à la LSA."},
+        {"text": "Attaquer directement l'assureur devant la FINMA", "correct": false, "why_wrong": "La FINMA ne tranche pas les litiges individuels."},
+        {"text": "Exiger le paiement immédiat de la somme assurée", "correct": false, "why_wrong": "La somme assurée n'est pas une prestation forfaitaire."}
+      ],
+      "explanation": "CGA type PJ + art. 32 LSA : en cas de refus pour chances de succès insuffisantes, l'assuré peut demander une expertise arbitrale (arbitre) ; ombudsman assurance privée ; s'il gagne à ses frais, prise en charge rétroactive."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-018",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Une PJ entreprise couvre-t-elle par défaut les litiges de l'entreprise contre ses propres salariés ?",
+      "options": [
+        {"text": "Oui, les litiges droit du travail (employeur/employé) sont typiquement couverts, avec délai de carence 3 mois", "correct": true},
+        {"text": "Non, exclus systématiquement", "correct": false, "why_wrong": "Les CGA PJ entreprise couvrent en général ce risque."},
+        {"text": "Uniquement si l'entreprise emploie moins de 5 personnes", "correct": false, "why_wrong": "Aucun seuil d'effectif fixé par la loi."},
+        {"text": "Uniquement en cas de licenciement collectif", "correct": false, "why_wrong": "Non limité aux licenciements collectifs."}
+      ],
+      "explanation": "PJ entreprise couvre litiges de l'employeur (droit du travail, bail commercial, contrats fournisseurs, encaissement) avec sous-limites et délai de carence 3 mois."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-019",
+      "theme": "litiges_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Que prend en charge la PJ dans le cadre d'un litige couvert ?",
+      "options": [
+        {"text": "Honoraires d'avocat", "correct": true},
+        {"text": "Frais de justice et de procédure", "correct": true},
+        {"text": "Frais d'expertise judiciaire", "correct": true},
+        {"text": "Dépens alloués à la partie adverse en cas de perte", "correct": true},
+        {"text": "Amendes pénales prononcées contre l'assuré", "correct": false, "why_wrong": "Les amendes sont exclues (art. 14 LCA + ordre public)."},
+        {"text": "Peines pécuniaires ou dommages punitifs", "correct": false, "why_wrong": "Exclusion d'ordre public : ces sanctions sont personnelles."}
+      ],
+      "explanation": "Prestations PJ (CGA marché) : avocat, frais de procédure, expertise, dépens adverses, cautions à concurrence de la somme assurée. Amendes et dommages punitifs exclus."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-020",
+      "theme": "litiges_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une PJ circulation couvre-t-elle un litige commercial entre l'assuré et son fournisseur de pièces auto ?",
+      "options": [
+        {"text": "Non : la PJ circulation vise l'usage du véhicule et les litiges LCR, pas les contrats commerciaux avec fournisseurs", "correct": true},
+        {"text": "Oui, tout ce qui touche au véhicule est couvert", "correct": false, "why_wrong": "Interprétation trop large : la PJ circulation cible l'usage routier."},
+        {"text": "Oui, uniquement si le fournisseur est étranger", "correct": false, "why_wrong": "L'étranger ne modifie pas la matière du litige."},
+        {"text": "Oui, dans la limite de 5 000 CHF", "correct": false, "why_wrong": "Aucune sous-limite ne fait entrer un litige contractuel dans la PJ circulation."}
+      ],
+      "explanation": "PJ circulation (CGA marché) : recours après accident, permis, responsabilité pénale liée à la conduite, contrat de véhicule direct (achat, réparation). Litiges commerciaux type garantie fournisseur : plutôt PJ privée."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-021",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Depuis la révision LCA 2022, après combien d'années le preneur peut-il résilier annuellement un contrat à durée pluriannuelle ?",
+      "options": [
+        {"text": "Après 3 ans, chaque année, avec préavis 3 mois (art. 35a LCA)", "correct": true},
+        {"text": "Uniquement à l'échéance initiale de 5 ans", "correct": false, "why_wrong": "Ancien droit avant 2022 ; désormais résiliation annuelle après 3 ans."},
+        {"text": "Après 10 ans", "correct": false, "why_wrong": "Aucune durée de 10 ans dans la LCA révisée."},
+        {"text": "À tout moment sans préavis", "correct": false, "why_wrong": "Un préavis de 3 mois est requis."}
+      ],
+      "explanation": "Art. 35a LCA (révision 2022) : droit de résiliation ordinaire pour la fin de la 3e année, puis chaque année, avec préavis 3 mois. Impératif : ne peut être modifié au détriment du preneur."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-022",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Après un sinistre indemnisé, dans quel délai les parties peuvent-elles résilier le contrat selon la LCA révisée ?",
+      "options": [
+        {"text": "14 jours à compter de la connaissance du versement (art. 42 LCA)", "correct": true},
+        {"text": "30 jours", "correct": false, "why_wrong": "Ancien droit ; le délai est descendu à 14 jours en 2022."},
+        {"text": "3 mois", "correct": false, "why_wrong": "Confusion avec la résiliation ordinaire, pas la sinistre."},
+        {"text": "Aucune résiliation possible après sinistre", "correct": false, "why_wrong": "Faux : art. 42 LCA prévoit explicitement ce droit."}
+      ],
+      "explanation": "Art. 42 LCA (2022) : après un sinistre indemnisé, chacune des parties peut résilier dans un délai de 14 jours à compter du versement de l'indemnité. Effet fin en général 4 semaines après."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-023",
+      "theme": "conseil_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Que doit communiquer l'assureur au preneur avant la conclusion du contrat selon l'art. 3a LCA (devoir d'information) ?",
+      "options": [
+        {"text": "Identité de l'assureur", "correct": true},
+        {"text": "Risques assurés et étendue de la couverture", "correct": true},
+        {"text": "Montant de la prime et autres frais", "correct": true},
+        {"text": "Durée et modalités de résiliation", "correct": true},
+        {"text": "Traitement des données personnelles", "correct": true},
+        {"text": "Le salaire du dirigeant de la compagnie", "correct": false, "why_wrong": "Aucune obligation légale de le publier au client."},
+        {"text": "La stratégie de placement du portefeuille interne", "correct": false, "why_wrong": "Non exigé par l'art. 3 LCA."}
+      ],
+      "explanation": "Art. 3 LCA révisé : devoir d'information précontractuelle étendu (identité, risques, prime, durée, résiliation, données). Sanction (art. 3a) : droit de résiliation du preneur pendant 4 semaines si défaut d'information."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-024",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un preneur a omis, au questionnaire de santé, de mentionner un traitement antihypertenseur qu'il suit depuis 3 ans.",
+      "question": "Quel est le régime de la réticence selon l'art. 6 LCA révisé ?",
+      "options": [
+        {"text": "L'assureur peut résilier dans les 4 semaines dès qu'il a connaissance de la réticence ; ses prestations peuvent être réduites en lien de causalité avec le fait tu", "correct": true},
+        {"text": "Nullité automatique du contrat", "correct": false, "why_wrong": "Ancien droit ; le régime actuel est la résiliation dans les 4 semaines."},
+        {"text": "Aucune sanction : le questionnaire est purement indicatif", "correct": false, "why_wrong": "Faux : le devoir de déclaration reste précis (art. 4 LCA)."},
+        {"text": "Amende pénale immédiate", "correct": false, "why_wrong": "Aucune amende pénale automatique en matière civile de LCA."}
+      ],
+      "explanation": "Art. 6 LCA révisé : réticence sanctionnée par résiliation possible dans 4 semaines dès connaissance ; refus ou réduction de prestation uniquement en cas de lien de causalité entre le fait tu et le sinistre."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-025",
+      "theme": "conseil_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Que doit contenir obligatoirement la fiche d'information de l'intermédiaire d'assurance selon l'art. 45 LSA ?",
+      "options": [
+        {"text": "Nom et adresse de l'intermédiaire", "correct": true},
+        {"text": "Statut : intermédiaire lié ou non lié", "correct": true},
+        {"text": "Compagnies partenaires ou représentées", "correct": true},
+        {"text": "Nature et source de la rémunération", "correct": true},
+        {"text": "Modalités du traitement des données personnelles", "correct": true},
+        {"text": "Le nom des concurrents directs", "correct": false, "why_wrong": "Aucune obligation légale."},
+        {"text": "L'organigramme complet de la maison mère", "correct": false}
+      ],
+      "explanation": "Art. 45 LSA : fiche d'information écrite remise au preneur avant conclusion. Preuve à conserver. Preuve d'ancrage LCD (transparence, art. 3 LCD)."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-026",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "En cas de vente à distance (téléphone, internet) d'un contrat d'assurance en Suisse, quel droit essentiel possède le preneur ?",
+      "options": [
+        {"text": "Droit de révocation de 14 jours dès conclusion ou remise des documents (art. 2a LCA)", "correct": true},
+        {"text": "Droit de révocation de 30 jours", "correct": false, "why_wrong": "Ancien projet ; le délai adopté en 2022 est 14 jours."},
+        {"text": "Aucun droit spécifique", "correct": false, "why_wrong": "Contraire à la nouvelle LCA."},
+        {"text": "Résiliation immédiate uniquement en visioconférence", "correct": false}
+      ],
+      "explanation": "Art. 2a LCA (2022) : droit de révocation 14 jours pour tout contrat conclu (par écrit, à distance ou en présentiel), avec exceptions (contrat < 1 mois, prov.). Renforce la protection du consommateur."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-027",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Le devoir de conseil / recommandation personnalisée de l'intermédiaire d'assurance découle de quelle base ?",
+      "options": [
+        {"text": "Art. 45 LSA (information et documentation) et art. 3 LCA (devoir d'info), avec responsabilité art. 68 LSA", "correct": true},
+        {"text": "Uniquement de la LSFin", "correct": false, "why_wrong": "La LSFin n'est en principe pas applicable aux contrats d'assurance dommage (art. 3 let. b LSFin) ; la source est LSA/LCA."},
+        {"text": "Aucune base légale : pratique purement commerciale", "correct": false, "why_wrong": "Base légale claire dans LSA et LCA révisées."},
+        {"text": "Art. 41 CO exclusivement", "correct": false, "why_wrong": "L'art. 41 CO est une base résiduelle, pas la base spécifique du conseil assurance."}
+      ],
+      "explanation": "Devoir de conseil intermédiaire : art. 45 LSA (fiche + analyse), art. 3 LCA (info précontractuelle). Responsabilité de l'intermédiaire (art. 68 LSA) en cas de faute de conseil."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-028",
+      "theme": "conseil_nv",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Selon la nLPD (en vigueur 01.09.2023) appliquée à un intermédiaire non-vie, quels sont les principes clés à respecter ?",
+      "options": [
+        {"text": "Licéité et finalité", "correct": true},
+        {"text": "Proportionnalité et minimisation", "correct": true},
+        {"text": "Exactitude et sécurité", "correct": true},
+        {"text": "Information et transparence (annonce en cas de violation)", "correct": true},
+        {"text": "Interdiction totale de toute donnée sensible", "correct": false, "why_wrong": "Les données sensibles peuvent être traitées avec consentement explicite ou base légale."},
+        {"text": "Anonymisation obligatoire de tous les dossiers en 24 h", "correct": false}
+      ],
+      "explanation": "Art. 6 ss nLPD : principes de licéité, finalité, proportionnalité, exactitude, sécurité, information. Art. 24 nLPD : notification des violations au PFPDT dans les meilleurs délais."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-029",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Un intermédiaire non lié conclut un contrat multirisques PME avec un client. Après signature, il reçoit d'une compagnie non retenue une commission plus élevée.",
+      "question": "Comment doit-il gérer ce conflit d'intérêts selon LSA + règles marché ?",
+      "options": [
+        {"text": "Divulguer la structure de rémunération, refuser tout incitatif altérant l'objectivité du conseil et documenter la décision dans le dossier", "correct": true},
+        {"text": "Changer discrètement la recommandation vers la compagnie plus rémunératrice sans en informer le client", "correct": false, "why_wrong": "Violation grave art. 45 LSA + LCD + devoir de fidélité mandataire."},
+        {"text": "Ignorer le fait : ce n'est pas juridiquement pertinent", "correct": false, "why_wrong": "Le conflit d'intérêts doit être géré et documenté (art. 45 LSA)."},
+        {"text": "Facturer la différence au client", "correct": false}
+      ],
+      "explanation": "Gestion des conflits d'intérêts (art. 45 LSA + LCD art. 3) : transparence rémunération, primauté de l'intérêt client, documentation. Sanction FINMA et civile (art. 398 CO mandat)."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-030",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelles obligations subsistent pour l'intermédiaire une fois le contrat conclu (obligations post-contractuelles) ?",
+      "options": [
+        {"text": "Suivi du client, information sur les changements pertinents, conservation du dossier et disponibilité en cas de sinistre", "correct": true},
+        {"text": "Aucune : la mission cesse à la signature", "correct": false, "why_wrong": "Violation du mandat (art. 394 ss CO) et du devoir continu de l'art. 3 LCA."},
+        {"text": "Uniquement facturer le renouvellement annuel", "correct": false, "why_wrong": "Insuffisant : le service post-conclusion est central."},
+        {"text": "Envoyer un cadeau annuel au client", "correct": false}
+      ],
+      "explanation": "Obligations post-contractuelles : suivi et actualisation (art. 3 LCA + mandat art. 394 CO), conservation dossier (nLPD + LSA 10 ans typiquement), assistance sinistre. Base de la fidélisation."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-031",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelle sanction majeure sur un contrat existant si l'assureur a manqué à son devoir d'information précontractuelle (art. 3 LCA) ?",
+      "options": [
+        {"text": "Le preneur peut résilier le contrat dans un délai de 4 semaines dès qu'il a eu connaissance du manquement, avec effet ex tunc pour les primes non couvertes", "correct": true},
+        {"text": "Aucune sanction : le contrat est parfait", "correct": false, "why_wrong": "Contraire à la LCA révisée qui protège le consommateur."},
+        {"text": "Amende pénale automatique à l'assureur", "correct": false, "why_wrong": "Aucune amende pénale directe en matière civile LCA."},
+        {"text": "Nullité rétroactive absolue et remboursement de toutes les prestations reçues", "correct": false, "why_wrong": "La sanction est la résiliation, pas la nullité absolue."}
+      ],
+      "explanation": "Art. 3a LCA : en cas de manquement au devoir d'information, le preneur peut résilier le contrat par déclaration écrite dans les 4 semaines dès connaissance, au plus tard 2 ans après conclusion."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-032",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Une assurée découvre une clause qu'elle juge insolite dans les CGA de son contrat non-vie, non explicitée par le conseiller.",
+      "question": "Comment le juge apprécie-t-il la validité de cette clause ?",
+      "options": [
+        {"text": "Règle des clauses insolites : nulle si inhabituelle et non spécifiquement portée à l'attention du preneur (jurisprudence TF, art. 8 LCD)", "correct": true},
+        {"text": "Elle est toujours valable dès signature", "correct": false, "why_wrong": "Faux : la jurisprudence exclut les clauses insolites non signalées."},
+        {"text": "Elle doit être ratifiée par la FINMA", "correct": false, "why_wrong": "La FINMA ne ratifie pas les clauses individuelles."},
+        {"text": "Elle est traitée comme un usage local", "correct": false}
+      ],
+      "explanation": "Doctrine et TF (règle des clauses insolites) : clause CGA inhabituelle et défavorable non spécifiquement signalée n'est pas opposable. Art. 8 LCD sanctionne également les clauses abusives."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-033",
+      "theme": "conseil_nv",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Un intermédiaire prépare un rendez-vous non-vie complet avec un couple propriétaire d'une villa VD, 2 véhicules, 3 enfants, revenus 200 000 CHF.",
+      "question": "Quels éléments doit-il documenter et remettre pour être conforme LCA/LSA révisées + nLPD ?",
+      "options": [
+        {"text": "Fiche d'information art. 45 LSA (statut, rémunération, données)", "correct": true},
+        {"text": "Analyse besoins couvrant ménage, RC privée, véhicules, bâtiment ECA + complément, PJ, voyages", "correct": true},
+        {"text": "Devoir d'info art. 3 LCA respecté (couverture, prime, durée, résiliation)", "correct": true},
+        {"text": "PV / dossier de conseil signé et conservé selon délais LSA", "correct": true},
+        {"text": "Consentement nLPD sur traitement et éventuel partage avec compagnies", "correct": true},
+        {"text": "Copie du permis de conduire des enfants mineurs de 8 et 10 ans", "correct": false, "why_wrong": "Sans permis, sans finalité : violation minimisation nLPD."},
+        {"text": "Photocopie de la carte bancaire complète", "correct": false, "why_wrong": "Interdit par nLPD + risques fraude."}
+      ],
+      "explanation": "Entretien non-vie conforme : art. 45 LSA + art. 3 LCA + analyse documentée + PV + nLPD (données strictement nécessaires, finalité, sécurité). Best practice VBV."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-034",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Selon l'art. 4 LCA, à qui incombe le devoir de déclarer précisément les faits importants pour l'appréciation du risque ?",
+      "options": [
+        {"text": "Au proposant (preneur), pour les faits que l'assureur lui demande par écrit et qui influencent son appréciation", "correct": true},
+        {"text": "À l'assureur seul, qui doit tout deviner", "correct": false, "why_wrong": "Le proposant a le devoir de déclarer, à la question posée."},
+        {"text": "À l'intermédiaire, en solidarité", "correct": false, "why_wrong": "L'intermédiaire assiste, la déclaration reste celle du proposant."},
+        {"text": "À personne : la LCA a supprimé toute déclaration", "correct": false, "why_wrong": "Faux : art. 4 LCA maintient le devoir."}
+      ],
+      "explanation": "Art. 4 LCA : le proposant doit déclarer par écrit à l'assureur tous les faits importants pour l'appréciation du risque qui lui sont ou doivent lui être connus, selon les questions écrites de l'assureur."
+    },
+    {
+      "external_id": "KLARY-NV-GAP-035",
+      "theme": "conseil_nv",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Un assureur modifie unilatéralement ses CGA en cours de contrat, en augmentant les primes de 15 %.",
+      "question": "Quel droit essentiel possède le preneur selon la LCA révisée ?",
+      "options": [
+        {"text": "Résilier le contrat dans les 30 jours suivant la communication de la modification (art. 35 LCA)", "correct": true},
+        {"text": "Aucun : la compagnie modifie librement le contrat", "correct": false, "why_wrong": "Contraire à l'art. 35 LCA qui protège le preneur."},
+        {"text": "Il doit accepter tacitement", "correct": false, "why_wrong": "La modification tacite est encadrée : le preneur conserve un droit de résiliation."},
+        {"text": "Il peut résilier sans délai, sans forme", "correct": false, "why_wrong": "Un délai formel de 30 jours par écrit s'impose."}
+      ],
+      "explanation": "Art. 35 LCA : en cas d'adaptation contractuelle unilatérale (prime, CGA), le preneur peut résilier le contrat dans les 30 jours à compter de la communication, avec effet à la date d'entrée en vigueur de la modification."
+    }
+  ]
+}

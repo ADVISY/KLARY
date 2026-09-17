@@ -1,0 +1,4018 @@
+{
+  "source": "klary_interne",
+  "filiere_key": "generales",
+  "reference": "Banque Klary GÉNÉRALES (PV1) 120 questions. Socle commun tous profils : industrie assurance, droit CO/LCA/LSA/nLPD/LBA/LSFin, acquisition et vente, litiges et procédures.",
+  "note": "Registre VBV strict, chiffres 2026, références légales précises. Nouveau droit LCA en vigueur depuis 01.01.2022, nLPD depuis 01.09.2023. Format aligné sur vie_klary_bank_v2.json.",
+  "questions": [
+    {
+      "external_id": "KLARY-GEN-IN-001",
+      "theme": "industrie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelle autorité surveille les entreprises d'assurance privées en Suisse ?",
+      "options": [
+        {
+          "text": "L'ASA (Association Suisse d'Assurances)",
+          "correct": false,
+          "why_wrong": "L'ASA est une organisation faîtière, pas un régulateur."
+        },
+        {
+          "text": "La FINMA (Autorité fédérale de surveillance des marchés financiers)",
+          "correct": true
+        },
+        {
+          "text": "L'OFAS (Office fédéral des assurances sociales)",
+          "correct": false,
+          "why_wrong": "L'OFAS surveille les assurances sociales (AVS, AI, LPP), pas les assureurs privés."
+        },
+        {
+          "text": "Le SECO",
+          "correct": false,
+          "why_wrong": "Le SECO est le Secrétariat d'État à l'économie, sans compétence de surveillance des assureurs."
+        }
+      ],
+      "explanation": "Art. 1 et 46 LSA : la FINMA surveille les entreprises d'assurance privées. Piège classique : ne pas confondre avec l'ASA (faîtière) ni avec l'OFAS (assurances sociales)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-002",
+      "theme": "industrie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'ASA (Association Suisse d'Assurances) est :",
+      "options": [
+        {
+          "text": "Une autorité de surveillance dotée de pouvoirs de sanction",
+          "correct": false,
+          "why_wrong": "L'ASA n'a aucun pouvoir de sanction ; les sanctions relèvent de la FINMA."
+        },
+        {
+          "text": "Une organisation faîtière de la branche, sans compétence étatique",
+          "correct": true
+        },
+        {
+          "text": "Une caisse de compensation fédérale",
+          "correct": false,
+          "why_wrong": "Les caisses de compensation gèrent l'AVS/AI, cela n'a rien à voir avec l'ASA."
+        },
+        {
+          "text": "Une autorité de conciliation obligatoire",
+          "correct": false,
+          "why_wrong": "La conciliation relève de l'Ombudsman, pas de l'ASA."
+        }
+      ],
+      "explanation": "L'ASA est l'organisation faîtière des assureurs privés suisses (auto-régulation, statistiques, formation VBV). Elle n'a aucun pouvoir régulatoire : la surveillance relève de la FINMA (LSA)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-003",
+      "theme": "industrie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'intervention de l'Ombudsman de l'assurance privée et de la SUVA est :",
+      "options": [
+        {
+          "text": "Payante, à hauteur de 200 CHF par dossier",
+          "correct": false,
+          "why_wrong": "Le service est gratuit pour le consommateur."
+        },
+        {
+          "text": "Gratuite pour le client et non contraignante pour l'assureur",
+          "correct": true
+        },
+        {
+          "text": "Gratuite et impose une décision opposable à l'assureur",
+          "correct": false,
+          "why_wrong": "PIÈGE MAJEUR : l'Ombudsman ne rend pas de décision opposable."
+        },
+        {
+          "text": "Réservée aux courtiers",
+          "correct": false,
+          "why_wrong": "L'Ombudsman est ouvert à tout consommateur d'assurance."
+        }
+      ],
+      "explanation": "L'Ombudsman est gratuit et sa position n'a pas de force exécutoire : il joue un rôle de médiation. Piège récurrent : confusion avec un jugement."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-004",
+      "theme": "industrie",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles formes juridiques sont autorisées pour une entreprise d'assurance opérant en Suisse ? (art. 7 LSA)",
+      "options": [
+        {
+          "text": "Société anonyme (SA)",
+          "correct": true
+        },
+        {
+          "text": "Société coopérative",
+          "correct": true
+        },
+        {
+          "text": "Société en nom collectif",
+          "correct": false,
+          "why_wrong": "Exclue par l'art. 7 LSA : responsabilité personnelle incompatible avec la surveillance prudentielle."
+        },
+        {
+          "text": "Entreprise individuelle",
+          "correct": false,
+          "why_wrong": "Exclue par la LSA."
+        },
+        {
+          "text": "Succursale d'assureur étranger dûment autorisée",
+          "correct": true
+        },
+        {
+          "text": "Association",
+          "correct": false,
+          "why_wrong": "L'association au sens du CC ne fait pas partie des formes admises par la LSA."
+        }
+      ],
+      "explanation": "Art. 7 LSA : SA, coopérative, ou succursale d'assureur étranger autorisée. Les autres formes sont exclues (contrôle prudentiel exige capital et structure adéquats)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-005",
+      "theme": "industrie",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelle loi régit le contrat d'assurance privée conclu entre un assureur et son client ?",
+      "options": [
+        {
+          "text": "La LCA (Loi sur le contrat d'assurance)",
+          "correct": true
+        },
+        {
+          "text": "Le CO à titre subsidiaire (art. 100 al. 1 LCA)",
+          "correct": true
+        },
+        {
+          "text": "La LSA (surveillance, mais pas le contrat lui-même)",
+          "correct": false,
+          "why_wrong": "La LSA régit la surveillance des assureurs, pas la relation contractuelle avec le client."
+        },
+        {
+          "text": "La LAMal exclusivement",
+          "correct": false,
+          "why_wrong": "La LAMal ne régit que l'assurance-maladie sociale obligatoire."
+        },
+        {
+          "text": "Le CP",
+          "correct": false,
+          "why_wrong": "Le code pénal ne régit pas la relation contractuelle."
+        }
+      ],
+      "explanation": "La LCA (loi fédérale sur le contrat d'assurance) régit la relation contractuelle assureur/preneur. La LSA régit la surveillance ; le CO est subsidiaire (art. 100 LCA)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-006",
+      "theme": "industrie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Le principe de l'aléa dans le contrat d'assurance signifie que :",
+      "options": [
+        {
+          "text": "L'assureur choisit librement les risques qu'il couvre",
+          "correct": false,
+          "why_wrong": "Cela relève de la politique de souscription, pas de la définition de l'aléa."
+        },
+        {
+          "text": "La survenance ou la date du sinistre est incertaine au moment de la conclusion",
+          "correct": true
+        },
+        {
+          "text": "L'assureur est certain de réaliser un bénéfice",
+          "correct": false,
+          "why_wrong": "Notion opposée à l'aléa."
+        },
+        {
+          "text": "Le preneur peut modifier les conditions à tout moment",
+          "correct": false,
+          "why_wrong": "Faux : les modifications passent par avenant écrit."
+        }
+      ],
+      "explanation": "Le contrat d'assurance est un contrat aléatoire : les parties ne peuvent pas savoir à la conclusion si, quand ou dans quelle mesure la prestation sera due. Sans aléa (sinistre déjà survenu ou certain) : nullité."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-007",
+      "theme": "industrie",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Le principe de mutualité en assurance repose sur :",
+      "options": [
+        {
+          "text": "La mise en commun des primes d'un grand nombre d'assurés exposés à un même risque",
+          "correct": true
+        },
+        {
+          "text": "La compensation des sinistres de quelques-uns par les primes de tous",
+          "correct": true
+        },
+        {
+          "text": "La loi des grands nombres pour rendre les charges prévisibles",
+          "correct": true
+        },
+        {
+          "text": "L'obligation pour chaque assuré de subir le même dommage",
+          "correct": false,
+          "why_wrong": "La mutualité ne suppose pas l'identité des dommages, mais la communauté de risque."
+        },
+        {
+          "text": "La garantie de l'État sur les prestations",
+          "correct": false,
+          "why_wrong": "L'État ne garantit pas les prestations des assureurs privés."
+        }
+      ],
+      "explanation": "Mutualité = communauté de risque + loi des grands nombres. Les primes du collectif financent les sinistres individuels ; c'est le fondement technique de l'assurance."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-008",
+      "theme": "industrie",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelle différence essentielle sépare une assurance de sommes (forfaitaire) d'une assurance de dommages (indemnitaire) ?",
+      "options": [
+        {
+          "text": "L'assurance de dommages verse un montant fixé à l'avance ; l'assurance de sommes rembourse le dommage réel",
+          "correct": false,
+          "why_wrong": "Définitions inversées."
+        },
+        {
+          "text": "L'assurance de sommes verse un capital ou une rente convenus ; l'assurance de dommages indemnise le préjudice effectif dans la limite de la somme assurée",
+          "correct": true
+        },
+        {
+          "text": "Les deux types imposent une expertise obligatoire du dommage",
+          "correct": false,
+          "why_wrong": "L'expertise n'est requise qu'en assurance de dommages selon le cas."
+        },
+        {
+          "text": "L'assurance de sommes est interdite en Suisse",
+          "correct": false,
+          "why_wrong": "Elle est parfaitement admise (assurance-vie notamment)."
+        }
+      ],
+      "explanation": "Assurance de sommes (vie, invalidité forfaitaire) : prestation prédéfinie, principe indemnitaire non applicable. Assurance de dommages (ménage, RC, casco) : art. 96 LCA, principe indemnitaire, pas d'enrichissement possible."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-009",
+      "theme": "industrie",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Le régime prudentiel applicable aux assureurs suisses est :",
+      "options": [
+        {
+          "text": "Solvency II (directive UE)",
+          "correct": false,
+          "why_wrong": "Solvency II est le régime européen. La Suisse applique son propre modèle."
+        },
+        {
+          "text": "Le Test suisse de solvabilité (SST), fondé sur les risques",
+          "correct": true
+        },
+        {
+          "text": "Les accords de Bâle III",
+          "correct": false,
+          "why_wrong": "Bâle III concerne les banques, pas les assureurs."
+        },
+        {
+          "text": "La loi COVID d'urgence",
+          "correct": false,
+          "why_wrong": "Aucun régime prudentiel n'a été instauré par la loi COVID."
+        }
+      ],
+      "explanation": "Le SST (Swiss Solvency Test) est le régime prudentiel des assureurs suisses depuis 2011, reconnu équivalent à Solvency II par l'UE. Bâle est le régime bancaire."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-010",
+      "theme": "industrie",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "L'OFAS (Office fédéral des assurances sociales) est responsable de la surveillance de quelles branches ?",
+      "options": [
+        {
+          "text": "AVS / AI",
+          "correct": true
+        },
+        {
+          "text": "APG (allocation pour perte de gain)",
+          "correct": true
+        },
+        {
+          "text": "Allocations familiales",
+          "correct": true
+        },
+        {
+          "text": "Assurances-vie privées",
+          "correct": false,
+          "why_wrong": "Compétence FINMA."
+        },
+        {
+          "text": "LPP (prévoyance professionnelle : haute surveillance)",
+          "correct": true
+        },
+        {
+          "text": "Assurances complémentaires LCA",
+          "correct": false,
+          "why_wrong": "Compétence FINMA."
+        }
+      ],
+      "explanation": "L'OFAS surveille les assurances sociales fédérales (AVS, AI, APG, allocations familiales) et exerce la haute surveillance sur la LPP. L'assurance privée relève de la FINMA (LSA)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-011",
+      "theme": "industrie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Selon l'art. 40 LSA (nouveau droit), quels intermédiaires doivent obligatoirement s'inscrire au registre FINMA ?",
+      "options": [
+        {
+          "text": "Tous les intermédiaires, liés et non liés",
+          "correct": false,
+          "why_wrong": "Depuis la révision LSA 2024, seuls les non liés s'inscrivent au registre."
+        },
+        {
+          "text": "Uniquement les intermédiaires non liés (courtiers indépendants)",
+          "correct": true
+        },
+        {
+          "text": "Uniquement les intermédiaires liés (agents)",
+          "correct": false,
+          "why_wrong": "Les liés sont rattachés à leur assureur qui répond de leur activité."
+        },
+        {
+          "text": "Seulement les intermédiaires exerçant à l'étranger",
+          "correct": false,
+          "why_wrong": "Le critère est le rattachement ou non, pas le lieu d'exercice."
+        }
+      ],
+      "explanation": "Art. 40 al. 2 et 41 LSA (révision entrée en vigueur 01.01.2024) : seuls les intermédiaires NON liés doivent être inscrits au registre FINMA. Les liés sont couverts par la responsabilité de l'assureur."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-012",
+      "theme": "industrie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Le Fonds national suisse de garantie (BNG) intervient pour :",
+      "options": [
+        {
+          "text": "Indemniser les victimes de véhicules non identifiés, non assurés ou volés",
+          "correct": true
+        },
+        {
+          "text": "Garantir les rentes LPP en cas de faillite d'une caisse",
+          "correct": false,
+          "why_wrong": "C'est le rôle du Fonds de garantie LPP (art. 56 LPP)."
+        },
+        {
+          "text": "Compenser les catastrophes naturelles pour les propriétaires",
+          "correct": false,
+          "why_wrong": "C'est le pool ECA/ES cantonaux."
+        },
+        {
+          "text": "Rembourser les primes en cas de faillite d'un assureur maladie",
+          "correct": false,
+          "why_wrong": "Il existe un institut commun LAMal (art. 18 LAMal), pas le BNG."
+        }
+      ],
+      "explanation": "Art. 76 LCR : le Fonds national suisse de garantie (BNG) indemnise les victimes de véhicules non identifiés, non assurés ou volés. À ne pas confondre avec le Fonds de garantie LPP."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-013",
+      "theme": "industrie",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quels éléments sont indispensables à la validité d'un contrat d'assurance selon la LCA ?",
+      "options": [
+        {
+          "text": "Un risque assurable (aléa)",
+          "correct": true
+        },
+        {
+          "text": "Une prime convenue",
+          "correct": true
+        },
+        {
+          "text": "Une prestation d'assurance définie",
+          "correct": true
+        },
+        {
+          "text": "L'approbation préalable de la FINMA pour chaque police",
+          "correct": false,
+          "why_wrong": "La FINMA n'approuve pas les polices individuelles ; elle approuve certains produits (LAA-C) et surveille l'entreprise."
+        },
+        {
+          "text": "Un intérêt assurable pour les assurances de dommages",
+          "correct": true
+        },
+        {
+          "text": "La signature d'un notaire",
+          "correct": false,
+          "why_wrong": "Aucune forme authentique n'est exigée."
+        }
+      ],
+      "explanation": "Éléments constitutifs : aléa, prime, prestation, intérêt assurable (pour les assurances de dommages, art. 48 LCA). Le contrat est consensuel (pas de forme authentique requise)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-014",
+      "theme": "industrie",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un dirigeant de PME vous demande qui surveille son assurance-maladie complémentaire (LCA), sa LAA obligatoire et sa caisse LPP.",
+      "question": "Quelle réponse est correcte concernant les autorités compétentes ?",
+      "options": [
+        {
+          "text": "FINMA pour les trois",
+          "correct": false,
+          "why_wrong": "FINMA ne surveille pas la LAA ni la LPP directement."
+        },
+        {
+          "text": "OFAS pour les trois",
+          "correct": false,
+          "why_wrong": "OFAS ne surveille pas la LCA."
+        },
+        {
+          "text": "FINMA pour la LCA complémentaire, OFSP/SUVA pour la LAA, OFAS + autorités cantonales pour la LPP",
+          "correct": true
+        },
+        {
+          "text": "Le Conseil fédéral pour les trois",
+          "correct": false,
+          "why_wrong": "Le Conseil fédéral légifère mais ne surveille pas les assureurs individuellement."
+        }
+      ],
+      "explanation": "Répartition : FINMA (assurances privées LCA, LSA) ; SUVA + OFSP pour la LAA ; OFAS haute surveillance LPP + autorités cantonales de surveillance directe (art. 61 LPP)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-015",
+      "theme": "industrie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Le système suisse de prévoyance est structuré autour de :",
+      "options": [
+        {
+          "text": "1 pilier unique (AVS)",
+          "correct": false,
+          "why_wrong": "La Suisse est structurée sur trois piliers, non un seul."
+        },
+        {
+          "text": "2 piliers (AVS + LPP)",
+          "correct": false,
+          "why_wrong": "Le 3e pilier est également un pilier officiel du système (Cst. art. 111)."
+        },
+        {
+          "text": "3 piliers : prévoyance étatique, professionnelle, individuelle",
+          "correct": true
+        },
+        {
+          "text": "4 piliers incluant les allocations familiales",
+          "correct": false,
+          "why_wrong": "Les allocations familiales sont un régime social, pas un pilier de prévoyance."
+        }
+      ],
+      "explanation": "Cst. art. 111 : système des trois piliers. 1er pilier AVS/AI/PC (couverture minimum vitale), 2e pilier LPP (maintien du niveau de vie), 3e pilier (prévoyance individuelle 3a/3b)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-016",
+      "theme": "industrie",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Vous préparez un support pédagogique interne pour de nouveaux conseillers qui confondent AVS/LAA (obligatoires) avec les complémentaires LCA.",
+      "question": "Quelles caractéristiques distinguent l'assurance sociale de l'assurance privée ?",
+      "options": [
+        {
+          "text": "L'assurance sociale est en principe obligatoire (LAMal, AVS, LAA)",
+          "correct": true
+        },
+        {
+          "text": "L'assurance privée repose sur la liberté contractuelle et la LCA",
+          "correct": true
+        },
+        {
+          "text": "L'assurance sociale utilise la solidarité (redistribution), pas seulement la mutualité",
+          "correct": true
+        },
+        {
+          "text": "L'assurance privée impose un tarif unique fixé par l'État",
+          "correct": false,
+          "why_wrong": "L'assureur privé fixe librement sa tarification (approbation FINMA pour certaines branches)."
+        },
+        {
+          "text": "L'assurance sociale peut refuser un affilié pour antécédents",
+          "correct": false,
+          "why_wrong": "Interdit : pas de sélection dans l'AOS."
+        }
+      ],
+      "explanation": "Assurance sociale : loi impérative, obligation d'affiliation, solidarité redistributive. Assurance privée : consensuelle (LCA), sélection possible, tarification technique."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-017",
+      "theme": "industrie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Dans une compagnie d'assurance de forme mutualiste ou coopérative :",
+      "options": [
+        {
+          "text": "Les preneurs sont en même temps sociétaires",
+          "correct": true
+        },
+        {
+          "text": "Les primes sont fixées par l'État",
+          "correct": false,
+          "why_wrong": "Faux : l'assureur mutualiste fixe ses tarifs sous surveillance FINMA."
+        },
+        {
+          "text": "Il n'existe aucune obligation de constituer un capital",
+          "correct": false,
+          "why_wrong": "La LSA exige un capital / fonds de garantie."
+        },
+        {
+          "text": "L'entreprise ne peut couvrir que la LAMal",
+          "correct": false,
+          "why_wrong": "Aucune restriction de branche liée à la forme mutualiste."
+        }
+      ],
+      "explanation": "Dans une coopérative (art. 828 CO) ou mutuelle, les assurés participent à la vie sociale (assemblée générale, ristournes possibles). L'excédent peut être redistribué. Reste soumise à la LSA."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-018",
+      "theme": "industrie",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Dans une société coopérative d'assurance (art. 828 CO), le principe démocratique est :",
+      "options": [
+        {
+          "text": "Une voix par part sociale détenue",
+          "correct": false,
+          "why_wrong": "Piège : c'est le principe SA (art. 692 CO)."
+        },
+        {
+          "text": "Une voix par sociétaire, indépendamment du nombre de parts",
+          "correct": true
+        },
+        {
+          "text": "Vote pondéré par la prime versée",
+          "correct": false,
+          "why_wrong": "Aucun système de vote pondéré par la prime dans la coopérative."
+        },
+        {
+          "text": "Absence de droit de vote",
+          "correct": false,
+          "why_wrong": "Le sociétaire dispose d'un droit de vote (une voix)."
+        }
+      ],
+      "explanation": "Art. 885 CO : dans la coopérative, chaque sociétaire a une seule voix, quel que soit le nombre de parts. Différence structurante avec la SA (art. 692 CO : vote au capital)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-019",
+      "theme": "industrie",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Le rôle de la réassurance est :",
+      "options": [
+        {
+          "text": "Permettre à l'assureur de transférer une partie de ses risques à un autre assureur",
+          "correct": true
+        },
+        {
+          "text": "Mutualiser les grands sinistres (catastrophes, cumuls)",
+          "correct": true
+        },
+        {
+          "text": "Augmenter la capacité de souscription de l'assureur primaire",
+          "correct": true
+        },
+        {
+          "text": "Remplacer l'assurance directe auprès du client final",
+          "correct": false,
+          "why_wrong": "La réassurance n'intervient jamais avec le client final."
+        },
+        {
+          "text": "Fixer les tarifs pour toute la branche",
+          "correct": false,
+          "why_wrong": "Aucun réassureur ne fixe les tarifs de la branche primaire."
+        }
+      ],
+      "explanation": "La réassurance est un contrat entre assureurs : elle permet la mutualisation des grands risques (catastrophes, cumuls) et l'accès à des capacités additionnelles. Aucune relation avec l'assuré final."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-020",
+      "theme": "industrie",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un client hésite entre s'assurer chez une société anonyme cotée et chez une coopérative d'assurance.",
+      "question": "Quelle information objective devez-vous lui donner ?",
+      "options": [
+        {
+          "text": "La SA est toujours meilleur marché",
+          "correct": false,
+          "why_wrong": "Aucune règle générale ; dépend du produit et du portefeuille."
+        },
+        {
+          "text": "La coopérative peut redistribuer un excédent à ses sociétaires-preneurs, la SA verse des dividendes à ses actionnaires",
+          "correct": true
+        },
+        {
+          "text": "Seule la SA est surveillée par la FINMA",
+          "correct": false,
+          "why_wrong": "Les deux formes sont surveillées par la FINMA."
+        },
+        {
+          "text": "La coopérative n'a pas besoin de capital de départ",
+          "correct": false,
+          "why_wrong": "Un fonds de garantie est requis par la LSA."
+        }
+      ],
+      "explanation": "Différence structurelle : SA = orientation actionnaires ; coopérative = orientation sociétaires (excédents distribuables aux preneurs). Les deux relèvent de la surveillance FINMA (LSA)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-021",
+      "theme": "industrie",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles missions relèvent de la FINMA (LFINMA / LSA) ?",
+      "options": [
+        {
+          "text": "Octroyer et retirer l'autorisation d'exercer aux assureurs",
+          "correct": true
+        },
+        {
+          "text": "Approuver certains tarifs (LAA complémentaire, prévoyance obligatoire)",
+          "correct": true
+        },
+        {
+          "text": "Contrôler la solvabilité (SST) et les provisions techniques",
+          "correct": true
+        },
+        {
+          "text": "Fixer les rentes AVS",
+          "correct": false,
+          "why_wrong": "Compétence Conseil fédéral / OFAS."
+        },
+        {
+          "text": "Sanctionner un intermédiaire non lié inscrit au registre",
+          "correct": true
+        },
+        {
+          "text": "Négocier les CCT de la branche",
+          "correct": false,
+          "why_wrong": "Compétence des partenaires sociaux."
+        }
+      ],
+      "explanation": "La FINMA est l'autorité de surveillance intégrée : autorisation, surveillance prudentielle (SST), approbation de certains tarifs, sanction des intermédiaires inscrits (LFINMA + LSA)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-022",
+      "theme": "industrie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une prise de position de l'Ombudsman de l'assurance privée a pour effet juridique :",
+      "options": [
+        {
+          "text": "Force exécutoire immédiate",
+          "correct": false,
+          "why_wrong": "PIÈGE : aucune force exécutoire."
+        },
+        {
+          "text": "Une recommandation, sans caractère contraignant pour l'assureur",
+          "correct": true
+        },
+        {
+          "text": "Un jugement susceptible d'appel",
+          "correct": false,
+          "why_wrong": "L'Ombudsman n'est pas un tribunal."
+        },
+        {
+          "text": "Une amende automatique en cas de refus",
+          "correct": false,
+          "why_wrong": "L'Ombudsman ne dispose d'aucun pouvoir d'amende."
+        }
+      ],
+      "explanation": "La prise de position de l'Ombudsman est une recommandation. L'assuré conserve toujours la voie civile (art. 46b LCA). Point souvent testé à l'AFA."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-023",
+      "theme": "industrie",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Une compagnie d'assurance suisse veut lancer un nouveau produit d'assurance-vie liée à des placements (unit-linked) destiné à la clientèle privée. Elle vous demande quelles autorités et quels régimes s'appliquent avant le lancement.",
+      "question": "Quel enchaînement est correct ?",
+      "options": [
+        {
+          "text": "Approbation systématique préalable de chaque police par la FINMA",
+          "correct": false,
+          "why_wrong": "Depuis la réforme LSA, l'approbation systématique des tarifs a été largement supprimée."
+        },
+        {
+          "text": "Notification/approbation prudentielle FINMA de la solution technique, respect de la LCA pour le contrat, respect de la LSFin pour la distribution du volet instrument financier, respect nLPD sur les données",
+          "correct": true
+        },
+        {
+          "text": "Uniquement respect de la LCA, sans autre régime",
+          "correct": false,
+          "why_wrong": "Un produit unit-linked touche à la LSFin (information/adéquation) et à la nLPD."
+        },
+        {
+          "text": "Autorisation cantonale préalable pour chaque canton de commercialisation",
+          "correct": false,
+          "why_wrong": "La surveillance est fédérale (FINMA)."
+        }
+      ],
+      "explanation": "Un produit vie-placement mobilise plusieurs régimes : LSA (surveillance FINMA), LCA (contrat), LSFin (règles de conduite pour l'instrument financier, adéquation), nLPD (traitement des données). Vision transversale attendue du conseiller."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-024",
+      "theme": "industrie",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un événement est assurable s'il est :",
+      "options": [
+        {
+          "text": "L'événement doit être aléatoire",
+          "correct": true
+        },
+        {
+          "text": "L'événement doit être futur",
+          "correct": true
+        },
+        {
+          "text": "L'événement doit être licite (art. 20 CO)",
+          "correct": true
+        },
+        {
+          "text": "L'événement doit être évaluable en argent",
+          "correct": true
+        },
+        {
+          "text": "L'événement doit être certain et déjà survenu",
+          "correct": false,
+          "why_wrong": "Contrat nul faute d'aléa."
+        },
+        {
+          "text": "L'événement doit être voulu par le preneur",
+          "correct": false,
+          "why_wrong": "La volonté détruirait l'aléa."
+        }
+      ],
+      "explanation": "Critères de l'assurabilité : aléatoire (aléa), futur, licite (art. 20 CO), évaluable en argent. Un événement déjà survenu ou provoqué intentionnellement n'est pas assurable (art. 9 LCA ancien / dispositions LCA)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-025",
+      "theme": "industrie",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Un client structure son patrimoine et demande une vue globale de toutes ses branches, sociales et privées, pour éviter les doublons.",
+      "question": "Parmi les branches d'assurance ci-dessous, lesquelles appartiennent aux assurances non-vie ?",
+      "options": [
+        {
+          "text": "Assurance ménage",
+          "correct": true
+        },
+        {
+          "text": "Assurance RC véhicule (LCR)",
+          "correct": true
+        },
+        {
+          "text": "Assurance-vie mixte",
+          "correct": false,
+          "why_wrong": "Branche vie."
+        },
+        {
+          "text": "Assurance protection juridique",
+          "correct": true
+        },
+        {
+          "text": "3e pilier a",
+          "correct": false,
+          "why_wrong": "Branche vie (prévoyance)."
+        },
+        {
+          "text": "Assurance perte d'exploitation PME",
+          "correct": true
+        }
+      ],
+      "explanation": "Non-vie : dommages aux choses, RC, PJ, transport, technique. Vie : capital ou rente lié à la personne (vie, décès, invalidité forfaitaire). Cette distinction structure la surveillance FINMA."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-026",
+      "theme": "industrie",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Le principe indemnitaire (art. 96 LCA) s'oppose :",
+      "options": [
+        {
+          "text": "Il interdit l'enrichissement de l'assuré",
+          "correct": true
+        },
+        {
+          "text": "Il plafonne la prestation au dommage effectivement subi",
+          "correct": true
+        },
+        {
+          "text": "Il justifie la subrogation de l'assureur (art. 95c LCA)",
+          "correct": true
+        },
+        {
+          "text": "Il s'oppose à la mutualisation",
+          "correct": false,
+          "why_wrong": "Aucune opposition : la mutualisation est en amont, l'indemnitaire en aval."
+        },
+        {
+          "text": "Il s'applique à l'assurance-vie de sommes",
+          "correct": false,
+          "why_wrong": "Non : l'assurance de sommes échappe au principe indemnitaire."
+        }
+      ],
+      "explanation": "Principe indemnitaire : dans les assurances de dommages, la prestation est limitée au préjudice réel. Pas de double indemnisation, subrogation de l'assureur (art. 95c LCA)."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-027",
+      "theme": "industrie",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Le marché suisse de l'assurance privée se caractérise notamment par :",
+      "options": [
+        {
+          "text": "Un très faible taux de pénétration (< 1 %)",
+          "correct": false,
+          "why_wrong": "La Suisse est parmi les pays au monde à la plus forte pénétration."
+        },
+        {
+          "text": "Une des plus fortes densités de primes par habitant au monde",
+          "correct": true
+        },
+        {
+          "text": "Un monopole d'État sur toutes les branches",
+          "correct": false,
+          "why_wrong": "Marché ouvert ; seules certaines branches cantonales (ECA) fonctionnent en monopole."
+        },
+        {
+          "text": "Une interdiction des assureurs étrangers",
+          "correct": false,
+          "why_wrong": "Les succursales étrangères sont admises (art. 15 LSA)."
+        }
+      ],
+      "explanation": "La Suisse figure structurellement parmi les tout premiers marchés au monde en primes par habitant (vie + non-vie). Marché ouvert, régulé par la FINMA."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-028",
+      "theme": "industrie",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Une entreprise d'assurance holding détient plusieurs filiales suisses (vie, non-vie, réassurance). Elle vous demande comment la FINMA la surveille.",
+      "question": "Quelle affirmation est correcte ?",
+      "options": [
+        {
+          "text": "Chaque filiale est surveillée séparément sans coordination",
+          "correct": false,
+          "why_wrong": "Contraire à la surveillance de groupe (art. 65 ss LSA)."
+        },
+        {
+          "text": "La FINMA exerce une surveillance sur base individuelle ET une surveillance de groupe consolidée (SST groupe)",
+          "correct": true
+        },
+        {
+          "text": "Seul le siège étranger est surveillé",
+          "correct": false,
+          "why_wrong": "Faux : la FINMA surveille les entités suisses même si maison mère est à l'étranger."
+        },
+        {
+          "text": "La surveillance est déléguée à l'ASA",
+          "correct": false,
+          "why_wrong": "L'ASA n'est pas un régulateur."
+        }
+      ],
+      "explanation": "Art. 65-79 LSA : la FINMA exerce une surveillance individuelle (chaque entité) ET une surveillance de groupe / conglomérat (solvabilité consolidée, gouvernance, gestion des risques). Vise à empêcher un défaut par contagion."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-029",
+      "theme": "industrie",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelle différence existe entre risque et aléa dans le vocabulaire de l'assurance ?",
+      "options": [
+        {
+          "text": "Ce sont deux synonymes stricts",
+          "correct": false,
+          "why_wrong": "Distinction technique importante."
+        },
+        {
+          "text": "Le risque est l'événement redouté (incendie, décès) ; l'aléa est l'incertitude qui affecte sa survenance ou sa date",
+          "correct": true
+        },
+        {
+          "text": "Le risque est certain ; l'aléa est facultatif",
+          "correct": false,
+          "why_wrong": "Le risque est justement soumis à l'aléa."
+        },
+        {
+          "text": "Le risque relève du preneur, l'aléa de l'assureur exclusivement",
+          "correct": false
+        }
+      ],
+      "explanation": "Risque = l'événement dommageable objet de la couverture. Aléa = caractère incertain de sa survenance. Sans aléa, pas de contrat d'assurance valable."
+    },
+    {
+      "external_id": "KLARY-GEN-IN-030",
+      "theme": "industrie",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "L'auto-régulation de la branche par l'ASA se manifeste notamment par :",
+      "options": [
+        {
+          "text": "Des règles déontologiques (code de conduite)",
+          "correct": true
+        },
+        {
+          "text": "La formation VBV / AFA des intermédiaires",
+          "correct": true
+        },
+        {
+          "text": "La publication de statistiques et données de marché",
+          "correct": true
+        },
+        {
+          "text": "Des amendes prononcées contre les compagnies",
+          "correct": false,
+          "why_wrong": "Seule la FINMA sanctionne (art. 30 ss LFINMA)."
+        },
+        {
+          "text": "Le retrait d'autorisation d'un assureur",
+          "correct": false,
+          "why_wrong": "Compétence exclusive de la FINMA."
+        }
+      ],
+      "explanation": "L'ASA est faîtière : code de conduite, formation VBV / AFA, statistiques, lobbying. Aucune compétence de sanction : c'est la FINMA (LFINMA / LSA)."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-001",
+      "theme": "droit",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Depuis quand le nouveau droit LCA (révision majeure) est-il en vigueur ?",
+      "options": [
+        {
+          "text": "1er janvier 2020",
+          "correct": false,
+          "why_wrong": "Aucune révision majeure LCA n'est entrée en vigueur en 2020."
+        },
+        {
+          "text": "1er janvier 2022",
+          "correct": true
+        },
+        {
+          "text": "1er septembre 2023",
+          "correct": false,
+          "why_wrong": "Confusion avec la nLPD."
+        },
+        {
+          "text": "1er janvier 2024",
+          "correct": false,
+          "why_wrong": "Confusion avec la révision LSA."
+        }
+      ],
+      "explanation": "La révision majeure de la LCA (droit de révocation art. 2a, prescription 5 ans art. 46, résiliation ordinaire art. 35a etc.) est en vigueur depuis le 01.01.2022."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-002",
+      "theme": "droit",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quel est le délai de révocation d'une proposition d'assurance selon l'art. 2a LCA ?",
+      "options": [
+        {
+          "text": "7 jours",
+          "correct": false,
+          "why_wrong": "Ce délai ne correspond à aucune disposition LCA."
+        },
+        {
+          "text": "14 jours",
+          "correct": true
+        },
+        {
+          "text": "30 jours",
+          "correct": false,
+          "why_wrong": "PIÈGE fréquent : ce n'est pas 30 jours."
+        },
+        {
+          "text": "2 mois",
+          "correct": false,
+          "why_wrong": "Ancienne durée avant réforme, régulièrement citée par erreur."
+        }
+      ],
+      "explanation": "Art. 2a LCA : le preneur peut révoquer sa proposition ou l'acceptation par écrit dans les 14 jours dès sa connaissance de la conclusion. Piège classique VBV."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-003",
+      "theme": "droit",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quel est le délai de prescription des créances découlant du contrat d'assurance selon l'art. 46 LCA (nouveau droit) ?",
+      "options": [
+        {
+          "text": "1 an",
+          "correct": false,
+          "why_wrong": "Aucun délai LCA n'est fixé à 1 an pour la prescription."
+        },
+        {
+          "text": "2 ans",
+          "correct": false,
+          "why_wrong": "Ancien délai avant 2022, régulièrement confondu."
+        },
+        {
+          "text": "5 ans dès la survenance du fait générateur",
+          "correct": true
+        },
+        {
+          "text": "10 ans",
+          "correct": false,
+          "why_wrong": "C'est le délai ordinaire CO 127, mais la LCA est spéciale."
+        }
+      ],
+      "explanation": "Art. 46 LCA (révision 2022) : les créances découlant du contrat d'assurance se prescrivent par 5 ans dès la survenance du fait sur lequel elles reposent. Avant 2022 : 2 ans."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-004",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Le devoir d'information de l'assureur selon l'art. 3 LCA porte notamment sur :",
+      "options": [
+        {
+          "text": "L'identité de l'assureur",
+          "correct": true
+        },
+        {
+          "text": "L'étendue de la couverture et les exclusions principales",
+          "correct": true
+        },
+        {
+          "text": "Les primes et autres obligations du preneur",
+          "correct": true
+        },
+        {
+          "text": "Le délai et la forme de résiliation",
+          "correct": true
+        },
+        {
+          "text": "Uniquement au moment de la signature, puis plus jamais",
+          "correct": false,
+          "why_wrong": "PIÈGE : le devoir d'information est continu pendant toute la durée du contrat."
+        },
+        {
+          "text": "Le traitement des données personnelles",
+          "correct": true
+        }
+      ],
+      "explanation": "Art. 3 LCA : information précontractuelle ET continue. Piège classique : croire que l'obligation s'éteint à la signature. Elle perdure pour toute la vie du contrat."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-005",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "En cas de réticence (déclaration inexacte ou omission dans le questionnaire de santé), l'assureur peut :",
+      "options": [
+        {
+          "text": "Résilier le contrat dans les 4 semaines dès la connaissance",
+          "correct": true
+        },
+        {
+          "text": "Refuser les prestations liées au fait tu",
+          "correct": true
+        },
+        {
+          "text": "Résilier à tout moment sans délai",
+          "correct": false,
+          "why_wrong": "La loi impose un délai de 4 semaines."
+        },
+        {
+          "text": "Uniquement diminuer la prime",
+          "correct": false,
+          "why_wrong": "La sanction n'est pas une baisse de prime."
+        },
+        {
+          "text": "Rien : la réticence n'a plus d'effet sous le nouveau droit",
+          "correct": false,
+          "why_wrong": "La réticence reste sanctionnée par l'art. 6 LCA."
+        }
+      ],
+      "explanation": "Art. 6 LCA : en cas de réticence, l'assureur peut résilier dans les 4 semaines dès qu'il a eu connaissance de la réticence. La libération de prestation vaut pour les sinistres en lien avec le fait tu."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-006",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelles conditions cumulatives sont exigées pour qu'une responsabilité civile délictuelle soit engagée selon l'art. 41 CO ?",
+      "options": [
+        {
+          "text": "Un acte illicite",
+          "correct": true
+        },
+        {
+          "text": "Une faute (ou une responsabilité causale légale)",
+          "correct": true
+        },
+        {
+          "text": "Un dommage",
+          "correct": true
+        },
+        {
+          "text": "Un lien de causalité adéquate",
+          "correct": true
+        },
+        {
+          "text": "Un contrat entre auteur et lésé",
+          "correct": false,
+          "why_wrong": "C'est la RC contractuelle (art. 97 CO), pas l'art. 41."
+        },
+        {
+          "text": "Une décision pénale préalable",
+          "correct": false,
+          "why_wrong": "La condamnation pénale n'est pas nécessaire."
+        }
+      ],
+      "explanation": "Art. 41 CO : conditions cumulatives de la RC délictuelle : acte illicite, faute (ou responsabilité causale légale), dommage, lien de causalité adéquate. Si l'une manque : pas de responsabilité."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-007",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Selon l'art. 45 LSA (obligations d'information et de conduite du conseiller), l'intermédiaire doit remettre au client :",
+      "options": [
+        {
+          "text": "Son identité et son adresse professionnelle",
+          "correct": true
+        },
+        {
+          "text": "Sa qualité (intermédiaire lié ou non lié) et les assureurs qu'il représente",
+          "correct": true
+        },
+        {
+          "text": "L'existence de liens contractuels avec des assureurs et sa rémunération de principe",
+          "correct": true
+        },
+        {
+          "text": "L'autorité compétente pour les plaintes (Ombudsman)",
+          "correct": true
+        },
+        {
+          "text": "Le rendement financier annuel de sa société",
+          "correct": false,
+          "why_wrong": "Aucune obligation d'information sur le rendement propre du conseiller."
+        },
+        {
+          "text": "Le nom de tous ses autres clients",
+          "correct": false,
+          "why_wrong": "Interdit par le secret professionnel et la nLPD."
+        }
+      ],
+      "explanation": "Art. 45 LSA + OS : la fiche d'information client (FIC) précise identité, statut (lié/non lié), assureurs, rémunération, voies de réclamation. Remise obligatoire lors du premier contact."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-008",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelle est la différence essentielle entre un intermédiaire d'assurance lié et non lié au sens de l'art. 40 LSA ?",
+      "options": [
+        {
+          "text": "Le lié agit dans un rapport de fidélité avec un ou plusieurs assureurs",
+          "correct": true
+        },
+        {
+          "text": "Le non lié agit sur mandat du preneur, en toute indépendance",
+          "correct": true
+        },
+        {
+          "text": "Le non lié doit être inscrit au registre FINMA (art. 41 LSA)",
+          "correct": true
+        },
+        {
+          "text": "Aucune différence, tous les intermédiaires sont juridiquement égaux",
+          "correct": false,
+          "why_wrong": "La LSA distingue clairement les deux statuts."
+        },
+        {
+          "text": "Le lié est nécessairement salarié",
+          "correct": false,
+          "why_wrong": "Un agent lié peut être indépendant tout en étant rattaché à un ou plusieurs assureurs."
+        }
+      ],
+      "explanation": "Art. 40 LSA : intermédiaire LIÉ = rattaché à un ou plusieurs assureurs (fidélité, souvent salarié / agent) ; NON LIÉ = mandaté par le preneur, indépendant (courtier), inscription au registre FINMA obligatoire."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-009",
+      "theme": "droit",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'inscription au registre FINMA des intermédiaires d'assurance est :",
+      "options": [
+        {
+          "text": "Obligatoire pour tous les intermédiaires liés et non liés",
+          "correct": false,
+          "why_wrong": "Depuis 2024, seuls les non liés doivent s'inscrire."
+        },
+        {
+          "text": "Obligatoire pour les intermédiaires non liés, facultative pour les liés",
+          "correct": true
+        },
+        {
+          "text": "Obligatoire pour les liés uniquement",
+          "correct": false,
+          "why_wrong": "Les liés relèvent de la responsabilité de leur assureur."
+        },
+        {
+          "text": "Facultative pour tous",
+          "correct": false,
+          "why_wrong": "Faux : la LSA rend l'inscription obligatoire pour les non liés."
+        }
+      ],
+      "explanation": "Art. 41 LSA (révision LSA 2024) : obligation d'inscription au registre FINMA uniquement pour les intermédiaires NON liés. Les intermédiaires liés sont couverts par la responsabilité de l'assureur qui les mandate."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-010",
+      "theme": "droit",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Depuis quand la nouvelle loi sur la protection des données (nLPD) est-elle en vigueur ?",
+      "options": [
+        {
+          "text": "1er janvier 2022",
+          "correct": false,
+          "why_wrong": "C'est le nouveau droit LCA."
+        },
+        {
+          "text": "1er septembre 2023",
+          "correct": true
+        },
+        {
+          "text": "25 mai 2018 (comme le RGPD)",
+          "correct": false,
+          "why_wrong": "Date d'entrée en vigueur du RGPD UE, la Suisse a suivi plus tard."
+        },
+        {
+          "text": "1er janvier 2024",
+          "correct": false,
+          "why_wrong": "Confusion possible avec la révision LSA, mais la nLPD date du 01.09.2023."
+        }
+      ],
+      "explanation": "La nLPD est entrée en vigueur le 01.09.2023. Elle renforce les droits des personnes concernées, l'obligation de tenir un registre des traitements et rehausse les sanctions pénales pour les responsables."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-011",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Vous mettez en place un registre des traitements pour votre société de courtage : quels principes structurent chaque fiche ?",
+      "question": "Quels principes fondamentaux la nLPD impose-t-elle au responsable du traitement ?",
+      "options": [
+        {
+          "text": "Licéité, bonne foi, proportionnalité, finalité",
+          "correct": true
+        },
+        {
+          "text": "Exactitude et mise à jour des données",
+          "correct": true
+        },
+        {
+          "text": "Sécurité (mesures techniques et organisationnelles adéquates)",
+          "correct": true
+        },
+        {
+          "text": "Transparence (information de la personne concernée)",
+          "correct": true
+        },
+        {
+          "text": "Communication libre à tout tiers commercial",
+          "correct": false,
+          "why_wrong": "Contraire au principe de finalité."
+        },
+        {
+          "text": "Conservation illimitée par défaut",
+          "correct": false,
+          "why_wrong": "Contraire au principe de proportionnalité et de minimisation."
+        }
+      ],
+      "explanation": "Art. 6 nLPD : principes de licéité, bonne foi, proportionnalité, finalité, exactitude, sécurité (art. 8), transparence (art. 19-21). Toute violation expose à des sanctions administratives et pénales."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-012",
+      "theme": "droit",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Selon la LBA / OBA, à partir de quel seuil une opération en espèces impose une identification renforcée du client ?",
+      "options": [
+        {
+          "text": "5'000 CHF",
+          "correct": false,
+          "why_wrong": "Seuil trop bas ; la LBA fixe 15'000 CHF pour les espèces."
+        },
+        {
+          "text": "10'000 CHF",
+          "correct": false,
+          "why_wrong": "Seuil bancaire général, pas assurance."
+        },
+        {
+          "text": "15'000 CHF",
+          "correct": true
+        },
+        {
+          "text": "25'000 CHF",
+          "correct": false,
+          "why_wrong": "Piège : c'est le seuil pour la vie à prime unique."
+        }
+      ],
+      "explanation": "Art. 3 LBA et OBA-FINMA : identification obligatoire dès 15'000 CHF pour les opérations en espèces. Piège classique : ne pas confondre avec le seuil vie unique (25'000)."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-013",
+      "theme": "droit",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "En matière d'assurance-vie à prime unique, le seuil LBA à partir duquel s'applique l'obligation d'identification est :",
+      "options": [
+        {
+          "text": "15'000 CHF",
+          "correct": false,
+          "why_wrong": "Seuil général espèces."
+        },
+        {
+          "text": "25'000 CHF (prime unique)",
+          "correct": true
+        },
+        {
+          "text": "100'000 CHF",
+          "correct": false,
+          "why_wrong": "Aucun seuil LBA vie unique n'est fixé à 100'000 CHF."
+        },
+        {
+          "text": "Pas de seuil, identification systématique",
+          "correct": false,
+          "why_wrong": "Il existe des seuils précis."
+        }
+      ],
+      "explanation": "OBA-FINMA : pour l'assurance-vie à prime unique, seuil d'identification à 25'000 CHF (et 5'000 CHF/an pour les primes périodiques dans certains cas). À distinguer du seuil espèces de 15'000."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-014",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Vous encaissez pour un nouveau client une prime unique de 40'000 CHF en espèces, avec doutes sur l'origine.",
+      "question": "Les devoirs de diligence de l'intermédiaire sous la LBA comprennent :",
+      "options": [
+        {
+          "text": "Identifier le cocontractant",
+          "correct": true
+        },
+        {
+          "text": "Identifier l'ayant droit économique",
+          "correct": true
+        },
+        {
+          "text": "Clarifier l'arrière-plan économique en cas de risque accru",
+          "correct": true
+        },
+        {
+          "text": "Communiquer sans délai au MROS tout soupçon fondé de blanchiment",
+          "correct": true
+        },
+        {
+          "text": "Informer préalablement le client du soupçon (tipping-off)",
+          "correct": false,
+          "why_wrong": "Interdiction absolue : art. 10a LBA (interdiction d'informer)."
+        },
+        {
+          "text": "Bloquer les valeurs suspectées immédiatement sans autre formalité",
+          "correct": true
+        }
+      ],
+      "explanation": "LBA : identification, ADE, clarification, communication MROS, blocage. Interdiction absolue d'informer le client (tipping-off, art. 10a LBA) : sanction pénale à la clé."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-015",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'article 3 LCD interdit notamment :",
+      "options": [
+        {
+          "text": "Les indications inexactes ou fallacieuses sur soi-même ou ses produits",
+          "correct": true
+        },
+        {
+          "text": "Le dénigrement d'un concurrent",
+          "correct": true
+        },
+        {
+          "text": "Les envois publicitaires de masse sans consentement (art. 3 al. 1 let. o)",
+          "correct": true
+        },
+        {
+          "text": "Le démarchage abusif ou trompeur (art. 3 al. 1 let. u)",
+          "correct": true
+        },
+        {
+          "text": "Toute forme de publicité",
+          "correct": false,
+          "why_wrong": "La publicité honnête reste licite."
+        },
+        {
+          "text": "La conclusion d'un contrat avec un concurrent",
+          "correct": false,
+          "why_wrong": "La liberté contractuelle demeure."
+        }
+      ],
+      "explanation": "Art. 3 LCD : liste de comportements déloyaux (indications trompeuses, dénigrement, comparaisons inexactes, cadeaux abusifs, appels publicitaires sans consentement, etc.). Cœur du droit de la concurrence."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-016",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Sous la LSFin, un conseiller en assurance-vie liée à des instruments financiers doit :",
+      "options": [
+        {
+          "text": "Effectuer une vérification d'adéquation en cas de conseil personnalisé",
+          "correct": true
+        },
+        {
+          "text": "Effectuer une vérification d'appropriation en cas de conseil sans profil personnalisé",
+          "correct": true
+        },
+        {
+          "text": "Documenter la prestation fournie et remettre les informations LSFin",
+          "correct": true
+        },
+        {
+          "text": "Éviter toute évaluation, la LSFin ne s'applique jamais à l'assurance",
+          "correct": false,
+          "why_wrong": "La LSFin s'applique aux produits d'assurance qualifiables d'instruments financiers."
+        },
+        {
+          "text": "Demander l'accord préalable de la FINMA avant chaque conseil",
+          "correct": false,
+          "why_wrong": "Aucune approbation FINMA n'est requise avant chaque conseil individuel."
+        }
+      ],
+      "explanation": "LSFin : différenciation entre pure information/exécution (pas de vérification), conseil (appropriation) et conseil personnalisé (adéquation). S'applique aux produits d'assurance qualifiables d'instruments financiers (vie liée à des placements)."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-017",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Un candidat AFA vous demande la base constitutionnelle de la trilogie AVS / LPP / LAMal pour son examen.",
+      "question": "Quels domaines les art. 111 à 117 de la Constitution fédérale (Cst) attribuent-ils à la Confédération ?",
+      "options": [
+        {
+          "text": "L'AVS et l'AI (art. 112)",
+          "correct": true
+        },
+        {
+          "text": "La prévoyance professionnelle (art. 113)",
+          "correct": true
+        },
+        {
+          "text": "L'assurance-chômage (art. 114)",
+          "correct": true
+        },
+        {
+          "text": "L'assurance-maladie et l'assurance-accidents (art. 117)",
+          "correct": true
+        },
+        {
+          "text": "L'organisation judiciaire cantonale exclusive",
+          "correct": false,
+          "why_wrong": "Compétence cantonale, pas fédérale."
+        },
+        {
+          "text": "La fixation des impôts communaux",
+          "correct": false,
+          "why_wrong": "Compétence communale/cantonale."
+        }
+      ],
+      "explanation": "Cst. 111-117 : bases constitutionnelles des trois piliers, de l'AC et de la LAMal/LAA. Toute assurance sociale suisse trouve son ancrage constitutionnel dans ces articles."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-018",
+      "theme": "droit",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": "Un client vous offre 500 CHF pour que vous 'oubliez' d'annoncer un antécédent médical dans la proposition.",
+      "question": "Quelle attitude est conforme au droit et à l'éthique VBV ?",
+      "options": [
+        {
+          "text": "Accepter, cela reste dans la limite du raisonnable",
+          "correct": false,
+          "why_wrong": "Corruption + réticence, doublement illicite."
+        },
+        {
+          "text": "Refuser, informer le client des conséquences (réticence, résiliation) et rédiger la proposition conformément à la réalité",
+          "correct": true
+        },
+        {
+          "text": "Accepter mais reverser l'argent à l'assureur",
+          "correct": false,
+          "why_wrong": "Le reversement ne blanchit pas l'infraction ; la réticence subsiste."
+        },
+        {
+          "text": "Refuser mais laisser le client soumettre la proposition inexacte lui-même",
+          "correct": false,
+          "why_wrong": "Le devoir de conseil impose d'agir, pas de fermer les yeux."
+        }
+      ],
+      "explanation": "Acceptation = complicité de réticence (art. 6 LCA) + violation art. 45 LSA + potentielle infraction pénale. Le devoir de loyauté impose de refuser fermement et d'informer le client des risques."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-019",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelle est la différence entre le contrat de courtage (art. 412 CO) et le contrat de mandat (art. 394 CO) ?",
+      "options": [
+        {
+          "text": "Le courtage vise l'indication ou la négociation d'un contrat (art. 412 CO)",
+          "correct": true
+        },
+        {
+          "text": "Le mandat est l'exécution de services pour autrui (art. 394 CO)",
+          "correct": true
+        },
+        {
+          "text": "Le courtier d'assurance combine souvent les deux régimes",
+          "correct": true
+        },
+        {
+          "text": "Aucune, ce sont des synonymes",
+          "correct": false,
+          "why_wrong": "Régimes juridiques distincts au CO."
+        },
+        {
+          "text": "Le mandat est toujours gratuit",
+          "correct": false,
+          "why_wrong": "Le mandat peut être rémunéré (art. 394 al. 3 CO)."
+        }
+      ],
+      "explanation": "Art. 412 CO : le courtier obtient rémunération pour avoir indiqué ou négocié un contrat. Art. 394 CO : le mandataire exécute des affaires pour le compte d'autrui. Le courtier d'assurance combine souvent les deux (courtage pour la conclusion + mandat pour la gestion)."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-020",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Un intermédiaire non lié récidive dans la non-remise de la FIC. La FINMA ouvre une procédure.",
+      "question": "Quelles sanctions peut prononcer la FINMA en cas de violation grave de l'art. 45 LSA par un intermédiaire non lié inscrit ?",
+      "options": [
+        {
+          "text": "Décision en constatation d'illicéité",
+          "correct": true
+        },
+        {
+          "text": "Interdiction d'exercer",
+          "correct": true
+        },
+        {
+          "text": "Retrait de l'inscription au registre",
+          "correct": true
+        },
+        {
+          "text": "Confiscation du gain illicite",
+          "correct": true
+        },
+        {
+          "text": "Emprisonnement immédiat",
+          "correct": false,
+          "why_wrong": "Une privation de liberté relève du juge pénal, pas de la FINMA."
+        },
+        {
+          "text": "Publication de la décision (naming and shaming)",
+          "correct": true
+        }
+      ],
+      "explanation": "LFINMA (art. 30 ss) : la FINMA dispose d'un arsenal administratif (décisions, interdictions, retrait d'inscription, confiscation, publication). La peine privative de liberté relève du juge pénal."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-021",
+      "theme": "droit",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "La LSA s'applique :",
+      "options": [
+        {
+          "text": "Aux caisses AVS",
+          "correct": false,
+          "why_wrong": "Régies par la LAVS et surveillance OFAS."
+        },
+        {
+          "text": "Aux entreprises d'assurance privées et aux intermédiaires d'assurance",
+          "correct": true
+        },
+        {
+          "text": "Aux banques",
+          "correct": false,
+          "why_wrong": "LB."
+        },
+        {
+          "text": "Aux caisses de compensation cantonales",
+          "correct": false,
+          "why_wrong": "Les caisses de compensation relèvent de la LAVS et de la surveillance OFAS."
+        }
+      ],
+      "explanation": "Art. 1 LSA : la loi régit la surveillance des entreprises d'assurance privées et des intermédiaires. Assurances sociales : lois spécifiques (LAMal, LAVS, LAI, LPP, LAA)."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-022",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": "Madame Roulin a signé une proposition d'assurance ménage il y a 10 jours. Elle vous appelle car elle veut annuler après avoir trouvé mieux ailleurs.",
+      "question": "Que pouvez-vous lui répondre ?",
+      "options": [
+        {
+          "text": "Elle dispose d'un délai de 14 jours dès la connaissance de la conclusion (art. 2a LCA)",
+          "correct": true
+        },
+        {
+          "text": "La révocation doit être faite par écrit",
+          "correct": true
+        },
+        {
+          "text": "Trop tard, seul un cas de résiliation extraordinaire permet de sortir",
+          "correct": false,
+          "why_wrong": "Le délai de révocation art. 2a LCA (14 jours) n'est pas écoulé."
+        },
+        {
+          "text": "Seulement 7 jours, donc trop tard",
+          "correct": false,
+          "why_wrong": "Le délai légal est de 14 jours, pas 7."
+        },
+        {
+          "text": "Elle doit payer la première prime avant de pouvoir résilier",
+          "correct": false,
+          "why_wrong": "Aucune condition de paiement préalable."
+        }
+      ],
+      "explanation": "Art. 2a LCA : révocation possible par écrit dans les 14 jours. Ici, 10 jours écoulés : le droit est intact. La révocation efface les effets du contrat rétroactivement."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-023",
+      "theme": "droit",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Selon l'art. 12 LCA, quand le contrat d'assurance est-il conclu ?",
+      "options": [
+        {
+          "text": "Dès la signature de la proposition par le preneur",
+          "correct": false,
+          "why_wrong": "La proposition n'est qu'une offre."
+        },
+        {
+          "text": "Dès l'acceptation par l'assureur (accord des volontés)",
+          "correct": true
+        },
+        {
+          "text": "Dès le paiement de la première prime",
+          "correct": false,
+          "why_wrong": "Le paiement n'est pas condition de conclusion."
+        },
+        {
+          "text": "Dès la délivrance de la police signée par les deux parties",
+          "correct": false,
+          "why_wrong": "La police atteste du contrat, elle n'est pas condition de formation."
+        }
+      ],
+      "explanation": "Le contrat est conclu par la rencontre de l'offre (proposition) et de l'acceptation (par l'assureur). La police atteste du contrat ; elle n'est pas condition de formation."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-024",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": "Un client omet volontairement de mentionner un traitement contre une hypertension sévère dans la proposition de complémentaire. L'assureur accepte, puis découvre le fait 6 mois plus tard.",
+      "question": "Quels sont les droits de l'assureur ?",
+      "options": [
+        {
+          "text": "Résilier le contrat dans les 4 semaines dès la connaissance",
+          "correct": true
+        },
+        {
+          "text": "Refuser la prestation pour les sinistres liés au fait tu",
+          "correct": true
+        },
+        {
+          "text": "Rien, la réticence n'est jamais opposable si l'assureur a accepté",
+          "correct": false,
+          "why_wrong": "L'acceptation ne fait pas obstacle à l'art. 6 LCA."
+        },
+        {
+          "text": "Poursuivre uniquement au pénal",
+          "correct": false,
+          "why_wrong": "La voie civile de l'art. 6 LCA est ouverte prioritairement."
+        },
+        {
+          "text": "Retenir 10 % des primes futures",
+          "correct": false,
+          "why_wrong": "Aucune sanction de ce type prévue par la LCA."
+        }
+      ],
+      "explanation": "Art. 6 LCA : réticence sanctionnée par la résiliation (4 semaines dès connaissance) et libération de la prestation pour les sinistres liés au fait tu. Point classique VBV."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-025",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Un assureur veut utiliser des données de santé pour proposer un nouveau produit préventif à ses assurés.",
+      "question": "Sous la nLPD, quels traitements de données de santé par un assureur sont admissibles ?",
+      "options": [
+        {
+          "text": "Traitement nécessaire à l'exécution du contrat (souscription, gestion du sinistre)",
+          "correct": true
+        },
+        {
+          "text": "Traitement fondé sur le consentement exprès du client",
+          "correct": true
+        },
+        {
+          "text": "Traitement fondé sur une obligation légale (LBA, LAMal)",
+          "correct": true
+        },
+        {
+          "text": "Transmission à un partenaire commercial à des fins publicitaires sans consentement",
+          "correct": false,
+          "why_wrong": "Interdit : donnée sensible, base légale exigée."
+        },
+        {
+          "text": "Publication sur les réseaux sociaux à titre pédagogique",
+          "correct": false,
+          "why_wrong": "Manifestement contraire à la nLPD."
+        }
+      ],
+      "explanation": "Les données de santé sont sensibles (art. 5 nLPD). Traitement licite si base légale (contrat, loi) ou consentement libre, éclairé, exprès. Marketing = interdit sans consentement."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-026",
+      "theme": "droit",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Vous concluez une assurance-vie à prime unique de 60'000 CHF pour un nouveau client. Il souhaite verser en espèces, refuse de justifier l'origine des fonds et paraît nerveux.",
+      "question": "Quelle procédure s'impose ?",
+      "options": [
+        {
+          "text": "Accepter les fonds, la vente prime",
+          "correct": false,
+          "why_wrong": "Grave violation LBA."
+        },
+        {
+          "text": "Identifier le cocontractant et l'ayant droit économique, clarifier l'arrière-plan, et en cas de soupçon fondé communiquer au MROS sans en informer le client",
+          "correct": true
+        },
+        {
+          "text": "Refuser purement et simplement et rompre le contact",
+          "correct": false,
+          "why_wrong": "L'obligation de communication au MROS demeure."
+        },
+        {
+          "text": "Informer le client du soupçon et le laisser corriger sa position",
+          "correct": false,
+          "why_wrong": "Interdiction d'informer (art. 10a LBA), sanction pénale."
+        }
+      ],
+      "explanation": "LBA : identification renforcée + clarification + communication MROS + blocage sans informer. Le tipping-off (art. 10a LBA) est pénalement sanctionné. Toujours documenter la procédure."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-027",
+      "theme": "droit",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "La LPGA (loi fédérale sur la partie générale du droit des assurances sociales) s'applique :",
+      "options": [
+        {
+          "text": "Aux assurances privées LCA",
+          "correct": false,
+          "why_wrong": "LCA = régime privé."
+        },
+        {
+          "text": "Aux assurances sociales fédérales (AVS, AI, LAA, LAMal, APG, etc.)",
+          "correct": true
+        },
+        {
+          "text": "Aux banques",
+          "correct": false,
+          "why_wrong": "Les banques relèvent de la LB, pas de la LPGA."
+        },
+        {
+          "text": "Uniquement à la LPP",
+          "correct": false,
+          "why_wrong": "La LPP est expressément exclue de la LPGA (art. 2 LPGA)."
+        }
+      ],
+      "explanation": "LPGA (art. 2) : socle commun applicable aux assurances sociales fédérales sauf LPP. Notions communes : prestations, prescription, litige, coordination des prestations."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-028",
+      "theme": "droit",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "L'obligation de formation continue du conseiller (VBV / AFA) est :",
+      "options": [
+        {
+          "text": "Facultative",
+          "correct": false,
+          "why_wrong": "Elle est exigée par la LSA / OS."
+        },
+        {
+          "text": "Imposée par l'art. 43 LSA et l'OS : formation initiale + continue documentée",
+          "correct": true
+        },
+        {
+          "text": "Uniquement recommandée par l'ASA",
+          "correct": false,
+          "why_wrong": "L'ASA gère les standards, mais l'obligation est légale."
+        },
+        {
+          "text": "Fixée par le seul contrat de travail",
+          "correct": false,
+          "why_wrong": "L'obligation est légale (LSA / OS), au-delà de tout contrat de travail."
+        }
+      ],
+      "explanation": "Art. 43-45 LSA + OS : formation initiale et continue obligatoires, documentées, permettant l'inscription et son maintien au registre FINMA (intermédiaires non liés)."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-029",
+      "theme": "droit",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Vous êtes courtier (intermédiaire non lié). Un assureur vous propose une commission majorée si vous placez ses produits chez vos clients, même quand un concurrent serait mieux adapté.",
+      "question": "Quelle est la conduite conforme à la LSA / LSFin / éthique VBV ?",
+      "options": [
+        {
+          "text": "Accepter en silence, la commission n'est pas soumise à information",
+          "correct": false,
+          "why_wrong": "Contraire à l'art. 45 LSA (transparence rémunération) et à l'obligation de loyauté du mandataire (art. 398 CO)."
+        },
+        {
+          "text": "Refuser l'incitation ou du moins l'informer intégralement au client, respecter l'obligation d'agir dans son meilleur intérêt (best advice), documenter la décision",
+          "correct": true
+        },
+        {
+          "text": "Accepter mais reverser la commission au client sans autre information",
+          "correct": false,
+          "why_wrong": "L'obligation de transparence subsiste."
+        },
+        {
+          "text": "Se retirer du courtage sans autre formalité",
+          "correct": false,
+          "why_wrong": "Ne résout pas la question du devoir de loyauté au client déjà mandant."
+        }
+      ],
+      "explanation": "Conflit d'intérêts : LSA art. 45 (transparence rémunération), LSFin (règles de conduite), CO art. 398 (loyauté du mandataire). Le courtier doit agir dans le meilleur intérêt du preneur, informer sur les rémunérations et documenter."
+    },
+    {
+      "external_id": "KLARY-GEN-DR-030",
+      "theme": "droit",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Un client vous demande d'exercer ses droits nLPD sur les traitements que votre courtage a effectués sur ses données.",
+      "question": "Quels droits la nLPD confère-t-elle à la personne concernée ?",
+      "options": [
+        {
+          "text": "Droit d'accès à ses données (art. 25)",
+          "correct": true
+        },
+        {
+          "text": "Droit à la rectification des données inexactes",
+          "correct": true
+        },
+        {
+          "text": "Droit d'être informé de traitements automatisés produisant des effets juridiques (décision individuelle automatisée)",
+          "correct": true
+        },
+        {
+          "text": "Droit à la remise/transfert des données (portabilité art. 28)",
+          "correct": true
+        },
+        {
+          "text": "Droit d'exiger la publication publique de ses données",
+          "correct": false,
+          "why_wrong": "Aucun droit à publication imposée."
+        },
+        {
+          "text": "Droit d'imposer une amende personnelle au responsable",
+          "correct": false,
+          "why_wrong": "Les sanctions relèvent du PFPDT / juge pénal."
+        }
+      ],
+      "explanation": "nLPD : droits d'accès, rectification, information sur les décisions automatisées, portabilité. Sanctions administratives / pénales prononcées par les autorités (PFPDT, juge pénal), pas par la personne concernée."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-001",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quelles sont, dans l'ordre, les 4 phases officielles de l'entretien de conseil VBV ?",
+      "options": [
+        {
+          "text": "Solution, analyse, introduction, conclusion",
+          "correct": false,
+          "why_wrong": "Ordre incorrect."
+        },
+        {
+          "text": "Introduction, analyse, solution, conclusion",
+          "correct": true
+        },
+        {
+          "text": "Prospection, closing, up-selling, fidélisation",
+          "correct": false,
+          "why_wrong": "Ce sont des étapes commerciales, pas les 4 phases officielles VBV."
+        },
+        {
+          "text": "Contact, présentation, prix, signature",
+          "correct": false,
+          "why_wrong": "Cette séquence commerciale ne correspond pas à la structure VBV."
+        }
+      ],
+      "explanation": "Les 4 phases VBV (profil de qualification art. 190 OS) : (1) Introduction, (2) Analyse des besoins, (3) Solution / recommandation, (4) Conclusion / suivi. Structure aussi celle de l'étude de cas à l'examen."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-002",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'objectif principal de la phase 'Analyse' de l'entretien est :",
+      "options": [
+        {
+          "text": "Identifier la situation, les besoins et les objectifs du client",
+          "correct": true
+        },
+        {
+          "text": "Recenser les couvertures existantes et détecter les lacunes",
+          "correct": true
+        },
+        {
+          "text": "Documenter la prise d'informations pour le dossier (art. 45 LSA)",
+          "correct": true
+        },
+        {
+          "text": "Présenter immédiatement le produit le plus rentable",
+          "correct": false,
+          "why_wrong": "La solution vient après l'analyse."
+        },
+        {
+          "text": "Signer la proposition sans autre échange",
+          "correct": false,
+          "why_wrong": "Impossible sans recommandation motivée."
+        }
+      ],
+      "explanation": "L'analyse cherche à comprendre la situation personnelle, familiale, financière et de couverture du client. Sans analyse : pas de recommandation adéquate, violation potentielle de l'art. 45 LSA."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-003",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Vous auditez les canaux de prospection de votre équipe et devez signaler les pratiques non conformes.",
+      "question": "Parmi les sources de prospection admises et éthiques :",
+      "options": [
+        {
+          "text": "Recommandations de clients existants",
+          "correct": true
+        },
+        {
+          "text": "Réseaux professionnels et de proximité",
+          "correct": true
+        },
+        {
+          "text": "Événements et salons publics",
+          "correct": true
+        },
+        {
+          "text": "Fichiers d'adresses acquis illégalement",
+          "correct": false,
+          "why_wrong": "Contraire à la nLPD (base légale, finalité) et à la LCD."
+        },
+        {
+          "text": "Bases publiques (registre du commerce, données ouvertes)",
+          "correct": true
+        },
+        {
+          "text": "Écoute téléphonique non autorisée",
+          "correct": false,
+          "why_wrong": "Infraction pénale (art. 179ter CP)."
+        }
+      ],
+      "explanation": "Prospection éthique : réseau, recommandations, événements, données publiques. Interdit : fichiers illicites, écoutes, spam sans opt-in (LCD art. 3 al. 1 let. o et u), traitement contraire à la nLPD."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-004",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une question ouverte se distingue d'une question fermée par :",
+      "options": [
+        {
+          "text": "Le fait qu'elle appelle une réponse par oui / non",
+          "correct": false,
+          "why_wrong": "Description d'une question fermée."
+        },
+        {
+          "text": "Le fait qu'elle invite le client à développer, à raconter, à expliquer",
+          "correct": true
+        },
+        {
+          "text": "Le fait qu'elle est toujours technique",
+          "correct": false,
+          "why_wrong": "Une question ouverte peut être très simple, pas nécessairement technique."
+        },
+        {
+          "text": "Le fait qu'elle est réservée aux experts",
+          "correct": false,
+          "why_wrong": "Aucune restriction d'utilisation."
+        }
+      ],
+      "explanation": "Question ouverte (que, comment, pourquoi, dites-moi) : invite à développer, essentielle en phase d'analyse. Question fermée : oui/non, utile pour valider un point précis ou clôturer."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-005",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un client dit : 'Votre offre est plus chère que celle de votre concurrent.'",
+      "question": "Quelle réponse est la plus professionnelle et éthique ?",
+      "options": [
+        {
+          "text": "Casser immédiatement le prix de 20 %",
+          "correct": false,
+          "why_wrong": "Perte de crédibilité et marge, sans traiter le fond."
+        },
+        {
+          "text": "Questionner ce qui est comparé (couverture, franchise, exclusions), reformuler le besoin, valoriser les différences objectives, puis décider",
+          "correct": true
+        },
+        {
+          "text": "Dénigrer le concurrent",
+          "correct": false,
+          "why_wrong": "Interdit par l'art. 3 al. 1 let. a LCD (dénigrement)."
+        },
+        {
+          "text": "Ignorer l'objection et poursuivre",
+          "correct": false,
+          "why_wrong": "Une objection ignorée revient au moment du closing."
+        }
+      ],
+      "explanation": "Traitement d'objection prix : décomposer, comparer sur base équivalente, valoriser les différences (franchise, exclusions, service). Le dénigrement du concurrent est prohibé par la LCD."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-006",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "La technique de closing dite 'alternative' consiste à :",
+      "options": [
+        {
+          "text": "Poser une question binaire présupposant la décision (franchise 500 ou 1'000)",
+          "correct": true
+        },
+        {
+          "text": "Proposer deux options positives équivalentes en couverture",
+          "correct": true
+        },
+        {
+          "text": "Menacer d'une hausse de prime",
+          "correct": false,
+          "why_wrong": "Pression indue contraire à la déontologie et potentiellement LCD."
+        },
+        {
+          "text": "Ne rien dire et attendre",
+          "correct": false,
+          "why_wrong": "Le silence prolongé n'est pas une technique de closing structurée."
+        },
+        {
+          "text": "Répéter systématiquement le prix",
+          "correct": false,
+          "why_wrong": "Répéter le prix accentue l'objection."
+        }
+      ],
+      "explanation": "Closing alternatif : proposer deux options positives, la question posée n'étant plus 'si' mais 'quel'. Reste éthique tant qu'aucune pression indue n'est exercée."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-007",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Votre direction commerciale vous demande d'argumenter le cross-selling comme levier de rentabilité éthique.",
+      "question": "Le cross-selling (vente croisée) permet notamment :",
+      "options": [
+        {
+          "text": "D'élargir le champ de couverture du client à ses besoins réels",
+          "correct": true
+        },
+        {
+          "text": "D'améliorer la rentabilité et la fidélisation du portefeuille",
+          "correct": true
+        },
+        {
+          "text": "D'augmenter les revenus par client sans nouvelle acquisition",
+          "correct": true
+        },
+        {
+          "text": "De contourner l'obligation d'analyse des besoins",
+          "correct": false,
+          "why_wrong": "L'obligation d'analyse (art. 45 LSA) demeure entière."
+        },
+        {
+          "text": "De vendre systématiquement le produit le plus rentable pour l'assureur",
+          "correct": false,
+          "why_wrong": "Contraire au best advice."
+        }
+      ],
+      "explanation": "Cross-selling : bénéfique s'il répond à un besoin analysé (ex. RC ménage + PJ + inventaire). Il ne dispense jamais de l'analyse de besoins et du best advice."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-008",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Un courtier (intermédiaire non lié) reçoit ses instructions de :",
+      "options": [
+        {
+          "text": "L'assureur exclusivement",
+          "correct": false,
+          "why_wrong": "C'est l'intermédiaire lié."
+        },
+        {
+          "text": "Le preneur d'assurance (mandant)",
+          "correct": true
+        },
+        {
+          "text": "La FINMA",
+          "correct": false,
+          "why_wrong": "La FINMA ne donne pas d'instructions individuelles au courtier."
+        },
+        {
+          "text": "L'Ombudsman",
+          "correct": false,
+          "why_wrong": "L'Ombudsman ne donne aucune instruction au courtier."
+        }
+      ],
+      "explanation": "Le courtier agit sur mandat du preneur (art. 40 al. 2 LSA + art. 394 CO). Sa loyauté première va au client. L'agent lié, lui, représente l'assureur qui le mandate."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-009",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Vous téléphonez à un prospect particulier pour proposer un rendez-vous. Il refuse et raccroche.",
+      "question": "Quelle est la conduite conforme LCD / éthique ?",
+      "options": [
+        {
+          "text": "Le rappeler chaque jour jusqu'à obtenir un oui",
+          "correct": false,
+          "why_wrong": "Harcèlement, contraire à la LCD (art. 3 al. 1 let. u)."
+        },
+        {
+          "text": "Respecter le refus, noter et cesser toute sollicitation",
+          "correct": true
+        },
+        {
+          "text": "Le rappeler d'un autre numéro pour tromper l'affichage",
+          "correct": false,
+          "why_wrong": "Manœuvre trompeuse contraire à la LCD art. 3."
+        },
+        {
+          "text": "Passer par un proche pour contourner",
+          "correct": false,
+          "why_wrong": "Détournement caractéristique, contraire à la LCD et à la bonne foi."
+        }
+      ],
+      "explanation": "Un refus doit être respecté. La LCD (art. 3 al. 1 let. u) interdit les sollicitations non désirées et les manœuvres trompeuses. Documenter l'opt-out et arrêter."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-010",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "En début d'entretien, le 'brise-glace' sert principalement à :",
+      "options": [
+        {
+          "text": "Établir un climat de confiance",
+          "correct": true
+        },
+        {
+          "text": "Détendre l'atmosphère et faciliter la parole du client",
+          "correct": true
+        },
+        {
+          "text": "Faire signer une pré-proposition",
+          "correct": false,
+          "why_wrong": "Signer sans analyse est une faute professionnelle."
+        },
+        {
+          "text": "Contourner l'analyse des besoins",
+          "correct": false,
+          "why_wrong": "Le brise-glace ne dispense d'aucune obligation."
+        },
+        {
+          "text": "Fixer la commission",
+          "correct": false,
+          "why_wrong": "Aucun lien entre brise-glace et rémunération."
+        }
+      ],
+      "explanation": "Le brise-glace (small talk professionnel) permet la mise en confiance, condition d'un entretien productif. Il ne remplace jamais l'analyse ni la remise de la fiche d'information client (art. 45 LSA)."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-011",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Parmi ces éléments, lesquels constituent des signaux d'achat du client ?",
+      "options": [
+        {
+          "text": "Il demande des précisions sur les modalités de paiement",
+          "correct": true
+        },
+        {
+          "text": "Il commence à se projeter (utilisation du 'quand j'aurai le contrat...')",
+          "correct": true
+        },
+        {
+          "text": "Il pose des questions détaillées sur le fonctionnement en cas de sinistre",
+          "correct": true
+        },
+        {
+          "text": "Il regarde ostensiblement sa montre pour couper court",
+          "correct": false,
+          "why_wrong": "Signal négatif : demande d'écourter."
+        },
+        {
+          "text": "Il croise les bras et se tait",
+          "correct": false,
+          "why_wrong": "Signal plutôt défensif."
+        }
+      ],
+      "explanation": "Signaux d'achat : questions concrètes de mise en œuvre, projection dans l'avenir avec le produit, prise de notes, comparaison de scénarios. Utile pour amorcer le closing."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-012",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "La méthode SPIN (Situation, Problème, Implication, Need-payoff / bénéfice) est particulièrement utile :",
+      "options": [
+        {
+          "text": "En phase de closing",
+          "correct": false,
+          "why_wrong": "C'est un outil de découverte, pas de closing."
+        },
+        {
+          "text": "En phase d'analyse des besoins pour faire prendre conscience du problème et du bénéfice de la solution",
+          "correct": true
+        },
+        {
+          "text": "En phase de suivi",
+          "correct": false,
+          "why_wrong": "La méthode SPIN structure la découverte, pas le suivi."
+        },
+        {
+          "text": "Elle est interdite en Suisse",
+          "correct": false,
+          "why_wrong": "Aucune interdiction : c'est une méthode commerciale reconnue."
+        }
+      ],
+      "explanation": "SPIN (Rackham) est une méthode de questionnement structuré en phase 2 (analyse) : elle transforme un besoin latent en besoin explicite, condition d'une recommandation acceptée."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-013",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'empathie en entretien de conseil consiste à :",
+      "options": [
+        {
+          "text": "Reformuler et reconnaître le point de vue du client",
+          "correct": true
+        },
+        {
+          "text": "Valider verbalement l'émotion du client sans nécessairement l'approuver",
+          "correct": true
+        },
+        {
+          "text": "Toujours donner raison au client",
+          "correct": false,
+          "why_wrong": "Confusion avec la complaisance, non professionnelle."
+        },
+        {
+          "text": "Éviter tout contact visuel",
+          "correct": false,
+          "why_wrong": "Contraire à la posture d'écoute active."
+        },
+        {
+          "text": "Parler plus vite pour convaincre",
+          "correct": false,
+          "why_wrong": "L'empathie ne dépend pas du débit de parole."
+        }
+      ],
+      "explanation": "Empathie professionnelle : comprendre le vécu et les émotions du client, les valider verbalement (reformulation), sans renoncer à son propre rôle de conseil (best advice)."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-014",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Vous formez un jeune conseiller qui panique devant les objections et souhaite un protocole clair.",
+      "question": "Face à une objection, quelles étapes structurées permettent un traitement professionnel ?",
+      "options": [
+        {
+          "text": "Écouter jusqu'au bout sans interrompre",
+          "correct": true
+        },
+        {
+          "text": "Reformuler pour vérifier la bonne compréhension",
+          "correct": true
+        },
+        {
+          "text": "Isoler l'objection (est-ce le seul point ?)",
+          "correct": true
+        },
+        {
+          "text": "Argumenter avec un fait ou un bénéfice, puis confirmer",
+          "correct": true
+        },
+        {
+          "text": "Contredire immédiatement et hausser le ton",
+          "correct": false,
+          "why_wrong": "Contre-productif et non professionnel."
+        },
+        {
+          "text": "Ignorer l'objection en changeant de sujet",
+          "correct": false,
+          "why_wrong": "Perte de confiance."
+        }
+      ],
+      "explanation": "Traitement d'objection : écouter, reformuler, isoler, argumenter, valider. Une objection non traitée revient au moment du closing."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-015",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "La reformulation permet notamment de :",
+      "options": [
+        {
+          "text": "Vérifier la compréhension mutuelle",
+          "correct": true
+        },
+        {
+          "text": "Montrer une écoute active au client",
+          "correct": true
+        },
+        {
+          "text": "Sécuriser la suite de l'entretien avant de proposer une solution",
+          "correct": true
+        },
+        {
+          "text": "Gagner du temps sans écouter",
+          "correct": false,
+          "why_wrong": "La reformulation exige justement une écoute attentive."
+        },
+        {
+          "text": "Éviter de répondre à l'objection",
+          "correct": false,
+          "why_wrong": "Elle prépare la réponse, elle ne l'esquive pas."
+        }
+      ],
+      "explanation": "La reformulation est un pilier de l'écoute active : elle valide la bonne compréhension, montre au client qu'il est entendu et sécurise la suite de l'entretien."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-016",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un client se referme, ne répond plus à vos questions, hoche la tête sans conviction.",
+      "question": "Quelle réaction est la plus professionnelle ?",
+      "options": [
+        {
+          "text": "Pousser la conclusion et signer",
+          "correct": false,
+          "why_wrong": "Vente forcée, potentiellement contraire à l'éthique et au best advice."
+        },
+        {
+          "text": "Marquer une pause, poser une question ouverte sur ce qui le préoccupe, laisser un silence pour l'inviter à s'exprimer",
+          "correct": true
+        },
+        {
+          "text": "Baisser immédiatement le prix",
+          "correct": false,
+          "why_wrong": "Baisser le prix ne traite pas la réserve non exprimée."
+        },
+        {
+          "text": "Terminer l'entretien sans un mot",
+          "correct": false,
+          "why_wrong": "Fermeture prématurée non professionnelle."
+        }
+      ],
+      "explanation": "Face au retrait, la réponse professionnelle est de rouvrir la parole (question ouverte + silence). Le silence est un outil puissant qui invite le client à verbaliser sa réserve."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-017",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'up-selling consiste à :",
+      "options": [
+        {
+          "text": "Proposer une couverture d'un niveau supérieur (casco complète vs partielle)",
+          "correct": true
+        },
+        {
+          "text": "Augmenter le capital assuré sur un même besoin identifié",
+          "correct": true
+        },
+        {
+          "text": "Proposer un produit d'une autre branche",
+          "correct": false,
+          "why_wrong": "C'est le cross-selling, pas l'up-selling."
+        },
+        {
+          "text": "Baisser le prix pour convaincre",
+          "correct": false,
+          "why_wrong": "Aucun lien avec l'up-selling."
+        },
+        {
+          "text": "Résilier l'ancienne police du client",
+          "correct": false,
+          "why_wrong": "Aucun lien avec la notion d'up-selling."
+        }
+      ],
+      "explanation": "Up-selling = monter en gamme sur le même besoin (casco partielle → complète, LCA basique → premium). Cross-selling = étendre à d'autres besoins (ménage + PJ)."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-018",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Vous préparez la trame d'un premier rendez-vous type conforme LSA/LCA pour toute votre équipe.",
+      "question": "Les devoirs pré-contractuels du conseiller comprennent :",
+      "options": [
+        {
+          "text": "Remettre la fiche d'information client (art. 45 LSA)",
+          "correct": true
+        },
+        {
+          "text": "Informer sur la couverture, les exclusions, les primes (art. 3 LCA)",
+          "correct": true
+        },
+        {
+          "text": "Documenter l'analyse des besoins et le conseil donné",
+          "correct": true
+        },
+        {
+          "text": "Cacher les commissions perçues",
+          "correct": false,
+          "why_wrong": "Contraire à l'art. 45 LSA (transparence)."
+        },
+        {
+          "text": "Faire signer avant même l'analyse",
+          "correct": false,
+          "why_wrong": "Contraire au processus VBV et au best advice."
+        }
+      ],
+      "explanation": "Pré-contractuel : information (LCA 3), FIC (LSA 45), documentation de l'analyse des besoins et du conseil. Base juridique de la traçabilité et de la protection de l'assuré."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-019",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Vous démarchez un prospect via LinkedIn et souhaitez lui envoyer une offre personnalisée par email.",
+      "question": "Quelle règle nLPD / LCD s'applique ?",
+      "options": [
+        {
+          "text": "Tout est permis, LinkedIn étant public",
+          "correct": false,
+          "why_wrong": "La publicité de la source ne dispense pas des règles nLPD et LCD."
+        },
+        {
+          "text": "Vous devez respecter la finalité de la collecte, informer sur le traitement (nLPD art. 19-21) et obtenir l'accord préalable pour les envois publicitaires (LCD art. 3 al. 1 let. o)",
+          "correct": true
+        },
+        {
+          "text": "Vous pouvez envoyer l'offre par email sans jamais indiquer votre identité",
+          "correct": false,
+          "why_wrong": "Contraire à l'obligation d'identifier l'expéditeur (LCD / nLPD)."
+        },
+        {
+          "text": "Il suffit d'ajouter 'confidentiel' à l'email",
+          "correct": false,
+          "why_wrong": "La mention ne dispense d'aucune obligation légale."
+        }
+      ],
+      "explanation": "nLPD : information sur la collecte et la finalité. LCD art. 3 al. 1 let. o : envois publicitaires massifs sans opt-in prohibés. La prospection professionnelle 'B2B' reste encadrée."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-020",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "La fiche d'information client (art. 45 LSA) doit être remise :",
+      "options": [
+        {
+          "text": "Après la signature du contrat",
+          "correct": false,
+          "why_wrong": "Trop tard : la fonction est de pré-informer."
+        },
+        {
+          "text": "Lors du premier contact / avant la conclusion du contrat",
+          "correct": true
+        },
+        {
+          "text": "Uniquement sur demande du client",
+          "correct": false,
+          "why_wrong": "La remise est proactive et obligatoire, pas conditionnelle."
+        },
+        {
+          "text": "Une fois par an",
+          "correct": false,
+          "why_wrong": "Aucun rythme annuel : la remise se fait dès le premier contact."
+        }
+      ],
+      "explanation": "Art. 45 LSA + OS : remise au premier contact ou en tout cas avant la conclusion, sur support durable. Sanction FINMA en cas d'omission."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-021",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Madame Berger, 42 ans, indépendante, mariée avec 2 enfants, vient d'ouvrir son cabinet. Elle vous demande de tout revoir : prévoyance, RC pro, ménage, PJ. Vous avez 1 heure.",
+      "question": "Quelle démarche VBV structurée devez-vous suivre ?",
+      "options": [
+        {
+          "text": "Signer immédiatement une offre 'toutes couvertures' pour rentabiliser l'entretien",
+          "correct": false,
+          "why_wrong": "Aucune analyse, best advice violé."
+        },
+        {
+          "text": "Suivre les 4 phases : introduction (FIC + cadre), analyse (situation, besoins, couvertures existantes, lacunes), solution (proposer une hiérarchisation avec chiffres), conclusion (proposition, calendrier, prochaine étape), en documentant chaque étape",
+          "correct": true
+        },
+        {
+          "text": "Aborder uniquement la prévoyance et laisser tomber le reste",
+          "correct": false,
+          "why_wrong": "Ne répond pas à la demande."
+        },
+        {
+          "text": "Renvoyer la cliente vers un autre conseiller",
+          "correct": false,
+          "why_wrong": "Renvoi non justifié dans le contexte."
+        }
+      ],
+      "explanation": "Cas complexe multi-produits : la structure des 4 phases VBV s'applique intégralement, avec priorisation (risque de perte de revenu > protection famille > protection biens) et documentation (art. 45 LSA)."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-022",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles obligations distinguent, dans la pratique, un agent lié d'un courtier vis-à-vis du client ?",
+      "options": [
+        {
+          "text": "L'agent lié doit informer sur les assureurs qu'il représente",
+          "correct": true
+        },
+        {
+          "text": "Le courtier agit sur mandat du preneur (loyauté première au client)",
+          "correct": true
+        },
+        {
+          "text": "Le courtier doit être inscrit au registre FINMA (art. 41 LSA)",
+          "correct": true
+        },
+        {
+          "text": "Les deux sont soumis à l'art. 45 LSA (informations à fournir)",
+          "correct": true
+        },
+        {
+          "text": "Seul l'agent lié doit suivre une formation initiale",
+          "correct": false,
+          "why_wrong": "Formation obligatoire pour les deux (art. 43 LSA)."
+        },
+        {
+          "text": "Le courtier peut cacher ses commissions",
+          "correct": false,
+          "why_wrong": "Transparence exigée."
+        }
+      ],
+      "explanation": "Les deux catégories relèvent de l'art. 45 LSA. Différence structurelle : rattachement à un assureur (lié) vs mandat du preneur et inscription obligatoire au registre FINMA (non lié)."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-023",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Le 'handoff' (passage de relais entre commercial et gestionnaire) sert à :",
+      "options": [
+        {
+          "text": "Éviter que le client soit livré à lui-même après la signature",
+          "correct": true
+        },
+        {
+          "text": "Sécuriser l'expérience de gestion sinistre",
+          "correct": true
+        },
+        {
+          "text": "Réduire les annulations post-vente",
+          "correct": true
+        },
+        {
+          "text": "Se débarrasser du client",
+          "correct": false,
+          "why_wrong": "Contraire à l'objectif de fidélisation."
+        },
+        {
+          "text": "Éviter les questions du client",
+          "correct": false,
+          "why_wrong": "Contraire au devoir d'information continue."
+        },
+        {
+          "text": "Réduire les prestations d'assurance",
+          "correct": false,
+          "why_wrong": "Aucun lien avec le handoff."
+        }
+      ],
+      "explanation": "Le handoff sécurise la satisfaction et la fidélisation : présentation nominale du gestionnaire, transfert du dossier, cadrage des prochaines étapes. Réduit le taux d'annulation post-vente."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-024",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un client très satisfait vous dit qu'il vous recommandera à son frère.",
+      "question": "Que faites-vous concrètement ?",
+      "options": [
+        {
+          "text": "Le remercier vaguement et attendre",
+          "correct": false,
+          "why_wrong": "Passivité : opportunité de recommandation perdue."
+        },
+        {
+          "text": "Le remercier, demander explicitement l'autorisation d'être présenté, fixer un canal (email / appel), et remercier après l'échange effectif",
+          "correct": true
+        },
+        {
+          "text": "Appeler directement son frère avec les coordonnées trouvées en ligne",
+          "correct": false,
+          "why_wrong": "Traitement nLPD sans base et démarchage LCD douteux."
+        },
+        {
+          "text": "Envoyer un cadeau au client sans plus formaliser",
+          "correct": false,
+          "why_wrong": "Cadeaux à surveiller (LCD, LBA), sans traiter la recommandation."
+        }
+      ],
+      "explanation": "Recommandation active : capitaliser sur l'ouverture, formaliser l'autorisation (nLPD), s'assurer d'un canal, boucler avec un remerciement. Le NPS se construit à ces moments."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-025",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Quel délai typique de suivi post-vente est reconnu comme bonne pratique ?",
+      "options": [
+        {
+          "text": "Un contact dans les 30 à 90 jours après la conclusion",
+          "correct": true
+        },
+        {
+          "text": "Un point annuel systématique",
+          "correct": true
+        },
+        {
+          "text": "Un contact déclenché à chaque événement de vie majeur (mariage, enfant, achat immobilier)",
+          "correct": true
+        },
+        {
+          "text": "Aucun suivi n'est nécessaire",
+          "correct": false,
+          "why_wrong": "Contraire au devoir d'information continue (art. 3 LCA)."
+        },
+        {
+          "text": "Tous les 5 ans seulement",
+          "correct": false,
+          "why_wrong": "Cadence trop faible pour un conseil de qualité."
+        },
+        {
+          "text": "Uniquement en cas de sinistre",
+          "correct": false,
+          "why_wrong": "Insuffisant : l'analyse des besoins évolue avec la vie du client."
+        }
+      ],
+      "explanation": "Bonne pratique : contact rapproché post-vente (30-90 jours) pour vérifier la mise en place, puis revue annuelle. Ancrage aussi dans le devoir d'information continu (art. 3 LCA)."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-026",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Vous êtes en négociation avec un chef d'entreprise pour un package : LAA-C, IJM collective, LPP surobligatoire, RC professionnelle. Il exige 15 % de rabais sur toutes les primes.",
+      "question": "Comment structurer une réponse professionnelle ?",
+      "options": [
+        {
+          "text": "Refuser en bloc et clôturer",
+          "correct": false,
+          "why_wrong": "Ferme la relation sans exploration de solutions équilibrées."
+        },
+        {
+          "text": "Accepter tout, quitte à sacrifier la marge",
+          "correct": false,
+          "why_wrong": "Risque de mauvaise recommandation et de perte de crédibilité."
+        },
+        {
+          "text": "Ré-analyser les besoins réels, ajuster les couvertures (franchises, exclusions, capitaux), objectiver ce qui peut baisser sans dégrader la protection critique, et documenter le résultat",
+          "correct": true
+        },
+        {
+          "text": "Diminuer la couverture LAA-C obligatoire en dessous du minimum légal",
+          "correct": false,
+          "why_wrong": "Illégal."
+        }
+      ],
+      "explanation": "Négociation multi-lignes : n'est pas 'discount global'. Rebâtir la structure (analyse), objectiver les leviers (franchise, capitaux, garanties optionnelles), documenter la décision, respecter les seuils légaux (LAA)."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-027",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Votre responsable qualité inspecte les techniques de closing pour identifier les pratiques à risque LCD/LSA.",
+      "question": "Parmi les techniques de closing suivantes, lesquelles sont considérées comme éthiques et compatibles avec le devoir de conseil ?",
+      "options": [
+        {
+          "text": "Closing par récapitulatif des bénéfices convenus",
+          "correct": true
+        },
+        {
+          "text": "Closing alternatif (deux options positives)",
+          "correct": true
+        },
+        {
+          "text": "Closing par question directe une fois les objections traitées",
+          "correct": true
+        },
+        {
+          "text": "Closing par mensonge sur la disponibilité limitée du produit",
+          "correct": false,
+          "why_wrong": "Manœuvre trompeuse LCD."
+        },
+        {
+          "text": "Closing par pression émotionnelle sur la santé d'un proche",
+          "correct": false,
+          "why_wrong": "Non professionnel et potentiellement abusif."
+        }
+      ],
+      "explanation": "Closing éthique : récapitulatif, alternatif, direct. Interdits : mensonges (LCD), pression indue, urgence artificielle. La conclusion doit être un choix éclairé."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-028",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'écoute active implique notamment :",
+      "options": [
+        {
+          "text": "Contact visuel et posture ouverte",
+          "correct": true
+        },
+        {
+          "text": "Reformulation et prise de notes",
+          "correct": true
+        },
+        {
+          "text": "Questions de clarification et silences respectés",
+          "correct": true
+        },
+        {
+          "text": "Interrompre pour montrer sa compétence",
+          "correct": false,
+          "why_wrong": "Contraire à l'écoute active."
+        },
+        {
+          "text": "Répondre au téléphone pendant que le client parle",
+          "correct": false,
+          "why_wrong": "Comportement disqualifiant en entretien."
+        }
+      ],
+      "explanation": "Écoute active : contact visuel, posture ouverte, reformulation, prise de notes, questions de clarification. Base d'un entretien de qualité et d'une bonne analyse."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-029",
+      "theme": "acquisition",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "L'analyse des besoins peut s'appuyer sur la pyramide de Maslow pour :",
+      "options": [
+        {
+          "text": "Rappeler au client qu'il est irrationnel",
+          "correct": false,
+          "why_wrong": "Attaque personnelle contre-productive."
+        },
+        {
+          "text": "Hiérarchiser les besoins : sécurité de base (LAA, LAMal), stabilité (LPP, IJM), projets (3a, ménage, PJ), accomplissement (épargne, prévoyance libre)",
+          "correct": true
+        },
+        {
+          "text": "Vendre systématiquement le produit le plus cher",
+          "correct": false,
+          "why_wrong": "Contraire au best advice."
+        },
+        {
+          "text": "Négliger la partie 'protection' au profit du 'plaisir'",
+          "correct": false,
+          "why_wrong": "Inverse la logique de Maslow appliquée à l'assurance."
+        }
+      ],
+      "explanation": "Maslow appliqué : partir de la protection vitale (sécurité) puis remonter (projets, patrimoine). Aide à structurer l'entretien et à hiérarchiser les priorités."
+    },
+    {
+      "external_id": "KLARY-GEN-AC-030",
+      "theme": "acquisition",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "La fidélisation d'un portefeuille repose principalement sur :",
+      "options": [
+        {
+          "text": "La qualité du suivi et la disponibilité en cas de sinistre",
+          "correct": true
+        },
+        {
+          "text": "La revue régulière des besoins",
+          "correct": true
+        },
+        {
+          "text": "La transparence sur les rémunérations et les décisions",
+          "correct": true
+        },
+        {
+          "text": "Le prix le plus bas systématiquement",
+          "correct": false,
+          "why_wrong": "Un prix bas seul ne fidélise pas si la qualité fait défaut."
+        },
+        {
+          "text": "Les cadeaux de fin d'année exclusivement",
+          "correct": false,
+          "why_wrong": "Insuffisant : ne remplace pas la relation de conseil."
+        },
+        {
+          "text": "Le silence après la vente",
+          "correct": false,
+          "why_wrong": "Absence de suivi = risque d'attrition majeure."
+        }
+      ],
+      "explanation": "Fidélisation = confiance x accessibilité x pertinence. Le suivi de sinistre est un moment clé de vérité. Une revue annuelle est également un puissant levier de rétention et de cross-selling utile."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-001",
+      "theme": "litiges",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'Ombudsman de l'assurance privée et de la SUVA joue le rôle de :",
+      "options": [
+        {
+          "text": "Médiateur neutre entre l'assuré et l'assureur",
+          "correct": true
+        },
+        {
+          "text": "Service gratuit pour l'assuré",
+          "correct": true
+        },
+        {
+          "text": "Recommandation non contraignante à l'égard de l'assureur",
+          "correct": true
+        },
+        {
+          "text": "Tribunal privé qui rend des décisions exécutoires",
+          "correct": false,
+          "why_wrong": "Ni tribunal ni décision exécutoire."
+        },
+        {
+          "text": "Autorité de police",
+          "correct": false,
+          "why_wrong": "L'Ombudsman n'a aucun pouvoir de police."
+        },
+        {
+          "text": "Chambre de commerce",
+          "correct": false,
+          "why_wrong": "Aucun lien avec les chambres de commerce."
+        }
+      ],
+      "explanation": "L'Ombudsman est un médiateur neutre et indépendant. Service gratuit pour l'assuré, ses prises de position ne sont pas contraignantes. Voie civile toujours ouverte (art. 46b LCA)."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-002",
+      "theme": "litiges",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Selon l'art. 46 al. 1 LCA (révision 2022), les créances découlant du contrat d'assurance se prescrivent par :",
+      "options": [
+        {
+          "text": "2 ans dès la connaissance du fait",
+          "correct": false,
+          "why_wrong": "Ancien délai."
+        },
+        {
+          "text": "5 ans dès la survenance du fait sur lequel elles reposent",
+          "correct": true
+        },
+        {
+          "text": "10 ans dès la conclusion du contrat",
+          "correct": false
+        },
+        {
+          "text": "1 an dès le refus de l'assureur",
+          "correct": false
+        }
+      ],
+      "explanation": "Art. 46 al. 1 LCA (dès 2022) : prescription de 5 ans dès la survenance du fait générateur (avant : 2 ans). Nouvelle règle facile à confondre à l'examen."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-003",
+      "theme": "litiges",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Le for compétent pour une action civile fondée sur un contrat d'assurance (art. 46b LCA) est :",
+      "options": [
+        {
+          "text": "Uniquement le siège de l'assureur",
+          "correct": false,
+          "why_wrong": "L'art. 46b LCA offre une alternative au preneur, au for de son domicile."
+        },
+        {
+          "text": "Au choix du preneur : son domicile suisse ou le siège / la succursale suisse de l'assureur",
+          "correct": true
+        },
+        {
+          "text": "Uniquement à Zurich (siège FINMA)",
+          "correct": false,
+          "why_wrong": "La FINMA n'a aucun rôle judiciaire pour les litiges individuels."
+        },
+        {
+          "text": "Le domicile du témoin",
+          "correct": false,
+          "why_wrong": "Aucun for lié au témoin."
+        }
+      ],
+      "explanation": "Art. 46b LCA : le preneur peut agir soit à son domicile suisse, soit au siège / succursale suisse de l'assureur. Disposition protectrice de l'assuré, impérative."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-004",
+      "theme": "litiges",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelles étapes standard structurent le traitement d'un sinistre par un assureur ?",
+      "options": [
+        {
+          "text": "Réception et enregistrement de l'annonce",
+          "correct": true
+        },
+        {
+          "text": "Vérification de la couverture (contrat, exclusions, délais)",
+          "correct": true
+        },
+        {
+          "text": "Évaluation du dommage (expertise si nécessaire)",
+          "correct": true
+        },
+        {
+          "text": "Décision (acceptation / refus / offre transactionnelle)",
+          "correct": true
+        },
+        {
+          "text": "Paiement ou décision motivée",
+          "correct": true
+        },
+        {
+          "text": "Suppression automatique du contrat sans notification",
+          "correct": false,
+          "why_wrong": "Aucune règle n'impose la suppression sans notification."
+        }
+      ],
+      "explanation": "Cycle sinistre : annonce, ouverture, vérification, évaluation, décision, règlement. Chaque étape doit être documentée. Refus : motivé et notifié au preneur, avec voies de recours (Ombudsman, action civile)."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-005",
+      "theme": "litiges",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Le principe indemnitaire (art. 96 LCA) signifie que :",
+      "options": [
+        {
+          "text": "L'indemnité peut dépasser le dommage subi",
+          "correct": false,
+          "why_wrong": "Contraire au principe."
+        },
+        {
+          "text": "L'indemnité est plafonnée au dommage effectivement subi",
+          "correct": true
+        },
+        {
+          "text": "L'assureur peut refuser toute indemnité",
+          "correct": false,
+          "why_wrong": "Contraire au principe indemnitaire qui prévoit une indemnisation à hauteur du dommage."
+        },
+        {
+          "text": "Le sinistre doit être supérieur à 10'000 CHF",
+          "correct": false,
+          "why_wrong": "Aucun seuil légal de ce type."
+        }
+      ],
+      "explanation": "Principe fondamental des assurances de dommages : pas d'enrichissement. Justifie l'interdiction du cumul, la subrogation (art. 95c LCA) et l'exigence d'un intérêt assurable (art. 48 LCA)."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-006",
+      "theme": "litiges",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "La subrogation légale de l'assureur (art. 95c LCA, ex-art. 72 LCA ancien) implique que :",
+      "options": [
+        {
+          "text": "L'assureur, ayant indemnisé son assuré, se substitue à ce dernier dans ses droits contre le tiers responsable jusqu'à concurrence de l'indemnité versée",
+          "correct": true
+        },
+        {
+          "text": "L'assureur reverse à l'assuré ses propres réserves techniques",
+          "correct": false,
+          "why_wrong": "Aucun lien avec la subrogation."
+        },
+        {
+          "text": "Le tiers responsable peut refuser toute action",
+          "correct": false,
+          "why_wrong": "Le responsable reste débiteur, y compris envers l'assureur subrogé."
+        },
+        {
+          "text": "L'assuré perd tous ses droits contre le tiers",
+          "correct": false,
+          "why_wrong": "Il ne les perd que dans la mesure indemnisée."
+        }
+      ],
+      "explanation": "Subrogation (art. 95c LCA, révision 2022 ; anciennement art. 72 LCA) : mécanisme central des assurances de dommages. Empêche l'enrichissement et permet à l'assureur de récupérer auprès du responsable."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-007",
+      "theme": "litiges",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'obligation d'aviser sans retard l'assureur du sinistre (art. 38 LCA) incombe :",
+      "options": [
+        {
+          "text": "Au preneur d'assurance dès qu'il en a connaissance",
+          "correct": true
+        },
+        {
+          "text": "À l'ayant droit à la prestation (bénéficiaire)",
+          "correct": true
+        },
+        {
+          "text": "Uniquement à l'assureur",
+          "correct": false,
+          "why_wrong": "L'assureur est destinataire, pas débiteur de l'annonce."
+        },
+        {
+          "text": "À l'expert désigné",
+          "correct": false,
+          "why_wrong": "L'expert n'a pas d'obligation légale d'annonce."
+        },
+        {
+          "text": "À la FINMA",
+          "correct": false,
+          "why_wrong": "La FINMA n'est pas destinataire des annonces individuelles."
+        }
+      ],
+      "explanation": "Art. 38 LCA : obligation d'annonce sans retard. Une déclaration tardive peut, selon les conditions, entraîner une réduction de la prestation si l'assureur a subi un préjudice (art. 45 LCA)."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-008",
+      "theme": "litiges",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un client reçoit un refus de prestation par courrier de son assureur pour un sinistre ménage.",
+      "question": "Quelles voies de recours devez-vous lui indiquer ?",
+      "options": [
+        {
+          "text": "Aucune voie de recours possible",
+          "correct": false,
+          "why_wrong": "Toujours au moins la voie civile ouverte (art. 46b LCA)."
+        },
+        {
+          "text": "Contestation motivée à l'assureur, saisine de l'Ombudsman (gratuit), puis action civile devant le juge compétent (art. 46b LCA) dans le délai de prescription (5 ans art. 46 LCA)",
+          "correct": true
+        },
+        {
+          "text": "Plainte pénale immédiate",
+          "correct": false,
+          "why_wrong": "Sans indice d'infraction, la voie pénale n'a pas sa place."
+        },
+        {
+          "text": "Recours à l'ASA",
+          "correct": false,
+          "why_wrong": "L'ASA ne tranche pas les litiges individuels."
+        }
+      ],
+      "explanation": "Chaîne classique : contestation interne, médiation Ombudsman, action civile. Respecter la prescription (5 ans art. 46 LCA) et le for (art. 46b LCA)."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-009",
+      "theme": "litiges",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Un client vous demande s'il doit renoncer à agir en justice après avoir saisi l'Ombudsman : rassurez-le et cadrez.",
+      "question": "Quelles limites encadrent l'action de l'Ombudsman de l'assurance privée ?",
+      "options": [
+        {
+          "text": "Ses prises de position ne sont pas contraignantes",
+          "correct": true
+        },
+        {
+          "text": "Il n'a pas le pouvoir d'ordonner une expertise judiciaire",
+          "correct": true
+        },
+        {
+          "text": "Il n'interrompt pas la prescription de plein droit sans démarche complémentaire",
+          "correct": true
+        },
+        {
+          "text": "Il peut être saisi gratuitement par l'assuré",
+          "correct": true
+        },
+        {
+          "text": "Il rend des jugements exécutoires immédiatement",
+          "correct": false,
+          "why_wrong": "Confusion classique : ce n'est pas un juge."
+        },
+        {
+          "text": "Il remplace le juge civil",
+          "correct": false,
+          "why_wrong": "L'action civile reste ouverte (art. 46b LCA)."
+        }
+      ],
+      "explanation": "Ombudsman = médiation gratuite non contraignante. Attention à ne pas laisser courir la prescription (5 ans art. 46 LCA) pendant la médiation : conseiller le client sur des actes interruptifs si nécessaire (art. 135 CO)."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-010",
+      "theme": "litiges",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Une clause d'arbitrage figurant dans les CGA d'assurance :",
+      "options": [
+        {
+          "text": "Est toujours valable, même sans consentement individuel",
+          "correct": false,
+          "why_wrong": "Sans consentement clair, la clause est fragilisée."
+        },
+        {
+          "text": "N'est valable que si le consentement du preneur est clair et si les règles impératives sur le for (art. 46b LCA) et le CPC sont respectées",
+          "correct": true
+        },
+        {
+          "text": "Est expressément interdite en Suisse",
+          "correct": false,
+          "why_wrong": "L'arbitrage reste admissible sous conditions."
+        },
+        {
+          "text": "Nécessite l'accord préalable de la FINMA",
+          "correct": false,
+          "why_wrong": "Aucune autorisation FINMA requise."
+        }
+      ],
+      "explanation": "Une clause d'arbitrage doit résulter d'un consentement clair du consommateur et respecter les règles impératives protectrices (for LCA 46b, CPC). Prudence dans le conseil : la voie ordinaire reste normalement offerte."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-011",
+      "theme": "litiges",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": "Suite à un accrochage, le lésé réclame directement à l'assureur RC véhicule du responsable.",
+      "question": "Quel principe s'applique en RC circulation ?",
+      "options": [
+        {
+          "text": "Le lésé dispose d'une action directe contre l'assureur RC véhicule du responsable (art. 65 LCR)",
+          "correct": true
+        },
+        {
+          "text": "L'assureur peut opposer certaines exclusions valables au lésé, mais pas les moyens tirés du seul rapport interne au responsable",
+          "correct": true
+        },
+        {
+          "text": "Le lésé ne peut agir que contre le responsable, jamais contre l'assureur",
+          "correct": false,
+          "why_wrong": "Faux : l'action directe est expressément consacrée par l'art. 65 LCR."
+        },
+        {
+          "text": "L'assureur peut refuser toute discussion tant qu'un jugement n'est pas rendu",
+          "correct": false,
+          "why_wrong": "Refus contraire à l'obligation de traiter le sinistre."
+        },
+        {
+          "text": "Le lésé doit d'abord attaquer la FINMA",
+          "correct": false,
+          "why_wrong": "La FINMA n'est pas une instance de recours pour les litiges individuels."
+        }
+      ],
+      "explanation": "Art. 65 LCR : action directe du lésé contre l'assureur RC véhicule. Exception marquée au relatif du contrat, en raison du caractère obligatoire de la couverture."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-012",
+      "theme": "litiges",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "En cas de faute grave du preneur (art. 14 LCA), l'assureur peut :",
+      "options": [
+        {
+          "text": "Refuser toute prestation systématiquement, quelle que soit la gravité",
+          "correct": false,
+          "why_wrong": "Refus uniquement dans certaines conditions ; en général, réduction proportionnelle."
+        },
+        {
+          "text": "Réduire la prestation dans une mesure correspondant au degré de la faute",
+          "correct": true
+        },
+        {
+          "text": "Résilier le contrat sans autre formalité pour tous ses clients",
+          "correct": false,
+          "why_wrong": "La sanction reste individuelle, jamais collective."
+        },
+        {
+          "text": "Doubler la prime future",
+          "correct": false,
+          "why_wrong": "Aucune règle légale d'un doublement automatique."
+        }
+      ],
+      "explanation": "Art. 14 LCA : sinistre par faute grave → réduction dans la mesure du degré de la faute. Faute intentionnelle : refus. Négligence légère : pas de réduction. Distinction cruciale à connaître."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-013",
+      "theme": "litiges",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Vous instruisez un dossier de RC : lister méthodiquement les conditions à démontrer pour engager la responsabilité.",
+      "question": "L'action en responsabilité civile fondée sur l'art. 41 CO exige la démonstration :",
+      "options": [
+        {
+          "text": "D'un acte illicite (violation d'une norme)",
+          "correct": true
+        },
+        {
+          "text": "D'une faute (intention ou négligence)",
+          "correct": true
+        },
+        {
+          "text": "D'un dommage patrimonial ou tort moral",
+          "correct": true
+        },
+        {
+          "text": "D'un lien de causalité naturelle ET adéquate entre l'acte et le dommage",
+          "correct": true
+        },
+        {
+          "text": "D'une décision pénale préalable",
+          "correct": false,
+          "why_wrong": "Non exigée."
+        },
+        {
+          "text": "D'un contrat entre auteur et lésé",
+          "correct": false,
+          "why_wrong": "Le contrat n'est pas requis en RC délictuelle (autrement : art. 97 CO, responsabilité contractuelle)."
+        }
+      ],
+      "explanation": "Art. 41 CO : illicéité, faute (ou responsabilité causale légale), dommage, causalité. Grille structurante à maîtriser en RC (privée, véhicule, professionnelle)."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-014",
+      "theme": "litiges",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "En cas d'aggravation essentielle du risque en cours de contrat imputable au preneur (art. 28 LCA), celui-ci doit :",
+      "options": [
+        {
+          "text": "En informer l'assureur sans délai par écrit (art. 28 LCA)",
+          "correct": true
+        },
+        {
+          "text": "Documenter la nature et l'ampleur de l'aggravation",
+          "correct": true
+        },
+        {
+          "text": "Rien signaler, l'assureur s'en rendra compte",
+          "correct": false,
+          "why_wrong": "Devoir d'information explicite."
+        },
+        {
+          "text": "Résilier immédiatement le contrat",
+          "correct": false,
+          "why_wrong": "La résiliation appartient à l'assureur dans ce contexte."
+        },
+        {
+          "text": "Attendre la prochaine échéance",
+          "correct": false,
+          "why_wrong": "L'obligation est immédiate."
+        }
+      ],
+      "explanation": "Art. 28 LCA (nouveau droit) : le preneur doit annoncer par écrit toute aggravation essentielle. À défaut : l'assureur peut résilier / réduire la prestation. Devoir de collaboration renforcé."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-015",
+      "theme": "litiges",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Dans le nouveau droit LCA, en cas de diminution essentielle du risque, le preneur peut :",
+      "options": [
+        {
+          "text": "Rien exiger : la prime reste identique",
+          "correct": false,
+          "why_wrong": "Contraire à l'art. 30 LCA (symétrie avec l'aggravation)."
+        },
+        {
+          "text": "Demander une réduction de la prime pour l'avenir (art. 30 LCA)",
+          "correct": true
+        },
+        {
+          "text": "Obtenir le remboursement de toutes les primes passées",
+          "correct": false,
+          "why_wrong": "Effet pour l'avenir, pas rétroactif."
+        },
+        {
+          "text": "Résilier gratuitement pendant 5 ans",
+          "correct": false,
+          "why_wrong": "Aucun droit de résiliation gratuit sur 5 ans."
+        }
+      ],
+      "explanation": "Art. 30 LCA : symétrie de l'aggravation, en cas de diminution essentielle et durable du risque, le preneur peut exiger une adaptation de la prime pour l'avenir."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-016",
+      "theme": "litiges",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Un sinistre ménage est couvert simultanément par la RC privée du responsable et par l'assurance ménage de la victime.",
+      "question": "Comment se règle la coordination des prestations ?",
+      "options": [
+        {
+          "text": "La victime peut cumuler les deux indemnisations",
+          "correct": false,
+          "why_wrong": "Contraire au principe indemnitaire."
+        },
+        {
+          "text": "L'assurance de choses de la victime paie et se subroge dans les droits contre le responsable (ou son assureur RC) selon art. 95c LCA",
+          "correct": true
+        },
+        {
+          "text": "Le responsable ne doit rien tant que l'assureur de la victime n'a pas payé",
+          "correct": false,
+          "why_wrong": "Le responsable reste débiteur, la subrogation intervient ensuite."
+        },
+        {
+          "text": "L'Ombudsman tranche automatiquement",
+          "correct": false,
+          "why_wrong": "L'Ombudsman n'a pas de compétence de trancher les recours subrogatoires."
+        }
+      ],
+      "explanation": "Interaction classique assurance de choses / RC : l'assureur de dommages avance la prestation à la victime puis se retourne contre le responsable via la subrogation (art. 95c LCA). Empêche la double indemnisation."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-017",
+      "theme": "litiges",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "La sur-indemnisation est interdite en assurance de dommages car :",
+      "options": [
+        {
+          "text": "Elle contrevient au principe indemnitaire (art. 96 LCA)",
+          "correct": true
+        },
+        {
+          "text": "Elle est parfaitement admise si le client cotise deux fois",
+          "correct": false,
+          "why_wrong": "Interdiction stricte de l'enrichissement en assurance de dommages."
+        },
+        {
+          "text": "Elle n'existe que dans les assurances-vie",
+          "correct": false,
+          "why_wrong": "L'assurance-vie de sommes n'est pas soumise au principe indemnitaire."
+        },
+        {
+          "text": "Elle est autorisée en cas d'invalidité",
+          "correct": false,
+          "why_wrong": "Faux : dépend du type de couverture (indemnitaire ou forfaitaire)."
+        }
+      ],
+      "explanation": "Assurance de dommages : indemnitaire strict (art. 96 LCA). Assurance de sommes (vie) : cumul possible car pas indemnitaire. Distinction clé du programme VBV."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-018",
+      "theme": "litiges",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Un assuré souhaite comprendre le déroulé complet de la saisine Ombudsman avant de s'engager.",
+      "question": "Quelles étapes suit typiquement une procédure devant l'Ombudsman de l'assurance privée ?",
+      "options": [
+        {
+          "text": "L'assuré doit d'abord avoir présenté sa réclamation à l'assureur",
+          "correct": true
+        },
+        {
+          "text": "Dépôt gratuit d'une demande écrite / en ligne à l'Ombudsman",
+          "correct": true
+        },
+        {
+          "text": "Instruction contradictoire avec les parties",
+          "correct": true
+        },
+        {
+          "text": "Prise de position (recommandation non contraignante)",
+          "correct": true
+        },
+        {
+          "text": "Décision exécutoire immédiate avec titre exécutoire",
+          "correct": false,
+          "why_wrong": "Confusion : l'Ombudsman n'est pas un juge."
+        },
+        {
+          "text": "Recours obligatoire à la FINMA",
+          "correct": false,
+          "why_wrong": "La FINMA n'est pas une instance de recours pour les litiges individuels."
+        }
+      ],
+      "explanation": "Procédure Ombudsman : réclamation préalable, saisine gratuite, instruction, prise de position. Sans force exécutoire ; l'action civile reste ouverte (art. 46b LCA)."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-019",
+      "theme": "litiges",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un preneur oublie de payer sa prime. L'assureur lui adresse une sommation écrite avec fixation d'un délai de 14 jours.",
+      "question": "Que se passe-t-il si le preneur ne paie pas dans le délai (art. 20 LCA) ?",
+      "options": [
+        {
+          "text": "La couverture est suspendue dès l'expiration du délai jusqu'au paiement",
+          "correct": true
+        },
+        {
+          "text": "Le contrat est immédiatement résilié sans autre procédure",
+          "correct": false,
+          "why_wrong": "Suspension d'abord, puis résiliation possible."
+        },
+        {
+          "text": "L'assureur perd tout droit à la prime",
+          "correct": false,
+          "why_wrong": "L'assureur conserve sa créance de prime pour la période due."
+        },
+        {
+          "text": "Le sinistre survenu pendant la suspension reste couvert",
+          "correct": false,
+          "why_wrong": "PIÈGE fréquent : pendant la suspension, aucun sinistre n'est couvert."
+        }
+      ],
+      "explanation": "Art. 20 LCA : sommation + délai 14 jours. À défaut de paiement, suspension de la couverture. L'assureur peut ensuite résilier (art. 21 LCA) ou reprendre le contrat au paiement effectif."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-020",
+      "theme": "litiges",
+      "type": "multiple",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Selon l'art. 35a LCA (nouveau droit), après un premier renouvellement le preneur peut résilier :",
+      "options": [
+        {
+          "text": "Après 3 ans de contrat, avec un préavis (art. 35a LCA)",
+          "correct": true
+        },
+        {
+          "text": "En respectant la forme écrite prévue au contrat ou par la loi",
+          "correct": true
+        },
+        {
+          "text": "À tout moment sans indemnité",
+          "correct": false,
+          "why_wrong": "Faux : le droit de résiliation ordinaire est encadré."
+        },
+        {
+          "text": "Uniquement en cas de sinistre",
+          "correct": false,
+          "why_wrong": "C'est un cas de résiliation extraordinaire, distinct."
+        },
+        {
+          "text": "Uniquement avec l'accord de la FINMA",
+          "correct": false,
+          "why_wrong": "La FINMA n'intervient pas dans les résiliations individuelles."
+        }
+      ],
+      "explanation": "Art. 35a LCA (nouveau droit 2022) : le contrat de longue durée peut être résilié après 3 ans, moyennant le respect du préavis prévu. Renforce la position du preneur."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-021",
+      "theme": "litiges",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": "Un assuré tombe malade en voyage à l'étranger et doit être hospitalisé.",
+      "question": "Quelle est la coordination LAMal / LCA voyage ?",
+      "options": [
+        {
+          "text": "La LAMal couvre uniquement l'urgence, jusqu'au double du tarif suisse ; la LCA voyage peut compléter (frais réels, rapatriement, assistance)",
+          "correct": true
+        },
+        {
+          "text": "La LAMal rembourse intégralement partout dans le monde",
+          "correct": false,
+          "why_wrong": "Faux : le remboursement est plafonné."
+        },
+        {
+          "text": "Le rapatriement médical est couvert par la LAMal",
+          "correct": false,
+          "why_wrong": "Non : le rapatriement relève d'une LCA voyage / complémentaire."
+        },
+        {
+          "text": "La FINMA prend en charge les frais",
+          "correct": false,
+          "why_wrong": "La FINMA ne rembourse aucun frais individuel."
+        }
+      ],
+      "explanation": "Art. 36 OAMal : LAMal = urgence à l'étranger, plafonnée au double du tarif suisse. LCA voyage = complément indispensable (frais réels, rapatriement, assistance 24 h)."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-022",
+      "theme": "litiges",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Un enquêteur suspecte une fraude au sinistre chez un client historique. Quelles actions structurer ?",
+      "question": "En cas de déclaration frauduleuse du preneur lors d'un sinistre (art. 40 LCA), l'assureur peut :",
+      "options": [
+        {
+          "text": "Refuser la prestation",
+          "correct": true
+        },
+        {
+          "text": "Résilier le contrat",
+          "correct": true
+        },
+        {
+          "text": "Demander la restitution des prestations déjà versées si elles reposent sur la fraude",
+          "correct": true
+        },
+        {
+          "text": "Dénoncer les faits au ministère public si un délit est constitué (escroquerie art. 146 CP)",
+          "correct": true
+        },
+        {
+          "text": "Doubler automatiquement la prime des autres assurés",
+          "correct": false,
+          "why_wrong": "Aucun automatisme légal."
+        },
+        {
+          "text": "Emprisonner l'assuré lui-même",
+          "correct": false,
+          "why_wrong": "Compétence exclusive du juge pénal."
+        }
+      ],
+      "explanation": "Art. 40 LCA : la fraude au sinistre libère l'assureur de toute prestation en lien. Résiliation possible. Selon la gravité : plainte pénale pour escroquerie (art. 146 CP). Un des sujets sensibles VBV."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-023",
+      "theme": "litiges",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Un accident implique un cycliste (blessé), un piéton (blessé) et une voiture (endommagée) : le conducteur automobile est fautif à 100 %.",
+      "question": "Comment se règlent les indemnisations ?",
+      "options": [
+        {
+          "text": "Rien à indemniser, seul le conducteur est en cause",
+          "correct": false,
+          "why_wrong": "L'assurance RC obligatoire du véhicule prend en charge les tiers lésés."
+        },
+        {
+          "text": "L'assureur RC véhicule du conducteur indemnise les tiers lésés (piéton, cycliste, dommages matériels adverses) ; les blessures relèvent aussi de la LAA / LAMal des victimes, avec subrogation possible contre l'assureur RC (art. 72 LPGA)",
+          "correct": true
+        },
+        {
+          "text": "Chacun paie ses propres dommages",
+          "correct": false,
+          "why_wrong": "Faux : le principe de responsabilité et l'assurance RC obligatoire s'appliquent."
+        },
+        {
+          "text": "L'État indemnise directement",
+          "correct": false,
+          "why_wrong": "L'État n'indemnise pas directement ; il existe le BNG pour les cas résiduels."
+        }
+      ],
+      "explanation": "RC obligatoire véhicule : les tiers sont indemnisés par l'assureur RC (action directe art. 65 LCR). Les prestations LAA / LAMal des victimes ouvrent une subrogation légale (art. 72 LPGA) contre l'assureur RC : coordination des assurances sociales et privées."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-024",
+      "theme": "litiges",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'action de l'assuré pour obtenir la prestation d'assurance se prescrit selon l'art. 46 LCA (dès 2022) par :",
+      "options": [
+        {
+          "text": "1 an",
+          "correct": false,
+          "why_wrong": "Aucun délai LCA de 1 an pour la prescription."
+        },
+        {
+          "text": "5 ans dès la survenance du fait",
+          "correct": true
+        },
+        {
+          "text": "10 ans",
+          "correct": false,
+          "why_wrong": "Délai du CO ordinaire (art. 127), la LCA est plus courte."
+        },
+        {
+          "text": "6 mois",
+          "correct": false,
+          "why_wrong": "Aucun délai LCA de 6 mois."
+        }
+      ],
+      "explanation": "Art. 46 al. 1 LCA (nouveau droit) : 5 ans dès la survenance du fait. Rappel : la médiation Ombudsman n'interrompt pas automatiquement la prescription (art. 135 CO), documenter les actes interruptifs si besoin."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-025",
+      "theme": "litiges",
+      "type": "multiple",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Quelle est la conséquence principale de l'art. 40 LCA (sinistre invoqué à tort par le preneur) ?",
+      "options": [
+        {
+          "text": "L'assureur est libéré de sa prestation liée au sinistre invoqué à tort",
+          "correct": true
+        },
+        {
+          "text": "L'assureur peut résilier le contrat",
+          "correct": true
+        },
+        {
+          "text": "L'assureur doit payer intégralement",
+          "correct": false,
+          "why_wrong": "Contraire au texte de l'art. 40 LCA."
+        },
+        {
+          "text": "L'assureur doit rembourser toutes les primes précédentes",
+          "correct": false,
+          "why_wrong": "Aucune règle de remboursement rétroactif."
+        },
+        {
+          "text": "L'assureur perd tout droit à agir pénalement",
+          "correct": false,
+          "why_wrong": "La voie pénale reste ouverte selon les infractions."
+        }
+      ],
+      "explanation": "Art. 40 LCA : la dissimulation ou déclaration inexacte destinée à obtenir une prestation indue libère l'assureur du lien contractuel. Il peut aussi résilier et refuser la prestation."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-026",
+      "theme": "litiges",
+      "type": "multiple",
+      "points": 3,
+      "notions": [],
+      "context": "Un client hésite à souscrire une PJ et veut comprendre ce qui est réellement pris en charge.",
+      "question": "Une assurance protection juridique privée couvre typiquement :",
+      "options": [
+        {
+          "text": "Les honoraires d'avocat",
+          "correct": true
+        },
+        {
+          "text": "Les frais judiciaires et de procédure",
+          "correct": true
+        },
+        {
+          "text": "Les frais d'expertise nécessaires",
+          "correct": true
+        },
+        {
+          "text": "Les amendes pénales",
+          "correct": false,
+          "why_wrong": "Les amendes sont exclues (art. 92 al. 1 let. c CP a contrario, principe général)."
+        },
+        {
+          "text": "Les dommages causés à un tiers par l'assuré",
+          "correct": false,
+          "why_wrong": "Rôle de la RC, pas de la PJ."
+        }
+      ],
+      "explanation": "PJ = prise en charge des frais liés à la défense juridique. Ne couvre pas la RC (rôle de la RC privée) ni les amendes/peines pénales."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-027",
+      "theme": "litiges",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "Avant d'ouvrir une procédure civile ordinaire, une tentative de conciliation devant l'autorité de conciliation cantonale (art. 197 CPC) est :",
+      "options": [
+        {
+          "text": "Facultative",
+          "correct": false,
+          "why_wrong": "Elle est en principe obligatoire, avec quelques exceptions."
+        },
+        {
+          "text": "En principe obligatoire, sauf exceptions prévues (art. 198 CPC)",
+          "correct": true
+        },
+        {
+          "text": "Interdite en assurance",
+          "correct": false,
+          "why_wrong": "Aucune interdiction : la conciliation civile reste applicable."
+        },
+        {
+          "text": "Réservée aux causes de plus de 100'000 CHF",
+          "correct": false,
+          "why_wrong": "Aucun seuil de ce type ; la conciliation est indépendante de la valeur litigieuse."
+        }
+      ],
+      "explanation": "Art. 197-198 CPC : conciliation obligatoire préalable dans la plupart des cas civils. Exceptions : procédures sommaires, mesures provisionnelles, certaines matières particulières."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-028",
+      "theme": "litiges",
+      "type": "single",
+      "points": 3,
+      "notions": [],
+      "context": "Une assurance ménage indemnise un vol par effraction pour 20'000 CHF. La police est prise avec valeur à neuf, sans sous-assurance.",
+      "question": "Comment appliquer le principe indemnitaire dans ce cas ?",
+      "options": [
+        {
+          "text": "L'assureur verse la valeur à neuf convenue, jusqu'à concurrence du dommage effectif et de la somme d'assurance, sans permettre d'enrichissement",
+          "correct": true
+        },
+        {
+          "text": "L'assureur peut verser le double de la valeur à neuf",
+          "correct": false,
+          "why_wrong": "Contraire au principe indemnitaire."
+        },
+        {
+          "text": "L'assureur ne verse rien si la somme d'assurance n'est pas atteinte",
+          "correct": false,
+          "why_wrong": "Confusion avec la sous-assurance."
+        },
+        {
+          "text": "La FINMA fixe le montant de l'indemnité",
+          "correct": false,
+          "why_wrong": "La FINMA n'intervient pas dans le règlement de sinistres individuels."
+        }
+      ],
+      "explanation": "Valeur à neuf = remplacement à l'équivalent. Reste plafonné au dommage réel et à la somme d'assurance. Pas d'enrichissement : principe indemnitaire (art. 96 LCA)."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-029",
+      "theme": "litiges",
+      "type": "single",
+      "points": 2,
+      "notions": [],
+      "context": null,
+      "question": "Les frais d'avocat sont pris en charge par la PJ :",
+      "options": [
+        {
+          "text": "Sans aucune limite ni cadre",
+          "correct": false,
+          "why_wrong": "Toutes les PJ posent des plafonds et des conditions."
+        },
+        {
+          "text": "Dans les limites contractuelles (montant maximal, choix de l'avocat selon règles LCA / LSA, cas assurés)",
+          "correct": true
+        },
+        {
+          "text": "Uniquement en cas de succès judiciaire",
+          "correct": false,
+          "why_wrong": "La couverture PJ ne dépend pas de l'issue du procès."
+        },
+        {
+          "text": "Jamais si un règlement amiable est signé",
+          "correct": false,
+          "why_wrong": "Faux : la PJ soutient aussi les règlements amiables."
+        }
+      ],
+      "explanation": "PJ : couverture plafonnée, cas assurés définis, libre choix de l'avocat en principe (art. 32 LSA / dispositions harmonisées), pas d'obligation de gagner le procès."
+    },
+    {
+      "external_id": "KLARY-GEN-LT-030",
+      "theme": "litiges",
+      "type": "single",
+      "points": 1,
+      "notions": [],
+      "context": null,
+      "question": "L'ultime voie de recours contre un jugement cantonal en matière civile assurantielle est :",
+      "options": [
+        {
+          "text": "Le recours au Tribunal fédéral (LTF)",
+          "correct": true
+        },
+        {
+          "text": "Un recours à la FINMA",
+          "correct": false,
+          "why_wrong": "FINMA n'est pas une instance de recours judiciaire."
+        },
+        {
+          "text": "Un recours à l'ASA",
+          "correct": false,
+          "why_wrong": "L'ASA n'est pas une juridiction."
+        },
+        {
+          "text": "Un recours à l'Ombudsman",
+          "correct": false,
+          "why_wrong": "L'Ombudsman n'a pas de compétence de révision de jugements."
+        }
+      ],
+      "explanation": "Après épuisement des voies cantonales, recours au Tribunal fédéral (LTF art. 72 ss pour les affaires civiles), sous conditions (valeur litigieuse, question juridique de principe)."
+    }
+  ]
+}

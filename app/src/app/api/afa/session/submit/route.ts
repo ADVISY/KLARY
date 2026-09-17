@@ -71,12 +71,14 @@ export async function POST(request: NextRequest) {
 
     const { data: filiere } = await supabase
       .from("afa_filieres")
-      .select("passing_pct")
+      .select("passing_pct, internal_target_pct")
       .eq("key", session.filiere_key)
       .single();
 
-    const passingPct = filiere?.passing_pct ?? 60;
-    const passed = scored.scorePctPartial >= passingPct;
+    // Cible interne Klary (80 %) : plus haute que le seuil officiel VBV (60 %)
+    // pour donner une marge de sécurité au candidat.
+    const targetPct = filiere?.internal_target_pct ?? 80;
+    const passed = scored.scorePctPartial >= targetPct;
 
     await supabase
       .from("afa_sessions")
