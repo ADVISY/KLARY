@@ -485,6 +485,108 @@ export function PremierPlanLogementWizard() {
             </div>
           </div>
 
+          {/* Les 2 stratégies 3a pour le nantissement */}
+          <div className="mb-6 bg-white rounded-xl p-6 border-2 border-klary-navy">
+            <div className="text-xs font-bold uppercase text-klary-navy tracking-widest mb-2">
+              ⚠ Les 2 stratégies possibles pour votre 3a
+            </div>
+            <h3 className="text-xl font-bold text-klary-navy mb-1">
+              Bancaire ou Assurance : quel véhicule choisir ?
+            </h3>
+            <p className="text-sm text-klary-grey mb-5">
+              Le 3ᵉ pilier 3a peut être hébergé chez une banque ou souscrit
+              via une police d&apos;assurance-vie. Les deux fonctionnent pour
+              le nantissement, mais l&apos;équilibre entre <strong>flexibilité
+              et sécurité</strong> est très différent.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              {/* Option 1 : 3a Bancaire */}
+              <div className="rounded-xl border-2 border-emerald-500 overflow-hidden">
+                <div className="bg-emerald-500 text-white p-3">
+                  <div className="text-[10px] uppercase tracking-widest text-white/80 font-bold">
+                    Option 1
+                  </div>
+                  <div className="text-lg font-bold">
+                    Le 3a Bancaire (Épargne ou Fonds)
+                  </div>
+                </div>
+                <div className="p-5">
+                  <p className="text-sm text-klary-navy leading-relaxed mb-3">
+                    Le client verse chaque année sur un <strong>compte
+                    d&apos;épargne 3a</strong>. Pour booster la croissance du
+                    capital nanti, il peut demander à la banque de placer cet
+                    argent dans des <strong>fonds de placement 3a</strong>{" "}
+                    (actions / obligations) et viser un meilleur rendement
+                    long terme pour couvrir sa dette.
+                  </p>
+                  <div className="border-t border-klary-light-grey pt-3 mt-3">
+                    <div className="text-xs font-bold text-emerald-700 mb-2">✓ Avantages</div>
+                    <ul className="text-xs text-klary-grey space-y-1 list-disc pl-4">
+                      <li>Très flexible (versements variables, arrêt possible)</li>
+                      <li>Frais faibles (0,1 à 0,5 % en compte, 0,5-1,2 % en fonds)</li>
+                      <li>Choix du profil de risque (prudent → dynamique)</li>
+                      <li>Aucune assurance obligatoire</li>
+                    </ul>
+                    <div className="text-xs font-bold text-red-600 mt-3 mb-2">⚠ Limites</div>
+                    <ul className="text-xs text-klary-grey space-y-1 list-disc pl-4">
+                      <li>Aucune protection décès / incapacité intégrée</li>
+                      <li>Rendement des fonds non garanti (marché financier)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Option 2 : 3a Assurance */}
+              <div className="rounded-xl border-2 border-klary-orange overflow-hidden">
+                <div className="bg-klary-orange text-white p-3">
+                  <div className="text-[10px] uppercase tracking-widest text-white/80 font-bold">
+                    Option 2
+                  </div>
+                  <div className="text-lg font-bold">
+                    Le 3a Assurance
+                  </div>
+                </div>
+                <div className="p-5">
+                  <p className="text-sm text-klary-navy leading-relaxed mb-3">
+                    La banque peut exiger ou proposer que le nantissement se
+                    fasse via une <strong>police d&apos;assurance-vie 3a</strong>.
+                    Cela combine l&apos;épargne obligatoire avec une{" "}
+                    <strong>couverture décès + libération de prime en cas
+                    d&apos;incapacité</strong>, ce qui sécurise à la fois la
+                    banque et la famille du client.
+                  </p>
+                  <div className="border-t border-klary-light-grey pt-3 mt-3">
+                    <div className="text-xs font-bold text-emerald-700 mb-2">✓ Avantages</div>
+                    <ul className="text-xs text-klary-grey space-y-1 list-disc pl-4">
+                      <li>Protection décès + incapacité incluse dès le 1ᵉʳ franc</li>
+                      <li>Libération de prime si le client tombe malade / invalide</li>
+                      <li>Capital garanti à l&apos;échéance (partie « rachat »)</li>
+                      <li>La banque adore : couvre le risque de défaut</li>
+                    </ul>
+                    <div className="text-xs font-bold text-red-600 mt-3 mb-2">⚠ Limites</div>
+                    <ul className="text-xs text-klary-grey space-y-1 list-disc pl-4">
+                      <li>Moins flexible (arrêt / réduction = pénalités les 5 premières années)</li>
+                      <li>Frais d&apos;acquisition élevés années 1-5</li>
+                      <li>Rendement souvent inférieur au 3a bancaire long terme</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 bg-klary-cream/60 border border-klary-orange/30 rounded-lg p-4 text-sm text-klary-navy leading-relaxed">
+              <strong className="text-klary-orange">🎯 La recommandation Klary :</strong>{" "}
+              tout dépend du <strong>profil du client</strong> et de
+              l&apos;<strong>horizon du projet immobilier</strong>.
+              <ul className="mt-2 space-y-1 list-disc pl-5 text-xs">
+                <li><strong>Jeune, célibataire, sans famille à protéger, achat &gt; 10 ans</strong> → 3a bancaire fonds (rendement)</li>
+                <li><strong>Famille, enfants, achat &lt; 5 ans, revenu unique</strong> → 3a assurance (protection décès critique)</li>
+                <li><strong>Situation mixte</strong> → combiner un 3a bancaire (pour la performance) + un petit 3a assurance (pour la protection)</li>
+              </ul>
+            </div>
+          </div>
+
           {/* Coût réel long terme : le versement apparent vs le coût net vrai */}
           <div className="mb-6 bg-white rounded-xl p-6 border-2 border-emerald-500">
             <div className="text-xs font-bold uppercase text-emerald-700 mb-2 tracking-widest">
