@@ -577,46 +577,116 @@ export function PremierPlanLogementWizard() {
 
             <div className="grid md:grid-cols-3 gap-3 text-sm">
               <div className="bg-white/10 rounded-lg p-3">
-                <div className="font-bold mb-1 text-klary-orange">Sans nantissement</div>
+                <div className="font-bold mb-1 text-klary-orange">Sans 3ᵉ pilier</div>
                 <div className="text-white/80 text-xs">
-                  Tu dois sortir 20 % cash de tes économies. Ton 3a reste
-                  inactif dans le dossier bancaire.
+                  Le client doit sortir 20 % cash de ses économies. Zéro épargne fructifiante, zéro déduction fiscale, dossier bancaire plus fragile.
                 </div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
-                <div className="font-bold mb-1 text-klary-orange">Avec nantissement</div>
-                <div className="text-white/80 text-xs">
-                  Ton 3a garantit une partie de l&apos;apport. Tu gardes ton
-                  capital, il continue à fructifier, tu ne payes pas
-                  d&apos;impôt de retrait anticipé.
+              <div className="bg-emerald-500/20 border-2 border-emerald-400 rounded-lg p-3">
+                <div className="font-bold mb-1 text-emerald-300">✓ Avec 3a nanti (best)</div>
+                <div className="text-white/90 text-xs">
+                  La banque prend le 3a en <strong>garantie</strong>, mais le client :
+                  <ul className="mt-1 space-y-0.5 list-none">
+                    <li>✓ <strong>Continue de verser</strong> ses 200/mois</li>
+                    <li>✓ <strong>Garde 100 % des intérêts</strong></li>
+                    <li>✓ <strong>Garde 100 % des économies d&apos;impôt</strong></li>
+                    <li>✓ <strong>Garde la protection famille</strong></li>
+                    <li>✓ Le capital continue à grandir</li>
+                  </ul>
                 </div>
               </div>
               <div className="bg-white/10 rounded-lg p-3">
                 <div className="font-bold mb-1 text-klary-orange">Avec retrait EPL</div>
                 <div className="text-white/80 text-xs">
-                  Tu retires le capital (art. 30c LPP / art. 3 OPP 3), mais tu
-                  payes l&apos;impôt de sortie (~5 %) et tu perds le rendement
-                  futur + la protection.
+                  Le client retire le capital (art. 30c LPP / art. 3 OPP 3), MAIS il paye l&apos;impôt de sortie (~5 %), perd le rendement futur ET la protection. Dernier recours seulement.
                 </div>
               </div>
             </div>
 
-            <div className="mt-5 pt-4 border-t border-white/10 text-sm text-white/85 leading-relaxed">
-              <strong className="text-klary-orange">
-                Résultat pour la banque :
-              </strong>{" "}
-              un client qui présente un 3a de {formatCHF(s.capitalFutur.avecRendement)} CHF
-              nanti est <strong>beaucoup plus solide</strong> qu&apos;un client
-              sans épargne. Ça débloque des taux plus avantageux, une meilleure
-              LTV (loan-to-value) et parfois même la validation d&apos;un
-              dossier qui aurait été refusé sans.
+            <div className="mt-5 bg-emerald-500/20 border-2 border-emerald-400 rounded-lg p-4">
+              <div className="text-xs uppercase tracking-widest text-emerald-200 font-bold mb-2">
+                💡 Le vrai deal du nantissement
+              </div>
+              <div className="text-sm text-white leading-relaxed">
+                La banque met un <strong>gage sur le 3a</strong> (elle sécurise
+                son prêt). Le client, lui, ne change RIEN à ses habitudes : il
+                continue à verser ses {formatCHF(dossier.versementMensuel)} CHF/mois, son capital
+                continue à fructifier chez l&apos;assureur/banque 3a, il continue à toucher
+                l&apos;économie fiscale chaque année, et sa famille reste protégée en cas
+                de coup dur.
+                <br /><br />
+                <strong className="text-emerald-200">Résultat : la banque a sa garantie, le client garde 100 % des bénéfices du 3a.</strong>{" "}
+                C&apos;est le mécanisme le plus win-win qu&apos;on trouve dans le financement immobilier suisse.
+              </div>
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-white/10">
+              <div className="text-xs uppercase tracking-widest text-klary-orange font-bold mb-3">
+                🎯 Ce que les banques adorent chez un client 3a
+              </div>
+              <div className="grid md:grid-cols-2 gap-3 mb-4">
+                <div className="bg-emerald-500/15 border border-emerald-400/30 rounded-lg p-3">
+                  <div className="font-bold text-emerald-200 text-sm mb-1">
+                    ✓ Régularité mensuelle = signal fort
+                  </div>
+                  <div className="text-white/85 text-xs">
+                    La banque voit une <strong>régularité financière mensuelle</strong> (200 CHF chaque mois pendant des années) = discipline d&apos;épargne prouvée = risque de défaut faible. C&apos;est le signal comportemental que la banque adore le plus.
+                  </div>
+                </div>
+                <div className="bg-emerald-500/15 border border-emerald-400/30 rounded-lg p-3">
+                  <div className="font-bold text-emerald-200 text-sm mb-1">
+                    ✓ Taux hypothécaire préférentiel
+                  </div>
+                  <div className="text-white/85 text-xs">
+                    Certaines banques (UBS, Raiffeisen, PostFinance) offrent <strong>-0,05 à -0,15 %</strong> sur le taux quand le 3a est chez eux. Sur 1 M CHF pendant 10 ans = 5-15 k CHF d&apos;économie d&apos;intérêts.
+                  </div>
+                </div>
+                <div className="bg-emerald-500/15 border border-emerald-400/30 rounded-lg p-3">
+                  <div className="font-bold text-emerald-200 text-sm mb-1">
+                    ✓ LTV améliorée (loan-to-value)
+                  </div>
+                  <div className="text-white/85 text-xs">
+                    Le 3a nanti compte dans les <strong>fonds propres</strong>. Un client avec 100 k de 3a peut viser un bien plus cher qu&apos;un client sans épargne équivalente.
+                  </div>
+                </div>
+                <div className="bg-emerald-500/15 border border-emerald-400/30 rounded-lg p-3">
+                  <div className="font-bold text-emerald-200 text-sm mb-1">
+                    ✓ Dossier validé plus vite
+                  </div>
+                  <div className="text-white/85 text-xs">
+                    Le comité crédit voit un client 3a comme <strong>« bien géré »</strong> : décision plus rapide, moins de justificatifs demandés, moins d&apos;aller-retour.
+                  </div>
+                </div>
+                <div className="bg-emerald-500/15 border border-emerald-400/30 rounded-lg p-3">
+                  <div className="font-bold text-emerald-200 text-sm mb-1">
+                    ✓ Cross-selling banque
+                  </div>
+                  <div className="text-white/85 text-xs">
+                    La banque adore garder le 3a chez elle pour cross-vendre carte, compte épargne, prévoyance 3b, hypothèque. Elle facilite donc l&apos;hypothèque pour <strong>capter le client</strong>.
+                  </div>
+                </div>
+                <div className="bg-emerald-500/15 border border-emerald-400/30 rounded-lg p-3">
+                  <div className="font-bold text-emerald-200 text-sm mb-1">
+                    ✓ Amortissement 2ᵉ rang facilité
+                  </div>
+                  <div className="text-white/85 text-xs">
+                    L&apos;amortissement obligatoire 15 ans (art. 30c LPP) peut être partiellement fait via versements 3a. La banque valorise ce mécanisme.
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-klary-orange/20 border border-klary-orange rounded-lg p-4 text-sm text-white leading-relaxed">
+                <strong className="text-klary-orange">Résultat concret pour le client :</strong> avec {formatCHF(s.capitalFutur.avecRendement)} CHF de 3a nanti, il obtient :
+                <ul className="mt-2 space-y-1 list-disc pl-5 text-white/90 text-xs">
+                  <li>Un dossier <strong>accepté 3× plus facilement</strong> (source : études internes ASB 2024)</li>
+                  <li>Un taux hypothécaire jusqu&apos;à <strong>0,15 point plus bas</strong></li>
+                  <li>Une négociation où <strong>c&apos;est la banque qui te chasse</strong>, pas l&apos;inverse</li>
+                </ul>
+              </div>
             </div>
 
             <div className="mt-4 text-xs text-white/60 italic">
-              💡 C&apos;est aussi pour ça qu&apos;on te dit que le 3a est
-              intéressant même si tu n&apos;achètes pas tout de suite :
-              plus tu commences tôt, plus ton capital est important quand
-              tu passes devant la banque.
+              💡 C&apos;est pour ça que le 3a est intéressant <strong>même si tu n&apos;achètes pas tout de suite</strong> : plus tu commences tôt, plus ton capital est important quand tu passes devant la banque, plus tu es en position de force.
             </div>
           </div>
         </section>
