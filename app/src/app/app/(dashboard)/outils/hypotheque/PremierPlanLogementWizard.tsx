@@ -8,7 +8,9 @@ import {
   formatCHF,
   prevoyanceRequisePourApport,
   anneesNecessairesPourCapital,
+  planPourObjectif,
   type DossierClient,
+  type ObjectifImmobilier,
 } from "@/lib/hypotheque/calculs";
 import { PlanClientPrint } from "./PlanClientPrint";
 
@@ -22,14 +24,28 @@ const DEFAULT_DOSSIER: DossierClient = {
   rendementAnnuel: 0.03,
 };
 
+const DEFAULT_OBJECTIF: ObjectifImmobilier = {
+  prixBienCible: 600000,
+  horizonAchatAnnees: 10,
+  epargneCashActuelle: 20000,
+  lppExistante: 15000,
+  troisieme_a_existant: 5000,
+  rendementAnnuel: 0.03,
+};
+
 export function PremierPlanLogementWizard() {
   const [dossier, setDossier] = useState<DossierClient>(DEFAULT_DOSSIER);
+  const [objectif, setObjectif] = useState<ObjectifImmobilier>(DEFAULT_OBJECTIF);
   const [simId, setSimId] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const s = useMemo(() => synthese(dossier), [dossier]);
+  const plan = useMemo(() => planPourObjectif(objectif), [objectif]);
   const params = useSearchParams();
   const router = useRouter();
+
+  const setObj = <K extends keyof ObjectifImmobilier>(key: K, value: ObjectifImmobilier[K]) =>
+    setObjectif((o) => ({ ...o, [key]: value }));
 
   useEffect(() => {
     const loadId = params.get("load");
@@ -138,6 +154,170 @@ export function PremierPlanLogementWizard() {
           <NumberInputDark label="Versement 3a proposé (CHF/mois)" value={dossier.versementMensuel} step={50} onChange={(v) => setField("versementMensuel", v)} />
           <NumberInputDark label="Durée du plan (années)" value={dossier.anneesDuree} step={1} min={5} max={30} onChange={(v) => setField("anneesDuree", v)} />
           <NumberInputDark label="Taux marginal fiscal (%)" value={Math.round((dossier.tauxMarginal ?? 0.25) * 100)} step={1} min={10} max={45} onChange={(v) => setField("tauxMarginal", v / 100)} />
+        </div>
+      </section>
+
+      {/* Simulateur inversé : plan personnel selon objectif */}
+      <section className="bg-gradient-to-br from-klary-orange to-klary-orange/85 text-white rounded-2xl p-6 md:p-8 mb-8">
+        <div className="text-xs font-bold uppercase text-white/85 tracking-widest mb-2">
+          🎯 Simulation personnalisée · Plan objectif immobilier
+        </div>
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">
+          En fonction du profil de ton client
+        </h2>
+        <p className="text-white/85 text-sm mb-6 max-w-2xl">
+          Renseigne le projet visé et la situation actuelle du client. On
+          calcule combien il doit verser au 3a par mois pour être prêt le
+          jour de l&apos;achat, et combien la banque va gager annuellement
+          sur sa prévoyance.
+        </p>
+
+        {/* Inputs objectif */}
+        <div className="grid gap-4 md:grid-cols-5 mb-6">
+          <NumberInputOrange
+            label="Prix du bien visé"
+            value={objectif.prixBienCible}
+            step={10000}
+            onChange={(v) => setObj("prixBienCible", v)}
+            suffix="CHF"
+          />
+          <NumberInputOrange
+            label="Achat dans (années)"
+            value={objectif.horizonAchatAnnees}
+            step={1}
+            min={1}
+            max={30}
+            onChange={(v) => setObj("horizonAchatAnnees", v)}
+          />
+          <NumberInputOrange
+            label="Épargne cash actuelle"
+            value={objectif.epargneCashActuelle ?? 0}
+            step={1000}
+            onChange={(v) => setObj("epargneCashActuelle", v)}
+            suffix="CHF"
+          />
+          <NumberInputOrange
+            label="3a déjà en place"
+            value={objectif.troisieme_a_existant ?? 0}
+            step={1000}
+            onChange={(v) => setObj("troisieme_a_existant", v)}
+            suffix="CHF"
+          />
+          <NumberInputOrange
+            label="LPP mobilisable"
+            value={objectif.lppExistante ?? 0}
+            step={1000}
+            onChange={(v) => setObj("lppExistante", v)}
+            suffix="CHF"
+          />
+        </div>
+
+        {/* Résultats */}
+        <div className="bg-white text-klary-navy rounded-xl p-6">
+          <div className="text-xs font-bold uppercase text-klary-orange tracking-widest mb-3">
+            📊 Voici ton plan personnel
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4 mb-5">
+            <PlanCard
+              label="Nantissement annuel banque"
+              value={`${formatCHF(plan.prevoyanceAConstituer / Math.max(1, objectif.horizonAchatAnnees))} CHF/an`}
+              hint={`Sur ${objectif.horizonAchatAnnees} ans → total ${formatCHF(plan.prevoyanceAConstituer)} CHF de 3a à constituer`}
+              tone="orange"
+            />
+            <PlanCard
+              label="Versement 3a mensuel requis"
+              value={`${formatCHF(plan.versement3aMensuelRequis)} CHF /mois`}
+              hint={
+                plan.faisable
+                  ? "✓ Sous le plafond 3a mensuel (604 CHF/mois)"
+                  : "⚠ Dépasse le plafond 3a → cumuler avec 3b ou LPP"
+              }
+              tone={plan.faisable ? "ok" : "warn"}
+            />
+            <PlanCard
+              label="Effort mensuel total"
+              value={`${formatCHF(plan.totalEffortMensuel)} CHF /mois`}
+              hint={`Dont ${formatCHF(plan.versement3aMensuelRequis)} en 3a + ${formatCHF(plan.cashMensuelRequis)} en épargne cash pour le dur`}
+              tone="navy"
+            />
+          </div>
+
+          {/* Décomposition apport */}
+          <div className="border-t border-klary-light-grey pt-4">
+            <div className="text-xs font-bold uppercase text-klary-navy tracking-widest mb-3">
+              🧱 Décomposition de l&apos;apport {formatCHF(plan.apportTotal)} CHF (20 % du bien)
+            </div>
+            <div className="grid md:grid-cols-2 gap-3">
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                <div className="text-xs uppercase tracking-widest text-red-700 font-bold mb-1">
+                  10 % « Dur » ({formatCHF(plan.apportDur)} CHF)
+                </div>
+                <ul className="text-sm text-klary-navy space-y-1 mt-2">
+                  <li>
+                    ➕ Cash actuel : <strong>{formatCHF(objectif.epargneCashActuelle ?? 0)} CHF</strong>
+                  </li>
+                  <li>
+                    ➕ 3a lié actuel : <strong>{formatCHF(objectif.troisieme_a_existant ?? 0)} CHF</strong>
+                  </li>
+                  {plan.cashADeposer > 0 ? (
+                    <li className="text-red-700 font-semibold pt-1 border-t border-red-200">
+                      ⚠ Il manque {formatCHF(plan.cashADeposer)} CHF cash → {formatCHF(plan.cashMensuelRequis)} CHF/mois à épargner
+                    </li>
+                  ) : (
+                    <li className="text-emerald-700 font-semibold pt-1 border-t border-emerald-200">
+                      ✓ Le dur est déjà couvert par la situation actuelle
+                    </li>
+                  )}
+                </ul>
+              </div>
+              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+                <div className="text-xs uppercase tracking-widest text-emerald-700 font-bold mb-1">
+                  10 % « Mou » ({formatCHF(plan.apportMou)} CHF)
+                </div>
+                <ul className="text-sm text-klary-navy space-y-1 mt-2">
+                  <li>
+                    ➕ LPP mobilisable : <strong>{formatCHF(objectif.lppExistante ?? 0)} CHF</strong>
+                  </li>
+                  <li>
+                    ➕ 3a en cours : va monter à <strong>{formatCHF(plan.prevoyanceAConstituer + (objectif.troisieme_a_existant ?? 0))} CHF</strong> en {objectif.horizonAchatAnnees} ans
+                  </li>
+                  {plan.prevoyanceAConstituer > 0 ? (
+                    <li className="text-emerald-700 font-semibold pt-1 border-t border-emerald-200">
+                      → Verser {formatCHF(plan.versement3aMensuelRequis)} CHF/mois au 3a nanti
+                    </li>
+                  ) : (
+                    <li className="text-emerald-700 font-semibold pt-1 border-t border-emerald-200">
+                      ✓ Le mou est déjà couvert par LPP + 3a existants
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Narrative pour le conseiller */}
+          <div className="mt-5 bg-klary-navy text-white rounded-lg p-4 text-sm leading-relaxed">
+            <div className="text-xs uppercase tracking-widest text-klary-orange font-bold mb-2">
+              🗣 À dire au client
+            </div>
+            <p>
+              « En fonction de votre profil, votre 3ᵉ pilier va être gagé par
+              la banque à hauteur de{" "}
+              <strong className="text-klary-orange">
+                {formatCHF(plan.prevoyanceRequise)} CHF
+              </strong>{" "}
+              le jour de l&apos;achat, ce qui couvre les 10 % « mou » de
+              votre apport. Pour l&apos;atteindre en {objectif.horizonAchatAnnees}{" "}
+              ans, vous versez{" "}
+              <strong className="text-klary-orange">
+                {formatCHF(plan.versement3aMensuelRequis)} CHF/mois au 3a
+              </strong>
+              , et pendant ce temps vous touchez l&apos;économie fiscale + les
+              intérêts + la protection famille. Le jour où vous passez devant
+              la banque, tout est en place. »
+            </p>
+          </div>
         </div>
       </section>
 
@@ -1240,6 +1420,76 @@ function TextInput({ label, value, onChange }: { label: string; value: string; o
         className="w-full px-3 py-2 border border-klary-light-grey rounded-lg text-klary-navy font-semibold focus:outline-none focus:border-klary-orange"
       />
     </label>
+  );
+}
+
+function NumberInputOrange({
+  label,
+  value,
+  step = 1,
+  min,
+  max,
+  suffix,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  step?: number;
+  min?: number;
+  max?: number;
+  suffix?: string;
+  onChange: (v: number) => void;
+}) {
+  return (
+    <label className="block">
+      <span className="text-[10px] font-bold uppercase text-white/85 tracking-widest mb-1.5 block">
+        {label}
+      </span>
+      <div className="relative">
+        <input
+          type="number"
+          value={value}
+          step={step}
+          min={min}
+          max={max}
+          onChange={(e) => onChange(Number(e.target.value))}
+          className="w-full px-3 py-2 pr-14 bg-white/15 border border-white/25 rounded-lg text-white font-bold text-lg focus:outline-none focus:border-white focus:bg-white/20"
+        />
+        {suffix && (
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-white/70">
+            {suffix}
+          </span>
+        )}
+      </div>
+    </label>
+  );
+}
+
+function PlanCard({
+  label,
+  value,
+  hint,
+  tone,
+}: {
+  label: string;
+  value: string;
+  hint: string;
+  tone: "orange" | "ok" | "warn" | "navy";
+}) {
+  const styles = {
+    orange: "bg-klary-orange/10 border-klary-orange text-klary-navy",
+    ok: "bg-emerald-50 border-emerald-500 text-emerald-900",
+    warn: "bg-amber-50 border-amber-500 text-amber-900",
+    navy: "bg-klary-cream/60 border-klary-navy text-klary-navy",
+  }[tone];
+  return (
+    <div className={`rounded-xl border-2 p-4 ${styles}`}>
+      <div className="text-[10px] uppercase tracking-widest font-bold opacity-80 mb-1">
+        {label}
+      </div>
+      <div className="text-2xl font-bold">{value}</div>
+      <div className="text-xs opacity-75 mt-1 leading-tight">{hint}</div>
+    </div>
   );
 }
 

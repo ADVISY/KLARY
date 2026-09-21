@@ -153,6 +153,93 @@ export function prevoyanceRequisePourApport(prixBien: number): {
 }
 
 /**
+ * Versement mensuel nécessaire pour atteindre un capital cible en N années.
+ * Formule inversée des annuités capitalisées :
+ *   V = C × r / ((1+r)^n - 1)   avec r = taux mensuel, n = nombre de mois
+ *
+ * Utilisé pour dimensionner le 3a en fonction d'un objectif immobilier.
+ */
+export function versementMensuelPourCapital(
+  capitalCible: number,
+  anneesDuree: number,
+  rendementAnnuel = RENDEMENT_3A_DEFAUT
+): number {
+  if (anneesDuree <= 0 || capitalCible <= 0) return 0;
+  const n = anneesDuree * 12;
+  const r = rendementAnnuel / 12;
+  if (r === 0) return Math.ceil(capitalCible / n);
+  const v = (capitalCible * r) / (Math.pow(1 + r, n) - 1);
+  return Math.ceil(v);
+}
+
+/**
+ * Plan complet basé sur l'objectif immobilier du client.
+ * Renvoie tout le nécessaire pour lui dire :
+ *   - combien de prévoyance à constituer
+ *   - combien mettre au 3a par mois pour l'atteindre
+ *   - combien de cash épargner en parallèle pour le dur
+ */
+export interface ObjectifImmobilier {
+  prixBienCible: number;
+  horizonAchatAnnees: number;
+  epargneCashActuelle?: number;
+  lppExistante?: number;
+  troisieme_a_existant?: number;
+  rendementAnnuel?: number;
+}
+
+export interface PlanObjectif {
+  apportTotal: number;
+  apportDur: number;
+  apportMou: number;
+  cashADeposer: number;
+  prevoyanceRequise: number;
+  prevoyanceDejaEnPlace: number;
+  prevoyanceAConstituer: number;
+  versement3aMensuelRequis: number;
+  cashMensuelRequis: number;
+  totalEffortMensuel: number;
+  faisable: boolean;
+}
+
+export function planPourObjectif(o: ObjectifImmobilier): PlanObjectif {
+  const rendement = o.rendementAnnuel ?? RENDEMENT_3A_DEFAUT;
+  const apportTotal = o.prixBienCible * 0.2;
+  const apportDur = o.prixBienCible * 0.1;
+  const apportMou = o.prixBienCible * 0.1;
+
+  const cashActuel = o.epargneCashActuelle ?? 0;
+  const troisA = o.troisieme_a_existant ?? 0;
+  const lpp = o.lppExistante ?? 0;
+  const prevoyanceDejaEnPlace = troisA + lpp;
+
+  const cashADeposer = Math.max(0, apportDur - cashActuel - troisA); // le 3a lié compte aussi comme "dur"
+  const prevoyanceAConstituer = Math.max(0, apportMou - prevoyanceDejaEnPlace);
+
+  const versement3a = versementMensuelPourCapital(
+    prevoyanceAConstituer,
+    o.horizonAchatAnnees,
+    rendement
+  );
+  const cashMensuel =
+    o.horizonAchatAnnees > 0 ? Math.ceil(cashADeposer / (o.horizonAchatAnnees * 12)) : 0;
+
+  return {
+    apportTotal,
+    apportDur,
+    apportMou,
+    cashADeposer,
+    prevoyanceRequise: apportMou,
+    prevoyanceDejaEnPlace,
+    prevoyanceAConstituer,
+    versement3aMensuelRequis: versement3a,
+    cashMensuelRequis: cashMensuel,
+    totalEffortMensuel: versement3a + cashMensuel,
+    faisable: versement3a <= 604, // au-delà du plafond 3a mensuel
+  };
+}
+
+/**
  * Temps nécessaire pour constituer un capital cible (formule inversée).
  * Sur combien d'années avec versement mensuel donné pour atteindre le
  * capital cible, à taux de rendement donné.
