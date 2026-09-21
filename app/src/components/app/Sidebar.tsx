@@ -112,6 +112,17 @@ const AGENT_ITEMS: NavItem[] = [
     activePaths: ["/mes-documents"], // /mes-documents allume aussi "Documents"
   },
   {
+    href: "/outils",
+    label: "Outils",
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.75v2.5m4.5-2.5v2.5M3.75 9.75h16.5M5.25 6h13.5A1.5 1.5 0 0120.25 7.5v11.25A1.5 1.5 0 0118.75 20.25H5.25A1.5 1.5 0 013.75 18.75V7.5A1.5 1.5 0 015.25 6z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 13.5h3M13.5 13.5h2.25M8.25 17h2.25M13.5 17h2.25" />
+      </svg>
+    ),
+    activePaths: ["/outils"],
+  },
+  {
     href: "/mon-profil",
     label: "Mon profil",
     icon: iconUser,
