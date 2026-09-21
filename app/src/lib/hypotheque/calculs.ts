@@ -129,6 +129,13 @@ export interface DossierClient {
   anneesDuree: number;
   tauxMarginal?: number;
   rendementAnnuel?: number;
+  /** Nom du client pour le PDF récapitulatif */
+  clientNom?: string;
+  clientPrenom?: string;
+  /** Type de bien visé (appartement, maison, autre) */
+  typeBien?: string;
+  /** Localité du projet */
+  localite?: string;
 }
 
 export interface SyntheseCalculs {

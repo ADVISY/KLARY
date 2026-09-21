@@ -6,6 +6,7 @@ import {
   formatCHF,
   type DossierClient,
 } from "@/lib/hypotheque/calculs";
+import { PlanClientPrint } from "./PlanClientPrint";
 
 type Phase = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
@@ -91,7 +92,7 @@ export function PremierPlanLogementWizard() {
           {phase === 4 && <Phase4 />}
           {phase === 5 && <Phase5 dossier={dossier} s={s} setField={setField} />}
           {phase === 6 && <Phase6 />}
-          {phase === 7 && <Phase7 />}
+          {phase === 7 && <Phase7 dossier={dossier} />}
 
           <div className="mt-8 pt-6 border-t border-klary-light-grey flex items-center justify-between gap-3">
             <button
@@ -113,6 +114,9 @@ export function PremierPlanLogementWizard() {
             </button>
           </div>
         </section>
+
+        {/* Composant impression (visible seulement à l'impression) */}
+        <PlanClientPrint dossier={dossier} s={s} />
 
         {/* Aside chiffres client toujours visibles */}
         <aside className="lg:sticky lg:top-6 self-start bg-klary-navy text-white rounded-2xl p-5 space-y-3 text-sm">
@@ -231,7 +235,33 @@ function Phase2({
 
       <div className="border-t border-klary-light-grey pt-6">
         <div className="text-xs font-bold uppercase text-klary-orange mb-4 tracking-widest">
-          Saisie des chiffres client
+          Identité client (pour le PDF récapitulatif)
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 mb-6">
+          <TextInput
+            label="Prénom"
+            value={dossier.clientPrenom || ""}
+            onChange={(v) => setField("clientPrenom", v)}
+          />
+          <TextInput
+            label="Nom"
+            value={dossier.clientNom || ""}
+            onChange={(v) => setField("clientNom", v)}
+          />
+          <TextInput
+            label="Type de bien (appart, maison, PPE...)"
+            value={dossier.typeBien || ""}
+            onChange={(v) => setField("typeBien", v)}
+          />
+          <TextInput
+            label="Localité visée"
+            value={dossier.localite || ""}
+            onChange={(v) => setField("localite", v)}
+          />
+        </div>
+
+        <div className="text-xs font-bold uppercase text-klary-orange mb-4 tracking-widest">
+          Chiffres client
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <NumberInput
@@ -574,7 +604,8 @@ function Phase6() {
 }
 
 // ═══════════ Phase 7 · Signature ═══════════
-function Phase7() {
+function Phase7({ dossier }: { dossier: DossierClient }) {
+  const nomClient = [dossier.clientPrenom, dossier.clientNom].filter(Boolean).join(" ") || "Client";
   const checklist = [
     "Pièce d'identité + date de naissance + IBAN collectés",
     "Bénéficiaires (capital-décès) : à qui va le capital ?",
@@ -593,6 +624,38 @@ function Phase7() {
   return (
     <div>
       <PhaseHeader n={7} title="Signature & suivi" duree="5 min" />
+
+      {/* PDF pour le client */}
+      <div className="mt-6 bg-gradient-to-br from-klary-orange to-klary-orange/80 text-white rounded-2xl p-6">
+        <div className="flex items-start justify-between gap-4 flex-wrap">
+          <div className="flex-1 min-w-[240px]">
+            <div className="text-[10px] uppercase tracking-widest text-white/80 font-bold mb-1">
+              À remettre au client
+            </div>
+            <h3 className="text-xl font-bold mb-1">Plan personnel PDF</h3>
+            <p className="text-sm text-white/85">
+              Récapitulatif imprimable A4 avec les chiffres calculés, le plan
+              proposé et les 2 zones de signature. Prêt à remettre à{" "}
+              <strong>{nomClient}</strong>.
+            </p>
+          </div>
+          <button
+            onClick={() => window.print()}
+            className="px-5 py-3 bg-white text-klary-orange font-bold rounded-xl hover:shadow-lg transition text-sm inline-flex items-center gap-2"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+            </svg>
+            Télécharger le PDF
+          </button>
+        </div>
+        <div className="mt-3 text-xs text-white/75 italic">
+          Astuce : au clic, choisis « Enregistrer au format PDF » dans le
+          dialogue d&apos;impression de ton navigateur. Le layout est déjà
+          optimisé A4.
+        </div>
+      </div>
+
       <div className="mt-6 grid md:grid-cols-2 gap-6">
         <div>
           <div className="text-xs font-bold uppercase text-klary-orange mb-3 tracking-widest">
@@ -643,6 +706,30 @@ function PhaseHeader({ n, title, duree }: { n: number; title: string; duree: str
       </div>
       <h2 className="text-2xl font-bold text-klary-navy">{title}</h2>
     </div>
+  );
+}
+
+function TextInput({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <label className="block">
+      <span className="text-xs font-bold uppercase text-klary-grey tracking-widest mb-2 block">
+        {label}
+      </span>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full px-3 py-2 border border-klary-light-grey rounded-lg text-klary-navy font-semibold focus:outline-none focus:border-klary-orange"
+      />
+    </label>
   );
 }
 
