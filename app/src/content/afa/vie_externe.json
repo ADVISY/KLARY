@@ -6,7 +6,7 @@
  "questions": [
   {
    "external_id": "EXT-VIE-001",
-   "theme": "retraite",
+   "theme": "retraite_obligatoire",
    "type": "multiple",
    "points": 3,
    "notions": [],
@@ -42,7 +42,7 @@
   },
   {
    "external_id": "EXT-VIE-002",
-   "theme": "retraite",
+   "theme": "retraite_obligatoire",
    "type": "multiple",
    "points": 2,
    "notions": [],
@@ -78,7 +78,7 @@
   },
   {
    "external_id": "EXT-VIE-003",
-   "theme": "retraite",
+   "theme": "retraite_obligatoire",
    "type": "multiple",
    "points": 3,
    "notions": [],

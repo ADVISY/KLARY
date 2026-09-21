@@ -1,1253 +1,2390 @@
 {
-  "source": "klary_interne",
-  "filiere_key": "vie",
-  "reference": "Banque Klary : prévoyance privée VIE 75 questions. Types d'assurance vie (risque pur/mixte/capitalisation/unit-linked), 3a vs 3b, banque vs assurance, protection famille (veuve/orphelin/capital décès), lien avec accident/maladie/décès.",
-  "note": "Registre VBV strict. Références légales OPP3, LPP, LCA, CO, LIFD. Chiffres 2026.",
-  "questions": [
-    {
-      "external_id": "KLARY-VIE-PP-001",
-      "theme": "epargne",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Quel est le plafond du pilier 3a en 2026 pour un salarié affilié à une institution LPP ?",
-      "options": [
-        {"text": "7 258 CHF", "correct": true},
-        {"text": "6 883 CHF", "correct": false, "why_wrong": "Plafond 2023, plus en vigueur."},
-        {"text": "7 056 CHF", "correct": false, "why_wrong": "Plafond 2024, plus en vigueur."},
-        {"text": "36 288 CHF", "correct": false, "why_wrong": "C'est le plafond du grand pilier 3a pour indépendant sans LPP."}
-      ],
-      "explanation": "Art. 7 al. 1 lit. a OPP 3 : petit pilier 3a pour salarié affilié LPP = 8 % de la limite supérieure du salaire coordonné (art. 8 al. 1 LPP). Montant 2026 : 7 258 CHF, intégralement déductible du revenu imposable."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-002",
-      "theme": "epargne",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Un indépendant SANS caisse LPP peut verser dans son pilier 3a en 2026 :",
-      "options": [
-        {"text": "20 % du revenu net d'activité, maximum 36 288 CHF", "correct": true},
-        {"text": "20 % du revenu net d'activité, maximum 7 258 CHF", "correct": false, "why_wrong": "Confusion avec le petit pilier 3a du salarié."},
-        {"text": "10 % du revenu net, sans plafond", "correct": false},
-        {"text": "50 % du revenu net, maximum 100 000 CHF", "correct": false}
-      ],
-      "explanation": "Art. 7 al. 1 lit. b OPP 3 : grand pilier 3a = 20 % du revenu net d'activité indépendante, plafonné à 5 fois le petit pilier 3a. 2026 : 5 × 7 258 = 36 288 CHF. Levier fiscal massif pour les indépendants à revenu élevé."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-003",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 3,
-      "notions": [],
-      "context": null,
-      "question": "Comparaison pilier 3a vs pilier 3b : quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Le pilier 3b n'a AUCUN plafond fédéral de versement", "correct": true},
-        {"text": "Le pilier 3a est déductible du revenu imposable, dans la limite du plafond", "correct": true},
-        {"text": "Les versements 3b sont déductibles du revenu imposable comme le 3a", "correct": false, "why_wrong": "Faux : les versements 3b ne sont PAS déductibles au niveau fédéral. Seules quelques déductions cantonales limitées existent (Genève, Vaud)."},
-        {"text": "Le pilier 3a est bloqué jusqu'à 5 ans avant l'âge de référence AVS", "correct": true},
-        {"text": "Le pilier 3b est librement disponible en tout temps (rachat/résiliation)", "correct": true}
-      ],
-      "explanation": "3a = prévoyance liée, plafonnée et fiscalement avantageuse, mais bloquée. 3b = prévoyance libre, sans plafond ni déduction, disponible en tout temps. Art. 82 LPP et OPP 3 encadrent le 3a ; le 3b relève du droit privé (LCA/CO)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-004",
-      "theme": "epargne",
-      "type": "single",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Un salarié affilié LPP verse 10 000 CHF sur son pilier 3a en 2026. Que se passe-t-il fiscalement ?",
-      "options": [
-        {"text": "7 258 CHF sont déductibles, l'excédent de 2 742 CHF doit être remboursé par la banque", "correct": true},
-        {"text": "10 000 CHF sont intégralement déductibles", "correct": false, "why_wrong": "Faux : le plafond légal 2026 est 7 258 CHF pour un salarié."},
-        {"text": "Rien n'est déductible car le plafond est dépassé", "correct": false, "why_wrong": "La déduction reste possible jusqu'au plafond, seul l'excédent est refusé."},
-        {"text": "10 000 CHF déductibles avec supplément d'impôt", "correct": false}
-      ],
-      "explanation": "Art. 7 al. 1 lit. a OPP 3 + art. 33 al. 1 lit. e LIFD : la déduction est limitée au plafond légal (7 258 CHF en 2026). Toute somme excédentaire doit être remboursée par la fondation 3a. Contrôle systématique lors de la déclaration."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-005",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Comment sont imposées les prestations en capital du pilier 3a lors du retrait ? Cochez les affirmations exactes.",
-      "options": [
-        {"text": "Elles sont imposées séparément des autres revenus, à un taux réduit (env. 1/5 du barème ordinaire)", "correct": true},
-        {"text": "Elles ne sont PAS soumises aux cotisations AVS/AI/APG", "correct": true},
-        {"text": "Elles sont imposées tant au niveau fédéral que cantonal, mais à taux réduit", "correct": true},
-        {"text": "Elles sont cumulées au revenu ordinaire pour former l'assiette imposable", "correct": false, "why_wrong": "Faux : imposition séparée, pas cumulée au revenu."},
-        {"text": "Elles sont totalement exonérées d'impôt fédéral direct", "correct": false, "why_wrong": "Faux : imposition existe, mais à taux réduit."}
-      ],
-      "explanation": "Art. 38 LIFD + LHID art. 11 al. 3 : les prestations en capital de la prévoyance sont imposées séparément du revenu à un taux réduit (env. 1/5 du barème ordinaire), tant au niveau fédéral que cantonal. Pas soumises aux cotisations AVS/AI/APG (revenu de prévoyance et non d'activité)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-006",
-      "theme": "epargne",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Concernant les primes versées dans une police d'assurance-vie 3b à prime périodique susceptible de rachat, quelle affirmation est correcte au niveau de l'IFD ?",
-      "options": [
-        {"text": "Les primes sont déductibles du revenu comme un pilier 3a", "correct": false, "why_wrong": "Faux : les primes 3b ne bénéficient pas de la déduction spéciale 3a."},
-        {"text": "Les primes ne sont PAS déductibles du revenu imposable au niveau fédéral", "correct": true},
-        {"text": "50 % des primes sont déductibles", "correct": false},
-        {"text": "Les primes sont déductibles à hauteur de 50 % du salaire brut", "correct": false}
-      ],
-      "explanation": "IFD (art. 33 al. 1 lit. g LIFD) : uniquement la déduction générale des primes d'assurance dans une limite forfaitaire (env. 1 700 CHF pour une personne seule, doublée si mariée, avec supplément par enfant). Aucune déduction spécifique 3b. Certains cantons (Genève, Vaud) offrent une déduction cantonale supplémentaire limitée."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-007",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Ordre légal des bénéficiaires du pilier 3a (art. 2 OPP 3) : quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Le conjoint survivant ou le partenaire enregistré vient EN PREMIER", "correct": true},
-        {"text": "Le concubin peut être bénéficiaire à des conditions strictes (ménage commun 5 ans, enfant commun ou entretien substantiel)", "correct": true},
-        {"text": "Le titulaire peut désigner un bénéficiaire libre, comme en 3b", "correct": false, "why_wrong": "Faux : le 3a suit un ORDRE LÉGAL, aucune liberté totale."},
-        {"text": "En l'absence de conjoint et de descendants, les parents peuvent être désignés", "correct": true},
-        {"text": "Les frères et sœurs peuvent être désignés uniquement s'il n'existe ni conjoint, ni descendants, ni parents", "correct": true}
-      ],
-      "explanation": "Art. 2 OPP 3, ordre imposé : 1° conjoint / partenaire enregistré ; 2° descendants + concubin qualifié + personnes à charge ; 3° parents ; 4° frères et sœurs ; 5° autres héritiers. Le titulaire peut seulement modifier la répartition à l'intérieur d'un rang."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-008",
-      "theme": "epargne",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Dans une police d'assurance-vie 3b avec clause bénéficiaire nominative, qui désigne le titulaire de la police en cas de décès ?",
-      "options": [
-        {"text": "Toute personne librement, sans contrainte d'ordre légal", "correct": true},
-        {"text": "Uniquement le conjoint et les descendants", "correct": false, "why_wrong": "Faux : c'est le régime restrictif du 3a."},
-        {"text": "Uniquement les héritiers légaux", "correct": false},
-        {"text": "Uniquement le conjoint, avec accord notarié", "correct": false}
-      ],
-      "explanation": "Art. 76-79 LCA : liberté totale de désignation dans une police 3b. Le capital-décès est versé hors succession au bénéficiaire, sous réserve de l'action en réduction (art. 476 CC) si les réserves héréditaires sont atteintes."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-009",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Quels sont les motifs de retrait anticipé autorisés du pilier 3a (art. 3 al. 2 et 3 OPP 3) ?",
-      "options": [
-        {"text": "Acquisition ou construction de la résidence principale (encouragement PPE)", "correct": true},
-        {"text": "Amortissement d'un prêt hypothécaire de la résidence principale", "correct": true},
-        {"text": "Départ définitif de Suisse", "correct": true},
-        {"text": "Début d'une activité indépendante", "correct": true},
-        {"text": "Rente d'invalidité entière AI", "correct": true},
-        {"text": "Financement d'une voiture ou de vacances", "correct": false, "why_wrong": "Aucun motif de consommation n'est admis."}
-      ],
-      "explanation": "Art. 3 al. 2 et 3 OPP 3 : motifs strictement limités. Retrait ordinaire dès 5 ans avant l'âge de référence AVS. Retrait anticipé possible : PPE (résidence principale), départ définitif de la Suisse, indépendance, invalidité totale (AI), décès."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-010",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Concernant le rachat d'une police 3b classique (assurance-vie susceptible de rachat), quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Elle peut être rachetée en tout temps par le preneur d'assurance (art. 89-93 LCA)", "correct": true},
-        {"text": "La valeur de rachat des premières années est souvent inférieure aux primes versées (frais d'acquisition)", "correct": true},
-        {"text": "Le rachat est bloqué jusqu'à l'âge de la retraite", "correct": false, "why_wrong": "Confusion avec le régime du pilier 3a."},
-        {"text": "Le rachat est uniquement admis en cas de décès ou d'invalidité", "correct": false},
-        {"text": "Le rachat nécessite l'accord de la FINMA", "correct": false}
-      ],
-      "explanation": "Art. 89-93 LCA : le preneur d'une assurance-vie 3b susceptible de rachat peut la résilier en tout temps et obtenir la valeur de rachat. Attention : dans les premières années, cette valeur reste souvent inférieure aux primes versées (frais d'acquisition, technique de zillmerisation)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-011",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Un compte 3a bancaire (sans placement) présente typiquement quelles caractéristiques ?",
-      "options": [
-        {"text": "Un taux d'intérêt variable, généralement supérieur à un compte d'épargne classique", "correct": true},
-        {"text": "Aucune couverture décès ni invalidité intégrée", "correct": true},
-        {"text": "Des frais de gestion très faibles ou nuls", "correct": true},
-        {"text": "Une souplesse totale sur les montants et la périodicité des versements (dans la limite du plafond)", "correct": true},
-        {"text": "Une garantie de capital minimum en cas de décès", "correct": false, "why_wrong": "Aucune garantie décès en compte bancaire pur. Il faut une police d'assurance."}
-      ],
-      "explanation": "Compte 3a banque : véhicule d'épargne pur, ni couverture de risque, ni obligation d'alimenter chaque année. Souple, peu coûteux, mais sans garantie de capital ni protection en cas de coup dur. Peut être complété par une assurance risque pur séparée."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-012",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Une police 3a d'assurance mixte comporte typiquement :",
-      "options": [
-        {"text": "Un capital garanti à l'échéance", "correct": true},
-        {"text": "Une participation aux excédents non garantie", "correct": true},
-        {"text": "Une couverture décès intégrée", "correct": true},
-        {"text": "Une libération du paiement des primes en cas d'incapacité de gain", "correct": true},
-        {"text": "Une prime annuelle contractuellement fixée, engagement pluriannuel", "correct": true},
-        {"text": "Un rendement systématiquement supérieur à un compte 3a bancaire sur 20 ans", "correct": false, "why_wrong": "Les frais d'acquisition et de gestion des polices 3a sont élevés. En pratique, sur longue période, le compte bancaire (ou 3a-titres) est souvent plus rentable."}
-      ],
-      "explanation": "Police 3a assurance = épargne + couverture risque. Argument majeur : la libération de prime protège l'objectif d'épargne en cas d'incapacité. Argument à opposer : la rigidité contractuelle et les frais élevés (surtout années 1 à 5). Choix : profil et besoins du client."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-013",
-      "theme": "epargne",
-      "type": "single",
-      "points": 3,
-      "notions": [],
-      "context": "Léa, 28 ans, célibataire, sans enfants, employée de commerce (salaire 78 000 CHF), souhaite commencer sa prévoyance 3a. Le conseiller lui présente une police d'assurance-vie 3a mixte avec prime annuelle de 7 000 CHF sur 37 ans.",
-      "question": "Quelle est la critique principale à formuler à l'encontre de cette recommandation ?",
-      "options": [
-        {"text": "Elle n'a besoin d'aucune couverture décès ni invalidité prioritaire, un compte bancaire 3a (voire 3a-titres) serait plus flexible et moins coûteux", "correct": true},
-        {"text": "Le plafond annuel est dépassé", "correct": false, "why_wrong": "Plafond 2026 = 7 258 CHF, donc 7 000 CHF est admis."},
-        {"text": "Un célibataire ne peut pas ouvrir de police 3a", "correct": false, "why_wrong": "Toute personne exerçant une activité lucrative peut ouvrir un 3a."},
-        {"text": "L'assurance-vie 3a n'existe que pour les indépendants", "correct": false}
-      ],
-      "explanation": "Devoir de conseil (art. 45 LSA + art. 44 al. 1 LSA) : la recommandation doit correspondre aux besoins. Une jeune célibataire sans charge n'a pas besoin de la protection décès intégrée. Un compte 3a bancaire (voire 3a-titres) offre plus de flexibilité, moins de frais et une meilleure rentabilité sur 37 ans."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-014",
-      "theme": "epargne",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Un preneur résilie sa police d'assurance-vie 3a après 3 ans. Que constate-t-on typiquement au niveau de la valeur de rachat ?",
-      "options": [
-        {"text": "Elle est nettement inférieure au total des primes versées, en raison des frais d'acquisition amortis en début de contrat", "correct": true},
-        {"text": "Elle est égale à la somme des primes versées, majorée des intérêts", "correct": false, "why_wrong": "Faux : les frais réduisent significativement la valeur de rachat dans les premières années."},
-        {"text": "Elle est nulle, aucun rachat n'est possible avant 5 ans", "correct": false, "why_wrong": "La police est rachetable dès qu'une valeur de rachat existe (art. 90 LCA)."},
-        {"text": "Elle est majorée d'un bonus de sortie", "correct": false}
-      ],
-      "explanation": "Frais d'acquisition (zillmerisation) : les commissions et frais d'établissement sont amortis dans les premières années. Résultat : la valeur de rachat peut être 30 à 60 % inférieure aux primes versées durant les 5 premières années. À expliciter au client (devoir d'information art. 3 LCA)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-015",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Que couvre typiquement une police d'assurance-vie 3a mixte au niveau des risques ?",
-      "options": [
-        {"text": "Le capital décès garanti à la personne bénéficiaire", "correct": true},
-        {"text": "La libération du paiement des primes en cas d'incapacité de gain durable", "correct": true},
-        {"text": "Une rente d'invalidité éventuelle si la couverture complémentaire est souscrite", "correct": true},
-        {"text": "La perte de gain immédiate en cas de maladie (IJM)", "correct": false, "why_wrong": "L'IJM est une couverture distincte (LCA collective d'employeur ou individuelle), pas incluse dans une 3a."},
-        {"text": "Les frais d'hospitalisation LAMal", "correct": false, "why_wrong": "Prestations relevant de la LAMal / LCA maladie, pas de la 3a."}
-      ],
-      "explanation": "Une police 3a mixte cumule épargne + capital décès + libération de prime. La rente d'invalidité est en option. Elle ne remplace ni l'IJM (perte de gain maladie), ni la LAMal (frais médicaux). Le conseil doit clairement délimiter le périmètre des couvertures."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-016",
-      "theme": "epargne",
-      "type": "single",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Un client résilie sa police 3a avant l'échéance mais sans motif légal de retrait 3a. Que devient la valeur de rachat ?",
-      "options": [
-        {"text": "Elle doit être transférée à une autre institution 3a (compte ou police), elle NE peut PAS être versée au client", "correct": true},
-        {"text": "Elle est intégralement versée au client, imposée séparément", "correct": false, "why_wrong": "Faux : sans motif légal de retrait, les fonds restent liés."},
-        {"text": "Elle est perdue au profit de la compagnie", "correct": false},
-        {"text": "Elle est versée à moitié au client, à moitié à la fondation", "correct": false}
-      ],
-      "explanation": "Art. 3 OPP 3 : le retrait n'est autorisé que pour les motifs limitativement énumérés. En cas de résiliation anticipée sans motif, la valeur de rachat doit être TRANSFÉRÉE à une autre solution 3a (compte bancaire ou police), et non versée au client."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-017",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Quelles caractéristiques distinguent un compte 3a-titres (avec fonds de placement) d'un compte 3a bancaire classique ?",
-      "options": [
-        {"text": "Potentiel de rendement supérieur à long terme", "correct": true},
-        {"text": "Risque de perte en capital (pas de garantie)", "correct": true},
-        {"text": "Frais de gestion des fonds supplémentaires (TER)", "correct": true},
-        {"text": "Rendement systématiquement garanti supérieur", "correct": false, "why_wrong": "Aucune garantie : la valeur peut baisser."},
-        {"text": "Exonération fiscale totale à l'échéance", "correct": false, "why_wrong": "Le régime fiscal est le même : imposition séparée à taux réduit lors du retrait."},
-        {"text": "Une immobilisation supplémentaire de 5 ans par rapport au compte classique", "correct": false}
-      ],
-      "explanation": "Le 3a-titres investit tout ou partie de l'avoir dans des fonds. Sur longue durée (> 15 ans), le rendement attendu dépasse celui du compte classique, mais le capital n'est pas garanti et les frais de fonds réduisent la performance. À réserver aux profils tolérants au risque et à horizon long."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-018",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Pourquoi conseiller de répartir son 3a sur PLUSIEURS comptes ou polices ?",
-      "options": [
-        {"text": "Permet d'étaler les retraits sur plusieurs années fiscales et réduire la progressivité de l'impôt sur les prestations en capital", "correct": true},
-        {"text": "Permet de diversifier les stratégies (compte + fonds + police)", "correct": true},
-        {"text": "Permet d'augmenter le plafond annuel de versement", "correct": false, "why_wrong": "Le plafond annuel s'applique à la personne, pas au compte."},
-        {"text": "Diversifie le risque de contrepartie sur la banque / la compagnie", "correct": true}
-      ],
-      "explanation": "Astuce classique : ouvrir 3 à 5 comptes 3a distincts et les vider sur 3 à 5 ans à partir de 60 ans. Chaque année : imposition séparée à taux réduit. Sur un canton comme Genève ou Vaud, l'économie fiscale cumulée peut atteindre plusieurs milliers de francs."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-019",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Concernant la participation aux excédents versée dans une police d'assurance-vie, quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Elle n'est PAS garantie contractuellement", "correct": true},
-        {"text": "Elle dépend du résultat réel de la compagnie (mortalité, gestion, financier)", "correct": true},
-        {"text": "Le client doit distinguer capital garanti et prestation prévisionnelle sur participation", "correct": true},
-        {"text": "Elle est fixée contractuellement chaque année", "correct": false, "why_wrong": "Seul le capital garanti est contractuel, les excédents ne le sont pas."},
-        {"text": "Elle est régulée par la FINMA à un taux minimal annuel garanti", "correct": false}
-      ],
-      "explanation": "Les excédents proviennent des trois sources techniques (risque, coûts, capital). Ils NE sont PAS garantis. Le client doit distinguer clairement, à la lecture de la proposition, la prestation garantie de la prestation prévisionnelle sur participation (art. 3 LCA, devoir d'information)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-020",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Un client demande à cumuler dans son 3a un compte bancaire ET une police d'assurance-vie 3a. Quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Le cumul est autorisé tant que le total annuel ne dépasse pas le plafond légal", "correct": true},
-        {"text": "Il peut également ouvrir un 3a-titres en parallèle chez un troisième prestataire", "correct": true},
-        {"text": "Le nombre de supports 3a n'est pas limité par la loi", "correct": true},
-        {"text": "Un seul type de 3a est autorisé par personne", "correct": false, "why_wrong": "Aucune interdiction légale."},
-        {"text": "Le cumul n'est autorisé qu'aux indépendants", "correct": false},
-        {"text": "Le cumul est possible uniquement avec deux banques distinctes", "correct": false}
-      ],
-      "explanation": "La loi limite le MONTANT TOTAL versé par personne et par année (art. 7 OPP 3), pas le nombre ni la nature des supports. Un client peut parfaitement combiner un compte bancaire, un compte 3a-titres et une police d'assurance-vie 3a, à condition de respecter le plafond global."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-021",
-      "theme": "epargne",
-      "type": "single",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Un client souhaite retirer 100 000 CHF de son 2e pilier pour amortir sa résidence principale. Quel est le montant minimum admissible pour un retrait anticipé PPE ?",
-      "options": [
-        {"text": "20 000 CHF, sauf si le retrait sert à rembourser un prêt hypothécaire existant lié à des parts de coopérative", "correct": true},
-        {"text": "10 000 CHF minimum, sans exception", "correct": false},
-        {"text": "50 000 CHF minimum", "correct": false},
-        {"text": "Aucun minimum légal", "correct": false, "why_wrong": "Faux : un minimum de 20 000 CHF est expressément prévu."}
-      ],
-      "explanation": "Art. 5 al. 1 OEPL : montant minimum du retrait anticipé PPE = 20 000 CHF. Exception : parts de coopérative de logement, où aucun minimum n'est requis. Objectif : éviter la fragmentation excessive de l'avoir de prévoyance."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-022",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Quelles conditions doivent être remplies pour un retrait anticipé du pilier 3a pour la propriété du logement (PPE) ?",
-      "options": [
-        {"text": "Il doit s'agir de la résidence principale du titulaire (domicile)", "correct": true},
-        {"text": "Le retrait peut servir à l'acquisition, à la construction, à des transformations, ou à l'amortissement d'un prêt hypothécaire", "correct": true},
-        {"text": "Le retrait est possible pour une résidence secondaire ou de vacances", "correct": false, "why_wrong": "Faux : uniquement la résidence principale."},
-        {"text": "Le retrait est possible tous les 5 ans", "correct": true},
-        {"text": "Un retrait est possible pour financer un investissement locatif", "correct": false, "why_wrong": "Faux : jamais pour un bien locatif."}
-      ],
-      "explanation": "Art. 3 al. 3 OPP 3 + art. 5 al. 1 lit. b OPP 3 : retrait PPE uniquement pour résidence principale (propriété du logement à usage personnel). Périodicité : possible tous les 5 ans. Interdiction stricte pour résidence secondaire ou investissement locatif."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-023",
-      "theme": "epargne",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Les prestations en capital du 3a sont-elles soumises aux cotisations AVS/AI/APG ?",
-      "options": [
-        {"text": "Non, contrairement au salaire ou à une rente", "correct": true},
-        {"text": "Oui, à hauteur de 8,7 % comme un salaire", "correct": false, "why_wrong": "Confusion avec les revenus d'activité."},
-        {"text": "Oui, à hauteur de 5,3 % (part employé)", "correct": false},
-        {"text": "Uniquement au-delà de 100 000 CHF", "correct": false}
-      ],
-      "explanation": "Les prestations en capital de la prévoyance (2e et 3e pilier) NE sont PAS un revenu d'activité, donc NON soumises aux cotisations AVS/AI/APG. Elles sont uniquement soumises à l'impôt sur les prestations en capital (art. 38 LIFD)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-024",
-      "theme": "epargne",
-      "type": "single",
-      "points": 3,
-      "notions": [],
-      "context": "Marc, 60 ans, marié, deux comptes 3a de 100 000 CHF chacun. Il envisage de tout retirer en une seule fois en 2026.",
-      "question": "Comment optimiser fiscalement le retrait ?",
-      "options": [
-        {"text": "Étaler les retraits sur 2 années fiscales distinctes (par ex. 2026 puis 2027), un compte par année", "correct": true},
-        {"text": "Tout retirer en une seule fois en 2026, l'imposition est identique de toute façon", "correct": false, "why_wrong": "Faux : plusieurs retraits la même année sont additionnés dans l'assiette de l'impôt sur les prestations en capital."},
-        {"text": "Attendre 65 ans et tout retirer d'un coup", "correct": false},
-        {"text": "Transférer les 3a vers un 3b avant de retirer", "correct": false}
-      ],
-      "explanation": "Art. 38 LIFD + jurisprudence : les prestations en capital versées la MÊME année civile sont ADDITIONNÉES pour déterminer le taux (progressivité). En les étalant sur 2 années civiles, chaque tranche est imposée à un taux moindre. Économie fiscale directe."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-025",
-      "theme": "epargne",
-      "type": "single",
-      "points": 3,
-      "notions": [],
-      "context": "Simon, salarié affilié LPP, atteint 60 ans en 2026. Il souhaite retirer son 3a mais son âge de référence AVS est fixé à 65 ans.",
-      "question": "À partir de quand un salarié peut-il retirer ordinairement son pilier 3a et quelle stratégie fiscale recommander ?",
-      "options": [
-        {"text": "5 ans avant l'âge de référence AVS, donc dès 60 ans, avec possibilité d'étaler les retraits sur les 5 années fiscales suivantes", "correct": true},
-        {"text": "À 55 ans, sans étalement possible", "correct": false},
-        {"text": "Uniquement à l'âge de référence AVS exact, en une seule fois", "correct": false, "why_wrong": "Faux : possible dès 5 ans avant, et l'étalement est légal."},
-        {"text": "10 ans avant l'âge de référence AVS", "correct": false}
-      ],
-      "explanation": "Art. 3 al. 1 OPP 3 : les prestations 3a peuvent être versées au plus tôt cinq ans avant l'âge de référence de l'art. 21 al. 1 LAVS. Elles deviennent exigibles à l'âge de référence. Ouvrir plusieurs comptes 3a et retirer un par année (art. 38 LIFD, taux réduit) : levier fiscal reconnu."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-026",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Un salarié de 66 ans continue à exercer une activité lucrative après l'âge de référence AVS. Concernant le pilier 3a, quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Il peut continuer à verser sur son 3a jusqu'à 5 ans après l'âge de référence", "correct": true},
-        {"text": "La poursuite des versements est conditionnée à l'exercice d'une activité lucrative soumise à cotisation AVS", "correct": true},
-        {"text": "Le plafond annuel reste inchangé pendant l'ajournement", "correct": true},
-        {"text": "Plus aucun versement 3a n'est possible après l'âge de référence", "correct": false, "why_wrong": "Faux : l'ajournement est autorisé jusqu'à 70 ans max."},
-        {"text": "L'ajournement est réservé aux indépendants", "correct": false}
-      ],
-      "explanation": "Art. 7 al. 2 OPP 3 : ajournement du 3a possible jusqu'à 5 ans après l'âge de référence, sous condition d'exercer une activité lucrative soumise à l'AVS. Plafond identique (7 258 CHF pour salarié LPP 2026). Levier fiscal intéressant après 65 ans."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-027",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Concernant la mise en gage d'un avoir de pilier 3a en garantie d'un prêt hypothécaire :",
-      "options": [
-        {"text": "Elle est admise pour l'acquisition ou l'amortissement de la résidence principale", "correct": true},
-        {"text": "Elle permet de conserver l'avoir en prévoyance tout en garantissant le crédit", "correct": true},
-        {"text": "Elle est admise pour financer une voiture", "correct": false, "why_wrong": "Interdite : seule la PPE est visée."},
-        {"text": "Elle nécessite l'accord écrit du conjoint le cas échéant", "correct": true},
-        {"text": "Elle transfère la propriété de l'avoir à la banque", "correct": false, "why_wrong": "Faux : le gage n'est pas un transfert, l'avoir reste au client tant que le prêt est honoré."}
-      ],
-      "explanation": "Art. 4 OEPL applicable par renvoi à la 3a : mise en gage possible pour PPE. Différence avec le retrait : l'avoir reste investi et continue à rapporter, aucun impôt à la mise en gage. La banque n'intervient qu'en cas de défaut du client."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-028",
-      "theme": "epargne",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Les prestations d'excédents versées par une compagnie d'assurance sur une police 3a sont-elles soumises à l'impôt anticipé LIA ?",
-      "options": [
-        {"text": "Oui, à 35 % au moment du versement, récupérable si régulièrement déclaré", "correct": true},
-        {"text": "Non, elles en sont expressément exonérées", "correct": false},
-        {"text": "Uniquement au-delà de 5 000 CHF", "correct": false},
-        {"text": "Uniquement pour les non-résidents", "correct": false}
-      ],
-      "explanation": "Art. 4 al. 1 LIA : les rendements d'assurance-vie sont en principe soumis à l'impôt anticipé de 35 %, récupérable via la déclaration fiscale. Sur une police 3a la retenue LIA sur les excédents est standard, restitution après déclaration."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-029",
-      "theme": "epargne",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Un titulaire 3a décède. Concernant le devenir de l'avoir, quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Il est versé aux bénéficiaires selon l'ordre légal de l'art. 2 OPP 3, hors succession", "correct": true},
-        {"text": "Il peut être pris en compte pour l'action en réduction art. 476 CC si un héritier réservataire est lésé", "correct": true},
-        {"text": "Il est soumis à l'impôt sur les prestations en capital pour le bénéficiaire (art. 38 LIFD)", "correct": true},
-        {"text": "Il tombe intégralement dans la masse successorale et est partagé par les héritiers légaux", "correct": false, "why_wrong": "Faux : le 3a est versé au bénéficiaire selon l'ordre imposé."},
-        {"text": "Il est perdu au profit de la fondation", "correct": false},
-        {"text": "Il est reversé à l'AVS", "correct": false}
-      ],
-      "explanation": "Art. 2 OPP 3 : le capital 3a est attribué au bénéficiaire selon l'ordre légal, hors masse successorale au sens strict. Il peut toutefois être pris en compte pour le calcul des réserves (action en réduction art. 476 CC) si le montant lèse un héritier réservataire. Fiscalement : art. 38 LIFD, taux réduit."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-030",
-      "theme": "epargne",
-      "type": "single",
-      "points": 3,
-      "notions": [],
-      "context": "Nadia, 62 ans, veuve, propriétaire de sa résidence principale (dette hypothécaire 350 000 CHF). Elle dispose de 180 000 CHF de 3a. Elle envisage d'amortir totalement son hypothèque avec son 3a.",
-      "question": "Quelle est la principale objection à formuler ?",
-      "options": [
-        {"text": "L'amortissement total peut être fiscalement contre-productif : perte de la déduction des intérêts, coût d'opportunité, imposition en capital sur le retrait", "correct": true},
-        {"text": "Le 3a ne peut pas servir à amortir une dette hypothécaire existante", "correct": false, "why_wrong": "Faux : c'est un motif de retrait PPE reconnu (art. 3 al. 3 OPP 3)."},
-        {"text": "À 62 ans, le retrait ordinaire n'est pas encore possible", "correct": false, "why_wrong": "5 ans avant l'âge de référence AVS, donc dès 60 ans."},
-        {"text": "Une veuve n'a pas droit au retrait 3a", "correct": false}
-      ],
-      "explanation": "Trois freins fiscaux à examiner : (1) perte de déduction des intérêts hypothécaires du revenu imposable ; (2) le retrait 3a subit l'impôt sur les prestations en capital ; (3) valeur locative maintenue même sans dette. Souvent, l'amortissement partiel + maintien d'une dette optimale est plus avantageux."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-031",
-      "theme": "garantie_revenus",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Une assurance temporaire décès (Termfix) verse-t-elle un capital en cas de survie à l'échéance du contrat ?",
-      "options": [
-        {"text": "Non, aucune prestation n'est due si l'assuré est en vie à l'échéance", "correct": true},
-        {"text": "Oui, le total des primes versées est restitué", "correct": false, "why_wrong": "Faux : c'est une assurance risque pur, aucune valeur d'épargne."},
-        {"text": "Oui, un capital garanti est versé, comme dans une mixte", "correct": false},
-        {"text": "50 % du capital assuré est versé", "correct": false}
-      ],
-      "explanation": "Assurance temporaire décès (Termfix) = risque pur. Capital versé UNIQUEMENT en cas de décès pendant la durée contractuelle. Aucune valeur d'épargne ni de rachat. Prime faible, ciblage familial (protection dettes hypothécaires, éducation enfants)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-032",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Concernant l'assurance-vie entière (vie totale), quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Le capital est versé au décès de l'assuré, quel qu'en soit le moment", "correct": true},
-        {"text": "Elle constitue une valeur de rachat croissante avec le temps", "correct": true},
-        {"text": "La prime est plus élevée qu'une temporaire décès à capital identique", "correct": true},
-        {"text": "Le capital est versé à une date fixée d'avance, même si l'assuré est en vie", "correct": false, "why_wrong": "Confusion avec l'assurance mixte."},
-        {"text": "Aucun capital n'est jamais versé si l'assuré vit au-delà de 90 ans", "correct": false, "why_wrong": "Faux : le décès est certain, le capital sera versé tôt ou tard."}
-      ],
-      "explanation": "Vie entière : couverture décès à vie, sans terme fixé. Capital garanti versé au décès aux bénéficiaires. Valeur de rachat croissante. Prime plus élevée qu'une temporaire décès. Utilité : transmission patrimoniale, liquidité successorale."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-033",
-      "theme": "garantie_revenus",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Une assurance mixte (endowment) verse le capital dans quel cas ?",
-      "options": [
-        {"text": "Au décès pendant la durée du contrat OU à l'échéance en cas de survie", "correct": true},
-        {"text": "Uniquement au décès", "correct": false, "why_wrong": "Confusion avec la temporaire décès ou la vie entière."},
-        {"text": "Uniquement en cas de survie à l'échéance", "correct": false, "why_wrong": "Confusion avec la capitalisation pure."},
-        {"text": "Uniquement en cas d'invalidité", "correct": false}
-      ],
-      "explanation": "Mixte (endowment) = double garantie : capital au décès pendant la durée contractuelle OU capital à l'échéance en cas de survie. Cumule épargne et protection. Prime plus élevée. Souvent utilisée en pilier 3a."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-034",
-      "theme": "garantie_revenus",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Une assurance de capitalisation pure se distingue de la mixte par :",
-      "options": [
-        {"text": "L'absence totale de couverture décès (épargne pure, aucune prestation-risque)", "correct": true},
-        {"text": "Une couverture décès renforcée", "correct": false},
-        {"text": "Une prime moins élevée qu'une mixte", "correct": false, "why_wrong": "Piège : la capitalisation pure a effectivement des frais plus faibles, mais la caractéristique définissante est l'absence de couverture décès."},
-        {"text": "Une durée obligatoirement viagère", "correct": false}
-      ],
-      "explanation": "Capitalisation pure = véhicule d'épargne pur sans couverture décès (donc sans prime de risque). Moins utilisée que la mixte, car les banques offrent des solutions d'épargne équivalentes à moindre coût."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-035",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Une assurance-vie liée à des fonds de placement (unit-linked) présente quelles caractéristiques ?",
-      "options": [
-        {"text": "La prestation à l'échéance dépend de la valeur des fonds sous-jacents choisis", "correct": true},
-        {"text": "Le capital n'est PAS garanti (sauf option de garantie spécifique)", "correct": true},
-        {"text": "Un potentiel de rendement supérieur à long terme, contre un risque de perte", "correct": true},
-        {"text": "Le rendement est garanti au taux technique annuel", "correct": false, "why_wrong": "Faux : par définition, unit-linked signifie que la performance suit les fonds, non garantie."},
-        {"text": "Le preneur d'assurance choisit ses fonds parmi une gamme proposée", "correct": true}
-      ],
-      "explanation": "Unit-linked = investissement en fonds au sein d'une enveloppe assurance. Le risque de placement est supporté par le preneur. Devoir d'information renforcé (art. 3 LCA + LSFin) : profil de risque, horizon, tolérance à la perte."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-036",
-      "theme": "garantie_revenus",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Une rente viagère immédiate est :",
-      "options": [
-        {"text": "Une rente à vie versée dès la conclusion du contrat, en contrepartie d'un capital versé en prime unique", "correct": true},
-        {"text": "Une rente qui commence 10 ans après la souscription", "correct": false, "why_wrong": "Confusion avec la rente différée."},
-        {"text": "Une rente versée sur une durée limitée", "correct": false, "why_wrong": "Confusion avec la rente certaine."},
-        {"text": "Une rente d'invalidité", "correct": false}
-      ],
-      "explanation": "Rente viagère immédiate : contre prime unique, la compagnie s'engage à verser une rente à vie à l'assuré. Utile pour convertir un capital retraite en revenu régulier garanti (par ex. capital LPP retiré, héritage)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-037",
-      "theme": "garantie_revenus",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Une rente viagère différée se caractérise par :",
-      "options": [
-        {"text": "Une phase d'épargne avec primes périodiques, suivie d'une phase de rente à vie", "correct": true},
-        {"text": "Une prime unique et une rente immédiate", "correct": false, "why_wrong": "Confusion avec la rente viagère immédiate."},
-        {"text": "Une rente à durée limitée", "correct": false},
-        {"text": "Une rente uniquement pour orphelins", "correct": false}
-      ],
-      "explanation": "Rente différée : constitution d'un capital pendant la vie active, converti en rente à un âge convenu (souvent l'âge de retraite). Alternative privée à la LPP, souvent en 3a."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-038",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Une assurance dotale (études d'enfant) prévoit typiquement :",
-      "options": [
-        {"text": "Un capital versé à l'enfant à un âge fixé (18-25 ans), pour financer ses études", "correct": true},
-        {"text": "Une exemption de primes en cas de décès du parent souscripteur", "correct": true},
-        {"text": "Un capital à l'enfant même si le parent décède avant l'échéance", "correct": true},
-        {"text": "Un capital versé exclusivement en cas de décès du parent", "correct": false, "why_wrong": "Faux : elle vise l'enfant à un âge précis, pas seulement le décès du parent."},
-        {"text": "Un rachat impossible avant l'échéance", "correct": false, "why_wrong": "Le rachat est possible comme toute police 3b (art. 90 LCA), avec valeur de rachat."}
-      ],
-      "explanation": "Dotale = protection ciblée du projet éducatif de l'enfant, indépendante du sort du parent grâce à l'exemption de primes. Souvent en 3b (bénéficiaire = enfant nominatif)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-039",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Avantages et inconvénients d'une assurance temporaire décès (Termfix) : quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Avantage : prime faible pour une couverture décès élevée", "correct": true},
-        {"text": "Avantage : idéale pour couvrir une dette hypothécaire pendant sa durée", "correct": true},
-        {"text": "Inconvénient : aucune valeur si l'assuré est en vie à l'échéance", "correct": true},
-        {"text": "Avantage : constitue un capital épargne à l'échéance", "correct": false, "why_wrong": "Faux : aucune épargne, aucune valeur de rachat."},
-        {"text": "Inconvénient : coût élevé identique à une vie entière", "correct": false, "why_wrong": "Au contraire, la prime est nettement inférieure à celle d'une vie entière."}
-      ],
-      "explanation": "Temporaire décès = protection pure, faible coût, ciblée sur une période de risque (crédit hypothécaire, enfants à charge). Après la période, le contrat s'éteint sans contrepartie. Pertinent quand le besoin de protection est temporaire."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-040",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 3,
-      "notions": [],
-      "context": null,
-      "question": "Avantages et inconvénients d'une assurance-vie mixte : quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Avantage : cumul d'une protection décès et d'une épargne garantie à l'échéance", "correct": true},
-        {"text": "Avantage : discipline d'épargne (engagement pluriannuel)", "correct": true},
-        {"text": "Inconvénient : rendement souvent inférieur à un placement banque + assurance risque pur séparée", "correct": true},
-        {"text": "Inconvénient : peu de souplesse contractuelle (durée, primes)", "correct": true},
-        {"text": "Avantage : liquidité totale à tout moment sans coût", "correct": false, "why_wrong": "Faux : le rachat anticipé entraîne une perte significative dans les premières années."}
-      ],
-      "explanation": "Mixte = solution combinée mais coûteuse. Comparaison à faire avec la stratégie 'buy term and invest the difference' : temporaire décès + compte 3a titres, souvent plus performant sur longue durée."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-041",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 3,
-      "notions": [],
-      "context": null,
-      "question": "Avantages et inconvénients d'une assurance-vie unit-linked : quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Avantage : potentiel de rendement supérieur à long terme", "correct": true},
-        {"text": "Avantage : choix des fonds selon le profil de risque du client", "correct": true},
-        {"text": "Inconvénient : risque de perte en capital, aucune garantie sauf option spécifique", "correct": true},
-        {"text": "Inconvénient : frais internes de fonds cumulés aux frais d'assurance", "correct": true},
-        {"text": "Avantage : capital garanti à l'échéance dans tous les cas", "correct": false, "why_wrong": "Faux : la garantie est facultative et payante."}
-      ],
-      "explanation": "Unit-linked = enveloppe à performance liée. Attention à la double couche de frais (assurance + fonds). Recommandé aux clients avertis, horizon long, tolérance au risque. LSFin s'applique pour l'information sur les instruments financiers."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-042",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Avantages et inconvénients d'une assurance-vie entière : quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Avantage : capital garanti aux héritiers à coup sûr (le décès survient forcément)", "correct": true},
-        {"text": "Avantage : outil de transmission patrimoniale et de liquidité successorale", "correct": true},
-        {"text": "Inconvénient : prime élevée pendant toute la vie", "correct": true},
-        {"text": "Inconvénient : illiquidité, valeur de rachat < primes durant les premières années", "correct": true},
-        {"text": "Avantage : rendement garanti supérieur à un placement obligataire", "correct": false, "why_wrong": "Faux : la vie entière est un produit de protection, pas de rendement."}
-      ],
-      "explanation": "Vie entière = outil successoral avant tout. Utile pour financer les droits de succession, désintéresser un héritier, protéger un concubin ou un enfant handicapé. Coût élevé, à réserver aux besoins spécifiques."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-043",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Un preneur d'assurance mixte ne peut plus payer ses primes. Quelles solutions la LCA lui offre-t-elle ?",
-      "options": [
-        {"text": "La libération du paiement des primes : la police est maintenue avec un capital réduit (art. 90 al. 2 LCA)", "correct": true},
-        {"text": "Le rachat de la police avec versement de la valeur de rachat (art. 90 al. 1 LCA)", "correct": true},
-        {"text": "Résiliation d'office par la compagnie sans aucune contrepartie", "correct": false, "why_wrong": "Faux : la LCA offre libération ou rachat au preneur."},
-        {"text": "Suspension automatique et gratuite pendant 12 mois", "correct": false},
-        {"text": "Remboursement intégral des primes versées majorées d'intérêts", "correct": false, "why_wrong": "Faux : seule la valeur de rachat contractuelle est due."}
-      ],
-      "explanation": "Art. 90 LCA : deux options au choix du preneur. Rachat (résiliation avec paiement de la valeur de rachat) ou libération de prime (maintien de la police avec capital réduit calculé sur les primes déjà versées). Alternative au rachat, préférable si le besoin de protection subsiste."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-044",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "La participation aux excédents servie sur une police d'assurance-vie provient de quelles sources techniques ?",
-      "options": [
-        {"text": "Excédent de risque (mortalité effective < mortalité attendue)", "correct": true},
-        {"text": "Excédent de coûts (frais réels < frais chargés)", "correct": true},
-        {"text": "Excédent financier (rendement > taux technique garanti)", "correct": true},
-        {"text": "Chiffre d'affaires publicitaire de la compagnie", "correct": false, "why_wrong": "Aucun lien avec les excédents techniques."},
-        {"text": "Bénéfice sur les opérations non-vie", "correct": false, "why_wrong": "Les excédents vie proviennent des opérations vie uniquement."}
-      ],
-      "explanation": "Trois piliers techniques : excédent de risque (mortalité effective < mortalité attendue), excédent de coûts (frais réels < frais chargés), excédent financier (rendement > taux technique). Non garantis, dépendent des résultats effectifs de la compagnie."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-045",
-      "theme": "garantie_revenus",
-      "type": "single",
-      "points": 3,
-      "notions": [],
-      "context": "Yann verse 100 000 CHF en prime unique dans une assurance-vie 3b. Il rachète la police après 3 ans avec une valeur de rachat de 108 000 CHF.",
-      "question": "Comment est imposé le gain de 8 000 CHF au niveau de l'IFD ?",
-      "options": [
-        {"text": "Les 8 000 CHF sont imposés comme revenu, car la police à prime unique est rachetée avant 5 ans (art. 20 al. 1 lit. a LIFD)", "correct": true},
-        {"text": "Aucune imposition, le gain est un revenu du capital exonéré", "correct": false, "why_wrong": "Piège classique : l'exonération ne s'applique qu'à certaines conditions (durée, âge)."},
-        {"text": "Uniquement 50 % du gain est imposé", "correct": false},
-        {"text": "Imposition au taux réduit des prestations en capital", "correct": false}
-      ],
-      "explanation": "Art. 20 al. 1 lit. a LIFD : les prestations en capital d'assurances-vie à prime unique susceptibles de rachat sont imposables comme revenu si le contrat est racheté avant 5 ans OU si le preneur a moins de 60 ans à l'échéance. Piège fréquent en conseil : anticiper l'incidence fiscale."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-046",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Concernant la rente de veuve du 1er pilier (AVS), quelles conditions doivent être remplies ?",
-      "options": [
-        {"text": "La veuve a des enfants (à charge), sans condition d'âge ni de durée de mariage", "correct": true},
-        {"text": "La veuve sans enfant : mariage de 5 ans au moins ET veuve d'au moins 45 ans révolus", "correct": true},
-        {"text": "La rente de veuve est versée à vie ou jusqu'au remariage", "correct": true},
-        {"text": "Aucune condition, toute veuve a automatiquement droit à la rente", "correct": false, "why_wrong": "Faux : conditions strictes d'âge et de mariage."},
-        {"text": "La rente est de 100 % de la rente AVS du défunt", "correct": false, "why_wrong": "Faux : 80 % de la rente de vieillesse du défunt."}
-      ],
-      "explanation": "Art. 23 LAVS : rente de veuve = 80 % de la rente de vieillesse. Conditions : (a) enfants à charge OU (b) sans enfant : mariage min 5 ans + veuvage à 45 ans+. S'éteint en cas de remariage (art. 23 al. 4 LAVS)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-047",
-      "theme": "garantie_revenus",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Jusqu'à quel âge est versée la rente d'orphelin AVS ?",
-      "options": [
-        {"text": "18 ans, ou 25 ans si l'enfant poursuit une formation", "correct": true},
-        {"text": "16 ans dans tous les cas", "correct": false, "why_wrong": "Confusion possible avec l'obligation d'entretien de l'ancien droit."},
-        {"text": "20 ans dans tous les cas", "correct": false},
-        {"text": "Jusqu'au mariage de l'orphelin", "correct": false}
-      ],
-      "explanation": "Art. 25 al. 5 LAVS : rente d'orphelin versée jusqu'à 18 ans, prolongée jusqu'à 25 ans si l'orphelin est en formation. Montant : 40 % de la rente de vieillesse (60 % si double orphelin)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-048",
-      "theme": "garantie_revenus",
-      "type": "single",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Concernant la rente de veuf du 1er pilier AVS, quelle est la situation légale (avant l'harmonisation en cours) ?",
-      "options": [
-        {"text": "Le veuf n'a droit à la rente que s'il a des enfants mineurs à charge ; la rente s'éteint à la majorité du dernier enfant", "correct": true},
-        {"text": "Le veuf est traité comme la veuve, à vie", "correct": false, "why_wrong": "Inégalité de traitement reconnue par la CEDH, une réforme est en cours mais pas encore en vigueur pour la génération actuelle."},
-        {"text": "Le veuf n'a aucun droit AVS", "correct": false},
-        {"text": "Le veuf reçoit uniquement une rente de 3 ans", "correct": false}
-      ],
-      "explanation": "Art. 24 LAVS : rente de veuf uniquement pour enfants mineurs à charge, extinction à la majorité du dernier enfant. Arrêt CEDH Beeler c. Suisse (2022) et projet en cours d'harmonisation homme/femme. Enseigner l'état actuel + mentionner la réforme."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-049",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 3,
-      "notions": [],
-      "context": "L'assuré marié décède en activité. La caisse doit déterminer les prestations dues à ses proches selon la LPP obligatoire.",
-      "question": "Prestations LPP en cas de décès de l'assuré actif, quelles rentes prévoit la loi ?",
-      "options": [
-        {"text": "Rente de conjoint survivant (art. 19 LPP)", "correct": true},
-        {"text": "Rente d'orphelin par enfant (art. 20 LPP)", "correct": true},
-        {"text": "Rente pour partenaire enregistré, assimilé au conjoint (art. 19 al. 3 LPP)", "correct": true},
-        {"text": "Rente pour concubin, sans condition supplémentaire", "correct": false, "why_wrong": "Faux : le concubin n'a droit à une rente que si le règlement de la caisse le prévoit et sous conditions (art. 20a LPP)."},
-        {"text": "Rente pour parents à charge, dans tous les cas", "correct": false, "why_wrong": "Uniquement dans le cadre facultatif art. 20a LPP si le règlement le prévoit."}
-      ],
-      "explanation": "LPP obligatoire : rente conjoint (60 % rente inv.), rente orphelin (20 % rente inv. par enfant). Le partenaire enregistré est assimilé (art. 19 al. 3 LPP). Le concubin doit être expressément prévu par le règlement de la caisse (art. 20a LPP)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-050",
-      "theme": "garantie_revenus",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Un salarié décède, laissant conjoint + 2 enfants mineurs. Quelle rente LPP obligatoire par enfant orphelin ?",
-      "options": [
-        {"text": "20 % de la rente d'invalidité du défunt", "correct": true},
-        {"text": "40 % de la rente d'invalidité", "correct": false, "why_wrong": "Confusion avec l'AVS (rente orphelin = 40 % rente vieillesse défunt)."},
-        {"text": "10 %", "correct": false},
-        {"text": "60 %", "correct": false, "why_wrong": "Confusion avec la rente de conjoint LPP."}
-      ],
-      "explanation": "Art. 21 LPP : rente d'orphelin LPP obligatoire = 20 % de la rente d'invalidité présumée du défunt, par enfant. La rente de conjoint est de 60 %. Cumul possible avec 1er pilier."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-051",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 3,
-      "notions": [],
-      "context": null,
-      "question": "À quelles conditions un concubin peut-il être bénéficiaire d'une rente LPP (art. 20a LPP) ?",
-      "options": [
-        {"text": "Le règlement de la caisse de pensions doit expressément prévoir la couverture des concubins", "correct": true},
-        {"text": "Le concubin doit avoir été soutenu de manière substantielle par le défunt", "correct": true},
-        {"text": "OU le concubin doit avoir vécu en ménage commun avec le défunt durant les 5 dernières années au moins avant le décès", "correct": true},
-        {"text": "OU le concubin doit assumer l'entretien d'un enfant commun", "correct": true},
-        {"text": "La désignation du concubin doit avoir été communiquée par écrit à la caisse de pensions", "correct": true},
-        {"text": "Aucune formalité n'est nécessaire, le lien de fait suffit", "correct": false, "why_wrong": "Faux : la déclaration écrite est indispensable pour valoir désignation."}
-      ],
-      "explanation": "Art. 20a LPP : possibilité facultative. Trois conditions cumulatives : règlement le prévoit, situation matérielle admise (soutien, ménage 5 ans, ou enfant commun), déclaration écrite. À vérifier systématiquement pour les concubins lors de l'analyse."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-052",
-      "theme": "garantie_revenus",
-      "type": "single",
-      "points": 3,
-      "notions": [],
-      "context": "Couple marié, 2 enfants (8 et 12 ans). Époux salarié, revenu net 90 000 CHF, dette hypothécaire 500 000 CHF. Rente veuve AVS + LPP estimée à 55 000 CHF / an.",
-      "question": "Quel capital-décès complémentaire suggérer pour couvrir la lacune familiale ?",
-      "options": [
-        {"text": "Environ 500 000 CHF (dettes) + 300 000 CHF (5 ans de coussin famille + éducation enfants), soit env. 800 000 CHF à ajuster selon situation", "correct": true},
-        {"text": "50 000 CHF, la LPP couvre déjà tout", "correct": false, "why_wrong": "Faux : la lacune de revenu et la dette hypothécaire justifient un capital significatif."},
-        {"text": "Uniquement l'amortissement de la dette hypothécaire (500 000 CHF)", "correct": false, "why_wrong": "Incomplet : ne couvre pas les besoins courants et l'éducation."},
-        {"text": "Aucun capital n'est nécessaire", "correct": false}
-      ],
-      "explanation": "Approche standard : (1) dettes à amortir (hypothèque, crédits) + (2) coussin financier veuve 5-10 ans (revenu manquant × durée) + (3) provisions éducation enfants jusqu'à autonomie. Total à ajuster selon patrimoine existant, 3a/LPP éventuellement retirés en capital."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-053",
-      "theme": "garantie_revenus",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Le capital d'un pilier 3a est versé au décès du titulaire :",
-      "options": [
-        {"text": "Aux bénéficiaires selon l'ordre légal de l'art. 2 OPP 3, hors succession", "correct": true},
-        {"text": "Uniquement au conjoint, jamais aux enfants", "correct": false, "why_wrong": "Les descendants viennent en 2e rang après le conjoint."},
-        {"text": "Uniquement aux héritiers réservataires", "correct": false},
-        {"text": "Uniquement à la personne désignée par testament", "correct": false, "why_wrong": "Faux : c'est l'ordre légal 3a qui s'applique, pas le testament."}
-      ],
-      "explanation": "Art. 2 OPP 3 : le capital 3a est versé hors succession selon l'ordre imposé. Argument fort de conseil : le 3a permet la transmission rapide et directe au conjoint (1er rang), contournant les délais successoraux."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-054",
-      "theme": "garantie_revenus",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Concernant le capital-décès d'une police d'assurance-vie 3b avec clause bénéficiaire nominative, quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Il est versé directement au bénéficiaire désigné, hors masse successorale (art. 76-79 LCA)", "correct": true},
-        {"text": "Il peut faire l'objet d'une action en réduction si les réserves héréditaires sont atteintes (art. 476 CC)", "correct": true},
-        {"text": "Le titulaire peut modifier la clause bénéficiaire à tout moment (art. 77 LCA)", "correct": true},
-        {"text": "Il entre systématiquement dans la masse successorale et est partagé entre héritiers", "correct": false, "why_wrong": "Faux : la désignation nominative permet le versement direct hors succession."},
-        {"text": "Il est bloqué jusqu'à la clôture officielle de la succession", "correct": false},
-        {"text": "Il est reversé à l'AVS", "correct": false}
-      ],
-      "explanation": "Art. 76-79 LCA : versement direct au bénéficiaire nominatif, hors succession. Clause révocable en tout temps par le preneur. Toutefois, art. 476 CC : les héritiers réservataires peuvent agir en réduction si la désignation a porté atteinte à leur réserve. À anticiper dans le conseil."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-055",
-      "theme": "garantie_revenus",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Quel est le délai de prescription de l'action en réduction des héritiers réservataires (art. 533 CC) ?",
-      "options": [
-        {"text": "1 an dès la connaissance de la lésion, 10 ans au maximum dès l'ouverture de la succession", "correct": true},
-        {"text": "5 ans dès le décès, sans autre délai", "correct": false},
-        {"text": "30 ans, comme pour la revendication successorale", "correct": false},
-        {"text": "6 mois seulement", "correct": false}
-      ],
-      "explanation": "Art. 533 CC : action en réduction se prescrit par 1 an dès que l'héritier a connu la lésion de sa réserve, dans tous les cas 10 ans dès la publication du testament (ou l'ouverture de la succession pour dispositions non testamentaires). Délai court : à rappeler au client."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-056",
-      "theme": "retraite",
-      "type": "multiple",
-      "points": 3,
-      "notions": [],
-      "context": null,
-      "question": "Concernant le choix entre rente et capital LPP à la retraite (art. 37 LPP), quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Le retrait sous forme de capital du régime obligatoire est un droit d'au moins 25 % du capital", "correct": true},
-        {"text": "Le règlement de caisse peut autoriser le retrait à 100 % en capital", "correct": true},
-        {"text": "Le retrait en capital doit être demandé dans un délai prévu par le règlement (souvent 3 ans avant la retraite)", "correct": true},
-        {"text": "Un salarié marié doit obtenir l'accord écrit de son conjoint pour un retrait en capital", "correct": true},
-        {"text": "Le capital est imposé comme un revenu ordinaire progressif", "correct": false, "why_wrong": "Faux : imposition séparée à taux réduit (art. 38 LIFD)."}
-      ],
-      "explanation": "Art. 37 al. 2 LPP : minimum 25 % du capital retirable. Art. 37 al. 5 LPP : accord écrit du conjoint obligatoire. Formalités du règlement à respecter (délai de préavis). Effet fiscal : capital = taux réduit ponctuel, rente = imposition annuelle ordinaire."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-057",
-      "theme": "retraite",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Comment sont imposées les rentes LPP versées à la retraite ?",
-      "options": [
-        {"text": "À 100 %, comme revenu ordinaire (art. 22 LIFD)", "correct": true},
-        {"text": "À 40 %, comme les rentes viagères privées", "correct": false, "why_wrong": "Confusion avec les rentes viagères privées (art. 22 al. 3 LIFD)."},
-        {"text": "À un taux réduit séparé", "correct": false, "why_wrong": "Confusion avec le capital LPP."},
-        {"text": "Exonérées d'IFD", "correct": false}
-      ],
-      "explanation": "Art. 22 al. 1 LIFD : les rentes de la prévoyance professionnelle sont imposables intégralement comme revenu ordinaire. Contrairement au capital (taux réduit art. 38 LIFD) et à la rente viagère privée (40 % art. 22 al. 3 LIFD)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-058",
-      "theme": "retraite",
-      "type": "multiple",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Concernant l'imposition du capital LPP retiré à la retraite, quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Il est imposé séparément des autres revenus (art. 38 LIFD)", "correct": true},
-        {"text": "À un taux réduit (env. 1/5 du barème ordinaire)", "correct": true},
-        {"text": "Le même régime s'applique au niveau cantonal (LHID art. 11 al. 3)", "correct": true},
-        {"text": "Il est imposé à 100 %, cumulé au revenu ordinaire", "correct": false, "why_wrong": "Faux : imposition séparée à taux réduit."},
-        {"text": "Il est totalement exonéré d'impôt fédéral direct", "correct": false}
-      ],
-      "explanation": "Art. 38 LIFD : imposition séparée à un taux réduit. Idem au niveau cantonal (LHID art. 11 al. 3). Effet : la sortie en capital est ponctuellement lourde mais évite l'imposition à vie des rentes."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-059",
-      "theme": "retraite",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Avantages du choix de la rente LPP à la retraite :",
-      "options": [
-        {"text": "Sécurité viagère : revenu garanti à vie, indépendamment de la longévité", "correct": true},
-        {"text": "Rente de survivant automatique au conjoint (60 % de la rente en général)", "correct": true},
-        {"text": "Aucune gestion financière à assurer par le retraité", "correct": true},
-        {"text": "Transmission intégrale du capital aux héritiers en cas de décès", "correct": false, "why_wrong": "Faux : à l'inverse, le capital 'restant' est perdu (hors rente survivant limitée)."},
-        {"text": "Liberté d'utiliser le capital pour investir", "correct": false, "why_wrong": "Faux : le capital est converti en rente irrévocable."}
-      ],
-      "explanation": "Rente LPP = protection viagère et automatisation. Idéal pour profils prudents, sans compétence de gestion, mariés. Inconvénient : capital 'perdu' pour les héritiers au décès (hors rente conjoint réduite)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-060",
-      "theme": "retraite",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Avantages du choix du capital LPP à la retraite :",
-      "options": [
-        {"text": "Liberté totale d'utilisation (immobilier, placement, projets)", "correct": true},
-        {"text": "Transmission du capital aux héritiers en cas de décès", "correct": true},
-        {"text": "Imposition unique à taux réduit, pas d'imposition récurrente sur la rente", "correct": true},
-        {"text": "Le capital est garanti à vie sans risque de placement", "correct": false, "why_wrong": "Faux : le retraité assume seul le risque de longévité et de placement."},
-        {"text": "Sécurité viagère automatique", "correct": false, "why_wrong": "Faux : c'est l'avantage de la rente, pas du capital."}
-      ],
-      "explanation": "Capital LPP = liberté, transmission, taux réduit. Risque : longévité (survivre à son capital), gestion, placement. À réserver aux profils avertis, patrimoine diversifié, souhait de transmission."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-061",
-      "theme": "retraite",
-      "type": "single",
-      "points": 3,
-      "notions": [],
-      "context": "Sylvie, 63 ans, célibataire, veut partir à la retraite à 65 ans avec 700 000 CHF LPP. Ses charges mensuelles sont 4 500 CHF, sa rente AVS estimée à 2 400 CHF/mois, sa rente LPP intégrale à 3 100 CHF/mois. Elle craint la longévité (mère décédée à 96 ans).",
-      "question": "Quelle recommandation de retrait LPP privilégier ?",
-      "options": [
-        {"text": "Prendre principalement la rente (pour sécuriser le minimum vital viager) et sortir une partie limitée en capital pour projets et réserve d'urgence", "correct": true},
-        {"text": "Prendre 100 % en capital, la stratégie financière produira une rente équivalente", "correct": false, "why_wrong": "Risque de longévité élevé (mère 96 ans) et absence de conjoint pour rente survivant : la rente sécurise mieux."},
-        {"text": "Prendre 100 % en rente, aucune sortie en capital", "correct": false, "why_wrong": "Trop rigide : aucune réserve pour projets ou dépenses imprévues."},
-        {"text": "Renoncer aux prestations et laisser à la caisse", "correct": false}
-      ],
-      "explanation": "Profil célibataire + espérance de vie élevée + charges fixes couvertes = argument fort pour la rente. Un complément en capital (25 % minimum art. 37 LPP) offre la souplesse pour projets ou dépenses ponctuelles. Sortir 100 % en capital reporte le risque de longévité sur le retraité seul."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-062",
-      "theme": "retraite",
-      "type": "single",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Un salarié dispose de 5 comptes 3a et souhaite optimiser fiscalement le retrait à la retraite. Que faire ?",
-      "options": [
-        {"text": "Retirer un compte par année civile sur 5 ans, avant l'âge de référence AVS", "correct": true},
-        {"text": "Tout retirer en une seule fois, la fiscalité est linéaire", "correct": false, "why_wrong": "Faux : l'impôt est progressif, cumul dans la même année pénalise."},
-        {"text": "Attendre l'âge de référence pour tout retirer", "correct": false},
-        {"text": "Transférer tous les 3a en 3b avant retrait", "correct": false}
-      ],
-      "explanation": "Retrait ordinaire dès 5 ans avant l'âge de référence AVS. Étalement sur 5 années civiles distinctes = 5 impositions séparées à taux réduit (art. 38 LIFD). Le cumul dans la même année déclenche la progressivité (jurisprudence constante)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-063",
-      "theme": "retraite",
-      "type": "single",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Une rente viagère 'avec restitution' se distingue par :",
-      "options": [
-        {"text": "En cas de décès prématuré, le capital restant (ou une partie) est versé aux héritiers désignés", "correct": true},
-        {"text": "La rente est restituée à la compagnie chaque année", "correct": false, "why_wrong": "Contresens."},
-        {"text": "La rente est garantie à 100 % du capital versé", "correct": false},
-        {"text": "La rente est indexée à l'inflation", "correct": false}
-      ],
-      "explanation": "Rente viagère avec restitution : protection contre le décès prématuré. Le capital non consommé est restitué aux héritiers. Contrepartie : rente périodique inférieure à celle d'une rente sans restitution."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-064",
-      "theme": "retraite",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Une rente viagère 'sans restitution' présente quelle particularité ?",
-      "options": [
-        {"text": "En cas de décès, aucun capital n'est restitué aux héritiers (la compagnie conserve le solde)", "correct": true},
-        {"text": "La rente cesse au bout de 10 ans", "correct": false, "why_wrong": "Confusion avec la rente certaine."},
-        {"text": "Elle inclut une rente de survivant automatique", "correct": false},
-        {"text": "Le capital est intégralement restitué au décès", "correct": false, "why_wrong": "Faux : c'est la version 'avec restitution'."}
-      ],
-      "explanation": "Rente sans restitution : taux de rente supérieur, mais aucun héritage au décès. Choix adapté aux personnes seules, sans héritier à protéger, cherchant à maximiser le revenu périodique."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-065",
-      "theme": "retraite",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Une rente viagère 'certaine' garantit le versement de la rente :",
-      "options": [
-        {"text": "Pendant une durée minimum fixée (par ex. 10 ans), même si l'assuré décède plus tôt", "correct": true},
-        {"text": "À vie sans aucune condition", "correct": false, "why_wrong": "Toutes les rentes viagères sont à vie ; la 'certaine' ajoute une durée minimum garantie."},
-        {"text": "Uniquement en cas d'invalidité", "correct": false},
-        {"text": "Uniquement pour les femmes", "correct": false}
-      ],
-      "explanation": "Rente certaine (ou 'à annuités garanties') : la rente est due au minimum pendant X années (souvent 5, 10, 15 ans), même en cas de décès. Après cette période, elle continue à vie si l'assuré vit. Compromis entre rente pure et restitution."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-066",
-      "theme": "retraite",
-      "type": "single",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Comment est imposée fiscalement une rente viagère privée (3b) au niveau de l'IFD ?",
-      "options": [
-        {"text": "40 % de la rente est imposée comme revenu (art. 22 al. 3 LIFD)", "correct": true},
-        {"text": "100 % de la rente est imposée comme revenu", "correct": false, "why_wrong": "C'est la règle pour les rentes AVS/LPP, pas pour les rentes viagères privées."},
-        {"text": "La rente est exonérée d'IFD", "correct": false},
-        {"text": "Uniquement les excédents sont imposés", "correct": false}
-      ],
-      "explanation": "Art. 22 al. 3 LIFD : les rentes viagères privées sont imposées à 40 % du montant versé. Les 60 % restants sont considérés comme un remboursement de capital (donc non imposables). Avantage fiscal notable par rapport aux rentes LPP."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-067",
-      "theme": "retraite",
-      "type": "multiple",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Concernant la rente viagère indexée à l'inflation, quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "Son montant augmente chaque année selon un indice défini", "correct": true},
-        {"text": "Elle démarre à un niveau initial plus bas qu'une rente non indexée à prime équivalente", "correct": true},
-        {"text": "Elle offre une protection contre l'érosion monétaire à long terme", "correct": true},
-        {"text": "Elle est systématiquement moins chère qu'une rente non indexée", "correct": false, "why_wrong": "Inverse : à prime unique équivalente, elle offre une rente initiale plus faible."},
-        {"text": "Elle est garantie à 5 % d'augmentation par an", "correct": false},
-        {"text": "Elle n'existe qu'en 1er pilier", "correct": false}
-      ],
-      "explanation": "Rente indexée : protection contre l'érosion monétaire à long terme. Contrepartie : rente initiale plus faible à prime équivalente. Rarement souscrite car coût élevé et concurrence des placements en fonds."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-068",
-      "theme": "retraite",
-      "type": "multiple",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Une assurance-vie mixte 3a peut être utilisée comme complément retraite. Quelles affirmations sont exactes ?",
-      "options": [
-        {"text": "L'échéance est fixée à l'âge de référence, le capital complète le revenu AVS + LPP", "correct": true},
-        {"text": "Le versement des primes durant la vie active est déductible du revenu (dans les limites du plafond 3a)", "correct": true},
-        {"text": "Le capital échéance est imposé séparément à taux réduit (art. 38 LIFD)", "correct": true},
-        {"text": "L'échéance doit être fixée avant 40 ans", "correct": false, "why_wrong": "L'objectif retraite implique une échéance à la retraite."},
-        {"text": "Elle est obligatoirement à prime unique", "correct": false},
-        {"text": "Elle est réservée aux indépendants", "correct": false}
-      ],
-      "explanation": "Mixte 3a échéance retraite (par ex. 65 ans) : capital garanti + participation excédents servent de complément au revenu de retraite. Avantage fiscal 3a : déduction des versements, taux réduit à la sortie (art. 33 al. 1 lit. e + 38 LIFD)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-069",
-      "theme": "retraite",
-      "type": "single",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Selon l'art. 40 LAVS, un assuré peut anticiper le versement de sa rente AVS :",
-      "options": [
-        {"text": "D'un ou deux ans (voire au mois près depuis AVS 21), avec réduction actuarielle de la rente", "correct": true},
-        {"text": "De 5 ans, sans réduction", "correct": false, "why_wrong": "Faux : max 2 ans, avec réduction."},
-        {"text": "Uniquement pour les cas d'invalidité", "correct": false},
-        {"text": "Uniquement pour les femmes", "correct": false}
-      ],
-      "explanation": "Art. 40 LAVS (nouvelle teneur AVS 21) : anticipation possible sur 1 ou 2 ans (au mois près), réduction actuarielle (env. 6,8 % par année anticipée pour les revenus élevés, taux transitoires plus favorables pour les femmes 1961-1969). Rente réduite à vie."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-070",
-      "theme": "retraite",
-      "type": "single",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Selon l'art. 39 LAVS, l'ajournement de la rente AVS peut se faire :",
-      "options": [
-        {"text": "D'un à cinq ans, avec majoration actuarielle (env. 5,2 % à 31,5 %)", "correct": true},
-        {"text": "De 10 ans avec majoration doublée", "correct": false, "why_wrong": "Max 5 ans."},
-        {"text": "Sans limite de temps", "correct": false},
-        {"text": "Uniquement en cas de poursuite d'activité", "correct": false, "why_wrong": "L'ajournement n'exige pas la poursuite d'activité, mais elle est fréquente."}
-      ],
-      "explanation": "Art. 39 LAVS : ajournement de 1 à 5 ans, majoration actuarielle allant de 5,2 % (1 an) à 31,5 % (5 ans). Rente majorée à vie. Pertinent pour les retraités en bonne santé, à espérance de vie élevée, avec autres revenus disponibles pendant l'ajournement."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-071",
-      "theme": "retraite",
-      "type": "multiple",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Avantages et inconvénients de l'anticipation de la rente AVS :",
-      "options": [
-        {"text": "Avantage : rente plus tôt, utile en cas de fin d'activité forcée ou souhaitée", "correct": true},
-        {"text": "Avantage : plus d'années de perception si espérance de vie limitée", "correct": true},
-        {"text": "Inconvénient : rente réduite à vie", "correct": true},
-        {"text": "Inconvénient : cotisation AVS obligatoire jusqu'à l'âge de référence sur les revenus d'activité subsistants", "correct": true},
-        {"text": "Avantage : capital versé en plus", "correct": false, "why_wrong": "Faux : l'AVS ne verse jamais un capital, uniquement une rente."}
-      ],
-      "explanation": "Anticiper = compromis. Utile si santé fragile, revenu suffisant sinon, cessation d'activité. Attention : la réduction est PERMANENTE, la rente ne remonte pas à l'âge de référence. Cotisation AVS due jusqu'à l'âge de référence (art. 4 LAVS)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-072",
-      "theme": "retraite",
-      "type": "multiple",
-      "points": 1,
-      "notions": [],
-      "context": null,
-      "question": "Avantages et inconvénients de l'ajournement de la rente AVS :",
-      "options": [
-        {"text": "Avantage : rente majorée à vie (jusqu'à +31,5 %)", "correct": true},
-        {"text": "Avantage : diminue l'impôt sur le revenu pendant les années d'ajournement", "correct": true},
-        {"text": "Inconvénient : moins d'années de perception (risque de décès prématuré)", "correct": true},
-        {"text": "Inconvénient : nécessite d'autres ressources pendant l'ajournement", "correct": true},
-        {"text": "Avantage : rente rétroactivement doublée après l'ajournement", "correct": false, "why_wrong": "Faux : la majoration est actuarielle, pas rétroactive."}
-      ],
-      "explanation": "Ajourner = pari sur la longévité. Recommandé aux profils en bonne santé, revenus alternatifs disponibles, patrimoine suffisant. Point mort actuariel : env. 80 ans. Au-delà : rentabilité positive."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-073",
-      "theme": "retraite",
-      "type": "single",
-      "points": 3,
-      "notions": [],
-      "context": "Sophie, 52 ans, cadre supérieur (revenu imposable 180 000 CHF). Son certificat LPP indique une lacune de rachat maximale de 90 000 CHF. Elle envisage un rachat de 30 000 CHF cette année.",
-      "question": "Un assuré peut effectuer des rachats facultatifs dans sa LPP (art. 79b LPP). Quelle est la principale conséquence fiscale à mettre en avant dans le conseil ?",
-      "options": [
-        {"text": "Les rachats sont intégralement déductibles du revenu imposable dans l'année du versement", "correct": true},
-        {"text": "Les rachats sont soumis à l'impôt anticipé de 35 %", "correct": false},
-        {"text": "Les rachats sont uniquement déductibles à 50 %", "correct": false},
-        {"text": "Les rachats sont non déductibles mais génèrent un bonus fiscal à la retraite", "correct": false}
-      ],
-      "explanation": "Art. 79b LPP + art. 33 al. 1 lit. d LIFD : les rachats facultatifs LPP sont intégralement déductibles du revenu imposable. Levier fiscal massif pour les hauts revenus. Bien planifier avec le certificat LPP annuel (lacune de prévoyance chiffrée)."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-074",
-      "theme": "retraite",
-      "type": "single",
-      "points": 3,
-      "notions": [],
-      "context": "Julien, 58 ans, effectue un rachat facultatif LPP de 50 000 CHF en 2026, déduit fiscalement. Il envisage de retirer 200 000 CHF de LPP en capital lors de son départ anticipé en 2028 (60 ans).",
-      "question": "Quelle est la principale règle à connaître (art. 79b al. 3 LPP) ?",
-      "options": [
-        {"text": "Le retrait en capital dans les 3 ans suivant un rachat est FISCALEMENT contesté et entraîne la reprise de la déduction", "correct": true},
-        {"text": "Le retrait en capital est libre 12 mois après le rachat", "correct": false, "why_wrong": "Faux : le délai légal est de 3 ans."},
-        {"text": "Aucune restriction ne s'applique", "correct": false, "why_wrong": "Faux : art. 79b al. 3 LPP fixe une restriction de 3 ans."},
-        {"text": "Le rachat doit être remboursé avant tout retrait en capital", "correct": false}
-      ],
-      "explanation": "Art. 79b al. 3 LPP : les prestations en capital résultant d'un rachat ne peuvent être versées avant 3 ans, sinon la déduction fiscale est reprise (arrêt TF 2C_658/2009). Timing du rachat vs retrait à planifier avec précision."
-    },
-    {
-      "external_id": "KLARY-VIE-PP-075",
-      "theme": "retraite",
-      "type": "single",
-      "points": 2,
-      "notions": [],
-      "context": null,
-      "question": "Un salarié qui continue à travailler après l'âge de référence AVS peut-il continuer à cotiser à sa LPP ?",
-      "options": [
-        {"text": "Oui, jusqu'à 5 ans après l'âge de référence si le règlement de caisse le prévoit (art. 33b LPP)", "correct": true},
-        {"text": "Non, plus aucune cotisation LPP après l'âge de référence", "correct": false, "why_wrong": "Faux : art. 33b LPP autorise la poursuite jusqu'à 70 ans."},
-        {"text": "Uniquement pour les indépendants", "correct": false},
-        {"text": "Uniquement avec l'accord de la FINMA", "correct": false}
-      ],
-      "explanation": "Art. 33b LPP : poursuite facultative des cotisations LPP jusqu'à 5 ans après l'âge de référence (soit 70 ans pour les hommes et femmes après AVS 21) si le règlement de la caisse l'autorise. Levier fiscal complémentaire pour les seniors actifs."
+ "source": "klary_interne",
+ "filiere_key": "vie",
+ "reference": "Banque Klary : prévoyance privée VIE 75 questions. Types d'assurance vie (risque pur/mixte/capitalisation/unit-linked), 3a vs 3b, banque vs assurance, protection famille (veuve/orphelin/capital décès), lien avec accident/maladie/décès.",
+ "note": "Registre VBV strict. Références légales OPP3, LPP, LCA, CO, LIFD. Chiffres 2026.",
+ "questions": [
+  {
+   "external_id": "KLARY-VIE-PP-001",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le plafond du pilier 3a en 2026 pour un salarié affilié à une institution LPP ?",
+   "options": [
+    {
+     "text": "7 258 CHF",
+     "correct": true
+    },
+    {
+     "text": "6 883 CHF",
+     "correct": false,
+     "why_wrong": "Plafond 2023, plus en vigueur."
+    },
+    {
+     "text": "7 056 CHF",
+     "correct": false,
+     "why_wrong": "Plafond 2024, plus en vigueur."
+    },
+    {
+     "text": "36 288 CHF",
+     "correct": false,
+     "why_wrong": "C'est le plafond du grand pilier 3a pour indépendant sans LPP."
     }
-  ]
+   ],
+   "explanation": "Art. 7 al. 1 lit. a OPP 3 : petit pilier 3a pour salarié affilié LPP = 8 % de la limite supérieure du salaire coordonné (art. 8 al. 1 LPP). Montant 2026 : 7 258 CHF, intégralement déductible du revenu imposable."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-002",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Un indépendant SANS caisse LPP peut verser dans son pilier 3a en 2026 :",
+   "options": [
+    {
+     "text": "20 % du revenu net d'activité, maximum 36 288 CHF",
+     "correct": true
+    },
+    {
+     "text": "20 % du revenu net d'activité, maximum 7 258 CHF",
+     "correct": false,
+     "why_wrong": "Confusion avec le petit pilier 3a du salarié."
+    },
+    {
+     "text": "10 % du revenu net, sans plafond",
+     "correct": false
+    },
+    {
+     "text": "50 % du revenu net, maximum 100 000 CHF",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 7 al. 1 lit. b OPP 3 : grand pilier 3a = 20 % du revenu net d'activité indépendante, plafonné à 5 fois le petit pilier 3a. 2026 : 5 × 7 258 = 36 288 CHF. Levier fiscal massif pour les indépendants à revenu élevé."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-003",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Comparaison pilier 3a vs pilier 3b : quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Le pilier 3b n'a AUCUN plafond fédéral de versement",
+     "correct": true
+    },
+    {
+     "text": "Le pilier 3a est déductible du revenu imposable, dans la limite du plafond",
+     "correct": true
+    },
+    {
+     "text": "Les versements 3b sont déductibles du revenu imposable comme le 3a",
+     "correct": false,
+     "why_wrong": "Faux : les versements 3b ne sont PAS déductibles au niveau fédéral. Seules quelques déductions cantonales limitées existent (Genève, Vaud)."
+    },
+    {
+     "text": "Le pilier 3a est bloqué jusqu'à 5 ans avant l'âge de référence AVS",
+     "correct": true
+    },
+    {
+     "text": "Le pilier 3b est librement disponible en tout temps (rachat/résiliation)",
+     "correct": true
+    }
+   ],
+   "explanation": "3a = prévoyance liée, plafonnée et fiscalement avantageuse, mais bloquée. 3b = prévoyance libre, sans plafond ni déduction, disponible en tout temps. Art. 82 LPP et OPP 3 encadrent le 3a ; le 3b relève du droit privé (LCA/CO)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-004",
+   "theme": "epargne",
+   "type": "single",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Un salarié affilié LPP verse 10 000 CHF sur son pilier 3a en 2026. Que se passe-t-il fiscalement ?",
+   "options": [
+    {
+     "text": "7 258 CHF sont déductibles, l'excédent de 2 742 CHF doit être remboursé par la banque",
+     "correct": true
+    },
+    {
+     "text": "10 000 CHF sont intégralement déductibles",
+     "correct": false,
+     "why_wrong": "Faux : le plafond légal 2026 est 7 258 CHF pour un salarié."
+    },
+    {
+     "text": "Rien n'est déductible car le plafond est dépassé",
+     "correct": false,
+     "why_wrong": "La déduction reste possible jusqu'au plafond, seul l'excédent est refusé."
+    },
+    {
+     "text": "10 000 CHF déductibles avec supplément d'impôt",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 7 al. 1 lit. a OPP 3 + art. 33 al. 1 lit. e LIFD : la déduction est limitée au plafond légal (7 258 CHF en 2026). Toute somme excédentaire doit être remboursée par la fondation 3a. Contrôle systématique lors de la déclaration."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-005",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Comment sont imposées les prestations en capital du pilier 3a lors du retrait ? Cochez les affirmations exactes.",
+   "options": [
+    {
+     "text": "Elles sont imposées séparément des autres revenus, à un taux réduit (env. 1/5 du barème ordinaire)",
+     "correct": true
+    },
+    {
+     "text": "Elles ne sont PAS soumises aux cotisations AVS/AI/APG",
+     "correct": true
+    },
+    {
+     "text": "Elles sont imposées tant au niveau fédéral que cantonal, mais à taux réduit",
+     "correct": true
+    },
+    {
+     "text": "Elles sont cumulées au revenu ordinaire pour former l'assiette imposable",
+     "correct": false,
+     "why_wrong": "Faux : imposition séparée, pas cumulée au revenu."
+    },
+    {
+     "text": "Elles sont totalement exonérées d'impôt fédéral direct",
+     "correct": false,
+     "why_wrong": "Faux : imposition existe, mais à taux réduit."
+    }
+   ],
+   "explanation": "Art. 38 LIFD + LHID art. 11 al. 3 : les prestations en capital de la prévoyance sont imposées séparément du revenu à un taux réduit (env. 1/5 du barème ordinaire), tant au niveau fédéral que cantonal. Pas soumises aux cotisations AVS/AI/APG (revenu de prévoyance et non d'activité)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-006",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Concernant les primes versées dans une police d'assurance-vie 3b à prime périodique susceptible de rachat, quelle affirmation est correcte au niveau de l'IFD ?",
+   "options": [
+    {
+     "text": "Les primes sont déductibles du revenu comme un pilier 3a",
+     "correct": false,
+     "why_wrong": "Faux : les primes 3b ne bénéficient pas de la déduction spéciale 3a."
+    },
+    {
+     "text": "Les primes ne sont PAS déductibles du revenu imposable au niveau fédéral",
+     "correct": true
+    },
+    {
+     "text": "50 % des primes sont déductibles",
+     "correct": false
+    },
+    {
+     "text": "Les primes sont déductibles à hauteur de 50 % du salaire brut",
+     "correct": false
+    }
+   ],
+   "explanation": "IFD (art. 33 al. 1 lit. g LIFD) : uniquement la déduction générale des primes d'assurance dans une limite forfaitaire (env. 1 700 CHF pour une personne seule, doublée si mariée, avec supplément par enfant). Aucune déduction spécifique 3b. Certains cantons (Genève, Vaud) offrent une déduction cantonale supplémentaire limitée."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-007",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Ordre légal des bénéficiaires du pilier 3a (art. 2 OPP 3) : quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Le conjoint survivant ou le partenaire enregistré vient EN PREMIER",
+     "correct": true
+    },
+    {
+     "text": "Le concubin peut être bénéficiaire à des conditions strictes (ménage commun 5 ans, enfant commun ou entretien substantiel)",
+     "correct": true
+    },
+    {
+     "text": "Le titulaire peut désigner un bénéficiaire libre, comme en 3b",
+     "correct": false,
+     "why_wrong": "Faux : le 3a suit un ORDRE LÉGAL, aucune liberté totale."
+    },
+    {
+     "text": "En l'absence de conjoint et de descendants, les parents peuvent être désignés",
+     "correct": true
+    },
+    {
+     "text": "Les frères et sœurs peuvent être désignés uniquement s'il n'existe ni conjoint, ni descendants, ni parents",
+     "correct": true
+    }
+   ],
+   "explanation": "Art. 2 OPP 3, ordre imposé : 1° conjoint / partenaire enregistré ; 2° descendants + concubin qualifié + personnes à charge ; 3° parents ; 4° frères et sœurs ; 5° autres héritiers. Le titulaire peut seulement modifier la répartition à l'intérieur d'un rang."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-008",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Dans une police d'assurance-vie 3b avec clause bénéficiaire nominative, qui désigne le titulaire de la police en cas de décès ?",
+   "options": [
+    {
+     "text": "Toute personne librement, sans contrainte d'ordre légal",
+     "correct": true
+    },
+    {
+     "text": "Uniquement le conjoint et les descendants",
+     "correct": false,
+     "why_wrong": "Faux : c'est le régime restrictif du 3a."
+    },
+    {
+     "text": "Uniquement les héritiers légaux",
+     "correct": false
+    },
+    {
+     "text": "Uniquement le conjoint, avec accord notarié",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 76-79 LCA : liberté totale de désignation dans une police 3b. Le capital-décès est versé hors succession au bénéficiaire, sous réserve de l'action en réduction (art. 476 CC) si les réserves héréditaires sont atteintes."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-009",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Quels sont les motifs de retrait anticipé autorisés du pilier 3a (art. 3 al. 2 et 3 OPP 3) ?",
+   "options": [
+    {
+     "text": "Acquisition ou construction de la résidence principale (encouragement PPE)",
+     "correct": true
+    },
+    {
+     "text": "Amortissement d'un prêt hypothécaire de la résidence principale",
+     "correct": true
+    },
+    {
+     "text": "Départ définitif de Suisse",
+     "correct": true
+    },
+    {
+     "text": "Début d'une activité indépendante",
+     "correct": true
+    },
+    {
+     "text": "Rente d'invalidité entière AI",
+     "correct": true
+    },
+    {
+     "text": "Financement d'une voiture ou de vacances",
+     "correct": false,
+     "why_wrong": "Aucun motif de consommation n'est admis."
+    }
+   ],
+   "explanation": "Art. 3 al. 2 et 3 OPP 3 : motifs strictement limités. Retrait ordinaire dès 5 ans avant l'âge de référence AVS. Retrait anticipé possible : PPE (résidence principale), départ définitif de la Suisse, indépendance, invalidité totale (AI), décès."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-010",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Concernant le rachat d'une police 3b classique (assurance-vie susceptible de rachat), quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Elle peut être rachetée en tout temps par le preneur d'assurance (art. 89-93 LCA)",
+     "correct": true
+    },
+    {
+     "text": "La valeur de rachat des premières années est souvent inférieure aux primes versées (frais d'acquisition)",
+     "correct": true
+    },
+    {
+     "text": "Le rachat est bloqué jusqu'à l'âge de la retraite",
+     "correct": false,
+     "why_wrong": "Confusion avec le régime du pilier 3a."
+    },
+    {
+     "text": "Le rachat est uniquement admis en cas de décès ou d'invalidité",
+     "correct": false
+    },
+    {
+     "text": "Le rachat nécessite l'accord de la FINMA",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 89-93 LCA : le preneur d'une assurance-vie 3b susceptible de rachat peut la résilier en tout temps et obtenir la valeur de rachat. Attention : dans les premières années, cette valeur reste souvent inférieure aux primes versées (frais d'acquisition, technique de zillmerisation)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-011",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Un compte 3a bancaire (sans placement) présente typiquement quelles caractéristiques ?",
+   "options": [
+    {
+     "text": "Un taux d'intérêt variable, généralement supérieur à un compte d'épargne classique",
+     "correct": true
+    },
+    {
+     "text": "Aucune couverture décès ni invalidité intégrée",
+     "correct": true
+    },
+    {
+     "text": "Des frais de gestion très faibles ou nuls",
+     "correct": true
+    },
+    {
+     "text": "Une souplesse totale sur les montants et la périodicité des versements (dans la limite du plafond)",
+     "correct": true
+    },
+    {
+     "text": "Une garantie de capital minimum en cas de décès",
+     "correct": false,
+     "why_wrong": "Aucune garantie décès en compte bancaire pur. Il faut une police d'assurance."
+    }
+   ],
+   "explanation": "Compte 3a banque : véhicule d'épargne pur, ni couverture de risque, ni obligation d'alimenter chaque année. Souple, peu coûteux, mais sans garantie de capital ni protection en cas de coup dur. Peut être complété par une assurance risque pur séparée."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-012",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Une police 3a d'assurance mixte comporte typiquement :",
+   "options": [
+    {
+     "text": "Un capital garanti à l'échéance",
+     "correct": true
+    },
+    {
+     "text": "Une participation aux excédents non garantie",
+     "correct": true
+    },
+    {
+     "text": "Une couverture décès intégrée",
+     "correct": true
+    },
+    {
+     "text": "Une libération du paiement des primes en cas d'incapacité de gain",
+     "correct": true
+    },
+    {
+     "text": "Une prime annuelle contractuellement fixée, engagement pluriannuel",
+     "correct": true
+    },
+    {
+     "text": "Un rendement systématiquement supérieur à un compte 3a bancaire sur 20 ans",
+     "correct": false,
+     "why_wrong": "Les frais d'acquisition et de gestion des polices 3a sont élevés. En pratique, sur longue période, le compte bancaire (ou 3a-titres) est souvent plus rentable."
+    }
+   ],
+   "explanation": "Police 3a assurance = épargne + couverture risque. Argument majeur : la libération de prime protège l'objectif d'épargne en cas d'incapacité. Argument à opposer : la rigidité contractuelle et les frais élevés (surtout années 1 à 5). Choix : profil et besoins du client."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-013",
+   "theme": "epargne",
+   "type": "single",
+   "points": 3,
+   "notions": [],
+   "context": "Léa, 28 ans, célibataire, sans enfants, employée de commerce (salaire 78 000 CHF), souhaite commencer sa prévoyance 3a. Le conseiller lui présente une police d'assurance-vie 3a mixte avec prime annuelle de 7 000 CHF sur 37 ans.",
+   "question": "Quelle est la critique principale à formuler à l'encontre de cette recommandation ?",
+   "options": [
+    {
+     "text": "Elle n'a besoin d'aucune couverture décès ni invalidité prioritaire, un compte bancaire 3a (voire 3a-titres) serait plus flexible et moins coûteux",
+     "correct": true
+    },
+    {
+     "text": "Le plafond annuel est dépassé",
+     "correct": false,
+     "why_wrong": "Plafond 2026 = 7 258 CHF, donc 7 000 CHF est admis."
+    },
+    {
+     "text": "Un célibataire ne peut pas ouvrir de police 3a",
+     "correct": false,
+     "why_wrong": "Toute personne exerçant une activité lucrative peut ouvrir un 3a."
+    },
+    {
+     "text": "L'assurance-vie 3a n'existe que pour les indépendants",
+     "correct": false
+    }
+   ],
+   "explanation": "Devoir de conseil (art. 45 LSA + art. 44 al. 1 LSA) : la recommandation doit correspondre aux besoins. Une jeune célibataire sans charge n'a pas besoin de la protection décès intégrée. Un compte 3a bancaire (voire 3a-titres) offre plus de flexibilité, moins de frais et une meilleure rentabilité sur 37 ans."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-014",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Un preneur résilie sa police d'assurance-vie 3a après 3 ans. Que constate-t-on typiquement au niveau de la valeur de rachat ?",
+   "options": [
+    {
+     "text": "Elle est nettement inférieure au total des primes versées, en raison des frais d'acquisition amortis en début de contrat",
+     "correct": true
+    },
+    {
+     "text": "Elle est égale à la somme des primes versées, majorée des intérêts",
+     "correct": false,
+     "why_wrong": "Faux : les frais réduisent significativement la valeur de rachat dans les premières années."
+    },
+    {
+     "text": "Elle est nulle, aucun rachat n'est possible avant 5 ans",
+     "correct": false,
+     "why_wrong": "La police est rachetable dès qu'une valeur de rachat existe (art. 90 LCA)."
+    },
+    {
+     "text": "Elle est majorée d'un bonus de sortie",
+     "correct": false
+    }
+   ],
+   "explanation": "Frais d'acquisition (zillmerisation) : les commissions et frais d'établissement sont amortis dans les premières années. Résultat : la valeur de rachat peut être 30 à 60 % inférieure aux primes versées durant les 5 premières années. À expliciter au client (devoir d'information art. 3 LCA)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-015",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Que couvre typiquement une police d'assurance-vie 3a mixte au niveau des risques ?",
+   "options": [
+    {
+     "text": "Le capital décès garanti à la personne bénéficiaire",
+     "correct": true
+    },
+    {
+     "text": "La libération du paiement des primes en cas d'incapacité de gain durable",
+     "correct": true
+    },
+    {
+     "text": "Une rente d'invalidité éventuelle si la couverture complémentaire est souscrite",
+     "correct": true
+    },
+    {
+     "text": "La perte de gain immédiate en cas de maladie (IJM)",
+     "correct": false,
+     "why_wrong": "L'IJM est une couverture distincte (LCA collective d'employeur ou individuelle), pas incluse dans une 3a."
+    },
+    {
+     "text": "Les frais d'hospitalisation LAMal",
+     "correct": false,
+     "why_wrong": "Prestations relevant de la LAMal / LCA maladie, pas de la 3a."
+    }
+   ],
+   "explanation": "Une police 3a mixte cumule épargne + capital décès + libération de prime. La rente d'invalidité est en option. Elle ne remplace ni l'IJM (perte de gain maladie), ni la LAMal (frais médicaux). Le conseil doit clairement délimiter le périmètre des couvertures."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-016",
+   "theme": "epargne",
+   "type": "single",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Un client résilie sa police 3a avant l'échéance mais sans motif légal de retrait 3a. Que devient la valeur de rachat ?",
+   "options": [
+    {
+     "text": "Elle doit être transférée à une autre institution 3a (compte ou police), elle NE peut PAS être versée au client",
+     "correct": true
+    },
+    {
+     "text": "Elle est intégralement versée au client, imposée séparément",
+     "correct": false,
+     "why_wrong": "Faux : sans motif légal de retrait, les fonds restent liés."
+    },
+    {
+     "text": "Elle est perdue au profit de la compagnie",
+     "correct": false
+    },
+    {
+     "text": "Elle est versée à moitié au client, à moitié à la fondation",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 3 OPP 3 : le retrait n'est autorisé que pour les motifs limitativement énumérés. En cas de résiliation anticipée sans motif, la valeur de rachat doit être TRANSFÉRÉE à une autre solution 3a (compte bancaire ou police), et non versée au client."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-017",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Quelles caractéristiques distinguent un compte 3a-titres (avec fonds de placement) d'un compte 3a bancaire classique ?",
+   "options": [
+    {
+     "text": "Potentiel de rendement supérieur à long terme",
+     "correct": true
+    },
+    {
+     "text": "Risque de perte en capital (pas de garantie)",
+     "correct": true
+    },
+    {
+     "text": "Frais de gestion des fonds supplémentaires (TER)",
+     "correct": true
+    },
+    {
+     "text": "Rendement systématiquement garanti supérieur",
+     "correct": false,
+     "why_wrong": "Aucune garantie : la valeur peut baisser."
+    },
+    {
+     "text": "Exonération fiscale totale à l'échéance",
+     "correct": false,
+     "why_wrong": "Le régime fiscal est le même : imposition séparée à taux réduit lors du retrait."
+    },
+    {
+     "text": "Une immobilisation supplémentaire de 5 ans par rapport au compte classique",
+     "correct": false
+    }
+   ],
+   "explanation": "Le 3a-titres investit tout ou partie de l'avoir dans des fonds. Sur longue durée (> 15 ans), le rendement attendu dépasse celui du compte classique, mais le capital n'est pas garanti et les frais de fonds réduisent la performance. À réserver aux profils tolérants au risque et à horizon long."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-018",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Pourquoi conseiller de répartir son 3a sur PLUSIEURS comptes ou polices ?",
+   "options": [
+    {
+     "text": "Permet d'étaler les retraits sur plusieurs années fiscales et réduire la progressivité de l'impôt sur les prestations en capital",
+     "correct": true
+    },
+    {
+     "text": "Permet de diversifier les stratégies (compte + fonds + police)",
+     "correct": true
+    },
+    {
+     "text": "Permet d'augmenter le plafond annuel de versement",
+     "correct": false,
+     "why_wrong": "Le plafond annuel s'applique à la personne, pas au compte."
+    },
+    {
+     "text": "Diversifie le risque de contrepartie sur la banque / la compagnie",
+     "correct": true
+    }
+   ],
+   "explanation": "Astuce classique : ouvrir 3 à 5 comptes 3a distincts et les vider sur 3 à 5 ans à partir de 60 ans. Chaque année : imposition séparée à taux réduit. Sur un canton comme Genève ou Vaud, l'économie fiscale cumulée peut atteindre plusieurs milliers de francs."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-019",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Concernant la participation aux excédents versée dans une police d'assurance-vie, quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Elle n'est PAS garantie contractuellement",
+     "correct": true
+    },
+    {
+     "text": "Elle dépend du résultat réel de la compagnie (mortalité, gestion, financier)",
+     "correct": true
+    },
+    {
+     "text": "Le client doit distinguer capital garanti et prestation prévisionnelle sur participation",
+     "correct": true
+    },
+    {
+     "text": "Elle est fixée contractuellement chaque année",
+     "correct": false,
+     "why_wrong": "Seul le capital garanti est contractuel, les excédents ne le sont pas."
+    },
+    {
+     "text": "Elle est régulée par la FINMA à un taux minimal annuel garanti",
+     "correct": false
+    }
+   ],
+   "explanation": "Les excédents proviennent des trois sources techniques (risque, coûts, capital). Ils NE sont PAS garantis. Le client doit distinguer clairement, à la lecture de la proposition, la prestation garantie de la prestation prévisionnelle sur participation (art. 3 LCA, devoir d'information)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-020",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Un client demande à cumuler dans son 3a un compte bancaire ET une police d'assurance-vie 3a. Quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Le cumul est autorisé tant que le total annuel ne dépasse pas le plafond légal",
+     "correct": true
+    },
+    {
+     "text": "Il peut également ouvrir un 3a-titres en parallèle chez un troisième prestataire",
+     "correct": true
+    },
+    {
+     "text": "Le nombre de supports 3a n'est pas limité par la loi",
+     "correct": true
+    },
+    {
+     "text": "Un seul type de 3a est autorisé par personne",
+     "correct": false,
+     "why_wrong": "Aucune interdiction légale."
+    },
+    {
+     "text": "Le cumul n'est autorisé qu'aux indépendants",
+     "correct": false
+    },
+    {
+     "text": "Le cumul est possible uniquement avec deux banques distinctes",
+     "correct": false
+    }
+   ],
+   "explanation": "La loi limite le MONTANT TOTAL versé par personne et par année (art. 7 OPP 3), pas le nombre ni la nature des supports. Un client peut parfaitement combiner un compte bancaire, un compte 3a-titres et une police d'assurance-vie 3a, à condition de respecter le plafond global."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-021",
+   "theme": "epargne",
+   "type": "single",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Un client souhaite retirer 100 000 CHF de son 2e pilier pour amortir sa résidence principale. Quel est le montant minimum admissible pour un retrait anticipé PPE ?",
+   "options": [
+    {
+     "text": "20 000 CHF, sauf si le retrait sert à rembourser un prêt hypothécaire existant lié à des parts de coopérative",
+     "correct": true
+    },
+    {
+     "text": "10 000 CHF minimum, sans exception",
+     "correct": false
+    },
+    {
+     "text": "50 000 CHF minimum",
+     "correct": false
+    },
+    {
+     "text": "Aucun minimum légal",
+     "correct": false,
+     "why_wrong": "Faux : un minimum de 20 000 CHF est expressément prévu."
+    }
+   ],
+   "explanation": "Art. 5 al. 1 OEPL : montant minimum du retrait anticipé PPE = 20 000 CHF. Exception : parts de coopérative de logement, où aucun minimum n'est requis. Objectif : éviter la fragmentation excessive de l'avoir de prévoyance."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-022",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Quelles conditions doivent être remplies pour un retrait anticipé du pilier 3a pour la propriété du logement (PPE) ?",
+   "options": [
+    {
+     "text": "Il doit s'agir de la résidence principale du titulaire (domicile)",
+     "correct": true
+    },
+    {
+     "text": "Le retrait peut servir à l'acquisition, à la construction, à des transformations, ou à l'amortissement d'un prêt hypothécaire",
+     "correct": true
+    },
+    {
+     "text": "Le retrait est possible pour une résidence secondaire ou de vacances",
+     "correct": false,
+     "why_wrong": "Faux : uniquement la résidence principale."
+    },
+    {
+     "text": "Le retrait est possible tous les 5 ans",
+     "correct": true
+    },
+    {
+     "text": "Un retrait est possible pour financer un investissement locatif",
+     "correct": false,
+     "why_wrong": "Faux : jamais pour un bien locatif."
+    }
+   ],
+   "explanation": "Art. 3 al. 3 OPP 3 + art. 5 al. 1 lit. b OPP 3 : retrait PPE uniquement pour résidence principale (propriété du logement à usage personnel). Périodicité : possible tous les 5 ans. Interdiction stricte pour résidence secondaire ou investissement locatif."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-023",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Les prestations en capital du 3a sont-elles soumises aux cotisations AVS/AI/APG ?",
+   "options": [
+    {
+     "text": "Non, contrairement au salaire ou à une rente",
+     "correct": true
+    },
+    {
+     "text": "Oui, à hauteur de 8,7 % comme un salaire",
+     "correct": false,
+     "why_wrong": "Confusion avec les revenus d'activité."
+    },
+    {
+     "text": "Oui, à hauteur de 5,3 % (part employé)",
+     "correct": false
+    },
+    {
+     "text": "Uniquement au-delà de 100 000 CHF",
+     "correct": false
+    }
+   ],
+   "explanation": "Les prestations en capital de la prévoyance (2e et 3e pilier) NE sont PAS un revenu d'activité, donc NON soumises aux cotisations AVS/AI/APG. Elles sont uniquement soumises à l'impôt sur les prestations en capital (art. 38 LIFD)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-024",
+   "theme": "epargne",
+   "type": "single",
+   "points": 3,
+   "notions": [],
+   "context": "Marc, 60 ans, marié, deux comptes 3a de 100 000 CHF chacun. Il envisage de tout retirer en une seule fois en 2026.",
+   "question": "Comment optimiser fiscalement le retrait ?",
+   "options": [
+    {
+     "text": "Étaler les retraits sur 2 années fiscales distinctes (par ex. 2026 puis 2027), un compte par année",
+     "correct": true
+    },
+    {
+     "text": "Tout retirer en une seule fois en 2026, l'imposition est identique de toute façon",
+     "correct": false,
+     "why_wrong": "Faux : plusieurs retraits la même année sont additionnés dans l'assiette de l'impôt sur les prestations en capital."
+    },
+    {
+     "text": "Attendre 65 ans et tout retirer d'un coup",
+     "correct": false
+    },
+    {
+     "text": "Transférer les 3a vers un 3b avant de retirer",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 38 LIFD + jurisprudence : les prestations en capital versées la MÊME année civile sont ADDITIONNÉES pour déterminer le taux (progressivité). En les étalant sur 2 années civiles, chaque tranche est imposée à un taux moindre. Économie fiscale directe."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-025",
+   "theme": "epargne",
+   "type": "single",
+   "points": 3,
+   "notions": [],
+   "context": "Simon, salarié affilié LPP, atteint 60 ans en 2026. Il souhaite retirer son 3a mais son âge de référence AVS est fixé à 65 ans.",
+   "question": "À partir de quand un salarié peut-il retirer ordinairement son pilier 3a et quelle stratégie fiscale recommander ?",
+   "options": [
+    {
+     "text": "5 ans avant l'âge de référence AVS, donc dès 60 ans, avec possibilité d'étaler les retraits sur les 5 années fiscales suivantes",
+     "correct": true
+    },
+    {
+     "text": "À 55 ans, sans étalement possible",
+     "correct": false
+    },
+    {
+     "text": "Uniquement à l'âge de référence AVS exact, en une seule fois",
+     "correct": false,
+     "why_wrong": "Faux : possible dès 5 ans avant, et l'étalement est légal."
+    },
+    {
+     "text": "10 ans avant l'âge de référence AVS",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 3 al. 1 OPP 3 : les prestations 3a peuvent être versées au plus tôt cinq ans avant l'âge de référence de l'art. 21 al. 1 LAVS. Elles deviennent exigibles à l'âge de référence. Ouvrir plusieurs comptes 3a et retirer un par année (art. 38 LIFD, taux réduit) : levier fiscal reconnu."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-026",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Un salarié de 66 ans continue à exercer une activité lucrative après l'âge de référence AVS. Concernant le pilier 3a, quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Il peut continuer à verser sur son 3a jusqu'à 5 ans après l'âge de référence",
+     "correct": true
+    },
+    {
+     "text": "La poursuite des versements est conditionnée à l'exercice d'une activité lucrative soumise à cotisation AVS",
+     "correct": true
+    },
+    {
+     "text": "Le plafond annuel reste inchangé pendant l'ajournement",
+     "correct": true
+    },
+    {
+     "text": "Plus aucun versement 3a n'est possible après l'âge de référence",
+     "correct": false,
+     "why_wrong": "Faux : l'ajournement est autorisé jusqu'à 70 ans max."
+    },
+    {
+     "text": "L'ajournement est réservé aux indépendants",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 7 al. 2 OPP 3 : ajournement du 3a possible jusqu'à 5 ans après l'âge de référence, sous condition d'exercer une activité lucrative soumise à l'AVS. Plafond identique (7 258 CHF pour salarié LPP 2026). Levier fiscal intéressant après 65 ans."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-027",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Concernant la mise en gage d'un avoir de pilier 3a en garantie d'un prêt hypothécaire :",
+   "options": [
+    {
+     "text": "Elle est admise pour l'acquisition ou l'amortissement de la résidence principale",
+     "correct": true
+    },
+    {
+     "text": "Elle permet de conserver l'avoir en prévoyance tout en garantissant le crédit",
+     "correct": true
+    },
+    {
+     "text": "Elle est admise pour financer une voiture",
+     "correct": false,
+     "why_wrong": "Interdite : seule la PPE est visée."
+    },
+    {
+     "text": "Elle nécessite l'accord écrit du conjoint le cas échéant",
+     "correct": true
+    },
+    {
+     "text": "Elle transfère la propriété de l'avoir à la banque",
+     "correct": false,
+     "why_wrong": "Faux : le gage n'est pas un transfert, l'avoir reste au client tant que le prêt est honoré."
+    }
+   ],
+   "explanation": "Art. 4 OEPL applicable par renvoi à la 3a : mise en gage possible pour PPE. Différence avec le retrait : l'avoir reste investi et continue à rapporter, aucun impôt à la mise en gage. La banque n'intervient qu'en cas de défaut du client."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-028",
+   "theme": "epargne",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Les prestations d'excédents versées par une compagnie d'assurance sur une police 3a sont-elles soumises à l'impôt anticipé LIA ?",
+   "options": [
+    {
+     "text": "Oui, à 35 % au moment du versement, récupérable si régulièrement déclaré",
+     "correct": true
+    },
+    {
+     "text": "Non, elles en sont expressément exonérées",
+     "correct": false
+    },
+    {
+     "text": "Uniquement au-delà de 5 000 CHF",
+     "correct": false
+    },
+    {
+     "text": "Uniquement pour les non-résidents",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 4 al. 1 LIA : les rendements d'assurance-vie sont en principe soumis à l'impôt anticipé de 35 %, récupérable via la déclaration fiscale. Sur une police 3a la retenue LIA sur les excédents est standard, restitution après déclaration."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-029",
+   "theme": "epargne",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Un titulaire 3a décède. Concernant le devenir de l'avoir, quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Il est versé aux bénéficiaires selon l'ordre légal de l'art. 2 OPP 3, hors succession",
+     "correct": true
+    },
+    {
+     "text": "Il peut être pris en compte pour l'action en réduction art. 476 CC si un héritier réservataire est lésé",
+     "correct": true
+    },
+    {
+     "text": "Il est soumis à l'impôt sur les prestations en capital pour le bénéficiaire (art. 38 LIFD)",
+     "correct": true
+    },
+    {
+     "text": "Il tombe intégralement dans la masse successorale et est partagé par les héritiers légaux",
+     "correct": false,
+     "why_wrong": "Faux : le 3a est versé au bénéficiaire selon l'ordre imposé."
+    },
+    {
+     "text": "Il est perdu au profit de la fondation",
+     "correct": false
+    },
+    {
+     "text": "Il est reversé à l'AVS",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 2 OPP 3 : le capital 3a est attribué au bénéficiaire selon l'ordre légal, hors masse successorale au sens strict. Il peut toutefois être pris en compte pour le calcul des réserves (action en réduction art. 476 CC) si le montant lèse un héritier réservataire. Fiscalement : art. 38 LIFD, taux réduit."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-030",
+   "theme": "epargne",
+   "type": "single",
+   "points": 3,
+   "notions": [],
+   "context": "Nadia, 62 ans, veuve, propriétaire de sa résidence principale (dette hypothécaire 350 000 CHF). Elle dispose de 180 000 CHF de 3a. Elle envisage d'amortir totalement son hypothèque avec son 3a.",
+   "question": "Quelle est la principale objection à formuler ?",
+   "options": [
+    {
+     "text": "L'amortissement total peut être fiscalement contre-productif : perte de la déduction des intérêts, coût d'opportunité, imposition en capital sur le retrait",
+     "correct": true
+    },
+    {
+     "text": "Le 3a ne peut pas servir à amortir une dette hypothécaire existante",
+     "correct": false,
+     "why_wrong": "Faux : c'est un motif de retrait PPE reconnu (art. 3 al. 3 OPP 3)."
+    },
+    {
+     "text": "À 62 ans, le retrait ordinaire n'est pas encore possible",
+     "correct": false,
+     "why_wrong": "5 ans avant l'âge de référence AVS, donc dès 60 ans."
+    },
+    {
+     "text": "Une veuve n'a pas droit au retrait 3a",
+     "correct": false
+    }
+   ],
+   "explanation": "Trois freins fiscaux à examiner : (1) perte de déduction des intérêts hypothécaires du revenu imposable ; (2) le retrait 3a subit l'impôt sur les prestations en capital ; (3) valeur locative maintenue même sans dette. Souvent, l'amortissement partiel + maintien d'une dette optimale est plus avantageux."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-031",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Une assurance temporaire décès (Termfix) verse-t-elle un capital en cas de survie à l'échéance du contrat ?",
+   "options": [
+    {
+     "text": "Non, aucune prestation n'est due si l'assuré est en vie à l'échéance",
+     "correct": true
+    },
+    {
+     "text": "Oui, le total des primes versées est restitué",
+     "correct": false,
+     "why_wrong": "Faux : c'est une assurance risque pur, aucune valeur d'épargne."
+    },
+    {
+     "text": "Oui, un capital garanti est versé, comme dans une mixte",
+     "correct": false
+    },
+    {
+     "text": "50 % du capital assuré est versé",
+     "correct": false
+    }
+   ],
+   "explanation": "Assurance temporaire décès (Termfix) = risque pur. Capital versé UNIQUEMENT en cas de décès pendant la durée contractuelle. Aucune valeur d'épargne ni de rachat. Prime faible, ciblage familial (protection dettes hypothécaires, éducation enfants)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-032",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Concernant l'assurance-vie entière (vie totale), quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Le capital est versé au décès de l'assuré, quel qu'en soit le moment",
+     "correct": true
+    },
+    {
+     "text": "Elle constitue une valeur de rachat croissante avec le temps",
+     "correct": true
+    },
+    {
+     "text": "La prime est plus élevée qu'une temporaire décès à capital identique",
+     "correct": true
+    },
+    {
+     "text": "Le capital est versé à une date fixée d'avance, même si l'assuré est en vie",
+     "correct": false,
+     "why_wrong": "Confusion avec l'assurance mixte."
+    },
+    {
+     "text": "Aucun capital n'est jamais versé si l'assuré vit au-delà de 90 ans",
+     "correct": false,
+     "why_wrong": "Faux : le décès est certain, le capital sera versé tôt ou tard."
+    }
+   ],
+   "explanation": "Vie entière : couverture décès à vie, sans terme fixé. Capital garanti versé au décès aux bénéficiaires. Valeur de rachat croissante. Prime plus élevée qu'une temporaire décès. Utilité : transmission patrimoniale, liquidité successorale."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-033",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Une assurance mixte (endowment) verse le capital dans quel cas ?",
+   "options": [
+    {
+     "text": "Au décès pendant la durée du contrat OU à l'échéance en cas de survie",
+     "correct": true
+    },
+    {
+     "text": "Uniquement au décès",
+     "correct": false,
+     "why_wrong": "Confusion avec la temporaire décès ou la vie entière."
+    },
+    {
+     "text": "Uniquement en cas de survie à l'échéance",
+     "correct": false,
+     "why_wrong": "Confusion avec la capitalisation pure."
+    },
+    {
+     "text": "Uniquement en cas d'invalidité",
+     "correct": false
+    }
+   ],
+   "explanation": "Mixte (endowment) = double garantie : capital au décès pendant la durée contractuelle OU capital à l'échéance en cas de survie. Cumule épargne et protection. Prime plus élevée. Souvent utilisée en pilier 3a."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-034",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Une assurance de capitalisation pure se distingue de la mixte par :",
+   "options": [
+    {
+     "text": "L'absence totale de couverture décès (épargne pure, aucune prestation-risque)",
+     "correct": true
+    },
+    {
+     "text": "Une couverture décès renforcée",
+     "correct": false
+    },
+    {
+     "text": "Une prime moins élevée qu'une mixte",
+     "correct": false,
+     "why_wrong": "Piège : la capitalisation pure a effectivement des frais plus faibles, mais la caractéristique définissante est l'absence de couverture décès."
+    },
+    {
+     "text": "Une durée obligatoirement viagère",
+     "correct": false
+    }
+   ],
+   "explanation": "Capitalisation pure = véhicule d'épargne pur sans couverture décès (donc sans prime de risque). Moins utilisée que la mixte, car les banques offrent des solutions d'épargne équivalentes à moindre coût."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-035",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Une assurance-vie liée à des fonds de placement (unit-linked) présente quelles caractéristiques ?",
+   "options": [
+    {
+     "text": "La prestation à l'échéance dépend de la valeur des fonds sous-jacents choisis",
+     "correct": true
+    },
+    {
+     "text": "Le capital n'est PAS garanti (sauf option de garantie spécifique)",
+     "correct": true
+    },
+    {
+     "text": "Un potentiel de rendement supérieur à long terme, contre un risque de perte",
+     "correct": true
+    },
+    {
+     "text": "Le rendement est garanti au taux technique annuel",
+     "correct": false,
+     "why_wrong": "Faux : par définition, unit-linked signifie que la performance suit les fonds, non garantie."
+    },
+    {
+     "text": "Le preneur d'assurance choisit ses fonds parmi une gamme proposée",
+     "correct": true
+    }
+   ],
+   "explanation": "Unit-linked = investissement en fonds au sein d'une enveloppe assurance. Le risque de placement est supporté par le preneur. Devoir d'information renforcé (art. 3 LCA + LSFin) : profil de risque, horizon, tolérance à la perte."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-036",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Une rente viagère immédiate est :",
+   "options": [
+    {
+     "text": "Une rente à vie versée dès la conclusion du contrat, en contrepartie d'un capital versé en prime unique",
+     "correct": true
+    },
+    {
+     "text": "Une rente qui commence 10 ans après la souscription",
+     "correct": false,
+     "why_wrong": "Confusion avec la rente différée."
+    },
+    {
+     "text": "Une rente versée sur une durée limitée",
+     "correct": false,
+     "why_wrong": "Confusion avec la rente certaine."
+    },
+    {
+     "text": "Une rente d'invalidité",
+     "correct": false
+    }
+   ],
+   "explanation": "Rente viagère immédiate : contre prime unique, la compagnie s'engage à verser une rente à vie à l'assuré. Utile pour convertir un capital retraite en revenu régulier garanti (par ex. capital LPP retiré, héritage)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-037",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Une rente viagère différée se caractérise par :",
+   "options": [
+    {
+     "text": "Une phase d'épargne avec primes périodiques, suivie d'une phase de rente à vie",
+     "correct": true
+    },
+    {
+     "text": "Une prime unique et une rente immédiate",
+     "correct": false,
+     "why_wrong": "Confusion avec la rente viagère immédiate."
+    },
+    {
+     "text": "Une rente à durée limitée",
+     "correct": false
+    },
+    {
+     "text": "Une rente uniquement pour orphelins",
+     "correct": false
+    }
+   ],
+   "explanation": "Rente différée : constitution d'un capital pendant la vie active, converti en rente à un âge convenu (souvent l'âge de retraite). Alternative privée à la LPP, souvent en 3a."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-038",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Une assurance dotale (études d'enfant) prévoit typiquement :",
+   "options": [
+    {
+     "text": "Un capital versé à l'enfant à un âge fixé (18-25 ans), pour financer ses études",
+     "correct": true
+    },
+    {
+     "text": "Une exemption de primes en cas de décès du parent souscripteur",
+     "correct": true
+    },
+    {
+     "text": "Un capital à l'enfant même si le parent décède avant l'échéance",
+     "correct": true
+    },
+    {
+     "text": "Un capital versé exclusivement en cas de décès du parent",
+     "correct": false,
+     "why_wrong": "Faux : elle vise l'enfant à un âge précis, pas seulement le décès du parent."
+    },
+    {
+     "text": "Un rachat impossible avant l'échéance",
+     "correct": false,
+     "why_wrong": "Le rachat est possible comme toute police 3b (art. 90 LCA), avec valeur de rachat."
+    }
+   ],
+   "explanation": "Dotale = protection ciblée du projet éducatif de l'enfant, indépendante du sort du parent grâce à l'exemption de primes. Souvent en 3b (bénéficiaire = enfant nominatif)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-039",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Avantages et inconvénients d'une assurance temporaire décès (Termfix) : quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Avantage : prime faible pour une couverture décès élevée",
+     "correct": true
+    },
+    {
+     "text": "Avantage : idéale pour couvrir une dette hypothécaire pendant sa durée",
+     "correct": true
+    },
+    {
+     "text": "Inconvénient : aucune valeur si l'assuré est en vie à l'échéance",
+     "correct": true
+    },
+    {
+     "text": "Avantage : constitue un capital épargne à l'échéance",
+     "correct": false,
+     "why_wrong": "Faux : aucune épargne, aucune valeur de rachat."
+    },
+    {
+     "text": "Inconvénient : coût élevé identique à une vie entière",
+     "correct": false,
+     "why_wrong": "Au contraire, la prime est nettement inférieure à celle d'une vie entière."
+    }
+   ],
+   "explanation": "Temporaire décès = protection pure, faible coût, ciblée sur une période de risque (crédit hypothécaire, enfants à charge). Après la période, le contrat s'éteint sans contrepartie. Pertinent quand le besoin de protection est temporaire."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-040",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Avantages et inconvénients d'une assurance-vie mixte : quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Avantage : cumul d'une protection décès et d'une épargne garantie à l'échéance",
+     "correct": true
+    },
+    {
+     "text": "Avantage : discipline d'épargne (engagement pluriannuel)",
+     "correct": true
+    },
+    {
+     "text": "Inconvénient : rendement souvent inférieur à un placement banque + assurance risque pur séparée",
+     "correct": true
+    },
+    {
+     "text": "Inconvénient : peu de souplesse contractuelle (durée, primes)",
+     "correct": true
+    },
+    {
+     "text": "Avantage : liquidité totale à tout moment sans coût",
+     "correct": false,
+     "why_wrong": "Faux : le rachat anticipé entraîne une perte significative dans les premières années."
+    }
+   ],
+   "explanation": "Mixte = solution combinée mais coûteuse. Comparaison à faire avec la stratégie 'buy term and invest the difference' : temporaire décès + compte 3a titres, souvent plus performant sur longue durée."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-041",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Avantages et inconvénients d'une assurance-vie unit-linked : quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Avantage : potentiel de rendement supérieur à long terme",
+     "correct": true
+    },
+    {
+     "text": "Avantage : choix des fonds selon le profil de risque du client",
+     "correct": true
+    },
+    {
+     "text": "Inconvénient : risque de perte en capital, aucune garantie sauf option spécifique",
+     "correct": true
+    },
+    {
+     "text": "Inconvénient : frais internes de fonds cumulés aux frais d'assurance",
+     "correct": true
+    },
+    {
+     "text": "Avantage : capital garanti à l'échéance dans tous les cas",
+     "correct": false,
+     "why_wrong": "Faux : la garantie est facultative et payante."
+    }
+   ],
+   "explanation": "Unit-linked = enveloppe à performance liée. Attention à la double couche de frais (assurance + fonds). Recommandé aux clients avertis, horizon long, tolérance au risque. LSFin s'applique pour l'information sur les instruments financiers."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-042",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Avantages et inconvénients d'une assurance-vie entière : quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Avantage : capital garanti aux héritiers à coup sûr (le décès survient forcément)",
+     "correct": true
+    },
+    {
+     "text": "Avantage : outil de transmission patrimoniale et de liquidité successorale",
+     "correct": true
+    },
+    {
+     "text": "Inconvénient : prime élevée pendant toute la vie",
+     "correct": true
+    },
+    {
+     "text": "Inconvénient : illiquidité, valeur de rachat < primes durant les premières années",
+     "correct": true
+    },
+    {
+     "text": "Avantage : rendement garanti supérieur à un placement obligataire",
+     "correct": false,
+     "why_wrong": "Faux : la vie entière est un produit de protection, pas de rendement."
+    }
+   ],
+   "explanation": "Vie entière = outil successoral avant tout. Utile pour financer les droits de succession, désintéresser un héritier, protéger un concubin ou un enfant handicapé. Coût élevé, à réserver aux besoins spécifiques."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-043",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Un preneur d'assurance mixte ne peut plus payer ses primes. Quelles solutions la LCA lui offre-t-elle ?",
+   "options": [
+    {
+     "text": "La libération du paiement des primes : la police est maintenue avec un capital réduit (art. 90 al. 2 LCA)",
+     "correct": true
+    },
+    {
+     "text": "Le rachat de la police avec versement de la valeur de rachat (art. 90 al. 1 LCA)",
+     "correct": true
+    },
+    {
+     "text": "Résiliation d'office par la compagnie sans aucune contrepartie",
+     "correct": false,
+     "why_wrong": "Faux : la LCA offre libération ou rachat au preneur."
+    },
+    {
+     "text": "Suspension automatique et gratuite pendant 12 mois",
+     "correct": false
+    },
+    {
+     "text": "Remboursement intégral des primes versées majorées d'intérêts",
+     "correct": false,
+     "why_wrong": "Faux : seule la valeur de rachat contractuelle est due."
+    }
+   ],
+   "explanation": "Art. 90 LCA : deux options au choix du preneur. Rachat (résiliation avec paiement de la valeur de rachat) ou libération de prime (maintien de la police avec capital réduit calculé sur les primes déjà versées). Alternative au rachat, préférable si le besoin de protection subsiste."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-044",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "La participation aux excédents servie sur une police d'assurance-vie provient de quelles sources techniques ?",
+   "options": [
+    {
+     "text": "Excédent de risque (mortalité effective < mortalité attendue)",
+     "correct": true
+    },
+    {
+     "text": "Excédent de coûts (frais réels < frais chargés)",
+     "correct": true
+    },
+    {
+     "text": "Excédent financier (rendement > taux technique garanti)",
+     "correct": true
+    },
+    {
+     "text": "Chiffre d'affaires publicitaire de la compagnie",
+     "correct": false,
+     "why_wrong": "Aucun lien avec les excédents techniques."
+    },
+    {
+     "text": "Bénéfice sur les opérations non-vie",
+     "correct": false,
+     "why_wrong": "Les excédents vie proviennent des opérations vie uniquement."
+    }
+   ],
+   "explanation": "Trois piliers techniques : excédent de risque (mortalité effective < mortalité attendue), excédent de coûts (frais réels < frais chargés), excédent financier (rendement > taux technique). Non garantis, dépendent des résultats effectifs de la compagnie."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-045",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 3,
+   "notions": [],
+   "context": "Yann verse 100 000 CHF en prime unique dans une assurance-vie 3b. Il rachète la police après 3 ans avec une valeur de rachat de 108 000 CHF.",
+   "question": "Comment est imposé le gain de 8 000 CHF au niveau de l'IFD ?",
+   "options": [
+    {
+     "text": "Les 8 000 CHF sont imposés comme revenu, car la police à prime unique est rachetée avant 5 ans (art. 20 al. 1 lit. a LIFD)",
+     "correct": true
+    },
+    {
+     "text": "Aucune imposition, le gain est un revenu du capital exonéré",
+     "correct": false,
+     "why_wrong": "Piège classique : l'exonération ne s'applique qu'à certaines conditions (durée, âge)."
+    },
+    {
+     "text": "Uniquement 50 % du gain est imposé",
+     "correct": false
+    },
+    {
+     "text": "Imposition au taux réduit des prestations en capital",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 20 al. 1 lit. a LIFD : les prestations en capital d'assurances-vie à prime unique susceptibles de rachat sont imposables comme revenu si le contrat est racheté avant 5 ans OU si le preneur a moins de 60 ans à l'échéance. Piège fréquent en conseil : anticiper l'incidence fiscale."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-046",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Concernant la rente de veuve du 1er pilier (AVS), quelles conditions doivent être remplies ?",
+   "options": [
+    {
+     "text": "La veuve a des enfants (à charge), sans condition d'âge ni de durée de mariage",
+     "correct": true
+    },
+    {
+     "text": "La veuve sans enfant : mariage de 5 ans au moins ET veuve d'au moins 45 ans révolus",
+     "correct": true
+    },
+    {
+     "text": "La rente de veuve est versée à vie ou jusqu'au remariage",
+     "correct": true
+    },
+    {
+     "text": "Aucune condition, toute veuve a automatiquement droit à la rente",
+     "correct": false,
+     "why_wrong": "Faux : conditions strictes d'âge et de mariage."
+    },
+    {
+     "text": "La rente est de 100 % de la rente AVS du défunt",
+     "correct": false,
+     "why_wrong": "Faux : 80 % de la rente de vieillesse du défunt."
+    }
+   ],
+   "explanation": "Art. 23 LAVS : rente de veuve = 80 % de la rente de vieillesse. Conditions : (a) enfants à charge OU (b) sans enfant : mariage min 5 ans + veuvage à 45 ans+. S'éteint en cas de remariage (art. 23 al. 4 LAVS)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-047",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Jusqu'à quel âge est versée la rente d'orphelin AVS ?",
+   "options": [
+    {
+     "text": "18 ans, ou 25 ans si l'enfant poursuit une formation",
+     "correct": true
+    },
+    {
+     "text": "16 ans dans tous les cas",
+     "correct": false,
+     "why_wrong": "Confusion possible avec l'obligation d'entretien de l'ancien droit."
+    },
+    {
+     "text": "20 ans dans tous les cas",
+     "correct": false
+    },
+    {
+     "text": "Jusqu'au mariage de l'orphelin",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 25 al. 5 LAVS : rente d'orphelin versée jusqu'à 18 ans, prolongée jusqu'à 25 ans si l'orphelin est en formation. Montant : 40 % de la rente de vieillesse (60 % si double orphelin)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-048",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Concernant la rente de veuf du 1er pilier AVS, quelle est la situation légale (avant l'harmonisation en cours) ?",
+   "options": [
+    {
+     "text": "Le veuf n'a droit à la rente que s'il a des enfants mineurs à charge ; la rente s'éteint à la majorité du dernier enfant",
+     "correct": true
+    },
+    {
+     "text": "Le veuf est traité comme la veuve, à vie",
+     "correct": false,
+     "why_wrong": "Inégalité de traitement reconnue par la CEDH, une réforme est en cours mais pas encore en vigueur pour la génération actuelle."
+    },
+    {
+     "text": "Le veuf n'a aucun droit AVS",
+     "correct": false
+    },
+    {
+     "text": "Le veuf reçoit uniquement une rente de 3 ans",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 24 LAVS : rente de veuf uniquement pour enfants mineurs à charge, extinction à la majorité du dernier enfant. Arrêt CEDH Beeler c. Suisse (2022) et projet en cours d'harmonisation homme/femme. Enseigner l'état actuel + mentionner la réforme."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-049",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": "L'assuré marié décède en activité. La caisse doit déterminer les prestations dues à ses proches selon la LPP obligatoire.",
+   "question": "Prestations LPP en cas de décès de l'assuré actif, quelles rentes prévoit la loi ?",
+   "options": [
+    {
+     "text": "Rente de conjoint survivant (art. 19 LPP)",
+     "correct": true
+    },
+    {
+     "text": "Rente d'orphelin par enfant (art. 20 LPP)",
+     "correct": true
+    },
+    {
+     "text": "Rente pour partenaire enregistré, assimilé au conjoint (art. 19 al. 3 LPP)",
+     "correct": true
+    },
+    {
+     "text": "Rente pour concubin, sans condition supplémentaire",
+     "correct": false,
+     "why_wrong": "Faux : le concubin n'a droit à une rente que si le règlement de la caisse le prévoit et sous conditions (art. 20a LPP)."
+    },
+    {
+     "text": "Rente pour parents à charge, dans tous les cas",
+     "correct": false,
+     "why_wrong": "Uniquement dans le cadre facultatif art. 20a LPP si le règlement le prévoit."
+    }
+   ],
+   "explanation": "LPP obligatoire : rente conjoint (60 % rente inv.), rente orphelin (20 % rente inv. par enfant). Le partenaire enregistré est assimilé (art. 19 al. 3 LPP). Le concubin doit être expressément prévu par le règlement de la caisse (art. 20a LPP)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-050",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Un salarié décède, laissant conjoint + 2 enfants mineurs. Quelle rente LPP obligatoire par enfant orphelin ?",
+   "options": [
+    {
+     "text": "20 % de la rente d'invalidité du défunt",
+     "correct": true
+    },
+    {
+     "text": "40 % de la rente d'invalidité",
+     "correct": false,
+     "why_wrong": "Confusion avec l'AVS (rente orphelin = 40 % rente vieillesse défunt)."
+    },
+    {
+     "text": "10 %",
+     "correct": false
+    },
+    {
+     "text": "60 %",
+     "correct": false,
+     "why_wrong": "Confusion avec la rente de conjoint LPP."
+    }
+   ],
+   "explanation": "Art. 21 LPP : rente d'orphelin LPP obligatoire = 20 % de la rente d'invalidité présumée du défunt, par enfant. La rente de conjoint est de 60 %. Cumul possible avec 1er pilier."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-051",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "À quelles conditions un concubin peut-il être bénéficiaire d'une rente LPP (art. 20a LPP) ?",
+   "options": [
+    {
+     "text": "Le règlement de la caisse de pensions doit expressément prévoir la couverture des concubins",
+     "correct": true
+    },
+    {
+     "text": "Le concubin doit avoir été soutenu de manière substantielle par le défunt",
+     "correct": true
+    },
+    {
+     "text": "OU le concubin doit avoir vécu en ménage commun avec le défunt durant les 5 dernières années au moins avant le décès",
+     "correct": true
+    },
+    {
+     "text": "OU le concubin doit assumer l'entretien d'un enfant commun",
+     "correct": true
+    },
+    {
+     "text": "La désignation du concubin doit avoir été communiquée par écrit à la caisse de pensions",
+     "correct": true
+    },
+    {
+     "text": "Aucune formalité n'est nécessaire, le lien de fait suffit",
+     "correct": false,
+     "why_wrong": "Faux : la déclaration écrite est indispensable pour valoir désignation."
+    }
+   ],
+   "explanation": "Art. 20a LPP : possibilité facultative. Trois conditions cumulatives : règlement le prévoit, situation matérielle admise (soutien, ménage 5 ans, ou enfant commun), déclaration écrite. À vérifier systématiquement pour les concubins lors de l'analyse."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-052",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 3,
+   "notions": [],
+   "context": "Couple marié, 2 enfants (8 et 12 ans). Époux salarié, revenu net 90 000 CHF, dette hypothécaire 500 000 CHF. Rente veuve AVS + LPP estimée à 55 000 CHF / an.",
+   "question": "Quel capital-décès complémentaire suggérer pour couvrir la lacune familiale ?",
+   "options": [
+    {
+     "text": "Environ 500 000 CHF (dettes) + 300 000 CHF (5 ans de coussin famille + éducation enfants), soit env. 800 000 CHF à ajuster selon situation",
+     "correct": true
+    },
+    {
+     "text": "50 000 CHF, la LPP couvre déjà tout",
+     "correct": false,
+     "why_wrong": "Faux : la lacune de revenu et la dette hypothécaire justifient un capital significatif."
+    },
+    {
+     "text": "Uniquement l'amortissement de la dette hypothécaire (500 000 CHF)",
+     "correct": false,
+     "why_wrong": "Incomplet : ne couvre pas les besoins courants et l'éducation."
+    },
+    {
+     "text": "Aucun capital n'est nécessaire",
+     "correct": false
+    }
+   ],
+   "explanation": "Approche standard : (1) dettes à amortir (hypothèque, crédits) + (2) coussin financier veuve 5-10 ans (revenu manquant × durée) + (3) provisions éducation enfants jusqu'à autonomie. Total à ajuster selon patrimoine existant, 3a/LPP éventuellement retirés en capital."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-053",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Le capital d'un pilier 3a est versé au décès du titulaire :",
+   "options": [
+    {
+     "text": "Aux bénéficiaires selon l'ordre légal de l'art. 2 OPP 3, hors succession",
+     "correct": true
+    },
+    {
+     "text": "Uniquement au conjoint, jamais aux enfants",
+     "correct": false,
+     "why_wrong": "Les descendants viennent en 2e rang après le conjoint."
+    },
+    {
+     "text": "Uniquement aux héritiers réservataires",
+     "correct": false
+    },
+    {
+     "text": "Uniquement à la personne désignée par testament",
+     "correct": false,
+     "why_wrong": "Faux : c'est l'ordre légal 3a qui s'applique, pas le testament."
+    }
+   ],
+   "explanation": "Art. 2 OPP 3 : le capital 3a est versé hors succession selon l'ordre imposé. Argument fort de conseil : le 3a permet la transmission rapide et directe au conjoint (1er rang), contournant les délais successoraux."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-054",
+   "theme": "garantie_revenus",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Concernant le capital-décès d'une police d'assurance-vie 3b avec clause bénéficiaire nominative, quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Il est versé directement au bénéficiaire désigné, hors masse successorale (art. 76-79 LCA)",
+     "correct": true
+    },
+    {
+     "text": "Il peut faire l'objet d'une action en réduction si les réserves héréditaires sont atteintes (art. 476 CC)",
+     "correct": true
+    },
+    {
+     "text": "Le titulaire peut modifier la clause bénéficiaire à tout moment (art. 77 LCA)",
+     "correct": true
+    },
+    {
+     "text": "Il entre systématiquement dans la masse successorale et est partagé entre héritiers",
+     "correct": false,
+     "why_wrong": "Faux : la désignation nominative permet le versement direct hors succession."
+    },
+    {
+     "text": "Il est bloqué jusqu'à la clôture officielle de la succession",
+     "correct": false
+    },
+    {
+     "text": "Il est reversé à l'AVS",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 76-79 LCA : versement direct au bénéficiaire nominatif, hors succession. Clause révocable en tout temps par le preneur. Toutefois, art. 476 CC : les héritiers réservataires peuvent agir en réduction si la désignation a porté atteinte à leur réserve. À anticiper dans le conseil."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-055",
+   "theme": "garantie_revenus",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Quel est le délai de prescription de l'action en réduction des héritiers réservataires (art. 533 CC) ?",
+   "options": [
+    {
+     "text": "1 an dès la connaissance de la lésion, 10 ans au maximum dès l'ouverture de la succession",
+     "correct": true
+    },
+    {
+     "text": "5 ans dès le décès, sans autre délai",
+     "correct": false
+    },
+    {
+     "text": "30 ans, comme pour la revendication successorale",
+     "correct": false
+    },
+    {
+     "text": "6 mois seulement",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 533 CC : action en réduction se prescrit par 1 an dès que l'héritier a connu la lésion de sa réserve, dans tous les cas 10 ans dès la publication du testament (ou l'ouverture de la succession pour dispositions non testamentaires). Délai court : à rappeler au client."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-056",
+   "theme": "retraite_individuelle",
+   "type": "multiple",
+   "points": 3,
+   "notions": [],
+   "context": null,
+   "question": "Concernant le choix entre rente et capital LPP à la retraite (art. 37 LPP), quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Le retrait sous forme de capital du régime obligatoire est un droit d'au moins 25 % du capital",
+     "correct": true
+    },
+    {
+     "text": "Le règlement de caisse peut autoriser le retrait à 100 % en capital",
+     "correct": true
+    },
+    {
+     "text": "Le retrait en capital doit être demandé dans un délai prévu par le règlement (souvent 3 ans avant la retraite)",
+     "correct": true
+    },
+    {
+     "text": "Un salarié marié doit obtenir l'accord écrit de son conjoint pour un retrait en capital",
+     "correct": true
+    },
+    {
+     "text": "Le capital est imposé comme un revenu ordinaire progressif",
+     "correct": false,
+     "why_wrong": "Faux : imposition séparée à taux réduit (art. 38 LIFD)."
+    }
+   ],
+   "explanation": "Art. 37 al. 2 LPP : minimum 25 % du capital retirable. Art. 37 al. 5 LPP : accord écrit du conjoint obligatoire. Formalités du règlement à respecter (délai de préavis). Effet fiscal : capital = taux réduit ponctuel, rente = imposition annuelle ordinaire."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-057",
+   "theme": "retraite_individuelle",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Comment sont imposées les rentes LPP versées à la retraite ?",
+   "options": [
+    {
+     "text": "À 100 %, comme revenu ordinaire (art. 22 LIFD)",
+     "correct": true
+    },
+    {
+     "text": "À 40 %, comme les rentes viagères privées",
+     "correct": false,
+     "why_wrong": "Confusion avec les rentes viagères privées (art. 22 al. 3 LIFD)."
+    },
+    {
+     "text": "À un taux réduit séparé",
+     "correct": false,
+     "why_wrong": "Confusion avec le capital LPP."
+    },
+    {
+     "text": "Exonérées d'IFD",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 22 al. 1 LIFD : les rentes de la prévoyance professionnelle sont imposables intégralement comme revenu ordinaire. Contrairement au capital (taux réduit art. 38 LIFD) et à la rente viagère privée (40 % art. 22 al. 3 LIFD)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-058",
+   "theme": "retraite_individuelle",
+   "type": "multiple",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Concernant l'imposition du capital LPP retiré à la retraite, quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Il est imposé séparément des autres revenus (art. 38 LIFD)",
+     "correct": true
+    },
+    {
+     "text": "À un taux réduit (env. 1/5 du barème ordinaire)",
+     "correct": true
+    },
+    {
+     "text": "Le même régime s'applique au niveau cantonal (LHID art. 11 al. 3)",
+     "correct": true
+    },
+    {
+     "text": "Il est imposé à 100 %, cumulé au revenu ordinaire",
+     "correct": false,
+     "why_wrong": "Faux : imposition séparée à taux réduit."
+    },
+    {
+     "text": "Il est totalement exonéré d'impôt fédéral direct",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 38 LIFD : imposition séparée à un taux réduit. Idem au niveau cantonal (LHID art. 11 al. 3). Effet : la sortie en capital est ponctuellement lourde mais évite l'imposition à vie des rentes."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-059",
+   "theme": "retraite_individuelle",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Avantages du choix de la rente LPP à la retraite :",
+   "options": [
+    {
+     "text": "Sécurité viagère : revenu garanti à vie, indépendamment de la longévité",
+     "correct": true
+    },
+    {
+     "text": "Rente de survivant automatique au conjoint (60 % de la rente en général)",
+     "correct": true
+    },
+    {
+     "text": "Aucune gestion financière à assurer par le retraité",
+     "correct": true
+    },
+    {
+     "text": "Transmission intégrale du capital aux héritiers en cas de décès",
+     "correct": false,
+     "why_wrong": "Faux : à l'inverse, le capital 'restant' est perdu (hors rente survivant limitée)."
+    },
+    {
+     "text": "Liberté d'utiliser le capital pour investir",
+     "correct": false,
+     "why_wrong": "Faux : le capital est converti en rente irrévocable."
+    }
+   ],
+   "explanation": "Rente LPP = protection viagère et automatisation. Idéal pour profils prudents, sans compétence de gestion, mariés. Inconvénient : capital 'perdu' pour les héritiers au décès (hors rente conjoint réduite)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-060",
+   "theme": "retraite_individuelle",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Avantages du choix du capital LPP à la retraite :",
+   "options": [
+    {
+     "text": "Liberté totale d'utilisation (immobilier, placement, projets)",
+     "correct": true
+    },
+    {
+     "text": "Transmission du capital aux héritiers en cas de décès",
+     "correct": true
+    },
+    {
+     "text": "Imposition unique à taux réduit, pas d'imposition récurrente sur la rente",
+     "correct": true
+    },
+    {
+     "text": "Le capital est garanti à vie sans risque de placement",
+     "correct": false,
+     "why_wrong": "Faux : le retraité assume seul le risque de longévité et de placement."
+    },
+    {
+     "text": "Sécurité viagère automatique",
+     "correct": false,
+     "why_wrong": "Faux : c'est l'avantage de la rente, pas du capital."
+    }
+   ],
+   "explanation": "Capital LPP = liberté, transmission, taux réduit. Risque : longévité (survivre à son capital), gestion, placement. À réserver aux profils avertis, patrimoine diversifié, souhait de transmission."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-061",
+   "theme": "retraite_individuelle",
+   "type": "single",
+   "points": 3,
+   "notions": [],
+   "context": "Sylvie, 63 ans, célibataire, veut partir à la retraite à 65 ans avec 700 000 CHF LPP. Ses charges mensuelles sont 4 500 CHF, sa rente AVS estimée à 2 400 CHF/mois, sa rente LPP intégrale à 3 100 CHF/mois. Elle craint la longévité (mère décédée à 96 ans).",
+   "question": "Quelle recommandation de retrait LPP privilégier ?",
+   "options": [
+    {
+     "text": "Prendre principalement la rente (pour sécuriser le minimum vital viager) et sortir une partie limitée en capital pour projets et réserve d'urgence",
+     "correct": true
+    },
+    {
+     "text": "Prendre 100 % en capital, la stratégie financière produira une rente équivalente",
+     "correct": false,
+     "why_wrong": "Risque de longévité élevé (mère 96 ans) et absence de conjoint pour rente survivant : la rente sécurise mieux."
+    },
+    {
+     "text": "Prendre 100 % en rente, aucune sortie en capital",
+     "correct": false,
+     "why_wrong": "Trop rigide : aucune réserve pour projets ou dépenses imprévues."
+    },
+    {
+     "text": "Renoncer aux prestations et laisser à la caisse",
+     "correct": false
+    }
+   ],
+   "explanation": "Profil célibataire + espérance de vie élevée + charges fixes couvertes = argument fort pour la rente. Un complément en capital (25 % minimum art. 37 LPP) offre la souplesse pour projets ou dépenses ponctuelles. Sortir 100 % en capital reporte le risque de longévité sur le retraité seul."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-062",
+   "theme": "retraite_individuelle",
+   "type": "single",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Un salarié dispose de 5 comptes 3a et souhaite optimiser fiscalement le retrait à la retraite. Que faire ?",
+   "options": [
+    {
+     "text": "Retirer un compte par année civile sur 5 ans, avant l'âge de référence AVS",
+     "correct": true
+    },
+    {
+     "text": "Tout retirer en une seule fois, la fiscalité est linéaire",
+     "correct": false,
+     "why_wrong": "Faux : l'impôt est progressif, cumul dans la même année pénalise."
+    },
+    {
+     "text": "Attendre l'âge de référence pour tout retirer",
+     "correct": false
+    },
+    {
+     "text": "Transférer tous les 3a en 3b avant retrait",
+     "correct": false
+    }
+   ],
+   "explanation": "Retrait ordinaire dès 5 ans avant l'âge de référence AVS. Étalement sur 5 années civiles distinctes = 5 impositions séparées à taux réduit (art. 38 LIFD). Le cumul dans la même année déclenche la progressivité (jurisprudence constante)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-063",
+   "theme": "retraite_individuelle",
+   "type": "single",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Une rente viagère 'avec restitution' se distingue par :",
+   "options": [
+    {
+     "text": "En cas de décès prématuré, le capital restant (ou une partie) est versé aux héritiers désignés",
+     "correct": true
+    },
+    {
+     "text": "La rente est restituée à la compagnie chaque année",
+     "correct": false,
+     "why_wrong": "Contresens."
+    },
+    {
+     "text": "La rente est garantie à 100 % du capital versé",
+     "correct": false
+    },
+    {
+     "text": "La rente est indexée à l'inflation",
+     "correct": false
+    }
+   ],
+   "explanation": "Rente viagère avec restitution : protection contre le décès prématuré. Le capital non consommé est restitué aux héritiers. Contrepartie : rente périodique inférieure à celle d'une rente sans restitution."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-064",
+   "theme": "retraite_individuelle",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Une rente viagère 'sans restitution' présente quelle particularité ?",
+   "options": [
+    {
+     "text": "En cas de décès, aucun capital n'est restitué aux héritiers (la compagnie conserve le solde)",
+     "correct": true
+    },
+    {
+     "text": "La rente cesse au bout de 10 ans",
+     "correct": false,
+     "why_wrong": "Confusion avec la rente certaine."
+    },
+    {
+     "text": "Elle inclut une rente de survivant automatique",
+     "correct": false
+    },
+    {
+     "text": "Le capital est intégralement restitué au décès",
+     "correct": false,
+     "why_wrong": "Faux : c'est la version 'avec restitution'."
+    }
+   ],
+   "explanation": "Rente sans restitution : taux de rente supérieur, mais aucun héritage au décès. Choix adapté aux personnes seules, sans héritier à protéger, cherchant à maximiser le revenu périodique."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-065",
+   "theme": "retraite_individuelle",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Une rente viagère 'certaine' garantit le versement de la rente :",
+   "options": [
+    {
+     "text": "Pendant une durée minimum fixée (par ex. 10 ans), même si l'assuré décède plus tôt",
+     "correct": true
+    },
+    {
+     "text": "À vie sans aucune condition",
+     "correct": false,
+     "why_wrong": "Toutes les rentes viagères sont à vie ; la 'certaine' ajoute une durée minimum garantie."
+    },
+    {
+     "text": "Uniquement en cas d'invalidité",
+     "correct": false
+    },
+    {
+     "text": "Uniquement pour les femmes",
+     "correct": false
+    }
+   ],
+   "explanation": "Rente certaine (ou 'à annuités garanties') : la rente est due au minimum pendant X années (souvent 5, 10, 15 ans), même en cas de décès. Après cette période, elle continue à vie si l'assuré vit. Compromis entre rente pure et restitution."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-066",
+   "theme": "retraite_individuelle",
+   "type": "single",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Comment est imposée fiscalement une rente viagère privée (3b) au niveau de l'IFD ?",
+   "options": [
+    {
+     "text": "40 % de la rente est imposée comme revenu (art. 22 al. 3 LIFD)",
+     "correct": true
+    },
+    {
+     "text": "100 % de la rente est imposée comme revenu",
+     "correct": false,
+     "why_wrong": "C'est la règle pour les rentes AVS/LPP, pas pour les rentes viagères privées."
+    },
+    {
+     "text": "La rente est exonérée d'IFD",
+     "correct": false
+    },
+    {
+     "text": "Uniquement les excédents sont imposés",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 22 al. 3 LIFD : les rentes viagères privées sont imposées à 40 % du montant versé. Les 60 % restants sont considérés comme un remboursement de capital (donc non imposables). Avantage fiscal notable par rapport aux rentes LPP."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-067",
+   "theme": "retraite_individuelle",
+   "type": "multiple",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Concernant la rente viagère indexée à l'inflation, quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "Son montant augmente chaque année selon un indice défini",
+     "correct": true
+    },
+    {
+     "text": "Elle démarre à un niveau initial plus bas qu'une rente non indexée à prime équivalente",
+     "correct": true
+    },
+    {
+     "text": "Elle offre une protection contre l'érosion monétaire à long terme",
+     "correct": true
+    },
+    {
+     "text": "Elle est systématiquement moins chère qu'une rente non indexée",
+     "correct": false,
+     "why_wrong": "Inverse : à prime unique équivalente, elle offre une rente initiale plus faible."
+    },
+    {
+     "text": "Elle est garantie à 5 % d'augmentation par an",
+     "correct": false
+    },
+    {
+     "text": "Elle n'existe qu'en 1er pilier",
+     "correct": false
+    }
+   ],
+   "explanation": "Rente indexée : protection contre l'érosion monétaire à long terme. Contrepartie : rente initiale plus faible à prime équivalente. Rarement souscrite car coût élevé et concurrence des placements en fonds."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-068",
+   "theme": "retraite_individuelle",
+   "type": "multiple",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Une assurance-vie mixte 3a peut être utilisée comme complément retraite. Quelles affirmations sont exactes ?",
+   "options": [
+    {
+     "text": "L'échéance est fixée à l'âge de référence, le capital complète le revenu AVS + LPP",
+     "correct": true
+    },
+    {
+     "text": "Le versement des primes durant la vie active est déductible du revenu (dans les limites du plafond 3a)",
+     "correct": true
+    },
+    {
+     "text": "Le capital échéance est imposé séparément à taux réduit (art. 38 LIFD)",
+     "correct": true
+    },
+    {
+     "text": "L'échéance doit être fixée avant 40 ans",
+     "correct": false,
+     "why_wrong": "L'objectif retraite implique une échéance à la retraite."
+    },
+    {
+     "text": "Elle est obligatoirement à prime unique",
+     "correct": false
+    },
+    {
+     "text": "Elle est réservée aux indépendants",
+     "correct": false
+    }
+   ],
+   "explanation": "Mixte 3a échéance retraite (par ex. 65 ans) : capital garanti + participation excédents servent de complément au revenu de retraite. Avantage fiscal 3a : déduction des versements, taux réduit à la sortie (art. 33 al. 1 lit. e + 38 LIFD)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-069",
+   "theme": "retraite_obligatoire",
+   "type": "single",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Selon l'art. 40 LAVS, un assuré peut anticiper le versement de sa rente AVS :",
+   "options": [
+    {
+     "text": "D'un ou deux ans (voire au mois près depuis AVS 21), avec réduction actuarielle de la rente",
+     "correct": true
+    },
+    {
+     "text": "De 5 ans, sans réduction",
+     "correct": false,
+     "why_wrong": "Faux : max 2 ans, avec réduction."
+    },
+    {
+     "text": "Uniquement pour les cas d'invalidité",
+     "correct": false
+    },
+    {
+     "text": "Uniquement pour les femmes",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 40 LAVS (nouvelle teneur AVS 21) : anticipation possible sur 1 ou 2 ans (au mois près), réduction actuarielle (env. 6,8 % par année anticipée pour les revenus élevés, taux transitoires plus favorables pour les femmes 1961-1969). Rente réduite à vie."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-070",
+   "theme": "retraite_obligatoire",
+   "type": "single",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Selon l'art. 39 LAVS, l'ajournement de la rente AVS peut se faire :",
+   "options": [
+    {
+     "text": "D'un à cinq ans, avec majoration actuarielle (env. 5,2 % à 31,5 %)",
+     "correct": true
+    },
+    {
+     "text": "De 10 ans avec majoration doublée",
+     "correct": false,
+     "why_wrong": "Max 5 ans."
+    },
+    {
+     "text": "Sans limite de temps",
+     "correct": false
+    },
+    {
+     "text": "Uniquement en cas de poursuite d'activité",
+     "correct": false,
+     "why_wrong": "L'ajournement n'exige pas la poursuite d'activité, mais elle est fréquente."
+    }
+   ],
+   "explanation": "Art. 39 LAVS : ajournement de 1 à 5 ans, majoration actuarielle allant de 5,2 % (1 an) à 31,5 % (5 ans). Rente majorée à vie. Pertinent pour les retraités en bonne santé, à espérance de vie élevée, avec autres revenus disponibles pendant l'ajournement."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-071",
+   "theme": "retraite_individuelle",
+   "type": "multiple",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Avantages et inconvénients de l'anticipation de la rente AVS :",
+   "options": [
+    {
+     "text": "Avantage : rente plus tôt, utile en cas de fin d'activité forcée ou souhaitée",
+     "correct": true
+    },
+    {
+     "text": "Avantage : plus d'années de perception si espérance de vie limitée",
+     "correct": true
+    },
+    {
+     "text": "Inconvénient : rente réduite à vie",
+     "correct": true
+    },
+    {
+     "text": "Inconvénient : cotisation AVS obligatoire jusqu'à l'âge de référence sur les revenus d'activité subsistants",
+     "correct": true
+    },
+    {
+     "text": "Avantage : capital versé en plus",
+     "correct": false,
+     "why_wrong": "Faux : l'AVS ne verse jamais un capital, uniquement une rente."
+    }
+   ],
+   "explanation": "Anticiper = compromis. Utile si santé fragile, revenu suffisant sinon, cessation d'activité. Attention : la réduction est PERMANENTE, la rente ne remonte pas à l'âge de référence. Cotisation AVS due jusqu'à l'âge de référence (art. 4 LAVS)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-072",
+   "theme": "retraite_individuelle",
+   "type": "multiple",
+   "points": 1,
+   "notions": [],
+   "context": null,
+   "question": "Avantages et inconvénients de l'ajournement de la rente AVS :",
+   "options": [
+    {
+     "text": "Avantage : rente majorée à vie (jusqu'à +31,5 %)",
+     "correct": true
+    },
+    {
+     "text": "Avantage : diminue l'impôt sur le revenu pendant les années d'ajournement",
+     "correct": true
+    },
+    {
+     "text": "Inconvénient : moins d'années de perception (risque de décès prématuré)",
+     "correct": true
+    },
+    {
+     "text": "Inconvénient : nécessite d'autres ressources pendant l'ajournement",
+     "correct": true
+    },
+    {
+     "text": "Avantage : rente rétroactivement doublée après l'ajournement",
+     "correct": false,
+     "why_wrong": "Faux : la majoration est actuarielle, pas rétroactive."
+    }
+   ],
+   "explanation": "Ajourner = pari sur la longévité. Recommandé aux profils en bonne santé, revenus alternatifs disponibles, patrimoine suffisant. Point mort actuariel : env. 80 ans. Au-delà : rentabilité positive."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-073",
+   "theme": "retraite_obligatoire",
+   "type": "single",
+   "points": 3,
+   "notions": [],
+   "context": "Sophie, 52 ans, cadre supérieur (revenu imposable 180 000 CHF). Son certificat LPP indique une lacune de rachat maximale de 90 000 CHF. Elle envisage un rachat de 30 000 CHF cette année.",
+   "question": "Un assuré peut effectuer des rachats facultatifs dans sa LPP (art. 79b LPP). Quelle est la principale conséquence fiscale à mettre en avant dans le conseil ?",
+   "options": [
+    {
+     "text": "Les rachats sont intégralement déductibles du revenu imposable dans l'année du versement",
+     "correct": true
+    },
+    {
+     "text": "Les rachats sont soumis à l'impôt anticipé de 35 %",
+     "correct": false
+    },
+    {
+     "text": "Les rachats sont uniquement déductibles à 50 %",
+     "correct": false
+    },
+    {
+     "text": "Les rachats sont non déductibles mais génèrent un bonus fiscal à la retraite",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 79b LPP + art. 33 al. 1 lit. d LIFD : les rachats facultatifs LPP sont intégralement déductibles du revenu imposable. Levier fiscal massif pour les hauts revenus. Bien planifier avec le certificat LPP annuel (lacune de prévoyance chiffrée)."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-074",
+   "theme": "retraite_obligatoire",
+   "type": "single",
+   "points": 3,
+   "notions": [],
+   "context": "Julien, 58 ans, effectue un rachat facultatif LPP de 50 000 CHF en 2026, déduit fiscalement. Il envisage de retirer 200 000 CHF de LPP en capital lors de son départ anticipé en 2028 (60 ans).",
+   "question": "Quelle est la principale règle à connaître (art. 79b al. 3 LPP) ?",
+   "options": [
+    {
+     "text": "Le retrait en capital dans les 3 ans suivant un rachat est FISCALEMENT contesté et entraîne la reprise de la déduction",
+     "correct": true
+    },
+    {
+     "text": "Le retrait en capital est libre 12 mois après le rachat",
+     "correct": false,
+     "why_wrong": "Faux : le délai légal est de 3 ans."
+    },
+    {
+     "text": "Aucune restriction ne s'applique",
+     "correct": false,
+     "why_wrong": "Faux : art. 79b al. 3 LPP fixe une restriction de 3 ans."
+    },
+    {
+     "text": "Le rachat doit être remboursé avant tout retrait en capital",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 79b al. 3 LPP : les prestations en capital résultant d'un rachat ne peuvent être versées avant 3 ans, sinon la déduction fiscale est reprise (arrêt TF 2C_658/2009). Timing du rachat vs retrait à planifier avec précision."
+  },
+  {
+   "external_id": "KLARY-VIE-PP-075",
+   "theme": "retraite_obligatoire",
+   "type": "single",
+   "points": 2,
+   "notions": [],
+   "context": null,
+   "question": "Un salarié qui continue à travailler après l'âge de référence AVS peut-il continuer à cotiser à sa LPP ?",
+   "options": [
+    {
+     "text": "Oui, jusqu'à 5 ans après l'âge de référence si le règlement de caisse le prévoit (art. 33b LPP)",
+     "correct": true
+    },
+    {
+     "text": "Non, plus aucune cotisation LPP après l'âge de référence",
+     "correct": false,
+     "why_wrong": "Faux : art. 33b LPP autorise la poursuite jusqu'à 70 ans."
+    },
+    {
+     "text": "Uniquement pour les indépendants",
+     "correct": false
+    },
+    {
+     "text": "Uniquement avec l'accord de la FINMA",
+     "correct": false
+    }
+   ],
+   "explanation": "Art. 33b LPP : poursuite facultative des cotisations LPP jusqu'à 5 ans après l'âge de référence (soit 70 ans pour les hommes et femmes après AVS 21) si le règlement de la caisse l'autorise. Levier fiscal complémentaire pour les seniors actifs."
+  }
+ ]
 }
