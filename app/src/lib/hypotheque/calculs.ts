@@ -180,12 +180,105 @@ export function versementMensuelPourCapital(
  *   - combien de cash épargner en parallèle pour le dur
  */
 export interface ObjectifImmobilier {
+  ageClient: number;
+  /** Si présent → mode couple (2 conjoints, 2 comptes 3a possibles) */
+  ageConjoint?: number;
   prixBienCible: number;
   horizonAchatAnnees: number;
   epargneCashActuelle?: number;
   lppExistante?: number;
   troisieme_a_existant?: number;
   rendementAnnuel?: number;
+}
+
+/**
+ * Nombre de 3a plafond pleins disponibles selon la situation.
+ * En couple, chaque conjoint a son propre plafond (7 258 CHF/an).
+ */
+export function plafondsDisponiblesAnnuel(o: ObjectifImmobilier): {
+  nbComptes: number;
+  plafondTotal: number;
+  plafondMensuel: number;
+} {
+  const nbComptes = o.ageConjoint ? 2 : 1;
+  const plafondUnitaire = 7258; // 3a salarié 2025-2026
+  return {
+    nbComptes,
+    plafondTotal: nbComptes * plafondUnitaire,
+    plafondMensuel: Math.floor((nbComptes * plafondUnitaire) / 12),
+  };
+}
+
+/**
+ * Profil de risque 3a recommandé selon l'âge et l'horizon d'achat.
+ * Règle simple : plus on est jeune et plus l'horizon est long, plus on peut
+ * viser un rendement élevé (fonds actions). En fin de carrière ou horizon
+ * court, on protège le capital.
+ */
+export function profilRisque3aRecommande(
+  ageClient: number,
+  horizonAchatAnnees: number
+): {
+  profil: "actions" | "equilibre" | "prudent";
+  rendementAttendu: number;
+  vehicule: "3a bancaire fonds" | "3a bancaire compte" | "3a assurance";
+  raison: string;
+} {
+  const anneesJusquaRetraite = Math.max(0, 65 - ageClient);
+  const horizonLongTerme = Math.min(anneesJusquaRetraite, horizonAchatAnnees + 5);
+
+  if (ageClient < 40 && horizonAchatAnnees >= 8) {
+    return {
+      profil: "actions",
+      rendementAttendu: 0.04,
+      vehicule: "3a bancaire fonds",
+      raison: `À ${ageClient} ans avec un horizon de ${horizonAchatAnnees} ans, un fonds actions 3a est le plus performant. Le temps absorbe la volatilité.`,
+    };
+  }
+  if (ageClient < 55 && horizonAchatAnnees >= 5) {
+    return {
+      profil: "equilibre",
+      rendementAttendu: 0.03,
+      vehicule: horizonAchatAnnees >= 10 ? "3a bancaire fonds" : "3a bancaire compte",
+      raison: `À ${ageClient} ans, profil équilibré 50 % actions / 50 % obligations. Compromis entre performance et sécurité.`,
+    };
+  }
+  return {
+    profil: "prudent",
+    rendementAttendu: 0.015,
+    vehicule: "3a bancaire compte",
+    raison: `À ${ageClient} ans ou horizon court (${horizonAchatAnnees} ans), on protège le capital. 3a bancaire simple ou fonds obligataires uniquement.`,
+  };
+}
+
+/**
+ * Estimation d'une LPP « médiane suisse » basée sur l'âge et un salaire type.
+ * Fournit un ordre de grandeur si le client ne connaît pas son montant exact.
+ * Utilise les bonifications de vieillesse art. 16 LPP :
+ *   25-34 ans : 7 % · 35-44 : 10 % · 45-54 : 15 % · 55-65 : 18 %
+ */
+export function lppEstimeeSelonAge(
+  ageClient: number,
+  salaireAnnuel: number = 80000
+): number {
+  const salaireCoordonne = Math.max(0, Math.min(salaireAnnuel, 90720) - 25725);
+  if (salaireCoordonne <= 0 || ageClient < 25) return 0;
+
+  const tranches = [
+    { from: 25, to: 34, taux: 0.07 },
+    { from: 35, to: 44, taux: 0.1 },
+    { from: 45, to: 54, taux: 0.15 },
+    { from: 55, to: 65, taux: 0.18 },
+  ];
+  let capital = 0;
+  for (const t of tranches) {
+    const anneesDansLaTranche =
+      Math.min(ageClient, t.to) - Math.max(25, t.from) + 1;
+    if (anneesDansLaTranche > 0) {
+      capital += salaireCoordonne * t.taux * anneesDansLaTranche;
+    }
+  }
+  return Math.round(capital);
 }
 
 export interface PlanObjectif {
@@ -213,7 +306,7 @@ export function planPourObjectif(o: ObjectifImmobilier): PlanObjectif {
   const lpp = o.lppExistante ?? 0;
   const prevoyanceDejaEnPlace = troisA + lpp;
 
-  const cashADeposer = Math.max(0, apportDur - cashActuel - troisA); // le 3a lié compte aussi comme "dur"
+  const cashADeposer = Math.max(0, apportDur - cashActuel - troisA);
   const prevoyanceAConstituer = Math.max(0, apportMou - prevoyanceDejaEnPlace);
 
   const versement3a = versementMensuelPourCapital(
@@ -223,6 +316,10 @@ export function planPourObjectif(o: ObjectifImmobilier): PlanObjectif {
   );
   const cashMensuel =
     o.horizonAchatAnnees > 0 ? Math.ceil(cashADeposer / (o.horizonAchatAnnees * 12)) : 0;
+
+  // Faisabilité en fonction du nombre de comptes 3a possibles
+  const plafonds = plafondsDisponiblesAnnuel(o);
+  const faisable = versement3a <= plafonds.plafondMensuel;
 
   return {
     apportTotal,
@@ -235,7 +332,7 @@ export function planPourObjectif(o: ObjectifImmobilier): PlanObjectif {
     versement3aMensuelRequis: versement3a,
     cashMensuelRequis: cashMensuel,
     totalEffortMensuel: versement3a + cashMensuel,
-    faisable: versement3a <= 604, // au-delà du plafond 3a mensuel
+    faisable,
   };
 }
 

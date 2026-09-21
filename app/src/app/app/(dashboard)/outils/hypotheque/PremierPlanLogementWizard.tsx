@@ -9,6 +9,9 @@ import {
   prevoyanceRequisePourApport,
   anneesNecessairesPourCapital,
   planPourObjectif,
+  profilRisque3aRecommande,
+  plafondsDisponiblesAnnuel,
+  lppEstimeeSelonAge,
   type DossierClient,
   type ObjectifImmobilier,
 } from "@/lib/hypotheque/calculs";
@@ -25,6 +28,7 @@ const DEFAULT_DOSSIER: DossierClient = {
 };
 
 const DEFAULT_OBJECTIF: ObjectifImmobilier = {
+  ageClient: 35,
   prixBienCible: 600000,
   horizonAchatAnnees: 10,
   epargneCashActuelle: 20000,
@@ -41,6 +45,15 @@ export function PremierPlanLogementWizard() {
   const [saved, setSaved] = useState(false);
   const s = useMemo(() => synthese(dossier), [dossier]);
   const plan = useMemo(() => planPourObjectif(objectif), [objectif]);
+  const profil = useMemo(
+    () => profilRisque3aRecommande(objectif.ageClient, objectif.horizonAchatAnnees),
+    [objectif.ageClient, objectif.horizonAchatAnnees]
+  );
+  const plafonds = useMemo(() => plafondsDisponiblesAnnuel(objectif), [objectif]);
+  const lppEstimee = useMemo(
+    () => lppEstimeeSelonAge(objectif.ageClient, dossier.revenuAnnuel),
+    [objectif.ageClient, dossier.revenuAnnuel]
+  );
   const params = useSearchParams();
   const router = useRouter();
 
@@ -172,8 +185,60 @@ export function PremierPlanLogementWizard() {
           sur sa prévoyance.
         </p>
 
-        {/* Inputs objectif */}
-        <div className="grid gap-4 md:grid-cols-5 mb-6">
+        {/* Toggle couple */}
+        <div className="mb-4 flex items-center gap-3">
+          <span className="text-xs uppercase tracking-widest text-white/85 font-bold">
+            Situation :
+          </span>
+          <button
+            onClick={() => setObj("ageConjoint", undefined)}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+              !objectif.ageConjoint
+                ? "bg-white text-klary-orange"
+                : "bg-white/10 text-white hover:bg-white/20"
+            }`}
+          >
+            👤 Célibataire
+          </button>
+          <button
+            onClick={() => setObj("ageConjoint", 35)}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+              objectif.ageConjoint
+                ? "bg-white text-klary-orange"
+                : "bg-white/10 text-white hover:bg-white/20"
+            }`}
+          >
+            👥 Couple
+          </button>
+          {objectif.ageConjoint !== undefined && (
+            <span className="text-xs text-white/80 ml-2">
+              → 2 comptes 3a = plafond doublé ({formatCHF(plafonds.plafondTotal)} CHF/an)
+            </span>
+          )}
+        </div>
+
+        {/* Inputs profil client */}
+        <div className="grid gap-4 md:grid-cols-4 mb-4">
+          <NumberInputOrange
+            label={objectif.ageConjoint !== undefined ? "Âge client 1" : "Âge du client"}
+            value={objectif.ageClient}
+            step={1}
+            min={18}
+            max={70}
+            onChange={(v) => setObj("ageClient", v)}
+            suffix="ans"
+          />
+          {objectif.ageConjoint !== undefined && (
+            <NumberInputOrange
+              label="Âge conjoint"
+              value={objectif.ageConjoint}
+              step={1}
+              min={18}
+              max={70}
+              onChange={(v) => setObj("ageConjoint", v)}
+              suffix="ans"
+            />
+          )}
           <NumberInputOrange
             label="Prix du bien visé"
             value={objectif.prixBienCible}
@@ -182,13 +247,18 @@ export function PremierPlanLogementWizard() {
             suffix="CHF"
           />
           <NumberInputOrange
-            label="Achat dans (années)"
+            label="Achat dans"
             value={objectif.horizonAchatAnnees}
             step={1}
             min={1}
             max={30}
             onChange={(v) => setObj("horizonAchatAnnees", v)}
+            suffix="ans"
           />
+        </div>
+
+        {/* Inputs situation actuelle */}
+        <div className="grid gap-4 md:grid-cols-3 mb-6">
           <NumberInputOrange
             label="Épargne cash actuelle"
             value={objectif.epargneCashActuelle ?? 0}
@@ -197,19 +267,44 @@ export function PremierPlanLogementWizard() {
             suffix="CHF"
           />
           <NumberInputOrange
-            label="3a déjà en place"
+            label={`3a déjà en place${objectif.ageConjoint !== undefined ? " (cumulé)" : ""}`}
             value={objectif.troisieme_a_existant ?? 0}
             step={1000}
             onChange={(v) => setObj("troisieme_a_existant", v)}
             suffix="CHF"
           />
           <NumberInputOrange
-            label="LPP mobilisable"
+            label={`LPP mobilisable${objectif.ageConjoint !== undefined ? " (cumulée)" : ""}`}
             value={objectif.lppExistante ?? 0}
             step={1000}
             onChange={(v) => setObj("lppExistante", v)}
             suffix="CHF"
           />
+        </div>
+
+        {/* Profil recommandé auto selon âge */}
+        <div className="bg-white/10 border border-white/20 rounded-lg p-4 mb-6">
+          <div className="text-[10px] uppercase tracking-widest text-white/70 font-bold mb-2">
+            🎓 Recommandation véhicule 3a selon l&apos;âge
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-lg font-bold text-white">{profil.vehicule}</span>
+            <span className={`text-xs px-2 py-1 rounded-full font-bold ${
+              profil.profil === "actions" ? "bg-emerald-500 text-white"
+              : profil.profil === "equilibre" ? "bg-amber-500 text-white"
+              : "bg-white/20 text-white"
+            }`}>
+              Profil {profil.profil} · rendement attendu {Math.round(profil.rendementAttendu * 100)} %
+            </span>
+          </div>
+          <div className="text-xs text-white/80 mt-2 leading-relaxed">{profil.raison}</div>
+          {lppEstimee > 0 && (objectif.lppExistante ?? 0) === 0 && (
+            <div className="mt-3 pt-3 border-t border-white/10 text-xs text-white/85">
+              💡 LPP estimée pour {objectif.ageClient} ans avec salaire {formatCHF(dossier.revenuAnnuel)} :{" "}
+              <strong className="text-klary-cream">~{formatCHF(lppEstimee)} CHF</strong>.
+              Pense à demander le certificat LPP exact au client.
+            </div>
+          )}
         </div>
 
         {/* Résultats */}
@@ -226,12 +321,12 @@ export function PremierPlanLogementWizard() {
               tone="orange"
             />
             <PlanCard
-              label="Versement 3a mensuel requis"
+              label={`Versement 3a mensuel requis${objectif.ageConjoint !== undefined ? ` (cumul ${plafonds.nbComptes} comptes)` : ""}`}
               value={`${formatCHF(plan.versement3aMensuelRequis)} CHF /mois`}
               hint={
                 plan.faisable
-                  ? "✓ Sous le plafond 3a mensuel (604 CHF/mois)"
-                  : "⚠ Dépasse le plafond 3a → cumuler avec 3b ou LPP"
+                  ? `✓ Sous le plafond 3a mensuel (${formatCHF(plafonds.plafondMensuel)} CHF/mois pour ${plafonds.nbComptes} compte${plafonds.nbComptes > 1 ? "s" : ""})`
+                  : `⚠ Dépasse le plafond 3a (${formatCHF(plafonds.plafondMensuel)} CHF/mois max) → cumuler avec 3b ou LPP`
               }
               tone={plan.faisable ? "ok" : "warn"}
             />
@@ -302,20 +397,37 @@ export function PremierPlanLogementWizard() {
               🗣 À dire au client
             </div>
             <p>
-              « En fonction de votre profil, votre 3ᵉ pilier va être gagé par
-              la banque à hauteur de{" "}
+              « Vous {objectif.ageConjoint !== undefined ? "avez" : "avez"}{" "}
+              {objectif.ageClient} ans
+              {objectif.ageConjoint !== undefined
+                ? ` et votre conjoint(e) ${objectif.ageConjoint} ans`
+                : ""}
+              . Pour un bien à{" "}
               <strong className="text-klary-orange">
-                {formatCHF(plan.prevoyanceRequise)} CHF
+                {formatCHF(objectif.prixBienCible)} CHF
               </strong>{" "}
-              le jour de l&apos;achat, ce qui couvre les 10 % « mou » de
-              votre apport. Pour l&apos;atteindre en {objectif.horizonAchatAnnees}{" "}
-              ans, vous versez{" "}
+              dans {objectif.horizonAchatAnnees} ans, la banque va
+              gager{" "}
+              <strong className="text-klary-orange">
+                {formatCHF(plan.prevoyanceRequise)} CHF de prévoyance
+              </strong>{" "}
+              pour couvrir les 10 % « mou » de votre apport.
+              {objectif.ageConjoint !== undefined && (
+                <>
+                  {" "}
+                  En couple, vous avez la chance de pouvoir cumuler{" "}
+                  <strong>2 comptes 3a</strong> = plafond doublé de{" "}
+                  <strong>{formatCHF(plafonds.plafondTotal)} CHF/an</strong>.
+                </>
+              )}{" "}
+              Pour l&apos;atteindre, vous versez{" "}
               <strong className="text-klary-orange">
                 {formatCHF(plan.versement3aMensuelRequis)} CHF/mois au 3a
-              </strong>
-              , et pendant ce temps vous touchez l&apos;économie fiscale + les
-              intérêts + la protection famille. Le jour où vous passez devant
-              la banque, tout est en place. »
+              </strong>{" "}
+              via un <strong>{profil.vehicule}</strong> (profil {profil.profil}),
+              et pendant ce temps vous touchez l&apos;économie fiscale + les
+              intérêts + la protection famille. Le jour où vous passez devant la banque,
+              tout est en place. »
             </p>
           </div>
         </div>
