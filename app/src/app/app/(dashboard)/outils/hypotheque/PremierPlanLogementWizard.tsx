@@ -799,6 +799,98 @@ export function PremierPlanLogementWizard() {
             </div>
           </div>
         </section>
+
+        {/* Bloc final : la question rhétorique */}
+        <section className="bg-gradient-to-br from-klary-navy to-black text-white rounded-2xl p-6 md:p-10 relative overflow-hidden">
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-klary-orange/30 rounded-full blur-3xl" />
+          <div className="relative">
+            <div className="text-xs font-bold uppercase text-klary-orange mb-3 tracking-widest">
+              ❓ La seule question qui reste
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+              Objectivement, pourquoi refuser<br />
+              de mettre en place un 3ᵉ pilier ?
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              {/* Les 5 « non-raisons » qui ne tiennent pas */}
+              <div className="bg-white/5 border border-white/10 rounded-xl p-5">
+                <div className="text-xs uppercase tracking-widest text-red-300 font-bold mb-3">
+                  ❌ Les « non-raisons »
+                </div>
+                <ul className="space-y-3 text-sm">
+                  <li>
+                    <div className="font-bold text-white">« C&apos;est cher »</div>
+                    <div className="text-white/70 text-xs">Le coût net réel = {formatCHF(Math.max(0, dossier.versementMensuel - Math.round(dossier.versementMensuel * (dossier.tauxMarginal ?? 0.25))))} CHF/mois après économie d&apos;impôt. Un abo fitness coûte plus.</div>
+                  </li>
+                  <li>
+                    <div className="font-bold text-white">« Je préfère garder l&apos;argent disponible »</div>
+                    <div className="text-white/70 text-xs">Il l&apos;est déjà à la retraite, pour un achat immobilier, pour se mettre à son compte, ou en cas d&apos;invalidité (art. 3 OPP 3).</div>
+                  </li>
+                  <li>
+                    <div className="font-bold text-white">« Je verrai plus tard »</div>
+                    <div className="text-white/70 text-xs">Chaque année perdue = une année d&apos;économie d&apos;impôt en moins + rendement composé perdu.</div>
+                  </li>
+                  <li>
+                    <div className="font-bold text-white">« Je n&apos;y comprends rien »</div>
+                    <div className="text-white/70 text-xs">L&apos;outil est reconnu par l&apos;État, la déduction est garantie par la loi, il y a 14 jours pour tout annuler (art. 2a LCA).</div>
+                  </li>
+                  <li>
+                    <div className="font-bold text-white">« C&apos;est de l&apos;arnaque »</div>
+                    <div className="text-white/70 text-xs">L&apos;argent ne bouge PAS de sa poche. Il reste chez lui (compte bancaire ou police assurance). Une arnaque = argent qui disparaît.</div>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Les vraies raisons de dire non */}
+              <div className="bg-white/5 border border-white/10 rounded-xl p-5">
+                <div className="text-xs uppercase tracking-widest text-emerald-300 font-bold mb-3">
+                  ✓ Les vraies raisons (rares)
+                </div>
+                <ul className="space-y-3 text-sm">
+                  <li>
+                    <div className="font-bold text-white">Surendettement actif</div>
+                    <div className="text-white/70 text-xs">Poursuites en cours, actes de défaut de biens → traiter la dette d&apos;abord.</div>
+                  </li>
+                  <li>
+                    <div className="font-bold text-white">Revenu insuffisant</div>
+                    <div className="text-white/70 text-xs">Si le budget n&apos;absorbe même pas 100 CHF/mois, il faut travailler le revenu avant.</div>
+                  </li>
+                  <li>
+                    <div className="font-bold text-white">Santé fragile (version assurance)</div>
+                    <div className="text-white/70 text-xs">Maladie grave récente = refus questionnaire santé. Alternative : 3a bancaire simple sans couverture.</div>
+                  </li>
+                  <li>
+                    <div className="font-bold text-white">Départ définitif de Suisse imminent</div>
+                    <div className="text-white/70 text-xs">Sortie possible mais impôt de retrait immédiat. À évaluer.</div>
+                  </li>
+                  <li>
+                    <div className="font-bold text-white">Déjà au plafond 3a</div>
+                    <div className="text-white/70 text-xs">7 258 CHF/an déjà versé ailleurs → basculer sur 3b libre pour le surplus.</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-klary-orange/20 border-2 border-klary-orange rounded-xl p-5 text-sm leading-relaxed">
+              <div className="text-lg font-bold text-klary-orange mb-2">
+                💡 Le raisonnement à poser au client
+              </div>
+              <div className="text-white/95">
+                « Vous préférez : (1) payer plus d&apos;impôts et laisser votre
+                argent dormir à 0 %, ou (2) payer moins d&apos;impôts, avoir un
+                capital qui grandit, une protection famille comprise, et un
+                dossier bancaire renforcé pour votre projet immobilier ? »
+                <br /><br />
+                <strong className="text-klary-orange">La vraie question n&apos;est pas si le 3a vaut le coup. La vraie question, c&apos;est combien vous perdez chaque année où vous ne l&apos;avez pas.</strong>
+              </div>
+            </div>
+
+            <div className="mt-4 text-xs text-white/60 italic text-center">
+              Le rôle du conseiller Klary : présenter les chiffres, laisser le client conclure. Aucune pression, juste de la clarté.
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* Composant PDF (invisible sauf impression) */}
