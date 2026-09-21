@@ -173,16 +173,19 @@ export function PremierPlanLogementWizard() {
       {/* Simulateur inversé : plan personnel selon objectif */}
       <section className="bg-gradient-to-br from-klary-orange to-klary-orange/85 text-white rounded-2xl p-6 md:p-8 mb-8">
         <div className="text-xs font-bold uppercase text-white/85 tracking-widest mb-2">
-          🎯 Simulation personnalisée · Plan objectif immobilier
+          🎯 Objectif RDV · Conclure un 3a plafond plein
         </div>
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          En fonction du profil de ton client
+          Maxer la prévoyance partout, pas juste pour l&apos;apport
         </h2>
         <p className="text-white/85 text-sm mb-6 max-w-2xl">
           Renseigne le projet visé et la situation actuelle du client. On
-          calcule combien il doit verser au 3a par mois pour être prêt le
-          jour de l&apos;achat, et combien la banque va gager annuellement
-          sur sa prévoyance.
+          calcule le minimum nécessaire pour couvrir son apport, puis on
+          te montre pourquoi viser directement le <strong>plafond plein
+          annuel</strong> ({formatCHF(plafonds.plafondTotal)} CHF/an
+          en {plafonds.nbComptes > 1 ? "couple avec 2 comptes 3a" : "célibataire"})
+          multiplie l&apos;économie fiscale, le capital constitué et la
+          protection famille.
         </p>
 
         {/* Toggle couple */}
@@ -391,14 +394,105 @@ export function PremierPlanLogementWizard() {
             </div>
           </div>
 
+          {/* Stratégie MAX 3a — objectif Klary : plafond plein */}
+          <div className="mt-6 bg-gradient-to-br from-klary-orange to-klary-orange/80 text-white rounded-xl p-6 border-4 border-klary-navy">
+            <div className="text-[10px] uppercase tracking-widest text-white/90 font-bold mb-2">
+              🎯 Recommandation Klary · Viser le 3a plafond plein
+            </div>
+            <h3 className="text-2xl font-bold mb-3">
+              Le minimum couvre l&apos;apport. Le MAX change la vie.
+            </h3>
+            <p className="text-white/90 text-sm leading-relaxed mb-5">
+              Le versement requis pour l&apos;apport est de{" "}
+              <strong>{formatCHF(plan.versement3aMensuelRequis)} CHF/mois</strong>.
+              Mais si le budget le permet, verser le <strong>plafond plein</strong>{" "}
+              ({objectif.ageConjoint !== undefined ? `${plafonds.nbComptes} × 604 = ${formatCHF(plafonds.plafondMensuel)}` : "604"} CHF/mois)
+              débloque un package d&apos;avantages nettement plus fort.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              {/* Min requis */}
+              <div className="bg-white/15 border border-white/25 rounded-xl p-4">
+                <div className="text-[10px] uppercase tracking-widest text-white/70 font-bold mb-1">
+                  Option minimum
+                </div>
+                <div className="text-xl font-bold text-white mb-3">
+                  {formatCHF(plan.versement3aMensuelRequis)} CHF /mois
+                </div>
+                <ul className="text-xs text-white/85 space-y-1.5">
+                  <li>➕ Capital à {objectif.horizonAchatAnnees} ans : ~{formatCHF(plan.prevoyanceAConstituer)} CHF</li>
+                  <li>➕ Économie fiscale : ~{formatCHF(Math.round(plan.versement3aMensuelRequis * 12 * (dossier.tauxMarginal ?? 0.25)))} CHF/an</li>
+                  <li>➕ Couvre l&apos;apport &laquo; mou &raquo; · rien de plus</li>
+                </ul>
+              </div>
+
+              {/* MAX plafond — mise en avant */}
+              <div className="bg-white text-klary-navy border-4 border-white rounded-xl p-4 shadow-2xl">
+                <div className="text-[10px] uppercase tracking-widest text-klary-orange font-bold mb-1">
+                  ⭐ Option Klary recommandée
+                </div>
+                <div className="text-xl font-bold mb-3">
+                  {formatCHF(plafonds.plafondMensuel)} CHF /mois
+                  <span className="text-xs text-klary-grey ml-2">
+                    ({objectif.ageConjoint !== undefined ? `${plafonds.nbComptes} × 604` : "plafond plein"})
+                  </span>
+                </div>
+                <ul className="text-xs text-klary-navy space-y-1.5">
+                  <li className="font-semibold">
+                    ➕ Capital à {objectif.horizonAchatAnnees} ans : <span className="text-klary-orange">~{formatCHF(Math.round(plafonds.plafondMensuel * 12 * objectif.horizonAchatAnnees * (1 + (profil.rendementAttendu * objectif.horizonAchatAnnees) / 2)))} CHF</span>
+                  </li>
+                  <li className="font-semibold">
+                    ➕ Économie fiscale : <span className="text-klary-orange">~{formatCHF(Math.round(plafonds.plafondTotal * (dossier.tauxMarginal ?? 0.25)))} CHF/an</span>
+                  </li>
+                  <li>✅ Couvre l&apos;apport ET dépasse largement</li>
+                  <li>✅ Excédent = épargne retraite bonus</li>
+                  <li>✅ Protection famille MAX</li>
+                  <li>✅ Dossier banque BÉTON</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Gain différentiel MAX vs MIN */}
+            <div className="mt-4 bg-klary-navy text-white rounded-lg p-4">
+              <div className="text-[10px] uppercase tracking-widest text-klary-orange font-bold mb-2">
+                💰 Le vrai gain de la stratégie MAX vs MIN
+              </div>
+              <div className="grid grid-cols-3 gap-3 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-klary-orange">
+                    +{formatCHF(Math.max(0, Math.round(plafonds.plafondMensuel * 12 * objectif.horizonAchatAnnees) - plan.prevoyanceAConstituer))}
+                  </div>
+                  <div className="text-[10px] uppercase tracking-widest text-white/70 mt-1">
+                    Capital additionnel CHF
+                  </div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-klary-orange">
+                    +{formatCHF(Math.max(0, Math.round((plafonds.plafondTotal - plan.versement3aMensuelRequis * 12) * (dossier.tauxMarginal ?? 0.25))))}
+                  </div>
+                  <div className="text-[10px] uppercase tracking-widest text-white/70 mt-1">
+                    Économie fiscale/an CHF
+                  </div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-klary-orange">
+                    +{formatCHF(Math.max(0, Math.round((plafonds.plafondTotal - plan.versement3aMensuelRequis * 12) * (dossier.tauxMarginal ?? 0.25) * objectif.horizonAchatAnnees)))}
+                  </div>
+                  <div className="text-[10px] uppercase tracking-widest text-white/70 mt-1">
+                    Économie totale sur {objectif.horizonAchatAnnees} ans
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Narrative pour le conseiller */}
           <div className="mt-5 bg-klary-navy text-white rounded-lg p-4 text-sm leading-relaxed">
             <div className="text-xs uppercase tracking-widest text-klary-orange font-bold mb-2">
               🗣 À dire au client
             </div>
             <p>
-              « Vous {objectif.ageConjoint !== undefined ? "avez" : "avez"}{" "}
-              {objectif.ageClient} ans
+              « Vous avez {objectif.ageClient} ans
               {objectif.ageConjoint !== undefined
                 ? ` et votre conjoint(e) ${objectif.ageConjoint} ans`
                 : ""}
@@ -406,28 +500,29 @@ export function PremierPlanLogementWizard() {
               <strong className="text-klary-orange">
                 {formatCHF(objectif.prixBienCible)} CHF
               </strong>{" "}
-              dans {objectif.horizonAchatAnnees} ans, la banque va
-              gager{" "}
-              <strong className="text-klary-orange">
-                {formatCHF(plan.prevoyanceRequise)} CHF de prévoyance
+              dans {objectif.horizonAchatAnnees} ans, le strict minimum serait{" "}
+              <strong>
+                {formatCHF(plan.versement3aMensuelRequis)} CHF/mois
               </strong>{" "}
-              pour couvrir les 10 % « mou » de votre apport.
+              au 3a pour couvrir le 10 % « mou » d&apos;apport.
               {objectif.ageConjoint !== undefined && (
                 <>
                   {" "}
-                  En couple, vous avez la chance de pouvoir cumuler{" "}
-                  <strong>2 comptes 3a</strong> = plafond doublé de{" "}
+                  Mais en couple, vous avez droit à <strong>2 comptes 3a</strong> avec un plafond cumulé de{" "}
                   <strong>{formatCHF(plafonds.plafondTotal)} CHF/an</strong>.
                 </>
-              )}{" "}
-              Pour l&apos;atteindre, vous versez{" "}
-              <strong className="text-klary-orange">
-                {formatCHF(plan.versement3aMensuelRequis)} CHF/mois au 3a
-              </strong>{" "}
-              via un <strong>{profil.vehicule}</strong> (profil {profil.profil}),
-              et pendant ce temps vous touchez l&apos;économie fiscale + les
-              intérêts + la protection famille. Le jour où vous passez devant la banque,
-              tout est en place. »
+              )}
+              <br /><br />
+              <strong className="text-klary-orange">Ce qu&apos;on vous recommande :</strong>{" "}
+              viser directement le <strong className="text-klary-orange">plafond plein
+              {" "}({formatCHF(plafonds.plafondMensuel)} CHF/mois)</strong> via un{" "}
+              <strong>{profil.vehicule}</strong> (profil {profil.profil}).
+              Pourquoi ? Parce que la différence entre le minimum et le max, c&apos;est
+              du <strong>capital gratuit</strong> pour vous : chaque franc versé au 3a
+              vous rapporte {Math.round((dossier.tauxMarginal ?? 0.25) * 100)} % en économie
+              d&apos;impôt immédiat + {Math.round(profil.rendementAttendu * 100)} % de rendement
+              annuel. La banque, elle, n&apos;en sera que plus rassurée le jour de
+              l&apos;achat. »
             </p>
           </div>
         </div>
