@@ -342,6 +342,66 @@ export function PremierPlanLogementWizard() {
           </div>
         </div>
 
+        {/* Hero — le message d'accroche */}
+        <section className="bg-gradient-to-br from-klary-navy to-klary-navy/90 text-white rounded-2xl p-6 md:p-10 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-klary-orange/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+          <div className="relative">
+            <div className="text-xs font-bold uppercase text-klary-orange mb-3 tracking-widest">
+              🏠 La proposition Klary
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+              Comment devenir propriétaire<br />
+              à partir de <span className="text-klary-orange">{formatCHF(dossier.versementMensuel)} CHF/mois</span>
+            </h2>
+            <p className="text-white/85 text-lg leading-relaxed max-w-3xl mb-6">
+              L&apos;idée n&apos;est pas d&apos;économiser des années dans le vide.
+              L&apos;idée, c&apos;est de <strong>structurer un plan
+              d&apos;accession</strong> qui utilise le 3ᵉ pilier comme
+              <strong> levier bancaire</strong> pour transformer un petit
+              versement mensuel en dossier béton devant la banque.
+            </p>
+
+            <div className="grid md:grid-cols-4 gap-3">
+              <div className="bg-white/10 rounded-lg p-4">
+                <div className="text-[10px] uppercase tracking-widest text-white/60 mb-1">
+                  Étape 1
+                </div>
+                <div className="font-bold text-klary-orange mb-1">Verser</div>
+                <div className="text-xs text-white/85">
+                  {formatCHF(dossier.versementMensuel)} CHF/mois au 3a (fiscalité + rendement + protection)
+                </div>
+              </div>
+              <div className="bg-white/10 rounded-lg p-4">
+                <div className="text-[10px] uppercase tracking-widest text-white/60 mb-1">
+                  Étape 2
+                </div>
+                <div className="font-bold text-klary-orange mb-1">Constituer</div>
+                <div className="text-xs text-white/85">
+                  {formatCHF(s.capitalFutur.avecRendement)} CHF de capital en {dossier.anneesDuree} ans (versements + intérêts)
+                </div>
+              </div>
+              <div className="bg-white/10 rounded-lg p-4">
+                <div className="text-[10px] uppercase tracking-widest text-white/60 mb-1">
+                  Étape 3
+                </div>
+                <div className="font-bold text-klary-orange mb-1">Nantir</div>
+                <div className="text-xs text-white/85">
+                  Utiliser le 3a comme garantie bancaire pour compléter l&apos;apport hypothécaire
+                </div>
+              </div>
+              <div className="bg-klary-orange/25 border border-klary-orange rounded-lg p-4">
+                <div className="text-[10px] uppercase tracking-widest text-klary-orange mb-1">
+                  Étape 4
+                </div>
+                <div className="font-bold mb-1">Devenir propriétaire</div>
+                <div className="text-xs text-white/85">
+                  Dossier béton, taux préférentiel, 3a intact qui continue à générer
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Récapitulatif : pourquoi le 3a est un levier financier + nantissement */}
         <section className="bg-gradient-to-br from-klary-orange/10 via-white to-klary-navy/5 rounded-2xl border-2 border-klary-orange p-6 md:p-8">
           <div className="text-xs font-bold uppercase text-klary-orange mb-2 tracking-widest">
