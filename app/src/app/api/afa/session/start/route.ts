@@ -106,7 +106,12 @@ export async function POST(request: NextRequest) {
       }
       picked = chosen;
     } else {
-      const count = Math.min(Number(body.count) || 10, picked.length);
+      // Drill / pièges : par défaut TOUTES les questions disponibles ;
+      // body.count = nombre explicite, "all" ou 0 = toutes.
+      const raw = body.count;
+      const useAll = raw === "all" || raw === 0 || raw === "0";
+      const requested = useAll ? picked.length : Number(raw) || picked.length;
+      const count = Math.min(Math.max(requested, 1), picked.length);
       picked = picked.slice(0, count);
     }
 
