@@ -345,11 +345,174 @@ export function PremierPlanLogementWizard() {
         {/* Récapitulatif : pourquoi le 3a est un levier financier + nantissement */}
         <section className="bg-gradient-to-br from-klary-orange/10 via-white to-klary-navy/5 rounded-2xl border-2 border-klary-orange p-6 md:p-8">
           <div className="text-xs font-bold uppercase text-klary-orange mb-2 tracking-widest">
-            🎯 Récapitulatif · Pourquoi le 3ᵉ pilier est un levier
+            🎯 Récapitulatif · Le 3ᵉ pilier, c&apos;est un outil (pas un produit)
           </div>
-          <h2 className="text-2xl font-bold text-klary-navy mb-4">
+          <h2 className="text-2xl font-bold text-klary-navy mb-3">
             Pas juste une épargne retraite : un outil de financement immobilier
           </h2>
+          <div className="bg-klary-navy text-white rounded-xl p-5 mb-6">
+            <div className="text-sm text-white/85 leading-relaxed">
+              Ce qui rend le 3ᵉ pilier unique, c&apos;est qu&apos;il fait{" "}
+              <strong className="text-klary-orange">3 choses en même temps</strong>{" "}
+              sur le même franc versé :
+            </div>
+            <div className="grid md:grid-cols-3 gap-3 mt-4">
+              <div className="bg-white/10 rounded-lg p-3 text-sm">
+                <div className="font-bold text-klary-orange mb-1">💰 + Économie d&apos;impôt</div>
+                <div className="text-white/85 text-xs">Chaque franc versé est déduit du revenu imposable</div>
+              </div>
+              <div className="bg-white/10 rounded-lg p-3 text-sm">
+                <div className="font-bold text-klary-orange mb-1">📈 + Intérêts / rendement</div>
+                <div className="text-white/85 text-xs">Le capital travaille pendant qu&apos;il dort chez la banque</div>
+              </div>
+              <div className="bg-white/10 rounded-lg p-3 text-sm">
+                <div className="font-bold text-klary-orange mb-1">🛡 + Protection famille</div>
+                <div className="text-white/85 text-xs">Couverture décès + libération de prime en incapacité (version assurance)</div>
+              </div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-white/10 text-center">
+              <div className="text-white/70 text-xs uppercase tracking-widest font-bold mb-1">
+                Au final
+              </div>
+              <div className="text-2xl font-bold text-klary-orange">
+                Tout bénéf pour le client 🎁
+              </div>
+              <div className="text-white/70 text-sm mt-1">
+                Sans le 3a : tu payes tes impôts pleins pot ET ton argent dort sur un compte à 0 %. Avec le 3a : tu réduis tes impôts + ton capital grandit + ta famille est protégée.
+              </div>
+            </div>
+          </div>
+
+          {/* 3a vs 3b : les deux versions de l'outil */}
+          <div className="mb-6">
+            <div className="text-xs font-bold uppercase text-klary-orange mb-2 tracking-widest">
+              🔧 Le 3ᵉ pilier existe en 2 versions
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="bg-white rounded-xl p-5 border-2 border-klary-orange">
+                <div className="text-xs uppercase tracking-widest text-klary-orange font-bold mb-2">
+                  Pilier 3a · Lié
+                </div>
+                <div className="font-bold text-klary-navy mb-2">
+                  L&apos;outil « performance fiscale »
+                </div>
+                <ul className="text-sm text-klary-grey space-y-1.5 list-disc pl-5">
+                  <li><strong>Déductible fiscalement</strong> : plafond 7 258 CHF/an (salarié) ou 36 288 CHF/an (indépendant sans LPP)</li>
+                  <li>Retrait bloqué jusqu&apos;à 60 ans SAUF motifs légaux (achat résidence principale, indépendance, départ CH...)</li>
+                  <li>Ordre des bénéficiaires imposé (art. 2 OPP 3)</li>
+                  <li><strong>Nantissable</strong> auprès de la banque pour un dossier hypothèque</li>
+                </ul>
+              </div>
+              <div className="bg-white rounded-xl p-5 border-2 border-klary-navy">
+                <div className="text-xs uppercase tracking-widest text-klary-navy font-bold mb-2">
+                  Pilier 3b · Libre
+                </div>
+                <div className="font-bold text-klary-navy mb-2">
+                  L&apos;outil « souplesse totale »
+                </div>
+                <ul className="text-sm text-klary-grey space-y-1.5 list-disc pl-5">
+                  <li>Pas de plafond de versement, aucune restriction de retrait</li>
+                  <li>Bénéficiaire librement désigné (utile pour concubin, ami, association...)</li>
+                  <li>Fiscalité : primes non déductibles au fédéral (déduction partielle GE / VD selon canton)</li>
+                  <li>Utilisé en <strong>complément</strong> du 3a une fois le plafond épuisé, ou pour concubins / retraits libres</li>
+                </ul>
+              </div>
+            </div>
+            <div className="text-xs text-klary-grey italic mt-3 text-center">
+              Selon la situation du client, on peut combiner les deux : 3a plein pour le maximum fiscal + 3b pour le reste et la souplesse.
+            </div>
+          </div>
+
+          {/* Coût réel long terme : le versement apparent vs le coût net vrai */}
+          <div className="mb-6 bg-white rounded-xl p-6 border-2 border-emerald-500">
+            <div className="text-xs font-bold uppercase text-emerald-700 mb-2 tracking-widest">
+              🧮 Le vrai coût sur {dossier.anneesDuree} ans
+            </div>
+            <h3 className="text-xl font-bold text-klary-navy mb-4">
+              Il pense payer {formatCHF(dossier.versementMensuel)} CHF/mois. En vrai, c&apos;est beaucoup moins.
+            </h3>
+
+            <div className="space-y-3">
+              {/* Versement apparent */}
+              <div className="flex items-center justify-between p-3 rounded-lg bg-klary-cream/60">
+                <div>
+                  <div className="text-sm text-klary-grey">Ce qu&apos;il verse (apparent)</div>
+                  <div className="text-xs text-klary-grey">
+                    {formatCHF(dossier.versementMensuel)} × 12 × {dossier.anneesDuree} ans
+                  </div>
+                </div>
+                <div className="text-xl font-bold text-klary-navy">
+                  {formatCHF(dossier.versementMensuel * 12 * dossier.anneesDuree)} CHF
+                </div>
+              </div>
+
+              {/* Économie fiscale cumulée */}
+              <div className="flex items-center justify-between p-3 rounded-lg bg-emerald-50">
+                <div>
+                  <div className="text-sm text-emerald-800">− Économie d&apos;impôt cumulée</div>
+                  <div className="text-xs text-emerald-700">
+                    {formatCHF(s.economieFiscale.median)} CHF/an × {dossier.anneesDuree} ans
+                  </div>
+                </div>
+                <div className="text-xl font-bold text-emerald-700">
+                  − {formatCHF(s.economieFiscale.median * dossier.anneesDuree)} CHF
+                </div>
+              </div>
+
+              {/* Rendement gagné */}
+              <div className="flex items-center justify-between p-3 rounded-lg bg-emerald-50">
+                <div>
+                  <div className="text-sm text-emerald-800">− Intérêts/rendement gagnés</div>
+                  <div className="text-xs text-emerald-700">
+                    Sur le capital placé pendant {dossier.anneesDuree} ans à ~3 %
+                  </div>
+                </div>
+                <div className="text-xl font-bold text-emerald-700">
+                  − {formatCHF(s.capitalFutur.avecRendement - s.capitalFutur.sansRendement)} CHF
+                </div>
+              </div>
+
+              {/* Coût net réel */}
+              <div className="flex items-center justify-between p-4 rounded-lg bg-klary-navy text-white">
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-klary-orange font-bold">
+                    = Coût réel net sur {dossier.anneesDuree} ans
+                  </div>
+                  <div className="text-xs text-white/70 mt-1">
+                    Soit environ {formatCHF(Math.max(0, (dossier.versementMensuel * 12 * dossier.anneesDuree - s.economieFiscale.median * dossier.anneesDuree - (s.capitalFutur.avecRendement - s.capitalFutur.sansRendement)) / (dossier.anneesDuree * 12)))} CHF/mois effectif
+                  </div>
+                </div>
+                <div className="text-2xl font-bold text-klary-orange">
+                  {formatCHF(Math.max(0, dossier.versementMensuel * 12 * dossier.anneesDuree - s.economieFiscale.median * dossier.anneesDuree - (s.capitalFutur.avecRendement - s.capitalFutur.sansRendement)))} CHF
+                </div>
+              </div>
+
+              {/* Capital final récupérable */}
+              <div className="flex items-center justify-between p-4 rounded-lg bg-emerald-600 text-white">
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-white/80 font-bold">
+                    Et il RÉCUPÈRE au bout de {dossier.anneesDuree} ans
+                  </div>
+                  <div className="text-xs text-white/80 mt-1">
+                    Capital constitué disponible (retrait retraite, achat immo, indépendance)
+                  </div>
+                </div>
+                <div className="text-2xl font-bold">
+                  {formatCHF(s.capitalFutur.avecRendement)} CHF
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 p-4 bg-klary-orange/10 rounded-lg border border-klary-orange/30 text-sm text-klary-navy leading-relaxed">
+              <strong className="text-klary-orange">Comparaison brutale :</strong> sur {dossier.anneesDuree} ans, il « paye »{" "}
+              <strong>{formatCHF(dossier.versementMensuel * 12 * dossier.anneesDuree)} CHF</strong>{" "}
+              mais entre l&apos;économie fiscale et le rendement, il récupère un capital de{" "}
+              <strong>{formatCHF(s.capitalFutur.avecRendement)} CHF</strong>. Le bilan net en sa faveur =
+              <strong className="text-emerald-700"> +{formatCHF(s.bilanNet.benefice)} CHF</strong>.
+              Le versement mensuel est un déplacement d&apos;argent d&apos;une poche à une autre poche, pas une dépense perdue.
+            </div>
+          </div>
+
 
           <div className="grid gap-4 md:grid-cols-2 mb-6">
             <div className="bg-white rounded-xl p-5 border border-klary-light-grey">
