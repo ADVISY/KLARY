@@ -620,6 +620,55 @@ export function PremierPlanLogementWizard() {
               </div>
             </div>
 
+            {/* Le point qui change tout : le 3a fait partie du montage hypothécaire */}
+            <div className="mt-5 bg-white text-klary-navy rounded-lg p-5 border-l-4 border-klary-orange">
+              <div className="text-xs uppercase tracking-widest text-klary-orange font-bold mb-2">
+                🔀 Le changement de perspective qui fait la différence
+              </div>
+              <div className="text-lg font-bold mb-3">
+                Avant : 2 flux financiers séparés. Après : 1 seul montage intégré.
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                  <div className="text-xs uppercase tracking-widest text-red-700 font-bold mb-2">
+                    ❌ Avant
+                  </div>
+                  <div className="text-sm text-klary-navy mb-2">
+                    <strong>2 charges parallèles :</strong>
+                  </div>
+                  <ul className="text-sm text-klary-navy space-y-1 list-disc pl-5">
+                    <li>Il paye son <strong>loyer</strong> ({formatCHF(dossier.loyerMensuel)} CHF/mois)</li>
+                    <li>ET il essaye d&apos;épargner pour sa retraite <strong>en parallèle</strong> (rarement fait)</li>
+                    <li>2 efforts déconnectés, rien n&apos;alimente son achat immobilier futur</li>
+                  </ul>
+                </div>
+                <div className="bg-emerald-50 border-2 border-emerald-500 rounded-lg p-4">
+                  <div className="text-xs uppercase tracking-widest text-emerald-700 font-bold mb-2">
+                    ✅ Après structuration Klary
+                  </div>
+                  <div className="text-sm text-klary-navy mb-2">
+                    <strong>1 seul montage globalisé :</strong>
+                  </div>
+                  <ul className="text-sm text-klary-navy space-y-1 list-disc pl-5">
+                    <li>Il paye son <strong>hypothèque</strong> (souvent moins cher que le loyer)</li>
+                    <li>Son <strong>3a nanti sert de collatéral</strong> auprès de la banque pour couvrir une partie des fonds propres exigés</li>
+                    <li>Le 3a fait <strong>double emploi</strong> : garantie bancaire + épargne retraite + protection famille</li>
+                    <li>Un seul effort mensuel structuré, tout est intégré dans le dossier bancaire</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-4 p-4 bg-klary-orange/10 border border-klary-orange/30 rounded-lg text-sm">
+                <strong className="text-klary-orange">Le message clé :</strong> le client
+                n&apos;épargne plus « en plus » de son hypothèque. Le 3a est <strong>intégré au montage</strong> :
+                il couvre une partie de l&apos;apport (via nantissement), sert d&apos;amortissement indirect (2ᵉ rang),
+                et continue à générer l&apos;économie fiscale + le rendement + la protection en même temps.
+                <br /><br />
+                <strong>Un seul effort → cinq bénéfices simultanés.</strong>
+              </div>
+            </div>
+
             <div className="mt-5 pt-4 border-t border-white/10">
               <div className="text-xs uppercase tracking-widest text-klary-orange font-bold mb-3">
                 🎯 Ce que les banques adorent chez un client 3a
