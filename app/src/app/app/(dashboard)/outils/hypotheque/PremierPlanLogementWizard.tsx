@@ -37,9 +37,18 @@ const DEFAULT_OBJECTIF: ObjectifImmobilier = {
   rendementAnnuel: 0.03,
 };
 
+type Etape = 1 | 2 | 3 | 4;
+const ETAPES: { n: Etape; titre: string; sous: string; icone: string }[] = [
+  { n: 1, titre: "Profil client", sous: "Qui est en face", icone: "👤" },
+  { n: 2, titre: "L'objectif", sous: "Projet immobilier", icone: "🏠" },
+  { n: 3, titre: "Le plan chiffré", sous: "Les 8 calculs", icone: "📊" },
+  { n: 4, titre: "Pitch & PDF", sous: "Convaincre et signer", icone: "🎯" },
+];
+
 export function PremierPlanLogementWizard() {
   const [dossier, setDossier] = useState<DossierClient>(DEFAULT_DOSSIER);
   const [objectif, setObjectif] = useState<ObjectifImmobilier>(DEFAULT_OBJECTIF);
+  const [etape, setEtape] = useState<Etape>(1);
   const [simId, setSimId] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -142,6 +151,38 @@ export function PremierPlanLogementWizard() {
         </div>
       </header>
 
+      {/* Stepper 5 étapes */}
+      <nav className="mb-8 overflow-x-auto">
+        <ol className="flex gap-2 min-w-max">
+          {ETAPES.map((e) => {
+            const active = e.n === etape;
+            const done = e.n < etape;
+            return (
+              <li key={e.n}>
+                <button
+                  onClick={() => setEtape(e.n)}
+                  className={`px-4 py-3 rounded-xl text-left transition min-w-[140px] ${
+                    active
+                      ? "bg-klary-navy text-white shadow-lg"
+                      : done
+                      ? "bg-klary-orange/10 text-klary-orange border border-klary-orange/30"
+                      : "bg-white border border-klary-light-grey text-klary-grey hover:border-klary-navy"
+                  }`}
+                >
+                  <div className="text-2xl mb-1">{e.icone}</div>
+                  <div className="text-xs opacity-70">Étape {e.n}</div>
+                  <div className="font-bold text-sm">{e.titre}</div>
+                  <div className="text-[10px] opacity-60 mt-0.5">{e.sous}</div>
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+      </nav>
+
+      {/* ═════════ ÉTAPE 1 · Profil client ═════════ */}
+      {etape === 1 && (<>
+
       {/* Bloc identité client (pour PDF) */}
       <section className="bg-white rounded-2xl border border-klary-light-grey p-6 mb-6">
         <div className="text-xs font-bold uppercase text-klary-orange mb-4 tracking-widest">
@@ -169,6 +210,11 @@ export function PremierPlanLogementWizard() {
           <NumberInputDark label="Taux marginal fiscal (%)" value={Math.round((dossier.tauxMarginal ?? 0.25) * 100)} step={1} min={10} max={45} onChange={(v) => setField("tauxMarginal", v / 100)} />
         </div>
       </section>
+
+      </>)}
+
+      {/* ═════════ ÉTAPE 2 · L'objectif immobilier ═════════ */}
+      {etape === 2 && (<>
 
       {/* Simulateur inversé : plan personnel selon objectif */}
       <section className="bg-gradient-to-br from-klary-orange to-klary-orange/85 text-white rounded-2xl p-6 md:p-8 mb-8">
@@ -528,6 +574,11 @@ export function PremierPlanLogementWizard() {
         </div>
       </section>
 
+      </>)}
+
+      {/* ═════════ ÉTAPE 3 · Le plan chiffré (les 8 calculateurs) ═════════ */}
+      {etape === 3 && (<>
+
       {/* ═══ Les calculateurs ═══ */}
       <div className="space-y-6">
         {/* 1. Capacité d'achat max */}
@@ -730,6 +781,12 @@ export function PremierPlanLogementWizard() {
             Ce chiffre n&apos;est pas une critique du fait d&apos;être locataire (souplesse, mobilité), c&apos;est juste un ordre de grandeur pour aider à évaluer si un projet immobilier fait sens dans votre situation.
           </div>
         </div>
+
+      </div>
+      </>)}
+
+      {/* ═════════ ÉTAPE 4 · Pitch & PDF ═════════ */}
+      {etape === 4 && (<div className="space-y-6">
 
         {/* Hero — le message d'accroche */}
         <section className="bg-gradient-to-br from-klary-navy to-klary-navy/90 text-white rounded-2xl p-6 md:p-10 relative overflow-hidden">
@@ -1557,6 +1614,36 @@ export function PremierPlanLogementWizard() {
             </div>
           </div>
         </section>
+      </div>
+      )}
+
+      {/* Navigation bas de page */}
+      <div className="mt-8 flex items-center justify-between gap-3">
+        <button
+          onClick={() => setEtape((e) => Math.max(1, e - 1) as Etape)}
+          disabled={etape === 1}
+          className="px-5 py-3 rounded-xl text-sm font-semibold border border-klary-light-grey text-klary-navy hover:bg-klary-cream disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          ← Étape précédente
+        </button>
+        <div className="text-xs text-klary-grey">
+          Étape {etape} / {ETAPES.length}
+        </div>
+        {etape < ETAPES.length ? (
+          <button
+            onClick={() => setEtape((e) => Math.min(ETAPES.length, e + 1) as Etape)}
+            className="px-5 py-3 rounded-xl text-sm font-semibold bg-klary-orange text-white hover:bg-klary-orange/90"
+          >
+            Étape suivante →
+          </button>
+        ) : (
+          <button
+            onClick={() => window.print()}
+            className="px-5 py-3 rounded-xl text-sm font-semibold bg-klary-navy text-white hover:bg-klary-navy/90"
+          >
+            📄 Télécharger le PDF
+          </button>
+        )}
       </div>
 
       {/* Composant PDF (invisible sauf impression) */}
