@@ -6,6 +6,8 @@ import { useSearchParams, useRouter } from "next/navigation";
 import {
   synthese,
   formatCHF,
+  prevoyanceRequisePourApport,
+  anneesNecessairesPourCapital,
   type DossierClient,
 } from "@/lib/hypotheque/calculs";
 import { PlanClientPrint } from "./PlanClientPrint";
@@ -797,6 +799,181 @@ export function PremierPlanLogementWizard() {
             <div className="mt-4 text-xs text-white/60 italic">
               💡 C&apos;est pour ça que le 3a est intéressant <strong>même si tu n&apos;achètes pas tout de suite</strong> : plus tu commences tôt, plus ton capital est important quand tu passes devant la banque, plus tu es en position de force.
             </div>
+          </div>
+        </section>
+
+        {/* Prévoyance requise pour l'apport 10 % mou */}
+        <section className="bg-white rounded-2xl border-2 border-klary-navy p-6 md:p-8">
+          <div className="text-xs font-bold uppercase text-klary-navy tracking-widest mb-2">
+            🎯 Combien de prévoyance il te faut pour cet apport
+          </div>
+          <h2 className="text-2xl font-bold text-klary-navy mb-4">
+            Pour un bien à {formatCHF(dossier.prixBien)} CHF
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-3 mb-6">
+            <div className="bg-klary-cream/40 rounded-xl p-5 text-center">
+              <div className="text-xs uppercase tracking-widest text-klary-grey font-bold mb-1">
+                Apport total (20 %)
+              </div>
+              <div className="text-2xl font-bold text-klary-navy">
+                {formatCHF(dossier.prixBien * 0.2)}
+              </div>
+              <div className="text-xs text-klary-grey mt-1">CHF</div>
+            </div>
+            <div className="bg-red-50 border-2 border-red-300 rounded-xl p-5 text-center">
+              <div className="text-xs uppercase tracking-widest text-red-700 font-bold mb-1">
+                Apport « DUR » (10 %)
+              </div>
+              <div className="text-2xl font-bold text-red-700">
+                {formatCHF(dossier.prixBien * 0.1)}
+              </div>
+              <div className="text-xs text-red-600 mt-1">
+                Cash + 3a lié (hors LPP)
+              </div>
+            </div>
+            <div className="bg-emerald-50 border-2 border-emerald-500 rounded-xl p-5 text-center">
+              <div className="text-xs uppercase tracking-widest text-emerald-700 font-bold mb-1">
+                Apport « MOU » (10 %)
+              </div>
+              <div className="text-2xl font-bold text-emerald-700">
+                {formatCHF(dossier.prixBien * 0.1)}
+              </div>
+              <div className="text-xs text-emerald-600 mt-1">
+                LPP + 3a nanti (prévoyance)
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-klary-navy text-white rounded-xl p-5 mb-4">
+            <div className="text-xs uppercase tracking-widest text-klary-orange font-bold mb-2">
+              💡 La règle du montage
+            </div>
+            <p className="text-white/90 text-sm leading-relaxed">
+              Sur les 20 % d&apos;apport exigés par la banque, <strong>la moitié
+              (10 %) doit être « dure »</strong> : cash épargné ou 3a lié (car
+              considéré comme hors 2ᵉ pilier). L&apos;autre moitié (10 %) peut
+              être issue de la <strong>prévoyance mobilisable</strong> : LPP
+              (retrait EPL art. 30c ou nantissement) et 3a nanti.
+            </p>
+            <p className="text-white/90 text-sm leading-relaxed mt-3">
+              Autrement dit, pour un bien à {formatCHF(dossier.prixBien)} CHF,
+              tu dois pouvoir mobiliser au minimum{" "}
+              <strong className="text-klary-orange">
+                {formatCHF(dossier.prixBien * 0.1)} CHF de prévoyance
+              </strong>{" "}
+              (LPP + 3a cumulés) pour couvrir le 10 % mou.
+            </p>
+          </div>
+
+          <div className="text-xs font-bold uppercase text-klary-navy tracking-widest mb-3">
+            📋 3 façons de constituer les {formatCHF(dossier.prixBien * 0.1)} CHF de prévoyance requise
+          </div>
+          <div className="grid md:grid-cols-3 gap-3">
+            {prevoyanceRequisePourApport(dossier.prixBien).suggestions.map((sug, i) => (
+              <div key={i} className="bg-klary-cream/40 rounded-xl p-4 border border-klary-light-grey">
+                <div className="font-bold text-klary-navy mb-1">
+                  Option {i + 1} · {sug.label}
+                </div>
+                <div className="text-2xl font-bold text-klary-orange mb-1">
+                  {formatCHF(sug.montant)}
+                </div>
+                <div className="text-xs text-klary-grey">{sug.explication}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Comment booster sa prévoyance */}
+        <section className="bg-gradient-to-br from-klary-orange/5 to-white rounded-2xl border-2 border-klary-orange p-6 md:p-8">
+          <div className="text-xs font-bold uppercase text-klary-orange tracking-widest mb-2">
+            🚀 Comment accélérer la constitution
+          </div>
+          <h2 className="text-2xl font-bold text-klary-navy mb-4">
+            Le client veut atteindre {formatCHF(dossier.prixBien * 0.1)} CHF plus vite ?
+          </h2>
+
+          {/* Calcul temps nécessaire selon versement */}
+          <div className="bg-white rounded-xl p-5 border border-klary-light-grey mb-6">
+            <div className="text-xs font-bold uppercase text-klary-navy tracking-widest mb-3">
+              ⏱ Temps nécessaire pour atteindre les {formatCHF(dossier.prixBien * 0.1)} CHF
+            </div>
+            <div className="grid md:grid-cols-4 gap-3 text-center">
+              {[200, 400, 604, 1000].map((v) => {
+                const annees = anneesNecessairesPourCapital(
+                  dossier.prixBien * 0.1,
+                  v,
+                  dossier.rendementAnnuel ?? 0.03
+                );
+                const isPlafond = v <= 604;
+                return (
+                  <div key={v} className={`rounded-lg p-4 ${isPlafond ? 'bg-emerald-50 border border-emerald-300' : 'bg-amber-50 border border-amber-300'}`}>
+                    <div className="text-xs uppercase tracking-widest text-klary-grey font-bold mb-1">
+                      {formatCHF(v)} /mois
+                    </div>
+                    <div className={`text-3xl font-bold ${isPlafond ? 'text-emerald-700' : 'text-amber-700'}`}>
+                      {annees} ans
+                    </div>
+                    <div className="text-xs text-klary-grey mt-1">
+                      {v <= 604 ? "3a bancaire OK" : "Dépasse plafond 3a annuel"}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="text-xs text-klary-grey italic mt-3">
+              Rappel : plafond 3a mensuel équivalent = 604 CHF (7 258 CHF/an). Au-delà, cumuler avec 3b ou augmenter LPP.
+            </div>
+          </div>
+
+          {/* 6 leviers pour booster la prévoyance */}
+          <div className="text-xs font-bold uppercase text-klary-navy tracking-widest mb-3">
+            💪 6 leviers pour accélérer la constitution
+          </div>
+          <div className="grid md:grid-cols-2 gap-3">
+            <div className="bg-white rounded-xl p-4 border border-klary-light-grey">
+              <div className="text-klary-orange font-bold text-lg mb-1">1. Verser le plafond 3a plein</div>
+              <div className="text-sm text-klary-grey">
+                Passer de 200 à <strong>604 CHF/mois</strong> (plafond salarié) = 3× plus vite. Économie fiscale × 3 aussi.
+              </div>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-klary-light-grey">
+              <div className="text-klary-orange font-bold text-lg mb-1">2. Rachat LPP</div>
+              <div className="text-sm text-klary-grey">
+                Combler les <strong>lacunes de LPP</strong> (art. 79b) : déductible fiscal total, capital immédiatement disponible pour nantissement.
+              </div>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-klary-light-grey">
+              <div className="text-klary-orange font-bold text-lg mb-1">3. Cumuler 3a + 3b</div>
+              <div className="text-sm text-klary-grey">
+                Une fois le plafond 3a atteint, verser le surplus sur un <strong>3b libre</strong> (pas de plafond, pas de blocage).
+              </div>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-klary-light-grey">
+              <div className="text-klary-orange font-bold text-lg mb-1">4. Prime unique 3a en fin d&apos;année</div>
+              <div className="text-sm text-klary-grey">
+                Verser le complément fin novembre pour <strong>saturer le plafond de l&apos;année fiscale</strong> (économie d&apos;impôt maximale).
+              </div>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-klary-light-grey">
+              <div className="text-klary-orange font-bold text-lg mb-1">5. Ouvrir 2ᵉ compte 3a (voire 3)</div>
+              <div className="text-sm text-klary-grey">
+                Multiplier les comptes 3a permet ensuite d&apos;<strong>échelonner les retraits</strong> à la retraite pour optimiser l&apos;impôt (barème progressif).
+              </div>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-klary-light-grey">
+              <div className="text-klary-orange font-bold text-lg mb-1">6. Passer à un 3a fonds de placement</div>
+              <div className="text-sm text-klary-grey">
+                Un 3a fonds actions génère <strong>3-5 % de rendement moyen long terme</strong> vs 0-1 % en 3a bancaire simple.
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-5 bg-klary-navy text-white rounded-xl p-4 text-sm leading-relaxed">
+            <strong className="text-klary-orange">Bonus stratégique :</strong> combiner
+            plusieurs leviers (ex: 3a plafond + 3b + rachat LPP 5 000 CHF) permet
+            de constituer le capital 10 % apport en <strong>3-5 ans</strong> au
+            lieu de 15 ans à petit versement.
           </div>
         </section>
 

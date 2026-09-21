@@ -119,6 +119,64 @@ export function loyerPerduSur(loyerMensuel: number, anneesDuree: number): number
 }
 
 /**
+ * Combien de prévoyance nécessaire pour couvrir le 10 % « mou » de l'apport.
+ * Sur un bien de X CHF, l'apport total est 20 % dont 10 % dur (cash / 3a lié
+ * en tant que hors LPP) et 10 % mou (peut être LPP retiré/nanti + 3a nanti).
+ *
+ * Prévoyance requise = 10 % du prix du bien
+ */
+export function prevoyanceRequisePourApport(prixBien: number): {
+  apportMou: number;
+  suggestions: { label: string; montant: number; explication: string }[];
+} {
+  const apportMou = prixBien * 0.1;
+  return {
+    apportMou,
+    suggestions: [
+      {
+        label: "Tout 3a nanti",
+        montant: apportMou,
+        explication: "Nantissement du 3a auprès de la banque, le capital reste intact.",
+      },
+      {
+        label: "50 % LPP + 50 % 3a",
+        montant: apportMou,
+        explication: "Retrait EPL du 2ᵉ pilier art. 30c LPP + nantissement 3a.",
+      },
+      {
+        label: "Tout LPP retiré",
+        montant: apportMou,
+        explication: "Retrait anticipé LPP art. 30c, impact sur rente future à évaluer.",
+      },
+    ],
+  };
+}
+
+/**
+ * Temps nécessaire pour constituer un capital cible (formule inversée).
+ * Sur combien d'années avec versement mensuel donné pour atteindre le
+ * capital cible, à taux de rendement donné.
+ *
+ * Approximation numérique par itération (Newton pas nécessaire pour l'ordre
+ * de grandeur souhaité).
+ */
+export function anneesNecessairesPourCapital(
+  capitalCible: number,
+  versementMensuel: number,
+  rendementAnnuel = RENDEMENT_3A_DEFAUT
+): number {
+  if (versementMensuel <= 0 || capitalCible <= 0) return 0;
+  // Sans rendement : temps = capital / (versement × 12)
+  if (rendementAnnuel <= 0) {
+    return Math.ceil(capitalCible / (versementMensuel * 12) * 10) / 10;
+  }
+  const r = rendementAnnuel / 12;
+  // V × ((1+r)^n - 1)/r = capitalCible → n = log(1 + capitalCible × r / V) / log(1+r)
+  const n = Math.log(1 + (capitalCible * r) / versementMensuel) / Math.log(1 + r);
+  return Math.ceil((n / 12) * 10) / 10; // arrondi à 0.1 année
+}
+
+/**
  * Synthèse complète pour un dossier client donné.
  */
 export interface DossierClient {
