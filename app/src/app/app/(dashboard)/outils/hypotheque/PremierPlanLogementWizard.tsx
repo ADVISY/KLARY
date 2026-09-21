@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation";
 import {
   synthese,
   formatCHF,
@@ -33,25 +35,89 @@ const DEFAULT_DOSSIER: DossierClient = {
 export function PremierPlanLogementWizard() {
   const [phase, setPhase] = useState<Phase>(1);
   const [dossier, setDossier] = useState<DossierClient>(DEFAULT_DOSSIER);
+  const [simId, setSimId] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
   const s = useMemo(() => synthese(dossier), [dossier]);
+  const params = useSearchParams();
+  const router = useRouter();
+
+  // Charger une simulation existante depuis l'URL ?load=<id>
+  useEffect(() => {
+    const loadId = params.get("load");
+    if (!loadId) return;
+    (async () => {
+      const res = await fetch(`/api/outils/hypotheque/load?id=${loadId}`);
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data.dossier) {
+        setDossier({ ...DEFAULT_DOSSIER, ...data.dossier });
+        setSimId(loadId);
+      }
+    })();
+  }, [params]);
 
   const setField = <K extends keyof DossierClient>(key: K, value: DossierClient[K]) =>
     setDossier((d) => ({ ...d, [key]: value }));
 
+  const sauvegarder = async () => {
+    setSaving(true);
+    setSaved(false);
+    try {
+      const res = await fetch("/api/outils/hypotheque/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: simId, dossier, synthese: s }),
+      });
+      const data = await res.json();
+      if (data.id) {
+        setSimId(data.id);
+        setSaved(true);
+        setTimeout(() => setSaved(false), 2500);
+        if (!simId) {
+          router.replace(`/outils/hypotheque?load=${data.id}`);
+        }
+      }
+    } finally {
+      setSaving(false);
+    }
+  };
+
   return (
     <div className="max-w-[1200px] mx-auto p-4 md:p-8">
-      <header className="mb-8">
-        <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
-          Outil conseiller · Hypothèque
+      <header className="mb-8 flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <div className="text-xs font-bold tracking-widest uppercase text-klary-orange mb-2">
+            Outil conseiller · Hypothèque
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-klary-navy mb-3">
+            Premier Plan Logement
+          </h1>
+          <p className="text-klary-grey max-w-2xl">
+            Guide de RDV en 7 phases avec les 8 calculs à poser en direct
+            devant le client. Basé sur le manuel Optimis 2026 et les
+            garde-fous d&apos;honnêteté du contrat lié Assura.
+          </p>
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold text-klary-navy mb-3">
-          Premier Plan Logement
-        </h1>
-        <p className="text-klary-grey max-w-2xl">
-          Guide de RDV en 7 phases avec les 8 calculs à poser en direct devant
-          le client. Basé sur le manuel Optimis 2026 et les garde-fous
-          d&apos;honnêteté du contrat lié Assura.
-        </p>
+        <div className="flex flex-col gap-2">
+          <button
+            onClick={sauvegarder}
+            disabled={saving}
+            className={`px-4 py-2 rounded-lg text-sm font-semibold transition ${
+              saved
+                ? "bg-emerald-600 text-white"
+                : "bg-klary-navy text-white hover:bg-klary-navy/90 disabled:opacity-50"
+            }`}
+          >
+            {saving ? "…" : saved ? "✓ Sauvegardé" : simId ? "Mettre à jour" : "💾 Sauvegarder"}
+          </button>
+          <Link
+            href="/outils/hypotheque/historique"
+            className="px-4 py-2 rounded-lg text-sm font-semibold border border-klary-light-grey text-klary-navy hover:border-klary-orange transition text-center"
+          >
+            📚 Historique
+          </Link>
+        </div>
       </header>
 
       {/* Stepper phases */}

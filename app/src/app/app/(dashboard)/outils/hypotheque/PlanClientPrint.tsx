@@ -77,6 +77,22 @@ export function PlanClientPrint({
             color: #6E6A8E;
             margin-bottom: 20px;
           }
+          .ppl-print .ppl-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+            border-bottom: 3px solid #F0651F;
+            padding-bottom: 10px;
+            margin-bottom: 14px;
+          }
+          .ppl-print .ppl-logo {
+            height: 32px;
+            width: auto;
+          }
+          .ppl-print .ppl-header-meta {
+            text-align: right;
+          }
           .ppl-print table {
             width: 100%;
             border-collapse: collapse;
@@ -169,11 +185,17 @@ export function PlanClientPrint({
         }
       `}</style>
 
-      {/* En-tête */}
-      <div className="eyebrow">Plan personnel · Premier Plan Logement</div>
+      {/* En-tête avec logo */}
+      <div className="ppl-header">
+        <img src="/klary-logo-color.svg" alt="Klary" className="ppl-logo" />
+        <div className="ppl-header-meta">
+          <div className="eyebrow">Plan personnel</div>
+          <div style={{ fontSize: "9pt", color: "#6E6A8E" }}>{dateJour}</div>
+        </div>
+      </div>
       <h1>Votre projet d&apos;accession à la propriété</h1>
       <div className="meta">
-        Préparé pour <strong>{nomClient}</strong> · {dateJour} · Klary Sàrl (intermédiaire lié Assura SA)
+        Préparé pour <strong>{nomClient}</strong> · Klary Sàrl (intermédiaire lié Assura SA)
       </div>
 
       {/* Projet visé */}
