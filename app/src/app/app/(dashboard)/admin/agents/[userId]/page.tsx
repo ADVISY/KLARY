@@ -7,6 +7,7 @@ import { AgentDocumentsSection } from "./AgentDocumentsSection";
 import { InitiateOffboardingModal } from "../InitiateOffboardingModal";
 import { JobTitleEditor } from "./JobTitleEditor";
 import { RoleEditor } from "./RoleEditor";
+import { OnboardingLauncher } from "./OnboardingLauncher";
 
 const JOB_TITLE_LABELS: Record<string, string> = {
   conseiller: "Conseiller",
@@ -106,6 +107,13 @@ export default async function AgentDetailPage({
     .order("created_at", { ascending: false });
   const currentOffboarding =
     offboardings?.find((o: any) => !o.completed_at) || null;
+
+  // Dossier RH (onboarding) du collaborateur, s'il a été ouvert.
+  const { data: rhForm } = await supabase
+    .from("onboarding_forms")
+    .select("submitted_at, form_token")
+    .eq("user_id", params.userId)
+    .maybeSingle();
 
   const fullName =
     [profile.first_name, profile.last_name].filter(Boolean).join(" ") || "—";
@@ -238,6 +246,11 @@ export default async function AgentDetailPage({
                 ⏳ Offboarding en cours — voir le dossier →
               </Link>
             )}
+            <OnboardingLauncher
+              userId={params.userId}
+              agentName={fullName}
+              existing={rhForm as any}
+            />
             <div className="p-3 bg-klary-cream border border-klary-light-grey rounded-lg opacity-60">
               <div className="text-xs font-semibold text-klary-navy mb-1">
                 Générer une attestation

@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { ProfileForm } from "@/components/app/ProfileForm";
+import { PageTabs } from "@/components/app/PageTabs";
 
 export const metadata = {
   title: "Mon profil",
@@ -25,6 +26,23 @@ export default async function ProfilePage() {
 
   const isFirstTime = !profile?.profile_completed;
 
+  // Dossier RH : on signale à l'agent qu'il a un formulaire en attente.
+  const { data: rhForm } = await supabase
+    .from("onboarding_forms")
+    .select("submitted_at")
+    .eq("user_id", user.id)
+    .maybeSingle();
+  const rhPending = !!rhForm && !rhForm.submitted_at;
+
+  const tabs = [
+    { href: "/mon-profil", label: "Identité" },
+    {
+      href: "/mon-profil/dossier-rh",
+      label: "Dossier RH",
+      ...(rhPending ? { badge: "À compléter" } : {}),
+    },
+  ];
+
   return (
     <div className="max-w-4xl mx-auto p-6 md:p-10">
       <header className="mb-8">
@@ -46,6 +64,8 @@ export default async function ProfilePage() {
           )}
         </p>
       </header>
+
+      <PageTabs tabs={tabs} />
 
       <div className="bg-white rounded-2xl border border-klary-light-grey p-6 md:p-8">
         <ProfileForm

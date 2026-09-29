@@ -270,7 +270,7 @@ export async function POST(request: NextRequest) {
     // Charger le formulaire par token
     const { data: onbForm, error: fetchErr } = await supabase
       .from("onboarding_forms")
-      .select("id, candidate_id, form_token, submitted_at")
+      .select("id, candidate_id, user_id, form_token, submitted_at")
       .eq("form_token", parsed.data.token)
       .maybeSingle();
 
@@ -291,16 +291,46 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Charger le candidat pour son nom/email
-    const { data: candidate } = await supabase
-      .from("candidates")
-      .select("first_name, last_name, email, position_applied")
-      .eq("id", onbForm.candidate_id)
-      .maybeSingle();
+    // Identité du déclarant. Le dossier peut être rattaché soit à une
+    // candidature (recrutement), soit directement à un collaborateur déjà en
+    // poste qui remplit son dossier depuis son espace.
+    let candidate: {
+      first_name: string;
+      last_name: string;
+      email: string;
+      position_applied: string | null;
+    } | null = null;
+
+    if (onbForm.candidate_id) {
+      const { data } = await supabase
+        .from("candidates")
+        .select("first_name, last_name, email, position_applied")
+        .eq("id", onbForm.candidate_id)
+        .maybeSingle();
+      candidate = (data as any) ?? null;
+    } else if (onbForm.user_id) {
+      const { data: profile } = await supabase
+        .from("user_roles")
+        .select("first_name, last_name, role")
+        .eq("user_id", onbForm.user_id)
+        .eq("active", true)
+        .maybeSingle();
+      const { data: authUser } = await supabase.auth.admin.getUserById(
+        onbForm.user_id
+      );
+      if (profile && authUser?.user?.email) {
+        candidate = {
+          first_name: profile.first_name || "",
+          last_name: profile.last_name || "",
+          email: authUser.user.email,
+          position_applied: profile.role === "agent" ? "Conseiller" : profile.role,
+        };
+      }
+    }
 
     if (!candidate) {
       return NextResponse.json(
-        { error: "Candidature associée introuvable." },
+        { error: "Dossier associé introuvable." },
         { status: 404 }
       );
     }
@@ -423,7 +453,9 @@ export async function POST(request: NextRequest) {
 
     const appUrl =
       process.env.NEXT_PUBLIC_APP_URL || "https://app.klary.ch";
-    const dashboardUrl = `${appUrl}/admin/candidatures/${onbForm.candidate_id}`;
+    const dashboardUrl = onbForm.candidate_id
+      ? `${appUrl}/admin/candidatures/${onbForm.candidate_id}`
+      : `${appUrl}/admin/agents/${onbForm.user_id}`;
 
     // ─── Email comptable (destinataire principal) + admin + office en CC ───
     // Admin + office reçoivent le récap complet AVEC les liens signés vers
@@ -438,6 +470,7 @@ export async function POST(request: NextRequest) {
       cc: ccList.length > 0 ? ccList : undefined,
       subject: `[Onboarding] Dossier reçu — ${candidate.first_name} ${candidate.last_name}`,
       candidateId: onbForm.candidate_id,
+      userId: onbForm.user_id,
       eventType: "onboarding_recu_comptable",
       html: templates.onboardingReceivedByComptable({
         firstName: candidate.first_name,
@@ -491,6 +524,7 @@ export async function POST(request: NextRequest) {
       to: candidate.email,
       subject: "Votre dossier d'onboarding est bien reçu — Klary",
       candidateId: onbForm.candidate_id,
+      userId: onbForm.user_id,
       eventType: "onboarding_confirmation_candidat",
       html: templates.onboardingConfirmation({
         firstName: candidate.first_name,

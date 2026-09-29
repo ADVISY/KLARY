@@ -49,6 +49,16 @@ export default async function AdminAgentsPage() {
 
   // Certifs actives par agent
   const userIds = Array.from(new Set((rows || []).map((r) => r.user_id)));
+
+  // Dossiers RH (onboarding) par collaborateur, pour afficher l'état dans la liste.
+  const { data: rhForms } = userIds.length
+    ? await supabase
+        .from("onboarding_forms")
+        .select("user_id, submitted_at")
+        .in("user_id", userIds)
+    : { data: [] as any[] };
+  const rhByUser = new Map<string, { submitted_at: string | null }>();
+  (rhForms || []).forEach((f: any) => rhByUser.set(f.user_id, f));
   const { data: certs } = userIds.length
     ? await supabase
         .from("training_certifications")
@@ -143,6 +153,9 @@ export default async function AdminAgentsPage() {
                 <th className="text-center px-5 py-3 font-semibold">
                   Profil
                 </th>
+                <th className="text-center px-5 py-3 font-semibold">
+                  Dossier RH
+                </th>
                 <th className="text-left px-5 py-3 font-semibold">
                   Certifications actives
                 </th>
@@ -196,6 +209,28 @@ export default async function AdminAgentsPage() {
                       ) : (
                         <span className="text-yellow-700">⏳</span>
                       )}
+                    </td>
+                    <td className="px-5 py-3 text-center">
+                      {(() => {
+                        const rh = rhByUser.get(r.user_id);
+                        if (!rh)
+                          return (
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-600">
+                              non lancé
+                            </span>
+                          );
+                        if (rh.submitted_at)
+                          return (
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-100 text-green-800">
+                              complété
+                            </span>
+                          );
+                        return (
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">
+                            en cours
+                          </span>
+                        );
+                      })()}
                     </td>
                     <td className="px-5 py-3">
                       {uc.length === 0 ? (
