@@ -49,6 +49,16 @@ export default async function ModuleStartPage({
   const isPrivileged =
     roleRow?.role === "admin" || roleRow?.role === "manager";
 
+  // Un module ciblé sur un poste n'est accessible qu'à ce poste, même par URL directe.
+  const targetRoles = (module as any).target_roles ?? [];
+  if (
+    !isPrivileged &&
+    targetRoles.length > 0 &&
+    !targetRoles.includes(roleRow?.role ?? "")
+  ) {
+    notFound();
+  }
+
   const cooldownHours = (module as any).retry_cooldown_hours ?? 24;
   let cooldownRemainingHours: number | null = null;
   if (user && !isPrivileged && cooldownHours > 0) {

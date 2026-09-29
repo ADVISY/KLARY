@@ -14,13 +14,45 @@ export const metadata = {
 export default async function FormationPage() {
   const supabase = createSupabaseServerClient();
 
-  const { data: modules } = await supabase
+  const { data: allModules } = await supabase
     .from("training_modules")
     .select("*")
     .eq("active", true)
     .order("key");
 
   const { data: { user } } = await supabase.auth.getUser();
+
+  // Rôle de l'utilisateur — même logique que le layout : on prend le plus élevé
+  // quand plusieurs lignes coexistent (ex. admin + agent).
+  const { data: roleRows } = user
+    ? await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", user.id)
+        .eq("active", true)
+    : { data: [] };
+
+  const ROLE_PRIORITY: Record<string, number> = {
+    admin: 4,
+    manager: 3,
+    backoffice: 2,
+    agent: 1,
+  };
+  const role =
+    (roleRows ?? []).sort(
+      (a: any, b: any) =>
+        (ROLE_PRIORITY[b.role] ?? 0) - (ROLE_PRIORITY[a.role] ?? 0)
+    )[0]?.role || "agent";
+
+  // Filtrage par poste : target_roles vide ou null = visible par tous.
+  // admin et manager voient l'ensemble des modules.
+  const isPrivileged = role === "admin" || role === "manager";
+  const modules = isPrivileged
+    ? allModules
+    : (allModules ?? []).filter((m: any) => {
+        const targets = m.target_roles ?? [];
+        return targets.length === 0 || targets.includes(role);
+      });
 
   // Récupérer les tentatives de l'utilisateur pour afficher son statut par module
   const { data: attempts } = user

@@ -11,6 +11,8 @@ const MODULE_LABELS: Record<string, string> = {
   lpp: "LPP Libre Passage",
   prevoyance: "Prévoyance & 3e pilier",
   hypotheque: "Hypothèque",
+  backoffice_assurance_maladie: "Back-office — Assurance maladie",
+  backoffice_metier: "Back-office — Métier",
 };
 
 export default async function AdminEvaluationsPage() {
