@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import {
+  createSupabaseServerClient,
+  createSupabaseServiceClient,
+} from "@/lib/supabase/server";
 import {
   generateCertNumber,
   calculateScore,
@@ -131,7 +134,12 @@ export async function POST(request: NextRequest) {
       const validUntil = addMonths(new Date(), 6);
       const certNumber = generateCertNumber();
 
-      const { data: certData } = await supabase
+      // Le certificat est délivré par le serveur après validation du score :
+      // l'utilisateur ne peut pas s'auto-certifier, et le RLS de
+      // training_certifications ne lui ouvre que la lecture.
+      const admin = createSupabaseServiceClient();
+
+      const { data: certData, error: certError } = await admin
         .from("training_certifications")
         .insert({
           cert_number: certNumber,
@@ -144,11 +152,21 @@ export async function POST(request: NextRequest) {
         .select()
         .single();
 
+      if (certError) {
+        // Ne pas faire échouer la soumission : le score est déjà enregistré.
+        // Mais tracer, sinon l'absence de certificat passe inaperçue.
+        console.error(
+          "[training/submit] certification non délivrée",
+          { userId: user.id, moduleKey: attempt.module_key, attemptId },
+          certError
+        );
+      }
+
       certification = certData;
 
       // ─── Trigger onboarding assistantes SUR LA 1ère CERTIF ───
       // Compter les certifs existantes de l'agent (avant celle-ci)
-      const { count: existingCertsCount } = await supabase
+      const { count: existingCertsCount } = await admin
         .from("training_certifications")
         .select("*", { count: "exact", head: true })
         .eq("user_id", user.id)
