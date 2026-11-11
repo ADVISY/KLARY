@@ -81,6 +81,17 @@ const iconPulse = (
     <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h4l3-9 4 18 3-9h4" />
   </svg>
 );
+const iconReport = (
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h4m1-13H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V9l-5-6z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M14 3v4a2 2 0 002 2h4" />
+  </svg>
+);
+const iconChart = (
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4 20h16M7 20v-7m5 7V6m5 14v-10" />
+  </svg>
+);
 const iconMenu = (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -94,6 +105,11 @@ const iconClose = (
 
 // ─── Navigation flat : 1 item par groupe (les sous-pages sont accessibles via onglets) ───
 const AGENT_ITEMS: NavItem[] = [
+  {
+    href: "/rapport",
+    label: "Mon rapport du jour",
+    icon: iconReport,
+  },
   {
     href: "/formation",
     label: "Formation",
@@ -130,6 +146,11 @@ const AGENT_ITEMS: NavItem[] = [
 ];
 
 const ADMIN_ITEMS: NavItem[] = [
+  {
+    href: "/admin/rapports",
+    label: "Rapports du jour",
+    icon: iconChart,
+  },
   {
     href: "/admin/evaluations",
     label: "Évaluations",
