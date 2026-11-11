@@ -81,7 +81,7 @@ export function ReportForm({
           {fields.map((f) => (
             <label key={f.key} className="block">
               <span className="block text-sm font-semibold text-klary-navy mb-1">
-                {f.label}
+                {f.question ?? f.label}
                 {f.optional && (
                   <span className="font-normal text-klary-grey">
                     {" "}

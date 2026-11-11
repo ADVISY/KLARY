@@ -1,6 +1,12 @@
 export type ReportField = {
   key: string;
+  /** Intitulé court : tuiles de la vue direction et colonnes du CSV */
   label: string;
+  /**
+   * Formulation du débrief, telle qu'un responsable la pose le soir.
+   * Sert d'étiquette dans le formulaire ; à défaut on reprend le label.
+   */
+  question?: string;
   max: number;
   /** Note avec décimale (ex. 8,4 sur 10) au lieu d'un nombre entier */
   decimal?: boolean;
@@ -11,12 +17,44 @@ export type ReportField = {
 // Le conseiller et le responsable suivent le même parcours commercial.
 // Le responsable n'a pas toujours de portefeuille, ses compteurs sont facultatifs.
 const SALES_FIELDS: ReportField[] = [
-  { key: "calls", label: "Appels passés", max: 1000 },
-  { key: "appointments_set", label: "Rendez-vous fixés", max: 500 },
-  { key: "appointments_held", label: "Rendez-vous honorés", max: 500 },
-  { key: "contracts", label: "Signatures", max: 200 },
-  // Compteur à part, pas un sous-ensemble des signatures : on saisit les deux.
-  { key: "lca", label: "Contrats LCA (complémentaires)", max: 200 },
+  {
+    key: "calls",
+    label: "Appels passés",
+    question: "Combien d'appels as-tu passés aujourd'hui ? (environ)",
+    max: 1000,
+  },
+  {
+    key: "appointments_set",
+    label: "Rendez-vous fixés",
+    question: "Combien de rendez-vous as-tu fixés aujourd'hui ?",
+    max: 500,
+  },
+  {
+    key: "appointments_held",
+    label: "Rendez-vous présentés",
+    question: "Combien de rendez-vous as-tu présentés aujourd'hui ?",
+    max: 500,
+  },
+  {
+    key: "contracts",
+    label: "Signatures",
+    question: "Combien de signatures ?",
+    max: 200,
+  },
+  // La prod se compte à part des signatures : une signature LAMal ne produit
+  // pas, la rémunération vient de la complémentaire et de la prévoyance.
+  {
+    key: "lca",
+    label: "Prod LCA",
+    question: "Ta prod en LCA (complémentaires) ?",
+    max: 200,
+  },
+  {
+    key: "vie",
+    label: "Prod Vie",
+    question: "Ta prod en Vie (prévoyance) ?",
+    max: 200,
+  },
 ];
 
 export const REPORT_FIELDS: Record<string, ReportField[]> = {

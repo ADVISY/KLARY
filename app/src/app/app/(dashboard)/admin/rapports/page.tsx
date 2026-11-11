@@ -167,15 +167,17 @@ export default async function AdminRapportsPage({
       {!person && salesReports.length > 0 && (
         <section className="mb-6 rounded-2xl bg-klary-navy text-white p-5">
           <h2 className="font-bold mb-3">Total de la journée</h2>
-          <dl className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+          <dl className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-7 gap-3">
             {[
               ["Appels", plateau("calls").toLocaleString("fr-CH")],
               [
                 "RDV fixés",
                 plateau("appointments_set").toLocaleString("fr-CH"),
               ],
-              ["RDV honorés", plateauHeld.toLocaleString("fr-CH")],
-              ["Contrats", plateauContracts.toLocaleString("fr-CH")],
+              ["RDV présentés", plateauHeld.toLocaleString("fr-CH")],
+              ["Signatures", plateauContracts.toLocaleString("fr-CH")],
+              ["Prod LCA", plateau("lca").toLocaleString("fr-CH")],
+              ["Prod Vie", plateau("vie").toLocaleString("fr-CH")],
               [
                 "Transformation",
                 plateauHeld > 0
