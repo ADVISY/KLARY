@@ -16,12 +16,15 @@ import { CookieBanner } from "./components/v2/CookieBanner";
 /**
  * MAINTENANCE_MODE
  * ────────────────
- * true  → seul le site vitrine est masqué derrière une page « Bientôt disponible ».
- *         Le site complet reste accessible via /preview.
- *         Les pages légales (/mentions-legales, /politique-confidentialite) restent publiques.
+ * true  → site ENTIÈREMENT fermé. Aucune page n'est servie, quelle que soit
+ *         l'URL : tout retombe sur « Bientôt disponible ». Ni /preview,
+ *         ni la candidature, ni les pages légales.
  * false → site complet public (état normal).
  *
- * À basculer à false une fois le site validé pour publication complète.
+ * Fermeture totale le 11.11.2026. Motif : le statut d'intermédiaire lié, et la
+ * déclaration d'exclusivité signée avec le Groupe Mutuel, interdisent de
+ * laisser accessibles les mentions d'indépendance du site.
+ * Ne repasser à false qu'après correction de ces mentions.
  */
 const MAINTENANCE_MODE = true;
 
@@ -93,31 +96,7 @@ const App = () => (
           <Suspense fallback={<RouteFallback />}>
             {MAINTENANCE_MODE ? (
               <Routes>
-                {/* Site complet accessible en interne via /preview */}
-                <Route path="/preview" element={<Index />} />
-                <Route path="/preview/assurances" element={<Assurances />} />
-                <Route path="/preview/assurances/sante" element={<AssuranceSante />} />
-                <Route path="/preview/assurances/3e-pilier" element={<Assurance3ePilier />} />
-                <Route path="/preview/assurances/rc-menage" element={<AssuranceRCMenage />} />
-                <Route path="/preview/assurances/auto" element={<AssuranceAuto />} />
-                <Route path="/preview/assurances/protection-juridique" element={<ProtectionJuridique />} />
-                <Route path="/preview/assurances/hypotheque" element={<Hypotheque />} />
-                <Route path="/preview/assurances/lpp" element={<AvoirsLPP />} />
-                <Route path="/preview/guides" element={<Guides />} />
-                <Route path="/preview/guides/:slug" element={<GuideArticle />} />
-                <Route path="/preview/entreprises/personnel" element={<AssurancePersonnel />} />
-                <Route path="/preview/entreprises/lpp" element={<PrevoyanceLPP />} />
-                <Route path="/preview/a-propos" element={<APropos />} />
-                <Route path="/preview/carriere" element={<Carriere />} />
-                <Route path="/preview/simulateurs" element={<Simulateurs />} />
-                <Route path="/preview/recrutement" element={<RecrutementPostes />} />
-                <Route path="/preview/recrutement/postuler" element={<Recrutement />} />
-
-                {/* Pages légales toujours publiques (compliance nLPD + LSA) */}
-                <Route path="/mentions-legales" element={<MentionsLegales />} />
-                <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
-
-                {/* Tout le reste → page maintenance */}
+                {/* FERMETURE TOTALE : toute URL, sans exception, retombe ici. */}
                 <Route path="*" element={<Maintenance />} />
               </Routes>
             ) : (

@@ -1,4 +1,6 @@
 User-agent: *
-Allow: /
+Disallow: /
 
-Sitemap: https://klary.ch/sitemap.xml
+# Site fermé depuis le 11.11.2026. Aucune page ne doit être explorée ni
+# indexée tant que les mentions d'indépendance ne sont pas corrigées.
+# Rétablir « Allow: / » et la ligne Sitemap à la réouverture.

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Mail, Briefcase, ArrowRight } from "lucide-react";
 import klaryLogo from "@/assets/klary-logo-horizontal.png";
 
@@ -158,17 +157,18 @@ const Maintenance = () => {
                 <p className="text-sm md:text-base text-white/70 mb-4 leading-relaxed">
                   Conseillers en assurance, téléphonistes, back-office : nous ouvrons plusieurs postes pour accompagner notre croissance.
                 </p>
-                <Link
-                  to="/preview/recrutement"
+                {/* Candidature fermée : on passe par l'e-mail, pas par un formulaire en ligne. */}
+                <a
+                  href="mailto:admin@klary.ch?subject=Candidature%20Klary"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-white transition-all hover:translate-y-[-1px]"
                   style={{
                     background: "linear-gradient(135deg, hsl(19 90% 54%) 0%, hsl(19 90% 60%) 100%)",
                     boxShadow: "0 8px 24px rgba(240, 101, 31, 0.35)",
                   }}
                 >
-                  <span>Voir les postes et postuler</span>
+                  <span>Envoyer ma candidature</span>
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </a>
               </div>
             </div>
           </div>
@@ -177,16 +177,9 @@ const Maintenance = () => {
 
       {/* Footer */}
       <footer className="relative z-10 px-6 pb-8">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
-          <p>© {new Date().getFullYear()} Klary Sàrl · Eysins, Suisse</p>
-          <div className="flex items-center gap-5">
-            <Link to="/mentions-legales" className="hover:text-white/70 transition-colors">
-              Mentions légales
-            </Link>
-            <Link to="/politique-confidentialite" className="hover:text-white/70 transition-colors">
-              Confidentialité
-            </Link>
-          </div>
+        {/* Aucun lien sortant : les pages légales sont fermées elles aussi. */}
+        <div className="max-w-4xl mx-auto flex items-center justify-center text-xs text-white/40">
+          <p>© {new Date().getFullYear()} Klary Sàrl · Le Mont-sur-Lausanne, Suisse</p>
         </div>
       </footer>
 
