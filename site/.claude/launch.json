@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "klary-dev",
+      "name": "klary-site",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 8080
+      "runtimeArgs": ["run", "dev", "--", "--port", "8091", "--strictPort"],
+      "port": 8091
     }
   ]
 }

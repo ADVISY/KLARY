@@ -25,8 +25,18 @@ import { CookieBanner } from "./components/v2/CookieBanner";
  * déclaration d'exclusivité signée avec le Groupe Mutuel, interdisent de
  * laisser accessibles les mentions d'indépendance du site.
  * Ne repasser à false qu'après correction de ces mentions.
+ *
+ * EXCEPTION : les pages d'offre de /offre/* restent ouvertes même en
+ * maintenance. Elles ont été écrites après la fermeture, elles ne revendiquent
+ * aucune indépendance et affichent le statut d'intermédiaire lié au Groupe
+ * Mutuel sur chaque écran. Elles sont donc conformes, là où le reste du site
+ * ne l'est pas encore. Ce sont des atterrissages de campagne payante, en
+ * noindex, sans aucun lien vers les pages fermées.
  */
 const MAINTENANCE_MODE = true;
+
+const OffreMaladie = lazy(() => import("./pages/offres/OffreMaladie"));
+const OffreSubside = lazy(() => import("./pages/offres/OffreSubside"));
 
 const AssuranceSante = lazy(() => import("./pages/assurances/AssuranceSante"));
 const Assurance3ePilier = lazy(() => import("./pages/assurances/Assurance3ePilier"));
@@ -96,12 +106,20 @@ const App = () => (
           <Suspense fallback={<RouteFallback />}>
             {MAINTENANCE_MODE ? (
               <Routes>
-                {/* FERMETURE TOTALE : toute URL, sans exception, retombe ici. */}
+                {/* Pages d'offre : conformes au statut lié, donc ouvertes. */}
+                <Route path="/offre/assurance-maladie" element={<OffreMaladie />} />
+                <Route path="/offre/subside" element={<OffreSubside />} />
+
+                {/* Tout le reste du site demeure fermé, sans exception. */}
                 <Route path="*" element={<Maintenance />} />
               </Routes>
             ) : (
               <Routes>
                 <Route path="/" element={<Index />} />
+
+                {/* Offres (campagnes payantes, noindex) */}
+                <Route path="/offre/assurance-maladie" element={<OffreMaladie />} />
+                <Route path="/offre/subside" element={<OffreSubside />} />
 
                 {/* Assurances Hub */}
                 <Route path="/assurances" element={<Assurances />} />
