@@ -148,8 +148,8 @@ const HealthFunnel = () => {
           lamalModel: labelOf(LAMAL_MODELS, data.lamalModel),
           franchise: `CHF ${data.franchise.toLocaleString("fr-CH")}`,
           accidentCoverage: data.accidentCoverage
-            ? "A inclure"
-            : "Deja couvert par l'employeur",
+            ? "À inclure"
+            : "Déjà couvert par l'employeur",
           interests: selectedInterests.length
             ? selectedInterests
                 .map((k) => INTEREST_LABELS.find((i) => i.key === k)?.label ?? k)
