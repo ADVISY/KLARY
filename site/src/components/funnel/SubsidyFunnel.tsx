@@ -16,10 +16,15 @@ import { useAutoAdvance } from "@/hooks/useAutoAdvance";
 import { submitLead } from "@/lib/funnel/submitLead";
 import {
   CANTONS,
-  HOUSEHOLD_SIZES,
+  FAMILY_SITUATIONS,
+  FRANCHISES_ADULT,
+  HEALTH_INSURERS,
   INCOME_RANGES,
   INCOME_UNLIKELY_ELIGIBLE,
   SPECIAL_SITUATIONS,
+  cantonName,
+  labelOf,
+  ouiNon,
 } from "@/data/funnelOptions";
 
 /**
@@ -32,18 +37,23 @@ import {
  *     les barèmes changent chaque année. Le tunnel parle de vérification.
  *   • la mention d'intermédiaire lié reste affichée, parce que l'appel qui
  *     suit portera aussi sur l'assurance elle-même.
+ *
+ * Les réponses partent en double : la valeur technique sous sa clé, et le
+ * libellé lisible sous `_labels`, pour que la feuille de suivi du conseiller
+ * affiche « Groupe Mutuel » et non « groupe-mutuel ».
  */
 
-const TOTAL_STEPS = 10;
+const TOTAL_STEPS = 11;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 interface SubsidyData {
   canton: string;
   postalCode: string;
   birthDate: Date | null;
-  householdSize: string;
+  familySituation: string;
   hasCurrentInsurance: boolean | null;
   currentInsurer: string;
+  currentFranchise: string;
   incomeRange: string;
   specialSituation: string;
   firstName: string;
@@ -57,9 +67,10 @@ const initialData: SubsidyData = {
   canton: "",
   postalCode: "",
   birthDate: null,
-  householdSize: "",
+  familySituation: "",
   hasCurrentInsurance: null,
   currentInsurer: "",
+  currentFranchise: "",
   incomeRange: "",
   specialSituation: "",
   firstName: "",
@@ -94,11 +105,26 @@ const SubsidyFunnel = () => {
       birthDate: data.birthDate,
       consentTied: data.consentTied,
       answers: {
-        householdSize: data.householdSize,
+        familySituation: data.familySituation,
         hasCurrentInsurance: data.hasCurrentInsurance,
         currentInsurer: data.currentInsurer || null,
+        currentFranchise: data.currentFranchise || null,
         incomeRange: data.incomeRange,
         specialSituation: data.specialSituation,
+        _labels: {
+          canton: cantonName(data.canton),
+          familySituation: labelOf(FAMILY_SITUATIONS, data.familySituation),
+          hasCurrentInsurance: ouiNon(data.hasCurrentInsurance),
+          currentInsurer: labelOf(HEALTH_INSURERS, data.currentInsurer),
+          currentFranchise:
+            data.currentFranchise && data.currentFranchise !== "unknown"
+              ? `CHF ${Number(data.currentFranchise).toLocaleString("fr-CH")}`
+              : data.currentFranchise === "unknown"
+                ? "Ne sait pas"
+                : "",
+          incomeRange: labelOf(INCOME_RANGES, data.incomeRange),
+          specialSituation: labelOf(SPECIAL_SITUATIONS, data.specialSituation),
+        },
       },
     });
 
@@ -130,18 +156,20 @@ const SubsidyFunnel = () => {
       case 3:
         return formData.birthDate !== null;
       case 4:
-        return formData.householdSize !== "";
+        return formData.familySituation !== "";
       case 5:
         return formData.hasCurrentInsurance !== null;
       case 6:
         return formData.currentInsurer !== "";
       case 7:
-        return formData.incomeRange !== "";
+        return formData.currentFranchise !== "";
       case 8:
-        return formData.specialSituation !== "";
+        return formData.incomeRange !== "";
       case 9:
-        return formData.firstName.trim() !== "" && formData.lastName.trim() !== "";
+        return formData.specialSituation !== "";
       case 10:
+        return formData.firstName.trim() !== "" && formData.lastName.trim() !== "";
+      case 11:
         return (
           EMAIL_RE.test(formData.email.trim()) &&
           isValidSwissPhone(formData.phone) &&
@@ -154,24 +182,25 @@ const SubsidyFunnel = () => {
 
   const canProceed = validateStep(currentStep);
 
-  // Les messages d'erreur n'apparaissent qu'apres une tentative d'avance,
-  // et le compteur repart a zero a chaque etape. Sans ce reset, on arrive
-  // sur l'etape suivante avec tous ses champs deja signales en rouge.
+  // Les messages d'erreur n'apparaissent qu'après une tentative d'avance,
+  // et le compteur repart à zéro à chaque étape. Sans ce reset, on arrive
+  // sur l'étape suivante avec tous ses champs déjà signalés en rouge.
   useEffect(() => {
     setAttempted(false);
   }, [currentStep]);
 
-  // Pas d'assurance actuelle, pas de question sur l'assureur.
+  // Pas d'assurance actuelle : ni l'assureur ni la franchise n'ont de sens,
+  // on saute les deux étapes d'un coup.
   const handleAdvance = useCallback(() => {
     if (currentStep === 5 && formData.hasCurrentInsurance === false) {
-      goToStep(7);
+      goToStep(8);
     } else {
       nextStep();
     }
   }, [currentStep, formData.hasCurrentInsurance, goToStep, nextStep]);
 
   const handlePrevious = useCallback(() => {
-    if (currentStep === 7 && formData.hasCurrentInsurance === false) {
+    if (currentStep === 8 && formData.hasCurrentInsurance === false) {
       goToStep(5);
     } else {
       previousStep();
@@ -242,6 +271,7 @@ const SubsidyFunnel = () => {
         "Le droit au subside se calcule sur le ménage entier, pas sur une personne seule.",
         "Êtes-vous déjà assuré ? Le subside se verse sur une prime existante.",
         "Chez quel assureur ? Nous saurons où le subside doit être annoncé.",
+        "Votre franchise actuelle, pour situer ce que vous payez aujourd'hui.",
         "Le revenu du ménage est le critère décisif. Une tranche suffit.",
         "Certaines situations ouvrent ou élargissent le droit.",
         "Presque terminé. Votre prénom et votre nom.",
@@ -342,23 +372,22 @@ const SubsidyFunnel = () => {
         </FunnelField>
       </FunnelStep>
 
-      {/* Étape 4 : taille du ménage */}
+      {/* Étape 4 : composition du foyer */}
       <FunnelStep isActive={currentStep === 4}>
         <FunnelField
-          label="Combien de personnes composent votre ménage ?"
+          label="Quelle est la composition de votre foyer ?"
           required
-          hint="Vous compris, et les enfants à charge."
-          error={err(formData.householdSize === "", "Choisissez une réponse.")}
+          hint="Le droit au subside se calcule sur le ménage entier."
+          error={err(formData.familySituation === "", "Choisissez une réponse.")}
         >
           <OptionButtons
-            ariaLabel="Taille du ménage"
-            columns={3}
-            value={formData.householdSize}
+            ariaLabel="Composition du foyer"
+            value={formData.familySituation}
             onValueChange={(v) => {
-              updateFormData({ householdSize: v });
+              updateFormData({ familySituation: v });
               notify();
             }}
-            options={HOUSEHOLD_SIZES.map((h) => ({ value: h.value, label: h.label }))}
+            options={FAMILY_SITUATIONS.map((f) => ({ value: f.value, label: f.label }))}
           />
         </FunnelField>
       </FunnelStep>
@@ -404,8 +433,35 @@ const SubsidyFunnel = () => {
         </FunnelField>
       </FunnelStep>
 
-      {/* Étape 7 : revenu */}
+      {/* Étape 7 : franchise actuelle */}
       <FunnelStep isActive={currentStep === 7}>
+        <FunnelField
+          label="Quelle est votre franchise actuelle ?"
+          required
+          hint="Elle figure sur votre police. Choisissez Je ne sais pas si vous n'êtes pas sûr, le conseiller la retrouvera."
+          error={err(formData.currentFranchise === "", "Choisissez une franchise, ou Je ne sais pas.")}
+        >
+          <OptionButtons
+            ariaLabel="Franchise actuelle"
+            columns={3}
+            value={formData.currentFranchise}
+            onValueChange={(v) => {
+              updateFormData({ currentFranchise: v });
+              notify();
+            }}
+            options={[
+              ...FRANCHISES_ADULT.map((f) => ({
+                value: String(f),
+                label: `${f.toLocaleString("fr-CH")} CHF`,
+              })),
+              { value: "unknown", label: "Je ne sais pas" },
+            ]}
+          />
+        </FunnelField>
+      </FunnelStep>
+
+      {/* Étape 8 : revenu */}
+      <FunnelStep isActive={currentStep === 8}>
         <FunnelField
           label="Quel est le revenu brut annuel de votre ménage ?"
           required
@@ -425,8 +481,8 @@ const SubsidyFunnel = () => {
         </FunnelField>
       </FunnelStep>
 
-      {/* Étape 8 : situation particulière */}
-      <FunnelStep isActive={currentStep === 8}>
+      {/* Étape 9 : situation particulière */}
+      <FunnelStep isActive={currentStep === 9}>
         <FunnelField
           label="Êtes-vous dans une de ces situations ?"
           required
@@ -446,8 +502,8 @@ const SubsidyFunnel = () => {
         </FunnelField>
       </FunnelStep>
 
-      {/* Étape 9 : identité */}
-      <FunnelStep isActive={currentStep === 9}>
+      {/* Étape 10 : identité */}
+      <FunnelStep isActive={currentStep === 10}>
         <div className="space-y-4">
           <FunnelField
             label="Votre prénom"
@@ -487,8 +543,8 @@ const SubsidyFunnel = () => {
         </div>
       </FunnelStep>
 
-      {/* Étape 10 : contact et consentement */}
-      <FunnelStep isActive={currentStep === 10}>
+      {/* Étape 11 : contact et consentement */}
+      <FunnelStep isActive={currentStep === 11}>
         <div className="space-y-4">
           <FunnelField
             label="Votre adresse e-mail"

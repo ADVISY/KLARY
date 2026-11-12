@@ -19,7 +19,11 @@ import {
   CANTONS,
   FAMILY_SITUATIONS,
   FRANCHISES_ADULT,
+  HEALTH_INSURERS,
   LAMAL_MODELS,
+  cantonName,
+  labelOf,
+  ouiNon,
 } from "@/data/funnelOptions";
 
 /**
@@ -104,6 +108,12 @@ const HealthFunnel = () => {
   const [failed, setFailed] = useState(false);
 
   const onSubmit = useCallback(async (data: HealthData) => {
+    const selectedInterests = (
+      Object.entries(data.interests) as [keyof HealthData["interests"], boolean][]
+    )
+      .filter(([, chosen]) => chosen)
+      .map(([key]) => key);
+
     setScreen("loading");
     setPhase("analyse");
     await new Promise((r) => setTimeout(r, 700));
@@ -127,10 +137,27 @@ const HealthFunnel = () => {
         lamalModel: data.lamalModel,
         franchise: data.franchise,
         accidentCoverage: data.accidentCoverage,
-        interests: Object.entries(data.interests)
-          .filter(([, v]) => v)
-          .map(([k]) => k),
+        interests: selectedInterests,
         availability: data.availability,
+        // Version lisible, destinee a la feuille de suivi du conseiller
+        _labels: {
+          canton: cantonName(data.canton),
+          hasCurrentInsurance: ouiNon(data.hasCurrentInsurance),
+          currentInsurer: labelOf(HEALTH_INSURERS, data.currentInsurer),
+          familySituation: labelOf(FAMILY_SITUATIONS, data.familySituation),
+          lamalModel: labelOf(LAMAL_MODELS, data.lamalModel),
+          franchise: `CHF ${data.franchise.toLocaleString("fr-CH")}`,
+          accidentCoverage: data.accidentCoverage
+            ? "A inclure"
+            : "Deja couvert par l'employeur",
+          interests: selectedInterests.length
+            ? selectedInterests
+                .map((k) => INTEREST_LABELS.find((i) => i.key === k)?.label ?? k)
+                .join(", ")
+            : "Aucune",
+          interestsCount: String(selectedInterests.length),
+          availability: labelOf(AVAILABILITY, data.availability),
+        },
       },
     });
 

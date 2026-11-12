@@ -121,3 +121,25 @@ export const AVAILABILITY = [
  * seul le canton décide, et les barèmes changent chaque année.
  */
 export const INCOME_UNLIKELY_ELIGIBLE = ["gt-90"];
+
+/**
+ * Traduit une valeur technique en libellé lisible.
+ *
+ * Le tunnel manipule des valeurs stables (`groupe-mutuel`, `45-60`, `single`),
+ * mais un conseiller qui ouvre la feuille de suivi doit lire « Groupe Mutuel »,
+ * « 45 000 à 60 000 CHF », « Seul(e) ». On envoie donc les deux : la valeur
+ * technique pour la machine, le libellé pour l'humain.
+ */
+export function labelOf(
+  options: readonly { value: string; label: string }[],
+  value: string
+): string {
+  if (!value) return "";
+  return options.find((o) => o.value === value)?.label ?? value;
+}
+
+/** Oui / Non lisible, et chaîne vide quand la question n'a pas été posée. */
+export function ouiNon(value: boolean | null | undefined): string {
+  if (value === null || value === undefined) return "";
+  return value ? "Oui" : "Non";
+}
